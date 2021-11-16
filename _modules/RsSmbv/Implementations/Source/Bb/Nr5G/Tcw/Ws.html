@@ -1,0 +1,579 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>RsSmbv.Implementations.Source.Bb.Nr5G.Tcw.Ws &mdash; RsSmbv 4.80.2.22 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../../../../" src="../../../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../../../_static/jquery.js"></script>
+        <script src="../../../../../../../_static/underscore.js"></script>
+        <script src="../../../../../../../_static/doctools.js"></script>
+        <script src="../../../../../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../../../../index.html" class="icon icon-home" alt="Documentation Home"> RsSmbv
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../RsSmbv.html">RsSmbv API Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../genindex.html">Index</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../../index.html">RsSmbv</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../../../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../../../../Source.html">RsSmbv.Implementations.Source</a> &raquo;</li>
+        
+          <li><a href="../../../Bb.html">RsSmbv.Implementations.Source.Bb</a> &raquo;</li>
+        
+          <li><a href="../../Nr5G.html">RsSmbv.Implementations.Source.Bb.Nr5G</a> &raquo;</li>
+        
+          <li><a href="../Tcw.html">RsSmbv.Implementations.Source.Bb.Nr5G.Tcw</a> &raquo;</li>
+        
+      <li>RsSmbv.Implementations.Source.Bb.Nr5G.Tcw.Ws</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for RsSmbv.Implementations.Source.Bb.Nr5G.Tcw.Ws</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">.......Internal.Core</span> <span class="kn">import</span> <span class="n">Core</span>
+<span class="kn">from</span> <span class="nn">.......Internal.CommandsGroup</span> <span class="kn">import</span> <span class="n">CommandsGroup</span>
+<span class="kn">from</span> <span class="nn">.......Internal</span> <span class="kn">import</span> <span class="n">Conversions</span>
+<span class="kn">from</span> <span class="nn">.......</span> <span class="kn">import</span> <span class="n">enums</span>
+
+
+<span class="c1"># noinspection PyPep8Naming,PyAttributeOutsideInit,SpellCheckingInspection</span>
+<div class="viewcode-block" id="Ws"><a class="viewcode-back" href="../../../../../../../Source_Bb_Nr5G_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Nr5G.Tcw.Ws.Ws">[docs]</a><span class="k">class</span> <span class="nc">Ws</span><span class="p">:</span>
+	<span class="sd">&quot;&quot;&quot;Ws commands group definition. 26 total commands, 5 Sub-groups, 17 group commands&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">core</span><span class="p">:</span> <span class="n">Core</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span> <span class="o">=</span> <span class="n">core</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span> <span class="o">=</span> <span class="n">CommandsGroup</span><span class="p">(</span><span class="s2">&quot;ws&quot;</span><span class="p">,</span> <span class="n">core</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">adMrs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;adMrs commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_adMrs&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.AdMrs</span> <span class="kn">import</span> <span class="n">AdMrs</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_adMrs</span> <span class="o">=</span> <span class="n">AdMrs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_adMrs</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">frc</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;frc commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_frc&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Frc</span> <span class="kn">import</span> <span class="n">Frc</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_frc</span> <span class="o">=</span> <span class="n">Frc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_frc</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">prach</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;prach commands group. 0 Sub-classes, 2 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_prach&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Prach</span> <span class="kn">import</span> <span class="n">Prach</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_prach</span> <span class="o">=</span> <span class="n">Prach</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prach</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">ptrs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;ptrs commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_ptrs&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Ptrs</span> <span class="kn">import</span> <span class="n">Ptrs</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_ptrs</span> <span class="o">=</span> <span class="n">Ptrs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ptrs</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">uci</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;uci commands group. 2 Sub-classes, 2 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_uci&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Uci</span> <span class="kn">import</span> <span class="n">Uci</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_uci</span> <span class="o">=</span> <span class="n">Uci</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_uci</span>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="Ws.get_cbw"><a class="viewcode-back" href="../../../../../../../Source_Bb_Nr5G_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Nr5G.Tcw.Ws.Ws.get_cbw">[docs]</a>	<span class="k">def</span> <span class="nf">get_cbw</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">Nr5Gcbw</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:WS:CBW \n</span>
+<span class="sd">		Snippet: value: enums.Nr5Gcbw = driver.source.bb.nr5G.tcw.ws.get_cbw() \n</span>
+<span class="sd">		Selects the channel bandwidth. \n</span>
+<span class="sd">			:return: ws_ch_bw: BW5| BW10| BW15| BW20| BW25| BW40| BW50| BW60| BW100| BW80| BW400| BW200| BW30| BW70| BW90 Bandwidth in MHz</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:TCW:WS:CBW?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">Nr5Gcbw</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Ws.set_cbw"><a class="viewcode-back" href="../../../../../../../Source_Bb_Nr5G_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Nr5G.Tcw.Ws.Ws.set_cbw">[docs]</a>	<span class="k">def</span> <span class="nf">set_cbw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ws_ch_bw</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">Nr5Gcbw</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:WS:CBW \n</span>
+<span class="sd">		Snippet: driver.source.bb.nr5G.tcw.ws.set_cbw(ws_ch_bw = enums.Nr5Gcbw.BW10) \n</span>
+<span class="sd">		Selects the channel bandwidth. \n</span>
+<span class="sd">			:param ws_ch_bw: BW5| BW10| BW15| BW20| BW25| BW40| BW50| BW60| BW100| BW80| BW400| BW200| BW30| BW70| BW90 Bandwidth in MHz</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">ws_ch_bw</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">Nr5Gcbw</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:TCW:WS:CBW </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Ws.get_cell_id"><a class="viewcode-back" href="../../../../../../../Source_Bb_Nr5G_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Nr5G.Tcw.Ws.Ws.get_cell_id">[docs]</a>	<span class="k">def</span> <span class="nf">get_cell_id</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:WS:CELLid \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.nr5G.tcw.ws.get_cell_id() \n</span>
+<span class="sd">		Sets the cell ID. \n</span>
+<span class="sd">			:return: ws_cell_id: integer Range: 0 to 1007</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:TCW:WS:CELLid?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Ws.set_cell_id"><a class="viewcode-back" href="../../../../../../../Source_Bb_Nr5G_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Nr5G.Tcw.Ws.Ws.set_cell_id">[docs]</a>	<span class="k">def</span> <span class="nf">set_cell_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ws_cell_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:WS:CELLid \n</span>
+<span class="sd">		Snippet: driver.source.bb.nr5G.tcw.ws.set_cell_id(ws_cell_id = 1) \n</span>
+<span class="sd">		Sets the cell ID. \n</span>
+<span class="sd">			:param ws_cell_id: integer Range: 0 to 1007</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">ws_cell_id</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:TCW:WS:CELLid </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="Ws.get_duplex"><a class="viewcode-back" href="../../../../../../../Source_Bb_Nr5G_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Nr5G.Tcw.Ws.Ws.get_duplex">[docs]</a>	<span class="k">def</span> <span class="nf">get_duplex</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraDuplexMode</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:WS:DUPLex \n</span>
+<span class="sd">		Snippet: value: enums.EutraDuplexMode = driver.source.bb.nr5G.tcw.ws.get_duplex() \n</span>
+<span class="sd">		The duplexing mechanism used can be switched between FDD and TDD. \n</span>
+<span class="sd">			:return: duplexing: FDD| TDD</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:TCW:WS:DUPLex?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraDuplexMode</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Ws.set_duplex"><a class="viewcode-back" href="../../../../../../../Source_Bb_Nr5G_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Nr5G.Tcw.Ws.Ws.set_duplex">[docs]</a>	<span class="k">def</span> <span class="nf">set_duplex</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">duplexing</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraDuplexMode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:WS:DUPLex \n</span>
+<span class="sd">		Snippet: driver.source.bb.nr5G.tcw.ws.set_duplex(duplexing = enums.EutraDuplexMode.FDD) \n</span>
+<span class="sd">		The duplexing mechanism used can be switched between FDD and TDD. \n</span>
+<span class="sd">			:param duplexing: FDD| TDD</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">duplexing</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraDuplexMode</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:TCW:WS:DUPLex </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="Ws.get_fm_throughput"><a class="viewcode-back" href="../../../../../../../Source_Bb_Nr5G_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Nr5G.Tcw.Ws.Ws.get_fm_throughput">[docs]</a>	<span class="k">def</span> <span class="nf">get_fm_throughput</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">Fmt</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:WS:FMTHroughput \n</span>
+<span class="sd">		Snippet: value: enums.Fmt = driver.source.bb.nr5G.tcw.ws.get_fm_throughput() \n</span>
+<span class="sd">		The required throughput is expressed as a fraction of maximum throughput for the FRC. The performance requirements assume</span>
+<span class="sd">		HARQ retransmissions. The throughput shall be equal to or larger than the fraction of maximum throughput for the FRCs at</span>
+<span class="sd">		the given SNR. \n</span>
+<span class="sd">			:return: fmt: FMT70</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:TCW:WS:FMTHroughput?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">Fmt</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="Ws.get_fr_offset"><a class="viewcode-back" href="../../../../../../../Source_Bb_Nr5G_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Nr5G.Tcw.Ws.Ws.get_fr_offset">[docs]</a>	<span class="k">def</span> <span class="nf">get_fr_offset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">FreqOffset</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:WS:FROFfset \n</span>
+<span class="sd">		Snippet: value: enums.FreqOffset = driver.source.bb.nr5G.tcw.ws.get_fr_offset() \n</span>
+<span class="sd">		Sets the frequency offset used for the PRACH. \n</span>
+<span class="sd">			:return: freq_offset: FO_0| FO_400</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:TCW:WS:FROFfset?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">FreqOffset</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Ws.set_fr_offset"><a class="viewcode-back" href="../../../../../../../Source_Bb_Nr5G_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Nr5G.Tcw.Ws.Ws.set_fr_offset">[docs]</a>	<span class="k">def</span> <span class="nf">set_fr_offset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">freq_offset</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">FreqOffset</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:WS:FROFfset \n</span>
+<span class="sd">		Snippet: driver.source.bb.nr5G.tcw.ws.set_fr_offset(freq_offset = enums.FreqOffset.FO_0) \n</span>
+<span class="sd">		Sets the frequency offset used for the PRACH. \n</span>
+<span class="sd">			:param freq_offset: FO_0| FO_400</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">freq_offset</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">FreqOffset</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:TCW:WS:FROFfset </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="Ws.get_map_type"><a class="viewcode-back" href="../../../../../../../Source_Bb_Nr5G_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Nr5G.Tcw.Ws.Ws.get_map_type">[docs]</a>	<span class="k">def</span> <span class="nf">get_map_type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">MappingType</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:WS:MAPType \n</span>
+<span class="sd">		Snippet: value: enums.MappingType = driver.source.bb.nr5G.tcw.ws.get_map_type() \n</span>
+<span class="sd">		Sets the mapping type A or B for the PUSCH. \n</span>
+<span class="sd">			:return: map_type: A| B</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:TCW:WS:MAPType?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">MappingType</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Ws.set_map_type"><a class="viewcode-back" href="../../../../../../../Source_Bb_Nr5G_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Nr5G.Tcw.Ws.Ws.set_map_type">[docs]</a>	<span class="k">def</span> <span class="nf">set_map_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">map_type</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">MappingType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:WS:MAPType \n</span>
+<span class="sd">		Snippet: driver.source.bb.nr5G.tcw.ws.set_map_type(map_type = enums.MappingType.A) \n</span>
+<span class="sd">		Sets the mapping type A or B for the PUSCH. \n</span>
+<span class="sd">			:param map_type: A| B</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">map_type</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">MappingType</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:TCW:WS:MAPType </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="Ws.get_mode"><a class="viewcode-back" href="../../../../../../../Source_Bb_Nr5G_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Nr5G.Tcw.Ws.Ws.get_mode">[docs]</a>	<span class="k">def</span> <span class="nf">get_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">Mode</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:WS:MODE \n</span>
+<span class="sd">		Snippet: value: enums.Mode = driver.source.bb.nr5G.tcw.ws.get_mode() \n</span>
+<span class="sd">		Switches between the detection rate (Pd) and the false detection rate (Pfa) . \n</span>
+<span class="sd">			:return: mode: DRAT| FDR DRAT Pd is defined as the probability of detection of preamble. FDR Pfa is defined as the total probability of false detection of the preamble.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:TCW:WS:MODE?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">Mode</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Ws.set_mode"><a class="viewcode-back" href="../../../../../../../Source_Bb_Nr5G_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Nr5G.Tcw.Ws.Ws.set_mode">[docs]</a>	<span class="k">def</span> <span class="nf">set_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">Mode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:WS:MODE \n</span>
+<span class="sd">		Snippet: driver.source.bb.nr5G.tcw.ws.set_mode(mode = enums.Mode.DRAT) \n</span>
+<span class="sd">		Switches between the detection rate (Pd) and the false detection rate (Pfa) . \n</span>
+<span class="sd">			:param mode: DRAT| FDR DRAT Pd is defined as the probability of detection of preamble. FDR Pfa is defined as the total probability of false detection of the preamble.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">mode</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">Mode</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:TCW:WS:MODE </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Ws.get_plevel"><a class="viewcode-back" href="../../../../../../../Source_Bb_Nr5G_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Nr5G.Tcw.Ws.Ws.get_plevel">[docs]</a>	<span class="k">def</span> <span class="nf">get_plevel</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:WS:PLEVel \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.nr5G.tcw.ws.get_plevel() \n</span>
+<span class="sd">		Specifies the power level of the wanted signal. \n</span>
+<span class="sd">			:return: ws_pow_lev: float Range: -145 to 20, Unit: dB</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:TCW:WS:PLEVel?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Ws.set_plevel"><a class="viewcode-back" href="../../../../../../../Source_Bb_Nr5G_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Nr5G.Tcw.Ws.Ws.set_plevel">[docs]</a>	<span class="k">def</span> <span class="nf">set_plevel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ws_pow_lev</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:WS:PLEVel \n</span>
+<span class="sd">		Snippet: driver.source.bb.nr5G.tcw.ws.set_plevel(ws_pow_lev = 1.0) \n</span>
+<span class="sd">		Specifies the power level of the wanted signal. \n</span>
+<span class="sd">			:param ws_pow_lev: float Range: -145 to 20, Unit: dB</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">ws_pow_lev</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:TCW:WS:PLEVel </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="Ws.get_pro_condition"><a class="viewcode-back" href="../../../../../../../Source_Bb_Nr5G_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Nr5G.Tcw.Ws.Ws.get_pro_condition">[docs]</a>	<span class="k">def</span> <span class="nf">get_pro_condition</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">PropagCond</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:WS:PROCondition \n</span>
+<span class="sd">		Snippet: value: enums.PropagCond = driver.source.bb.nr5G.tcw.ws.get_pro_condition() \n</span>
+<span class="sd">		The propagation conditions define the multipath fading environment. They indicated as a combination of channel model name</span>
+<span class="sd">		and maximum Doppler frequency, i.e. TDLA&lt;DS&gt;-&lt;Doppler&gt; where &lt;DS&gt; indicates the desired delay spread and &lt;Doppler&gt;</span>
+<span class="sd">		indicates the maximum Doppler frequency. \n</span>
+<span class="sd">			:return: propag_cond: TDLB100D400| TDLC300D100| TDLA30D10| AWGN| TDLA30D300| TDLA30D75</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:TCW:WS:PROCondition?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">PropagCond</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Ws.set_pro_condition"><a class="viewcode-back" href="../../../../../../../Source_Bb_Nr5G_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Nr5G.Tcw.Ws.Ws.set_pro_condition">[docs]</a>	<span class="k">def</span> <span class="nf">set_pro_condition</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">propag_cond</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">PropagCond</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:WS:PROCondition \n</span>
+<span class="sd">		Snippet: driver.source.bb.nr5G.tcw.ws.set_pro_condition(propag_cond = enums.PropagCond.AWGN) \n</span>
+<span class="sd">		The propagation conditions define the multipath fading environment. They indicated as a combination of channel model name</span>
+<span class="sd">		and maximum Doppler frequency, i.e. TDLA&lt;DS&gt;-&lt;Doppler&gt; where &lt;DS&gt; indicates the desired delay spread and &lt;Doppler&gt;</span>
+<span class="sd">		indicates the maximum Doppler frequency. \n</span>
+<span class="sd">			:param propag_cond: TDLB100D400| TDLC300D100| TDLA30D10| AWGN| TDLA30D300| TDLA30D75</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">propag_cond</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">PropagCond</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:TCW:WS:PROCondition </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Ws.get_rb_offset"><a class="viewcode-back" href="../../../../../../../Source_Bb_Nr5G_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Nr5G.Tcw.Ws.Ws.get_rb_offset">[docs]</a>	<span class="k">def</span> <span class="nf">get_rb_offset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:WS:RBOFfset \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.nr5G.tcw.ws.get_rb_offset() \n</span>
+<span class="sd">		Sets the resource block offset of the wanted signal. \n</span>
+<span class="sd">			:return: ws_rb_offset: integer Number of resource blocks. Range: 0 to 273</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:TCW:WS:RBOFfset?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Ws.set_rb_offset"><a class="viewcode-back" href="../../../../../../../Source_Bb_Nr5G_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Nr5G.Tcw.Ws.Ws.set_rb_offset">[docs]</a>	<span class="k">def</span> <span class="nf">set_rb_offset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ws_rb_offset</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:WS:RBOFfset \n</span>
+<span class="sd">		Snippet: driver.source.bb.nr5G.tcw.ws.set_rb_offset(ws_rb_offset = 1) \n</span>
+<span class="sd">		Sets the resource block offset of the wanted signal. \n</span>
+<span class="sd">			:param ws_rb_offset: integer Number of resource blocks. Range: 0 to 273</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">ws_rb_offset</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:TCW:WS:RBOFfset </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Ws.get_rf_frequency"><a class="viewcode-back" href="../../../../../../../Source_Bb_Nr5G_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Nr5G.Tcw.Ws.Ws.get_rf_frequency">[docs]</a>	<span class="k">def</span> <span class="nf">get_rf_frequency</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:WS:RFFRequency \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.nr5G.tcw.ws.get_rf_frequency() \n</span>
+<span class="sd">		Sets the RF frequency of the wanted signal. \n</span>
+<span class="sd">			:return: ws_rf_freq: integer Range: 100e+03 to 6e+09</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:TCW:WS:RFFRequency?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Ws.set_rf_frequency"><a class="viewcode-back" href="../../../../../../../Source_Bb_Nr5G_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Nr5G.Tcw.Ws.Ws.set_rf_frequency">[docs]</a>	<span class="k">def</span> <span class="nf">set_rf_frequency</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ws_rf_freq</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:WS:RFFRequency \n</span>
+<span class="sd">		Snippet: driver.source.bb.nr5G.tcw.ws.set_rf_frequency(ws_rf_freq = 1) \n</span>
+<span class="sd">		Sets the RF frequency of the wanted signal. \n</span>
+<span class="sd">			:param ws_rf_freq: integer Range: 100e+03 to 6e+09</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">ws_rf_freq</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:TCW:WS:RFFRequency </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="Ws.get_sc_spacing"><a class="viewcode-back" href="../../../../../../../Source_Bb_Nr5G_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Nr5G.Tcw.Ws.Ws.get_sc_spacing">[docs]</a>	<span class="k">def</span> <span class="nf">get_sc_spacing</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">Numerology</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:WS:SCSPacing \n</span>
+<span class="sd">		Snippet: value: enums.Numerology = driver.source.bb.nr5G.tcw.ws.get_sc_spacing() \n</span>
+<span class="sd">		Sets the subcarrier spacing. \n</span>
+<span class="sd">			:return: ws_subcar_spacing: N15| N30| N60| X60| N120| N240 N15, N30, N60, N120, N240 Normal cyclic prefix, value in kHz E60 Extended cyclic prefix, 60 kHz</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:TCW:WS:SCSPacing?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">Numerology</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Ws.set_sc_spacing"><a class="viewcode-back" href="../../../../../../../Source_Bb_Nr5G_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Nr5G.Tcw.Ws.Ws.set_sc_spacing">[docs]</a>	<span class="k">def</span> <span class="nf">set_sc_spacing</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ws_subcar_spacing</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">Numerology</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:WS:SCSPacing \n</span>
+<span class="sd">		Snippet: driver.source.bb.nr5G.tcw.ws.set_sc_spacing(ws_subcar_spacing = enums.Numerology.N120) \n</span>
+<span class="sd">		Sets the subcarrier spacing. \n</span>
+<span class="sd">			:param ws_subcar_spacing: N15| N30| N60| X60| N120| N240 N15, N30, N60, N120, N240 Normal cyclic prefix, value in kHz E60 Extended cyclic prefix, 60 kHz</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">ws_subcar_spacing</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">Numerology</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:TCW:WS:SCSPacing </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Ws.get_sym_number"><a class="viewcode-back" href="../../../../../../../Source_Bb_Nr5G_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Nr5G.Tcw.Ws.Ws.get_sym_number">[docs]</a>	<span class="k">def</span> <span class="nf">get_sym_number</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:WS:SYMNumber \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.nr5G.tcw.ws.get_sym_number() \n</span>
+<span class="sd">		Sets the number of used OFDM symbols. The starting symbol index is 13 for 1 OFDM symbol and 12 for 2 OFDM symbols. \n</span>
+<span class="sd">			:return: symbol_number: integer Range: 1 to 14</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:TCW:WS:SYMNumber?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Ws.set_sym_number"><a class="viewcode-back" href="../../../../../../../Source_Bb_Nr5G_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Nr5G.Tcw.Ws.Ws.set_sym_number">[docs]</a>	<span class="k">def</span> <span class="nf">set_sym_number</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symbol_number</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:WS:SYMNumber \n</span>
+<span class="sd">		Snippet: driver.source.bb.nr5G.tcw.ws.set_sym_number(symbol_number = 1) \n</span>
+<span class="sd">		Sets the number of used OFDM symbols. The starting symbol index is 13 for 1 OFDM symbol and 12 for 2 OFDM symbols. \n</span>
+<span class="sd">			:param symbol_number: integer Range: 1 to 14</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">symbol_number</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:TCW:WS:SYMNumber </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Ws.get_tapos"><a class="viewcode-back" href="../../../../../../../Source_Bb_Nr5G_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Nr5G.Tcw.Ws.Ws.get_tapos">[docs]</a>	<span class="k">def</span> <span class="nf">get_tapos</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:WS:TAPos \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.nr5G.tcw.ws.get_tapos() \n</span>
+<span class="sd">		Sets the position of first DM-RS symbol for PUSCH (and PDSCH) mapping type A (dmrs-TypeA-Position) . \n</span>
+<span class="sd">			:return: ws_typea_pos: integer Range: 2 to 3</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:TCW:WS:TAPos?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Ws.set_tapos"><a class="viewcode-back" href="../../../../../../../Source_Bb_Nr5G_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Nr5G.Tcw.Ws.Ws.set_tapos">[docs]</a>	<span class="k">def</span> <span class="nf">set_tapos</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ws_typea_pos</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:WS:TAPos \n</span>
+<span class="sd">		Snippet: driver.source.bb.nr5G.tcw.ws.set_tapos(ws_typea_pos = 1) \n</span>
+<span class="sd">		Sets the position of first DM-RS symbol for PUSCH (and PDSCH) mapping type A (dmrs-TypeA-Position) . \n</span>
+<span class="sd">			:param ws_typea_pos: integer Range: 2 to 3</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">ws_typea_pos</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:TCW:WS:TAPos </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Ws.get_tio_base"><a class="viewcode-back" href="../../../../../../../Source_Bb_Nr5G_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Nr5G.Tcw.Ws.Ws.get_tio_base">[docs]</a>	<span class="k">def</span> <span class="nf">get_tio_base</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:WS:TIOBase \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.nr5G.tcw.ws.get_tio_base() \n</span>
+<span class="sd">		Queries the timing off base value. \n</span>
+<span class="sd">			:return: timing_offset_base: float Range: 0 to 6.2</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:TCW:WS:TIOBase?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="Ws.get_tsetup"><a class="viewcode-back" href="../../../../../../../Source_Bb_Nr5G_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Nr5G.Tcw.Ws.Ws.get_tsetup">[docs]</a>	<span class="k">def</span> <span class="nf">get_tsetup</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">TestSetup</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:WS:TSETup \n</span>
+<span class="sd">		Snippet: value: enums.TestSetup = driver.source.bb.nr5G.tcw.ws.get_tsetup() \n</span>
+<span class="sd">		With the test setup selector, the signal definitions can be switched. \n</span>
+<span class="sd">			:return: test_setup: TS_1| TS_2</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:TCW:WS:TSETup?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">TestSetup</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Ws.set_tsetup"><a class="viewcode-back" href="../../../../../../../Source_Bb_Nr5G_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Nr5G.Tcw.Ws.Ws.set_tsetup">[docs]</a>	<span class="k">def</span> <span class="nf">set_tsetup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">test_setup</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">TestSetup</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:WS:TSETup \n</span>
+<span class="sd">		Snippet: driver.source.bb.nr5G.tcw.ws.set_tsetup(test_setup = enums.TestSetup.TS_1) \n</span>
+<span class="sd">		With the test setup selector, the signal definitions can be switched. \n</span>
+<span class="sd">			:param test_setup: TS_1| TS_2</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">test_setup</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">TestSetup</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:TCW:WS:TSETup </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Ws.get_ue_id"><a class="viewcode-back" href="../../../../../../../Source_Bb_Nr5G_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Nr5G.Tcw.Ws.Ws.get_ue_id">[docs]</a>	<span class="k">def</span> <span class="nf">get_ue_id</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:WS:UEID \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.nr5G.tcw.ws.get_ue_id() \n</span>
+<span class="sd">		Sets the UE ID. \n</span>
+<span class="sd">			:return: ws_ueid: integer Range: 0 to 65535</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:TCW:WS:UEID?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Ws.set_ue_id"><a class="viewcode-back" href="../../../../../../../Source_Bb_Nr5G_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Nr5G.Tcw.Ws.Ws.set_ue_id">[docs]</a>	<span class="k">def</span> <span class="nf">set_ue_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ws_ueid</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:WS:UEID \n</span>
+<span class="sd">		Snippet: driver.source.bb.nr5G.tcw.ws.set_ue_id(ws_ueid = 1) \n</span>
+<span class="sd">		Sets the UE ID. \n</span>
+<span class="sd">			:param ws_ueid: integer Range: 0 to 65535</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">ws_ueid</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:TCW:WS:UEID </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Ws&#39;</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Clones the group by creating new object from it and its whole existing sub-groups</span>
+<span class="sd">		Also copies all the existing default Repeated Capabilities setting,</span>
+<span class="sd">		which you can change independently without affecting the original group&quot;&quot;&quot;</span>
+		<span class="n">new_group</span> <span class="o">=</span> <span class="n">Ws</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">synchronize_repcaps</span><span class="p">(</span><span class="n">new_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">new_group</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright © Rohde &amp; Schwarz 2021
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

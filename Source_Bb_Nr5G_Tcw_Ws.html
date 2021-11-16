@@ -1,0 +1,926 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Ws &mdash; RsSmbv 4.80.2.22 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="AdMrs" href="Source_Bb_Nr5G_Tcw_Ws_AdMrs.html" />
+    <link rel="prev" title="Rtf" href="Source_Bb_Nr5G_Tcw_Rtf.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> RsSmbv
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="RsSmbv.html">RsSmbv API Structure</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Bert.html">Bert</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Bler.html">Bler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Calibration.html">Calibration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clock.html">Clock</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Device.html">Device</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Diagnostic.html">Diagnostic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Display.html">Display</a></li>
+<li class="toctree-l2"><a class="reference internal" href="FormatPy.html">FormatPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HardCopy.html">HardCopy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Initiate.html">Initiate&lt;Channel&gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Kboard.html">Kboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MassMemory.html">MassMemory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Memory.html">Memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Output.html">Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Read.html">Read&lt;Channel&gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Sconfiguration.html">Sconfiguration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Sense.html">Sense&lt;Channel&gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slist.html">Slist</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="Source.html">Source</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="Source_Adf.html">Adf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Am.html">Am&lt;GeneratorIx&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Awgn.html">Awgn</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="Source_Bb.html">Bb</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Arbitrary.html">Arbitrary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Btooth.html">Btooth</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_C2K.html">C2K</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Coder.html">Coder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Dab.html">Dab</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Dm.html">Dm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Dme.html">Dme</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra.html">Eutra</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Evdo.html">Evdo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Gbas.html">Gbas</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Gnpr.html">Gnpr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Gnss.html">Gnss</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Graphics.html">Graphics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Gsm.html">Gsm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Huwb.html">Huwb</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Ils.html">Ils</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Impairment.html">Impairment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Info.html">Info</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Lora.html">Lora</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Mccw.html">Mccw</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nfc.html">Nfc</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="Source_Bb_Nr5G.html">Nr5G</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Ofdm.html">Ofdm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Path.html">Path</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Power.html">Power</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Pramp.html">Pramp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Progress.html">Progress</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Sirius.html">Sirius</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Stereo.html">Stereo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Tdscdma.html">Tdscdma</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Trigger.html">Trigger</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Vor.html">Vor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_W3Gpp.html">W3Gpp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Wlnn.html">Wlnn</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_XmRadio.html">XmRadio</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bbin.html">Bbin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Combined.html">Combined</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Correction.html">Correction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Dm.html">Dm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Dme.html">Dme</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Fm.html">Fm&lt;GeneratorIx&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_FreqSweep.html">FreqSweep</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Frequency.html">Frequency</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Ils.html">Ils</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_InputPy.html">InputPy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Iq.html">Iq</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_LffSweep.html">LffSweep</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_LfOutput.html">LfOutput&lt;LfOutput&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_ListPy.html">ListPy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Mbeacon.html">Mbeacon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Modulation.html">Modulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Noise.html">Noise</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Path.html">Path</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Pgenerator.html">Pgenerator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Phase.html">Phase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Pm.html">Pm&lt;GeneratorIx&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Power.html">Power</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Psweep.html">Psweep</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Pulm.html">Pulm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Roscillator.html">Roscillator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Sweep.html">Sweep</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_ValRf.html">ValRf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Vor.html">Vor</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Status.html">Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Sweep.html">Sweep</a></li>
+<li class="toctree-l2"><a class="reference internal" href="System.html">System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Test.html">Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Trigger.html">Trigger&lt;InputIx&gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Unit.html">Unit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Xfer.html">Xfer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RsSmbv</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="RsSmbv.html">RsSmbv API Structure</a> &raquo;</li>
+        
+          <li><a href="Source.html">Source</a> &raquo;</li>
+        
+          <li><a href="Source_Bb.html">Bb</a> &raquo;</li>
+        
+          <li><a href="Source_Bb_Nr5G.html">Nr5G</a> &raquo;</li>
+        
+          <li><a href="Source_Bb_Nr5G_Tcw.html">Tcw</a> &raquo;</li>
+        
+      <li>Ws</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/Source_Bb_Nr5G_Tcw_Ws.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="ws">
+<h1>Ws<a class="headerlink" href="#ws" title="Permalink to this headline">¶</a></h1>
+<p class="rubric">SCPI Commands</p>
+<div class="highlight-python notranslate" id="index-0"><div class="highlight"><pre><span></span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HwInstance</span><span class="o">&gt;</span><span class="p">:</span><span class="n">BB</span><span class="p">:</span><span class="n">NR5G</span><span class="p">:</span><span class="n">TCW</span><span class="p">:</span><span class="n">WS</span><span class="p">:</span><span class="n">CBW</span>
+<span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HwInstance</span><span class="o">&gt;</span><span class="p">:</span><span class="n">BB</span><span class="p">:</span><span class="n">NR5G</span><span class="p">:</span><span class="n">TCW</span><span class="p">:</span><span class="n">WS</span><span class="p">:</span><span class="n">CELLid</span>
+<span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HwInstance</span><span class="o">&gt;</span><span class="p">:</span><span class="n">BB</span><span class="p">:</span><span class="n">NR5G</span><span class="p">:</span><span class="n">TCW</span><span class="p">:</span><span class="n">WS</span><span class="p">:</span><span class="n">DUPLex</span>
+<span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HwInstance</span><span class="o">&gt;</span><span class="p">:</span><span class="n">BB</span><span class="p">:</span><span class="n">NR5G</span><span class="p">:</span><span class="n">TCW</span><span class="p">:</span><span class="n">WS</span><span class="p">:</span><span class="n">FMTHroughput</span>
+<span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HwInstance</span><span class="o">&gt;</span><span class="p">:</span><span class="n">BB</span><span class="p">:</span><span class="n">NR5G</span><span class="p">:</span><span class="n">TCW</span><span class="p">:</span><span class="n">WS</span><span class="p">:</span><span class="n">FROFfset</span>
+<span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HwInstance</span><span class="o">&gt;</span><span class="p">:</span><span class="n">BB</span><span class="p">:</span><span class="n">NR5G</span><span class="p">:</span><span class="n">TCW</span><span class="p">:</span><span class="n">WS</span><span class="p">:</span><span class="n">MAPType</span>
+<span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HwInstance</span><span class="o">&gt;</span><span class="p">:</span><span class="n">BB</span><span class="p">:</span><span class="n">NR5G</span><span class="p">:</span><span class="n">TCW</span><span class="p">:</span><span class="n">WS</span><span class="p">:</span><span class="n">MODE</span>
+<span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HwInstance</span><span class="o">&gt;</span><span class="p">:</span><span class="n">BB</span><span class="p">:</span><span class="n">NR5G</span><span class="p">:</span><span class="n">TCW</span><span class="p">:</span><span class="n">WS</span><span class="p">:</span><span class="n">PLEVel</span>
+<span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HwInstance</span><span class="o">&gt;</span><span class="p">:</span><span class="n">BB</span><span class="p">:</span><span class="n">NR5G</span><span class="p">:</span><span class="n">TCW</span><span class="p">:</span><span class="n">WS</span><span class="p">:</span><span class="n">PROCondition</span>
+<span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HwInstance</span><span class="o">&gt;</span><span class="p">:</span><span class="n">BB</span><span class="p">:</span><span class="n">NR5G</span><span class="p">:</span><span class="n">TCW</span><span class="p">:</span><span class="n">WS</span><span class="p">:</span><span class="n">RBOFfset</span>
+<span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HwInstance</span><span class="o">&gt;</span><span class="p">:</span><span class="n">BB</span><span class="p">:</span><span class="n">NR5G</span><span class="p">:</span><span class="n">TCW</span><span class="p">:</span><span class="n">WS</span><span class="p">:</span><span class="n">RFFRequency</span>
+<span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HwInstance</span><span class="o">&gt;</span><span class="p">:</span><span class="n">BB</span><span class="p">:</span><span class="n">NR5G</span><span class="p">:</span><span class="n">TCW</span><span class="p">:</span><span class="n">WS</span><span class="p">:</span><span class="n">SCSPacing</span>
+<span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HwInstance</span><span class="o">&gt;</span><span class="p">:</span><span class="n">BB</span><span class="p">:</span><span class="n">NR5G</span><span class="p">:</span><span class="n">TCW</span><span class="p">:</span><span class="n">WS</span><span class="p">:</span><span class="n">SYMNumber</span>
+<span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HwInstance</span><span class="o">&gt;</span><span class="p">:</span><span class="n">BB</span><span class="p">:</span><span class="n">NR5G</span><span class="p">:</span><span class="n">TCW</span><span class="p">:</span><span class="n">WS</span><span class="p">:</span><span class="n">TAPos</span>
+<span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HwInstance</span><span class="o">&gt;</span><span class="p">:</span><span class="n">BB</span><span class="p">:</span><span class="n">NR5G</span><span class="p">:</span><span class="n">TCW</span><span class="p">:</span><span class="n">WS</span><span class="p">:</span><span class="n">TIOBase</span>
+<span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HwInstance</span><span class="o">&gt;</span><span class="p">:</span><span class="n">BB</span><span class="p">:</span><span class="n">NR5G</span><span class="p">:</span><span class="n">TCW</span><span class="p">:</span><span class="n">WS</span><span class="p">:</span><span class="n">TSETup</span>
+<span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HwInstance</span><span class="o">&gt;</span><span class="p">:</span><span class="n">BB</span><span class="p">:</span><span class="n">NR5G</span><span class="p">:</span><span class="n">TCW</span><span class="p">:</span><span class="n">WS</span><span class="p">:</span><span class="n">UEID</span>
+</pre></div>
+</div>
+<dl class="py class">
+<dt>
+<em class="property">class </em><code class="sig-name descname">Ws</code><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Nr5G/Tcw/Ws.html#Ws"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Ws commands group definition. 26 total commands, 5 Sub-groups, 17 group commands</p>
+<dl class="py method">
+<dt>
+<code class="sig-name descname">get_cbw</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; RsSmbv.enums.Nr5Gcbw<a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Nr5G/Tcw/Ws.html#Ws.get_cbw"><span class="viewcode-link">[source]</span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:WS:CBW</span>
+<span class="n">value</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">Nr5Gcbw</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">nr5G</span><span class="o">.</span><span class="n">tcw</span><span class="o">.</span><span class="n">ws</span><span class="o">.</span><span class="n">get_cbw</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Selects the channel bandwidth.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>ws_ch_bw: BW5| BW10| BW15| BW20| BW25| BW40| BW50| BW60| BW100| BW80| BW400| BW200| BW30| BW70| BW90 Bandwidth in MHz</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname">get_cell_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Nr5G/Tcw/Ws.html#Ws.get_cell_id"><span class="viewcode-link">[source]</span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:WS:CELLid</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">nr5G</span><span class="o">.</span><span class="n">tcw</span><span class="o">.</span><span class="n">ws</span><span class="o">.</span><span class="n">get_cell_id</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Sets the cell ID.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>ws_cell_id: integer Range: 0 to 1007</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname">get_duplex</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; RsSmbv.enums.EutraDuplexMode<a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Nr5G/Tcw/Ws.html#Ws.get_duplex"><span class="viewcode-link">[source]</span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:WS:DUPLex</span>
+<span class="n">value</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraDuplexMode</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">nr5G</span><span class="o">.</span><span class="n">tcw</span><span class="o">.</span><span class="n">ws</span><span class="o">.</span><span class="n">get_duplex</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The duplexing mechanism used can be switched between FDD and TDD.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>duplexing: FDD| TDD</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname">get_fm_throughput</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; RsSmbv.enums.Fmt<a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Nr5G/Tcw/Ws.html#Ws.get_fm_throughput"><span class="viewcode-link">[source]</span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:WS:FMTHroughput</span>
+<span class="n">value</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">Fmt</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">nr5G</span><span class="o">.</span><span class="n">tcw</span><span class="o">.</span><span class="n">ws</span><span class="o">.</span><span class="n">get_fm_throughput</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The required throughput is expressed as a fraction of maximum throughput for the FRC. The performance requirements assume
+HARQ retransmissions. The throughput shall be equal to or larger than the fraction of maximum throughput for the FRCs at
+the given SNR.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>fmt: FMT70</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname">get_fr_offset</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; RsSmbv.enums.FreqOffset<a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Nr5G/Tcw/Ws.html#Ws.get_fr_offset"><span class="viewcode-link">[source]</span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:WS:FROFfset</span>
+<span class="n">value</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">FreqOffset</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">nr5G</span><span class="o">.</span><span class="n">tcw</span><span class="o">.</span><span class="n">ws</span><span class="o">.</span><span class="n">get_fr_offset</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Sets the frequency offset used for the PRACH.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>freq_offset: FO_0| FO_400</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname">get_map_type</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; RsSmbv.enums.MappingType<a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Nr5G/Tcw/Ws.html#Ws.get_map_type"><span class="viewcode-link">[source]</span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:WS:MAPType</span>
+<span class="n">value</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">MappingType</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">nr5G</span><span class="o">.</span><span class="n">tcw</span><span class="o">.</span><span class="n">ws</span><span class="o">.</span><span class="n">get_map_type</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Sets the mapping type A or B for the PUSCH.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>map_type: A| B</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname">get_mode</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; RsSmbv.enums.Mode<a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Nr5G/Tcw/Ws.html#Ws.get_mode"><span class="viewcode-link">[source]</span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:WS:MODE</span>
+<span class="n">value</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">Mode</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">nr5G</span><span class="o">.</span><span class="n">tcw</span><span class="o">.</span><span class="n">ws</span><span class="o">.</span><span class="n">get_mode</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Switches between the detection rate (Pd) and the false detection rate (Pfa) .</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>mode: DRAT| FDR DRAT Pd is defined as the probability of detection of preamble. FDR Pfa is defined as the total probability of false detection of the preamble.</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname">get_plevel</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Nr5G/Tcw/Ws.html#Ws.get_plevel"><span class="viewcode-link">[source]</span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:WS:PLEVel</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">nr5G</span><span class="o">.</span><span class="n">tcw</span><span class="o">.</span><span class="n">ws</span><span class="o">.</span><span class="n">get_plevel</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Specifies the power level of the wanted signal.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>ws_pow_lev: float Range: -145 to 20, Unit: dB</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname">get_pro_condition</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; RsSmbv.enums.PropagCond<a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Nr5G/Tcw/Ws.html#Ws.get_pro_condition"><span class="viewcode-link">[source]</span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:WS:PROCondition</span>
+<span class="n">value</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">PropagCond</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">nr5G</span><span class="o">.</span><span class="n">tcw</span><span class="o">.</span><span class="n">ws</span><span class="o">.</span><span class="n">get_pro_condition</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The propagation conditions define the multipath fading environment. They indicated as a combination of channel model name
+and maximum Doppler frequency, i.e. TDLA&lt;DS&gt;-&lt;Doppler&gt; where &lt;DS&gt; indicates the desired delay spread and &lt;Doppler&gt;
+indicates the maximum Doppler frequency.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>propag_cond: TDLB100D400| TDLC300D100| TDLA30D10| AWGN| TDLA30D300| TDLA30D75</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname">get_rb_offset</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Nr5G/Tcw/Ws.html#Ws.get_rb_offset"><span class="viewcode-link">[source]</span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:WS:RBOFfset</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">nr5G</span><span class="o">.</span><span class="n">tcw</span><span class="o">.</span><span class="n">ws</span><span class="o">.</span><span class="n">get_rb_offset</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Sets the resource block offset of the wanted signal.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>ws_rb_offset: integer Number of resource blocks. Range: 0 to 273</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname">get_rf_frequency</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Nr5G/Tcw/Ws.html#Ws.get_rf_frequency"><span class="viewcode-link">[source]</span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:WS:RFFRequency</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">nr5G</span><span class="o">.</span><span class="n">tcw</span><span class="o">.</span><span class="n">ws</span><span class="o">.</span><span class="n">get_rf_frequency</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Sets the RF frequency of the wanted signal.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>ws_rf_freq: integer Range: 100e+03 to 6e+09</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname">get_sc_spacing</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; RsSmbv.enums.Numerology<a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Nr5G/Tcw/Ws.html#Ws.get_sc_spacing"><span class="viewcode-link">[source]</span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:WS:SCSPacing</span>
+<span class="n">value</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">Numerology</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">nr5G</span><span class="o">.</span><span class="n">tcw</span><span class="o">.</span><span class="n">ws</span><span class="o">.</span><span class="n">get_sc_spacing</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Sets the subcarrier spacing.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>ws_subcar_spacing: N15| N30| N60| X60| N120| N240 N15, N30, N60, N120, N240 Normal cyclic prefix, value in kHz E60 Extended cyclic prefix, 60 kHz</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname">get_sym_number</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Nr5G/Tcw/Ws.html#Ws.get_sym_number"><span class="viewcode-link">[source]</span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:WS:SYMNumber</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">nr5G</span><span class="o">.</span><span class="n">tcw</span><span class="o">.</span><span class="n">ws</span><span class="o">.</span><span class="n">get_sym_number</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Sets the number of used OFDM symbols. The starting symbol index is 13 for 1 OFDM symbol and 12 for 2 OFDM symbols.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>symbol_number: integer Range: 1 to 14</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname">get_tapos</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Nr5G/Tcw/Ws.html#Ws.get_tapos"><span class="viewcode-link">[source]</span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:WS:TAPos</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">nr5G</span><span class="o">.</span><span class="n">tcw</span><span class="o">.</span><span class="n">ws</span><span class="o">.</span><span class="n">get_tapos</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Sets the position of first DM-RS symbol for PUSCH (and PDSCH) mapping type A (dmrs-TypeA-Position) .</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>ws_typea_pos: integer Range: 2 to 3</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname">get_tio_base</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Nr5G/Tcw/Ws.html#Ws.get_tio_base"><span class="viewcode-link">[source]</span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:WS:TIOBase</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">nr5G</span><span class="o">.</span><span class="n">tcw</span><span class="o">.</span><span class="n">ws</span><span class="o">.</span><span class="n">get_tio_base</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Queries the timing off base value.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>timing_offset_base: float Range: 0 to 6.2</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname">get_tsetup</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; RsSmbv.enums.TestSetup<a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Nr5G/Tcw/Ws.html#Ws.get_tsetup"><span class="viewcode-link">[source]</span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:WS:TSETup</span>
+<span class="n">value</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">TestSetup</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">nr5G</span><span class="o">.</span><span class="n">tcw</span><span class="o">.</span><span class="n">ws</span><span class="o">.</span><span class="n">get_tsetup</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>With the test setup selector, the signal definitions can be switched.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>test_setup: TS_1| TS_2</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname">get_ue_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Nr5G/Tcw/Ws.html#Ws.get_ue_id"><span class="viewcode-link">[source]</span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:WS:UEID</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">nr5G</span><span class="o">.</span><span class="n">tcw</span><span class="o">.</span><span class="n">ws</span><span class="o">.</span><span class="n">get_ue_id</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Sets the UE ID.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>ws_ueid: integer Range: 0 to 65535</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname">set_cbw</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ws_ch_bw</span><span class="p">:</span> <span class="n">RsSmbv.enums.Nr5Gcbw</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Nr5G/Tcw/Ws.html#Ws.set_cbw"><span class="viewcode-link">[source]</span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:WS:CBW</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">nr5G</span><span class="o">.</span><span class="n">tcw</span><span class="o">.</span><span class="n">ws</span><span class="o">.</span><span class="n">set_cbw</span><span class="p">(</span><span class="n">ws_ch_bw</span> <span class="o">=</span> <span class="n">enums</span><span class="o">.</span><span class="n">Nr5Gcbw</span><span class="o">.</span><span class="n">BW10</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Selects the channel bandwidth.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param ws_ch_bw</dt>
+<dd class="field-odd"><p>BW5| BW10| BW15| BW20| BW25| BW40| BW50| BW60| BW100| BW80| BW400| BW200| BW30| BW70| BW90 Bandwidth in MHz</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname">set_cell_id</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ws_cell_id</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Nr5G/Tcw/Ws.html#Ws.set_cell_id"><span class="viewcode-link">[source]</span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:WS:CELLid</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">nr5G</span><span class="o">.</span><span class="n">tcw</span><span class="o">.</span><span class="n">ws</span><span class="o">.</span><span class="n">set_cell_id</span><span class="p">(</span><span class="n">ws_cell_id</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Sets the cell ID.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param ws_cell_id</dt>
+<dd class="field-odd"><p>integer Range: 0 to 1007</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname">set_duplex</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">duplexing</span><span class="p">:</span> <span class="n">RsSmbv.enums.EutraDuplexMode</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Nr5G/Tcw/Ws.html#Ws.set_duplex"><span class="viewcode-link">[source]</span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:WS:DUPLex</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">nr5G</span><span class="o">.</span><span class="n">tcw</span><span class="o">.</span><span class="n">ws</span><span class="o">.</span><span class="n">set_duplex</span><span class="p">(</span><span class="n">duplexing</span> <span class="o">=</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraDuplexMode</span><span class="o">.</span><span class="n">FDD</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The duplexing mechanism used can be switched between FDD and TDD.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param duplexing</dt>
+<dd class="field-odd"><p>FDD| TDD</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname">set_fr_offset</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">freq_offset</span><span class="p">:</span> <span class="n">RsSmbv.enums.FreqOffset</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Nr5G/Tcw/Ws.html#Ws.set_fr_offset"><span class="viewcode-link">[source]</span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:WS:FROFfset</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">nr5G</span><span class="o">.</span><span class="n">tcw</span><span class="o">.</span><span class="n">ws</span><span class="o">.</span><span class="n">set_fr_offset</span><span class="p">(</span><span class="n">freq_offset</span> <span class="o">=</span> <span class="n">enums</span><span class="o">.</span><span class="n">FreqOffset</span><span class="o">.</span><span class="n">FO_0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Sets the frequency offset used for the PRACH.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param freq_offset</dt>
+<dd class="field-odd"><p>FO_0| FO_400</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname">set_map_type</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">map_type</span><span class="p">:</span> <span class="n">RsSmbv.enums.MappingType</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Nr5G/Tcw/Ws.html#Ws.set_map_type"><span class="viewcode-link">[source]</span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:WS:MAPType</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">nr5G</span><span class="o">.</span><span class="n">tcw</span><span class="o">.</span><span class="n">ws</span><span class="o">.</span><span class="n">set_map_type</span><span class="p">(</span><span class="n">map_type</span> <span class="o">=</span> <span class="n">enums</span><span class="o">.</span><span class="n">MappingType</span><span class="o">.</span><span class="n">A</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Sets the mapping type A or B for the PUSCH.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param map_type</dt>
+<dd class="field-odd"><p>A| B</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname">set_mode</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mode</span><span class="p">:</span> <span class="n">RsSmbv.enums.Mode</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Nr5G/Tcw/Ws.html#Ws.set_mode"><span class="viewcode-link">[source]</span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:WS:MODE</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">nr5G</span><span class="o">.</span><span class="n">tcw</span><span class="o">.</span><span class="n">ws</span><span class="o">.</span><span class="n">set_mode</span><span class="p">(</span><span class="n">mode</span> <span class="o">=</span> <span class="n">enums</span><span class="o">.</span><span class="n">Mode</span><span class="o">.</span><span class="n">DRAT</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Switches between the detection rate (Pd) and the false detection rate (Pfa) .</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param mode</dt>
+<dd class="field-odd"><p>DRAT| FDR DRAT Pd is defined as the probability of detection of preamble. FDR Pfa is defined as the total probability of false detection of the preamble.</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname">set_plevel</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ws_pow_lev</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Nr5G/Tcw/Ws.html#Ws.set_plevel"><span class="viewcode-link">[source]</span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:WS:PLEVel</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">nr5G</span><span class="o">.</span><span class="n">tcw</span><span class="o">.</span><span class="n">ws</span><span class="o">.</span><span class="n">set_plevel</span><span class="p">(</span><span class="n">ws_pow_lev</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Specifies the power level of the wanted signal.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param ws_pow_lev</dt>
+<dd class="field-odd"><p>float Range: -145 to 20, Unit: dB</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname">set_pro_condition</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">propag_cond</span><span class="p">:</span> <span class="n">RsSmbv.enums.PropagCond</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Nr5G/Tcw/Ws.html#Ws.set_pro_condition"><span class="viewcode-link">[source]</span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:WS:PROCondition</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">nr5G</span><span class="o">.</span><span class="n">tcw</span><span class="o">.</span><span class="n">ws</span><span class="o">.</span><span class="n">set_pro_condition</span><span class="p">(</span><span class="n">propag_cond</span> <span class="o">=</span> <span class="n">enums</span><span class="o">.</span><span class="n">PropagCond</span><span class="o">.</span><span class="n">AWGN</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The propagation conditions define the multipath fading environment. They indicated as a combination of channel model name
+and maximum Doppler frequency, i.e. TDLA&lt;DS&gt;-&lt;Doppler&gt; where &lt;DS&gt; indicates the desired delay spread and &lt;Doppler&gt;
+indicates the maximum Doppler frequency.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param propag_cond</dt>
+<dd class="field-odd"><p>TDLB100D400| TDLC300D100| TDLA30D10| AWGN| TDLA30D300| TDLA30D75</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname">set_rb_offset</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ws_rb_offset</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Nr5G/Tcw/Ws.html#Ws.set_rb_offset"><span class="viewcode-link">[source]</span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:WS:RBOFfset</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">nr5G</span><span class="o">.</span><span class="n">tcw</span><span class="o">.</span><span class="n">ws</span><span class="o">.</span><span class="n">set_rb_offset</span><span class="p">(</span><span class="n">ws_rb_offset</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Sets the resource block offset of the wanted signal.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param ws_rb_offset</dt>
+<dd class="field-odd"><p>integer Number of resource blocks. Range: 0 to 273</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname">set_rf_frequency</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ws_rf_freq</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Nr5G/Tcw/Ws.html#Ws.set_rf_frequency"><span class="viewcode-link">[source]</span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:WS:RFFRequency</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">nr5G</span><span class="o">.</span><span class="n">tcw</span><span class="o">.</span><span class="n">ws</span><span class="o">.</span><span class="n">set_rf_frequency</span><span class="p">(</span><span class="n">ws_rf_freq</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Sets the RF frequency of the wanted signal.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param ws_rf_freq</dt>
+<dd class="field-odd"><p>integer Range: 100e+03 to 6e+09</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname">set_sc_spacing</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ws_subcar_spacing</span><span class="p">:</span> <span class="n">RsSmbv.enums.Numerology</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Nr5G/Tcw/Ws.html#Ws.set_sc_spacing"><span class="viewcode-link">[source]</span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:WS:SCSPacing</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">nr5G</span><span class="o">.</span><span class="n">tcw</span><span class="o">.</span><span class="n">ws</span><span class="o">.</span><span class="n">set_sc_spacing</span><span class="p">(</span><span class="n">ws_subcar_spacing</span> <span class="o">=</span> <span class="n">enums</span><span class="o">.</span><span class="n">Numerology</span><span class="o">.</span><span class="n">N120</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Sets the subcarrier spacing.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param ws_subcar_spacing</dt>
+<dd class="field-odd"><p>N15| N30| N60| X60| N120| N240 N15, N30, N60, N120, N240 Normal cyclic prefix, value in kHz E60 Extended cyclic prefix, 60 kHz</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname">set_sym_number</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">symbol_number</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Nr5G/Tcw/Ws.html#Ws.set_sym_number"><span class="viewcode-link">[source]</span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:WS:SYMNumber</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">nr5G</span><span class="o">.</span><span class="n">tcw</span><span class="o">.</span><span class="n">ws</span><span class="o">.</span><span class="n">set_sym_number</span><span class="p">(</span><span class="n">symbol_number</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Sets the number of used OFDM symbols. The starting symbol index is 13 for 1 OFDM symbol and 12 for 2 OFDM symbols.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param symbol_number</dt>
+<dd class="field-odd"><p>integer Range: 1 to 14</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname">set_tapos</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ws_typea_pos</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Nr5G/Tcw/Ws.html#Ws.set_tapos"><span class="viewcode-link">[source]</span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:WS:TAPos</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">nr5G</span><span class="o">.</span><span class="n">tcw</span><span class="o">.</span><span class="n">ws</span><span class="o">.</span><span class="n">set_tapos</span><span class="p">(</span><span class="n">ws_typea_pos</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Sets the position of first DM-RS symbol for PUSCH (and PDSCH) mapping type A (dmrs-TypeA-Position) .</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param ws_typea_pos</dt>
+<dd class="field-odd"><p>integer Range: 2 to 3</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname">set_tsetup</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">test_setup</span><span class="p">:</span> <span class="n">RsSmbv.enums.TestSetup</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Nr5G/Tcw/Ws.html#Ws.set_tsetup"><span class="viewcode-link">[source]</span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:WS:TSETup</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">nr5G</span><span class="o">.</span><span class="n">tcw</span><span class="o">.</span><span class="n">ws</span><span class="o">.</span><span class="n">set_tsetup</span><span class="p">(</span><span class="n">test_setup</span> <span class="o">=</span> <span class="n">enums</span><span class="o">.</span><span class="n">TestSetup</span><span class="o">.</span><span class="n">TS_1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>With the test setup selector, the signal definitions can be switched.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param test_setup</dt>
+<dd class="field-odd"><p>TS_1| TS_2</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname">set_ue_id</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ws_ueid</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Nr5G/Tcw/Ws.html#Ws.set_ue_id"><span class="viewcode-link">[source]</span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:WS:UEID</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">nr5G</span><span class="o">.</span><span class="n">tcw</span><span class="o">.</span><span class="n">ws</span><span class="o">.</span><span class="n">set_ue_id</span><span class="p">(</span><span class="n">ws_ueid</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Sets the UE ID.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param ws_ueid</dt>
+<dd class="field-odd"><p>integer Range: 0 to 65535</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+</dd></dl>
+
+<p class="rubric">Cloning the Group</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a clone of the original group, that exists independently</span>
+<span class="n">group2</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">nr5G</span><span class="o">.</span><span class="n">tcw</span><span class="o">.</span><span class="n">ws</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+</pre></div>
+</div>
+<p class="rubric">Subgroups</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Nr5G_Tcw_Ws_AdMrs.html">AdMrs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Nr5G_Tcw_Ws_Frc.html">Frc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Nr5G_Tcw_Ws_Prach.html">Prach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Nr5G_Tcw_Ws_Ptrs.html">Ptrs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Nr5G_Tcw_Ws_Uci.html">Uci</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Nr5G_Tcw_Ws_Uci_Csi1.html">Csi1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Nr5G_Tcw_Ws_Uci_Csi2.html">Csi2</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Source_Bb_Nr5G_Tcw_Ws_AdMrs.html" class="btn btn-neutral float-right" title="AdMrs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Source_Bb_Nr5G_Tcw_Rtf.html" class="btn btn-neutral float-left" title="Rtf" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright © Rohde &amp; Schwarz 2021
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

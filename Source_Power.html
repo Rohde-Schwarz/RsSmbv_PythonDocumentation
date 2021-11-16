@@ -1,0 +1,655 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Power &mdash; RsSmbv 4.80.2.22 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Alc" href="Source_Power_Alc.html" />
+    <link rel="prev" title="State" href="Source_Pm_State.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> RsSmbv
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="RsSmbv.html">RsSmbv API Structure</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Bert.html">Bert</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Bler.html">Bler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Calibration.html">Calibration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clock.html">Clock</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Device.html">Device</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Diagnostic.html">Diagnostic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Display.html">Display</a></li>
+<li class="toctree-l2"><a class="reference internal" href="FormatPy.html">FormatPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HardCopy.html">HardCopy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Initiate.html">Initiate&lt;Channel&gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Kboard.html">Kboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MassMemory.html">MassMemory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Memory.html">Memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Output.html">Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Read.html">Read&lt;Channel&gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Sconfiguration.html">Sconfiguration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Sense.html">Sense&lt;Channel&gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slist.html">Slist</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="Source.html">Source</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="Source_Adf.html">Adf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Am.html">Am&lt;GeneratorIx&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Awgn.html">Awgn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb.html">Bb</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bbin.html">Bbin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Combined.html">Combined</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Correction.html">Correction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Dm.html">Dm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Dme.html">Dme</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Fm.html">Fm&lt;GeneratorIx&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_FreqSweep.html">FreqSweep</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Frequency.html">Frequency</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Ils.html">Ils</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_InputPy.html">InputPy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Iq.html">Iq</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_LffSweep.html">LffSweep</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_LfOutput.html">LfOutput&lt;LfOutput&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_ListPy.html">ListPy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Mbeacon.html">Mbeacon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Modulation.html">Modulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Noise.html">Noise</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Path.html">Path</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Pgenerator.html">Pgenerator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Phase.html">Phase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Pm.html">Pm&lt;GeneratorIx&gt;</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Power</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Power_Alc.html">Alc</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Power_Attenuation.html">Attenuation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Power_Emf.html">Emf</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Power_Level.html">Level</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Power_Limit.html">Limit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Power_Range.html">Range</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Power_Spc.html">Spc</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Power_Step.html">Step</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Psweep.html">Psweep</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Pulm.html">Pulm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Roscillator.html">Roscillator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Sweep.html">Sweep</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_ValRf.html">ValRf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Vor.html">Vor</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Status.html">Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Sweep.html">Sweep</a></li>
+<li class="toctree-l2"><a class="reference internal" href="System.html">System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Test.html">Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Trigger.html">Trigger&lt;InputIx&gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Unit.html">Unit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Xfer.html">Xfer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RsSmbv</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="RsSmbv.html">RsSmbv API Structure</a> &raquo;</li>
+        
+          <li><a href="Source.html">Source</a> &raquo;</li>
+        
+      <li>Power</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/Source_Power.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="power">
+<h1>Power<a class="headerlink" href="#power" title="Permalink to this headline">¶</a></h1>
+<p class="rubric">SCPI Commands</p>
+<div class="highlight-python notranslate" id="index-0"><div class="highlight"><pre><span></span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HwInstance</span><span class="o">&gt;</span><span class="p">:</span><span class="n">POWer</span><span class="p">:</span><span class="n">IQPep</span>
+<span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HwInstance</span><span class="o">&gt;</span><span class="p">:</span><span class="n">POWer</span><span class="p">:</span><span class="n">LBEHaviour</span>
+<span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HwInstance</span><span class="o">&gt;</span><span class="p">:</span><span class="n">POWer</span><span class="p">:</span><span class="n">LMODe</span>
+<span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HwInstance</span><span class="o">&gt;</span><span class="p">:</span><span class="n">POWer</span><span class="p">:</span><span class="n">MANual</span>
+<span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HwInstance</span><span class="o">&gt;</span><span class="p">:</span><span class="n">POWer</span><span class="p">:</span><span class="n">MODE</span>
+<span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HwInstance</span><span class="o">&gt;</span><span class="p">:</span><span class="n">POWer</span><span class="p">:</span><span class="n">PEP</span>
+<span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HwInstance</span><span class="o">&gt;</span><span class="p">:</span><span class="n">POWer</span><span class="p">:</span><span class="n">POWer</span>
+<span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HwInstance</span><span class="o">&gt;</span><span class="p">:</span><span class="n">POWer</span><span class="p">:</span><span class="n">STARt</span>
+<span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HwInstance</span><span class="o">&gt;</span><span class="p">:</span><span class="n">POWer</span><span class="p">:</span><span class="n">STOP</span>
+<span class="n">SOURce</span><span class="p">:</span><span class="n">POWer</span><span class="p">:</span><span class="n">WIGNore</span>
+</pre></div>
+</div>
+<dl class="py class">
+<dt>
+<em class="property">class </em><code class="sig-name descname">Power</code><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Power.html#Power"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Power commands group definition. 35 total commands, 8 Sub-groups, 10 group commands</p>
+<dl class="py method">
+<dt>
+<code class="sig-name descname">get_iq_pep</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Power.html#Power.get_iq_pep"><span class="viewcode-link">[source]</span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:POWer:IQPep</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">power</span><span class="o">.</span><span class="n">get_iq_pep</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>No command help available</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>ipart_qpep: No help available</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname">get_lbehaviour</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; RsSmbv.enums.PowLevBehaviour<a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Power.html#Power.get_lbehaviour"><span class="viewcode-link">[source]</span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:POWer:LBEHaviour</span>
+<span class="n">value</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">PowLevBehaviour</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">power</span><span class="o">.</span><span class="n">get_lbehaviour</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Selects the level behavior at the RF output over time.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>behaviour: AUTO| UNINterrupted| MONotone| CVSWr| USER| CPHase UNINterrupted|MONotone Do not use the uninterrupted level settings and strictly monotone modes in combination with the high-quality optimization mode (see BB:IMPairment:OPTimization:MODE) . CWSWr Constant VSWR</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname">get_lmode</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; RsSmbv.enums.PowLevMode<a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Power.html#Power.get_lmode"><span class="viewcode-link">[source]</span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:POWer:LMODe</span>
+<span class="n">value</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">PowLevMode</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">power</span><span class="o">.</span><span class="n">get_lmode</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>No command help available</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>lev_mode: No help available</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname">get_manual</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Power.html#Power.get_manual"><span class="viewcode-link">[source]</span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:POWer:MANual</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">power</span><span class="o">.</span><span class="n">get_manual</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Sets the level for the subsequent sweep step if SWEep:POWer:MODE. Use a separate command for each sweep step.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>manual: float You can select any level within the setting range, where: STARt is set with POWer:STARt STOP is set with POWer:STOP OFFSet is set with OFFSet Range: (STARt + OFFSet) to (STOP + OFFSet) , Unit: dBm</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname">get_mode</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; RsSmbv.enums.LfFreqMode<a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Power.html#Power.get_mode"><span class="viewcode-link">[source]</span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:POWer:MODE</span>
+<span class="n">value</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">LfFreqMode</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">power</span><span class="o">.</span><span class="n">get_mode</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Selects the operating mode of the instrument to set the output level.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>mode: CW| FIXed| SWEep CW|FIXed Operates at a constant level. CW and FIXed are synonyms. To set the output level value, use the command [:​SOURcehw]:​POWer[:​LEVel][:​IMMediate][:​AMPLitude]. SWEep Sets sweep mode. Set the range and current level with the commands: POWer:STARt and POWer:STOP, POWer:MANual.</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname">get_pep</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Power.html#Power.get_pep"><span class="viewcode-link">[source]</span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:POWer:PEP</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">power</span><span class="o">.</span><span class="n">get_pep</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Queries the PEP ‘Peak Envelope Power) of digital modulation or digital standards at the RF output. This value corresponds
+to the level specification, displayed in the status bar (header) .</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>pep: float</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname">get_power</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Power.html#Power.get_power"><span class="viewcode-link">[source]</span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:POWer:POWer</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">power</span><span class="o">.</span><span class="n">get_power</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Sets the level at the RF output connector. This value does not consider a specified offset.
+The command [:​SOURce&lt;hw&gt;]:​POWer[:​LEVel][:​IMMediate][:​AMPLitude] sets the level of the ‘Level’ display, that means
+the level containing offset. See ‘RF frequency and level display with a downstream instrument’.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>power: float Level at the RF output, without level offset Range: See data sheet , Unit: dBm</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname">get_start</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Power.html#Power.get_start"><span class="viewcode-link">[source]</span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:POWer:STARt</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">power</span><span class="o">.</span><span class="n">get_start</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Sets the RF start/stop level in sweep mode.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>start: No help available</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname">get_stop</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Power.html#Power.get_stop"><span class="viewcode-link">[source]</span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:POWer:STOP</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">power</span><span class="o">.</span><span class="n">get_stop</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Sets the RF start/stop level in sweep mode.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>stop: float Sets the setting range calculated as follows: (Level_min + OFFSet) to (Level_max + OFFSet) Where the values are set with the commands: OFFSet POWer:STARt POWer:STOP Range: Minimum level to maximum level , Unit: dBm</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname">get_wignore</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Power.html#Power.get_wignore"><span class="viewcode-link">[source]</span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce]:POWer:WIGNore</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">power</span><span class="o">.</span><span class="n">get_wignore</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Ignores level range warnings.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>state: 0| 1| OFF| ON</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname">set_lbehaviour</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">behaviour</span><span class="p">:</span> <span class="n">RsSmbv.enums.PowLevBehaviour</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Power.html#Power.set_lbehaviour"><span class="viewcode-link">[source]</span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:POWer:LBEHaviour</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">power</span><span class="o">.</span><span class="n">set_lbehaviour</span><span class="p">(</span><span class="n">behaviour</span> <span class="o">=</span> <span class="n">enums</span><span class="o">.</span><span class="n">PowLevBehaviour</span><span class="o">.</span><span class="n">AUTO</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Selects the level behavior at the RF output over time.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param behaviour</dt>
+<dd class="field-odd"><p>AUTO| UNINterrupted| MONotone| CVSWr| USER| CPHase UNINterrupted|MONotone Do not use the uninterrupted level settings and strictly monotone modes in combination with the high-quality optimization mode (see BB:IMPairment:OPTimization:MODE) . CWSWr Constant VSWR</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname">set_lmode</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">lev_mode</span><span class="p">:</span> <span class="n">RsSmbv.enums.PowLevMode</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Power.html#Power.set_lmode"><span class="viewcode-link">[source]</span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:POWer:LMODe</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">power</span><span class="o">.</span><span class="n">set_lmode</span><span class="p">(</span><span class="n">lev_mode</span> <span class="o">=</span> <span class="n">enums</span><span class="o">.</span><span class="n">PowLevMode</span><span class="o">.</span><span class="n">LOWDistortion</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>No command help available</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param lev_mode</dt>
+<dd class="field-odd"><p>No help available</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname">set_manual</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">manual</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Power.html#Power.set_manual"><span class="viewcode-link">[source]</span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:POWer:MANual</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">power</span><span class="o">.</span><span class="n">set_manual</span><span class="p">(</span><span class="n">manual</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Sets the level for the subsequent sweep step if SWEep:POWer:MODE. Use a separate command for each sweep step.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param manual</dt>
+<dd class="field-odd"><p>float You can select any level within the setting range, where: STARt is set with POWer:STARt STOP is set with POWer:STOP OFFSet is set with OFFSet Range: (STARt + OFFSet) to (STOP + OFFSet) , Unit: dBm</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname">set_mode</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mode</span><span class="p">:</span> <span class="n">RsSmbv.enums.LfFreqMode</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Power.html#Power.set_mode"><span class="viewcode-link">[source]</span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:POWer:MODE</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">power</span><span class="o">.</span><span class="n">set_mode</span><span class="p">(</span><span class="n">mode</span> <span class="o">=</span> <span class="n">enums</span><span class="o">.</span><span class="n">LfFreqMode</span><span class="o">.</span><span class="n">CW</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Selects the operating mode of the instrument to set the output level.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param mode</dt>
+<dd class="field-odd"><p>CW| FIXed| SWEep CW|FIXed Operates at a constant level. CW and FIXed are synonyms. To set the output level value, use the command [:​SOURcehw]:​POWer[:​LEVel][:​IMMediate][:​AMPLitude]. SWEep Sets sweep mode. Set the range and current level with the commands: POWer:STARt and POWer:STOP, POWer:MANual.</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname">set_power</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">power</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Power.html#Power.set_power"><span class="viewcode-link">[source]</span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:POWer:POWer</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">power</span><span class="o">.</span><span class="n">set_power</span><span class="p">(</span><span class="n">power</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Sets the level at the RF output connector. This value does not consider a specified offset.
+The command [:​SOURce&lt;hw&gt;]:​POWer[:​LEVel][:​IMMediate][:​AMPLitude] sets the level of the ‘Level’ display, that means
+the level containing offset. See ‘RF frequency and level display with a downstream instrument’.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param power</dt>
+<dd class="field-odd"><p>float Level at the RF output, without level offset Range: See data sheet , Unit: dBm</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname">set_start</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">start</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Power.html#Power.set_start"><span class="viewcode-link">[source]</span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:POWer:STARt</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">power</span><span class="o">.</span><span class="n">set_start</span><span class="p">(</span><span class="n">start</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Sets the RF start/stop level in sweep mode.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param start</dt>
+<dd class="field-odd"><p>float Sets the setting range calculated as follows: (Level_min + OFFSet) to (Level_max + OFFSet) Where the values are set with the commands: OFFSet POWer:STARt POWer:STOP Range: Minimum level to maximum level , Unit: dBm</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname">set_stop</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">stop</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Power.html#Power.set_stop"><span class="viewcode-link">[source]</span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:POWer:STOP</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">power</span><span class="o">.</span><span class="n">set_stop</span><span class="p">(</span><span class="n">stop</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Sets the RF start/stop level in sweep mode.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param stop</dt>
+<dd class="field-odd"><p>float Sets the setting range calculated as follows: (Level_min + OFFSet) to (Level_max + OFFSet) Where the values are set with the commands: OFFSet POWer:STARt POWer:STOP Range: Minimum level to maximum level , Unit: dBm</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname">set_wignore</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">state</span><span class="p">:</span> <span class="n">bool</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Power.html#Power.set_wignore"><span class="viewcode-link">[source]</span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce]:POWer:WIGNore</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">power</span><span class="o">.</span><span class="n">set_wignore</span><span class="p">(</span><span class="n">state</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Ignores level range warnings.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param state</dt>
+<dd class="field-odd"><p>0| 1| OFF| ON</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+</dd></dl>
+
+<p class="rubric">Cloning the Group</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a clone of the original group, that exists independently</span>
+<span class="n">group2</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">power</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+</pre></div>
+</div>
+<p class="rubric">Subgroups</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Source_Power_Alc.html">Alc</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Source_Power_Alc_Sonce.html">Sonce</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Power_Attenuation.html">Attenuation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Source_Power_Attenuation_RfOff.html">RfOff</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Power_Emf.html">Emf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Power_Level.html">Level</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Source_Power_Level_Immediate.html">Immediate</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Power_Limit.html">Limit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Power_Range.html">Range</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Power_Spc.html">Spc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Power_Step.html">Step</a></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Source_Power_Alc.html" class="btn btn-neutral float-right" title="Alc" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Source_Pm_State.html" class="btn btn-neutral float-left" title="State" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright © Rohde &amp; Schwarz 2021
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

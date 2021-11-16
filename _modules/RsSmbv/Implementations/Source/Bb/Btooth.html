@@ -1,0 +1,676 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>RsSmbv.Implementations.Source.Bb.Btooth &mdash; RsSmbv 4.80.2.22 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../../" src="../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../_static/jquery.js"></script>
+        <script src="../../../../../_static/underscore.js"></script>
+        <script src="../../../../../_static/doctools.js"></script>
+        <script src="../../../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../../index.html" class="icon icon-home" alt="Documentation Home"> RsSmbv
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../RsSmbv.html">RsSmbv API Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../genindex.html">Index</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">RsSmbv</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../../Source.html">RsSmbv.Implementations.Source</a> &raquo;</li>
+        
+          <li><a href="../Bb.html">RsSmbv.Implementations.Source.Bb</a> &raquo;</li>
+        
+      <li>RsSmbv.Implementations.Source.Bb.Btooth</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for RsSmbv.Implementations.Source.Bb.Btooth</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">.....Internal.Core</span> <span class="kn">import</span> <span class="n">Core</span>
+<span class="kn">from</span> <span class="nn">.....Internal.CommandsGroup</span> <span class="kn">import</span> <span class="n">CommandsGroup</span>
+<span class="kn">from</span> <span class="nn">.....Internal</span> <span class="kn">import</span> <span class="n">Conversions</span>
+<span class="kn">from</span> <span class="nn">.....Internal.Utilities</span> <span class="kn">import</span> <span class="n">trim_str_response</span>
+<span class="kn">from</span> <span class="nn">.....</span> <span class="kn">import</span> <span class="n">enums</span>
+
+
+<span class="c1"># noinspection PyPep8Naming,PyAttributeOutsideInit,SpellCheckingInspection</span>
+<div class="viewcode-block" id="Btooth"><a class="viewcode-back" href="../../../../../Source_Bb_Btooth.html#RsSmbv.Implementations.Source.Bb.Btooth.Btooth">[docs]</a><span class="k">class</span> <span class="nc">Btooth</span><span class="p">:</span>
+	<span class="sd">&quot;&quot;&quot;Btooth commands group definition. 251 total commands, 16 Sub-groups, 17 group commands&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">core</span><span class="p">:</span> <span class="n">Core</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span> <span class="o">=</span> <span class="n">core</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span> <span class="o">=</span> <span class="n">CommandsGroup</span><span class="p">(</span><span class="s2">&quot;btooth&quot;</span><span class="p">,</span> <span class="n">core</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">ccrc</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;ccrc commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_ccrc&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Ccrc</span> <span class="kn">import</span> <span class="n">Ccrc</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_ccrc</span> <span class="o">=</span> <span class="n">Ccrc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ccrc</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">clipping</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;clipping commands group. 0 Sub-classes, 3 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_clipping&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Clipping</span> <span class="kn">import</span> <span class="n">Clipping</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_clipping</span> <span class="o">=</span> <span class="n">Clipping</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_clipping</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">clock</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;clock commands group. 0 Sub-classes, 3 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_clock&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Clock</span> <span class="kn">import</span> <span class="n">Clock</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_clock</span> <span class="o">=</span> <span class="n">Clock</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_clock</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">dtTest</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;dtTest commands group. 3 Sub-classes, 6 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_dtTest&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.DtTest</span> <span class="kn">import</span> <span class="n">DtTest</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_dtTest</span> <span class="o">=</span> <span class="n">DtTest</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dtTest</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">econfig</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;econfig commands group. 1 Sub-classes, 0 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_econfig&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Econfig</span> <span class="kn">import</span> <span class="n">Econfig</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_econfig</span> <span class="o">=</span> <span class="n">Econfig</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_econfig</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">econfiguration</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;econfiguration commands group. 4 Sub-classes, 11 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_econfiguration&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Econfiguration</span> <span class="kn">import</span> <span class="n">Econfiguration</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_econfiguration</span> <span class="o">=</span> <span class="n">Econfiguration</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_econfiguration</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">filterPy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;filterPy commands group. 3 Sub-classes, 3 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_filterPy&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.FilterPy</span> <span class="kn">import</span> <span class="n">FilterPy</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_filterPy</span> <span class="o">=</span> <span class="n">FilterPy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_filterPy</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">msettings</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;msettings commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_msettings&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Msettings</span> <span class="kn">import</span> <span class="n">Msettings</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_msettings</span> <span class="o">=</span> <span class="n">Msettings</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_msettings</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">pconfiguration</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;pconfiguration commands group. 6 Sub-classes, 13 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_pconfiguration&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Pconfiguration</span> <span class="kn">import</span> <span class="n">Pconfiguration</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_pconfiguration</span> <span class="o">=</span> <span class="n">Pconfiguration</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pconfiguration</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">pramping</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;pramping commands group. 0 Sub-classes, 4 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_pramping&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Pramping</span> <span class="kn">import</span> <span class="n">Pramping</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_pramping</span> <span class="o">=</span> <span class="n">Pramping</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pramping</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">qhs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;qhs commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_qhs&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Qhs</span> <span class="kn">import</span> <span class="n">Qhs</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_qhs</span> <span class="o">=</span> <span class="n">Qhs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_qhs</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">setting</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;setting commands group. 0 Sub-classes, 4 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_setting&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Setting</span> <span class="kn">import</span> <span class="n">Setting</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_setting</span> <span class="o">=</span> <span class="n">Setting</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_setting</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">symbolRate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;symbolRate commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_symbolRate&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.SymbolRate</span> <span class="kn">import</span> <span class="n">SymbolRate</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_symbolRate</span> <span class="o">=</span> <span class="n">SymbolRate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_symbolRate</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">trigger</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;trigger commands group. 4 Sub-classes, 5 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_trigger&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Trigger</span> <span class="kn">import</span> <span class="n">Trigger</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_trigger</span> <span class="o">=</span> <span class="n">Trigger</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_trigger</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">unit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;unit commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_unit&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Unit</span> <span class="kn">import</span> <span class="n">Unit</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_unit</span> <span class="o">=</span> <span class="n">Unit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_unit</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">waveform</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;waveform commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_waveform&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Waveform</span> <span class="kn">import</span> <span class="n">Waveform</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_waveform</span> <span class="o">=</span> <span class="n">Waveform</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_waveform</span>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="Btooth.get_bc_role"><a class="viewcode-back" href="../../../../../Source_Bb_Btooth.html#RsSmbv.Implementations.Source.Bb.Btooth.Btooth.get_bc_role">[docs]</a>	<span class="k">def</span> <span class="nf">get_bc_role</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoCtrlRol</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:BCRole \n</span>
+<span class="sd">		Snippet: value: enums.BtoCtrlRol = driver.source.bb.btooth.get_bc_role() \n</span>
+<span class="sd">		Determines the controller role. Depending on the selected channel type different roles are assigned to the controller.</span>
+<span class="sd">		For channel type &#39;Data&#39;, master or slave can be assigned. If channel type &#39;Advertising&#39; is selected, the parameter is</span>
+<span class="sd">		read only and displayed directly above the graph. \n</span>
+<span class="sd">			:return: bc_role: MASTer| SLAVe| ADVertiser| SCANner| INITiator MASTER Assigns master role to the controller. SLAVE Selects slave as controller role. ADVertiser|SCANner|INITiator Assigned roles depending on the selected packet type of the respective channel type.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:BCRole?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoCtrlRol</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Btooth.set_bc_role"><a class="viewcode-back" href="../../../../../Source_Bb_Btooth.html#RsSmbv.Implementations.Source.Bb.Btooth.Btooth.set_bc_role">[docs]</a>	<span class="k">def</span> <span class="nf">set_bc_role</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bc_role</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoCtrlRol</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:BCRole \n</span>
+<span class="sd">		Snippet: driver.source.bb.btooth.set_bc_role(bc_role = enums.BtoCtrlRol.ADVertiser) \n</span>
+<span class="sd">		Determines the controller role. Depending on the selected channel type different roles are assigned to the controller.</span>
+<span class="sd">		For channel type &#39;Data&#39;, master or slave can be assigned. If channel type &#39;Advertising&#39; is selected, the parameter is</span>
+<span class="sd">		read only and displayed directly above the graph. \n</span>
+<span class="sd">			:param bc_role: MASTer| SLAVe| ADVertiser| SCANner| INITiator MASTER Assigns master role to the controller. SLAVE Selects slave as controller role. ADVertiser|SCANner|INITiator Assigned roles depending on the selected packet type of the respective channel type.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">bc_role</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoCtrlRol</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:BCRole </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Btooth.get_bc_text"><a class="viewcode-back" href="../../../../../Source_Bb_Btooth.html#RsSmbv.Implementations.Source.Bb.Btooth.Btooth.get_bc_text">[docs]</a>	<span class="k">def</span> <span class="nf">get_bc_text</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:BCText \n</span>
+<span class="sd">		Snippet: value: str = driver.source.bb.btooth.get_bc_text() \n</span>
+<span class="sd">		Queries the state and controller role. \n</span>
+<span class="sd">			:return: bc_text: string Connected (only data channel type) Advertiser (only advertising channel type) ADV_IND, ADV_DIRECT_IND, ADV_NONCONN_IND, ADV_SCAN_IND Within R&amp;S SMBVB-K117 also ADV_EXT_IND, AUX_ADV_IND, AUX_SYNC_IND, AUX_CHAIN_IND Scanner (only advertising channel type) SCAN_REQ, SCAN_RSP Within R&amp;S SMBVB-K117 also AUX_SCAN_REQ, AUX_SCAN_RSP Initiator (only advertising channel type) CONNECT_IND Within R&amp;S SMBVB-K117 also AUX_CONNECT_REQ, AUX_CONNECT_RSP</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:BCText?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">trim_str_response</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="Btooth.get_bmode"><a class="viewcode-back" href="../../../../../Source_Bb_Btooth.html#RsSmbv.Implementations.Source.Bb.Btooth.Btooth.get_bmode">[docs]</a>	<span class="k">def</span> <span class="nf">get_bmode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoMode</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:BMODe \n</span>
+<span class="sd">		Snippet: value: enums.BtoMode = driver.source.bb.btooth.get_bmode() \n</span>
+<span class="sd">		Determines the Bluetooth mode. \n</span>
+<span class="sd">			:return: bmode: BASic| BLENergy BASic Selects Bluetooth mode BR + EDR. BLENergy Selects Bluetooth LE.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:BMODe?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoMode</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Btooth.set_bmode"><a class="viewcode-back" href="../../../../../Source_Bb_Btooth.html#RsSmbv.Implementations.Source.Bb.Btooth.Btooth.set_bmode">[docs]</a>	<span class="k">def</span> <span class="nf">set_bmode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bmode</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoMode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:BMODe \n</span>
+<span class="sd">		Snippet: driver.source.bb.btooth.set_bmode(bmode = enums.BtoMode.BASic) \n</span>
+<span class="sd">		Determines the Bluetooth mode. \n</span>
+<span class="sd">			:param bmode: BASic| BLENergy BASic Selects Bluetooth mode BR + EDR. BLENergy Selects Bluetooth LE.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">bmode</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoMode</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:BMODe </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="Btooth.get_ctype"><a class="viewcode-back" href="../../../../../Source_Bb_Btooth.html#RsSmbv.Implementations.Source.Bb.Btooth.Btooth.get_ctype">[docs]</a>	<span class="k">def</span> <span class="nf">get_ctype</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoChnnelType</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:CTYPe \n</span>
+<span class="sd">		Snippet: value: enums.BtoChnnelType = driver.source.bb.btooth.get_ctype() \n</span>
+<span class="sd">		Determines the channel type. Advertising and data are available. \n</span>
+<span class="sd">			:return: ctype: ADVertising| DATA ADVertising Selects channel type advertising. DATA Selects channel type data. Devices in a connected state transmit data channel packets in connection events with a start point and an interval.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:CTYPe?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoChnnelType</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Btooth.set_ctype"><a class="viewcode-back" href="../../../../../Source_Bb_Btooth.html#RsSmbv.Implementations.Source.Bb.Btooth.Btooth.set_ctype">[docs]</a>	<span class="k">def</span> <span class="nf">set_ctype</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ctype</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoChnnelType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:CTYPe \n</span>
+<span class="sd">		Snippet: driver.source.bb.btooth.set_ctype(ctype = enums.BtoChnnelType.ADVertising) \n</span>
+<span class="sd">		Determines the channel type. Advertising and data are available. \n</span>
+<span class="sd">			:param ctype: ADVertising| DATA ADVertising Selects channel type advertising. DATA Selects channel type data. Devices in a connected state transmit data channel packets in connection events with a start point and an interval.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">ctype</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoChnnelType</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:CTYPe </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="Btooth.get_dcycle"><a class="viewcode-back" href="../../../../../Source_Bb_Btooth.html#RsSmbv.Implementations.Source.Bb.Btooth.Btooth.get_dcycle">[docs]</a>	<span class="k">def</span> <span class="nf">get_dcycle</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">LowHigh</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:DCYCle \n</span>
+<span class="sd">		Snippet: value: enums.LowHigh = driver.source.bb.btooth.get_dcycle() \n</span>
+<span class="sd">		Specifies duty cycle for directed advertising (packet type ADV_DIRECT_IND) . \n</span>
+<span class="sd">			:return: dcycle: LOW| HIGH</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:DCYCle?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">LowHigh</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Btooth.set_dcycle"><a class="viewcode-back" href="../../../../../Source_Bb_Btooth.html#RsSmbv.Implementations.Source.Bb.Btooth.Btooth.set_dcycle">[docs]</a>	<span class="k">def</span> <span class="nf">set_dcycle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dcycle</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">LowHigh</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:DCYCle \n</span>
+<span class="sd">		Snippet: driver.source.bb.btooth.set_dcycle(dcycle = enums.LowHigh.HIGH) \n</span>
+<span class="sd">		Specifies duty cycle for directed advertising (packet type ADV_DIRECT_IND) . \n</span>
+<span class="sd">			:param dcycle: LOW| HIGH</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">dcycle</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">LowHigh</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:DCYCle </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Btooth.get_duration"><a class="viewcode-back" href="../../../../../Source_Bb_Btooth.html#RsSmbv.Implementations.Source.Bb.Btooth.Btooth.get_duration">[docs]</a>	<span class="k">def</span> <span class="nf">get_duration</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:DURation \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.btooth.get_duration() \n</span>
+<span class="sd">		Specifies the transmission duration of CONTINUOUS payload transmission. Command sets the values in ms. Query returns</span>
+<span class="sd">		values in s. \n</span>
+<span class="sd">			:return: duration: float Range: depending on modulation format, symbols per a bit and payload type , Unit: ms</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:DURation?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Btooth.set_duration"><a class="viewcode-back" href="../../../../../Source_Bb_Btooth.html#RsSmbv.Implementations.Source.Bb.Btooth.Btooth.set_duration">[docs]</a>	<span class="k">def</span> <span class="nf">set_duration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">duration</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:DURation \n</span>
+<span class="sd">		Snippet: driver.source.bb.btooth.set_duration(duration = 1.0) \n</span>
+<span class="sd">		Specifies the transmission duration of CONTINUOUS payload transmission. Command sets the values in ms. Query returns</span>
+<span class="sd">		values in s. \n</span>
+<span class="sd">			:param duration: float Range: depending on modulation format, symbols per a bit and payload type , Unit: ms</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">duration</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:DURation </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="Btooth.get_mformat"><a class="viewcode-back" href="../../../../../Source_Bb_Btooth.html#RsSmbv.Implementations.Source.Bb.Btooth.Btooth.get_mformat">[docs]</a>	<span class="k">def</span> <span class="nf">get_mformat</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">PackFormat</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:MFORmat \n</span>
+<span class="sd">		Snippet: value: enums.PackFormat = driver.source.bb.btooth.get_mformat() \n</span>
+<span class="sd">		Specifies the physical layer used for CONTINUOUS payload transmission. \n</span>
+<span class="sd">			:return: mod_fmt: L1M| L2M| LCOD | L2M| LCOD L1M: LE 1M L2M: LE 2M LCOD: LE coded</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:MFORmat?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">PackFormat</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Btooth.set_mformat"><a class="viewcode-back" href="../../../../../Source_Bb_Btooth.html#RsSmbv.Implementations.Source.Bb.Btooth.Btooth.set_mformat">[docs]</a>	<span class="k">def</span> <span class="nf">set_mformat</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mod_fmt</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">PackFormat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:MFORmat \n</span>
+<span class="sd">		Snippet: driver.source.bb.btooth.set_mformat(mod_fmt = enums.PackFormat.L1M) \n</span>
+<span class="sd">		Specifies the physical layer used for CONTINUOUS payload transmission. \n</span>
+<span class="sd">			:param mod_fmt: L1M| L2M| LCOD | L2M| LCOD L1M: LE 1M L2M: LE 2M LCOD: LE coded</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">mod_fmt</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">PackFormat</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:MFORmat </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="Btooth.get_pformat"><a class="viewcode-back" href="../../../../../Source_Bb_Btooth.html#RsSmbv.Implementations.Source.Bb.Btooth.Btooth.get_pformat">[docs]</a>	<span class="k">def</span> <span class="nf">get_pformat</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">PackFormat</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:PFORmat \n</span>
+<span class="sd">		Snippet: value: enums.PackFormat = driver.source.bb.btooth.get_pformat() \n</span>
+<span class="sd">		Specifies the physical layer of LE signal. \n</span>
+<span class="sd">			:return: pformat: L1M| L2M| LCOD L1M LE 1M L2M LE 2M LCOD LE coded</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:PFORmat?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">PackFormat</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Btooth.set_pformat"><a class="viewcode-back" href="../../../../../Source_Bb_Btooth.html#RsSmbv.Implementations.Source.Bb.Btooth.Btooth.set_pformat">[docs]</a>	<span class="k">def</span> <span class="nf">set_pformat</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pformat</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">PackFormat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:PFORmat \n</span>
+<span class="sd">		Snippet: driver.source.bb.btooth.set_pformat(pformat = enums.PackFormat.L1M) \n</span>
+<span class="sd">		Specifies the physical layer of LE signal. \n</span>
+<span class="sd">			:param pformat: L1M| L2M| LCOD L1M LE 1M L2M LE 2M LCOD LE coded</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">pformat</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">PackFormat</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:PFORmat </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Btooth.preset"><a class="viewcode-back" href="../../../../../Source_Bb_Btooth.html#RsSmbv.Implementations.Source.Bb.Btooth.Btooth.preset">[docs]</a>	<span class="k">def</span> <span class="nf">preset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:PRESet \n</span>
+<span class="sd">		Snippet: driver.source.bb.btooth.preset() \n</span>
+<span class="sd">		Sets the parameters of the digital standard to their default values (*RST values specified for the commands) .</span>
+<span class="sd">		Not affected is the state set with the command SOURce&lt;hw&gt;:BB:BTOoth:STATe. \n</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:PRESet&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Btooth.preset_with_opc"><a class="viewcode-back" href="../../../../../Source_Bb_Btooth.html#RsSmbv.Implementations.Source.Bb.Btooth.Btooth.preset_with_opc">[docs]</a>	<span class="k">def</span> <span class="nf">preset_with_opc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">opc_timeout_ms</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:PRESet \n</span>
+<span class="sd">		Snippet: driver.source.bb.btooth.preset_with_opc() \n</span>
+<span class="sd">		Sets the parameters of the digital standard to their default values (*RST values specified for the commands) .</span>
+<span class="sd">		Not affected is the state set with the command SOURce&lt;hw&gt;:BB:BTOoth:STATe. \n</span>
+<span class="sd">		Same as preset, but waits for the operation to complete before continuing further. Use the RsSmbv.utilities.opc_timeout_set() to set the timeout value. \n</span>
+<span class="sd">			:param opc_timeout_ms: Maximum time to wait in milliseconds, valid only for this call.&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write_with_opc</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:PRESet&#39;</span><span class="p">,</span> <span class="n">opc_timeout_ms</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="Btooth.get_ptype"><a class="viewcode-back" href="../../../../../Source_Bb_Btooth.html#RsSmbv.Implementations.Source.Bb.Btooth.Btooth.get_ptype">[docs]</a>	<span class="k">def</span> <span class="nf">get_ptype</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoPckType</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:PTYPe \n</span>
+<span class="sd">		Snippet: value: enums.BtoPckType = driver.source.bb.btooth.get_ptype() \n</span>
+<span class="sd">		The available packets depend on the selected transport mode. All packet types as defined in the Bluetooth specifications</span>
+<span class="sd">		are supported. \n</span>
+<span class="sd">			:return: ptype: ID| NULL| POLL| FHS| DM1| DH1| DM3| DH3| DM5| DH5| AUX1| ADH1| ADH3| ADH5| AEDH1| AEDH3| AEDH5| HV1| HV2| HV3| DV| EV3| EV4| EV5| EEV3| EEV5| EEEV3| EEEV5</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:PTYPe?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoPckType</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Btooth.set_ptype"><a class="viewcode-back" href="../../../../../Source_Bb_Btooth.html#RsSmbv.Implementations.Source.Bb.Btooth.Btooth.set_ptype">[docs]</a>	<span class="k">def</span> <span class="nf">set_ptype</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ptype</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoPckType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:PTYPe \n</span>
+<span class="sd">		Snippet: driver.source.bb.btooth.set_ptype(ptype = enums.BtoPckType.ADH1) \n</span>
+<span class="sd">		The available packets depend on the selected transport mode. All packet types as defined in the Bluetooth specifications</span>
+<span class="sd">		are supported. \n</span>
+<span class="sd">			:param ptype: ID| NULL| POLL| FHS| DM1| DH1| DM3| DH3| DM5| DH5| AUX1| ADH1| ADH3| ADH5| AEDH1| AEDH3| AEDH5| HV1| HV2| HV3| DV| EV3| EV4| EV5| EEV3| EEV5| EEEV3| EEEV5</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">ptype</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoPckType</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:PTYPe </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Btooth.get_slength"><a class="viewcode-back" href="../../../../../Source_Bb_Btooth.html#RsSmbv.Implementations.Source.Bb.Btooth.Btooth.get_slength">[docs]</a>	<span class="k">def</span> <span class="nf">get_slength</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:SLENgth \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.btooth.get_slength() \n</span>
+<span class="sd">		Sets the sequence length of the Bluetooth signal in number of frames. This signal is calculated in advance and output in</span>
+<span class="sd">		the arbitrary waveform generator. \n</span>
+<span class="sd">			:return: slength: integer Range: depends on the number of states in dirty transmitter test to dynamic</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:SLENgth?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Btooth.set_slength"><a class="viewcode-back" href="../../../../../Source_Bb_Btooth.html#RsSmbv.Implementations.Source.Bb.Btooth.Btooth.set_slength">[docs]</a>	<span class="k">def</span> <span class="nf">set_slength</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">slength</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:SLENgth \n</span>
+<span class="sd">		Snippet: driver.source.bb.btooth.set_slength(slength = 1) \n</span>
+<span class="sd">		Sets the sequence length of the Bluetooth signal in number of frames. This signal is calculated in advance and output in</span>
+<span class="sd">		the arbitrary waveform generator. \n</span>
+<span class="sd">			:param slength: integer Range: depends on the number of states in dirty transmitter test to dynamic</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">slength</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:SLENgth </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Btooth.get_state"><a class="viewcode-back" href="../../../../../Source_Bb_Btooth.html#RsSmbv.Implementations.Source.Bb.Btooth.Btooth.get_state">[docs]</a>	<span class="k">def</span> <span class="nf">get_state</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:STATe \n</span>
+<span class="sd">		Snippet: value: bool = driver.source.bb.btooth.get_state() \n</span>
+<span class="sd">		Activates the standard and deactivates all the other digital standards and digital modulation modes in the same path. \n</span>
+<span class="sd">			:return: state: 0| 1| OFF| ON</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:STATe?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_bool</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Btooth.set_state"><a class="viewcode-back" href="../../../../../Source_Bb_Btooth.html#RsSmbv.Implementations.Source.Bb.Btooth.Btooth.set_state">[docs]</a>	<span class="k">def</span> <span class="nf">set_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:STATe \n</span>
+<span class="sd">		Snippet: driver.source.bb.btooth.set_state(state = False) \n</span>
+<span class="sd">		Activates the standard and deactivates all the other digital standards and digital modulation modes in the same path. \n</span>
+<span class="sd">			:param state: 0| 1| OFF| ON</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">bool_to_str</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:STATe </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="Btooth.get_stiming"><a class="viewcode-back" href="../../../../../Source_Bb_Btooth.html#RsSmbv.Implementations.Source.Bb.Btooth.Btooth.get_stiming">[docs]</a>	<span class="k">def</span> <span class="nf">get_stiming</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoSlotTiming</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:STIMing \n</span>
+<span class="sd">		Snippet: value: enums.BtoSlotTiming = driver.source.bb.btooth.get_stiming() \n</span>
+<span class="sd">		Selects the Rx slot timing mode. \n</span>
+<span class="sd">			:return: slot_timing: TX| LOOPback</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:STIMing?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoSlotTiming</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Btooth.set_stiming"><a class="viewcode-back" href="../../../../../Source_Bb_Btooth.html#RsSmbv.Implementations.Source.Bb.Btooth.Btooth.set_stiming">[docs]</a>	<span class="k">def</span> <span class="nf">set_stiming</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">slot_timing</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoSlotTiming</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:STIMing \n</span>
+<span class="sd">		Snippet: driver.source.bb.btooth.set_stiming(slot_timing = enums.BtoSlotTiming.LOOPback) \n</span>
+<span class="sd">		Selects the Rx slot timing mode. \n</span>
+<span class="sd">			:param slot_timing: TX| LOOPback</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">slot_timing</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoSlotTiming</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:STIMing </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="Btooth.get_tmode"><a class="viewcode-back" href="../../../../../Source_Bb_Btooth.html#RsSmbv.Implementations.Source.Bb.Btooth.Btooth.get_tmode">[docs]</a>	<span class="k">def</span> <span class="nf">get_tmode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoTranMode</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:TMODe \n</span>
+<span class="sd">		Snippet: value: enums.BtoTranMode = driver.source.bb.btooth.get_tmode() \n</span>
+<span class="sd">		Selects the transport mode. \n</span>
+<span class="sd">			:return: tmode: ACL| SCO| ESCO ACL Asynchronous connection-less mode used for a point-to-point multipoint link between a master and all slaves. SCO Synchronous connection-oriented mode used for a point-to-point link between a master and a specific slave. ESCO Enhanced synchronous connection-oriented mode used for a symmetric or asymmetric point-to point link between a master and a specific slave.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:TMODe?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoTranMode</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Btooth.set_tmode"><a class="viewcode-back" href="../../../../../Source_Bb_Btooth.html#RsSmbv.Implementations.Source.Bb.Btooth.Btooth.set_tmode">[docs]</a>	<span class="k">def</span> <span class="nf">set_tmode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tmode</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoTranMode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:TMODe \n</span>
+<span class="sd">		Snippet: driver.source.bb.btooth.set_tmode(tmode = enums.BtoTranMode.ACL) \n</span>
+<span class="sd">		Selects the transport mode. \n</span>
+<span class="sd">			:param tmode: ACL| SCO| ESCO ACL Asynchronous connection-less mode used for a point-to-point multipoint link between a master and all slaves. SCO Synchronous connection-oriented mode used for a point-to-point link between a master and a specific slave. ESCO Enhanced synchronous connection-oriented mode used for a symmetric or asymmetric point-to point link between a master and a specific slave.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">tmode</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoTranMode</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:TMODe </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="Btooth.get_up_type"><a class="viewcode-back" href="../../../../../Source_Bb_Btooth.html#RsSmbv.Implementations.Source.Bb.Btooth.Btooth.get_up_type">[docs]</a>	<span class="k">def</span> <span class="nf">get_up_type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoUlpPckType</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:UPTYpe \n</span>
+<span class="sd">		Snippet: value: enums.BtoUlpPckType = driver.source.bb.btooth.get_up_type() \n</span>
+<span class="sd">		Selects the packet type. The available packets depend on the selected channel type. \n</span>
+<span class="sd">			:return: up_type: AIND| ADINd| ANINd| SREQ| SRSP| CREQ| ADCind| DATA| CUReq| CMReq| TIND| EREQ| ERSP| SEReq| SERSp| URSP| FREQ| FRSP| TPACket| PEReq| PERSp| VIND| RIND| PREQ| PRSP| PUIN| LREQ| LRSP| SFR| CPR| CPRS| REIN| PIR| PIRS| AEINd| AAINd| ACINd| ASINd| ASReq| ASPSp| ACRSp| ACReq| MUCH| CONT| CTEQ| CTEP| PSINd| CAReq| CARSp AIND: ADV_IND ADINd: ADV_DIRECT_IND ANINd: ADV_NONCONN_IND SREQ: SCAN_REQ SRSP: SCAN_RSP CREQ: CONNECT_IND ADCind: ADV_SCAN_IND DATA: DATA CUReq: LL_CONNECTION_UPDATE_IND CMReq: LL_CHANNEL_MAP_IND TIND: LL_TERMINATE_IND EREQ: LL_ENC_REQ ERSP: LL_ENC_RSP SEReq: LL_START_ENC_REQ SERSp: LL_START_ENC_RSP URSP: LL_UNKNONW_RSP FREQ: LL_FEATURE_REQ FRSP: LL_FEATURE_RSP TPACket: TEST PACKET PEReq: LL_PAUSE_ENC_REQ PERSp: LL_PAUSE_ENC_RSP VIND: LL_VERSION_IND RIND: LL_REJECT_IND PREQ: LL_PHY_REQ PRSP: LL_PHY_RSP PUIN: LL_PHY_UPDATE_IND LREQ: LL_LENGTH_REQ LRSP: LL_LENGTH_RSP SFR: LL_SLAVE_FEATURE_REQ CPR: LL_CONNECTION_PARAM_REQ CPRS: LL_CONNECTION_PARAM_RSP REIN: LL_REJECT_EXT_IND PIR: LL_PING_REQ PIRS: LL_PING_RSP AEINd: ADV_EXT_IND AAINd: AUX_ADV_IND ACINd: AUX_CHAIN_IND ASINd: AUX_SYNC_IND ASReq: AUX_SCAN_REQ ASPSp: AUX_SCAN_RSP ACRSp: AUX_CONNECT_RSP ACReq: AUX_CONNECT_REQ MUCH: LL_MIN_USED_CHANNELS_IND CONT: CONTINUOUS CTEQ: LL_CTE_REQ CTEP: LL_CTE_RSP PSIND: LL_PERIODIC_SYNC CAReq: LL_CLOCK_ACCURACY_REQ CARSp: LL_CLOCK_ACCURACY_RSP</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:UPTYpe?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoUlpPckType</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Btooth.set_up_type"><a class="viewcode-back" href="../../../../../Source_Bb_Btooth.html#RsSmbv.Implementations.Source.Bb.Btooth.Btooth.set_up_type">[docs]</a>	<span class="k">def</span> <span class="nf">set_up_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">up_type</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoUlpPckType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:UPTYpe \n</span>
+<span class="sd">		Snippet: driver.source.bb.btooth.set_up_type(up_type = enums.BtoUlpPckType.AAINd) \n</span>
+<span class="sd">		Selects the packet type. The available packets depend on the selected channel type. \n</span>
+<span class="sd">			:param up_type: AIND| ADINd| ANINd| SREQ| SRSP| CREQ| ADCind| DATA| CUReq| CMReq| TIND| EREQ| ERSP| SEReq| SERSp| URSP| FREQ| FRSP| TPACket| PEReq| PERSp| VIND| RIND| PREQ| PRSP| PUIN| LREQ| LRSP| SFR| CPR| CPRS| REIN| PIR| PIRS| AEINd| AAINd| ACINd| ASINd| ASReq| ASPSp| ACRSp| ACReq| MUCH| CONT| CTEQ| CTEP| PSINd| CAReq| CARSp AIND: ADV_IND ADINd: ADV_DIRECT_IND ANINd: ADV_NONCONN_IND SREQ: SCAN_REQ SRSP: SCAN_RSP CREQ: CONNECT_IND ADCind: ADV_SCAN_IND DATA: DATA CUReq: LL_CONNECTION_UPDATE_IND CMReq: LL_CHANNEL_MAP_IND TIND: LL_TERMINATE_IND EREQ: LL_ENC_REQ ERSP: LL_ENC_RSP SEReq: LL_START_ENC_REQ SERSp: LL_START_ENC_RSP URSP: LL_UNKNONW_RSP FREQ: LL_FEATURE_REQ FRSP: LL_FEATURE_RSP TPACket: TEST PACKET PEReq: LL_PAUSE_ENC_REQ PERSp: LL_PAUSE_ENC_RSP VIND: LL_VERSION_IND RIND: LL_REJECT_IND PREQ: LL_PHY_REQ PRSP: LL_PHY_RSP PUIN: LL_PHY_UPDATE_IND LREQ: LL_LENGTH_REQ LRSP: LL_LENGTH_RSP SFR: LL_SLAVE_FEATURE_REQ CPR: LL_CONNECTION_PARAM_REQ CPRS: LL_CONNECTION_PARAM_RSP REIN: LL_REJECT_EXT_IND PIR: LL_PING_REQ PIRS: LL_PING_RSP AEINd: ADV_EXT_IND AAINd: AUX_ADV_IND ACINd: AUX_CHAIN_IND ASINd: AUX_SYNC_IND ASReq: AUX_SCAN_REQ ASPSp: AUX_SCAN_RSP ACRSp: AUX_CONNECT_RSP ACReq: AUX_CONNECT_REQ MUCH: LL_MIN_USED_CHANNELS_IND CONT: CONTINUOUS CTEQ: LL_CTE_REQ CTEP: LL_CTE_RSP PSIND: LL_PERIODIC_SYNC CAReq: LL_CLOCK_ACCURACY_REQ CARSp: LL_CLOCK_ACCURACY_RSP</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">up_type</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoUlpPckType</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:UPTYpe </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Btooth.get_us_length"><a class="viewcode-back" href="../../../../../Source_Bb_Btooth.html#RsSmbv.Implementations.Source.Bb.Btooth.Btooth.get_us_length">[docs]</a>	<span class="k">def</span> <span class="nf">get_us_length</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:USLength \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.btooth.get_us_length() \n</span>
+<span class="sd">		Selects the number of frames or events depending on the packet type. The signal repeats after the specified number of</span>
+<span class="sd">		frames/events. For SCAN_REQ and CONNECT_IND packet, the sequence length is expressed in &#39;Frames&#39;. For AUX_SCAN_REQ and</span>
+<span class="sd">		AUX_CONNECT_REQ packet, the sequence length is expressed in &#39;Frames&#39;. For LL_TERMINATE_IND packets, a default value</span>
+<span class="sd">		according to the specification is given: Master: &#39;SlaveLatency + 6&#39; Slave: &#39;6&#39; For all other packet types the sequence</span>
+<span class="sd">		length is expressed in &#39;Events&#39;. \n</span>
+<span class="sd">			:return: us_length: integer Range: depends on the number of states in dirty transmitter test to dynamic</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:USLength?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Btooth.set_us_length"><a class="viewcode-back" href="../../../../../Source_Bb_Btooth.html#RsSmbv.Implementations.Source.Bb.Btooth.Btooth.set_us_length">[docs]</a>	<span class="k">def</span> <span class="nf">set_us_length</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">us_length</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:USLength \n</span>
+<span class="sd">		Snippet: driver.source.bb.btooth.set_us_length(us_length = 1) \n</span>
+<span class="sd">		Selects the number of frames or events depending on the packet type. The signal repeats after the specified number of</span>
+<span class="sd">		frames/events. For SCAN_REQ and CONNECT_IND packet, the sequence length is expressed in &#39;Frames&#39;. For AUX_SCAN_REQ and</span>
+<span class="sd">		AUX_CONNECT_REQ packet, the sequence length is expressed in &#39;Frames&#39;. For LL_TERMINATE_IND packets, a default value</span>
+<span class="sd">		according to the specification is given: Master: &#39;SlaveLatency + 6&#39; Slave: &#39;6&#39; For all other packet types the sequence</span>
+<span class="sd">		length is expressed in &#39;Events&#39;. \n</span>
+<span class="sd">			:param us_length: integer Range: depends on the number of states in dirty transmitter test to dynamic</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">us_length</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:USLength </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Btooth.get_version"><a class="viewcode-back" href="../../../../../Source_Bb_Btooth.html#RsSmbv.Implementations.Source.Bb.Btooth.Btooth.get_version">[docs]</a>	<span class="k">def</span> <span class="nf">get_version</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:VERSion \n</span>
+<span class="sd">		Snippet: value: str = driver.source.bb.btooth.get_version() \n</span>
+<span class="sd">		Queries the version of the specification for Bluetooth wireless technology underlying the definitions. \n</span>
+<span class="sd">			:return: version: string</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:VERSion?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">trim_str_response</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+	<span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Btooth&#39;</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Clones the group by creating new object from it and its whole existing sub-groups</span>
+<span class="sd">		Also copies all the existing default Repeated Capabilities setting,</span>
+<span class="sd">		which you can change independently without affecting the original group&quot;&quot;&quot;</span>
+		<span class="n">new_group</span> <span class="o">=</span> <span class="n">Btooth</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">synchronize_repcaps</span><span class="p">(</span><span class="n">new_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">new_group</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright © Rohde &amp; Schwarz 2021
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

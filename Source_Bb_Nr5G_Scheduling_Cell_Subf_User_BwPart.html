@@ -1,0 +1,843 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>BwPart&lt;BwPartNull&gt; &mdash; RsSmbv 4.80.2.22 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Alloc&lt;AllocationNull&gt;" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc.html" />
+    <link rel="prev" title="User&lt;UserNull&gt;" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> RsSmbv
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="RsSmbv.html">RsSmbv API Structure</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Bert.html">Bert</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Bler.html">Bler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Calibration.html">Calibration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clock.html">Clock</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Device.html">Device</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Diagnostic.html">Diagnostic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Display.html">Display</a></li>
+<li class="toctree-l2"><a class="reference internal" href="FormatPy.html">FormatPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HardCopy.html">HardCopy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Initiate.html">Initiate&lt;Channel&gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Kboard.html">Kboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MassMemory.html">MassMemory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Memory.html">Memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Output.html">Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Read.html">Read&lt;Channel&gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Sconfiguration.html">Sconfiguration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Sense.html">Sense&lt;Channel&gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slist.html">Slist</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="Source.html">Source</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="Source_Adf.html">Adf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Am.html">Am&lt;GeneratorIx&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Awgn.html">Awgn</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="Source_Bb.html">Bb</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Arbitrary.html">Arbitrary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Btooth.html">Btooth</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_C2K.html">C2K</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Coder.html">Coder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Dab.html">Dab</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Dm.html">Dm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Dme.html">Dme</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra.html">Eutra</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Evdo.html">Evdo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Gbas.html">Gbas</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Gnpr.html">Gnpr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Gnss.html">Gnss</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Graphics.html">Graphics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Gsm.html">Gsm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Huwb.html">Huwb</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Ils.html">Ils</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Impairment.html">Impairment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Info.html">Info</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Lora.html">Lora</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Mccw.html">Mccw</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nfc.html">Nfc</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="Source_Bb_Nr5G.html">Nr5G</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Ofdm.html">Ofdm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Path.html">Path</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Power.html">Power</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Pramp.html">Pramp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Progress.html">Progress</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Sirius.html">Sirius</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Stereo.html">Stereo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Tdscdma.html">Tdscdma</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Trigger.html">Trigger</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Vor.html">Vor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_W3Gpp.html">W3Gpp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Wlnn.html">Wlnn</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_XmRadio.html">XmRadio</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bbin.html">Bbin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Combined.html">Combined</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Correction.html">Correction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Dm.html">Dm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Dme.html">Dme</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Fm.html">Fm&lt;GeneratorIx&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_FreqSweep.html">FreqSweep</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Frequency.html">Frequency</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Ils.html">Ils</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_InputPy.html">InputPy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Iq.html">Iq</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_LffSweep.html">LffSweep</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_LfOutput.html">LfOutput&lt;LfOutput&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_ListPy.html">ListPy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Mbeacon.html">Mbeacon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Modulation.html">Modulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Noise.html">Noise</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Path.html">Path</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Pgenerator.html">Pgenerator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Phase.html">Phase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Pm.html">Pm&lt;GeneratorIx&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Power.html">Power</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Psweep.html">Psweep</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Pulm.html">Pulm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Roscillator.html">Roscillator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Sweep.html">Sweep</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_ValRf.html">ValRf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Vor.html">Vor</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Status.html">Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Sweep.html">Sweep</a></li>
+<li class="toctree-l2"><a class="reference internal" href="System.html">System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Test.html">Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Trigger.html">Trigger&lt;InputIx&gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Unit.html">Unit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Xfer.html">Xfer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RsSmbv</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="RsSmbv.html">RsSmbv API Structure</a> &raquo;</li>
+        
+          <li><a href="Source.html">Source</a> &raquo;</li>
+        
+          <li><a href="Source_Bb.html">Bb</a> &raquo;</li>
+        
+          <li><a href="Source_Bb_Nr5G.html">Nr5G</a> &raquo;</li>
+        
+          <li><a href="Source_Bb_Nr5G_Scheduling.html">Scheduling</a> &raquo;</li>
+        
+          <li><a href="Source_Bb_Nr5G_Scheduling_Cell.html">Cell&lt;CellNull&gt;</a> &raquo;</li>
+        
+          <li><a href="Source_Bb_Nr5G_Scheduling_Cell_Subf.html">Subf&lt;SubframeNull&gt;</a> &raquo;</li>
+        
+          <li><a href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User.html">User&lt;UserNull&gt;</a> &raquo;</li>
+        
+      <li>BwPart&lt;BwPartNull&gt;</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="bwpart-bwpartnull">
+<h1>BwPart&lt;BwPartNull&gt;<a class="headerlink" href="#bwpart-bwpartnull" title="Permalink to this headline">¶</a></h1>
+<p class="rubric">RepCap Settings</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Range: Nr0 .. Nr32</span>
+<span class="n">rc</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">nr5G</span><span class="o">.</span><span class="n">scheduling</span><span class="o">.</span><span class="n">cell</span><span class="o">.</span><span class="n">subf</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">bwPart</span><span class="o">.</span><span class="n">repcap_bwPartNull_get</span><span class="p">()</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">nr5G</span><span class="o">.</span><span class="n">scheduling</span><span class="o">.</span><span class="n">cell</span><span class="o">.</span><span class="n">subf</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">bwPart</span><span class="o">.</span><span class="n">repcap_bwPartNull_set</span><span class="p">(</span><span class="n">repcap</span><span class="o">.</span><span class="n">BwPartNull</span><span class="o">.</span><span class="n">Nr0</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="py class">
+<dt>
+<em class="property">class </em><code class="sig-name descname">BwPart</code><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Nr5G/Scheduling/Cell/Subf/User/BwPart.html#BwPart"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>BwPart commands group definition. 345 total commands, 3 Sub-groups, 0 group commands
+Repeated Capability: BwPartNull, default value after init: BwPartNull.Nr0</p>
+</dd></dl>
+
+<p class="rubric">Cloning the Group</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a clone of the original group, that exists independently</span>
+<span class="n">group2</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">nr5G</span><span class="o">.</span><span class="n">scheduling</span><span class="o">.</span><span class="n">cell</span><span class="o">.</span><span class="n">subf</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">bwPart</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+</pre></div>
+</div>
+<p class="rubric">Subgroups</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc.html">Alloc&lt;AllocationNull&gt;</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_ApMap.html">ApMap</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_ApMap_Col.html">Col&lt;ColumnNull&gt;</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_ApMap_Col_Row.html">Row&lt;RowNull&gt;</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_ApMap_Col_Row_Imaginary.html">Imaginary</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_ApMap_Col_Row_Magnitude.html">Magnitude</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_ApMap_Col_Row_Phase.html">Phase</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_ApMap_Col_Row_Real.html">Real</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_ApMap_Nap.html">Nap</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Conflict.html">Conflict</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Content.html">Content</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_CopyTo.html">CopyTo</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_CopyTo_Apply.html">Apply</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_CopyTo_Slot.html">Slot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_CopyTo_Subf.html">Subf</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs.html">Cs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_AulBwp.html">AulBwp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dcces.html">Dcces</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dcces_Data.html">Data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dcces_Dlist.html">Dlist</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dcces_Pattern.html">Pattern</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dcces_State.html">State</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci.html">Dci&lt;IndexNull&gt;</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_AggLevel.html">AggLevel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Ai1.html">Ai1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Ai10.html">Ai10</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Ai11.html">Ai11</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Ai12.html">Ai12</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Ai13.html">Ai13</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Ai14.html">Ai14</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Ai15.html">Ai15</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Ai16.html">Ai16</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Ai2.html">Ai2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Ai3.html">Ai3</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Ai4.html">Ai4</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Ai5.html">Ai5</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Ai6.html">Ai6</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Ai7.html">Ai7</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Ai8.html">Ai8</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Ai9.html">Ai9</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_AntPorts.html">AntPorts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_BitLength.html">BitLength</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Boind.html">Boind</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Bwind.html">Bwind</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Caind.html">Caind</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Candidate.html">Candidate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Cbgfi.html">Cbgfi</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Cbgti.html">Cbgti</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Ci10.html">Ci10</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Ci11.html">Ci11</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Ci12.html">Ci12</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Ci13.html">Ci13</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Ci14.html">Ci14</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Ci15.html">Ci15</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Ci16.html">Ci16</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Ci2.html">Ci2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Ci3.html">Ci3</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Ci4.html">Ci4</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Ci5.html">Ci5</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Ci6.html">Ci6</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Ci7.html">Ci7</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Ci8.html">Ci8</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Ci9.html">Ci9</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Cl1.html">Cl1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Cl10.html">Cl10</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Cl11.html">Cl11</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Cl12.html">Cl12</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Cl13.html">Cl13</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Cl14.html">Cl14</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Cl15.html">Cl15</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Cl16.html">Cl16</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Cl17.html">Cl17</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Cl18.html">Cl18</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Cl19.html">Cl19</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Cl2.html">Cl2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Cl20.html">Cl20</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Cl21.html">Cl21</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Cl22.html">Cl22</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Cl3.html">Cl3</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Cl4.html">Cl4</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Cl5.html">Cl5</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Cl6.html">Cl6</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Cl7.html">Cl7</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Cl8.html">Cl8</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Cl9.html">Cl9</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Cpdsch.html">Cpdsch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_CsiRequest.html">CsiRequest</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Dai1.html">Dai1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Dai2.html">Dai2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Data.html">Data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Di1.html">Di1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Di10.html">Di10</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Di2.html">Di2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Di3.html">Di3</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Di4.html">Di4</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Di5.html">Di5</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Di6.html">Di6</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Di7.html">Di7</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Di8.html">Di8</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Di9.html">Di9</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Dlist.html">Dlist</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_DmsqInit.html">DmsqInit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Fmt.html">Fmt</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_FrdRes.html">FrdRes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_FrhFlag.html">FrhFlag</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Haproc.html">Haproc</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Identifier.html">Identifier</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Index.html">Index</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_InitPattern.html">InitPattern</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Moffs.html">Moffs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Pattern.html">Pattern</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Pdsharq.html">Pdsharq</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Pe1.html">Pe1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Pe2.html">Pe2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Pe3.html">Pe3</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Pe4.html">Pe4</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Pe5.html">Pe5</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Pe6.html">Pe6</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Pe7.html">Pe7</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Pe8.html">Pe8</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Pe9.html">Pe9</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_PrbBundling.html">PrbBundling</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_PrecInfo.html">PrecInfo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Ptdmrs.html">Ptdmrs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_PucresInd.html">PucresInd</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Resved.html">Resved</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Rmind.html">Rmind</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Rnti.html">Rnti</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Si1.html">Si1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Si10.html">Si10</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Si11.html">Si11</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Si12.html">Si12</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Si13.html">Si13</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Si14.html">Si14</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Si15.html">Si15</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Si16.html">Si16</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Si2.html">Si2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Si3.html">Si3</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Si4.html">Si4</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Si5.html">Si5</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Si6.html">Si6</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Si7.html">Si7</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Si8.html">Si8</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Si9.html">Si9</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_SiInd.html">SiInd</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Smind.html">Smind</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Smsgs.html">Smsgs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Sr1.html">Sr1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Sr10.html">Sr10</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Sr11.html">Sr11</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Sr2.html">Sr2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Sr3.html">Sr3</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Sr4.html">Sr4</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Sr5.html">Sr5</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Sr6.html">Sr6</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Sr7.html">Sr7</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Sr8.html">Sr8</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Sr9.html">Sr9</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_SrsRequest.html">SrsRequest</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_SrsResInd.html">SrsResInd</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Ssp.html">Ssp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_State.html">State</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Tb1.html">Tb1</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Tb1_Mcs.html">Mcs</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Tb1_Ndi.html">Ndi</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Tb1_Rv.html">Rv</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Tb2.html">Tb2</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Tb2_Mcs.html">Mcs</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Tb2_Ndi.html">Ndi</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Tb2_Rv.html">Rv</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_TbScaling.html">TbScaling</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Tci.html">Tci</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_TidRes.html">TidRes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Tp1.html">Tp1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Tp10.html">Tp10</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Tp11.html">Tp11</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Tp12.html">Tp12</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Tp13.html">Tp13</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Tp14.html">Tp14</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Tp15.html">Tp15</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Tp16.html">Tp16</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Tp17.html">Tp17</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Tp18.html">Tp18</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Tp19.html">Tp19</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Tp2.html">Tp2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Tp20.html">Tp20</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Tp21.html">Tp21</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Tp22.html">Tp22</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Tp3.html">Tp3</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Tp4.html">Tp4</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Tp5.html">Tp5</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Tp6.html">Tp6</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Tp7.html">Tp7</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Tp8.html">Tp8</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Tp9.html">Tp9</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Tpucch.html">Tpucch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Tpusch.html">Tpusch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_UlSchInd.html">UlSchInd</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Usage.html">Usage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_UsInd.html">UsInd</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Vtprb.html">Vtprb</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Wa1.html">Wa1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Wa10.html">Wa10</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Wa2.html">Wa2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Wa3.html">Wa3</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Wa4.html">Wa4</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Wa5.html">Wa5</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Wa6.html">Wa6</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Wa7.html">Wa7</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Wa8.html">Wa8</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_Wa9.html">Wa9</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dci_ZcrTrigg.html">ZcrTrigg</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dmrs.html">Dmrs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dmrs_Scram.html">Scram</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dmrs_Scram_Id.html">Id</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dmrs_Scram_State.html">State</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dmrs_Space.html">Space&lt;IndexNull&gt;</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dmrs_Space_AggLevel.html">AggLevel</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Dmrs_Space_MaxCandidate.html">MaxCandidate</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Id.html">Id</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Il.html">Il</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Il_BunSize.html">BunSize</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Il_Shidx.html">Shidx</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Il_Size.html">Size</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Il_State.html">State</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Ndci.html">Ndci</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_PreGran.html">PreGran</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_ResAlloc.html">ResAlloc</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_ResAlloc_Bitmap.html">Bitmap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_ResAlloc_State.html">State</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cs_Tci.html">Tci</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cw.html">Cw&lt;CodewordNull&gt;</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cw_Mod.html">Mod</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cw_Pdsch.html">Pdsch</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cw_Pdsch_Ccoding.html">Ccoding</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cw_Pdsch_Ccoding_Imcs.html">Imcs</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cw_Pdsch_Ccoding_RvIndex.html">RvIndex</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cw_Pdsch_Ccoding_TbSize.html">TbSize</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cw_Pdsch_Ccoding_TcRate.html">TcRate</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cw_PhysBits.html">PhysBits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cw_Pusch.html">Pusch</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cw_Pusch_Ccoding.html">Ccoding</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cw_Pusch_Ccoding_Imcs.html">Imcs</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cw_Pusch_Ccoding_RvIndex.html">RvIndex</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cw_Pusch_Ccoding_TbSize.html">TbSize</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Cw_Pusch_Ccoding_TcRate.html">TcRate</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Duration.html">Duration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Fmt.html">Fmt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Info.html">Info</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_MapType.html">MapType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Nap.html">Nap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pdsch.html">Pdsch</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pdsch_Bmaid.html">Bmaid</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pdsch_Dmr.html">Dmr</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pdsch_Dmrs.html">Dmrs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pdsch_Dmrs_ApSelect.html">ApSelect&lt;AntennaPortNull&gt;</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pdsch_Dmrs_Length.html">Length</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pdsch_Dmrs_Nsid.html">Nsid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pdsch_Dmrs_Power.html">Power</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pdsch_Dmrs_SeqGen.html">SeqGen</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pdsch_Dmrs_SeqHopping.html">SeqHopping</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pdsch_Dmrs_SltSymbols.html">SltSymbols</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pdsch_Ncw.html">Ncw</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pdsch_Patgrp.html">Patgrp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pdsch_Precg.html">Precg</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pdsch_Ptrs.html">Ptrs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pdsch_Ptrs_Epre.html">Epre</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pdsch_Ptrs_FrqDen.html">FrqDen</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pdsch_Ptrs_Mode.html">Mode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pdsch_Ptrs_Reof.html">Reof</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pdsch_Ptrs_State.html">State</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pdsch_Ptrs_TmDen.html">TmDen</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pdsch_ResAlloc.html">ResAlloc</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pdsch_ResAlloc_Pattern.html">Pattern</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pdsch_SbcZero.html">SbcZero</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pdsch_SbcZero_State.html">State</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pdsch_TxScheme.html">TxScheme</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pdsch_TxScheme_CdmData.html">CdmData</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pdsch_TxScheme_Intervp.html">Intervp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pdsch_TxScheme_Nlayers.html">Nlayers</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pdsch_TypePy.html">TypePy</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Period.html">Period</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Power.html">Power</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Prach.html">Prach</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Prach_Bmaid.html">Bmaid</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Prach_FormatPy.html">FormatPy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Prach_PrIndex.html">PrIndex</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Prach_RbNumber.html">RbNumber</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Prach_Rsequence.html">Rsequence</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Prach_Rset.html">Rset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Prach_ScSpacing.html">ScSpacing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Prach_Toffset.html">Toffset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Prach_ZcZone.html">ZcZone</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pucch.html">Pucch</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pucch_Fs.html">Fs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pucch_Fs_CycShift.html">CycShift</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pucch_Fs_OccIndex.html">OccIndex</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pucch_Fs_OccLength.html">OccLength</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pucch_Fs_Tdocc.html">Tdocc</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pucch_GrpHopping.html">GrpHopping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pucch_HopId.html">HopId</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pucch_IsfHopping.html">IsfHopping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pucch_Pl.html">Pl</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pucch_Pl_Ack.html">Ack</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pucch_Pl_Ack_Bits.html">Bits</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pucch_Pl_Ack_Pattern.html">Pattern</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pucch_Pl_SrCount.html">SrCount</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pucch_Pl_Uci.html">Uci</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pucch_Pl_Uci_Bits.html">Bits</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pucch_Pl_Uci_Pattern.html">Pattern</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pucch_Shopping.html">Shopping</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pusch.html">Pusch</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pusch_Bmaid.html">Bmaid</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pusch_Dmr.html">Dmr</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pusch_Dmr_NidDel.html">NidDel</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pusch_Dmrs.html">Dmrs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pusch_Dmrs_ApSelect.html">ApSelect&lt;AntennaPortNull&gt;</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pusch_Dmrs_Length.html">Length</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pusch_Dmrs_Nsid.html">Nsid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pusch_Dmrs_Power.html">Power</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pusch_Dmrs_SeqGen.html">SeqGen</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pusch_Dmrs_SeqHopping.html">SeqHopping</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pusch_Dmrs_SltSymbols.html">SltSymbols</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pusch_FhOi.html">FhOi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pusch_Fhop.html">Fhop</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pusch_Fhop_State.html">State</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pusch_HprNumber.html">HprNumber</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pusch_Ptrs.html">Ptrs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pusch_Ptrs_FrqDen.html">FrqDen</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pusch_Ptrs_Mode.html">Mode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pusch_Ptrs_Port.html">Port</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pusch_Ptrs_Power.html">Power</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pusch_Ptrs_Ptdmrs.html">Ptdmrs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pusch_Ptrs_Reof.html">Reof</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pusch_Ptrs_State.html">State</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pusch_Ptrs_TmDen.html">TmDen</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pusch_Ptrs_Tp.html">Tp</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pusch_Ptrs_Tp_Mode.html">Mode</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pusch_Ptrs_Tp_Ngrps.html">Ngrps</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pusch_Ptrs_Tp_Scid.html">Scid</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pusch_Ptrs_Tp_Sppg.html">Sppg</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pusch_Ptrs_Tp_State.html">State</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pusch_Ptrs_Tp_TmDensity.html">TmDensity</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pusch_ResAlloc.html">ResAlloc</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pusch_ResAlloc_Pattern.html">Pattern</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pusch_TxScheme.html">TxScheme</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pusch_TxScheme_CdmData.html">CdmData</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pusch_TxScheme_Nlayers.html">Nlayers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pusch_TxScheme_Sri.html">Sri</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pusch_TxScheme_Tpmidx.html">Tpmidx</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pusch_TypePy.html">TypePy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pusch_Uci.html">Uci</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pusch_Uci_Ack.html">Ack</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pusch_Uci_Ack_Bits.html">Bits</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pusch_Uci_Ack_Pattern.html">Pattern</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pusch_Uci_Csi1.html">Csi1</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pusch_Uci_Csi1_Bits.html">Bits</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pusch_Uci_Csi1_Pattern.html">Pattern</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pusch_Uci_Csi2.html">Csi2</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pusch_Uci_Csi2_Bits.html">Bits</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Pusch_Uci_Csi2_Pattern.html">Pattern</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_RbNumber.html">RbNumber</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_RbOffset.html">RbOffset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Repetitions.html">Repetitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_Slot.html">Slot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_SltFmt.html">SltFmt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_State.html">State</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_SymNumber.html">SymNumber</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc_SymOffset.html">SymOffset</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Nalloc.html">Nalloc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Resulting.html">Resulting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Resulting_Alloc.html">Alloc&lt;AllocationNull&gt;</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Resulting_Alloc_Conflict.html">Conflict</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Resulting_Alloc_Content.html">Content</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Resulting_Alloc_Cw.html">Cw&lt;CodewordNull&gt;</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Resulting_Alloc_Cw_Mod.html">Mod</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Resulting_Alloc_Cw_PhysBits.html">PhysBits</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Resulting_Alloc_Info.html">Info</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Resulting_Alloc_MapType.html">MapType</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Resulting_Alloc_Ncw.html">Ncw</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Resulting_Alloc_Power.html">Power</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Resulting_Alloc_RbNumber.html">RbNumber</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Resulting_Alloc_RbOffset.html">RbOffset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Resulting_Alloc_ResAlloc.html">ResAlloc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Resulting_Alloc_Slot.html">Slot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Resulting_Alloc_SltFmt.html">SltFmt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Resulting_Alloc_Sosf.html">Sosf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Resulting_Alloc_SymNumber.html">SymNumber</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Resulting_Alloc_SymOffset.html">SymOffset</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User_BwPart_Alloc.html" class="btn btn-neutral float-right" title="Alloc&lt;AllocationNull&gt;" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Source_Bb_Nr5G_Scheduling_Cell_Subf_User.html" class="btn btn-neutral float-left" title="User&lt;UserNull&gt;" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright © Rohde &amp; Schwarz 2021
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

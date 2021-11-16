@@ -1,0 +1,496 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>RsSmbv.Implementations.Source.Bb.Dm &mdash; RsSmbv 4.80.2.22 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../../" src="../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../_static/jquery.js"></script>
+        <script src="../../../../../_static/underscore.js"></script>
+        <script src="../../../../../_static/doctools.js"></script>
+        <script src="../../../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../../index.html" class="icon icon-home" alt="Documentation Home"> RsSmbv
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../RsSmbv.html">RsSmbv API Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../genindex.html">Index</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">RsSmbv</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../../Source.html">RsSmbv.Implementations.Source</a> &raquo;</li>
+        
+          <li><a href="../Bb.html">RsSmbv.Implementations.Source.Bb</a> &raquo;</li>
+        
+      <li>RsSmbv.Implementations.Source.Bb.Dm</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for RsSmbv.Implementations.Source.Bb.Dm</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">.....Internal.Core</span> <span class="kn">import</span> <span class="n">Core</span>
+<span class="kn">from</span> <span class="nn">.....Internal.CommandsGroup</span> <span class="kn">import</span> <span class="n">CommandsGroup</span>
+<span class="kn">from</span> <span class="nn">.....Internal</span> <span class="kn">import</span> <span class="n">Conversions</span>
+<span class="kn">from</span> <span class="nn">.....</span> <span class="kn">import</span> <span class="n">enums</span>
+
+
+<span class="c1"># noinspection PyPep8Naming,PyAttributeOutsideInit,SpellCheckingInspection</span>
+<div class="viewcode-block" id="Dm"><a class="viewcode-back" href="../../../../../Source_Bb_Dm.html#RsSmbv.Implementations.Source.Bb.Dm.Dm">[docs]</a><span class="k">class</span> <span class="nc">Dm</span><span class="p">:</span>
+	<span class="sd">&quot;&quot;&quot;Dm commands group definition. 100 total commands, 19 Sub-groups, 6 group commands&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">core</span><span class="p">:</span> <span class="n">Core</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span> <span class="o">=</span> <span class="n">core</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span> <span class="o">=</span> <span class="n">CommandsGroup</span><span class="p">(</span><span class="s2">&quot;dm&quot;</span><span class="p">,</span> <span class="n">core</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">apsk16</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;apsk16 commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_apsk16&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Apsk16</span> <span class="kn">import</span> <span class="n">Apsk16</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_apsk16</span> <span class="o">=</span> <span class="n">Apsk16</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_apsk16</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">apsk32</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;apsk32 commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_apsk32&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Apsk32</span> <span class="kn">import</span> <span class="n">Apsk32</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_apsk32</span> <span class="o">=</span> <span class="n">Apsk32</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_apsk32</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">aqPsk</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;aqPsk commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_aqPsk&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.AqPsk</span> <span class="kn">import</span> <span class="n">AqPsk</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_aqPsk</span> <span class="o">=</span> <span class="n">AqPsk</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_aqPsk</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">ask</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;ask commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_ask&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Ask</span> <span class="kn">import</span> <span class="n">Ask</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_ask</span> <span class="o">=</span> <span class="n">Ask</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ask</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">clist</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;clist commands group. 0 Sub-classes, 8 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_clist&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Clist</span> <span class="kn">import</span> <span class="n">Clist</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_clist</span> <span class="o">=</span> <span class="n">Clist</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_clist</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">clock</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;clock commands group. 0 Sub-classes, 3 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_clock&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Clock</span> <span class="kn">import</span> <span class="n">Clock</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_clock</span> <span class="o">=</span> <span class="n">Clock</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_clock</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">dlist</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;dlist commands group. 1 Sub-classes, 7 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_dlist&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Dlist</span> <span class="kn">import</span> <span class="n">Dlist</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_dlist</span> <span class="o">=</span> <span class="n">Dlist</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dlist</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">filterPy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;filterPy commands group. 1 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_filterPy&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.FilterPy</span> <span class="kn">import</span> <span class="n">FilterPy</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_filterPy</span> <span class="o">=</span> <span class="n">FilterPy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_filterPy</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">flist</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;flist commands group. 0 Sub-classes, 5 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_flist&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Flist</span> <span class="kn">import</span> <span class="n">Flist</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_flist</span> <span class="o">=</span> <span class="n">Flist</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_flist</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">fsk</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;fsk commands group. 1 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_fsk&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Fsk</span> <span class="kn">import</span> <span class="n">Fsk</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_fsk</span> <span class="o">=</span> <span class="n">Fsk</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fsk</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">mlist</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;mlist commands group. 0 Sub-classes, 5 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_mlist&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Mlist</span> <span class="kn">import</span> <span class="n">Mlist</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_mlist</span> <span class="o">=</span> <span class="n">Mlist</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mlist</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">pattern</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;pattern commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_pattern&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Pattern</span> <span class="kn">import</span> <span class="n">Pattern</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_pattern</span> <span class="o">=</span> <span class="n">Pattern</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pattern</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">pramp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;pramp commands group. 1 Sub-classes, 7 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_pramp&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Pramp</span> <span class="kn">import</span> <span class="n">Pramp</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_pramp</span> <span class="o">=</span> <span class="n">Pramp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pramp</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">prbs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;prbs commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_prbs&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Prbs</span> <span class="kn">import</span> <span class="n">Prbs</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_prbs</span> <span class="o">=</span> <span class="n">Prbs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prbs</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">setting</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;setting commands group. 0 Sub-classes, 4 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_setting&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Setting</span> <span class="kn">import</span> <span class="n">Setting</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_setting</span> <span class="o">=</span> <span class="n">Setting</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_setting</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">smodulation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;smodulation commands group. 3 Sub-classes, 2 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_smodulation&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Smodulation</span> <span class="kn">import</span> <span class="n">Smodulation</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_smodulation</span> <span class="o">=</span> <span class="n">Smodulation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_smodulation</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">standard</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;standard commands group. 1 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_standard&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Standard</span> <span class="kn">import</span> <span class="n">Standard</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_standard</span> <span class="o">=</span> <span class="n">Standard</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_standard</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">switching</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;switching commands group. 0 Sub-classes, 2 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_switching&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Switching</span> <span class="kn">import</span> <span class="n">Switching</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_switching</span> <span class="o">=</span> <span class="n">Switching</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_switching</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">trigger</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;trigger commands group. 5 Sub-classes, 4 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_trigger&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Trigger</span> <span class="kn">import</span> <span class="n">Trigger</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_trigger</span> <span class="o">=</span> <span class="n">Trigger</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_trigger</span>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="Dm.get_coding"><a class="viewcode-back" href="../../../../../Source_Bb_Dm.html#RsSmbv.Implementations.Source.Bb.Dm.Dm.get_coding">[docs]</a>	<span class="k">def</span> <span class="nf">get_coding</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">DmCod</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:DM:CODing \n</span>
+<span class="sd">		Snippet: value: enums.DmCod = driver.source.bb.dm.get_coding() \n</span>
+<span class="sd">		Selects the modulation coding. \n</span>
+<span class="sd">			:return: coding: OFF| DIFF| DPHS| DGRay| GRAY| GSM| NADC| PDC| PHS| TETRa| APCO25| PWT| TFTS| INMarsat| VDL| EDGE| APCO25FSK| ICO| CDMA2000| WCDMA| APCO258PSK OFF The coding is automatically disabled if the selected modulation type is not possible with the coding that has been set DPHS Phase Difference DGRay Difference + Gray</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DM:CODing?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">DmCod</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Dm.set_coding"><a class="viewcode-back" href="../../../../../Source_Bb_Dm.html#RsSmbv.Implementations.Source.Bb.Dm.Dm.set_coding">[docs]</a>	<span class="k">def</span> <span class="nf">set_coding</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">coding</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">DmCod</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:DM:CODing \n</span>
+<span class="sd">		Snippet: driver.source.bb.dm.set_coding(coding = enums.DmCod.APCO25) \n</span>
+<span class="sd">		Selects the modulation coding. \n</span>
+<span class="sd">			:param coding: OFF| DIFF| DPHS| DGRay| GRAY| GSM| NADC| PDC| PHS| TETRa| APCO25| PWT| TFTS| INMarsat| VDL| EDGE| APCO25FSK| ICO| CDMA2000| WCDMA| APCO258PSK OFF The coding is automatically disabled if the selected modulation type is not possible with the coding that has been set DPHS Phase Difference DGRay Difference + Gray</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">coding</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">DmCod</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DM:CODing </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="Dm.get_format_py"><a class="viewcode-back" href="../../../../../Source_Bb_Dm.html#RsSmbv.Implementations.Source.Bb.Dm.Dm.get_format_py">[docs]</a>	<span class="k">def</span> <span class="nf">get_format_py</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">BbDmModType</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:DM:FORMat \n</span>
+<span class="sd">		Snippet: value: enums.BbDmModType = driver.source.bb.dm.get_format_py() \n</span>
+<span class="sd">		Sets the modulation type. When a standard is selected (BB:DM:STANdard) , the modulation type is set to the default value. \n</span>
+<span class="sd">			:return: format_py: ASK| BPSK| P2DBpsk| QPSK| QPSK45| OQPSk| P4QPsk| P4DQpsk| PSK8| P8D8psk| P8EDge| QAM16| QAM32| QAM64| QAM256| QAM1024| MSK| FSK2| FSK4| USER| FSKVar| QAM128| QEDGe| QAM16EDge| QAM32EDge| AQPSk| QAM4096| APSK16| APSK32| FSK32| FSK64| FSK8| FSK16| QAM512| QAM2048</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DM:FORMat?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">BbDmModType</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Dm.set_format_py"><a class="viewcode-back" href="../../../../../Source_Bb_Dm.html#RsSmbv.Implementations.Source.Bb.Dm.Dm.set_format_py">[docs]</a>	<span class="k">def</span> <span class="nf">set_format_py</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">format_py</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">BbDmModType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:DM:FORMat \n</span>
+<span class="sd">		Snippet: driver.source.bb.dm.set_format_py(format_py = enums.BbDmModType.APSK16) \n</span>
+<span class="sd">		Sets the modulation type. When a standard is selected (BB:DM:STANdard) , the modulation type is set to the default value. \n</span>
+<span class="sd">			:param format_py: ASK| BPSK| P2DBpsk| QPSK| QPSK45| OQPSk| P4QPsk| P4DQpsk| PSK8| P8D8psk| P8EDge| QAM16| QAM32| QAM64| QAM256| QAM1024| MSK| FSK2| FSK4| USER| FSKVar| QAM128| QEDGe| QAM16EDge| QAM32EDge| AQPSk| QAM4096| APSK16| APSK32| FSK32| FSK64| FSK8| FSK16| QAM512| QAM2048</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">format_py</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">BbDmModType</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DM:FORMat </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Dm.preset"><a class="viewcode-back" href="../../../../../Source_Bb_Dm.html#RsSmbv.Implementations.Source.Bb.Dm.Dm.preset">[docs]</a>	<span class="k">def</span> <span class="nf">preset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:DM:PRESet \n</span>
+<span class="sd">		Snippet: driver.source.bb.dm.preset() \n</span>
+<span class="sd">		Sets the default settings for digital modulation (*RST values specified for the commands) . Not affected is the state set</span>
+<span class="sd">		with the command SOURce&lt;hw&gt;:BB:DM:STATe \n</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DM:PRESet&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Dm.preset_with_opc"><a class="viewcode-back" href="../../../../../Source_Bb_Dm.html#RsSmbv.Implementations.Source.Bb.Dm.Dm.preset_with_opc">[docs]</a>	<span class="k">def</span> <span class="nf">preset_with_opc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">opc_timeout_ms</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:DM:PRESet \n</span>
+<span class="sd">		Snippet: driver.source.bb.dm.preset_with_opc() \n</span>
+<span class="sd">		Sets the default settings for digital modulation (*RST values specified for the commands) . Not affected is the state set</span>
+<span class="sd">		with the command SOURce&lt;hw&gt;:BB:DM:STATe \n</span>
+<span class="sd">		Same as preset, but waits for the operation to complete before continuing further. Use the RsSmbv.utilities.opc_timeout_set() to set the timeout value. \n</span>
+<span class="sd">			:param opc_timeout_ms: Maximum time to wait in milliseconds, valid only for this call.&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write_with_opc</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DM:PRESet&#39;</span><span class="p">,</span> <span class="n">opc_timeout_ms</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="Dm.get_source"><a class="viewcode-back" href="../../../../../Source_Bb_Dm.html#RsSmbv.Implementations.Source.Bb.Dm.Dm.get_source">[docs]</a>	<span class="k">def</span> <span class="nf">get_source</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">DmDataSourV</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:DM:SOURce \n</span>
+<span class="sd">		Snippet: value: enums.DmDataSourV = driver.source.bb.dm.get_source() \n</span>
+<span class="sd">		Selects the data source. \n</span>
+<span class="sd">			:return: source: ZERO| ONE| PRBS| PATTern| DLISt A sequence of 0 or 1, a pseudo-random sequence with different length, a pattern, or a data list.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DM:SOURce?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">DmDataSourV</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Dm.set_source"><a class="viewcode-back" href="../../../../../Source_Bb_Dm.html#RsSmbv.Implementations.Source.Bb.Dm.Dm.set_source">[docs]</a>	<span class="k">def</span> <span class="nf">set_source</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">DmDataSourV</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:DM:SOURce \n</span>
+<span class="sd">		Snippet: driver.source.bb.dm.set_source(source = enums.DmDataSourV.DLISt) \n</span>
+<span class="sd">		Selects the data source. \n</span>
+<span class="sd">			:param source: ZERO| ONE| PRBS| PATTern| DLISt A sequence of 0 or 1, a pseudo-random sequence with different length, a pattern, or a data list.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">DmDataSourV</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DM:SOURce </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Dm.get_symbol_rate"><a class="viewcode-back" href="../../../../../Source_Bb_Dm.html#RsSmbv.Implementations.Source.Bb.Dm.Dm.get_symbol_rate">[docs]</a>	<span class="k">def</span> <span class="nf">get_symbol_rate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:DM:SRATe \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.dm.get_symbol_rate() \n</span>
+<span class="sd">		Sets the symbol rate in Hz/kHz/MHz or sym/s, ksym/s and Msym/s. \n</span>
+<span class="sd">			:return: srate: float Range: 400 to depends on the installed options, Unit: Hz or sym/s</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DM:SRATe?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Dm.set_symbol_rate"><a class="viewcode-back" href="../../../../../Source_Bb_Dm.html#RsSmbv.Implementations.Source.Bb.Dm.Dm.set_symbol_rate">[docs]</a>	<span class="k">def</span> <span class="nf">set_symbol_rate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">srate</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:DM:SRATe \n</span>
+<span class="sd">		Snippet: driver.source.bb.dm.set_symbol_rate(srate = 1.0) \n</span>
+<span class="sd">		Sets the symbol rate in Hz/kHz/MHz or sym/s, ksym/s and Msym/s. \n</span>
+<span class="sd">			:param srate: float Range: 400 to depends on the installed options, Unit: Hz or sym/s</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">srate</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DM:SRATe </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Dm.get_state"><a class="viewcode-back" href="../../../../../Source_Bb_Dm.html#RsSmbv.Implementations.Source.Bb.Dm.Dm.get_state">[docs]</a>	<span class="k">def</span> <span class="nf">get_state</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:DM:STATe \n</span>
+<span class="sd">		Snippet: value: bool = driver.source.bb.dm.get_state() \n</span>
+<span class="sd">		Enables/disables digital modulation. Switching on digital modulation turns off all the other digital standards in the</span>
+<span class="sd">		same signal path. \n</span>
+<span class="sd">			:return: state: 0| 1| OFF| ON</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DM:STATe?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_bool</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Dm.set_state"><a class="viewcode-back" href="../../../../../Source_Bb_Dm.html#RsSmbv.Implementations.Source.Bb.Dm.Dm.set_state">[docs]</a>	<span class="k">def</span> <span class="nf">set_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:DM:STATe \n</span>
+<span class="sd">		Snippet: driver.source.bb.dm.set_state(state = False) \n</span>
+<span class="sd">		Enables/disables digital modulation. Switching on digital modulation turns off all the other digital standards in the</span>
+<span class="sd">		same signal path. \n</span>
+<span class="sd">			:param state: 0| 1| OFF| ON</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">bool_to_str</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DM:STATe </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Dm&#39;</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Clones the group by creating new object from it and its whole existing sub-groups</span>
+<span class="sd">		Also copies all the existing default Repeated Capabilities setting,</span>
+<span class="sd">		which you can change independently without affecting the original group&quot;&quot;&quot;</span>
+		<span class="n">new_group</span> <span class="o">=</span> <span class="n">Dm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">synchronize_repcaps</span><span class="p">(</span><span class="n">new_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">new_group</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright © Rohde &amp; Schwarz 2021
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
