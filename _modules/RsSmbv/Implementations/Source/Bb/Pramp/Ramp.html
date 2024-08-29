@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RsSmbv.Implementations.Source.Bb.Pramp.Ramp &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../../../" id="documentation_options" src="../../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../../_static/jquery.js"></script>
+        <script src="../../../../../../_static/underscore.js"></script>
+        <script src="../../../../../../_static/doctools.js"></script>
+        <script src="../../../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../../../_static/copybutton.js"></script>
+    <script src="../../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../../../index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../RsSmbv.html">RsSmbv API Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../../../index.html">Module code</a> &raquo;</li>
+          <li><a href="../../../Source.html">RsSmbv.Implementations.Source</a> &raquo;</li>
+          <li><a href="../../Bb.html">RsSmbv.Implementations.Source.Bb</a> &raquo;</li>
+          <li><a href="../Pramp.html">RsSmbv.Implementations.Source.Bb.Pramp</a> &raquo;</li>
+      <li>RsSmbv.Implementations.Source.Bb.Pramp.Ramp</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for RsSmbv.Implementations.Source.Bb.Pramp.Ramp</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">......Internal.Core</span> <span class="kn">import</span> <span class="n">Core</span>
+<span class="kn">from</span> <span class="nn">......Internal.CommandsGroup</span> <span class="kn">import</span> <span class="n">CommandsGroup</span>
+<span class="kn">from</span> <span class="nn">......Internal</span> <span class="kn">import</span> <span class="n">Conversions</span>
+<span class="kn">from</span> <span class="nn">......</span> <span class="kn">import</span> <span class="n">enums</span>
+
+
+<span class="c1"># noinspection PyPep8Naming,PyAttributeOutsideInit,SpellCheckingInspection</span>
+<div class="viewcode-block" id="RampCls"><a class="viewcode-back" href="../../../../../../Source_Bb_Pramp_Ramp.html#RsSmbv.Implementations.Source.Bb.Pramp.Ramp.RampCls">[docs]</a><span class="k">class</span> <span class="nc">RampCls</span><span class="p">:</span>
+	<span class="sd">&quot;&quot;&quot;Ramp commands group definition. 21 total commands, 5 Subgroups, 10 group commands&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">core</span><span class="p">:</span> <span class="n">Core</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span> <span class="o">=</span> <span class="n">core</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span> <span class="o">=</span> <span class="n">CommandsGroup</span><span class="p">(</span><span class="s2">&quot;ramp&quot;</span><span class="p">,</span> <span class="n">core</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">blank</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;blank commands group. 0 Sub-classes, 2 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_blank&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Blank</span> <span class="kn">import</span> <span class="n">BlankCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_blank</span> <span class="o">=</span> <span class="n">BlankCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_blank</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">fall</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;fall commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_fall&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Fall</span> <span class="kn">import</span> <span class="n">FallCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_fall</span> <span class="o">=</span> <span class="n">FallCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fall</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">preSweep</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;preSweep commands group. 0 Sub-classes, 3 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_preSweep&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.PreSweep</span> <span class="kn">import</span> <span class="n">PreSweepCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_preSweep</span> <span class="o">=</span> <span class="n">PreSweepCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_preSweep</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">stair</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;stair commands group. 2 Sub-classes, 0 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_stair&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Stair</span> <span class="kn">import</span> <span class="n">StairCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_stair</span> <span class="o">=</span> <span class="n">StairCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stair</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">sweep</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;sweep commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_sweep&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Sweep</span> <span class="kn">import</span> <span class="n">SweepCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_sweep</span> <span class="o">=</span> <span class="n">SweepCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sweep</span>
+
+<div class="viewcode-block" id="RampCls.get_attenuation"><a class="viewcode-back" href="../../../../../../Source_Bb_Pramp_Ramp.html#RsSmbv.Implementations.Source.Bb.Pramp.Ramp.RampCls.get_attenuation">[docs]</a>	<span class="k">def</span> <span class="nf">get_attenuation</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:PRAMp:RAMP:ATTenuation \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.pramp.ramp.get_attenuation() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: const_atten: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:PRAMp:RAMP:ATTenuation?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="RampCls.set_attenuation"><a class="viewcode-back" href="../../../../../../Source_Bb_Pramp_Ramp.html#RsSmbv.Implementations.Source.Bb.Pramp.Ramp.RampCls.set_attenuation">[docs]</a>	<span class="k">def</span> <span class="nf">set_attenuation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">const_atten</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:PRAMp:RAMP:ATTenuation \n</span>
+<span class="sd">		Snippet: driver.source.bb.pramp.ramp.set_attenuation(const_atten = 1.0) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param const_atten: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">const_atten</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:PRAMp:RAMP:ATTenuation </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="RampCls.get_constmode"><a class="viewcode-back" href="../../../../../../Source_Bb_Pramp_Ramp.html#RsSmbv.Implementations.Source.Bb.Pramp.Ramp.RampCls.get_constmode">[docs]</a>	<span class="k">def</span> <span class="nf">get_constmode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:PRAMp:RAMP:CONStmode \n</span>
+<span class="sd">		Snippet: value: bool = driver.source.bb.pramp.ramp.get_constmode() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: constmode: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:PRAMp:RAMP:CONStmode?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_bool</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="RampCls.set_constmode"><a class="viewcode-back" href="../../../../../../Source_Bb_Pramp_Ramp.html#RsSmbv.Implementations.Source.Bb.Pramp.Ramp.RampCls.set_constmode">[docs]</a>	<span class="k">def</span> <span class="nf">set_constmode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">constmode</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:PRAMp:RAMP:CONStmode \n</span>
+<span class="sd">		Snippet: driver.source.bb.pramp.ramp.set_constmode(constmode = False) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param constmode: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">bool_to_str</span><span class="p">(</span><span class="n">constmode</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:PRAMp:RAMP:CONStmode </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="RampCls.get_level"><a class="viewcode-back" href="../../../../../../Source_Bb_Pramp_Ramp.html#RsSmbv.Implementations.Source.Bb.Pramp.Ramp.RampCls.get_level">[docs]</a>	<span class="k">def</span> <span class="nf">get_level</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:PRAMp:RAMP:LEVel \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.pramp.ramp.get_level() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: const_level: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:PRAMp:RAMP:LEVel?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="RampCls.get_range"><a class="viewcode-back" href="../../../../../../Source_Bb_Pramp_Ramp.html#RsSmbv.Implementations.Source.Bb.Pramp.Ramp.RampCls.get_range">[docs]</a>	<span class="k">def</span> <span class="nf">get_range</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:PRAMp:RAMP:RANGe \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.pramp.ramp.get_range() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: range_py: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:PRAMp:RAMP:RANGe?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="RampCls.set_range"><a class="viewcode-back" href="../../../../../../Source_Bb_Pramp_Ramp.html#RsSmbv.Implementations.Source.Bb.Pramp.Ramp.RampCls.set_range">[docs]</a>	<span class="k">def</span> <span class="nf">set_range</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">range_py</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:PRAMp:RAMP:RANGe \n</span>
+<span class="sd">		Snippet: driver.source.bb.pramp.ramp.set_range(range_py = 1.0) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param range_py: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">range_py</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:PRAMp:RAMP:RANGe </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="RampCls.get_resolution"><a class="viewcode-back" href="../../../../../../Source_Bb_Pramp_Ramp.html#RsSmbv.Implementations.Source.Bb.Pramp.Ramp.RampCls.get_resolution">[docs]</a>	<span class="k">def</span> <span class="nf">get_resolution</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:PRAMp:RAMP:RESolution \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.pramp.ramp.get_resolution() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: power_resolution: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:PRAMp:RAMP:RESolution?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="RampCls.get_sample_rate"><a class="viewcode-back" href="../../../../../../Source_Bb_Pramp_Ramp.html#RsSmbv.Implementations.Source.Bb.Pramp.Ramp.RampCls.get_sample_rate">[docs]</a>	<span class="k">def</span> <span class="nf">get_sample_rate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:PRAMp:RAMP:SAMPlerate \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.pramp.ramp.get_sample_rate() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: sample_rate: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:PRAMp:RAMP:SAMPlerate?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="RampCls.get_shape"><a class="viewcode-back" href="../../../../../../Source_Bb_Pramp_Ramp.html#RsSmbv.Implementations.Source.Bb.Pramp.Ramp.RampCls.get_shape">[docs]</a>	<span class="k">def</span> <span class="nf">get_shape</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">PowerRampShape</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:PRAMp:RAMP:SHAPe \n</span>
+<span class="sd">		Snippet: value: enums.PowerRampShape = driver.source.bb.pramp.ramp.get_shape() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: shape: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:PRAMp:RAMP:SHAPe?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">PowerRampShape</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="RampCls.set_shape"><a class="viewcode-back" href="../../../../../../Source_Bb_Pramp_Ramp.html#RsSmbv.Implementations.Source.Bb.Pramp.Ramp.RampCls.set_shape">[docs]</a>	<span class="k">def</span> <span class="nf">set_shape</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shape</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">PowerRampShape</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:PRAMp:RAMP:SHAPe \n</span>
+<span class="sd">		Snippet: driver.source.bb.pramp.ramp.set_shape(shape = enums.PowerRampShape.LINear) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param shape: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">PowerRampShape</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:PRAMp:RAMP:SHAPe </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="RampCls.get_slope"><a class="viewcode-back" href="../../../../../../Source_Bb_Pramp_Ramp.html#RsSmbv.Implementations.Source.Bb.Pramp.Ramp.RampCls.get_slope">[docs]</a>	<span class="k">def</span> <span class="nf">get_slope</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">PowerRampSlope</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:PRAMp:RAMP:SLOPe \n</span>
+<span class="sd">		Snippet: value: enums.PowerRampSlope = driver.source.bb.pramp.ramp.get_slope() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: slope: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:PRAMp:RAMP:SLOPe?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">PowerRampSlope</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="RampCls.set_slope"><a class="viewcode-back" href="../../../../../../Source_Bb_Pramp_Ramp.html#RsSmbv.Implementations.Source.Bb.Pramp.Ramp.RampCls.set_slope">[docs]</a>	<span class="k">def</span> <span class="nf">set_slope</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">slope</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">PowerRampSlope</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:PRAMp:RAMP:SLOPe \n</span>
+<span class="sd">		Snippet: driver.source.bb.pramp.ramp.set_slope(slope = enums.PowerRampSlope.ASCending) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param slope: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">slope</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">PowerRampSlope</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:PRAMp:RAMP:SLOPe </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="RampCls.get_start_level"><a class="viewcode-back" href="../../../../../../Source_Bb_Pramp_Ramp.html#RsSmbv.Implementations.Source.Bb.Pramp.Ramp.RampCls.get_start_level">[docs]</a>	<span class="k">def</span> <span class="nf">get_start_level</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:PRAMp:RAMP:STARtlevel \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.pramp.ramp.get_start_level() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: start_level: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:PRAMp:RAMP:STARtlevel?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="RampCls.get_stop_level"><a class="viewcode-back" href="../../../../../../Source_Bb_Pramp_Ramp.html#RsSmbv.Implementations.Source.Bb.Pramp.Ramp.RampCls.get_stop_level">[docs]</a>	<span class="k">def</span> <span class="nf">get_stop_level</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:PRAMp:RAMP:STOPlevel \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.pramp.ramp.get_stop_level() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: stop_level: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:PRAMp:RAMP:STOPlevel?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+	<span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;RampCls&#39;</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Clones the group by creating new object from it and its whole existing subgroups</span>
+<span class="sd">		Also copies all the existing default Repeated Capabilities setting,</span>
+<span class="sd">		which you can change independently without affecting the original group&quot;&quot;&quot;</span>
+		<span class="n">new_group</span> <span class="o">=</span> <span class="n">RampCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">synchronize_repcaps</span><span class="p">(</span><span class="n">new_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">new_group</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RsSmbv.Implementations.Source.Bb.Nr5G.Tcw &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../../../" id="documentation_options" src="../../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../../_static/jquery.js"></script>
+        <script src="../../../../../../_static/underscore.js"></script>
+        <script src="../../../../../../_static/doctools.js"></script>
+        <script src="../../../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../../../_static/copybutton.js"></script>
+    <script src="../../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../../../index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../RsSmbv.html">RsSmbv API Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../../../index.html">Module code</a> &raquo;</li>
+          <li><a href="../../../Source.html">RsSmbv.Implementations.Source</a> &raquo;</li>
+          <li><a href="../../Bb.html">RsSmbv.Implementations.Source.Bb</a> &raquo;</li>
+          <li><a href="../Nr5G.html">RsSmbv.Implementations.Source.Bb.Nr5G</a> &raquo;</li>
+      <li>RsSmbv.Implementations.Source.Bb.Nr5G.Tcw</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for RsSmbv.Implementations.Source.Bb.Nr5G.Tcw</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">......Internal.Core</span> <span class="kn">import</span> <span class="n">Core</span>
+<span class="kn">from</span> <span class="nn">......Internal.CommandsGroup</span> <span class="kn">import</span> <span class="n">CommandsGroup</span>
+<span class="kn">from</span> <span class="nn">......Internal</span> <span class="kn">import</span> <span class="n">Conversions</span>
+<span class="kn">from</span> <span class="nn">......Internal.Utilities</span> <span class="kn">import</span> <span class="n">trim_str_response</span>
+<span class="kn">from</span> <span class="nn">......</span> <span class="kn">import</span> <span class="n">enums</span>
+
+
+<span class="c1"># noinspection PyPep8Naming,PyAttributeOutsideInit,SpellCheckingInspection</span>
+<div class="viewcode-block" id="TcwCls"><a class="viewcode-back" href="../../../../../../Source_Bb_Nr5G_Tcw.html#RsSmbv.Implementations.Source.Bb.Nr5G.Tcw.TcwCls">[docs]</a><span class="k">class</span> <span class="nc">TcwCls</span><span class="p">:</span>
+	<span class="sd">&quot;&quot;&quot;Tcw commands group definition. 82 total commands, 11 Subgroups, 16 group commands&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">core</span><span class="p">:</span> <span class="n">Core</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span> <span class="o">=</span> <span class="n">core</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span> <span class="o">=</span> <span class="n">CommandsGroup</span><span class="p">(</span><span class="s2">&quot;tcw&quot;</span><span class="p">,</span> <span class="n">core</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">ant</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;ant commands group. 0 Sub-classes, 2 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_ant&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Ant</span> <span class="kn">import</span> <span class="n">AntCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_ant</span> <span class="o">=</span> <span class="n">AntCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ant</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">apply</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;apply commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_apply&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Apply</span> <span class="kn">import</span> <span class="n">ApplyCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_apply</span> <span class="o">=</span> <span class="n">ApplyCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_apply</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">awgn</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;awgn commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_awgn&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Awgn</span> <span class="kn">import</span> <span class="n">AwgnCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_awgn</span> <span class="o">=</span> <span class="n">AwgnCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_awgn</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">fa</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;fa commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_fa&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Fa</span> <span class="kn">import</span> <span class="n">FaCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_fa</span> <span class="o">=</span> <span class="n">FaCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fa</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">is2</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;is2 commands group. 0 Sub-classes, 3 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_is2&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Is2</span> <span class="kn">import</span> <span class="n">Is2Cls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_is2</span> <span class="o">=</span> <span class="n">Is2Cls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is2</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">isPy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;isPy commands group. 0 Sub-classes, 17 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_isPy&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.IsPy</span> <span class="kn">import</span> <span class="n">IsPyCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_isPy</span> <span class="o">=</span> <span class="n">IsPyCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_isPy</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">mue</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;mue commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_mue&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Mue</span> <span class="kn">import</span> <span class="n">MueCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_mue</span> <span class="o">=</span> <span class="n">MueCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mue</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">output</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;output commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_output&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Output</span> <span class="kn">import</span> <span class="n">OutputCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_output</span> <span class="o">=</span> <span class="n">OutputCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_output</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">rtf</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;rtf commands group. 1 Sub-classes, 6 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_rtf&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Rtf</span> <span class="kn">import</span> <span class="n">RtfCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_rtf</span> <span class="o">=</span> <span class="n">RtfCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rtf</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">sue</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;sue commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_sue&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Sue</span> <span class="kn">import</span> <span class="n">SueCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_sue</span> <span class="o">=</span> <span class="n">SueCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sue</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">ws</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;ws commands group. 5 Sub-classes, 20 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_ws&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Ws</span> <span class="kn">import</span> <span class="n">WsCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_ws</span> <span class="o">=</span> <span class="n">WsCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ws</span>
+
+<div class="viewcode-block" id="TcwCls.get_bewphi"><a class="viewcode-back" href="../../../../../../Source_Bb_Nr5G_Tcw.html#RsSmbv.Implementations.Source.Bb.Nr5G.Tcw.TcwCls.get_bewphi">[docs]</a>	<span class="k">def</span> <span class="nf">get_bewphi</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:BEWPhi \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.nr5G.tcw.get_bewphi() \n</span>
+<span class="sd">		Sets the angle of the beamwidth for to the OTA REFSENS RoAoA in the phi-axis (BeWtheta,REFSENS) , applicable for FR1 only. \n</span>
+<span class="sd">			:return: bewphi_ref_sens: float Range: 0.1 to 360</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:TCW:BEWPhi?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TcwCls.set_bewphi"><a class="viewcode-back" href="../../../../../../Source_Bb_Nr5G_Tcw.html#RsSmbv.Implementations.Source.Bb.Nr5G.Tcw.TcwCls.set_bewphi">[docs]</a>	<span class="k">def</span> <span class="nf">set_bewphi</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bewphi_ref_sens</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:BEWPhi \n</span>
+<span class="sd">		Snippet: driver.source.bb.nr5G.tcw.set_bewphi(bewphi_ref_sens = 1.0) \n</span>
+<span class="sd">		Sets the angle of the beamwidth for to the OTA REFSENS RoAoA in the phi-axis (BeWtheta,REFSENS) , applicable for FR1 only. \n</span>
+<span class="sd">			:param bewphi_ref_sens: float Range: 0.1 to 360</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">bewphi_ref_sens</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:TCW:BEWPhi </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TcwCls.get_bewthet"><a class="viewcode-back" href="../../../../../../Source_Bb_Nr5G_Tcw.html#RsSmbv.Implementations.Source.Bb.Nr5G.Tcw.TcwCls.get_bewthet">[docs]</a>	<span class="k">def</span> <span class="nf">get_bewthet</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:BEWThet \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.nr5G.tcw.get_bewthet() \n</span>
+<span class="sd">		Sets the angle of the beamwidth for to the OTA REFSENS RoAoA in the theta-axis (BeWtheta,REFSENS) , applicable for FR1</span>
+<span class="sd">		only. \n</span>
+<span class="sd">			:return: bewthet_ref_sens: float Range: 0.1 to 360</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:TCW:BEWThet?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TcwCls.set_bewthet"><a class="viewcode-back" href="../../../../../../Source_Bb_Nr5G_Tcw.html#RsSmbv.Implementations.Source.Bb.Nr5G.Tcw.TcwCls.set_bewthet">[docs]</a>	<span class="k">def</span> <span class="nf">set_bewthet</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bewthet_ref_sens</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:BEWThet \n</span>
+<span class="sd">		Snippet: driver.source.bb.nr5G.tcw.set_bewthet(bewthet_ref_sens = 1.0) \n</span>
+<span class="sd">		Sets the angle of the beamwidth for to the OTA REFSENS RoAoA in the theta-axis (BeWtheta,REFSENS) , applicable for FR1</span>
+<span class="sd">		only. \n</span>
+<span class="sd">			:param bewthet_ref_sens: float Range: 0.1 to 360</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">bewthet_ref_sens</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:TCW:BEWThet </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="TcwCls.get_bs_class"><a class="viewcode-back" href="../../../../../../Source_Bb_Nr5G_Tcw.html#RsSmbv.Implementations.Source.Bb.Nr5G.Tcw.TcwCls.get_bs_class">[docs]</a>	<span class="k">def</span> <span class="nf">get_bs_class</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">BsClass</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:BSCLass \n</span>
+<span class="sd">		Snippet: value: enums.BsClass = driver.source.bb.nr5G.tcw.get_bs_class() \n</span>
+<span class="sd">		Sets the NR base station class. \n</span>
+<span class="sd">			:return: bs_class: WIDE| MED| LOC</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:TCW:BSCLass?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">BsClass</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TcwCls.set_bs_class"><a class="viewcode-back" href="../../../../../../Source_Bb_Nr5G_Tcw.html#RsSmbv.Implementations.Source.Bb.Nr5G.Tcw.TcwCls.set_bs_class">[docs]</a>	<span class="k">def</span> <span class="nf">set_bs_class</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bs_class</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">BsClass</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:BSCLass \n</span>
+<span class="sd">		Snippet: driver.source.bb.nr5G.tcw.set_bs_class(bs_class = enums.BsClass.LOC) \n</span>
+<span class="sd">		Sets the NR base station class. \n</span>
+<span class="sd">			:param bs_class: WIDE| MED| LOC</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">bs_class</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">BsClass</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:TCW:BSCLass </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="TcwCls.get_bs_type"><a class="viewcode-back" href="../../../../../../Source_Bb_Nr5G_Tcw.html#RsSmbv.Implementations.Source.Bb.Nr5G.Tcw.TcwCls.get_bs_type">[docs]</a>	<span class="k">def</span> <span class="nf">get_bs_type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">BsType</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:BSTYpe \n</span>
+<span class="sd">		Snippet: value: enums.BsType = driver.source.bb.nr5G.tcw.get_bs_type() \n</span>
+<span class="sd">		Sets the base station type for the OTA settings as specified in D.5. \n</span>
+<span class="sd">			:return: bs_type: BT1H| BT1O| BT2O BT1 Sets the BS type 1-H (FR1, hybrid) for the OTA settings. BT1O Sets the BS type 1-O (FR1) for the OTA settings. BT2O Sets the BS type 2-O (FR2) for the OTA settings.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:TCW:BSTYpe?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">BsType</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TcwCls.set_bs_type"><a class="viewcode-back" href="../../../../../../Source_Bb_Nr5G_Tcw.html#RsSmbv.Implementations.Source.Bb.Nr5G.Tcw.TcwCls.set_bs_type">[docs]</a>	<span class="k">def</span> <span class="nf">set_bs_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bs_type</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">BsType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:BSTYpe \n</span>
+<span class="sd">		Snippet: driver.source.bb.nr5G.tcw.set_bs_type(bs_type = enums.BsType.BT1H) \n</span>
+<span class="sd">		Sets the base station type for the OTA settings as specified in D.5. \n</span>
+<span class="sd">			:param bs_type: BT1H| BT1O| BT2O BT1 Sets the BS type 1-H (FR1, hybrid) for the OTA settings. BT1O Sets the BS type 1-O (FR1) for the OTA settings. BT2O Sets the BS type 2-O (FR2) for the OTA settings.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">bs_type</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">BsType</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:TCW:BSTYpe </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="TcwCls.get_dcl_direction"><a class="viewcode-back" href="../../../../../../Source_Bb_Nr5G_Tcw.html#RsSmbv.Implementations.Source.Bb.Nr5G.Tcw.TcwCls.get_dcl_direction">[docs]</a>	<span class="k">def</span> <span class="nf">get_dcl_direction</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">DeclaredDir</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:DCLDirection \n</span>
+<span class="sd">		Snippet: value: enums.DeclaredDir = driver.source.bb.nr5G.tcw.get_dcl_direction() \n</span>
+<span class="sd">		Sets the reference for the OSDD. \n</span>
+<span class="sd">			:return: declared_dir: OTHD| MREFD| OREFD OTHD Sets a value different than the minSENS and REFSENS as the reference for the OSDD. MREFD Sets the OTA minimum sensitivity (minSENS) value as the reference for the OSDD. OREFD Sets the OTA reference sensitivity (REFSENS) value as the reference for the OSDD.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:TCW:DCLDirection?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">DeclaredDir</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TcwCls.set_dcl_direction"><a class="viewcode-back" href="../../../../../../Source_Bb_Nr5G_Tcw.html#RsSmbv.Implementations.Source.Bb.Nr5G.Tcw.TcwCls.set_dcl_direction">[docs]</a>	<span class="k">def</span> <span class="nf">set_dcl_direction</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">declared_dir</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">DeclaredDir</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:DCLDirection \n</span>
+<span class="sd">		Snippet: driver.source.bb.nr5G.tcw.set_dcl_direction(declared_dir = enums.DeclaredDir.MREFD) \n</span>
+<span class="sd">		Sets the reference for the OSDD. \n</span>
+<span class="sd">			:param declared_dir: OTHD| MREFD| OREFD OTHD Sets a value different than the minSENS and REFSENS as the reference for the OSDD. MREFD Sets the OTA minimum sensitivity (minSENS) value as the reference for the OSDD. OREFD Sets the OTA reference sensitivity (REFSENS) value as the reference for the OSDD.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">declared_dir</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">DeclaredDir</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:TCW:DCLDirection </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TcwCls.get_e_50"><a class="viewcode-back" href="../../../../../../Source_Bb_Nr5G_Tcw.html#RsSmbv.Implementations.Source.Bb.Nr5G.Tcw.TcwCls.get_e_50">[docs]</a>	<span class="k">def</span> <span class="nf">get_e_50</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:E50 \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.nr5G.tcw.get_e_50() \n</span>
+<span class="sd">		Sets the EISREFSENS_50M level value applicable in the OTA REFSENS RoAoA as specified in D.28. The EISREFSENS_50M value is</span>
+<span class="sd">		the declared OTA reference sensitivity basis level for FR2 based on a reference measurement channel with 50MHz BS channel</span>
+<span class="sd">		bandwidth. \n</span>
+<span class="sd">			:return: eis_50_m: float Range: -119 to -86</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:TCW:E50?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TcwCls.set_e_50"><a class="viewcode-back" href="../../../../../../Source_Bb_Nr5G_Tcw.html#RsSmbv.Implementations.Source.Bb.Nr5G.Tcw.TcwCls.set_e_50">[docs]</a>	<span class="k">def</span> <span class="nf">set_e_50</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">eis_50_m</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:E50 \n</span>
+<span class="sd">		Snippet: driver.source.bb.nr5G.tcw.set_e_50(eis_50_m = 1.0) \n</span>
+<span class="sd">		Sets the EISREFSENS_50M level value applicable in the OTA REFSENS RoAoA as specified in D.28. The EISREFSENS_50M value is</span>
+<span class="sd">		the declared OTA reference sensitivity basis level for FR2 based on a reference measurement channel with 50MHz BS channel</span>
+<span class="sd">		bandwidth. \n</span>
+<span class="sd">			:param eis_50_m: float Range: -119 to -86</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">eis_50_m</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:TCW:E50 </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="TcwCls.get_fr"><a class="viewcode-back" href="../../../../../../Source_Bb_Nr5G_Tcw.html#RsSmbv.Implementations.Source.Bb.Nr5G.Tcw.TcwCls.get_fr">[docs]</a>	<span class="k">def</span> <span class="nf">get_fr</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">FreqRange</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:FR \n</span>
+<span class="sd">		Snippet: value: enums.FreqRange = driver.source.bb.nr5G.tcw.get_fr() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: freq_range: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:TCW:FR?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">FreqRange</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TcwCls.set_fr"><a class="viewcode-back" href="../../../../../../Source_Bb_Nr5G_Tcw.html#RsSmbv.Implementations.Source.Bb.Nr5G.Tcw.TcwCls.set_fr">[docs]</a>	<span class="k">def</span> <span class="nf">set_fr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">freq_range</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">FreqRange</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:FR \n</span>
+<span class="sd">		Snippet: driver.source.bb.nr5G.tcw.set_fr(freq_range = enums.FreqRange.FR2GT37) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param freq_range: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">freq_range</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">FreqRange</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:TCW:FR </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="TcwCls.get_gen_signal"><a class="viewcode-back" href="../../../../../../Source_Bb_Nr5G_Tcw.html#RsSmbv.Implementations.Source.Bb.Nr5G.Tcw.TcwCls.get_gen_signal">[docs]</a>	<span class="k">def</span> <span class="nf">get_gen_signal</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">GenSig</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:GENSignal \n</span>
+<span class="sd">		Snippet: value: enums.GenSig = driver.source.bb.nr5G.tcw.get_gen_signal() \n</span>
+<span class="sd">		Selects the generated signal. \n</span>
+<span class="sd">			:return: generated_signal: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:TCW:GENSignal?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">GenSig</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TcwCls.set_gen_signal"><a class="viewcode-back" href="../../../../../../Source_Bb_Nr5G_Tcw.html#RsSmbv.Implementations.Source.Bb.Nr5G.Tcw.TcwCls.set_gen_signal">[docs]</a>	<span class="k">def</span> <span class="nf">set_gen_signal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">generated_signal</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">GenSig</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:GENSignal \n</span>
+<span class="sd">		Snippet: driver.source.bb.nr5G.tcw.set_gen_signal(generated_signal = enums.GenSig.ALL) \n</span>
+<span class="sd">		Selects the generated signal. \n</span>
+<span class="sd">			:param generated_signal: ALL Generates both the wanted and the interferer signal. IF Generates only the interferer signal. WS Generates only the wanted signal.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">generated_signal</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">GenSig</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:TCW:GENSignal </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="TcwCls.get_inst_setup"><a class="viewcode-back" href="../../../../../../Source_Bb_Nr5G_Tcw.html#RsSmbv.Implementations.Source.Bb.Nr5G.Tcw.TcwCls.get_inst_setup">[docs]</a>	<span class="k">def</span> <span class="nf">get_inst_setup</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">InstSetup</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:INSTsetup \n</span>
+<span class="sd">		Snippet: value: enums.InstSetup = driver.source.bb.nr5G.tcw.get_inst_setup() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: inst_setup: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:TCW:INSTsetup?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">InstSetup</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TcwCls.set_inst_setup"><a class="viewcode-back" href="../../../../../../Source_Bb_Nr5G_Tcw.html#RsSmbv.Implementations.Source.Bb.Nr5G.Tcw.TcwCls.set_inst_setup">[docs]</a>	<span class="k">def</span> <span class="nf">set_inst_setup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inst_setup</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">InstSetup</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:INSTsetup \n</span>
+<span class="sd">		Snippet: driver.source.bb.nr5G.tcw.set_inst_setup(inst_setup = enums.InstSetup.U1PORT) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param inst_setup: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">inst_setup</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">InstSetup</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:TCW:INSTsetup </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="TcwCls.get_marker_config"><a class="viewcode-back" href="../../../../../../Source_Bb_Nr5G_Tcw.html#RsSmbv.Implementations.Source.Bb.Nr5G.Tcw.TcwCls.get_marker_config">[docs]</a>	<span class="k">def</span> <span class="nf">get_marker_config</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">MarkConf</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:MARKerconfig \n</span>
+<span class="sd">		Snippet: value: enums.MarkConf = driver.source.bb.nr5G.tcw.get_marker_config() \n</span>
+<span class="sd">		Selects the marker configuration. The marker can be used to synchronize the measuring equipment to the signal generator. \n</span>
+<span class="sd">			:return: marker_config: FRAM| UNCH FRAM The marker settings are customized for the selected test case. &#39;Radio Frame Start&#39; markers are output; the marker delays are set equal to zero. UNCH The current marker settings of the signal generator are retained unchanged.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:TCW:MARKerconfig?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">MarkConf</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TcwCls.set_marker_config"><a class="viewcode-back" href="../../../../../../Source_Bb_Nr5G_Tcw.html#RsSmbv.Implementations.Source.Bb.Nr5G.Tcw.TcwCls.set_marker_config">[docs]</a>	<span class="k">def</span> <span class="nf">set_marker_config</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">marker_config</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">MarkConf</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:MARKerconfig \n</span>
+<span class="sd">		Snippet: driver.source.bb.nr5G.tcw.set_marker_config(marker_config = enums.MarkConf.FRAM) \n</span>
+<span class="sd">		Selects the marker configuration. The marker can be used to synchronize the measuring equipment to the signal generator. \n</span>
+<span class="sd">			:param marker_config: FRAM| UNCH FRAM The marker settings are customized for the selected test case. &#39;Radio Frame Start&#39; markers are output; the marker delays are set equal to zero. UNCH The current marker settings of the signal generator are retained unchanged.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">marker_config</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">MarkConf</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:TCW:MARKerconfig </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TcwCls.get_meis"><a class="viewcode-back" href="../../../../../../Source_Bb_Nr5G_Tcw.html#RsSmbv.Implementations.Source.Bb.Nr5G.Tcw.TcwCls.get_meis">[docs]</a>	<span class="k">def</span> <span class="nf">get_meis</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:MEIS \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.nr5G.tcw.get_meis() \n</span>
+<span class="sd">		Sets the lowest equivalent isotropic sensitivity value (EISminSENS) for the OSDD as specified in D.27. \n</span>
+<span class="sd">			:return: minimum_eis: float Range: -145 to -10</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:TCW:MEIS?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TcwCls.set_meis"><a class="viewcode-back" href="../../../../../../Source_Bb_Nr5G_Tcw.html#RsSmbv.Implementations.Source.Bb.Nr5G.Tcw.TcwCls.set_meis">[docs]</a>	<span class="k">def</span> <span class="nf">set_meis</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">minimum_eis</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:MEIS \n</span>
+<span class="sd">		Snippet: driver.source.bb.nr5G.tcw.set_meis(minimum_eis = 1.0) \n</span>
+<span class="sd">		Sets the lowest equivalent isotropic sensitivity value (EISminSENS) for the OSDD as specified in D.27. \n</span>
+<span class="sd">			:param minimum_eis: float Range: -145 to -10</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">minimum_eis</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:TCW:MEIS </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TcwCls.get_opt_str"><a class="viewcode-back" href="../../../../../../Source_Bb_Nr5G_Tcw.html#RsSmbv.Implementations.Source.Bb.Nr5G.Tcw.TcwCls.get_opt_str">[docs]</a>	<span class="k">def</span> <span class="nf">get_opt_str</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:OPTStr \n</span>
+<span class="sd">		Snippet: value: str = driver.source.bb.nr5G.tcw.get_opt_str() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: option_str: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:TCW:OPTStr?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">trim_str_response</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="TcwCls.get_release"><a class="viewcode-back" href="../../../../../../Source_Bb_Nr5G_Tcw.html#RsSmbv.Implementations.Source.Bb.Nr5G.Tcw.TcwCls.get_release">[docs]</a>	<span class="k">def</span> <span class="nf">get_release</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">Release</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:RELease \n</span>
+<span class="sd">		Snippet: value: enums.Release = driver.source.bb.nr5G.tcw.get_release() \n</span>
+<span class="sd">		Sets the 3GPP test specification used as a guideline for the test cases. \n</span>
+<span class="sd">			:return: release: REL15| REL16| REL17</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:TCW:RELease?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">Release</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TcwCls.set_release"><a class="viewcode-back" href="../../../../../../Source_Bb_Nr5G_Tcw.html#RsSmbv.Implementations.Source.Bb.Nr5G.Tcw.TcwCls.set_release">[docs]</a>	<span class="k">def</span> <span class="nf">set_release</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">release</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">Release</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:RELease \n</span>
+<span class="sd">		Snippet: driver.source.bb.nr5G.tcw.set_release(release = enums.Release.REL15) \n</span>
+<span class="sd">		Sets the 3GPP test specification used as a guideline for the test cases. \n</span>
+<span class="sd">			:param release: REL15| REL16| REL17</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">release</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">Release</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:TCW:RELease </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="TcwCls.get_spec"><a class="viewcode-back" href="../../../../../../Source_Bb_Nr5G_Tcw.html#RsSmbv.Implementations.Source.Bb.Nr5G.Tcw.TcwCls.get_spec">[docs]</a>	<span class="k">def</span> <span class="nf">get_spec</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">TestSpec</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:SPEC \n</span>
+<span class="sd">		Snippet: value: enums.TestSpec = driver.source.bb.nr5G.tcw.get_spec() \n</span>
+<span class="sd">		Specifies the 3GPP test specification. \n</span>
+<span class="sd">			:return: test_spec: TS38141_1| TS38141_2| TS38104</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:TCW:SPEC?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">TestSpec</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TcwCls.set_spec"><a class="viewcode-back" href="../../../../../../Source_Bb_Nr5G_Tcw.html#RsSmbv.Implementations.Source.Bb.Nr5G.Tcw.TcwCls.set_spec">[docs]</a>	<span class="k">def</span> <span class="nf">set_spec</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">test_spec</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">TestSpec</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:SPEC \n</span>
+<span class="sd">		Snippet: driver.source.bb.nr5G.tcw.set_spec(test_spec = enums.TestSpec.TS38104) \n</span>
+<span class="sd">		Specifies the 3GPP test specification. \n</span>
+<span class="sd">			:param test_spec: TS38141_1| TS38141_2| TS38104</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">test_spec</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">TestSpec</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:TCW:SPEC </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="TcwCls.get_tc"><a class="viewcode-back" href="../../../../../../Source_Bb_Nr5G_Tcw.html#RsSmbv.Implementations.Source.Bb.Nr5G.Tcw.TcwCls.get_tc">[docs]</a>	<span class="k">def</span> <span class="nf">get_tc</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">TestCase</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:TC \n</span>
+<span class="sd">		Snippet: value: enums.TestCase = driver.source.bb.nr5G.tcw.get_tc() \n</span>
+<span class="sd">		Selects the test case. \n</span>
+<span class="sd">			:return: test_case: TS381411_TC72| TS381411_TC73| TS381411_TC741| TS381411_TC742A| TS381411_TC742B| TS381411_TC75| TS381411_TC77| TS381411_TC78| TS381411_TC821| TS381411_TC822| TS381411_TC823| TS381411_TC831| TS381411_TC8321| TS381411_TC8322| TS381411_TC8331| TS381411_TC8332| TS381411_TC834| TS381411_TC835| TS381411_TC8361A| TS381411_TC8361B| TS381411_TC841| TS381411_TC67| TS381412_TC72| TS381412_TC73| TS381412_TC74| TS381412_TC751| TS381412_TC752A| TS381412_TC752B| TS381412_TC76| TS381412_TC78| TS381412_TC79| TS381412_TC821| TS381412_TC822| TS381412_TC823| TS381412_TC831| TS381412_TC8321| TS381412_TC8322| TS381412_TC8331| TS381412_TC8332| TS381412_TC834| TS381412_TC835| TS381412_TC8361A| TS381412_TC8361B| TS381412_TC841| TS381412_TC68| TS381411_TC824| TS381411_TC825| TS381411_TC826| TS381411_TC827| TS381411_TC828| TS381411_TC829| TS381412_TC824| TS381412_TC825| TS381412_TC826| TS381412_TC827| TS381412_TC828| TS381412_TC829| TS381411_TC8210| TS381412_TC8210| TS381411_TC8211| TS381412_TC8211| TS381411_TC837| TS381412_TC837| TS381411_TC8381| TS381412_TC8381| TS381411_TC8382| TS381412_TC8382| TS381411_TC839| TS381412_TC839| TS381411_TC8310| TS381412_TC8310| TS381411_TC8212| TS381412_TC8212| TS381411_TC8213| TS381412_TC8213| TS381411_TC8311| TS381412_TC8311| TS381411_TC83122| TS381411_TC83121| TS381412_TC83121| TS381411_TC8313| TS381412_TC83122| TS381412_TC8313 The first part of the parameter indicates the standard document and the second part the chapter in which the test case is defined. For example, TS381411_TC72 defines the test case specified in chapter 7.2.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:TCW:TC?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">TestCase</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TcwCls.set_tc"><a class="viewcode-back" href="../../../../../../Source_Bb_Nr5G_Tcw.html#RsSmbv.Implementations.Source.Bb.Nr5G.Tcw.TcwCls.set_tc">[docs]</a>	<span class="k">def</span> <span class="nf">set_tc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">test_case</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">TestCase</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:TC \n</span>
+<span class="sd">		Snippet: driver.source.bb.nr5G.tcw.set_tc(test_case = enums.TestCase.TS381411_TC67) \n</span>
+<span class="sd">		Selects the test case. \n</span>
+<span class="sd">			:param test_case: TS381411_TC72| TS381411_TC73| TS381411_TC741| TS381411_TC742A| TS381411_TC742B| TS381411_TC75| TS381411_TC77| TS381411_TC78| TS381411_TC821| TS381411_TC822| TS381411_TC823| TS381411_TC831| TS381411_TC8321| TS381411_TC8322| TS381411_TC8331| TS381411_TC8332| TS381411_TC834| TS381411_TC835| TS381411_TC8361A| TS381411_TC8361B| TS381411_TC841| TS381411_TC67| TS381412_TC72| TS381412_TC73| TS381412_TC74| TS381412_TC751| TS381412_TC752A| TS381412_TC752B| TS381412_TC76| TS381412_TC78| TS381412_TC79| TS381412_TC821| TS381412_TC822| TS381412_TC823| TS381412_TC831| TS381412_TC8321| TS381412_TC8322| TS381412_TC8331| TS381412_TC8332| TS381412_TC834| TS381412_TC835| TS381412_TC8361A| TS381412_TC8361B| TS381412_TC841| TS381412_TC68| TS381411_TC824| TS381411_TC825| TS381411_TC826| TS381411_TC827| TS381411_TC828| TS381411_TC829| TS381412_TC824| TS381412_TC825| TS381412_TC826| TS381412_TC827| TS381412_TC828| TS381412_TC829| TS381411_TC8210| TS381412_TC8210| TS381411_TC8211| TS381412_TC8211| TS381411_TC837| TS381412_TC837| TS381411_TC8381| TS381412_TC8381| TS381411_TC8382| TS381412_TC8382| TS381411_TC839| TS381412_TC839| TS381411_TC8310| TS381412_TC8310| TS381411_TC8212| TS381412_TC8212| TS381411_TC8213| TS381412_TC8213| TS381411_TC8311| TS381412_TC8311| TS381411_TC83122| TS381411_TC83121| TS381412_TC83121| TS381411_TC8313| TS381412_TC83122| TS381412_TC8313 The first part of the parameter indicates the standard document and the second part the chapter in which the test case is defined. For example, TS381411_TC72 defines the test case specified in chapter 7.2.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">test_case</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">TestCase</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:TCW:TC </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="TcwCls.get_trigger_config"><a class="viewcode-back" href="../../../../../../Source_Bb_Nr5G_Tcw.html#RsSmbv.Implementations.Source.Bb.Nr5G.Tcw.TcwCls.get_trigger_config">[docs]</a>	<span class="k">def</span> <span class="nf">get_trigger_config</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">TrigConf</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:TRIGgerconfig \n</span>
+<span class="sd">		Snippet: value: enums.TrigConf = driver.source.bb.nr5G.tcw.get_trigger_config() \n</span>
+<span class="sd">		Selects the trigger configuration. The trigger is used to synchronize the signal generator to the other equipment. \n</span>
+<span class="sd">			:return: trig_config: AAUT| UNCH AAUT The trigger settings are customized for the selected test case. The trigger setting &#39;Armed Auto&#39; with external trigger source is used; the trigger delay is set to zero. Thus, the base station frame timing is able to synchronize the signal generator by a periodic trigger. UNCH The current trigger settings of the signal generator are retained unchanged.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:TCW:TRIGgerconfig?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">TrigConf</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TcwCls.set_trigger_config"><a class="viewcode-back" href="../../../../../../Source_Bb_Nr5G_Tcw.html#RsSmbv.Implementations.Source.Bb.Nr5G.Tcw.TcwCls.set_trigger_config">[docs]</a>	<span class="k">def</span> <span class="nf">set_trigger_config</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">trig_config</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">TrigConf</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:TCW:TRIGgerconfig \n</span>
+<span class="sd">		Snippet: driver.source.bb.nr5G.tcw.set_trigger_config(trig_config = enums.TrigConf.AAUT) \n</span>
+<span class="sd">		Selects the trigger configuration. The trigger is used to synchronize the signal generator to the other equipment. \n</span>
+<span class="sd">			:param trig_config: AAUT| UNCH AAUT The trigger settings are customized for the selected test case. The trigger setting &#39;Armed Auto&#39; with external trigger source is used; the trigger delay is set to zero. Thus, the base station frame timing is able to synchronize the signal generator by a periodic trigger. UNCH The current trigger settings of the signal generator are retained unchanged.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">trig_config</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">TrigConf</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:TCW:TRIGgerconfig </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;TcwCls&#39;</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Clones the group by creating new object from it and its whole existing subgroups</span>
+<span class="sd">		Also copies all the existing default Repeated Capabilities setting,</span>
+<span class="sd">		which you can change independently without affecting the original group&quot;&quot;&quot;</span>
+		<span class="n">new_group</span> <span class="o">=</span> <span class="n">TcwCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">synchronize_repcaps</span><span class="p">(</span><span class="n">new_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">new_group</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

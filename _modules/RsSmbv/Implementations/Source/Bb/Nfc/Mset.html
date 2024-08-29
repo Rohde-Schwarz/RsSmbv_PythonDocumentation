@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RsSmbv.Implementations.Source.Bb.Nfc.Mset &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../../../" id="documentation_options" src="../../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../../_static/jquery.js"></script>
+        <script src="../../../../../../_static/underscore.js"></script>
+        <script src="../../../../../../_static/doctools.js"></script>
+        <script src="../../../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../../../_static/copybutton.js"></script>
+    <script src="../../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../../../index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../RsSmbv.html">RsSmbv API Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../../../index.html">Module code</a> &raquo;</li>
+          <li><a href="../../../Source.html">RsSmbv.Implementations.Source</a> &raquo;</li>
+          <li><a href="../../Bb.html">RsSmbv.Implementations.Source.Bb</a> &raquo;</li>
+          <li><a href="../Nfc.html">RsSmbv.Implementations.Source.Bb.Nfc</a> &raquo;</li>
+      <li>RsSmbv.Implementations.Source.Bb.Nfc.Mset</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for RsSmbv.Implementations.Source.Bb.Nfc.Mset</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">.....Internal.Core</span> <span class="kn">import</span> <span class="n">Core</span>
+<span class="kn">from</span> <span class="nn">.....Internal.CommandsGroup</span> <span class="kn">import</span> <span class="n">CommandsGroup</span>
+<span class="kn">from</span> <span class="nn">.....Internal</span> <span class="kn">import</span> <span class="n">Conversions</span>
+
+
+<span class="c1"># noinspection PyPep8Naming,PyAttributeOutsideInit,SpellCheckingInspection</span>
+<div class="viewcode-block" id="MsetCls"><a class="viewcode-back" href="../../../../../../Source_Bb_Nfc_Mset.html#RsSmbv.Implementations.Source.Bb.Nfc.Mset.MsetCls">[docs]</a><span class="k">class</span> <span class="nc">MsetCls</span><span class="p">:</span>
+	<span class="sd">&quot;&quot;&quot;Mset commands group definition. 13 total commands, 0 Subgroups, 13 group commands&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">core</span><span class="p">:</span> <span class="n">Core</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span> <span class="o">=</span> <span class="n">core</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span> <span class="o">=</span> <span class="n">CommandsGroup</span><span class="p">(</span><span class="s2">&quot;mset&quot;</span><span class="p">,</span> <span class="n">core</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+
+<div class="viewcode-block" id="MsetCls.get_boutput"><a class="viewcode-back" href="../../../../../../Source_Bb_Nfc_Mset.html#RsSmbv.Implementations.Source.Bb.Nfc.Mset.MsetCls.get_boutput">[docs]</a>	<span class="k">def</span> <span class="nf">get_boutput</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NFC:MSET:BOUTput \n</span>
+<span class="sd">		Snippet: value: bool = driver.source.bb.nfc.mset.get_boutput() \n</span>
+<span class="sd">		When activated the signal at the baseband output changes between 0% and 100% voltage to be able to control the Reference</span>
+<span class="sd">		Listeners. \n</span>
+<span class="sd">			:return: boutput: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NFC:MSET:BOUTput?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_bool</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MsetCls.set_boutput"><a class="viewcode-back" href="../../../../../../Source_Bb_Nfc_Mset.html#RsSmbv.Implementations.Source.Bb.Nfc.Mset.MsetCls.set_boutput">[docs]</a>	<span class="k">def</span> <span class="nf">set_boutput</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">boutput</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NFC:MSET:BOUTput \n</span>
+<span class="sd">		Snippet: driver.source.bb.nfc.mset.set_boutput(boutput = False) \n</span>
+<span class="sd">		When activated the signal at the baseband output changes between 0% and 100% voltage to be able to control the Reference</span>
+<span class="sd">		Listeners. \n</span>
+<span class="sd">			:param boutput: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">bool_to_str</span><span class="p">(</span><span class="n">boutput</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NFC:MSET:BOUTput </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MsetCls.get_brate"><a class="viewcode-back" href="../../../../../../Source_Bb_Nfc_Mset.html#RsSmbv.Implementations.Source.Bb.Nfc.Mset.MsetCls.get_brate">[docs]</a>	<span class="k">def</span> <span class="nf">get_brate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NFC:MSET:BRATe \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.nfc.mset.get_brate() \n</span>
+<span class="sd">		Returns the resulting bitrate for the current settings. \n</span>
+<span class="sd">			:return: brate: float</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NFC:MSET:BRATe?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MsetCls.get_imodulation"><a class="viewcode-back" href="../../../../../../Source_Bb_Nfc_Mset.html#RsSmbv.Implementations.Source.Bb.Nfc.Mset.MsetCls.get_imodulation">[docs]</a>	<span class="k">def</span> <span class="nf">get_imodulation</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NFC:MSET:IMODulation \n</span>
+<span class="sd">		Snippet: value: bool = driver.source.bb.nfc.mset.get_imodulation() \n</span>
+<span class="sd">		When selected, inverse modulation will be used. \n</span>
+<span class="sd">			:return: imodulation: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NFC:MSET:IMODulation?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_bool</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MsetCls.set_imodulation"><a class="viewcode-back" href="../../../../../../Source_Bb_Nfc_Mset.html#RsSmbv.Implementations.Source.Bb.Nfc.Mset.MsetCls.set_imodulation">[docs]</a>	<span class="k">def</span> <span class="nf">set_imodulation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">imodulation</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NFC:MSET:IMODulation \n</span>
+<span class="sd">		Snippet: driver.source.bb.nfc.mset.set_imodulation(imodulation = False) \n</span>
+<span class="sd">		When selected, inverse modulation will be used. \n</span>
+<span class="sd">			:param imodulation: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">bool_to_str</span><span class="p">(</span><span class="n">imodulation</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NFC:MSET:IMODulation </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MsetCls.get_mdepth"><a class="viewcode-back" href="../../../../../../Source_Bb_Nfc_Mset.html#RsSmbv.Implementations.Source.Bb.Nfc.Mset.MsetCls.get_mdepth">[docs]</a>	<span class="k">def</span> <span class="nf">get_mdepth</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NFC:MSET:MDEPth \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.nfc.mset.get_mdepth() \n</span>
+<span class="sd">		Sets the modulation depth in %. \n</span>
+<span class="sd">			:return: mdepth: float Range: 0 to 100</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NFC:MSET:MDEPth?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MsetCls.set_mdepth"><a class="viewcode-back" href="../../../../../../Source_Bb_Nfc_Mset.html#RsSmbv.Implementations.Source.Bb.Nfc.Mset.MsetCls.set_mdepth">[docs]</a>	<span class="k">def</span> <span class="nf">set_mdepth</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mdepth</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NFC:MSET:MDEPth \n</span>
+<span class="sd">		Snippet: driver.source.bb.nfc.mset.set_mdepth(mdepth = 1.0) \n</span>
+<span class="sd">		Sets the modulation depth in %. \n</span>
+<span class="sd">			:param mdepth: float Range: 0 to 100</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">mdepth</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NFC:MSET:MDEPth </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MsetCls.get_mindex"><a class="viewcode-back" href="../../../../../../Source_Bb_Nfc_Mset.html#RsSmbv.Implementations.Source.Bb.Nfc.Mset.MsetCls.get_mindex">[docs]</a>	<span class="k">def</span> <span class="nf">get_mindex</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NFC:MSET:MINDex \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.nfc.mset.get_mindex() \n</span>
+<span class="sd">		Defines the signal&#39;s modulation index in %. \n</span>
+<span class="sd">			:return: mindex: float Range: 0 to 100</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NFC:MSET:MINDex?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MsetCls.set_mindex"><a class="viewcode-back" href="../../../../../../Source_Bb_Nfc_Mset.html#RsSmbv.Implementations.Source.Bb.Nfc.Mset.MsetCls.set_mindex">[docs]</a>	<span class="k">def</span> <span class="nf">set_mindex</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mindex</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NFC:MSET:MINDex \n</span>
+<span class="sd">		Snippet: driver.source.bb.nfc.mset.set_mindex(mindex = 1.0) \n</span>
+<span class="sd">		Defines the signal&#39;s modulation index in %. \n</span>
+<span class="sd">			:param mindex: float Range: 0 to 100</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">mindex</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NFC:MSET:MINDex </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MsetCls.get_osrise"><a class="viewcode-back" href="../../../../../../Source_Bb_Nfc_Mset.html#RsSmbv.Implementations.Source.Bb.Nfc.Mset.MsetCls.get_osrise">[docs]</a>	<span class="k">def</span> <span class="nf">get_osrise</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NFC:MSET:OSRise \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.nfc.mset.get_osrise() \n</span>
+<span class="sd">		Determines the size of the overshoot after the rising slope. \n</span>
+<span class="sd">			:return: orise: float Range: 0 to 42</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NFC:MSET:OSRise?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MsetCls.set_osrise"><a class="viewcode-back" href="../../../../../../Source_Bb_Nfc_Mset.html#RsSmbv.Implementations.Source.Bb.Nfc.Mset.MsetCls.set_osrise">[docs]</a>	<span class="k">def</span> <span class="nf">set_osrise</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">orise</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NFC:MSET:OSRise \n</span>
+<span class="sd">		Snippet: driver.source.bb.nfc.mset.set_osrise(orise = 1.0) \n</span>
+<span class="sd">		Determines the size of the overshoot after the rising slope. \n</span>
+<span class="sd">			:param orise: float Range: 0 to 42</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">orise</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NFC:MSET:OSRise </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MsetCls.get_rcurve"><a class="viewcode-back" href="../../../../../../Source_Bb_Nfc_Mset.html#RsSmbv.Implementations.Source.Bb.Nfc.Mset.MsetCls.get_rcurve">[docs]</a>	<span class="k">def</span> <span class="nf">get_rcurve</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NFC:MSET:RCURve \n</span>
+<span class="sd">		Snippet: value: bool = driver.source.bb.nfc.mset.get_rcurve() \n</span>
+<span class="sd">		When activated an &#39;RLC curve&#39; is applied to the signal, otherwise a linear ramp is used. \n</span>
+<span class="sd">			:return: rcurve: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NFC:MSET:RCURve?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_bool</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MsetCls.set_rcurve"><a class="viewcode-back" href="../../../../../../Source_Bb_Nfc_Mset.html#RsSmbv.Implementations.Source.Bb.Nfc.Mset.MsetCls.set_rcurve">[docs]</a>	<span class="k">def</span> <span class="nf">set_rcurve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rcurve</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NFC:MSET:RCURve \n</span>
+<span class="sd">		Snippet: driver.source.bb.nfc.mset.set_rcurve(rcurve = False) \n</span>
+<span class="sd">		When activated an &#39;RLC curve&#39; is applied to the signal, otherwise a linear ramp is used. \n</span>
+<span class="sd">			:param rcurve: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">bool_to_str</span><span class="p">(</span><span class="n">rcurve</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NFC:MSET:RCURve </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MsetCls.get_slope"><a class="viewcode-back" href="../../../../../../Source_Bb_Nfc_Mset.html#RsSmbv.Implementations.Source.Bb.Nfc.Mset.MsetCls.get_slope">[docs]</a>	<span class="k">def</span> <span class="nf">get_slope</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NFC:MSET:SLOPe \n</span>
+<span class="sd">		Snippet: value: bool = driver.source.bb.nfc.mset.get_slope() \n</span>
+<span class="sd">		Determines the transition between the modulated and unmodulated parts (Edge/Slope) . \n</span>
+<span class="sd">			:return: eslope: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NFC:MSET:SLOPe?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_bool</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MsetCls.set_slope"><a class="viewcode-back" href="../../../../../../Source_Bb_Nfc_Mset.html#RsSmbv.Implementations.Source.Bb.Nfc.Mset.MsetCls.set_slope">[docs]</a>	<span class="k">def</span> <span class="nf">set_slope</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">eslope</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NFC:MSET:SLOPe \n</span>
+<span class="sd">		Snippet: driver.source.bb.nfc.mset.set_slope(eslope = False) \n</span>
+<span class="sd">		Determines the transition between the modulated and unmodulated parts (Edge/Slope) . \n</span>
+<span class="sd">			:param eslope: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">bool_to_str</span><span class="p">(</span><span class="n">eslope</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NFC:MSET:SLOPe </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MsetCls.get_symbol_rate"><a class="viewcode-back" href="../../../../../../Source_Bb_Nfc_Mset.html#RsSmbv.Implementations.Source.Bb.Nfc.Mset.MsetCls.get_symbol_rate">[docs]</a>	<span class="k">def</span> <span class="nf">get_symbol_rate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NFC:MSET:SRATe \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.nfc.mset.get_symbol_rate() \n</span>
+<span class="sd">		Enters the sample rate, i.e. the time resolution of the generated signal. \n</span>
+<span class="sd">			:return: srate: float Range: depends on protocol mode to dynamic</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NFC:MSET:SRATe?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MsetCls.set_symbol_rate"><a class="viewcode-back" href="../../../../../../Source_Bb_Nfc_Mset.html#RsSmbv.Implementations.Source.Bb.Nfc.Mset.MsetCls.set_symbol_rate">[docs]</a>	<span class="k">def</span> <span class="nf">set_symbol_rate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">srate</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NFC:MSET:SRATe \n</span>
+<span class="sd">		Snippet: driver.source.bb.nfc.mset.set_symbol_rate(srate = 1.0) \n</span>
+<span class="sd">		Enters the sample rate, i.e. the time resolution of the generated signal. \n</span>
+<span class="sd">			:param srate: float Range: depends on protocol mode to dynamic</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">srate</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NFC:MSET:SRATe </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MsetCls.get_tfall"><a class="viewcode-back" href="../../../../../../Source_Bb_Nfc_Mset.html#RsSmbv.Implementations.Source.Bb.Nfc.Mset.MsetCls.get_tfall">[docs]</a>	<span class="k">def</span> <span class="nf">get_tfall</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NFC:MSET:TFALl \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.nfc.mset.get_tfall() \n</span>
+<span class="sd">		Defines the fall time (90 to 5 %) in us. \n</span>
+<span class="sd">			:return: tfall: float Range: 0 to dynamic</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NFC:MSET:TFALl?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MsetCls.set_tfall"><a class="viewcode-back" href="../../../../../../Source_Bb_Nfc_Mset.html#RsSmbv.Implementations.Source.Bb.Nfc.Mset.MsetCls.set_tfall">[docs]</a>	<span class="k">def</span> <span class="nf">set_tfall</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tfall</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NFC:MSET:TFALl \n</span>
+<span class="sd">		Snippet: driver.source.bb.nfc.mset.set_tfall(tfall = 1.0) \n</span>
+<span class="sd">		Defines the fall time (90 to 5 %) in us. \n</span>
+<span class="sd">			:param tfall: float Range: 0 to dynamic</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">tfall</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NFC:MSET:TFALl </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MsetCls.get_tlow"><a class="viewcode-back" href="../../../../../../Source_Bb_Nfc_Mset.html#RsSmbv.Implementations.Source.Bb.Nfc.Mset.MsetCls.get_tlow">[docs]</a>	<span class="k">def</span> <span class="nf">get_tlow</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NFC:MSET:TLOW \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.nfc.mset.get_tlow() \n</span>
+<span class="sd">		Defines the signals low time (below 5%) in us. \n</span>
+<span class="sd">			:return: tlow: float Range: 0.4 to dynamic</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NFC:MSET:TLOW?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MsetCls.set_tlow"><a class="viewcode-back" href="../../../../../../Source_Bb_Nfc_Mset.html#RsSmbv.Implementations.Source.Bb.Nfc.Mset.MsetCls.set_tlow">[docs]</a>	<span class="k">def</span> <span class="nf">set_tlow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tlow</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NFC:MSET:TLOW \n</span>
+<span class="sd">		Snippet: driver.source.bb.nfc.mset.set_tlow(tlow = 1.0) \n</span>
+<span class="sd">		Defines the signals low time (below 5%) in us. \n</span>
+<span class="sd">			:param tlow: float Range: 0.4 to dynamic</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">tlow</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NFC:MSET:TLOW </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MsetCls.get_trise"><a class="viewcode-back" href="../../../../../../Source_Bb_Nfc_Mset.html#RsSmbv.Implementations.Source.Bb.Nfc.Mset.MsetCls.get_trise">[docs]</a>	<span class="k">def</span> <span class="nf">get_trise</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NFC:MSET:TRISe \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.nfc.mset.get_trise() \n</span>
+<span class="sd">		Defines the signals rise time (5 to 90 %) in us. \n</span>
+<span class="sd">			:return: trise: float Range: dynamic to dynamic</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NFC:MSET:TRISe?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MsetCls.set_trise"><a class="viewcode-back" href="../../../../../../Source_Bb_Nfc_Mset.html#RsSmbv.Implementations.Source.Bb.Nfc.Mset.MsetCls.set_trise">[docs]</a>	<span class="k">def</span> <span class="nf">set_trise</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">trise</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NFC:MSET:TRISe \n</span>
+<span class="sd">		Snippet: driver.source.bb.nfc.mset.set_trise(trise = 1.0) \n</span>
+<span class="sd">		Defines the signals rise time (5 to 90 %) in us. \n</span>
+<span class="sd">			:param trise: float Range: dynamic to dynamic</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">trise</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NFC:MSET:TRISe </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MsetCls.get_usfall"><a class="viewcode-back" href="../../../../../../Source_Bb_Nfc_Mset.html#RsSmbv.Implementations.Source.Bb.Nfc.Mset.MsetCls.get_usfall">[docs]</a>	<span class="k">def</span> <span class="nf">get_usfall</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NFC:MSET:USFall \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.nfc.mset.get_usfall() \n</span>
+<span class="sd">		Determines the size of the undershoot (ringing) after the falling slope. \n</span>
+<span class="sd">			:return: ofall: float Range: 0 to 42</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NFC:MSET:USFall?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MsetCls.set_usfall"><a class="viewcode-back" href="../../../../../../Source_Bb_Nfc_Mset.html#RsSmbv.Implementations.Source.Bb.Nfc.Mset.MsetCls.set_usfall">[docs]</a>	<span class="k">def</span> <span class="nf">set_usfall</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ofall</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NFC:MSET:USFall \n</span>
+<span class="sd">		Snippet: driver.source.bb.nfc.mset.set_usfall(ofall = 1.0) \n</span>
+<span class="sd">		Determines the size of the undershoot (ringing) after the falling slope. \n</span>
+<span class="sd">			:param ofall: float Range: 0 to 42</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">ofall</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NFC:MSET:USFall </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

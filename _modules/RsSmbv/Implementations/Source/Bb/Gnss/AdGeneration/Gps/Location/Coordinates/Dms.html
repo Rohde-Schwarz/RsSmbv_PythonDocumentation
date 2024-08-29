@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RsSmbv.Implementations.Source.Bb.Gnss.AdGeneration.Gps.Location.Coordinates.Dms &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="../../../../../../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../../../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../../../../../../../" id="documentation_options" src="../../../../../../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../../../../../../_static/jquery.js"></script>
+        <script src="../../../../../../../../../../_static/underscore.js"></script>
+        <script src="../../../../../../../../../../_static/doctools.js"></script>
+        <script src="../../../../../../../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../../../../../../../_static/copybutton.js"></script>
+    <script src="../../../../../../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../../../../../../../index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../../readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../../enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../../repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../../RsSmbv.html">RsSmbv API Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../../utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../../logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../../events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../../genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../../../../../index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../../../../../../../index.html">Module code</a> &raquo;</li>
+          <li><a href="../../../../../../../Source.html">RsSmbv.Implementations.Source</a> &raquo;</li>
+          <li><a href="../../../../../../Bb.html">RsSmbv.Implementations.Source.Bb</a> &raquo;</li>
+          <li><a href="../../../../../Gnss.html">RsSmbv.Implementations.Source.Bb.Gnss</a> &raquo;</li>
+          <li><a href="../../../../AdGeneration.html">RsSmbv.Implementations.Source.Bb.Gnss.AdGeneration</a> &raquo;</li>
+          <li><a href="../../../Gps.html">RsSmbv.Implementations.Source.Bb.Gnss.AdGeneration.Gps</a> &raquo;</li>
+          <li><a href="../../Location.html">RsSmbv.Implementations.Source.Bb.Gnss.AdGeneration.Gps.Location</a> &raquo;</li>
+          <li><a href="../Coordinates.html">RsSmbv.Implementations.Source.Bb.Gnss.AdGeneration.Gps.Location.Coordinates</a> &raquo;</li>
+      <li>RsSmbv.Implementations.Source.Bb.Gnss.AdGeneration.Gps.Location.Coordinates.Dms</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for RsSmbv.Implementations.Source.Bb.Gnss.AdGeneration.Gps.Location.Coordinates.Dms</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">.........Internal.Core</span> <span class="kn">import</span> <span class="n">Core</span>
+<span class="kn">from</span> <span class="nn">.........Internal.CommandsGroup</span> <span class="kn">import</span> <span class="n">CommandsGroup</span>
+<span class="kn">from</span> <span class="nn">.........Internal.StructBase</span> <span class="kn">import</span> <span class="n">StructBase</span>
+<span class="kn">from</span> <span class="nn">.........Internal.ArgStruct</span> <span class="kn">import</span> <span class="n">ArgStruct</span>
+
+
+<span class="c1"># noinspection PyPep8Naming,PyAttributeOutsideInit,SpellCheckingInspection</span>
+<div class="viewcode-block" id="DmsCls"><a class="viewcode-back" href="../../../../../../../../../../Source_Bb_Gnss_AdGeneration_Gps_Location_Coordinates_Dms.html#RsSmbv.Implementations.Source.Bb.Gnss.AdGeneration.Gps.Location.Coordinates.Dms.DmsCls">[docs]</a><span class="k">class</span> <span class="nc">DmsCls</span><span class="p">:</span>
+	<span class="sd">&quot;&quot;&quot;Dms commands group definition. 2 total commands, 0 Subgroups, 2 group commands&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">core</span><span class="p">:</span> <span class="n">Core</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span> <span class="o">=</span> <span class="n">core</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span> <span class="o">=</span> <span class="n">CommandsGroup</span><span class="p">(</span><span class="s2">&quot;dms&quot;</span><span class="p">,</span> <span class="n">core</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="DmsCls.PzStruct"><a class="viewcode-back" href="../../../../../../../../../../Source_Bb_Gnss_AdGeneration_Gps_Location_Coordinates_Dms.html#RsSmbv.Implementations.Source.Bb.Gnss.AdGeneration.Gps.Location.Coordinates.Dms.DmsCls.PzStruct">[docs]</a>	<span class="k">class</span> <span class="nc">PzStruct</span><span class="p">(</span><span class="n">StructBase</span><span class="p">):</span>  <span class="c1"># From WriteStructDefinition CmdPropertyTemplate.xml</span>
+		<span class="sd">&quot;&quot;&quot;Structure for setting input parameters. Fields: \n</span>
+<span class="sd">			- Longitude_Deg: int: integer Range: 0 to 180</span>
+<span class="sd">			- Longitude_Min: int: integer Range: 0 to 59</span>
+<span class="sd">			- Longitude_Sec: float: float Range: 0 to 59.999</span>
+<span class="sd">			- Longitude_Dir: str: select</span>
+<span class="sd">			- Latitude_Deg: int: integer Range: 0 to 90</span>
+<span class="sd">			- Latitude_Min: int: integer Range: 0 to 59</span>
+<span class="sd">			- Latitude_Sec: float: float Range: 0 to 59.999</span>
+<span class="sd">			- Latitude_Dir: str: select</span>
+<span class="sd">			- Altitude: float: float Range: -10E3 to 50E6&quot;&quot;&quot;</span>
+		<span class="n">__meta_args_list</span> <span class="o">=</span> <span class="p">[</span>
+			<span class="n">ArgStruct</span><span class="o">.</span><span class="n">scalar_int</span><span class="p">(</span><span class="s1">&#39;Longitude_Deg&#39;</span><span class="p">),</span>
+			<span class="n">ArgStruct</span><span class="o">.</span><span class="n">scalar_int</span><span class="p">(</span><span class="s1">&#39;Longitude_Min&#39;</span><span class="p">),</span>
+			<span class="n">ArgStruct</span><span class="o">.</span><span class="n">scalar_float</span><span class="p">(</span><span class="s1">&#39;Longitude_Sec&#39;</span><span class="p">),</span>
+			<span class="n">ArgStruct</span><span class="o">.</span><span class="n">scalar_str</span><span class="p">(</span><span class="s1">&#39;Longitude_Dir&#39;</span><span class="p">),</span>
+			<span class="n">ArgStruct</span><span class="o">.</span><span class="n">scalar_int</span><span class="p">(</span><span class="s1">&#39;Latitude_Deg&#39;</span><span class="p">),</span>
+			<span class="n">ArgStruct</span><span class="o">.</span><span class="n">scalar_int</span><span class="p">(</span><span class="s1">&#39;Latitude_Min&#39;</span><span class="p">),</span>
+			<span class="n">ArgStruct</span><span class="o">.</span><span class="n">scalar_float</span><span class="p">(</span><span class="s1">&#39;Latitude_Sec&#39;</span><span class="p">),</span>
+			<span class="n">ArgStruct</span><span class="o">.</span><span class="n">scalar_str</span><span class="p">(</span><span class="s1">&#39;Latitude_Dir&#39;</span><span class="p">),</span>
+			<span class="n">ArgStruct</span><span class="o">.</span><span class="n">scalar_float</span><span class="p">(</span><span class="s1">&#39;Altitude&#39;</span><span class="p">)]</span>
+
+		<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+			<span class="n">StructBase</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">Longitude_Deg</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">Longitude_Min</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">Longitude_Sec</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">Longitude_Dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">Latitude_Deg</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">Latitude_Min</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">Latitude_Sec</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">Latitude_Dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">Altitude</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="DmsCls.get_pz"><a class="viewcode-back" href="../../../../../../../../../../Source_Bb_Gnss_AdGeneration_Gps_Location_Coordinates_Dms.html#RsSmbv.Implementations.Source.Bb.Gnss.AdGeneration.Gps.Location.Coordinates.Dms.DmsCls.get_pz">[docs]</a>	<span class="k">def</span> <span class="nf">get_pz</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PzStruct</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:GNSS:ADGeneration:GPS:LOCation:COORdinates:DMS:PZ \n</span>
+<span class="sd">		Snippet: value: PzStruct = driver.source.bb.gnss.adGeneration.gps.location.coordinates.dms.get_pz() \n</span>
+<span class="sd">		Sets the geographic reference location in degrees, minutes and seconds. \n</span>
+<span class="sd">			:return: structure: for return value, see the help for PzStruct structure arguments.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_struct</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:GNSS:ADGeneration:GPS:LOCation:COORdinates:DMS:PZ?&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">PzStruct</span><span class="p">())</span></div>
+
+<div class="viewcode-block" id="DmsCls.set_pz"><a class="viewcode-back" href="../../../../../../../../../../Source_Bb_Gnss_AdGeneration_Gps_Location_Coordinates_Dms.html#RsSmbv.Implementations.Source.Bb.Gnss.AdGeneration.Gps.Location.Coordinates.Dms.DmsCls.set_pz">[docs]</a>	<span class="k">def</span> <span class="nf">set_pz</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">PzStruct</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:GNSS:ADGeneration:GPS:LOCation:COORdinates:DMS:PZ \n</span>
+<span class="sd">		Snippet with structure: \n</span>
+<span class="sd">		structure = driver.source.bb.gnss.adGeneration.gps.location.coordinates.dms.PzStruct() \n</span>
+<span class="sd">		structure.Longitude_Deg: int = 1 \n</span>
+<span class="sd">		structure.Longitude_Min: int = 1 \n</span>
+<span class="sd">		structure.Longitude_Sec: float = 1.0 \n</span>
+<span class="sd">		structure.Longitude_Dir: str = &#39;abc&#39; \n</span>
+<span class="sd">		structure.Latitude_Deg: int = 1 \n</span>
+<span class="sd">		structure.Latitude_Min: int = 1 \n</span>
+<span class="sd">		structure.Latitude_Sec: float = 1.0 \n</span>
+<span class="sd">		structure.Latitude_Dir: str = &#39;abc&#39; \n</span>
+<span class="sd">		structure.Altitude: float = 1.0 \n</span>
+<span class="sd">		driver.source.bb.gnss.adGeneration.gps.location.coordinates.dms.set_pz(value = structure) \n</span>
+<span class="sd">		Sets the geographic reference location in degrees, minutes and seconds. \n</span>
+<span class="sd">			:param value: see the help for PzStruct structure arguments.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write_struct</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:GNSS:ADGeneration:GPS:LOCation:COORdinates:DMS:PZ&#39;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="DmsCls.WgsStruct"><a class="viewcode-back" href="../../../../../../../../../../Source_Bb_Gnss_AdGeneration_Gps_Location_Coordinates_Dms.html#RsSmbv.Implementations.Source.Bb.Gnss.AdGeneration.Gps.Location.Coordinates.Dms.DmsCls.WgsStruct">[docs]</a>	<span class="k">class</span> <span class="nc">WgsStruct</span><span class="p">(</span><span class="n">StructBase</span><span class="p">):</span>  <span class="c1"># From WriteStructDefinition CmdPropertyTemplate.xml</span>
+		<span class="sd">&quot;&quot;&quot;Structure for setting input parameters. Fields: \n</span>
+<span class="sd">			- Longitude_Deg: int: integer Range: 0 to 180</span>
+<span class="sd">			- Longitude_Min: int: integer Range: 0 to 59</span>
+<span class="sd">			- Longitude_Sec: float: float Range: 0 to 59.999</span>
+<span class="sd">			- Longitude_Dir: str: select</span>
+<span class="sd">			- Latitude_Deg: int: integer Range: 0 to 90</span>
+<span class="sd">			- Latitude_Min: int: integer Range: 0 to 59</span>
+<span class="sd">			- Latitude_Sec: float: float Range: 0 to 59.999</span>
+<span class="sd">			- Latitude_Dir: str: select</span>
+<span class="sd">			- Altitude: float: float Range: -10E3 to 50E6&quot;&quot;&quot;</span>
+		<span class="n">__meta_args_list</span> <span class="o">=</span> <span class="p">[</span>
+			<span class="n">ArgStruct</span><span class="o">.</span><span class="n">scalar_int</span><span class="p">(</span><span class="s1">&#39;Longitude_Deg&#39;</span><span class="p">),</span>
+			<span class="n">ArgStruct</span><span class="o">.</span><span class="n">scalar_int</span><span class="p">(</span><span class="s1">&#39;Longitude_Min&#39;</span><span class="p">),</span>
+			<span class="n">ArgStruct</span><span class="o">.</span><span class="n">scalar_float</span><span class="p">(</span><span class="s1">&#39;Longitude_Sec&#39;</span><span class="p">),</span>
+			<span class="n">ArgStruct</span><span class="o">.</span><span class="n">scalar_str</span><span class="p">(</span><span class="s1">&#39;Longitude_Dir&#39;</span><span class="p">),</span>
+			<span class="n">ArgStruct</span><span class="o">.</span><span class="n">scalar_int</span><span class="p">(</span><span class="s1">&#39;Latitude_Deg&#39;</span><span class="p">),</span>
+			<span class="n">ArgStruct</span><span class="o">.</span><span class="n">scalar_int</span><span class="p">(</span><span class="s1">&#39;Latitude_Min&#39;</span><span class="p">),</span>
+			<span class="n">ArgStruct</span><span class="o">.</span><span class="n">scalar_float</span><span class="p">(</span><span class="s1">&#39;Latitude_Sec&#39;</span><span class="p">),</span>
+			<span class="n">ArgStruct</span><span class="o">.</span><span class="n">scalar_str</span><span class="p">(</span><span class="s1">&#39;Latitude_Dir&#39;</span><span class="p">),</span>
+			<span class="n">ArgStruct</span><span class="o">.</span><span class="n">scalar_float</span><span class="p">(</span><span class="s1">&#39;Altitude&#39;</span><span class="p">)]</span>
+
+		<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+			<span class="n">StructBase</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">Longitude_Deg</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">Longitude_Min</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">Longitude_Sec</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">Longitude_Dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">Latitude_Deg</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">Latitude_Min</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">Latitude_Sec</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">Latitude_Dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">Altitude</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="DmsCls.get_wgs"><a class="viewcode-back" href="../../../../../../../../../../Source_Bb_Gnss_AdGeneration_Gps_Location_Coordinates_Dms.html#RsSmbv.Implementations.Source.Bb.Gnss.AdGeneration.Gps.Location.Coordinates.Dms.DmsCls.get_wgs">[docs]</a>	<span class="k">def</span> <span class="nf">get_wgs</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">WgsStruct</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:GNSS:ADGeneration:GPS:LOCation:COORdinates:DMS:[WGS] \n</span>
+<span class="sd">		Snippet: value: WgsStruct = driver.source.bb.gnss.adGeneration.gps.location.coordinates.dms.get_wgs() \n</span>
+<span class="sd">		Sets the geographic reference location in degrees, minutes and seconds. \n</span>
+<span class="sd">			:return: structure: for return value, see the help for WgsStruct structure arguments.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_struct</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:GNSS:ADGeneration:GPS:LOCation:COORdinates:DMS:WGS?&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">WgsStruct</span><span class="p">())</span></div>
+
+<div class="viewcode-block" id="DmsCls.set_wgs"><a class="viewcode-back" href="../../../../../../../../../../Source_Bb_Gnss_AdGeneration_Gps_Location_Coordinates_Dms.html#RsSmbv.Implementations.Source.Bb.Gnss.AdGeneration.Gps.Location.Coordinates.Dms.DmsCls.set_wgs">[docs]</a>	<span class="k">def</span> <span class="nf">set_wgs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">WgsStruct</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:GNSS:ADGeneration:GPS:LOCation:COORdinates:DMS:[WGS] \n</span>
+<span class="sd">		Snippet with structure: \n</span>
+<span class="sd">		structure = driver.source.bb.gnss.adGeneration.gps.location.coordinates.dms.WgsStruct() \n</span>
+<span class="sd">		structure.Longitude_Deg: int = 1 \n</span>
+<span class="sd">		structure.Longitude_Min: int = 1 \n</span>
+<span class="sd">		structure.Longitude_Sec: float = 1.0 \n</span>
+<span class="sd">		structure.Longitude_Dir: str = &#39;abc&#39; \n</span>
+<span class="sd">		structure.Latitude_Deg: int = 1 \n</span>
+<span class="sd">		structure.Latitude_Min: int = 1 \n</span>
+<span class="sd">		structure.Latitude_Sec: float = 1.0 \n</span>
+<span class="sd">		structure.Latitude_Dir: str = &#39;abc&#39; \n</span>
+<span class="sd">		structure.Altitude: float = 1.0 \n</span>
+<span class="sd">		driver.source.bb.gnss.adGeneration.gps.location.coordinates.dms.set_wgs(value = structure) \n</span>
+<span class="sd">		Sets the geographic reference location in degrees, minutes and seconds. \n</span>
+<span class="sd">			:param value: see the help for WgsStruct structure arguments.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write_struct</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:GNSS:ADGeneration:GPS:LOCation:COORdinates:DMS:WGS&#39;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

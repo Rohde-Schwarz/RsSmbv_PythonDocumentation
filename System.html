@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>System &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Beeper" href="System_Beeper.html" />
+    <link rel="prev" title="Sweep" href="Sweep.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="RsSmbv.html">RsSmbv API Structure</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Bert.html">Bert</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Bler.html">Bler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Calibration.html">Calibration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clock.html">Clock</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Connector.html">Connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Device.html">Device</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Diagnostic.html">Diagnostic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Display.html">Display</a></li>
+<li class="toctree-l2"><a class="reference internal" href="FormatPy.html">FormatPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Fpanel.html">Fpanel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HardCopy.html">HardCopy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Initiate.html">Initiate&lt;Channel&gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Kboard.html">Kboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MassMemory.html">MassMemory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Memory.html">Memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Output.html">Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Read.html">Read&lt;Channel&gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Sconfiguration.html">Sconfiguration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Sense.html">Sense&lt;Channel&gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slist.html">Slist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source.html">Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Status.html">Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Sweep.html">Sweep</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">System</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="System_Beeper.html">Beeper</a></li>
+<li class="toctree-l3"><a class="reference internal" href="System_Bios.html">Bios</a></li>
+<li class="toctree-l3"><a class="reference internal" href="System_Communicate.html">Communicate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="System_Date.html">Date</a></li>
+<li class="toctree-l3"><a class="reference internal" href="System_Device.html">Device</a></li>
+<li class="toctree-l3"><a class="reference internal" href="System_DeviceFootprint.html">DeviceFootprint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="System_Dexchange.html">Dexchange</a></li>
+<li class="toctree-l3"><a class="reference internal" href="System_Error.html">Error</a></li>
+<li class="toctree-l3"><a class="reference internal" href="System_ExtDevices.html">ExtDevices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="System_Files.html">Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="System_FpFpga.html">FpFpga</a></li>
+<li class="toctree-l3"><a class="reference internal" href="System_Fpreset.html">Fpreset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="System_Generic.html">Generic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="System_Help.html">Help</a></li>
+<li class="toctree-l3"><a class="reference internal" href="System_Identification.html">Identification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="System_Information.html">Information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="System_Issd.html">Issd</a></li>
+<li class="toctree-l3"><a class="reference internal" href="System_Linux.html">Linux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="System_Lock.html">Lock</a></li>
+<li class="toctree-l3"><a class="reference internal" href="System_MassMemory.html">MassMemory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="System_Ntp.html">Ntp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="System_Option.html">Option</a></li>
+<li class="toctree-l3"><a class="reference internal" href="System_Package.html">Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="System_PciFpga.html">PciFpga</a></li>
+<li class="toctree-l3"><a class="reference internal" href="System_Profiling.html">Profiling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="System_Protect.html">Protect&lt;Level&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="System_Reboot.html">Reboot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="System_Restart.html">Restart</a></li>
+<li class="toctree-l3"><a class="reference internal" href="System_Scrpt.html">Scrpt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="System_Security.html">Security</a></li>
+<li class="toctree-l3"><a class="reference internal" href="System_Shutdown.html">Shutdown</a></li>
+<li class="toctree-l3"><a class="reference internal" href="System_Specification.html">Specification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="System_SrData.html">SrData</a></li>
+<li class="toctree-l3"><a class="reference internal" href="System_Srexec.html">Srexec</a></li>
+<li class="toctree-l3"><a class="reference internal" href="System_Srtime.html">Srtime</a></li>
+<li class="toctree-l3"><a class="reference internal" href="System_Startup.html">Startup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="System_Time.html">Time</a></li>
+<li class="toctree-l3"><a class="reference internal" href="System_Ulock.html">Ulock</a></li>
+<li class="toctree-l3"><a class="reference internal" href="System_Undo.html">Undo</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Test.html">Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Trigger.html">Trigger&lt;InputIx&gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Unit.html">Unit</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="RsSmbv.html">RsSmbv API Structure</a> &raquo;</li>
+      <li>System</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/System.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="system">
+<h1>System<a class="headerlink" href="#system" title="Permalink to this headline"></a></h1>
+<p class="rubric">SCPI Commands :</p>
+<div class="highlight-python notranslate" id="index-0"><div class="highlight"><pre><span></span><span class="n">SYSTem</span><span class="p">:</span><span class="n">CRASh</span>
+<span class="n">SYSTem</span><span class="p">:</span><span class="n">DID</span>
+<span class="n">SYSTem</span><span class="p">:</span><span class="n">DLOCk</span>
+<span class="n">SYSTem</span><span class="p">:</span><span class="n">IMPort</span>
+<span class="n">SYSTem</span><span class="p">:</span><span class="n">IRESponse</span>
+<span class="n">SYSTem</span><span class="p">:</span><span class="n">KLOCk</span>
+<span class="n">SYSTem</span><span class="p">:</span><span class="n">LANGuage</span>
+<span class="n">SYSTem</span><span class="p">:</span><span class="n">NINFormation</span>
+<span class="n">SYSTem</span><span class="p">:</span><span class="n">ORESponse</span>
+<span class="n">SYSTem</span><span class="p">:</span><span class="n">OSYStem</span>
+<span class="n">SYSTem</span><span class="p">:</span><span class="n">PRESet</span>
+<span class="n">SYSTem</span><span class="p">:</span><span class="n">PRESet</span><span class="p">:</span><span class="n">ALL</span>
+<span class="n">SYSTem</span><span class="p">:</span><span class="n">PRESet</span><span class="p">:</span><span class="n">BASE</span>
+<span class="n">SYSTem</span><span class="p">:</span><span class="n">RCL</span>
+<span class="n">SYSTem</span><span class="p">:</span><span class="n">RESet</span>
+<span class="n">SYSTem</span><span class="p">:</span><span class="n">RESet</span><span class="p">:</span><span class="n">ALL</span>
+<span class="n">SYSTem</span><span class="p">:</span><span class="n">RESet</span><span class="p">:</span><span class="n">BASE</span>
+<span class="n">SYSTem</span><span class="p">:</span><span class="n">SAV</span>
+<span class="n">SYSTem</span><span class="p">:</span><span class="n">SIMulation</span>
+<span class="n">SYSTem</span><span class="p">:</span><span class="n">SRCat</span>
+<span class="n">SYSTem</span><span class="p">:</span><span class="n">SREStore</span>
+<span class="n">SYSTem</span><span class="p">:</span><span class="n">SRMode</span>
+<span class="n">SYSTem</span><span class="p">:</span><span class="n">SRSel</span>
+<span class="n">SYSTem</span><span class="p">:</span><span class="n">SSAVe</span>
+<span class="n">SYSTem</span><span class="p">:</span><span class="n">TZONe</span>
+<span class="n">SYSTem</span><span class="p">:</span><span class="n">UPTime</span>
+<span class="n">SYSTem</span><span class="p">:</span><span class="n">VERSion</span>
+<span class="n">SYSTem</span><span class="p">:</span><span class="n">WAIT</span>
+</pre></div>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">SystemCls</span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/System.html#SystemCls"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>System commands group definition. 188 total commands, 39 Subgroups, 28 group commands</p>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_did</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/System.html#SystemCls.get_did"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: SYSTem:DID</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">get_did</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>No command help available</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>pseudo_string: No help available</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_dlock</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/System.html#SystemCls.get_dlock"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: SYSTem:DLOCk</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">get_dlock</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Disables the manual operation over the display, including the front panel keyboard of the instrument.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>disp_lock_stat: 1| ON| 0| OFF</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_iresponse</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/System.html#SystemCls.get_iresponse"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: SYSTem:IRESponse</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">get_iresponse</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Defines the user defined identification string for <a href="#id1"><span class="problematic" id="id2">*</span></a>IDN. Note: While working in an emulation mode, the instrument’s
+specific command set is disabled, i.e. the SCPI command method RsSmbv.System.iresponse is discarded.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>idn_response: string</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_klock</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/System.html#SystemCls.get_klock"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: SYSTem:KLOCk</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">get_klock</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Disables the front panel keyboard of the instrument.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>state: 1| ON| 0| OFF</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_language</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/System.html#SystemCls.get_language"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: SYSTem:LANGuage</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">get_language</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Sets the remote control command set.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>language: string</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_ninformation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/System.html#SystemCls.get_ninformation"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: SYSTem:NINFormation</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">get_ninformation</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Queries the oldest information message (‘Error History &gt; Level &gt; Info’) in the error/event queue.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>next_info: string</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_oresponse</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/System.html#SystemCls.get_oresponse"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: SYSTem:ORESponse</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">get_oresponse</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Defines the user defined response string for <a href="#id3"><span class="problematic" id="id4">*</span></a>OPT. Note: While working in an emulation mode, the instrument’s specific
+command set is disabled, i.e. the SCPI command method RsSmbv.System.oresponse is discarded.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>oresponse: string</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_osystem</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/System.html#SystemCls.get_osystem"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: SYSTem:OSYStem</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">get_osystem</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Queries the operating system of the instrument.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>oper_system: string</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_simulation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/System.html#SystemCls.get_simulation"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: SYSTem:SIMulation</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">get_simulation</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>No command help available</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>status: No help available</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_sr_cat</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/System.html#SystemCls.get_sr_cat"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: SYSTem:SRCat</span>
+<span class="n">value</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">get_sr_cat</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>No command help available</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>catalog: No help available</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_sr_mode</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">RsSmbv.enums.RecScpiCmdMode</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/System.html#SystemCls.get_sr_mode"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: SYSTem:SRMode</span>
+<span class="n">value</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">RecScpiCmdMode</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">get_sr_mode</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>No command help available</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>mode: No help available</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_sr_sel</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/System.html#SystemCls.get_sr_sel"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: SYSTem:SRSel</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">get_sr_sel</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>No command help available</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>filename: No help available</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_tzone</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/System.html#SystemCls.get_tzone"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: SYSTem:TZONe</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">get_tzone</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>No command help available</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>pseudo_string: No help available</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_up_time</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/System.html#SystemCls.get_up_time"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: SYSTem:UPTime</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">get_up_time</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Queries the up time of the operating system.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>up_time: ‘ddd.hh:mm:ss’</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_version</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/System.html#SystemCls.get_version"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: SYSTem:VERSion</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">get_version</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Queries the SCPI version the instrument’s command set complies with.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>version: string</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">preset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pseudo_string</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/System.html#SystemCls.preset"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: SYSTem:PRESet</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">preset</span><span class="p">(</span><span class="n">pseudo_string</span> <span class="o">=</span> <span class="s1">&#39;abc&#39;</span><span class="p">)</span>
+
+
+    <span class="n">INTRO_CMD_HELP</span><span class="p">:</span> <span class="n">Triggers</span> <span class="n">an</span> <span class="n">instrument</span> <span class="n">reset</span><span class="o">.</span> <span class="n">It</span> <span class="n">has</span> <span class="n">the</span> <span class="n">same</span> <span class="n">effect</span> <span class="k">as</span><span class="p">:</span>
+
+    <span class="o">-</span> <span class="n">The</span> <span class="p">[</span><span class="n">Preset</span><span class="p">]</span> <span class="n">key</span><span class="o">.</span> <span class="n">However</span><span class="p">,</span> <span class="n">the</span> <span class="n">command</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">close</span> <span class="nb">open</span> <span class="n">GUI</span> <span class="n">dialogs</span> <span class="n">like</span> <span class="n">the</span> <span class="n">key</span> <span class="n">does</span><span class="o">.</span>
+    <span class="o">-</span> <span class="n">The</span> <span class="o">*</span><span class="n">RST</span> <span class="n">command</span>
+</pre></div>
+</div>
+<p>For an overview of the settings affected by the preset function, see Table ‘Key parameters affected by preset and
+factory preset’</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param pseudo_string</dt>
+<dd class="field-odd"><p>No help available</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">preset_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pseudo_string</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/System.html#SystemCls.preset_all"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: SYSTem:PRESet:ALL</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">preset_all</span><span class="p">(</span><span class="n">pseudo_string</span> <span class="o">=</span> <span class="s1">&#39;abc&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>No command help available</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param pseudo_string</dt>
+<dd class="field-odd"><p>No help available</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">preset_base</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pseudo_string</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/System.html#SystemCls.preset_base"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: SYSTem:PRESet:BASE</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">preset_base</span><span class="p">(</span><span class="n">pseudo_string</span> <span class="o">=</span> <span class="s1">&#39;abc&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>No command help available</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param pseudo_string</dt>
+<dd class="field-odd"><p>No help available</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">recall</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/System.html#SystemCls.recall"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: SYSTem:RCL</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">recall</span><span class="p">(</span><span class="n">path_name</span> <span class="o">=</span> <span class="s1">&#39;abc&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Selects and uploads a <a href="#id5"><span class="problematic" id="id6">*</span></a>.savrcltxt file with previously saved R&amp;S SMBV100B settings from the default or a specified
+directory.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param path_name</dt>
+<dd class="field-odd"><p>string</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pseudo_string</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/System.html#SystemCls.reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: SYSTem:RESet</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">reset</span><span class="p">(</span><span class="n">pseudo_string</span> <span class="o">=</span> <span class="s1">&#39;abc&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>No command help available</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param pseudo_string</dt>
+<dd class="field-odd"><p>No help available</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">reset_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pseudo_string</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/System.html#SystemCls.reset_all"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: SYSTem:RESet:ALL</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">reset_all</span><span class="p">(</span><span class="n">pseudo_string</span> <span class="o">=</span> <span class="s1">&#39;abc&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>No command help available</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param pseudo_string</dt>
+<dd class="field-odd"><p>No help available</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">reset_base</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pseudo_string</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/System.html#SystemCls.reset_base"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: SYSTem:RESet:BASE</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">reset_base</span><span class="p">(</span><span class="n">pseudo_string</span> <span class="o">=</span> <span class="s1">&#39;abc&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>No command help available</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param pseudo_string</dt>
+<dd class="field-odd"><p>No help available</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/System.html#SystemCls.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: SYSTem:SAV</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">path_name</span> <span class="o">=</span> <span class="s1">&#39;abc&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Saves the current R&amp;S SMBV100B settings in a file. To deteremine the file name and storage location, enter the directory
+and file name with the command. According to the file type, the R&amp;S SMBV100B assigns the extension (<a href="#id7"><span class="problematic" id="id8">*</span></a>.
+savrcltxt) automatically.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param path_name</dt>
+<dd class="field-odd"><p>string</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_crash</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">test_scpi_generic</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/System.html#SystemCls.set_crash"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: SYSTem:CRASh</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">set_crash</span><span class="p">(</span><span class="n">test_scpi_generic</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>No command help available</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param test_scpi_generic</dt>
+<dd class="field-odd"><p>No help available</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_dlock</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">disp_lock_stat</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/System.html#SystemCls.set_dlock"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: SYSTem:DLOCk</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">set_dlock</span><span class="p">(</span><span class="n">disp_lock_stat</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Disables the manual operation over the display, including the front panel keyboard of the instrument.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param disp_lock_stat</dt>
+<dd class="field-odd"><p>1| ON| 0| OFF</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_import_py</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/System.html#SystemCls.set_import_py"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: SYSTem:IMPort</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">set_import_py</span><span class="p">(</span><span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;abc&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>No command help available</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param filename</dt>
+<dd class="field-odd"><p>No help available</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_iresponse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">idn_response</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/System.html#SystemCls.set_iresponse"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: SYSTem:IRESponse</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">set_iresponse</span><span class="p">(</span><span class="n">idn_response</span> <span class="o">=</span> <span class="s1">&#39;abc&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Defines the user defined identification string for <a href="#id9"><span class="problematic" id="id10">*</span></a>IDN. Note: While working in an emulation mode, the instrument’s
+specific command set is disabled, i.e. the SCPI command method RsSmbv.System.iresponse is discarded.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param idn_response</dt>
+<dd class="field-odd"><p>string</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_klock</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/System.html#SystemCls.set_klock"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: SYSTem:KLOCk</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">set_klock</span><span class="p">(</span><span class="n">state</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Disables the front panel keyboard of the instrument.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param state</dt>
+<dd class="field-odd"><p>1| ON| 0| OFF</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_language</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">language</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/System.html#SystemCls.set_language"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: SYSTem:LANGuage</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">set_language</span><span class="p">(</span><span class="n">language</span> <span class="o">=</span> <span class="s1">&#39;abc&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Sets the remote control command set.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param language</dt>
+<dd class="field-odd"><p>string</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_oresponse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">oresponse</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/System.html#SystemCls.set_oresponse"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: SYSTem:ORESponse</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">set_oresponse</span><span class="p">(</span><span class="n">oresponse</span> <span class="o">=</span> <span class="s1">&#39;abc&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Defines the user defined response string for <a href="#id11"><span class="problematic" id="id12">*</span></a>OPT. Note: While working in an emulation mode, the instrument’s specific
+command set is disabled, i.e. the SCPI command method RsSmbv.System.oresponse is discarded.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param oresponse</dt>
+<dd class="field-odd"><p>string</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_sr_mode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">RsSmbv.enums.RecScpiCmdMode</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/System.html#SystemCls.set_sr_mode"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: SYSTem:SRMode</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">set_sr_mode</span><span class="p">(</span><span class="n">mode</span> <span class="o">=</span> <span class="n">enums</span><span class="o">.</span><span class="n">RecScpiCmdMode</span><span class="o">.</span><span class="n">AUTO</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>No command help available</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param mode</dt>
+<dd class="field-odd"><p>No help available</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_sr_sel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/System.html#SystemCls.set_sr_sel"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: SYSTem:SRSel</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">set_sr_sel</span><span class="p">(</span><span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;abc&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>No command help available</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param filename</dt>
+<dd class="field-odd"><p>No help available</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_srestore</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_set</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/System.html#SystemCls.set_srestore"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: SYSTem:SREStore</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">set_srestore</span><span class="p">(</span><span class="n">data_set</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>No command help available</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param data_set</dt>
+<dd class="field-odd"><p>No help available</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_ssave</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_set</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/System.html#SystemCls.set_ssave"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: SYSTem:SSAVe</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">set_ssave</span><span class="p">(</span><span class="n">data_set</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>No command help available</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param data_set</dt>
+<dd class="field-odd"><p>No help available</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_tzone</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pseudo_string</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/System.html#SystemCls.set_tzone"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: SYSTem:TZONe</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">set_tzone</span><span class="p">(</span><span class="n">pseudo_string</span> <span class="o">=</span> <span class="s1">&#39;abc&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>No command help available</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param pseudo_string</dt>
+<dd class="field-odd"><p>No help available</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_wait</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time_ms</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/System.html#SystemCls.set_wait"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: SYSTem:WAIT</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">set_wait</span><span class="p">(</span><span class="n">time_ms</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Delays the execution of the subsequent remote command by the specified time. This function is useful, for example to
+execute an SCPI sequence automatically but with a defined time delay between some commands. See ‘How to assign actions to
+the [ (User) ] key’.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param time_ms</dt>
+<dd class="field-odd"><p>integer Wait time in ms Range: 0 to 10000</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+</dd></dl>
+
+<p class="rubric">Cloning the Group</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a clone of the original group, that exists independently</span>
+<span class="n">group2</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+</pre></div>
+</div>
+<p class="rubric">Subgroups</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="System_Beeper.html">Beeper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="System_Bios.html">Bios</a></li>
+<li class="toctree-l1"><a class="reference internal" href="System_Communicate.html">Communicate</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="System_Communicate_Gpib.html">Gpib</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="System_Communicate_Gpib_Self.html">Self</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="System_Communicate_Hislip.html">Hislip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="System_Communicate_Network.html">Network</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="System_Communicate_Network_Common.html">Common</a></li>
+<li class="toctree-l3"><a class="reference internal" href="System_Communicate_Network_IpAddress.html">IpAddress</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="System_Communicate_Network_IpAddress_Subnet.html">Subnet</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="System_Communicate_Network_Restart.html">Restart</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="System_Communicate_Scpi.html">Scpi</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="System_Communicate_Scpi_Ethernet.html">Ethernet</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="System_Communicate_Serial.html">Serial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="System_Communicate_Socket.html">Socket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="System_Communicate_Usb.html">Usb</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="System_Date.html">Date</a></li>
+<li class="toctree-l1"><a class="reference internal" href="System_Device.html">Device</a></li>
+<li class="toctree-l1"><a class="reference internal" href="System_DeviceFootprint.html">DeviceFootprint</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="System_DeviceFootprint_History.html">History</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="System_Dexchange.html">Dexchange</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="System_Dexchange_Execute.html">Execute</a></li>
+<li class="toctree-l2"><a class="reference internal" href="System_Dexchange_Template.html">Template</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="System_Dexchange_Template_Predefined.html">Predefined</a></li>
+<li class="toctree-l3"><a class="reference internal" href="System_Dexchange_Template_User.html">User</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="System_Dexchange_Transaction.html">Transaction</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="System_Error.html">Error</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="System_Error_Code.html">Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="System_Error_History.html">History</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="System_ExtDevices.html">ExtDevices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="System_ExtDevices_Update.html">Update</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="System_ExtDevices_Update_Check.html">Check</a></li>
+<li class="toctree-l3"><a class="reference internal" href="System_ExtDevices_Update_Needed.html">Needed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="System_ExtDevices_Update_Tselected.html">Tselected</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="System_Files.html">Files</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="System_Files_Temporary.html">Temporary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="System_FpFpga.html">FpFpga</a></li>
+<li class="toctree-l1"><a class="reference internal" href="System_Fpreset.html">Fpreset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="System_Generic.html">Generic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="System_Help.html">Help</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="System_Help_Syntax.html">Syntax</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="System_Identification.html">Identification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="System_Information.html">Information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="System_Issd.html">Issd</a></li>
+<li class="toctree-l1"><a class="reference internal" href="System_Linux.html">Linux</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="System_Linux_Kernel.html">Kernel</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="System_Lock.html">Lock</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="System_Lock_Name.html">Name</a></li>
+<li class="toctree-l2"><a class="reference internal" href="System_Lock_Owner.html">Owner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="System_Lock_Release.html">Release</a></li>
+<li class="toctree-l2"><a class="reference internal" href="System_Lock_Request.html">Request</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="System_Lock_Request_Shared.html">Shared</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="System_Lock_Shared.html">Shared</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="System_MassMemory.html">MassMemory</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="System_MassMemory_Path.html">Path</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="System_Ntp.html">Ntp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="System_Option.html">Option</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="System_Option_Trial.html">Trial</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="System_Package.html">Package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="System_Package_ChartDisplay.html">ChartDisplay</a></li>
+<li class="toctree-l2"><a class="reference internal" href="System_Package_GuiFramework.html">GuiFramework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="System_Package_Qt.html">Qt</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="System_PciFpga.html">PciFpga</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="System_PciFpga_Update.html">Update</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="System_PciFpga_Update_Check.html">Check</a></li>
+<li class="toctree-l3"><a class="reference internal" href="System_PciFpga_Update_Needed.html">Needed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="System_PciFpga_Update_Tselected.html">Tselected</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="System_Profiling.html">Profiling</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="System_Profiling_HwAccess.html">HwAccess</a></li>
+<li class="toctree-l2"><a class="reference internal" href="System_Profiling_Logging.html">Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="System_Profiling_Module.html">Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="System_Profiling_Tick.html">Tick</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="System_Profiling_Tick_Enable.html">Enable</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="System_Profiling_Tpoint.html">Tpoint</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="System_Profiling_Tpoint_Catalog.html">Catalog</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="System_Protect.html">Protect&lt;Level&gt;</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="System_Protect_State.html">State</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="System_Reboot.html">Reboot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="System_Restart.html">Restart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="System_Scrpt.html">Scrpt</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="System_Scrpt_Discard.html">Discard</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="System_Security.html">Security</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="System_Security_Mmem.html">Mmem</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="System_Security_Mmem_Protect.html">Protect</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="System_Security_Mmem_Protect_State.html">State</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="System_Security_Network.html">Network</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="System_Security_Network_Avahi.html">Avahi</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="System_Security_Network_Avahi_State.html">State</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="System_Security_Network_Ftp.html">Ftp</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="System_Security_Network_Ftp_State.html">State</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="System_Security_Network_Http.html">Http</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="System_Security_Network_Http_State.html">State</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="System_Security_Network_Raw.html">Raw</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="System_Security_Network_Raw_State.html">State</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="System_Security_Network_RemSupport.html">RemSupport</a></li>
+<li class="toctree-l3"><a class="reference internal" href="System_Security_Network_Rpc.html">Rpc</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="System_Security_Network_Rpc_State.html">State</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="System_Security_Network_Smb.html">Smb</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="System_Security_Network_Smb_State.html">State</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="System_Security_Network_Soe.html">Soe</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="System_Security_Network_Soe_State.html">State</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="System_Security_Network_Ssh.html">Ssh</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="System_Security_Network_Ssh_State.html">State</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="System_Security_Network_State.html">State</a></li>
+<li class="toctree-l3"><a class="reference internal" href="System_Security_Network_SwUpdate.html">SwUpdate</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="System_Security_Network_SwUpdate_State.html">State</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="System_Security_Network_Vnc.html">Vnc</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="System_Security_Network_Vnc_State.html">State</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="System_Security_Sanitize.html">Sanitize</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="System_Security_Sanitize_State.html">State</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="System_Security_SuPolicy.html">SuPolicy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="System_Security_UsbStorage.html">UsbStorage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="System_Security_UsbStorage_State.html">State</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="System_Security_VolMode.html">VolMode</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="System_Security_VolMode_State.html">State</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="System_Shutdown.html">Shutdown</a></li>
+<li class="toctree-l1"><a class="reference internal" href="System_Specification.html">Specification</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="System_Specification_Identification.html">Identification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="System_Specification_Version.html">Version</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="System_SrData.html">SrData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="System_Srexec.html">Srexec</a></li>
+<li class="toctree-l1"><a class="reference internal" href="System_Srtime.html">Srtime</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="System_Srtime_Synchronize.html">Synchronize</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="System_Startup.html">Startup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="System_Time.html">Time</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="System_Time_DaylightSavingTime.html">DaylightSavingTime</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="System_Time_DaylightSavingTime_Rule.html">Rule</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="System_Time_HrTimer.html">HrTimer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="System_Time_HrTimer_Absolute.html">Absolute</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="System_Time_Zone.html">Zone</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="System_Ulock.html">Ulock</a></li>
+<li class="toctree-l1"><a class="reference internal" href="System_Undo.html">Undo</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="System_Undo_Hclear.html">Hclear</a></li>
+<li class="toctree-l2"><a class="reference internal" href="System_Undo_Hid.html">Hid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="System_Undo_Hlable.html">Hlable</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Sweep.html" class="btn btn-neutral float-left" title="Sweep" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="System_Beeper.html" class="btn btn-neutral float-right" title="Beeper" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

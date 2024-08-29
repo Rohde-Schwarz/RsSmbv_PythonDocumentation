@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RsSmbv.Implementations.Source.Pm &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../_static/copybutton.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../RsSmbv.html">RsSmbv API Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+          <li><a href="../Source.html">RsSmbv.Implementations.Source</a> &raquo;</li>
+      <li>RsSmbv.Implementations.Source.Pm</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for RsSmbv.Implementations.Source.Pm</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">....Internal.Core</span> <span class="kn">import</span> <span class="n">Core</span>
+<span class="kn">from</span> <span class="nn">....Internal.CommandsGroup</span> <span class="kn">import</span> <span class="n">CommandsGroup</span>
+<span class="kn">from</span> <span class="nn">....Internal</span> <span class="kn">import</span> <span class="n">Conversions</span>
+<span class="kn">from</span> <span class="nn">....Internal.RepeatedCapability</span> <span class="kn">import</span> <span class="n">RepeatedCapability</span>
+<span class="kn">from</span> <span class="nn">....</span> <span class="kn">import</span> <span class="n">enums</span>
+<span class="kn">from</span> <span class="nn">....</span> <span class="kn">import</span> <span class="n">repcap</span>
+
+
+<span class="c1"># noinspection PyPep8Naming,PyAttributeOutsideInit,SpellCheckingInspection</span>
+<div class="viewcode-block" id="PmCls"><a class="viewcode-back" href="../../../../Source_Pm.html#RsSmbv.Implementations.Source.Pm.PmCls">[docs]</a><span class="k">class</span> <span class="nc">PmCls</span><span class="p">:</span>
+	<span class="sd">&quot;&quot;&quot;Pm commands group definition. 10 total commands, 5 Subgroups, 3 group commands</span>
+<span class="sd">	Repeated Capability: GeneratorIx, default value after init: GeneratorIx.Nr1&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">core</span><span class="p">:</span> <span class="n">Core</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span> <span class="o">=</span> <span class="n">core</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span> <span class="o">=</span> <span class="n">CommandsGroup</span><span class="p">(</span><span class="s2">&quot;pm&quot;</span><span class="p">,</span> <span class="n">core</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">rep_cap</span> <span class="o">=</span> <span class="n">RepeatedCapability</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">group_name</span><span class="p">,</span> <span class="s1">&#39;repcap_generatorIx_get&#39;</span><span class="p">,</span> <span class="s1">&#39;repcap_generatorIx_set&#39;</span><span class="p">,</span> <span class="n">repcap</span><span class="o">.</span><span class="n">GeneratorIx</span><span class="o">.</span><span class="n">Nr1</span><span class="p">)</span>
+
+	<span class="k">def</span> <span class="nf">repcap_generatorIx_set</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">generatorIx</span><span class="p">:</span> <span class="n">repcap</span><span class="o">.</span><span class="n">GeneratorIx</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Repeated Capability default value numeric suffix.</span>
+<span class="sd">		This value is used, if you do not explicitely set it in the child set/get methods, or if you leave it to GeneratorIx.Default</span>
+<span class="sd">		Default value after init: GeneratorIx.Nr1&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">set_repcap_enum_value</span><span class="p">(</span><span class="n">generatorIx</span><span class="p">)</span>
+
+	<span class="k">def</span> <span class="nf">repcap_generatorIx_get</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">repcap</span><span class="o">.</span><span class="n">GeneratorIx</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Returns the current default repeated capability for the child set/get methods&quot;&quot;&quot;</span>
+		<span class="c1"># noinspection PyTypeChecker</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">get_repcap_enum_value</span><span class="p">()</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">deviation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;deviation commands group. 0 Sub-classes, 3 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_deviation&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Deviation</span> <span class="kn">import</span> <span class="n">DeviationCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_deviation</span> <span class="o">=</span> <span class="n">DeviationCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_deviation</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">external</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;external commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_external&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.External</span> <span class="kn">import</span> <span class="n">ExternalCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_external</span> <span class="o">=</span> <span class="n">ExternalCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_external</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">internal</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;internal commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_internal&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Internal</span> <span class="kn">import</span> <span class="n">InternalCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_internal</span> <span class="o">=</span> <span class="n">InternalCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_internal</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">source</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;source commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_source&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Source</span> <span class="kn">import</span> <span class="n">SourceCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_source</span> <span class="o">=</span> <span class="n">SourceCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_source</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">state</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;state commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_state&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.State</span> <span class="kn">import</span> <span class="n">StateCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_state</span> <span class="o">=</span> <span class="n">StateCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_state</span>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="PmCls.get_mode"><a class="viewcode-back" href="../../../../Source_Pm.html#RsSmbv.Implementations.Source.Pm.PmCls.get_mode">[docs]</a>	<span class="k">def</span> <span class="nf">get_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">PmMode</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:PM:MODE \n</span>
+<span class="sd">		Snippet: value: enums.PmMode = driver.source.pm.get_mode() \n</span>
+<span class="sd">		Selects the mode for the phase modulation. \n</span>
+<span class="sd">			:return: mode: HBANdwidth| HDEViation| LNOise HBANdwidth Sets the maximum available bandwidth. HDEViation Sets the maximum range for FiM deviation. LNOise Selects a phase modulation mode with phase noise and spurious characteristics close to CW mode.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:PM:MODE?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">PmMode</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PmCls.set_mode"><a class="viewcode-back" href="../../../../Source_Pm.html#RsSmbv.Implementations.Source.Pm.PmCls.set_mode">[docs]</a>	<span class="k">def</span> <span class="nf">set_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">PmMode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:PM:MODE \n</span>
+<span class="sd">		Snippet: driver.source.pm.set_mode(mode = enums.PmMode.HBANdwidth) \n</span>
+<span class="sd">		Selects the mode for the phase modulation. \n</span>
+<span class="sd">			:param mode: HBANdwidth| HDEViation| LNOise HBANdwidth Sets the maximum available bandwidth. HDEViation Sets the maximum range for FiM deviation. LNOise Selects a phase modulation mode with phase noise and spurious characteristics close to CW mode.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">mode</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">PmMode</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:PM:MODE </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PmCls.get_ratio"><a class="viewcode-back" href="../../../../Source_Pm.html#RsSmbv.Implementations.Source.Pm.PmCls.get_ratio">[docs]</a>	<span class="k">def</span> <span class="nf">get_ratio</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:PM:RATio \n</span>
+<span class="sd">		Snippet: value: float = driver.source.pm.get_ratio() \n</span>
+<span class="sd">		Sets the deviation ratio (path2 to path1) in percent. \n</span>
+<span class="sd">			:return: ratio: float Range: 0 to 100</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:PM:RATio?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PmCls.set_ratio"><a class="viewcode-back" href="../../../../Source_Pm.html#RsSmbv.Implementations.Source.Pm.PmCls.set_ratio">[docs]</a>	<span class="k">def</span> <span class="nf">set_ratio</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ratio</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:PM:RATio \n</span>
+<span class="sd">		Snippet: driver.source.pm.set_ratio(ratio = 1.0) \n</span>
+<span class="sd">		Sets the deviation ratio (path2 to path1) in percent. \n</span>
+<span class="sd">			:param ratio: float Range: 0 to 100</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">ratio</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:PM:RATio </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PmCls.get_sensitivity"><a class="viewcode-back" href="../../../../Source_Pm.html#RsSmbv.Implementations.Source.Pm.PmCls.get_sensitivity">[docs]</a>	<span class="k">def</span> <span class="nf">get_sensitivity</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:PM:SENSitivity \n</span>
+<span class="sd">		Snippet: value: float = driver.source.pm.get_sensitivity() \n</span>
+<span class="sd">		Queries the sensitivity of the externally applied signal for phase modulation. The returned value reports the sensitivity</span>
+<span class="sd">		in RAD/V. It is assigned to the voltage value for full modulation of the input. \n</span>
+<span class="sd">			:return: sensitivity: float</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:PM:SENSitivity?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+	<span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;PmCls&#39;</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Clones the group by creating new object from it and its whole existing subgroups</span>
+<span class="sd">		Also copies all the existing default Repeated Capabilities setting,</span>
+<span class="sd">		which you can change independently without affecting the original group&quot;&quot;&quot;</span>
+		<span class="n">new_group</span> <span class="o">=</span> <span class="n">PmCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">synchronize_repcaps</span><span class="p">(</span><span class="n">new_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">new_group</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,1455 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Downlink &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Ca" href="Source_Bb_Eutra_Downlink_Ca.html" />
+    <link rel="prev" title="Clock" href="Source_Bb_Eutra_Clock.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="RsSmbv.html">RsSmbv API Structure</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Bert.html">Bert</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Bler.html">Bler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Calibration.html">Calibration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clock.html">Clock</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Connector.html">Connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Device.html">Device</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Diagnostic.html">Diagnostic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Display.html">Display</a></li>
+<li class="toctree-l2"><a class="reference internal" href="FormatPy.html">FormatPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Fpanel.html">Fpanel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HardCopy.html">HardCopy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Initiate.html">Initiate&lt;Channel&gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Kboard.html">Kboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MassMemory.html">MassMemory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Memory.html">Memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Output.html">Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Read.html">Read&lt;Channel&gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Sconfiguration.html">Sconfiguration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Sense.html">Sense&lt;Channel&gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slist.html">Slist</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="Source.html">Source</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="Source_Adf.html">Adf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Am.html">Am&lt;GeneratorIx&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_AreGenerator.html">AreGenerator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Awgn.html">Awgn</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="Source_Bb.html">Bb</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Arbitrary.html">Arbitrary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Btooth.html">Btooth</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_C2K.html">C2K</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Coder.html">Coder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Dab.html">Dab</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Dme.html">Dme</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="Source_Bb_Eutra.html">Eutra</a><ul class="current">
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Bbfs.html">Bbfs</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Clipping.html">Clipping</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Clock.html">Clock</a></li>
+<li class="toctree-l5 current"><a class="current reference internal" href="#">Downlink</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Ca.html">Ca</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Carrier.html">Carrier&lt;Carrier&gt;</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Cell.html">Cell&lt;CellNull&gt;</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Conf.html">Conf</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Csettings.html">Csettings</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Csis.html">Csis</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Drs.html">Drs</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Dumd.html">Dumd</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc.html">Emtc</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Laa.html">Laa</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Mbsfn.html">Mbsfn</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Mimo.html">Mimo</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot.html">Niot</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Pbch.html">Pbch</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Pdcch.html">Pdcch</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Pdsch.html">Pdsch</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Phich.html">Phich</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Plci.html">Plci</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Prss.html">Prss</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Refsig.html">Refsig</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Downlink_RstFrame.html">RstFrame</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf.html">Subf&lt;SubframeNull&gt;</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Sync.html">Sync</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User.html">User&lt;UserIx&gt;</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Downlink_View.html">View</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_FilterPy.html">FilterPy</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_LogGen.html">LogGen</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Notch.html">Notch&lt;NotchFilter&gt;</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Powc.html">Powc</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Setting.html">Setting</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_SymbolRate.html">SymbolRate</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Tcw.html">Tcw</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Tdd.html">Tdd</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Tdw.html">Tdw</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Timc.html">Timc</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Trigger.html">Trigger</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Udt.html">Udt</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Uplane.html">Uplane</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Uplink.html">Uplink</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Waveform.html">Waveform</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Evdo.html">Evdo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Gbas.html">Gbas</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Gnpr.html">Gnpr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Gnss.html">Gnss</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Graphics.html">Graphics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Gsm.html">Gsm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Huwb.html">Huwb</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Ils.html">Ils</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Impairment.html">Impairment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Info.html">Info</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Lora.html">Lora</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Mccw.html">Mccw</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nfc.html">Nfc</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G.html">Nr5G</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Ofdm.html">Ofdm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Path.html">Path</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Power.html">Power</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Pramp.html">Pramp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Progress.html">Progress</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Tdscdma.html">Tdscdma</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Trigger.html">Trigger</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Vor.html">Vor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_W3Gpp.html">W3Gpp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Wlnn.html">Wlnn</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bbin.html">Bbin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Combined.html">Combined</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Correction.html">Correction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Dme.html">Dme</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Efrontend.html">Efrontend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Fm.html">Fm&lt;GeneratorIx&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_FreqSweep.html">FreqSweep</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Frequency.html">Frequency</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Ils.html">Ils</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_InputPy.html">InputPy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Iq.html">Iq</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_LffSweep.html">LffSweep</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_LfOutput.html">LfOutput&lt;LfOutput&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_ListPy.html">ListPy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Mbeacon.html">Mbeacon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Modulation.html">Modulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Noise.html">Noise</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Occupy.html">Occupy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Path.html">Path</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Pgenerator.html">Pgenerator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Phase.html">Phase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Pm.html">Pm&lt;GeneratorIx&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Power.html">Power</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Psweep.html">Psweep</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Pulm.html">Pulm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Roscillator.html">Roscillator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Sweep.html">Sweep</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_ValRf.html">ValRf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Vor.html">Vor</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Status.html">Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Sweep.html">Sweep</a></li>
+<li class="toctree-l2"><a class="reference internal" href="System.html">System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Test.html">Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Trigger.html">Trigger&lt;InputIx&gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Unit.html">Unit</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="RsSmbv.html">RsSmbv API Structure</a> &raquo;</li>
+          <li><a href="Source.html">Source</a> &raquo;</li>
+          <li><a href="Source_Bb.html">Bb</a> &raquo;</li>
+          <li><a href="Source_Bb_Eutra.html">Eutra</a> &raquo;</li>
+      <li>Downlink</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Source_Bb_Eutra_Downlink.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="downlink">
+<h1>Downlink<a class="headerlink" href="#downlink" title="Permalink to this headline"></a></h1>
+<p class="rubric">SCPI Commands :</p>
+<div class="highlight-python notranslate" id="index-0"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">BB</span><span class="p">:</span><span class="n">EUTRa</span><span class="p">:</span><span class="n">DL</span><span class="p">:</span><span class="n">BUR</span>
+<span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">BB</span><span class="p">:</span><span class="n">EUTRa</span><span class="p">:</span><span class="n">DL</span><span class="p">:</span><span class="n">BW</span>
+<span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">BB</span><span class="p">:</span><span class="n">EUTRa</span><span class="p">:</span><span class="n">DL</span><span class="p">:</span><span class="n">CONSubframes</span>
+<span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">BB</span><span class="p">:</span><span class="n">EUTRa</span><span class="p">:</span><span class="n">DL</span><span class="p">:</span><span class="n">CPC</span>
+<span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">BB</span><span class="p">:</span><span class="n">EUTRa</span><span class="p">:</span><span class="n">DL</span><span class="p">:</span><span class="n">FFT</span>
+<span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">BB</span><span class="p">:</span><span class="n">EUTRa</span><span class="p">:</span><span class="n">DL</span><span class="p">:</span><span class="n">LGS</span>
+<span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">BB</span><span class="p">:</span><span class="n">EUTRa</span><span class="p">:</span><span class="n">DL</span><span class="p">:</span><span class="n">NORB</span>
+<span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">BB</span><span class="p">:</span><span class="n">EUTRa</span><span class="p">:</span><span class="n">DL</span><span class="p">:</span><span class="n">OCCBandwidth</span>
+<span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">BB</span><span class="p">:</span><span class="n">EUTRa</span><span class="p">:</span><span class="n">DL</span><span class="p">:</span><span class="n">OCCSubcarriers</span>
+<span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">BB</span><span class="p">:</span><span class="n">EUTRa</span><span class="p">:</span><span class="n">DL</span><span class="p">:</span><span class="n">PUM</span>
+<span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">BB</span><span class="p">:</span><span class="n">EUTRa</span><span class="p">:</span><span class="n">DL</span><span class="p">:</span><span class="n">RGS</span>
+<span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">BB</span><span class="p">:</span><span class="n">EUTRa</span><span class="p">:</span><span class="n">DL</span><span class="p">:</span><span class="n">SFSelection</span>
+<span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">BB</span><span class="p">:</span><span class="n">EUTRa</span><span class="p">:</span><span class="n">DL</span><span class="p">:</span><span class="n">SRATe</span>
+<span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">BB</span><span class="p">:</span><span class="n">EUTRa</span><span class="p">:</span><span class="n">DL</span><span class="p">:</span><span class="n">ULCPc</span>
+</pre></div>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DownlinkCls</span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Eutra/Downlink.html#DownlinkCls"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Downlink commands group definition. 619 total commands, 25 Subgroups, 14 group commands</p>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_bur</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">RsSmbv.enums.EutraBehUnsSubFrames</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Eutra/Downlink.html#DownlinkCls.get_bur"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:BUR</span>
+<span class="n">value</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraBehUnsSubFrames</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">eutra</span><span class="o">.</span><span class="n">downlink</span><span class="o">.</span><span class="n">get_bur</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Selects either to fill unscheduled resource elements and subframes with dummy data or DTX. In ‘Mode &gt; eMTC/NB-IoT’,
+unused resource elements are filled in with DTX.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>bur: DUData| DTX</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_bw</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">RsSmbv.enums.EutraChannelBandwidth</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Eutra/Downlink.html#DownlinkCls.get_bw"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:BW</span>
+<span class="n">value</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraChannelBandwidth</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">eutra</span><span class="o">.</span><span class="n">downlink</span><span class="o">.</span><span class="n">get_bw</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Sets the DL channel bandwidth.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>bw: BW1_40| BW3_00| BW5_00| BW10_00| BW15_00| BW20_00 | BW0_20 | USER</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_con_sub_frames</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Eutra/Downlink.html#DownlinkCls.get_con_sub_frames"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:CONSubframes</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">eutra</span><span class="o">.</span><span class="n">downlink</span><span class="o">.</span><span class="n">get_con_sub_frames</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Sets the number of configurable subframes.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>con_sub_frames: integer Range: 1 to 40</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_cpc</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">RsSmbv.enums.EutraCyclicPrefixGs</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Eutra/Downlink.html#DownlinkCls.get_cpc"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:CPC</span>
+<span class="n">value</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraCyclicPrefixGs</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">eutra</span><span class="o">.</span><span class="n">downlink</span><span class="o">.</span><span class="n">get_cpc</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Sets the cyclic prefix length for all LTE subframes.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>cyclic_prefix: NORMal| EXTended | USER</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_fft</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Eutra/Downlink.html#DownlinkCls.get_fft"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:FFT</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">eutra</span><span class="o">.</span><span class="n">downlink</span><span class="o">.</span><span class="n">get_fft</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Sets the FFT size.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>fft: integer Range: 64 to 2048</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_lgs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Eutra/Downlink.html#DownlinkCls.get_lgs"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:LGS</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">eutra</span><span class="o">.</span><span class="n">downlink</span><span class="o">.</span><span class="n">get_lgs</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Queries the number of left guard subcarriers.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>lgs: integer Range: 28 to 364</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_no_rb</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Eutra/Downlink.html#DownlinkCls.get_no_rb"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:NORB</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">eutra</span><span class="o">.</span><span class="n">downlink</span><span class="o">.</span><span class="n">get_no_rb</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Selects the number of physical resource blocks per slot.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>no_rb: integer Range: 6 to 110</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_occ_bandwidth</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Eutra/Downlink.html#DownlinkCls.get_occ_bandwidth"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:OCCBandwidth</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">eutra</span><span class="o">.</span><span class="n">downlink</span><span class="o">.</span><span class="n">get_occ_bandwidth</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Queries the occupied bandwidth.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>occup_bandwidth: float</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_occ_subcarriers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Eutra/Downlink.html#DownlinkCls.get_occ_subcarriers"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:OCCSubcarriers</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">eutra</span><span class="o">.</span><span class="n">downlink</span><span class="o">.</span><span class="n">get_occ_subcarriers</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Queries the occupied subcarriers.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>occup_subcarr: integer Range: 72 to 1321</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_pum</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">RsSmbv.enums.EutraPwrUpdMode</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Eutra/Downlink.html#DownlinkCls.get_pum"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:PUM</span>
+<span class="n">value</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraPwrUpdMode</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">eutra</span><span class="o">.</span><span class="n">downlink</span><span class="o">.</span><span class="n">get_pum</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>No command help available</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>power_update_mode: No help available</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_rgs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Eutra/Downlink.html#DownlinkCls.get_rgs"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:RGS</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">eutra</span><span class="o">.</span><span class="n">downlink</span><span class="o">.</span><span class="n">get_rgs</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Queries the number of right guard subcarriers.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>rgs: integer Range: 27 to 364</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_sf_selection</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Eutra/Downlink.html#DownlinkCls.get_sf_selection"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:SFSelection</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">eutra</span><span class="o">.</span><span class="n">downlink</span><span class="o">.</span><span class="n">get_sf_selection</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>No command help available</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>sub_frame_sel: No help available</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_symbol_rate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Eutra/Downlink.html#DownlinkCls.get_symbol_rate"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:SRATe</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">eutra</span><span class="o">.</span><span class="n">downlink</span><span class="o">.</span><span class="n">get_symbol_rate</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Queries the sampling rate.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>sample_rate: float Range: 192E4 to 3072E4</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_ulcpc</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">RsSmbv.enums.EuTraDuration</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Eutra/Downlink.html#DownlinkCls.get_ulcpc"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:ULCPc</span>
+<span class="n">value</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">EuTraDuration</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">eutra</span><span class="o">.</span><span class="n">downlink</span><span class="o">.</span><span class="n">get_ulcpc</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>In TDD duplexing mode, sets the cyclic prefix for the opposite direction.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>gs_cpc_opp_dir: NORMal| EXTended</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_bur</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bur</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">RsSmbv.enums.EutraBehUnsSubFrames</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Eutra/Downlink.html#DownlinkCls.set_bur"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:BUR</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">eutra</span><span class="o">.</span><span class="n">downlink</span><span class="o">.</span><span class="n">set_bur</span><span class="p">(</span><span class="n">bur</span> <span class="o">=</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraBehUnsSubFrames</span><span class="o">.</span><span class="n">DTX</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Selects either to fill unscheduled resource elements and subframes with dummy data or DTX. In ‘Mode &gt; eMTC/NB-IoT’,
+unused resource elements are filled in with DTX.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param bur</dt>
+<dd class="field-odd"><p>DUData| DTX</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_bw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bw</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">RsSmbv.enums.EutraChannelBandwidth</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Eutra/Downlink.html#DownlinkCls.set_bw"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:BW</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">eutra</span><span class="o">.</span><span class="n">downlink</span><span class="o">.</span><span class="n">set_bw</span><span class="p">(</span><span class="n">bw</span> <span class="o">=</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraChannelBandwidth</span><span class="o">.</span><span class="n">BW0_20</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Sets the DL channel bandwidth.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param bw</dt>
+<dd class="field-odd"><p>BW1_40| BW3_00| BW5_00| BW10_00| BW15_00| BW20_00 | BW0_20 | USER</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_con_sub_frames</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">con_sub_frames</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Eutra/Downlink.html#DownlinkCls.set_con_sub_frames"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:CONSubframes</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">eutra</span><span class="o">.</span><span class="n">downlink</span><span class="o">.</span><span class="n">set_con_sub_frames</span><span class="p">(</span><span class="n">con_sub_frames</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Sets the number of configurable subframes.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param con_sub_frames</dt>
+<dd class="field-odd"><p>integer Range: 1 to 40</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_cpc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cyclic_prefix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">RsSmbv.enums.EutraCyclicPrefixGs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Eutra/Downlink.html#DownlinkCls.set_cpc"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:CPC</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">eutra</span><span class="o">.</span><span class="n">downlink</span><span class="o">.</span><span class="n">set_cpc</span><span class="p">(</span><span class="n">cyclic_prefix</span> <span class="o">=</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraCyclicPrefixGs</span><span class="o">.</span><span class="n">EXTended</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Sets the cyclic prefix length for all LTE subframes.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param cyclic_prefix</dt>
+<dd class="field-odd"><p>NORMal| EXTended | USER</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_fft</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fft</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Eutra/Downlink.html#DownlinkCls.set_fft"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:FFT</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">eutra</span><span class="o">.</span><span class="n">downlink</span><span class="o">.</span><span class="n">set_fft</span><span class="p">(</span><span class="n">fft</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Sets the FFT size.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param fft</dt>
+<dd class="field-odd"><p>integer Range: 64 to 2048</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_no_rb</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">no_rb</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Eutra/Downlink.html#DownlinkCls.set_no_rb"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:NORB</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">eutra</span><span class="o">.</span><span class="n">downlink</span><span class="o">.</span><span class="n">set_no_rb</span><span class="p">(</span><span class="n">no_rb</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Selects the number of physical resource blocks per slot.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param no_rb</dt>
+<dd class="field-odd"><p>integer Range: 6 to 110</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_pum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">power_update_mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">RsSmbv.enums.EutraPwrUpdMode</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Eutra/Downlink.html#DownlinkCls.set_pum"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:PUM</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">eutra</span><span class="o">.</span><span class="n">downlink</span><span class="o">.</span><span class="n">set_pum</span><span class="p">(</span><span class="n">power_update_mode</span> <span class="o">=</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraPwrUpdMode</span><span class="o">.</span><span class="n">CONTinuous</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>No command help available</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param power_update_mode</dt>
+<dd class="field-odd"><p>No help available</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_sf_selection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sub_frame_sel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Eutra/Downlink.html#DownlinkCls.set_sf_selection"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:SFSelection</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">eutra</span><span class="o">.</span><span class="n">downlink</span><span class="o">.</span><span class="n">set_sf_selection</span><span class="p">(</span><span class="n">sub_frame_sel</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>No command help available</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param sub_frame_sel</dt>
+<dd class="field-odd"><p>No help available</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_ulcpc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gs_cpc_opp_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">RsSmbv.enums.EuTraDuration</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Eutra/Downlink.html#DownlinkCls.set_ulcpc"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:ULCPc</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">eutra</span><span class="o">.</span><span class="n">downlink</span><span class="o">.</span><span class="n">set_ulcpc</span><span class="p">(</span><span class="n">gs_cpc_opp_dir</span> <span class="o">=</span> <span class="n">enums</span><span class="o">.</span><span class="n">EuTraDuration</span><span class="o">.</span><span class="n">EXTended</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In TDD duplexing mode, sets the cyclic prefix for the opposite direction.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param gs_cpc_opp_dir</dt>
+<dd class="field-odd"><p>NORMal| EXTended</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+</dd></dl>
+
+<p class="rubric">Cloning the Group</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a clone of the original group, that exists independently</span>
+<span class="n">group2</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">eutra</span><span class="o">.</span><span class="n">downlink</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+</pre></div>
+</div>
+<p class="rubric">Subgroups</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Ca.html">Ca</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Ca_Cell.html">Cell&lt;CellNull&gt;</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Ca_Cell_Bw.html">Bw</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Ca_Cell_Cif.html">Cif</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Ca_Cell_Dfreq.html">Dfreq</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Ca_Cell_Duplexing.html">Duplexing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Ca_Cell_Id.html">Id</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Ca_Cell_Index.html">Index</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Ca_Cell_Phich.html">Phich</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Ca_Cell_Phich_Duration.html">Duration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Ca_Cell_Phich_NgParameter.html">NgParameter</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Ca_Cell_Poffset.html">Poffset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Ca_Cell_Pstart.html">Pstart</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Ca_Cell_ScIndex.html">ScIndex</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Ca_Cell_SpsConf.html">SpsConf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Ca_Cell_State.html">State</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Ca_Cell_Tdelay.html">Tdelay</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Ca_Cell_UdConf.html">UdConf</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Carrier.html">Carrier&lt;Carrier&gt;</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Carrier_Niot.html">Niot</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Carrier_Niot_Cell.html">Cell</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Carrier_Niot_CidGroup.html">CidGroup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Carrier_Niot_CrsSeq.html">CrsSeq</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Carrier_Niot_Dfreq.html">Dfreq</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Carrier_Niot_GbrbIdx.html">GbrbIdx</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Carrier_Niot_Mode.html">Mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Carrier_Niot_Nvsf.html">Nvsf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Carrier_Niot_RbIdx.html">RbIdx</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Carrier_Niot_Sf.html">Sf&lt;SubframeNull&gt;</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Carrier_Niot_Sf_Valsf.html">Valsf</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Carrier_Niot_Sfall.html">Sfall</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Carrier_Niot_Sfnn.html">Sfnn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Carrier_Niot_State.html">State</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Cell.html">Cell&lt;CellNull&gt;</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Cell_Subf.html">Subf&lt;SubframeNull&gt;</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Cell_Subf_Alloc.html">Alloc&lt;AllocationNull&gt;</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Cell_Subf_Alloc_Pusch.html">Pusch</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Cell_Subf_Alloc_Pusch_Precoding.html">Precoding</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Cell_Subf_Alloc_Pusch_Precoding_Cbua.html">Cbua</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Conf.html">Conf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Csettings.html">Csettings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Csis.html">Csis</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Csis_Cell.html">Cell&lt;CellNull&gt;</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Csis_Cell_CdmType.html">CdmType</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Csis_Cell_Config.html">Config</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Csis_Cell_Dwpts.html">Dwpts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Csis_Cell_FrDensity.html">FrDensity&lt;IndexNull&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Csis_Cell_Nap.html">Nap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Csis_Cell_Ncfg.html">Ncfg</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Csis_Cell_Pow.html">Pow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Csis_Cell_Scid.html">Scid</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Csis_Cell_SfDelta.html">SfDelta</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Csis_Cell_Sfi.html">Sfi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Csis_Cell_Sft.html">Sft</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Csis_Cell_State.html">State</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Csis_Cell_Transcomb.html">Transcomb&lt;IndexNull&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Csis_Cell_Zprs.html">Zprs&lt;IndexNull&gt;</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Csis_Cell_Zprs_Zp.html">Zp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Csis_Cell_Zprs_ZpDelta.html">ZpDelta</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Csis_Cell_Zprs_Zpi.html">Zpi</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Csis_Cell_Zprs_Zpt.html">Zpt</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Drs.html">Drs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Drs_Cell.html">Cell&lt;CellNull&gt;</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Drs_Cell_CdState.html">CdState</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Drs_Cell_Csirs.html">Csirs&lt;CsiRefSignal&gt;</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Drs_Cell_Csirs_NzConfig.html">NzConfig</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Drs_Cell_Csirs_NzqOffset.html">NzqOffset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Drs_Cell_Csirs_NzsCid.html">NzsCid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Drs_Cell_Csirs_NzsfOffset.html">NzsfOffset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Drs_Cell_Csirs_Zp.html">Zp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Drs_Cell_Csirs_ZpDelta.html">ZpDelta</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Drs_Cell_Csirs_Zpi.html">Zpi</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Drs_Cell_Csirs_Zpt.html">Zpt</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Drs_Cell_Duration.html">Duration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Drs_Cell_NzpNum.html">NzpNum</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Drs_Cell_Offset.html">Offset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Drs_Cell_Pattern.html">Pattern</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Drs_Cell_Periodicity.html">Periodicity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Drs_Cell_State.html">State</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Drs_Cell_ZpNum.html">ZpNum</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Dumd.html">Dumd</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Dumd_Pattern.html">Pattern</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc.html">Emtc</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Alloc.html">Alloc&lt;AllocationNull&gt;</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Alloc_AbsFrames.html">AbsFrames</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Alloc_Ccoding.html">Ccoding</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Alloc_Ccoding_Mib.html">Mib</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Alloc_Ccoding_Mspare.html">Mspare</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Alloc_Ccoding_Rsib.html">Rsib</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Alloc_Ccoding_Sib.html">Sib</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Alloc_Ccoding_Soffset.html">Soffset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Alloc_Ccoding_SrPeriod.html">SrPeriod</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Alloc_Ccoding_State.html">State</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Alloc_Ccoding_Tbsi.html">Tbsi</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Alloc_Ccoding_TbSize.html">TbSize</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Alloc_Codewords.html">Codewords</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Alloc_Conflict.html">Conflict</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Alloc_ConType.html">ConType</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Alloc_Data.html">Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Alloc_Dselect.html">Dselect</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Alloc_Modulation.html">Modulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Alloc_NoRb.html">NoRb</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Alloc_Ovrb.html">Ovrb</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Alloc_Pattern.html">Pattern</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Alloc_PhysBits.html">PhysBits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Alloc_Power.html">Power</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Alloc_Precoding.html">Precoding</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Alloc_Precoding_Ap.html">Ap&lt;AntennaPortNull&gt;</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Alloc_Precoding_Ap_Bb.html">Bb&lt;BasebandNull&gt;</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Alloc_Precoding_Ap_Bb_Imaginary.html">Imaginary</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Alloc_Precoding_Ap_Bb_Real.html">Real</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Alloc_Precoding_Apm.html">Apm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Alloc_Precoding_CbIndex.html">CbIndex</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Alloc_Precoding_Ccd.html">Ccd</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Alloc_Precoding_DaFormat.html">DaFormat</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Alloc_Precoding_NoLayers.html">NoLayers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Alloc_Precoding_Scheme.html">Scheme</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Alloc_Precoding_Scid.html">Scid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Alloc_Precoding_TrScheme.html">TrScheme</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Alloc_Scrambling.html">Scrambling</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Alloc_Scrambling_State.html">State</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Alloc_Scrambling_UeId.html">UeId</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Alloc_State.html">State</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Alloc_Stnb.html">Stnb</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Alloc_StsFrame.html">StsFrame</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Alloc_StSymbol.html">StSymbol</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Bmp.html">Bmp</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Bmp_DeselectAll.html">DeselectAll&lt;DeselectAll&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Bmp_SelectAll.html">SelectAll</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Bmp_ValSubFrames.html">ValSubFrames&lt;SubframeNull&gt;</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Dci.html">Dci</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Dci_Alloc.html">Alloc&lt;AllocationNull&gt;</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Dci_Alloc_Apsi.html">Apsi</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Dci_Alloc_Bits.html">Bits</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Dci_Alloc_Cces.html">Cces</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Dci_Alloc_Conflict.html">Conflict</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Dci_Alloc_CsiRequest.html">CsiRequest</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Dci_Alloc_DaIndex.html">DaIndex</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Dci_Alloc_DiInfo.html">DiInfo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Dci_Alloc_Fmt.html">Fmt</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Dci_Alloc_Harq.html">Harq</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Dci_Alloc_HresOffset.html">HresOffset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Dci_Alloc_Idcce.html">Idcce</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Dci_Alloc_Mcs.html">Mcs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Dci_Alloc_Mpdcchset.html">Mpdcchset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Dci_Alloc_Ndcces.html">Ndcces</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Dci_Alloc_Ndind.html">Ndind</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Dci_Alloc_Nrep.html">Nrep</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Dci_Alloc_Pagng.html">Pagng</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Dci_Alloc_Pdcch.html">Pdcch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Dci_Alloc_PdsHopping.html">PdsHopping</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Dci_Alloc_PfrHopp.html">PfrHopp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Dci_Alloc_PmiConfirm.html">PmiConfirm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Dci_Alloc_PraMask.html">PraMask</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Dci_Alloc_PraPreamble.html">PraPreamble</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Dci_Alloc_PraStart.html">PraStart</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Dci_Alloc_Rba.html">Rba</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Dci_Alloc_Rbaf.html">Rbaf</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Dci_Alloc_Repmpdcch.html">Repmpdcch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Dci_Alloc_Reppdsch.html">Reppdsch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Dci_Alloc_Rver.html">Rver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Dci_Alloc_SfrNumber.html">SfrNumber</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Dci_Alloc_SrsRequest.html">SrsRequest</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Dci_Alloc_Ssp.html">Ssp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Dci_Alloc_Strv.html">Strv</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Dci_Alloc_StsFrame.html">StsFrame</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Dci_Alloc_Tbs.html">Tbs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Dci_Alloc_Tcmd.html">Tcmd</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Dci_Alloc_TpcPusch.html">TpcPusch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Dci_Alloc_Tpmprec.html">Tpmprec</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Dci_Alloc_UeId.html">UeId</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Dci_Alloc_UeMode.html">UeMode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Dci_Alloc_UlIndex.html">UlIndex</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Dci_Alloc_User.html">User</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Nb.html">Nb</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Emtc_Ssp.html">Ssp</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Laa.html">Laa</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Laa_Cell.html">Cell&lt;CellNull&gt;</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Laa_Cell_Burst.html">Burst&lt;BurstNull&gt;</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Laa_Cell_Burst_C1Mode.html">C1Mode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Laa_Cell_Burst_Duration.html">Duration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Laa_Cell_Burst_EnsFrame.html">EnsFrame</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Laa_Cell_Burst_Epdcch.html">Epdcch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Laa_Cell_Burst_LsfSymbols.html">LsfSymbols</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Laa_Cell_Burst_StsFrame.html">StsFrame</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Laa_Cell_Burst_Stslot.html">Stslot</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Laa_Cell_NumBursts.html">NumBursts</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Mbsfn.html">Mbsfn</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Mbsfn_Ai.html">Ai</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Mbsfn_Ai_Mcch.html">Mcch</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Mbsfn_Ai_Mcch_Aval.html">Aval</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Mbsfn_Ai_Mcch_Modulation.html">Modulation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Mbsfn_Ai_Mcch_Npattern.html">Npattern</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Mbsfn_Ai_Mcch_Pattern.html">Pattern</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Mbsfn_Ai_Mcch_TbSize.html">TbSize</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Mbsfn_Mtch.html">Mtch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Mbsfn_Pmch.html">Pmch&lt;IndexNull&gt;</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Mbsfn_Pmch_Data.html">Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Mbsfn_Pmch_Dlist.html">Dlist</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Mbsfn_Pmch_Mcs.html">Mcs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Mbsfn_Pmch_McsTwo.html">McsTwo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Mbsfn_Pmch_Mod.html">Mod</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Mbsfn_Pmch_Pattern.html">Pattern</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Mbsfn_Pmch_SaEnd.html">SaEnd</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Mbsfn_Pmch_SaStart.html">SaStart</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Mbsfn_Pmch_Speriod.html">Speriod</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Mbsfn_Pmch_State.html">State</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Mbsfn_Sc.html">Sc</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Mimo.html">Mimo</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Mimo_Apm.html">Apm</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Mimo_Apm_Cs.html">Cs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Mimo_Apm_Cs_Ap.html">Ap&lt;AntennaPortNull&gt;</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Mimo_Apm_Cs_Ap_Row.html">Row&lt;Row&gt;</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Mimo_Apm_Cs_Ap_Row_Imaginary.html">Imaginary</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Mimo_Apm_Cs_Ap_Row_Real.html">Real</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Mimo_Apm_Cs_Cell.html">Cell</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Mimo_Apm_Cs_Cell_Bb.html">Bb&lt;BasebandNull&gt;</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Mimo_Niot.html">Niot</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot.html">Niot</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Alloc.html">Alloc&lt;AllocationNull&gt;</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Alloc_Ccoding.html">Ccoding</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Alloc_Ccoding_Isf.html">Isf</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Alloc_Ccoding_Nsf.html">Nsf</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Alloc_Ccoding_State.html">State</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Alloc_Ccoding_Tbsi.html">Tbsi</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Alloc_Ccoding_TbSize.html">TbSize</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Alloc_Conflict.html">Conflict</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Alloc_ConType.html">ConType</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Alloc_Data.html">Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Alloc_Dselect.html">Dselect</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Alloc_Modulation.html">Modulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Alloc_Pattern.html">Pattern</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Alloc_PhysBits.html">PhysBits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Alloc_Power.html">Power</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Alloc_Precoding.html">Precoding</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Alloc_Precoding_NoLayers.html">NoLayers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Alloc_Precoding_Scheme.html">Scheme</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Alloc_Scrambling.html">Scrambling</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Alloc_Scrambling_Legacy.html">Legacy</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Alloc_Scrambling_Legacy_State.html">State</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Alloc_Scrambling_Srot.html">Srot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Alloc_Scrambling_State.html">State</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Alloc_Scrambling_UeId.html">UeId</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Alloc_Sflist.html">Sflist</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Alloc_State.html">State</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Alloc_StSymbol.html">StSymbol</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Ccoding.html">Ccoding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Dci.html">Dci</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Dci_Alloc.html">Alloc&lt;AllocationNull&gt;</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Dci_Alloc_Bits.html">Bits</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Dci_Alloc_Cces.html">Cces</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Dci_Alloc_Conflict.html">Conflict</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Dci_Alloc_Dist.html">Dist</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Dci_Alloc_Fmt.html">Fmt</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Dci_Alloc_Hack.html">Hack</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Dci_Alloc_HpNumber.html">HpNumber</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Dci_Alloc_Idcce.html">Idcce</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Dci_Alloc_Idelay.html">Idelay</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Dci_Alloc_Iru.html">Iru</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Dci_Alloc_McScheme.html">McScheme</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Dci_Alloc_Ndind.html">Ndind</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Dci_Alloc_Npdcch.html">Npdcch</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Dci_Alloc_Npdcch_Fmt.html">Fmt</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Dci_Alloc_Npdcch_Oind.html">Oind</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Dci_Alloc_Npdcch_Rep.html">Rep</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Dci_Alloc_Npdsch.html">Npdsch</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Dci_Alloc_Npdsch_Irep.html">Irep</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Dci_Alloc_Npdsch_Isf.html">Isf</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Dci_Alloc_Npdsch_Nrep.html">Nrep</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Dci_Alloc_Npdsch_Nsf.html">Nsf</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Dci_Alloc_Nprach.html">Nprach</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Dci_Alloc_Nprach_Scind.html">Scind</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Dci_Alloc_Nprach_Snumber.html">Snumber</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Dci_Alloc_Npusch.html">Npusch</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Dci_Alloc_Npusch_Irep.html">Irep</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Dci_Alloc_NrUnits.html">NrUnits</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Dci_Alloc_Pag.html">Pag</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Dci_Alloc_Rversion.html">Rversion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Dci_Alloc_Scind.html">Scind</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Dci_Alloc_Sfrpt.html">Sfrpt</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Dci_Alloc_Sime.html">Sime</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Dci_Alloc_Sinf.html">Sinf</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Dci_Alloc_Ssp.html">Ssp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Dci_Alloc_StsFrame.html">StsFrame</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Dci_Alloc_Tbsz.html">Tbsz</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Dci_Alloc_UeId.html">UeId</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Dci_Alloc_User.html">User</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Gap.html">Gap</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Gap_Config.html">Config</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Gap_Duration.html">Duration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_LteCell.html">LteCell</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Nprs.html">Nprs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Nprs_Bmp.html">Bmp</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Nprs_Bmp_ValSubFrames.html">ValSubFrames&lt;SubframeNull&gt;</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Nprs_Mtia.html">Mtia</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Nprs_Mtib.html">Mtib</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Pag.html">Pag</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Rand.html">Rand</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Niot_Wus.html">Wus</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Pbch.html">Pbch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Pdcch.html">Pdcch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Pdsch.html">Pdsch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Phich.html">Phich</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Plci.html">Plci</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Prss.html">Prss</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Prss_MiPattern.html">MiPattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Prss_Tprs.html">Tprs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Refsig.html">Refsig</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Refsig_Niot.html">Niot</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Eutra_Downlink_RstFrame.html">RstFrame</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf.html">Subf&lt;SubframeNull&gt;</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_AlCount.html">AlCount</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Alloc.html">Alloc&lt;AllocationNull&gt;</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Alloc_Caw.html">Caw</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Alloc_Codewords.html">Codewords</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Alloc_Cw.html">Cw&lt;Codeword&gt;</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Alloc_Cw_Aoc.html">Aoc</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Alloc_Cw_Ccoding.html">Ccoding</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Alloc_Cw_Ccoding_IsbSize.html">IsbSize</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Alloc_Cw_Ccoding_RvIndex.html">RvIndex</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Alloc_Cw_Ccoding_State.html">State</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Alloc_Cw_Ccoding_TbSize.html">TbSize</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Alloc_Cw_Conflict.html">Conflict</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Alloc_Cw_ConType.html">ConType</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Alloc_Cw_Data.html">Data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Alloc_Cw_Dselect.html">Dselect</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Alloc_Cw_Gap.html">Gap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Alloc_Cw_Modulation.html">Modulation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Alloc_Cw_Pattern.html">Pattern</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Alloc_Cw_PhysBits.html">PhysBits</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Alloc_Cw_Power.html">Power</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Alloc_Cw_Precoding.html">Precoding</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Alloc_Cw_Precoding_Ap.html">Ap</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Alloc_Cw_Precoding_Apm.html">Apm</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Alloc_Cw_Precoding_CbIndex.html">CbIndex&lt;IndexNull&gt;</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Alloc_Cw_Precoding_Cdd.html">Cdd</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Alloc_Cw_Precoding_DaFormat.html">DaFormat</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Alloc_Cw_Precoding_NoLayers.html">NoLayers</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Alloc_Cw_Precoding_Scheme.html">Scheme</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Alloc_Cw_Precoding_Scid.html">Scid</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Alloc_Cw_Precoding_TrScheme.html">TrScheme</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Alloc_Cw_RbCount.html">RbCount</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Alloc_Cw_RbOffset.html">RbOffset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Alloc_Cw_Scrambling.html">Scrambling</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Alloc_Cw_Scrambling_State.html">State</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Alloc_Cw_Scrambling_UeId.html">UeId</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Alloc_Cw_State.html">State</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Alloc_Cw_SymCount.html">SymCount</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Alloc_Cw_SymOffset.html">SymOffset</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_CycPrefix.html">CycPrefix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Encc.html">Encc</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Encc_Pcfich.html">Pcfich</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Encc_Pcfich_Cregion.html">Cregion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Encc_Pcfich_Power.html">Power</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Encc_Pcfich_Scrambling.html">Scrambling</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Encc_Pcfich_Scrambling_State.html">State</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Encc_Pdcch.html">Pdcch</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Encc_Pdcch_AlRegs.html">AlRegs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Encc_Pdcch_Avcces.html">Avcces</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Encc_Pdcch_AvRegs.html">AvRegs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Encc_Pdcch_Bits.html">Bits</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Encc_Pdcch_Data.html">Data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Encc_Pdcch_DcRegs.html">DcRegs</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Encc_Pdcch_DcRegs_Data.html">Data</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Encc_Pdcch_DcRegs_Dselect.html">Dselect</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Encc_Pdcch_DcRegs_Pattern.html">Pattern</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Encc_Pdcch_DcRegs_TrSource.html">TrSource</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Encc_Pdcch_Dregs.html">Dregs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Encc_Pdcch_Dselect.html">Dselect</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Encc_Pdcch_Extc.html">Extc</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Encc_Pdcch_Extc_Append.html">Append</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Encc_Pdcch_Extc_Conflicts.html">Conflicts</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Encc_Pdcch_Extc_Down.html">Down</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Encc_Pdcch_Extc_Insert.html">Insert</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Encc_Pdcch_Extc_Item.html">Item&lt;ItemNull&gt;</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Encc_Pdcch_Extc_Item_Cell.html">Cell</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Encc_Pdcch_Extc_Item_Cindex.html">Cindex</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Encc_Pdcch_Extc_Item_Conflict.html">Conflict</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Encc_Pdcch_Extc_Item_DciConf.html">DciConf</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Encc_Pdcch_Extc_Item_DciFmt.html">DciFmt</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Encc_Pdcch_Extc_Item_Ncces.html">Ncces</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Encc_Pdcch_Extc_Item_Ndcces.html">Ndcces</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Encc_Pdcch_Extc_Item_PdcchType.html">PdcchType</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Encc_Pdcch_Extc_Item_Pfmt.html">Pfmt</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Encc_Pdcch_Extc_Item_Sespace.html">Sespace</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Encc_Pdcch_Extc_Item_UeId.html">UeId</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Encc_Pdcch_Extc_Item_User.html">User</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Encc_Pdcch_Extc_Sitem.html">Sitem</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Encc_Pdcch_Extc_Solve.html">Solve</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Encc_Pdcch_Extc_Uitems.html">Uitems</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Encc_Pdcch_Extc_Up.html">Up</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Encc_Pdcch_FormatPy.html">FormatPy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Encc_Pdcch_NoPdcchs.html">NoPdcchs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Encc_Pdcch_Pattern.html">Pattern</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Encc_Pdcch_Power.html">Power</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Encc_Pdcch_Scrambling.html">Scrambling</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Encc_Pdcch_Scrambling_State.html">State</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Encc_Phich.html">Phich</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Encc_Phich_AnPattern.html">AnPattern&lt;AntennaPattern&gt;</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Encc_Phich_Cell.html">Cell&lt;CellNull&gt;</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Encc_Phich_Cell_AnPattern.html">AnPattern&lt;AntennaPattern&gt;</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Encc_Phich_Cell_Group.html">Group&lt;GroupNull&gt;</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Encc_Phich_Cell_Group_Item.html">Item&lt;ItemNull&gt;</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Encc_Phich_Cell_NoGroups.html">NoGroups</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Encc_Phich_Pmode.html">Pmode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Encc_Phich_Power.html">Power</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Encc_Precoding.html">Precoding</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Encc_Precoding_NoLayers.html">NoLayers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Encc_Precoding_Scheme.html">Scheme</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Encc_Scrambling.html">Scrambling</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Encc_Scrambling_State.html">State</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_Encc_State.html">State</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_User.html">User&lt;UserIx&gt;</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Subf_User_PhysBits.html">PhysBits</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Sync.html">Sync</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Downlink_Sync_Niot.html">Niot</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User.html">User&lt;UserIx&gt;</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_Apm.html">Apm</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_Apm_Cbci.html">Cbci</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_Apm_CbIndex.html">CbIndex&lt;IndexNull&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_Apm_Cbua.html">Cbua</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_Apm_Layer.html">Layer&lt;LayerNull&gt;</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_Apm_Layer_Ap.html">Ap&lt;AntennaPortNull&gt;</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_Apm_Layer_Ap_Bb.html">Bb&lt;BasebandNull&gt;</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_Apm_Layer_Ap_Bb_Imaginary.html">Imaginary</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_Apm_Layer_Ap_Bb_Real.html">Real</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_Apm_MapCoordinates.html">MapCoordinates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_Apm_Mode.html">Mode</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_AsPy.html">AsPy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_AsPy_Apply.html">Apply</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_AsPy_ArbLen.html">ArbLen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_AsPy_AsLength.html">AsLength</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_AsPy_Downlink.html">Downlink</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_AsPy_Downlink_AfSeq.html">AfSeq</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_AsPy_Downlink_Cell.html">Cell&lt;CellNull&gt;</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_AsPy_Downlink_Cell_Append.html">Append</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_AsPy_Downlink_Cell_Fmcs.html">Fmcs</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_AsPy_Downlink_Cell_Insert.html">Insert</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_AsPy_Downlink_Cell_McsMode.html">McsMode</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_AsPy_Downlink_Cell_RvcSequence.html">RvcSequence</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_AsPy_Downlink_Cell_Selement.html">Selement</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_AsPy_Downlink_Cell_SeqElem.html">SeqElem</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_AsPy_Downlink_Cell_SeqElem_Conflict.html">Conflict</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_AsPy_Downlink_Cell_SeqElem_Harq.html">Harq</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_AsPy_Downlink_Cell_SeqElem_Pdre.html">Pdre</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_AsPy_Downlink_Cell_SeqElem_Subframe.html">Subframe</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_AsPy_Downlink_Cell_SeqElem_Tb1.html">Tb1</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_AsPy_Downlink_Cell_SeqElem_Tb2.html">Tb2</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_AsPy_Downlink_Cell_Slength.html">Slength</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_AsPy_Downlink_Cell_Tcr.html">Tcr</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_AsPy_Downlink_Cell_Tmod.html">Tmod</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_AsPy_Downlink_Cell_UrlCounter.html">UrlCounter</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_AsPy_Downlink_Cell_Usubframe.html">Usubframe&lt;SubframeNull&gt;</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_AsPy_Downlink_Indi.html">Indi</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_AsPy_Downlink_Nhids.html">Nhids</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_AsPy_Downlink_Nhtrans.html">Nhtrans</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_AsPy_Downlink_SkProcess.html">SkProcess</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_AsPy_Uplink.html">Uplink</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_AsPy_Uplink_AfSeq.html">AfSeq</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_AsPy_Uplink_Cell.html">Cell&lt;CellNull&gt;</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_AsPy_Uplink_Cell_Append.html">Append</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_AsPy_Uplink_Cell_Insert.html">Insert</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_AsPy_Uplink_Cell_Selement.html">Selement</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_AsPy_Uplink_Cell_SeqElem.html">SeqElem</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_AsPy_Uplink_Cell_SeqElem_Conflict.html">Conflict</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_AsPy_Uplink_Cell_SeqElem_Harq.html">Harq</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_AsPy_Uplink_Cell_SeqElem_Ndi.html">Ndi</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_AsPy_Uplink_Cell_SeqElem_Ptpc.html">Ptpc</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_AsPy_Uplink_Cell_SeqElem_Rba.html">Rba</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_AsPy_Uplink_Cell_SeqElem_Rv.html">Rv</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_AsPy_Uplink_Cell_SeqElem_Subframe.html">Subframe</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_AsPy_Uplink_Cell_SeqElem_UlIndex.html">UlIndex</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_AsPy_Uplink_Cell_Slength.html">Slength</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_AsPy_Uplink_Cell_VulTxPow.html">VulTxPow</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_AsPy_Uplink_Indi.html">Indi</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_AsPy_Uplink_Nhtrans.html">Nhtrans</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_Asrs.html">Asrs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_Asrs_State.html">State</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_Ca.html">Ca</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_Ca_State.html">State</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_Caw.html">Caw</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_Caw_State.html">State</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_Ccoding.html">Ccoding</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_Ccoding_State.html">State</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_Cell.html">Cell&lt;CellNull&gt;</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_Cell_Dmrs.html">Dmrs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_Cell_Dmrs_State.html">State</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_Cell_Mcs.html">Mcs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_Cell_Seol.html">Seol</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_Cell_Seol_State.html">State</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_Cell_Tbal.html">Tbal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_Cell_Txm.html">Txm</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_Data.html">Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_Dselect.html">Dselect</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_EimtaRnti.html">EimtaRnti</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_Epdcch.html">Epdcch</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_Epdcch_Cell.html">Cell&lt;CellNull&gt;</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_Epdcch_Cell_Set.html">Set&lt;SetItem&gt;</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_Epdcch_Cell_Set_Hopping.html">Hopping</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_Epdcch_Cell_Set_Nid.html">Nid</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_Epdcch_Cell_Set_Power.html">Power</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_Epdcch_Cell_Set_Prbs.html">Prbs</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_Epdcch_Cell_Set_Rba.html">Rba</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_Epdcch_Cell_Set_Repmpdcch.html">Repmpdcch</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_Epdcch_Cell_Set_State.html">State</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_Epdcch_Cell_Set_Stnb.html">Stnb</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_Epdcch_Cell_Set_Stsf.html">Stsf</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_Epdcch_Cell_Set_Ttyp.html">Ttyp</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_Epdcch_Cell_State.html">State</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_InitPattern.html">InitPattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_McsTwo.html">McsTwo</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_McsTwo_State.html">State</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_Niot.html">Niot</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_Niot_Rmax.html">Rmax</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_Niot_SsOffset.html">SsOffset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_Niot_StsFrame.html">StsFrame</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_Pa.html">Pa</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_Pattern.html">Pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_Release.html">Release</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_Scrambling.html">Scrambling</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_Scrambling_Cell.html">Cell&lt;Cell&gt;</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_Scrambling_Cell_Dmrs.html">Dmrs</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_Scrambling_Cell_Dmrs_Id1.html">Id1</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_Scrambling_Cell_Dmrs_Id2.html">Id2</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_Scrambling_Cell_Dmrs_Use.html">Use</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_Scrambling_State.html">State</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_Sps.html">Sps</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_Sps_Crnti.html">Crnti</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_Sps_Sactivation.html">Sactivation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_Sps_Sinterval.html">Sinterval</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_Sps_Srelease.html">Srelease</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_Sps_State.html">State</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_State.html">State</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_Sthp.html">Sthp</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_Sthp_State.html">State</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_TaltIndex.html">TaltIndex</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_TaltIndex_State.html">State</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_Txm.html">Txm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_Uec.html">Uec</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_UeId.html">UeId</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_Ulca.html">Ulca&lt;UlCarriersNull&gt;</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Downlink_User_Ulca_State.html">State</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Eutra_Downlink_View.html">View</a></li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Source_Bb_Eutra_Clock.html" class="btn btn-neutral float-left" title="Clock" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Source_Bb_Eutra_Downlink_Ca.html" class="btn btn-neutral float-right" title="Ca" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

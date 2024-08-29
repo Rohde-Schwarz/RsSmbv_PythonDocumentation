@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RsSmbv.Implementations.Calibration &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../RsSmbv.html">RsSmbv API Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+      <li>RsSmbv.Implementations.Calibration</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for RsSmbv.Implementations.Calibration</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">...Internal.Core</span> <span class="kn">import</span> <span class="n">Core</span>
+<span class="kn">from</span> <span class="nn">...Internal.CommandsGroup</span> <span class="kn">import</span> <span class="n">CommandsGroup</span>
+<span class="kn">from</span> <span class="nn">...Internal</span> <span class="kn">import</span> <span class="n">Conversions</span>
+
+
+<span class="c1"># noinspection PyPep8Naming,PyAttributeOutsideInit,SpellCheckingInspection</span>
+<div class="viewcode-block" id="CalibrationCls"><a class="viewcode-back" href="../../../Calibration.html#RsSmbv.Implementations.Calibration.CalibrationCls">[docs]</a><span class="k">class</span> <span class="nc">CalibrationCls</span><span class="p">:</span>
+	<span class="sd">&quot;&quot;&quot;Calibration commands group definition. 38 total commands, 12 Subgroups, 2 group commands&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">core</span><span class="p">:</span> <span class="n">Core</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span> <span class="o">=</span> <span class="n">core</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span> <span class="o">=</span> <span class="n">CommandsGroup</span><span class="p">(</span><span class="s2">&quot;calibration&quot;</span><span class="p">,</span> <span class="n">core</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">all</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;all commands group. 1 Sub-classes, 4 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_all&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.All</span> <span class="kn">import</span> <span class="n">AllCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_all</span> <span class="o">=</span> <span class="n">AllCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_all</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">bbin</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;bbin commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_bbin&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Bbin</span> <span class="kn">import</span> <span class="n">BbinCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_bbin</span> <span class="o">=</span> <span class="n">BbinCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bbin</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;data commands group. 2 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_data&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Data</span> <span class="kn">import</span> <span class="n">DataCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="n">DataCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">delay</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;delay commands group. 1 Sub-classes, 2 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_delay&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Delay</span> <span class="kn">import</span> <span class="n">DelayCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_delay</span> <span class="o">=</span> <span class="n">DelayCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_delay</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">fmOffset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;fmOffset commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_fmOffset&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.FmOffset</span> <span class="kn">import</span> <span class="n">FmOffsetCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_fmOffset</span> <span class="o">=</span> <span class="n">FmOffsetCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fmOffset</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">frequency</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;frequency commands group. 0 Sub-classes, 2 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_frequency&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Frequency</span> <span class="kn">import</span> <span class="n">FrequencyCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_frequency</span> <span class="o">=</span> <span class="n">FrequencyCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_frequency</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">iqModulator</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;iqModulator commands group. 0 Sub-classes, 2 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_iqModulator&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.IqModulator</span> <span class="kn">import</span> <span class="n">IqModulatorCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_iqModulator</span> <span class="o">=</span> <span class="n">IqModulatorCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_iqModulator</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">level</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;level commands group. 4 Sub-classes, 2 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_level&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Level</span> <span class="kn">import</span> <span class="n">LevelCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_level</span> <span class="o">=</span> <span class="n">LevelCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_level</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">lfOutput</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;lfOutput commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_lfOutput&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.LfOutput</span> <span class="kn">import</span> <span class="n">LfOutputCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_lfOutput</span> <span class="o">=</span> <span class="n">LfOutputCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lfOutput</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">roscillator</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;roscillator commands group. 2 Sub-classes, 0 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_roscillator&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Roscillator</span> <span class="kn">import</span> <span class="n">RoscillatorCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_roscillator</span> <span class="o">=</span> <span class="n">RoscillatorCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_roscillator</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">tselected</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;tselected commands group. 0 Sub-classes, 3 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_tselected&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Tselected</span> <span class="kn">import</span> <span class="n">TselectedCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_tselected</span> <span class="o">=</span> <span class="n">TselectedCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tselected</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">vco</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;vco commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_vco&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Vco</span> <span class="kn">import</span> <span class="n">VcoCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_vco</span> <span class="o">=</span> <span class="n">VcoCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vco</span>
+
+<div class="viewcode-block" id="CalibrationCls.get_continue_on_error"><a class="viewcode-back" href="../../../Calibration.html#RsSmbv.Implementations.Calibration.CalibrationCls.get_continue_on_error">[docs]</a>	<span class="k">def</span> <span class="nf">get_continue_on_error</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: CALibration&lt;HW&gt;:CONTinueonerror \n</span>
+<span class="sd">		Snippet: value: bool = driver.calibration.get_continue_on_error() \n</span>
+<span class="sd">		Continues the calibration even though an error was detected. By default adjustments are aborted on error. \n</span>
+<span class="sd">			:return: state: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;CALibration&lt;HwInstance&gt;:CONTinueonerror?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_bool</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CalibrationCls.set_continue_on_error"><a class="viewcode-back" href="../../../Calibration.html#RsSmbv.Implementations.Calibration.CalibrationCls.set_continue_on_error">[docs]</a>	<span class="k">def</span> <span class="nf">set_continue_on_error</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: CALibration&lt;HW&gt;:CONTinueonerror \n</span>
+<span class="sd">		Snippet: driver.calibration.set_continue_on_error(state = False) \n</span>
+<span class="sd">		Continues the calibration even though an error was detected. By default adjustments are aborted on error. \n</span>
+<span class="sd">			:param state: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">bool_to_str</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;CALibration&lt;HwInstance&gt;:CONTinueonerror </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CalibrationCls.set_debug"><a class="viewcode-back" href="../../../Calibration.html#RsSmbv.Implementations.Calibration.CalibrationCls.set_debug">[docs]</a>	<span class="k">def</span> <span class="nf">set_debug</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: CALibration&lt;HW&gt;:DEBug \n</span>
+<span class="sd">		Snippet: driver.calibration.set_debug(state = False) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param state: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">bool_to_str</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;CALibration&lt;HwInstance&gt;:DEBug </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;CalibrationCls&#39;</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Clones the group by creating new object from it and its whole existing subgroups</span>
+<span class="sd">		Also copies all the existing default Repeated Capabilities setting,</span>
+<span class="sd">		which you can change independently without affecting the original group&quot;&quot;&quot;</span>
+		<span class="n">new_group</span> <span class="o">=</span> <span class="n">CalibrationCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">synchronize_repcaps</span><span class="p">(</span><span class="n">new_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">new_group</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

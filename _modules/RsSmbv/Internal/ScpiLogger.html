@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RsSmbv.Internal.ScpiLogger &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../RsSmbv.html">RsSmbv API Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+      <li>RsSmbv.Internal.ScpiLogger</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for RsSmbv.Internal.ScpiLogger</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Interface for SCPI communication logging.&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">socket</span>
+<span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">string</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Dict</span>
+<span class="kn">from</span> <span class="nn">textwrap</span> <span class="kn">import</span> <span class="n">wrap</span>
+
+<span class="kn">from</span> <span class="nn">.Utilities</span> <span class="kn">import</span> <span class="n">get_plural_string</span><span class="p">,</span> <span class="n">shorten_string_middle</span><span class="p">,</span> <span class="n">escape_nonprintable_chars</span><span class="p">,</span> <span class="n">size_to_kb_mb_string</span><span class="p">,</span> <span class="n">calculate_chunks_count</span>
+<span class="kn">from</span> <span class="nn">.InstrumentErrors</span> <span class="kn">import</span> <span class="n">RsInstrException</span>
+<span class="kn">from</span> <span class="nn">.Conversions</span> <span class="kn">import</span> <span class="n">list_to_csv_str</span><span class="p">,</span> <span class="n">convert_ts_to_datetime</span><span class="p">,</span> <span class="n">get_timedelta_string</span><span class="p">,</span> <span class="n">get_timestamp_string</span><span class="p">,</span> <span class="n">get_timedelta_fixed_string</span>
+<span class="kn">from</span> <span class="nn">.GlobalData</span> <span class="kn">import</span> <span class="n">GlobalData</span>
+
+
+<span class="k">class</span> <span class="nc">LoggingMode</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Determines the format of the logging message.&quot;&quot;&quot;</span>
+    <span class="n">Off</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># Don&#39;t write messages to log</span>
+    <span class="n">On</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># Write message to log</span>
+    <span class="n">Errors</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># Only log errors. This is like &#39;Off&#39;, with the exception, that VisaIOErrors are logged.</span>
+    <span class="n">Default</span> <span class="o">=</span> <span class="mi">3</span>  <span class="c1"># Default mode</span>
+
+
+<div class="viewcode-block" id="LogInfoReplacer"><a class="viewcode-back" href="../../../logger.html#RsSmbv.Internal.ScpiLogger.LogInfoReplacer">[docs]</a><span class="k">class</span> <span class="nc">LogInfoReplacer</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Replacer, that takes the SCPI Logger Log Info and customizes its value.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span> <span class="s1">&#39;LogInfoReplacer&#39;</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create the new LogInfoReplacer either with empty replacer dictionaries,</span>
+<span class="sd">        or the ones from another LogInfoReplacer.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">source</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_full_replacer</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_regex_sr_replacer</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="n">re</span><span class="o">.</span><span class="n">Pattern</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_full_replacer</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">source</span><span class="o">.</span><span class="n">_full_replacer</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_regex_sr_replacer</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="n">re</span><span class="o">.</span><span class="n">Pattern</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">source</span><span class="o">.</span><span class="n">_regex_sr_replacer</span><span class="p">)</span>
+
+<div class="viewcode-block" id="LogInfoReplacer.set_full_replacer"><a class="viewcode-back" href="../../../logger.html#RsSmbv.Internal.ScpiLogger.LogInfoReplacer.set_full_replacer">[docs]</a>    <span class="k">def</span> <span class="nf">set_full_replacer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">repl_dict</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Sets the full-replacer dictionary.</span>
+<span class="sd">        This replacer searches the dictionary (case-sensitive) for the key</span>
+<span class="sd">        that equals the LogInfoString, and replaces the whole info string</span>
+<span class="sd">        with the string value associated with that key.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_full_replacer</span> <span class="o">=</span> <span class="n">repl_dict</span></div>
+
+<div class="viewcode-block" id="LogInfoReplacer.put_full_replacer_item"><a class="viewcode-back" href="../../../logger.html#RsSmbv.Internal.ScpiLogger.LogInfoReplacer.put_full_replacer_item">[docs]</a>    <span class="k">def</span> <span class="nf">put_full_replacer_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">match</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">replace</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Sets/replaces one item in the full replacer.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_full_replacer</span><span class="p">[</span><span class="n">match</span><span class="p">]</span> <span class="o">=</span> <span class="n">replace</span></div>
+
+<div class="viewcode-block" id="LogInfoReplacer.pop_full_replacer_item"><a class="viewcode-back" href="../../../logger.html#RsSmbv.Internal.ScpiLogger.LogInfoReplacer.pop_full_replacer_item">[docs]</a>    <span class="k">def</span> <span class="nf">pop_full_replacer_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">match</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Pops(removes) the entered full replacer item.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_full_replacer</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">match</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="LogInfoReplacer.set_regex_sr_replacer"><a class="viewcode-back" href="../../../logger.html#RsSmbv.Internal.ScpiLogger.LogInfoReplacer.set_regex_sr_replacer">[docs]</a>    <span class="k">def</span> <span class="nf">set_regex_sr_replacer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">repl_dict</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="n">re</span><span class="o">.</span><span class="n">Pattern</span><span class="p">,</span> <span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Sets the regex search&amp;replace replacer dictionary. The replacer uses the re.sub() method</span>
+<span class="sd">        of each key and replaces the matched substring with the string value associated with that key.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_regex_sr_replacer</span> <span class="o">=</span> <span class="n">repl_dict</span></div>
+
+<div class="viewcode-block" id="LogInfoReplacer.put_regex_sr_replacer_item"><a class="viewcode-back" href="../../../logger.html#RsSmbv.Internal.ScpiLogger.LogInfoReplacer.put_regex_sr_replacer_item">[docs]</a>    <span class="k">def</span> <span class="nf">put_regex_sr_replacer_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">search</span><span class="p">:</span> <span class="n">re</span><span class="o">.</span><span class="n">Pattern</span> <span class="ow">or</span> <span class="nb">str</span><span class="p">,</span> <span class="n">replace</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">re</span><span class="o">.</span><span class="n">Pattern</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Sets/replaces one item in the regex replacer. The key can be either a regex pattern,</span>
+<span class="sd">        or a string. In case of the string, the key is compiled to a regex pattern,</span>
+<span class="sd">        before it is put into the replacing dictionary.</span>
+<span class="sd">        Returns the resulting search regex pattern.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">search</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">search</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">search</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_regex_sr_replacer</span><span class="p">[</span><span class="n">search</span><span class="p">]</span> <span class="o">=</span> <span class="n">replace</span>
+        <span class="k">return</span> <span class="n">search</span></div>
+
+<div class="viewcode-block" id="LogInfoReplacer.pop_regex_sr_replacer_item"><a class="viewcode-back" href="../../../logger.html#RsSmbv.Internal.ScpiLogger.LogInfoReplacer.pop_regex_sr_replacer_item">[docs]</a>    <span class="k">def</span> <span class="nf">pop_regex_sr_replacer_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">search</span><span class="p">:</span> <span class="n">re</span><span class="o">.</span><span class="n">Pattern</span> <span class="ow">or</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Pops(removes) the entered regex replacer item. The key can be either a regex pattern,</span>
+<span class="sd">        or a string. In case of the string, the key is compiled to a regex pattern prior to popping.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">search</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">search</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">search</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_regex_sr_replacer</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">search</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="LogInfoReplacer.clear_replacers"><a class="viewcode-back" href="../../../logger.html#RsSmbv.Internal.ScpiLogger.LogInfoReplacer.clear_replacers">[docs]</a>    <span class="k">def</span> <span class="nf">clear_replacers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Clears both full and regex replacer dictionaries.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_full_replacer</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_regex_sr_replacer</span> <span class="o">=</span> <span class="p">{}</span></div>
+
+    <span class="k">def</span> <span class="nf">replace</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">log_info_string</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Replaces the entered log_info_string using the replacer dictionaries.&quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_full_replacer</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">new_log_string_info</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_full_replacer</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">log_info_string</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">new_log_string_info</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">log_info_string</span> <span class="o">=</span> <span class="n">new_log_string_info</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_regex_sr_replacer</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">s_pattern</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_regex_sr_replacer</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                <span class="n">log_info_string</span> <span class="o">=</span> <span class="n">s_pattern</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_regex_sr_replacer</span><span class="p">[</span><span class="n">s_pattern</span><span class="p">],</span> <span class="n">log_info_string</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">log_info_string</span></div>
+
+
+<span class="k">class</span> <span class="nc">LogEntry</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;One entry in the log Defined by content, which has all the variables resolved except the START_TIME and the end_time.&quot;&quot;&quot;</span>
+
+    <span class="n">_tab_var_re</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;PAD_(LEFT|RIGHT)(\d+)\(%(START_TIME|END_TIME|DURATION|DEVICE_NAME|LOG_STRING_INFO|LOG_STRING|SCPI_COMMAND)%\)&#39;</span><span class="p">)</span>
+    <span class="n">_var_re</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;%(START_TIME|END_TIME|DURATION|DEVICE_NAME|LOG_STRING_INFO|LOG_STRING|SCPI_COMMAND)%&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start_time</span><span class="p">:</span> <span class="n">datetime</span> <span class="ow">or</span> <span class="kc">None</span> <span class="ow">or</span> <span class="nb">float</span><span class="p">,</span> <span class="n">end_time</span><span class="p">:</span> <span class="n">datetime</span> <span class="ow">or</span> <span class="kc">None</span> <span class="ow">or</span> <span class="nb">float</span><span class="p">,</span> <span class="n">device_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">log_string_info</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">log_string</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">cmd</span><span class="p">:</span> <span class="nb">str</span> <span class="ow">or</span> <span class="kc">None</span><span class="p">,</span> <span class="n">add_new_line</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span> <span class="n">error</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span> <span class="n">raw</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span> <span class="n">binary</span><span class="p">:</span> <span class="nb">bool</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_start_time</span><span class="p">:</span> <span class="n">datetime</span> <span class="o">=</span> <span class="n">start_time</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_end_time</span><span class="p">:</span> <span class="n">datetime</span> <span class="o">=</span> <span class="n">end_time</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_device_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">device_name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_log_string_info</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">log_string_info</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_log_string</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">log_string</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cmd</span><span class="p">:</span> <span class="nb">str</span> <span class="ow">or</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">cmd</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_raw</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">raw</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_binary</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">binary</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_timestamp_reference_time</span><span class="p">:</span> <span class="n">datetime</span> <span class="ow">or</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1"># Public properties</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_new_line</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">add_new_line</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">error</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">error</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">as_raw_content</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">content</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">add_new_line</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;LogEntry&#39;</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Create the entry as raw&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">start_time</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end_time</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">device_name</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">log_string_info</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">log_string</span><span class="o">=</span><span class="n">content</span><span class="p">,</span> <span class="n">cmd</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">add_new_line</span><span class="o">=</span><span class="n">add_new_line</span><span class="p">,</span> <span class="n">error</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">raw</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">binary</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">as_raw_error_content</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">content</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">add_new_line</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;LogEntry&#39;</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Create the entry as raw&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">start_time</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end_time</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">device_name</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">log_string_info</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">log_string</span><span class="o">=</span><span class="n">content</span><span class="p">,</span> <span class="n">cmd</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">add_new_line</span><span class="o">=</span><span class="n">add_new_line</span><span class="p">,</span> <span class="n">error</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">raw</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">binary</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">as_info_entry</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">start_time</span><span class="p">:</span> <span class="n">datetime</span> <span class="ow">or</span> <span class="kc">None</span><span class="p">,</span> <span class="n">end_time</span><span class="p">:</span> <span class="n">datetime</span> <span class="ow">or</span> <span class="kc">None</span><span class="p">,</span> <span class="n">device_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">log_string_info</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">log_string</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">cmd</span><span class="p">:</span> <span class="nb">str</span> <span class="ow">or</span> <span class="kc">None</span><span class="p">,</span> <span class="n">add_new_line</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;LogEntry&#39;</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Create the entry as info entry.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">start_time</span><span class="o">=</span><span class="n">start_time</span><span class="p">,</span> <span class="n">end_time</span><span class="o">=</span><span class="n">end_time</span><span class="p">,</span> <span class="n">device_name</span><span class="o">=</span><span class="n">device_name</span><span class="p">,</span> <span class="n">log_string_info</span><span class="o">=</span><span class="n">log_string_info</span><span class="p">,</span> <span class="n">log_string</span><span class="o">=</span><span class="n">log_string</span><span class="p">,</span> <span class="n">cmd</span><span class="o">=</span><span class="n">cmd</span><span class="p">,</span> <span class="n">add_new_line</span><span class="o">=</span><span class="n">add_new_line</span><span class="p">,</span> <span class="n">error</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">raw</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">binary</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">as_error_entry</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">start_time</span><span class="p">:</span> <span class="n">datetime</span> <span class="ow">or</span> <span class="kc">None</span><span class="p">,</span> <span class="n">end_time</span><span class="p">:</span> <span class="n">datetime</span> <span class="ow">or</span> <span class="kc">None</span><span class="p">,</span> <span class="n">device_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">log_string_info</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">log_string</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">cmd</span><span class="p">:</span> <span class="nb">str</span> <span class="ow">or</span> <span class="kc">None</span><span class="p">,</span> <span class="n">add_new_line</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;LogEntry&#39;</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Create the entry as info entry.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">start_time</span><span class="o">=</span><span class="n">start_time</span><span class="p">,</span> <span class="n">end_time</span><span class="o">=</span><span class="n">end_time</span><span class="p">,</span> <span class="n">device_name</span><span class="o">=</span><span class="n">device_name</span><span class="p">,</span> <span class="n">log_string_info</span><span class="o">=</span><span class="n">log_string_info</span><span class="p">,</span> <span class="n">log_string</span><span class="o">=</span><span class="n">log_string</span><span class="p">,</span> <span class="n">cmd</span><span class="o">=</span><span class="n">cmd</span><span class="p">,</span> <span class="n">add_new_line</span><span class="o">=</span><span class="n">add_new_line</span><span class="p">,</span> <span class="n">error</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">raw</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">binary</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">as_info_bin_entry</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">start_time</span><span class="p">:</span> <span class="n">datetime</span> <span class="ow">or</span> <span class="kc">None</span><span class="p">,</span> <span class="n">end_time</span><span class="p">:</span> <span class="n">datetime</span> <span class="ow">or</span> <span class="kc">None</span><span class="p">,</span> <span class="n">device_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">log_string_info</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">log_string</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">cmd</span><span class="p">:</span> <span class="nb">str</span> <span class="ow">or</span> <span class="kc">None</span><span class="p">,</span> <span class="n">add_new_line</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;LogEntry&#39;</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Create the entry as info entry.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">start_time</span><span class="o">=</span><span class="n">start_time</span><span class="p">,</span> <span class="n">end_time</span><span class="o">=</span><span class="n">end_time</span><span class="p">,</span> <span class="n">device_name</span><span class="o">=</span><span class="n">device_name</span><span class="p">,</span> <span class="n">log_string_info</span><span class="o">=</span><span class="n">log_string_info</span><span class="p">,</span> <span class="n">log_string</span><span class="o">=</span><span class="n">log_string</span><span class="p">,</span> <span class="n">cmd</span><span class="o">=</span><span class="n">cmd</span><span class="p">,</span> <span class="n">add_new_line</span><span class="o">=</span><span class="n">add_new_line</span><span class="p">,</span> <span class="n">error</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">raw</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">binary</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">set_timestamp_reference_time</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ref_time</span><span class="p">:</span> <span class="n">datetime</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Sets reference time for the start time. None (default value) means the start time is absolute.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_timestamp_reference_time</span> <span class="o">=</span> <span class="n">ref_time</span>
+
+    <span class="k">def</span> <span class="nf">get_resolved_content</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">template</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">replacer</span><span class="p">:</span> <span class="n">LogInfoReplacer</span><span class="p">,</span> <span class="n">encoding</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Returns the resolved content. For raw entry it means only the log_string.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_raw</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_log_string</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_log_string_info</span> <span class="o">=</span> <span class="n">replacer</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_log_string_info</span><span class="p">)</span>
+        <span class="n">result_str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_replace_variables</span><span class="p">(</span><span class="n">template</span><span class="p">)</span>
+        <span class="c1"># For non-binary data, trim the end and escape the non-printable chars.</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_binary</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+            <span class="n">result_str</span> <span class="o">=</span> <span class="n">result_str</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s1">&#39;: &#39;</span><span class="p">)</span>
+            <span class="n">result_str</span> <span class="o">=</span> <span class="n">escape_nonprintable_chars</span><span class="p">(</span><span class="n">result_str</span><span class="p">,</span> <span class="n">encoding</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">result_str</span>
+
+    <span class="k">def</span> <span class="nf">_replace_variables</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">format_string</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Replaces all the variables in the entered template string with their actual values.&quot;&quot;&quot;</span>
+        <span class="n">content</span> <span class="o">=</span> <span class="n">format_string</span>
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">m</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tab_var_re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">m</span><span class="p">:</span>
+                <span class="n">pos_left</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;LEFT&#39;</span>
+                <span class="n">spaces</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+                <span class="n">var_name</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;%&#39;</span><span class="p">)</span>
+                <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_log_string_variable_values</span><span class="p">(</span><span class="n">var_name</span><span class="p">)</span>
+                <span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="n">spaces</span><span class="p">)</span> <span class="k">if</span> <span class="n">pos_left</span> <span class="k">else</span> <span class="n">value</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="n">spaces</span><span class="p">)</span>
+                <span class="n">content</span> <span class="o">=</span> <span class="n">content</span><span class="p">[:</span><span class="n">m</span><span class="o">.</span><span class="n">start</span><span class="p">()]</span> <span class="o">+</span> <span class="n">value</span> <span class="o">+</span> <span class="n">content</span><span class="p">[</span><span class="n">m</span><span class="o">.</span><span class="n">end</span><span class="p">():]</span>
+                <span class="k">continue</span>
+            <span class="n">m</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_var_re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">m</span><span class="p">:</span>
+                <span class="n">var_name</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+                <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_log_string_variable_values</span><span class="p">(</span><span class="n">var_name</span><span class="p">)</span>
+                <span class="n">content</span> <span class="o">=</span> <span class="n">content</span><span class="p">[:</span><span class="n">m</span><span class="o">.</span><span class="n">start</span><span class="p">()]</span> <span class="o">+</span> <span class="n">value</span> <span class="o">+</span> <span class="n">content</span><span class="p">[</span><span class="n">m</span><span class="o">.</span><span class="n">end</span><span class="p">():]</span>
+                <span class="k">continue</span>
+            <span class="k">break</span>
+        <span class="k">return</span> <span class="n">content</span>
+
+    <span class="k">def</span> <span class="nf">_get_log_string_variable_values</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Returns the required variable value.</span>
+<span class="sd">        Recognised names: START_TIME, END_TIME, DURATION, DEVICE_NAME, LOG_STRING_INFO, LOG_STRING, SCPI_COMMAND&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;START_TIME&#39;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_start_time</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">return</span> <span class="s1">&#39;&#39;</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timestamp_reference_time</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">get_timestamp_string</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_start_time</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">get_timedelta_fixed_string</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_timestamp_reference_time</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_start_time</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;END_TIME&#39;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_end_time</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">return</span> <span class="s1">&#39;&#39;</span>
+            <span class="k">return</span> <span class="n">get_timestamp_string</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_end_time</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;DURATION&#39;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_start_time</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_end_time</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">return</span> <span class="s1">&#39;&#39;</span>
+            <span class="k">return</span> <span class="n">get_timedelta_string</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_start_time</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_end_time</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;DEVICE_NAME&#39;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_device_name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">return</span> <span class="s1">&#39;&#39;</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_device_name</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;LOG_STRING_INFO&#39;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_log_string_info</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">return</span> <span class="s1">&#39;&#39;</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_log_string_info</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;LOG_STRING&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_log_string</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;SCPI_COMMAND&#39;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">return</span> <span class="s1">&#39;&#39;</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd</span>
+
+
+<span class="k">class</span> <span class="nc">Segment</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Segment of logs&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">error_present</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">entries</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">LogEntry</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span> <span class="nf">add_to_segment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entry</span><span class="p">:</span> <span class="n">LogEntry</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Adds an entry to the current segment.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">entries</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">entry</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">entry</span><span class="o">.</span><span class="n">error</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">error_present</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="k">def</span> <span class="nf">empty</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Empties the list of entries for the current segment.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">error_present</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">entries</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span> <span class="fm">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">empty</span><span class="p">()</span>
+
+
+<span class="k">class</span> <span class="nc">CachedEntries</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Entries that are cached internally, in case no target is defined, but the logging is ON&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">entries</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">LogEntry</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">truncated_count</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">append</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entry</span><span class="p">:</span> <span class="n">LogEntry</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Appends one entry. If the list is longer than 1000 entries, the oldest one is deleted and truncated_count is increased by 1.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">entries</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">entry</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">entries</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1000</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">entries</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">truncated_count</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span>
+
+    <span class="k">def</span> <span class="nf">clear</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Clears all the cached entries.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">entries</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">truncated_count</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">def</span> <span class="fm">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+
+
+<div class="viewcode-block" id="ScpiLogger"><a class="viewcode-back" href="../../../logger.html#RsSmbv.Internal.ScpiLogger.ScpiLogger">[docs]</a><span class="k">class</span> <span class="nc">ScpiLogger</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Base class for SCPI logging&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resource_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">encoding</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;charmap&#39;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">resource_name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">RsInstrException</span><span class="p">(</span><span class="s1">&#39;resource_name cannot be None&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_orig_resource_name</span> <span class="o">=</span> <span class="n">resource_name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_global_mode</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_default_mode</span><span class="p">:</span> <span class="n">LoggingMode</span> <span class="o">=</span> <span class="n">LoggingMode</span><span class="o">.</span><span class="n">Off</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_last_logging_mode</span><span class="p">:</span> <span class="n">LoggingMode</span> <span class="o">=</span> <span class="n">LoggingMode</span><span class="o">.</span><span class="n">On</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span><span class="p">:</span> <span class="n">LoggingMode</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_default_mode</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_log_target_local</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cached</span> <span class="o">=</span> <span class="n">CachedEntries</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_timestamp_reference_time_local</span><span class="p">:</span> <span class="n">datetime</span> <span class="ow">or</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_format_string</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_line_divider</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_target_auto_flushing</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">restore_format_string</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_log_to_console</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_log_to_udp</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_udp_port</span> <span class="o">=</span> <span class="mi">49200</span>
+
+        <span class="c1"># Transients</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_segment</span><span class="p">:</span> <span class="n">Segment</span> <span class="ow">or</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_log_status_check_ok</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_socket</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1"># Printable chars set</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_printable_chars</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">bytes</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">printable</span><span class="p">,</span> <span class="s1">&#39;ascii&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_printable_chars</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_printable_chars</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="mi">13</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_printable_chars</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_printable_chars</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span>
+
+        <span class="c1"># Public properties</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">device_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">resource_name</span>
+        <span class="sd">&quot;&quot;&quot;Use this property to change the resource name in the log from the default Resource Name (e.g. TCPIP::192.168.2.101::INSTR)</span>
+<span class="sd">         to another name e.g. &#39;MySigGen1&#39;.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">abbreviated_max_len_ascii</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">200</span>
+        <span class="sd">&quot;&quot;&quot;Defines the maximum length of one ASCII log entry. Default value is 200 characters.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">abbreviated_max_len_list</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span>
+        <span class="sd">&quot;&quot;&quot;Defines the maximum length of one list entry. Default value is 100 elements.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">abbreviated_max_len_bin</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2048</span>
+        <span class="sd">&quot;&quot;&quot;Defines the maximum length of one Binary log entry. Default value is 2048 bytes.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bin_line_block_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">16</span>
+        <span class="sd">&quot;&quot;&quot;Defines number of bytes to display in one line. Default value is 16 bytes.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">encoding</span> <span class="o">=</span> <span class="n">encoding</span>
+        <span class="sd">&quot;&quot;&quot;Defines encoding of the strings into bytes. Default is charmap.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">allow_log_string_adjust</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="sd">&quot;&quot;&quot;Specifies whether log string adjustment is allowed. Default is True.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log_info_replacer</span><span class="p">:</span> <span class="n">LogInfoReplacer</span> <span class="o">=</span> <span class="n">LogInfoReplacer</span><span class="p">()</span>
+        <span class="sd">&quot;&quot;&quot;Replacer for Log Info Strings.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;ScpiLogger for &#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">device_name</span><span class="si">}</span><span class="s2">&#39;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">!=</span> <span class="n">LoggingMode</span><span class="o">.</span><span class="n">Off</span><span class="p">:</span>
+            <span class="n">value</span> <span class="o">+=</span> <span class="sa">f</span><span class="s1">&#39; mode: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_mode</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">value</span> <span class="o">+=</span> <span class="sa">f</span><span class="s1">&#39; OFF&#39;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">log_to_console</span> <span class="ow">is</span> <span class="kc">False</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_log_to_udp</span> <span class="ow">is</span> <span class="kc">False</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_logging_target</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">value</span>
+        <span class="n">value</span> <span class="o">+=</span> <span class="s1">&#39;, target: &#39;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">log_to_console</span><span class="p">:</span>
+            <span class="n">value</span> <span class="o">+=</span> <span class="s1">&#39;console + &#39;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">log_to_udp</span><span class="p">:</span>
+            <span class="n">value</span> <span class="o">+=</span> <span class="s1">&#39;udp + &#39;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_global_mode</span><span class="p">:</span>
+            <span class="n">value</span> <span class="o">+=</span> <span class="s1">&#39;global stream&#39;</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_log_target_local</span><span class="p">:</span>
+            <span class="n">value</span> <span class="o">+=</span> <span class="s1">&#39;stream&#39;</span>
+        <span class="k">return</span> <span class="n">value</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;+ &#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">start_new_segment</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Only relevant for if the log mode is LoggingMode.Errors.</span>
+<span class="sd">        In this mode, all the logging is delayed until you call end_current_segment()</span>
+<span class="sd">        Then, only if an error occurred, the logs are flushed to the output log.</span>
+<span class="sd">        In case no error occurred, the logs are deleted.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_segment</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">end_current_segment</span><span class="p">()</span>
+            <span class="k">raise</span> <span class="n">RsInstrException</span><span class="p">(</span><span class="s1">&#39;Segment was not property finished before the new one was started.&#39;</span><span class="p">)</span>
+        <span class="c1"># Logging to segment is only started if the logging mode is set to LoggingMode.Errors</span>
+        <span class="c1"># That causes in mode ON all the entries appear immediately, rather than being delayed until the segment is ended</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_segment</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span> <span class="o">==</span> <span class="n">LoggingMode</span><span class="o">.</span><span class="n">Errors</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_segment</span> <span class="o">=</span> <span class="n">Segment</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">end_current_segment</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Only relevant for if the log mode is LoggingMode.Errors.</span>
+<span class="sd">        Calling this method causes the logger to either flush all the segment logs to the output log or delete them if no error occurred.</span>
+<span class="sd">        This causes only the errors to be logged, but also with the appropriate context, so you can troubleshoot more easily.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_segment</span><span class="p">:</span>
+            <span class="n">curr_segment</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_segment</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_segment</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span> <span class="o">==</span> <span class="n">LoggingMode</span><span class="o">.</span><span class="n">Errors</span> <span class="ow">and</span> <span class="n">curr_segment</span><span class="o">.</span><span class="n">error_present</span><span class="p">:</span>
+                <span class="c1"># If error mode is on, and the segment contains at least one error entry, write the segment entries to the log</span>
+                <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">curr_segment</span><span class="o">.</span><span class="n">entries</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_write_to_log</span><span class="p">(</span><span class="n">entry</span><span class="p">)</span>
+
+<div class="viewcode-block" id="ScpiLogger.set_format_string"><a class="viewcode-back" href="../../../logger.html#RsSmbv.Internal.ScpiLogger.ScpiLogger.set_format_string">[docs]</a>    <span class="k">def</span> <span class="nf">set_format_string</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">line_divider</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Sets new format string and line divider.</span>
+<span class="sd">        If you just want to set the line divider, set the format string value=None</span>
+<span class="sd">        The original format string is: ``PAD_LEFT12(%START_TIME%) PAD_LEFT25(%DEVICE_NAME%) PAD_LEFT12(%DURATION%)  %LOG_STRING_INFO%: %LOG_STRING%``\n</span>
+<span class="sd">        Additional variables to use: ``%SCPI_COMMAND%``.&quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_format_string</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_line_divider</span> <span class="o">=</span> <span class="n">line_divider</span></div>
+
+<div class="viewcode-block" id="ScpiLogger.restore_format_string"><a class="viewcode-back" href="../../../logger.html#RsSmbv.Internal.ScpiLogger.ScpiLogger.restore_format_string">[docs]</a>    <span class="k">def</span> <span class="nf">restore_format_string</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Restores the original format string and the line divider to LF &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_format_string</span> <span class="o">=</span> <span class="s1">&#39;PAD_LEFT12(%START_TIME%) PAD_LEFT30(%DEVICE_NAME%) PAD_LEFT12(%DURATION%)  %LOG_STRING_INFO%: %LOG_STRING%&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_line_divider</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span></div>
+
+<div class="viewcode-block" id="ScpiLogger.clear_cached_entries"><a class="viewcode-back" href="../../../logger.html#RsSmbv.Internal.ScpiLogger.ScpiLogger.clear_cached_entries">[docs]</a>    <span class="k">def</span> <span class="nf">clear_cached_entries</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Clears potential cached log entries.</span>
+<span class="sd">        Cached log entries are generated when the Logging is ON, but no target has been defined yet.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cached</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="ScpiLogger.set_logging_target"><a class="viewcode-back" href="../../../logger.html#RsSmbv.Internal.ScpiLogger.ScpiLogger.set_logging_target">[docs]</a>    <span class="k">def</span> <span class="nf">set_logging_target</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">console_log</span><span class="p">:</span> <span class="nb">bool</span> <span class="ow">or</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">udp_log</span><span class="p">:</span> <span class="nb">bool</span> <span class="ow">or</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Sets logging target - the target must implement write() and flush().</span>
+<span class="sd">        You can optionally set the console and UDP logging ON or OFF.</span>
+<span class="sd">        This method switches the logging target global OFF.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_log_target_local</span> <span class="o">=</span> <span class="n">target</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_global_mode</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="n">console_log</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_log_to_console</span> <span class="o">=</span> <span class="n">console_log</span>
+        <span class="k">if</span> <span class="n">udp_log</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_log_to_udp</span> <span class="o">=</span> <span class="n">udp_log</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_flush_cached_entries</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="ScpiLogger.set_logging_target_global"><a class="viewcode-back" href="../../../logger.html#RsSmbv.Internal.ScpiLogger.ScpiLogger.set_logging_target_global">[docs]</a>    <span class="k">def</span> <span class="nf">set_logging_target_global</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">console_log</span><span class="p">:</span> <span class="nb">bool</span> <span class="ow">or</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">udp_log</span><span class="p">:</span> <span class="nb">bool</span> <span class="ow">or</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Sets logging target to global. The global target must be defined. You can optionally set the console and UDP logging ON or OFF. &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">GlobalData</span><span class="o">.</span><span class="n">get_logging_target</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">RsInstrException</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cannot set the logging to global target, because the global target has not been defined. Device name: &#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">device_name</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_global_mode</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">if</span> <span class="n">console_log</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_log_to_console</span> <span class="o">=</span> <span class="n">console_log</span>
+        <span class="k">if</span> <span class="n">udp_log</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_log_to_udp</span> <span class="o">=</span> <span class="n">udp_log</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_flush_cached_entries</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="ScpiLogger.get_logging_target"><a class="viewcode-back" href="../../../logger.html#RsSmbv.Internal.ScpiLogger.ScpiLogger.get_logging_target">[docs]</a>    <span class="k">def</span> <span class="nf">get_logging_target</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Based on the global_mode, it returns the logging target: either the local or the global one.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_log_target_local</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_global_mode</span> <span class="ow">is</span> <span class="kc">False</span> <span class="k">else</span> <span class="n">GlobalData</span><span class="o">.</span><span class="n">get_logging_target</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="ScpiLogger.get_relative_timestamp"><a class="viewcode-back" href="../../../logger.html#RsSmbv.Internal.ScpiLogger.ScpiLogger.get_relative_timestamp">[docs]</a>    <span class="k">def</span> <span class="nf">get_relative_timestamp</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">datetime</span> <span class="ow">or</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Based on the global_mode, it returns the relative timestamp: either the local or the global one.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timestamp_reference_time_local</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_global_mode</span> <span class="ow">is</span> <span class="kc">False</span> <span class="k">else</span> <span class="n">GlobalData</span><span class="o">.</span><span class="n">get_logging_relative_timestamp</span><span class="p">()</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">target_auto_flushing</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Returns status of the auto-flushing for the logging target.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_target_auto_flushing</span>
+
+    <span class="nd">@target_auto_flushing</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">target_auto_flushing</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Sets auto-flushing for the logging target. If set to True (default value), after each entry the stream is flushed,</span>
+<span class="sd">        This makes sure, that even if your e.g. file stream is not closed at the end, it contains all the entries.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_target_auto_flushing</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">mode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">LoggingMode</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Sets the logging ON or OFF. Additionally, you can set the logging ON only for errors.</span>
+<span class="sd">        Possible values:</span>
+
+<span class="sd">        * LoggingMode.Off  - logging is switched OFF</span>
+<span class="sd">        * LoggingMode.On  - logging is switched ON</span>
+<span class="sd">        * LoggingMode.Errors  - logging is switched ON, but only for error entries</span>
+<span class="sd">        * LoggingMode.Default  - sets the logging to default - the value you have set with logger.default_mode</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span>
+
+    <span class="n">Off</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># Don&#39;t write messages to log</span>
+    <span class="n">On</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># Write message to log</span>
+    <span class="n">Errors</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># Only log errors. This is like &#39;Off&#39;, with the exception, that VisaIOErrors are logged.</span>
+    <span class="n">Default</span> <span class="o">=</span> <span class="mi">3</span>  <span class="c1"># Default mode</span>
+
+    <span class="nd">@mode</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">LoggingMode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Sets / returns the Logging mode.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_segment</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">RsInstrException</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Can not change the logging mode when a log segment is active. End the segment with ScpiLogger.end_current_segment(). Device name: &#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">device_name</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve_log_mode</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">!=</span> <span class="n">LoggingMode</span><span class="o">.</span><span class="n">Off</span><span class="p">:</span>
+            <span class="c1"># logging is ON. Check the internal log entries and flush them to the target</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_flush_cached_entries</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span> <span class="o">==</span> <span class="n">LoggingMode</span><span class="o">.</span><span class="n">Off</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_logging_target</span><span class="p">():</span>
+            <span class="c1"># Logging was switched off, flush the entries on the target</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+
+<div class="viewcode-block" id="ScpiLogger.start"><a class="viewcode-back" href="../../../logger.html#RsSmbv.Internal.ScpiLogger.ScpiLogger.start">[docs]</a>    <span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Starts the logging with the last defined LoggingMode. Default is LoggingMode.On&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_last_logging_mode</span></div>
+
+<div class="viewcode-block" id="ScpiLogger.stop"><a class="viewcode-back" href="../../../logger.html#RsSmbv.Internal.ScpiLogger.ScpiLogger.stop">[docs]</a>    <span class="k">def</span> <span class="nf">stop</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Stops the logging. This is the same as: mode = LoggingMode.Off&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">LoggingMode</span><span class="o">.</span><span class="n">Off</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_last_logging_mode</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="n">LoggingMode</span><span class="o">.</span><span class="n">Off</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">log_status_check_ok</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Sets / returns the current status of status checking OK.</span>
+<span class="sd">        If True (default), the log contains logging of the status checking &#39;Status check: OK&#39;.</span>
+<span class="sd">        If False, the &#39;Status check: OK&#39; is skipped - the log is more compact.</span>
+<span class="sd">        Errors will still be logged.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_log_status_check_ok</span>
+
+    <span class="nd">@log_status_check_ok</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">log_status_check_ok</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Sets new logging of status checking OK.</span>
+<span class="sd">        If True (default), the log contains logging of the status checking &#39;Status check: OK&#39;.</span>
+<span class="sd">        If False, the &#39;Status check: OK&#39; is skipped - the log is more compact.</span>
+<span class="sd">        Errors will still be logged.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_log_status_check_ok</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(),</span> <span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;Logging of </span><span class="se">\&#39;</span><span class="s1">Status Check OK</span><span class="se">\&#39;</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;ON&#39;</span> <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">True</span> <span class="k">else</span> <span class="s1">&#39;OFF&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">log_to_console</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Returns logging to console status.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_log_to_console</span>
+
+    <span class="nd">@log_to_console</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">log_to_console</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Sets logging to console. Default value is False.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_log_to_console</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_log_to_console</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_flush_cached_entries</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">log_to_udp</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Returns logging to UDP status.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_log_to_udp</span>
+
+    <span class="nd">@log_to_udp</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">log_to_udp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Sets logging to UDP. Default value is False.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_log_to_udp</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_log_to_udp</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_flush_cached_entries</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">log_to_console_and_udp</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Returns true, if both logging to UDP and console in are True.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">log_to_udp</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">log_to_console</span>
+
+    <span class="nd">@log_to_console_and_udp</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">log_to_console_and_udp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Sets logging to UDP and console in one call.</span>
+<span class="sd">        Compare to calling two methods, this one flushes potential cached entries to both targets.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_log_to_console</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_log_to_udp</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_log_to_console</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_flush_cached_entries</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">udp_port</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Returns udp logging port.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_udp_port</span>
+
+    <span class="nd">@udp_port</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">udp_port</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Sets UDP logging port. Default value is 49200.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_udp_port</span> <span class="o">=</span> <span class="n">value</span>
+
+<div class="viewcode-block" id="ScpiLogger.set_relative_timestamp"><a class="viewcode-back" href="../../../logger.html#RsSmbv.Internal.ScpiLogger.ScpiLogger.set_relative_timestamp">[docs]</a>    <span class="k">def</span> <span class="nf">set_relative_timestamp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timestamp</span><span class="p">:</span> <span class="n">datetime</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;If set, the further timestamps will be relative to the entered time.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_timestamp_reference_time_local</span> <span class="o">=</span> <span class="n">convert_ts_to_datetime</span><span class="p">(</span><span class="n">timestamp</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ScpiLogger.set_relative_timestamp_now"><a class="viewcode-back" href="../../../logger.html#RsSmbv.Internal.ScpiLogger.ScpiLogger.set_relative_timestamp_now">[docs]</a>    <span class="k">def</span> <span class="nf">set_relative_timestamp_now</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Sets the relative timestamp to the current time.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_relative_timestamp</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span></div>
+
+<div class="viewcode-block" id="ScpiLogger.clear_relative_timestamp"><a class="viewcode-back" href="../../../logger.html#RsSmbv.Internal.ScpiLogger.ScpiLogger.clear_relative_timestamp">[docs]</a>    <span class="k">def</span> <span class="nf">clear_relative_timestamp</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Clears the reference time, and the further logging continues with absolute times.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_timestamp_reference_time_local</span> <span class="o">=</span> <span class="kc">None</span></div>
+
+    <span class="k">def</span> <span class="nf">_target_exists</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns true, if the target either console or udp, or stream exist.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_logging_target</span><span class="p">()</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">log_to_console</span> <span class="ow">is</span> <span class="kc">True</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_log_to_udp</span> <span class="ow">is</span> <span class="kc">True</span>
+
+    <span class="k">def</span> <span class="nf">_flush_cached_entries</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Flushes internal log to the log target. Returns true if flushed.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_target_exists</span><span class="p">():</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cached</span><span class="o">.</span><span class="n">truncated_count</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_write_to_log</span><span class="p">(</span><span class="n">LogEntry</span><span class="o">.</span><span class="n">as_raw_content</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;----- Missing </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_cached</span><span class="o">.</span><span class="n">truncated_count</span><span class="si">}</span><span class="s1"> oldest entries ----------&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cached</span><span class="o">.</span><span class="n">entries</span><span class="p">:</span>
+            <span class="n">entry</span><span class="o">.</span><span class="n">set_timestamp_reference_time</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_relative_timestamp</span><span class="p">())</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_write_to_log</span><span class="p">(</span><span class="n">entry</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">clear_cached_entries</span><span class="p">()</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="k">def</span> <span class="nf">_resolve_log_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">LoggingMode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">LoggingMode</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Resolves the potential default mode.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="o">==</span> <span class="n">LoggingMode</span><span class="o">.</span><span class="n">Default</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_default_mode</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">value</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">default_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">LoggingMode</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Sets / returns the default logging mode.</span>
+<span class="sd">        You can recall the default mode by calling the &#39;logger.mode = LoggingMode.Default&#39;.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_default_mode</span>
+
+    <span class="nd">@default_mode</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">default_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">LoggingMode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Sets the default logging mode.</span>
+<span class="sd">        You can recall the default mode by calling the &#39;logger.mode = LoggingMode.Default&#39;.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="o">==</span> <span class="n">LoggingMode</span><span class="o">.</span><span class="n">Default</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;LoggingMode.Default can not be set here. Use a specific value.&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_default_mode</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="k">def</span> <span class="nf">_write_to_log</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entry</span><span class="p">:</span> <span class="n">LogEntry</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Logs the provided string to the target and optionally to the stdout.</span>
+<span class="sd">        Error signals that the entry is an error entry.&quot;&quot;&quot;</span>
+        <span class="c1"># Check if the segment is active and if so, write the log only to the segment.</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_segment</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_segment</span><span class="o">.</span><span class="n">add_to_segment</span><span class="p">(</span><span class="n">entry</span><span class="p">)</span>
+            <span class="k">return</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_target_exists</span><span class="p">():</span>
+            <span class="c1"># No target is defined yet, cache the entries internally for now</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_cached</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">entry</span><span class="p">)</span>
+            <span class="k">return</span>
+
+        <span class="c1"># Only now, before writing to the log target, resolve the content.</span>
+        <span class="n">entry</span><span class="o">.</span><span class="n">set_timestamp_reference_time</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_relative_timestamp</span><span class="p">())</span>
+        <span class="n">content</span> <span class="o">=</span> <span class="n">entry</span><span class="o">.</span><span class="n">get_resolved_content</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_format_string</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">log_info_replacer</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">encoding</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">log_to_console</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">log_to_udp</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_send_to_udp</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="n">entry</span><span class="o">.</span><span class="n">error</span><span class="p">)</span>
+        <span class="n">target</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_logging_target</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">target</span><span class="p">:</span>
+            <span class="n">new_line</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_line_divider</span> <span class="k">if</span> <span class="n">entry</span><span class="o">.</span><span class="n">add_new_line</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">target</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">content</span> <span class="o">+</span> <span class="n">new_line</span><span class="p">)</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_target_auto_flushing</span><span class="p">:</span>
+                    <span class="n">target</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Error logging to the stream. Message: </span><span class="se">\&#39;</span><span class="si">{</span><span class="n">content</span><span class="si">}</span><span class="se">\&#39;</span><span class="s1">. Error: </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span>
+                <span class="k">raise</span> <span class="n">RsInstrException</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="k">return</span>
+
+    <span class="k">def</span> <span class="nf">_send_to_udp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">content</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">error</span><span class="p">:</span> <span class="nb">bool</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Sends the log string to the defined udp port. Any socket exception is consumed.&quot;&quot;&quot;</span>
+        <span class="n">prefix</span> <span class="o">=</span> <span class="s1">&#39;[e]&#39;</span> <span class="k">if</span> <span class="n">error</span> <span class="k">else</span> <span class="s1">&#39;[i]&#39;</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">prefix</span> <span class="o">+</span> <span class="n">content</span><span class="p">,</span> <span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_socket</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_socket</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_DGRAM</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_socket</span><span class="o">.</span><span class="n">sendto</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="p">(</span><span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_udp_port</span><span class="p">))</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="k">return</span>
+
+<div class="viewcode-block" id="ScpiLogger.info_raw"><a class="viewcode-back" href="../../../logger.html#RsSmbv.Internal.ScpiLogger.ScpiLogger.info_raw">[docs]</a>    <span class="k">def</span> <span class="nf">info_raw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">log_entry</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">add_new_line</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Method for logging the raw string without any formatting.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="n">LoggingMode</span><span class="o">.</span><span class="n">Off</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span> <span class="o">==</span> <span class="n">LoggingMode</span><span class="o">.</span><span class="n">Errors</span><span class="p">:</span>
+            <span class="c1"># For errors logging mode, log the info only if the segment is active.</span>
+            <span class="c1"># That means, it might be logged eventually as a context when the segment ends with an error</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_segment</span><span class="p">:</span>
+                <span class="k">return</span>
+        <span class="n">entry</span> <span class="o">=</span> <span class="n">LogEntry</span><span class="o">.</span><span class="n">as_raw_content</span><span class="p">(</span><span class="n">log_entry</span><span class="p">,</span> <span class="n">add_new_line</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_write_to_log</span><span class="p">(</span><span class="n">entry</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_info_as_raw_entry</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">log_entry</span><span class="p">:</span> <span class="n">LogEntry</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Method for logging the entry.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="n">LoggingMode</span><span class="o">.</span><span class="n">Off</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span> <span class="o">==</span> <span class="n">LoggingMode</span><span class="o">.</span><span class="n">Errors</span><span class="p">:</span>
+            <span class="c1"># For errors logging mode, log the info only if the segment is active.</span>
+            <span class="c1"># That means, it might be logged eventually as a context when the segment ends with an error</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_segment</span><span class="p">:</span>
+                <span class="k">return</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_write_to_log</span><span class="p">(</span><span class="n">log_entry</span><span class="p">)</span>
+
+<div class="viewcode-block" id="ScpiLogger.info"><a class="viewcode-back" href="../../../logger.html#RsSmbv.Internal.ScpiLogger.ScpiLogger.info">[docs]</a>    <span class="k">def</span> <span class="nf">info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start_time</span><span class="p">:</span> <span class="n">datetime</span> <span class="ow">or</span> <span class="nb">float</span> <span class="ow">or</span> <span class="kc">None</span><span class="p">,</span> <span class="n">end_time</span><span class="p">:</span> <span class="n">datetime</span> <span class="ow">or</span> <span class="nb">float</span> <span class="ow">or</span> <span class="kc">None</span><span class="p">,</span> <span class="n">log_string_info</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">log_string</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">cmd</span><span class="p">:</span> <span class="nb">str</span> <span class="ow">or</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Method for logging one info entry. For binary log_string, use the info_bin()&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="n">LoggingMode</span><span class="o">.</span><span class="n">Off</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="n">entry</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compose_log_entry</span><span class="p">(</span><span class="n">start_time</span><span class="p">,</span> <span class="n">end_time</span><span class="p">,</span> <span class="n">log_string_info</span><span class="p">,</span> <span class="n">log_string</span><span class="p">,</span> <span class="n">cmd</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">abbreviated_max_len_ascii</span><span class="p">)</span>
+        <span class="n">entry</span><span class="o">.</span><span class="n">add_new_line</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_info_as_raw_entry</span><span class="p">(</span><span class="n">entry</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">info_bin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start_time</span><span class="p">:</span> <span class="n">datetime</span> <span class="ow">or</span> <span class="nb">float</span> <span class="ow">or</span> <span class="kc">None</span><span class="p">,</span> <span class="n">end_time</span><span class="p">:</span> <span class="n">datetime</span> <span class="ow">or</span> <span class="nb">float</span> <span class="ow">or</span> <span class="kc">None</span><span class="p">,</span> <span class="n">log_string_info</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">log_data</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">cmd</span><span class="p">:</span> <span class="nb">str</span> <span class="ow">or</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Method for logging one info entry where the log_data is binary (bytes).&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="n">LoggingMode</span><span class="o">.</span><span class="n">Off</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="n">entry</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compose_bin_log_entry</span><span class="p">(</span><span class="n">start_time</span><span class="p">,</span> <span class="n">end_time</span><span class="p">,</span> <span class="n">log_string_info</span><span class="p">,</span> <span class="n">cmd</span><span class="p">,</span> <span class="n">log_data</span><span class="p">)</span>
+        <span class="n">entry</span><span class="o">.</span><span class="n">add_new_line</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_info_as_raw_entry</span><span class="p">(</span><span class="n">entry</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">info_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start_time</span><span class="p">:</span> <span class="n">datetime</span> <span class="ow">or</span> <span class="nb">float</span> <span class="ow">or</span> <span class="kc">None</span><span class="p">,</span> <span class="n">end_time</span><span class="p">:</span> <span class="n">datetime</span> <span class="ow">or</span> <span class="nb">float</span> <span class="ow">or</span> <span class="kc">None</span><span class="p">,</span> <span class="n">log_string_info</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">list_data</span><span class="p">:</span> <span class="n">List</span><span class="p">,</span> <span class="n">cmd</span><span class="p">:</span> <span class="nb">str</span> <span class="ow">or</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Method for logging one info entry where the list_data is decimal List[].&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="n">LoggingMode</span><span class="o">.</span><span class="n">Off</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="n">delimiter</span> <span class="o">=</span> <span class="s1">&#39;, &#39;</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">list_data</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">abbreviated_max_len_list</span><span class="p">:</span>
+            <span class="n">log_string</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;List size </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">list_data</span><span class="p">)</span><span class="si">}</span><span class="s1">: </span><span class="si">{</span><span class="n">list_to_csv_str</span><span class="p">(</span><span class="n">list_data</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="n">delimiter</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">chunk</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">abbreviated_max_len_list</span> <span class="o">//</span> <span class="mi">2</span>
+            <span class="n">log_string</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;List size </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">list_data</span><span class="p">)</span><span class="si">}</span><span class="s1">, showing first and last </span><span class="si">{</span><span class="n">chunk</span><span class="si">}</span><span class="s1"> elements: &#39;</span>
+            <span class="n">log_string</span> <span class="o">+=</span> <span class="n">list_to_csv_str</span><span class="p">(</span><span class="n">list_data</span><span class="p">[:</span><span class="n">chunk</span><span class="p">],</span> <span class="n">delimiter</span><span class="o">=</span><span class="n">delimiter</span><span class="p">)</span>
+            <span class="n">log_string</span> <span class="o">+=</span> <span class="s1">&#39; .... &#39;</span>
+            <span class="n">log_string</span> <span class="o">+=</span> <span class="n">list_to_csv_str</span><span class="p">(</span><span class="n">list_data</span><span class="p">[</span><span class="o">-</span><span class="n">chunk</span><span class="p">:],</span> <span class="n">delimiter</span><span class="o">=</span><span class="n">delimiter</span><span class="p">)</span>
+        <span class="n">entry</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compose_log_entry</span><span class="p">(</span><span class="n">start_time</span><span class="p">,</span> <span class="n">end_time</span><span class="p">,</span> <span class="n">log_string_info</span><span class="p">,</span> <span class="n">log_string</span><span class="p">,</span> <span class="n">cmd</span><span class="p">,</span> <span class="n">max_log_string_len</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+        <span class="n">entry</span><span class="o">.</span><span class="n">add_new_line</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_info_as_raw_entry</span><span class="p">(</span><span class="n">entry</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">error_raw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">log_entry</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">add_new_line</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Method for logging one error entry without any formatting. Setting the error flag to True.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="n">LoggingMode</span><span class="o">.</span><span class="n">Off</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_segment</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_segment</span><span class="o">.</span><span class="n">error_present</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">entry</span> <span class="o">=</span> <span class="n">LogEntry</span><span class="o">.</span><span class="n">as_raw_error_content</span><span class="p">(</span><span class="n">log_entry</span><span class="p">,</span> <span class="n">add_new_line</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_write_to_log</span><span class="p">(</span><span class="n">entry</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_error_as_raw_entry</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">log_entry</span><span class="p">:</span> <span class="n">LogEntry</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Method for logging one error entry.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="n">LoggingMode</span><span class="o">.</span><span class="n">Off</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_segment</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_segment</span><span class="o">.</span><span class="n">error_present</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">log_entry</span><span class="o">.</span><span class="n">error</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">log_entry</span><span class="o">.</span><span class="n">add_new_line</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_write_to_log</span><span class="p">(</span><span class="n">log_entry</span><span class="p">)</span>
+
+<div class="viewcode-block" id="ScpiLogger.error"><a class="viewcode-back" href="../../../logger.html#RsSmbv.Internal.ScpiLogger.ScpiLogger.error">[docs]</a>    <span class="k">def</span> <span class="nf">error</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start_time</span><span class="p">:</span> <span class="n">datetime</span> <span class="ow">or</span> <span class="nb">float</span> <span class="ow">or</span> <span class="kc">None</span><span class="p">,</span> <span class="n">end_time</span><span class="p">:</span> <span class="n">datetime</span> <span class="ow">or</span> <span class="nb">float</span> <span class="ow">or</span> <span class="kc">None</span><span class="p">,</span> <span class="n">log_string_info</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">log_string</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">cmd</span><span class="p">:</span> <span class="nb">str</span> <span class="ow">or</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Method for logging one error entry.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="n">LoggingMode</span><span class="o">.</span><span class="n">Off</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="n">entry</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compose_log_entry</span><span class="p">(</span><span class="n">start_time</span><span class="p">,</span> <span class="n">end_time</span><span class="p">,</span> <span class="n">log_string_info</span><span class="p">,</span> <span class="n">log_string</span><span class="p">,</span> <span class="n">cmd</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">abbreviated_max_len_ascii</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_error_as_raw_entry</span><span class="p">(</span><span class="n">entry</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_adjust_log_strings</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Adjusts the log string to prevent repeating of the information in the fields.&quot;&quot;&quot;</span>
+        <span class="c1"># Prevent repeating of the device name:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">allow_log_string_adjust</span> <span class="ow">and</span> <span class="s1">&#39;DEVICE_NAME&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_format_string</span><span class="p">:</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_orig_resource_name</span><span class="si">}</span><span class="s2">&#39;: &quot;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_orig_resource_name</span><span class="si">}</span><span class="s2">&#39; &quot;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_orig_resource_name</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_orig_resource_name</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">value</span>
+
+    <span class="k">def</span> <span class="nf">_adjust_for_repeated_log_string_info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">log_string_info</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">log_string</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="c1"># Prevent repeating of the log string info in the log_string</span>
+        <span class="k">if</span> <span class="s1">&#39;LOG_STRING_INFO&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_format_string</span><span class="p">:</span>
+            <span class="n">log_string</span> <span class="o">=</span> <span class="n">log_string</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">log_string_info</span><span class="si">}</span><span class="s1">: &#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+            <span class="n">log_string</span> <span class="o">=</span> <span class="n">log_string</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">log_string_info</span><span class="si">}</span><span class="s1"> &#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+            <span class="n">log_string</span> <span class="o">=</span> <span class="n">log_string</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">log_string_info</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+            <span class="n">log_string</span> <span class="o">=</span> <span class="n">log_string</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">log_string_info</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">log_string</span>
+
+    <span class="k">def</span> <span class="nf">_compose_log_entry</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start_time</span><span class="p">:</span> <span class="n">datetime</span> <span class="ow">or</span> <span class="nb">float</span><span class="p">,</span> <span class="n">end_time</span><span class="p">:</span> <span class="n">datetime</span> <span class="ow">or</span> <span class="nb">float</span><span class="p">,</span> <span class="n">log_string_info</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">log_string</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">cmd</span><span class="p">:</span> <span class="nb">str</span> <span class="ow">or</span> <span class="kc">None</span><span class="p">,</span> <span class="n">max_log_string_len</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">LogEntry</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Composes the log string with the format defined in the self._format_string&quot;&quot;&quot;</span>
+        <span class="n">log_string_info</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_adjust_log_strings</span><span class="p">(</span><span class="n">log_string_info</span><span class="p">)</span>
+        <span class="n">log_string</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_adjust_log_strings</span><span class="p">(</span><span class="n">log_string</span><span class="p">)</span>
+        <span class="n">log_string</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_adjust_for_repeated_log_string_info</span><span class="p">(</span><span class="n">log_string_info</span><span class="p">,</span> <span class="n">log_string</span><span class="p">)</span>
+        <span class="n">orig_len</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">log_string</span><span class="p">)</span>
+        <span class="c1"># Shorten the long log strings</span>
+        <span class="k">if</span> <span class="n">max_log_string_len</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">orig_len</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">abbreviated_max_len_ascii</span><span class="p">:</span>
+                <span class="n">log_string</span> <span class="o">=</span> <span class="n">shorten_string_middle</span><span class="p">(</span><span class="n">log_string</span><span class="p">,</span> <span class="n">max_log_string_len</span><span class="p">)</span>
+        <span class="n">entry</span> <span class="o">=</span> <span class="n">LogEntry</span><span class="p">(</span><span class="n">start_time</span><span class="p">,</span> <span class="n">end_time</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">device_name</span><span class="p">,</span> <span class="n">log_string_info</span><span class="p">,</span> <span class="n">log_string</span><span class="p">,</span> <span class="n">cmd</span><span class="p">,</span> <span class="n">add_new_line</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">error</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">raw</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">binary</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">entry</span>
+
+    <span class="k">def</span> <span class="nf">_compose_bin_log_entry</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start_time</span><span class="p">:</span> <span class="n">datetime</span> <span class="ow">or</span> <span class="nb">float</span><span class="p">,</span> <span class="n">end_time</span><span class="p">:</span> <span class="n">datetime</span> <span class="ow">or</span> <span class="nb">float</span><span class="p">,</span> <span class="n">log_string_info</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">cmd</span><span class="p">:</span> <span class="nb">str</span> <span class="ow">or</span> <span class="kc">None</span><span class="p">,</span> <span class="n">log_data</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">LogEntry</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Composes the binary log string with the format defined in the self._format_string&quot;&quot;&quot;</span>
+        <span class="n">log_string_info</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_adjust_log_strings</span><span class="p">(</span><span class="n">log_string_info</span><span class="p">)</span>
+        <span class="n">log_string_info</span> <span class="o">=</span> <span class="n">escape_nonprintable_chars</span><span class="p">(</span><span class="n">log_string_info</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">encoding</span><span class="p">)</span>
+        <span class="n">log_string</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compose_hexdump</span><span class="p">(</span><span class="n">log_data</span><span class="p">,</span> <span class="n">offset_left</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+        <span class="n">entry</span> <span class="o">=</span> <span class="n">LogEntry</span><span class="p">(</span><span class="n">start_time</span><span class="p">,</span> <span class="n">end_time</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">device_name</span><span class="p">,</span> <span class="n">log_string_info</span><span class="p">,</span> <span class="n">log_string</span><span class="p">,</span> <span class="n">cmd</span><span class="p">,</span> <span class="n">add_new_line</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">error</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">raw</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">binary</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">entry</span>
+
+    <span class="k">def</span> <span class="nf">_compose_hexdump</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">str</span> <span class="ow">or</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">offset_left</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Composes hexdump string from string or bytes.</span>
+<span class="sd">        The hex dump is organised in the groups of 16 bytes per line.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">encoding</span><span class="p">)</span>
+        <span class="n">size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">size_to_kb_mb_string</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="n">padding</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span> <span class="o">*</span> <span class="n">offset_left</span>
+        <span class="n">right_padding</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bin_line_block_size</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="n">max_lines</span> <span class="o">=</span> <span class="n">calculate_chunks_count</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">abbreviated_max_len_bin</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">bin_line_block_size</span><span class="p">)</span>
+        <span class="n">lines_count</span> <span class="o">=</span> <span class="n">calculate_chunks_count</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">bin_line_block_size</span><span class="p">)</span>
+        <span class="n">skipping</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">skip_start</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">skip_size</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">if</span> <span class="n">lines_count</span> <span class="o">&gt;</span> <span class="p">(</span><span class="n">max_lines</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="c1"># Skip the lines in the middle</span>
+            <span class="n">skip_start</span> <span class="o">=</span> <span class="n">max_lines</span> <span class="o">//</span> <span class="mi">2</span>
+            <span class="k">if</span> <span class="n">skip_start</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">skip_start</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="n">skip_size</span> <span class="o">=</span> <span class="n">lines_count</span> <span class="o">-</span> <span class="n">max_lines</span>
+            <span class="k">if</span> <span class="n">skip_start</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">skip_size</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">skipping</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="n">line</span> <span class="o">+=</span> <span class="sa">f</span><span class="s1">&#39;, showing </span><span class="si">{</span><span class="n">max_lines</span><span class="si">}</span><span class="s1"> blocks (1 block = </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">bin_line_block_size</span><span class="si">}</span><span class="s1"> bytes) out of </span><span class="si">{</span><span class="n">lines_count</span><span class="si">}</span><span class="s1">, skipped </span><span class="si">{</span><span class="n">get_plural_string</span><span class="p">(</span><span class="s2">&quot;block&quot;</span><span class="p">,</span> <span class="n">skip_size</span><span class="p">)</span><span class="si">}</span><span class="s1"> in the middle&#39;</span>
+                <span class="n">skip_start</span> <span class="o">*=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bin_line_block_size</span>
+                <span class="n">skip_size</span> <span class="o">*=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bin_line_block_size</span>
+        <span class="n">ix</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">end</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">line</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_line_divider</span>
+        <span class="k">while</span> <span class="n">end</span> <span class="o">&lt;</span> <span class="n">size</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">skipping</span> <span class="ow">and</span> <span class="n">ix</span> <span class="o">&gt;=</span> <span class="n">skip_start</span><span class="p">:</span>
+                <span class="n">ix</span> <span class="o">+=</span> <span class="n">skip_size</span>
+                <span class="n">line</span> <span class="o">+=</span> <span class="n">padding</span> <span class="o">+</span> <span class="p">(</span><span class="s1">&#39;...&#39;</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">bin_line_block_size</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_line_divider</span>
+                <span class="n">skipping</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="n">end</span> <span class="o">=</span> <span class="n">ix</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">bin_line_block_size</span>
+            <span class="k">if</span> <span class="n">end</span> <span class="o">&gt;=</span> <span class="n">size</span><span class="p">:</span>
+                <span class="n">end</span> <span class="o">=</span> <span class="n">size</span>
+            <span class="n">chunk</span> <span class="o">=</span> <span class="n">value</span><span class="p">[</span><span class="n">ix</span><span class="p">:</span> <span class="n">end</span><span class="p">]</span>
+            <span class="n">cp</span> <span class="o">=</span> <span class="p">[</span><span class="nb">chr</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">if</span> <span class="n">c</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_printable_chars</span> <span class="k">else</span> <span class="s1">&#39;.&#39;</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">chunk</span><span class="p">]</span>
+            <span class="n">line</span> <span class="o">+=</span> <span class="n">padding</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">wrap</span><span class="p">(</span><span class="n">chunk</span><span class="o">.</span><span class="n">hex</span><span class="p">(),</span> <span class="mi">2</span><span class="p">))</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="n">right_padding</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;    &#39;</span> <span class="o">+</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cp</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_line_divider</span>
+            <span class="n">ix</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bin_line_block_size</span>
+        <span class="k">return</span> <span class="n">line</span>
+
+<div class="viewcode-block" id="ScpiLogger.flush"><a class="viewcode-back" href="../../../logger.html#RsSmbv.Internal.ScpiLogger.ScpiLogger.flush">[docs]</a>    <span class="k">def</span> <span class="nf">flush</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Flush all the entries.&quot;&quot;&quot;</span>
+        <span class="n">target</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_logging_target</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">target</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="c1"># The file might be already closed.</span>
+                <span class="n">target</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+            <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                <span class="k">pass</span></div>
+
+    <span class="k">def</span> <span class="fm">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+
+<div class="viewcode-block" id="ScpiLogger.sync_from"><a class="viewcode-back" href="../../../logger.html#RsSmbv.Internal.ScpiLogger.ScpiLogger.sync_from">[docs]</a>    <span class="k">def</span> <span class="nf">sync_from</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span> <span class="s1">&#39;ScpiLogger&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Synchronises this Logger with the source logger.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_orig_resource_name</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">_orig_resource_name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">mode</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">default_mode</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">default_mode</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_log_status_check_ok</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">log_status_check_ok</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_log_to_console</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">_log_to_console</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log_to_udp</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">log_to_udp</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">udp_port</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">udp_port</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_format_string</span><span class="p">(</span><span class="n">source</span><span class="o">.</span><span class="n">_format_string</span><span class="p">,</span> <span class="n">source</span><span class="o">.</span><span class="n">_line_divider</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_target_auto_flushing</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">_target_auto_flushing</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log_info_replacer</span> <span class="o">=</span> <span class="n">LogInfoReplacer</span><span class="p">(</span><span class="n">source</span><span class="o">.</span><span class="n">log_info_replacer</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_log_target_local</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">_log_target_local</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_timestamp_reference_time_local</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">_timestamp_reference_time_local</span>
+        <span class="k">if</span> <span class="n">source</span><span class="o">.</span><span class="n">_global_mode</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">set_logging_target_global</span><span class="p">()</span>
+
+        <span class="c1"># Public properties</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">device_name</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">device_name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">abbreviated_max_len_ascii</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">abbreviated_max_len_ascii</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">abbreviated_max_len_list</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">abbreviated_max_len_list</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">abbreviated_max_len_bin</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">abbreviated_max_len_bin</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bin_line_block_size</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">bin_line_block_size</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">encoding</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">encoding</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">allow_log_string_adjust</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">allow_log_string_adjust</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

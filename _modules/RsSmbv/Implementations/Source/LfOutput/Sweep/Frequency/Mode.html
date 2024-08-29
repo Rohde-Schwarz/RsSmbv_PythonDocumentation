@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RsSmbv.Implementations.Source.LfOutput.Sweep.Frequency.Mode &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../../../../" id="documentation_options" src="../../../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../../../_static/jquery.js"></script>
+        <script src="../../../../../../../_static/underscore.js"></script>
+        <script src="../../../../../../../_static/doctools.js"></script>
+        <script src="../../../../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../../../../_static/copybutton.js"></script>
+    <script src="../../../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../../../../index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../RsSmbv.html">RsSmbv API Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../../index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../../../../index.html">Module code</a> &raquo;</li>
+          <li><a href="../../../../Source.html">RsSmbv.Implementations.Source</a> &raquo;</li>
+          <li><a href="../../../LfOutput.html">RsSmbv.Implementations.Source.LfOutput</a> &raquo;</li>
+          <li><a href="../../Sweep.html">RsSmbv.Implementations.Source.LfOutput.Sweep</a> &raquo;</li>
+          <li><a href="../Frequency.html">RsSmbv.Implementations.Source.LfOutput.Sweep.Frequency</a> &raquo;</li>
+      <li>RsSmbv.Implementations.Source.LfOutput.Sweep.Frequency.Mode</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for RsSmbv.Implementations.Source.LfOutput.Sweep.Frequency.Mode</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">......Internal.Core</span> <span class="kn">import</span> <span class="n">Core</span>
+<span class="kn">from</span> <span class="nn">......Internal.CommandsGroup</span> <span class="kn">import</span> <span class="n">CommandsGroup</span>
+<span class="kn">from</span> <span class="nn">......Internal</span> <span class="kn">import</span> <span class="n">Conversions</span>
+<span class="kn">from</span> <span class="nn">......</span> <span class="kn">import</span> <span class="n">enums</span>
+
+
+<span class="c1"># noinspection PyPep8Naming,PyAttributeOutsideInit,SpellCheckingInspection</span>
+<div class="viewcode-block" id="ModeCls"><a class="viewcode-back" href="../../../../../../../Source_LfOutput_Sweep_Frequency_Mode.html#RsSmbv.Implementations.Source.LfOutput.Sweep.Frequency.Mode.ModeCls">[docs]</a><span class="k">class</span> <span class="nc">ModeCls</span><span class="p">:</span>
+	<span class="sd">&quot;&quot;&quot;Mode commands group definition. 2 total commands, 0 Subgroups, 2 group commands&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">core</span><span class="p">:</span> <span class="n">Core</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span> <span class="o">=</span> <span class="n">core</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span> <span class="o">=</span> <span class="n">CommandsGroup</span><span class="p">(</span><span class="s2">&quot;mode&quot;</span><span class="p">,</span> <span class="n">core</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="ModeCls.get_advanced"><a class="viewcode-back" href="../../../../../../../Source_LfOutput_Sweep_Frequency_Mode.html#RsSmbv.Implementations.Source.LfOutput.Sweep.Frequency.Mode.ModeCls.get_advanced">[docs]</a>	<span class="k">def</span> <span class="nf">get_advanced</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">AutoManualMode</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:LFOutput:SWEep:[FREQuency]:MODE:ADVanced \n</span>
+<span class="sd">		Snippet: value: enums.AutoManualMode = driver.source.lfOutput.sweep.frequency.mode.get_advanced() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: lf_sweep_mode_adv: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:LFOutput:SWEep:FREQuency:MODE:ADVanced?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">AutoManualMode</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ModeCls.set_advanced"><a class="viewcode-back" href="../../../../../../../Source_LfOutput_Sweep_Frequency_Mode.html#RsSmbv.Implementations.Source.LfOutput.Sweep.Frequency.Mode.ModeCls.set_advanced">[docs]</a>	<span class="k">def</span> <span class="nf">set_advanced</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lf_sweep_mode_adv</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">AutoManualMode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:LFOutput:SWEep:[FREQuency]:MODE:ADVanced \n</span>
+<span class="sd">		Snippet: driver.source.lfOutput.sweep.frequency.mode.set_advanced(lf_sweep_mode_adv = enums.AutoManualMode.AUTO) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param lf_sweep_mode_adv: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">lf_sweep_mode_adv</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">AutoManualMode</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:LFOutput:SWEep:FREQuency:MODE:ADVanced </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="ModeCls.get_value"><a class="viewcode-back" href="../../../../../../../Source_LfOutput_Sweep_Frequency_Mode.html#RsSmbv.Implementations.Source.LfOutput.Sweep.Frequency.Mode.ModeCls.get_value">[docs]</a>	<span class="k">def</span> <span class="nf">get_value</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">AutoManStep</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:LFOutput:SWEep:[FREQuency]:MODE \n</span>
+<span class="sd">		Snippet: value: enums.AutoManStep = driver.source.lfOutput.sweep.frequency.mode.get_value() \n</span>
+<span class="sd">		Sets the cycle mode of the LF sweep. \n</span>
+<span class="sd">			:return: mode: AUTO| MANual| STEP AUTO Performs a complete sweep cycle from the start to the end value when a trigger event occurs. The dwell time determines the time period until the signal switches to the next step. MANual Performs a single sweep step when a manual trigger event occurs. The trigger system is not active. To trigger each frequency step of the sweep individually, use the command [:SOURcehw]:LFOutput:FREQuency:MANual. STEP Each trigger command triggers one sweep step only. The frequency increases by the value set with the coammnds: [:SOURcehw]:LFOutput:SWEep[:FREQuency]:STEP[:LINear] (linear spacing) [:SOURcehw]:LFOutput:SWEep[:FREQuency]:STEP:LOGarithmic(logarithmic spacing)</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:LFOutput:SWEep:FREQuency:MODE?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">AutoManStep</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ModeCls.set_value"><a class="viewcode-back" href="../../../../../../../Source_LfOutput_Sweep_Frequency_Mode.html#RsSmbv.Implementations.Source.LfOutput.Sweep.Frequency.Mode.ModeCls.set_value">[docs]</a>	<span class="k">def</span> <span class="nf">set_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">AutoManStep</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:LFOutput:SWEep:[FREQuency]:MODE \n</span>
+<span class="sd">		Snippet: driver.source.lfOutput.sweep.frequency.mode.set_value(mode = enums.AutoManStep.AUTO) \n</span>
+<span class="sd">		Sets the cycle mode of the LF sweep. \n</span>
+<span class="sd">			:param mode: AUTO| MANual| STEP AUTO Performs a complete sweep cycle from the start to the end value when a trigger event occurs. The dwell time determines the time period until the signal switches to the next step. MANual Performs a single sweep step when a manual trigger event occurs. The trigger system is not active. To trigger each frequency step of the sweep individually, use the command [:SOURcehw]:LFOutput:FREQuency:MANual. STEP Each trigger command triggers one sweep step only. The frequency increases by the value set with the coammnds: [:SOURcehw]:LFOutput:SWEep[:FREQuency]:STEP[:LINear] (linear spacing) [:SOURcehw]:LFOutput:SWEep[:FREQuency]:STEP:LOGarithmic(logarithmic spacing)</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">mode</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">AutoManStep</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:LFOutput:SWEep:FREQuency:MODE </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

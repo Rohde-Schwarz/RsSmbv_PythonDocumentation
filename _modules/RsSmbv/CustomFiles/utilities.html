@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RsSmbv.CustomFiles.utilities &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../RsSmbv.html">RsSmbv API Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+      <li>RsSmbv.CustomFiles.utilities</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for RsSmbv.CustomFiles.utilities</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Utilities extending the driver for methods provided with RsInstrument.&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span>
+<span class="kn">import</span> <span class="nn">threading</span>
+
+<span class="kn">from</span> <span class="nn">..Internal</span> <span class="kn">import</span> <span class="n">Core</span>
+<span class="kn">from</span> <span class="nn">..Internal.ContextManagers</span> <span class="kn">import</span> <span class="n">InstrErrorSuppressor</span><span class="p">,</span> <span class="n">VisaTimeoutSuppressor</span>
+<span class="kn">from</span> <span class="nn">..Internal</span> <span class="kn">import</span> <span class="n">Conversions</span> <span class="k">as</span> <span class="n">Conv</span>
+<span class="kn">from</span> <span class="nn">..Internal.ScpiLogger</span> <span class="kn">import</span> <span class="n">ScpiLogger</span>
+
+
+<div class="viewcode-block" id="Utilities"><a class="viewcode-back" href="../../../utilities.html#RsSmbv.CustomFiles.utilities.Utilities">[docs]</a><span class="k">class</span> <span class="nc">Utilities</span><span class="p">:</span>
+	<span class="sd">&quot;&quot;&quot;Common utility class.</span>
+<span class="sd">	Utility functions common for all types of drivers. \n</span>
+<span class="sd">	Access snippet: ``utils = RsSmbv.utilities``&quot;&quot;&quot;</span>
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">core</span><span class="p">:</span> <span class="n">Core</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span> <span class="o">=</span> <span class="n">core</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">logger</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ScpiLogger</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Scpi Logger interface, see :ref:`here &lt;Logger&gt;` \n</span>
+<span class="sd">		Access snippet: ``logger = RsSmbv.utilities.logger``&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">logger</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">driver_version</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Returns the instrument driver version.&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">driver_version</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">idn_string</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Returns instrument&#39;s identification string - the response on the SCPI command *IDN?&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">idn_string</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">manufacturer</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Returns manufacturer of the instrument.&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">manufacturer</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">full_instrument_model_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Returns the current instrument&#39;s full name e.g. &#39;FSW26&#39;.&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">full_model_name</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">instrument_model_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Returns the current instrument&#39;s family name e.g. &#39;FSW&#39;.&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">model</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">supported_models</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+		<span class="sd">&quot;&quot;&quot;Returns a list of the instrument models supported by this instrument driver.&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">supported_instr_models</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">instrument_firmware_version</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Returns instrument&#39;s firmware version.&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">firmware_version</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">instrument_serial_number</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Returns instrument&#39;s serial_number.&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">serial_number</span>
+
+<div class="viewcode-block" id="Utilities.query_opc"><a class="viewcode-back" href="../../../utilities.html#RsSmbv.CustomFiles.utilities.Utilities.query_opc">[docs]</a>	<span class="k">def</span> <span class="nf">query_opc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeout</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI command: *OPC?</span>
+<span class="sd">		Queries the instrument&#39;s OPC bit and hence it waits until the instrument reports operation complete.</span>
+<span class="sd">		If you define timeout &gt; 0, the VISA timeout is set to that value just for this method call.&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_opc</span><span class="p">(</span><span class="n">timeout</span><span class="p">)</span></div>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">instrument_status_checking</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Sets / returns Instrument Status Checking.</span>
+<span class="sd">		When True (default is True), all the driver methods and properties are sending &quot;SYSTem:ERRor?&quot;</span>
+<span class="sd">		at the end to immediately react on error that might have occurred.</span>
+<span class="sd">		We recommend to keep the state checking ON all the time. Switch it OFF only in rare cases when you require maximum speed.</span>
+<span class="sd">		The default state after initializing the session is ON.&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_instr_status</span>
+
+	<span class="nd">@instrument_status_checking</span><span class="o">.</span><span class="n">setter</span>
+	<span class="k">def</span> <span class="nf">instrument_status_checking</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Sets / returns Instrument Status Checking.</span>
+<span class="sd">		When True (default is True), all the driver methods and properties are sending &quot;SYSTem:ERRor?&quot;</span>
+<span class="sd">		at the end to immediately react on error that might have occurred.</span>
+<span class="sd">		We recommend to keep the state checking ON all the time. Switch it OFF only in rare cases when you require maximum speed.</span>
+<span class="sd">		The default state after initializing the session is ON.&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_instr_status</span> <span class="o">=</span> <span class="n">value</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">encoding</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Returns string&lt;=&gt;bytes encoding of the session.&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">encoding</span>
+
+	<span class="nd">@encoding</span><span class="o">.</span><span class="n">setter</span>
+	<span class="k">def</span> <span class="nf">encoding</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Sets string&lt;=&gt;bytes encoding of the session.&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">encoding</span> <span class="o">=</span> <span class="n">value</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">opc_query_after_write</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Sets / returns Instrument *OPC? query sending after each command write.</span>
+<span class="sd">		When True, (default is False) the driver sends *OPC? every time a write command is performed.</span>
+<span class="sd">		Use this if you want to make sure your sequence is performed command-after-command.&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">opc_query_after_write</span>
+
+	<span class="nd">@opc_query_after_write</span><span class="o">.</span><span class="n">setter</span>
+	<span class="k">def</span> <span class="nf">opc_query_after_write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Sets / returns Instrument *OPC? query sending after each command write.</span>
+<span class="sd">		When True, (default is False) the driver sends *OPC? every time a write command is performed.</span>
+<span class="sd">		Use this if you want to make sure your sequence is performed command-after-command.&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">opc_query_after_write</span> <span class="o">=</span> <span class="n">value</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">bin_float_numbers_format</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Conv</span><span class="o">.</span><span class="n">BinFloatFormat</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Sets / returns format of float numbers when transferred as binary data.&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">bin_float_numbers_format</span>
+
+	<span class="nd">@bin_float_numbers_format</span><span class="o">.</span><span class="n">setter</span>
+	<span class="k">def</span> <span class="nf">bin_float_numbers_format</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Conv</span><span class="o">.</span><span class="n">BinFloatFormat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Sets / returns format of float numbers when transferred as binary data.&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">bin_float_numbers_format</span> <span class="o">=</span> <span class="n">value</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">bin_int_numbers_format</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Conv</span><span class="o">.</span><span class="n">BinIntFormat</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Sets / returns format of integer numbers when transferred as binary data.&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">bin_int_numbers_format</span>
+
+	<span class="nd">@bin_int_numbers_format</span><span class="o">.</span><span class="n">setter</span>
+	<span class="k">def</span> <span class="nf">bin_int_numbers_format</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Conv</span><span class="o">.</span><span class="n">BinIntFormat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Sets / returns format of integer numbers when transferred as binary data.&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">bin_int_numbers_format</span> <span class="o">=</span> <span class="n">value</span>
+
+<div class="viewcode-block" id="Utilities.clear_status"><a class="viewcode-back" href="../../../utilities.html#RsSmbv.CustomFiles.utilities.Utilities.clear_status">[docs]</a>	<span class="k">def</span> <span class="nf">clear_status</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Clears instrument&#39;s status system, the session&#39;s I/O buffers and the instrument&#39;s error queue.&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">clear_status</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="Utilities.query_all_errors"><a class="viewcode-back" href="../../../utilities.html#RsSmbv.CustomFiles.utilities.Utilities.query_all_errors">[docs]</a>	<span class="k">def</span> <span class="nf">query_all_errors</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="ow">or</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Queries and clears all the errors from the instrument&#39;s error queue.</span>
+<span class="sd">		The method returns list of strings as error messages. If no error is detected, the return value is None.</span>
+<span class="sd">		The process is: querying &#39;SYSTem:ERRor?&#39; in a loop until the error queue is empty.</span>
+<span class="sd">		If you want to include the error codes, call the query_all_errors_with_codes()&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_all_syst_errors</span><span class="p">(</span><span class="n">include_codes</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Utilities.query_all_errors_with_codes"><a class="viewcode-back" href="../../../utilities.html#RsSmbv.CustomFiles.utilities.Utilities.query_all_errors_with_codes">[docs]</a>	<span class="k">def</span> <span class="nf">query_all_errors_with_codes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]</span> <span class="ow">or</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Queries and clears all the errors from the instrument&#39;s error queue.</span>
+<span class="sd">		The method returns list of tuples (code: int, message: str). If no error is detected, the return value is None.</span>
+<span class="sd">		The process is: querying &#39;SYSTem:ERRor?&#39; in a loop until the error queue is empty.&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_all_syst_errors</span><span class="p">(</span><span class="n">include_codes</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">instrument_options</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+		<span class="sd">&quot;&quot;&quot;Returns all the instrument options.</span>
+<span class="sd">		The options are sorted in the ascending order starting with K-options and continuing with B-options.&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">instr_options</span><span class="o">.</span><span class="n">get_all</span><span class="p">()</span>
+
+<div class="viewcode-block" id="Utilities.reset"><a class="viewcode-back" href="../../../utilities.html#RsSmbv.CustomFiles.utilities.Utilities.reset">[docs]</a>	<span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI command: *RST</span>
+<span class="sd">		Sends *RST command + calls the clear_status().&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">default_instrument_setup</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="Utilities.default_instrument_setup"><a class="viewcode-back" href="../../../utilities.html#RsSmbv.CustomFiles.utilities.Utilities.default_instrument_setup">[docs]</a>	<span class="k">def</span> <span class="nf">default_instrument_setup</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Custom steps performed at the init and at the reset().&quot;&quot;&quot;</span></div>
+
+<div class="viewcode-block" id="Utilities.self_test"><a class="viewcode-back" href="../../../utilities.html#RsSmbv.CustomFiles.utilities.Utilities.self_test">[docs]</a>	<span class="k">def</span> <span class="nf">self_test</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeout</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI command: *TST?</span>
+<span class="sd">		Performs instrument&#39;s self-test.</span>
+<span class="sd">		Returns tuple (code:int, message: str). Code 0 means the self-test passed.</span>
+<span class="sd">		You can define the custom timeout in milliseconds. If you do not define it, the default selftest timeout is used (usually 60 secs).&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">self_test</span><span class="p">(</span><span class="n">timeout</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Utilities.is_connection_active"><a class="viewcode-back" href="../../../utilities.html#RsSmbv.CustomFiles.utilities.Utilities.is_connection_active">[docs]</a>	<span class="k">def</span> <span class="nf">is_connection_active</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Returns true, if the VISA connection is active and the communication with the instrument still works.&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">is_connection_active</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="Utilities.reconnect"><a class="viewcode-back" href="../../../utilities.html#RsSmbv.CustomFiles.utilities.Utilities.reconnect">[docs]</a>	<span class="k">def</span> <span class="nf">reconnect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">force_close</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;If the connection is not active, the method tries to reconnect to the device</span>
+<span class="sd">		If the connection is active, and force_close is False, the method does nothing.</span>
+<span class="sd">		If the connection is active, and force_close is True, the method closes, and opens the session again.</span>
+<span class="sd">		Returns True, if the reconnection has been performed.&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">reconnect</span><span class="p">(</span><span class="n">force_close</span><span class="p">)</span></div>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">resource_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Returns the resource name used in the constructor&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">resource_name</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">opc_timeout</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Sets / returns timeout in milliseconds for all the operations that use OPC synchronization.&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">opc_timeout</span>
+
+	<span class="nd">@opc_timeout</span><span class="o">.</span><span class="n">setter</span>
+	<span class="k">def</span> <span class="nf">opc_timeout</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Sets / returns timeout in milliseconds for all the operations that use OPC synchronization.&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">opc_timeout</span> <span class="o">=</span> <span class="n">value</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">visa_timeout</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Sets / returns visa IO timeout in milliseconds.&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">visa_timeout</span>
+
+	<span class="nd">@visa_timeout</span><span class="o">.</span><span class="n">setter</span>
+	<span class="k">def</span> <span class="nf">visa_timeout</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Sets / returns visa IO timeout in milliseconds.&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">visa_timeout</span> <span class="o">=</span> <span class="n">value</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">data_chunk_size</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Sets / returns the maximum size of one block transferred during write/read operations&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">data_chunk_size</span>
+
+	<span class="nd">@data_chunk_size</span><span class="o">.</span><span class="n">setter</span>
+	<span class="k">def</span> <span class="nf">data_chunk_size</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">chunk_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Sets / returns the maximum size of one block transferred during write/read operations.&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">data_chunk_size</span> <span class="o">=</span> <span class="n">chunk_size</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">visa_manufacturer</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Returns the manufacturer of the current VISA session.&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">visa_manufacturer</span>
+
+<div class="viewcode-block" id="Utilities.process_all_commands"><a class="viewcode-back" href="../../../utilities.html#RsSmbv.CustomFiles.utilities.Utilities.process_all_commands">[docs]</a>	<span class="k">def</span> <span class="nf">process_all_commands</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI command: *WAI</span>
+<span class="sd">		Stops further commands processing until all commands sent before *WAI have been executed.&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;*WAI&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Utilities.write_str"><a class="viewcode-back" href="../../../utilities.html#RsSmbv.CustomFiles.utilities.Utilities.write_str">[docs]</a>	<span class="k">def</span> <span class="nf">write_str</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cmd</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Writes the command to the instrument.&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Utilities.write"><a class="viewcode-back" href="../../../utilities.html#RsSmbv.CustomFiles.utilities.Utilities.write">[docs]</a>	<span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cmd</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;This method is an alias to the write_str().</span>
+<span class="sd">		Writes the command to the instrument as string.&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Utilities.write_int"><a class="viewcode-back" href="../../../utilities.html#RsSmbv.CustomFiles.utilities.Utilities.write_int">[docs]</a>	<span class="k">def</span> <span class="nf">write_int</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cmd</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">param</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Writes the command to the instrument followed by the integer parameter:</span>
+<span class="sd">		e.g.: cmd = &#39;SELECT:INPUT&#39; param = &#39;2&#39;, result command = &#39;SELECT:INPUT 2&#39;&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">cmd</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Utilities.write_int_with_opc"><a class="viewcode-back" href="../../../utilities.html#RsSmbv.CustomFiles.utilities.Utilities.write_int_with_opc">[docs]</a>	<span class="k">def</span> <span class="nf">write_int_with_opc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cmd</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">param</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">timeout</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Writes the command with OPC to the instrument followed by the integer parameter:</span>
+<span class="sd">		e.g.: cmd = &#39;SELECT:INPUT&#39; param = &#39;2&#39;, result command = &#39;SELECT:INPUT 2&#39;</span>
+<span class="sd">		If you do not provide timeout, the method uses current opc_timeout.&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write_with_opc</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">cmd</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Utilities.write_float"><a class="viewcode-back" href="../../../utilities.html#RsSmbv.CustomFiles.utilities.Utilities.write_float">[docs]</a>	<span class="k">def</span> <span class="nf">write_float</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cmd</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">param</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Writes the command to the instrument followed by the boolean parameter:</span>
+<span class="sd">		e.g.: cmd = &#39;CENTER:FREQ&#39; param = &#39;10E6&#39;, result command = &#39;CENTER:FREQ 10E6&#39;&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">cmd</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">Conv</span><span class="o">.</span><span class="n">float_to_str</span><span class="p">(</span><span class="n">param</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Utilities.write_float_with_opc"><a class="viewcode-back" href="../../../utilities.html#RsSmbv.CustomFiles.utilities.Utilities.write_float_with_opc">[docs]</a>	<span class="k">def</span> <span class="nf">write_float_with_opc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cmd</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">param</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">timeout</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Writes the command with OPC to the instrument followed by the boolean parameter:</span>
+<span class="sd">		e.g.: cmd = &#39;CENTER:FREQ&#39; param = &#39;10E6&#39;, result command = &#39;CENTER:FREQ 10E6&#39;</span>
+<span class="sd">		If you do not provide timeout, the method uses current opc_timeout.&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write_with_opc</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">cmd</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">Conv</span><span class="o">.</span><span class="n">float_to_str</span><span class="p">(</span><span class="n">param</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Utilities.write_bool"><a class="viewcode-back" href="../../../utilities.html#RsSmbv.CustomFiles.utilities.Utilities.write_bool">[docs]</a>	<span class="k">def</span> <span class="nf">write_bool</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cmd</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">param</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Writes the command to the instrument followed by the boolean parameter:</span>
+<span class="sd">		e.g.: cmd = &#39;OUTPUT&#39; param = &#39;True&#39;, result command = &#39;OUTPUT ON&#39;&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">cmd</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">Conv</span><span class="o">.</span><span class="n">bool_to_str</span><span class="p">(</span><span class="n">param</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Utilities.write_bool_with_opc"><a class="viewcode-back" href="../../../utilities.html#RsSmbv.CustomFiles.utilities.Utilities.write_bool_with_opc">[docs]</a>	<span class="k">def</span> <span class="nf">write_bool_with_opc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cmd</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">param</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span> <span class="n">timeout</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Writes the command with OPC to the instrument followed by the boolean parameter:</span>
+<span class="sd">		e.g.: cmd = &#39;OUTPUT&#39; param = &#39;True&#39;, result command = &#39;OUTPUT ON&#39;</span>
+<span class="sd">		If you do not provide timeout, the method uses current opc_timeout.&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write_with_opc</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">cmd</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">Conv</span><span class="o">.</span><span class="n">bool_to_str</span><span class="p">(</span><span class="n">param</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Utilities.query_str"><a class="viewcode-back" href="../../../utilities.html#RsSmbv.CustomFiles.utilities.Utilities.query_str">[docs]</a>	<span class="k">def</span> <span class="nf">query_str</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Sends the query to the instrument and returns the response as string.</span>
+<span class="sd">		The response is trimmed of any trailing LF characters and has no length limit.&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="n">query</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Utilities.query"><a class="viewcode-back" href="../../../utilities.html#RsSmbv.CustomFiles.utilities.Utilities.query">[docs]</a>	<span class="k">def</span> <span class="nf">query</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;This method is an alias to the query_str().</span>
+<span class="sd">		Sends the query to the instrument and returns the response as string.</span>
+<span class="sd">		The response is trimmed of any trailing LF characters and has no length limit.&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="n">query</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Utilities.query_bool"><a class="viewcode-back" href="../../../utilities.html#RsSmbv.CustomFiles.utilities.Utilities.query_bool">[docs]</a>	<span class="k">def</span> <span class="nf">query_bool</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Sends the query to the instrument and returns the response as boolean.&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_bool</span><span class="p">(</span><span class="n">query</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Utilities.query_int"><a class="viewcode-back" href="../../../utilities.html#RsSmbv.CustomFiles.utilities.Utilities.query_int">[docs]</a>	<span class="k">def</span> <span class="nf">query_int</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Sends the query to the instrument and returns the response as integer.&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_int</span><span class="p">(</span><span class="n">query</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Utilities.query_float"><a class="viewcode-back" href="../../../utilities.html#RsSmbv.CustomFiles.utilities.Utilities.query_float">[docs]</a>	<span class="k">def</span> <span class="nf">query_float</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Sends the query to the instrument and returns the response as float.&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_float</span><span class="p">(</span><span class="n">query</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Utilities.write_str_with_opc"><a class="viewcode-back" href="../../../utilities.html#RsSmbv.CustomFiles.utilities.Utilities.write_str_with_opc">[docs]</a>	<span class="k">def</span> <span class="nf">write_str_with_opc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cmd</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">timeout</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Writes the opc-synced command to the instrument.</span>
+<span class="sd">		If you do not provide timeout, the method uses current opc_timeout.&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write_with_opc</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Utilities.write_with_opc"><a class="viewcode-back" href="../../../utilities.html#RsSmbv.CustomFiles.utilities.Utilities.write_with_opc">[docs]</a>	<span class="k">def</span> <span class="nf">write_with_opc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cmd</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">timeout</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;This method is an alias to the write_str_with_opc().</span>
+<span class="sd">		Writes the opc-synced command to the instrument.</span>
+<span class="sd">		If you do not provide timeout, the method uses current opc_timeout.&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write_with_opc</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Utilities.query_str_with_opc"><a class="viewcode-back" href="../../../utilities.html#RsSmbv.CustomFiles.utilities.Utilities.query_str_with_opc">[docs]</a>	<span class="k">def</span> <span class="nf">query_str_with_opc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">timeout</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Sends the opc-synced query to the instrument and returns the response as string.</span>
+<span class="sd">		The response is trimmed of any trailing LF characters and has no length limit.</span>
+<span class="sd">		If you do not provide timeout, the method uses current opc_timeout.&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str_with_opc</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Utilities.query_with_opc"><a class="viewcode-back" href="../../../utilities.html#RsSmbv.CustomFiles.utilities.Utilities.query_with_opc">[docs]</a>	<span class="k">def</span> <span class="nf">query_with_opc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">timeout</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;This method is an alias to the query_str_with_opc().</span>
+<span class="sd">		Sends the opc-synced query to the instrument and returns the response as string.</span>
+<span class="sd">		The response is trimmed of any trailing LF characters and has no length limit.</span>
+<span class="sd">		If you do not provide timeout, the method uses current opc_timeout.&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str_with_opc</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Utilities.query_bool_with_opc"><a class="viewcode-back" href="../../../utilities.html#RsSmbv.CustomFiles.utilities.Utilities.query_bool_with_opc">[docs]</a>	<span class="k">def</span> <span class="nf">query_bool_with_opc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">timeout</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Sends the opc-synced query to the instrument and returns the response as boolean.</span>
+<span class="sd">		If you do not provide timeout, the method uses current opc_timeout.&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_bool_with_opc</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Utilities.query_int_with_opc"><a class="viewcode-back" href="../../../utilities.html#RsSmbv.CustomFiles.utilities.Utilities.query_int_with_opc">[docs]</a>	<span class="k">def</span> <span class="nf">query_int_with_opc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">timeout</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Sends the opc-synced query to the instrument and returns the response as integer.</span>
+<span class="sd">		If you do not provide timeout, the method uses current opc_timeout.&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_int_with_opc</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Utilities.query_float_with_opc"><a class="viewcode-back" href="../../../utilities.html#RsSmbv.CustomFiles.utilities.Utilities.query_float_with_opc">[docs]</a>	<span class="k">def</span> <span class="nf">query_float_with_opc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">timeout</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Sends the opc-synced query to the instrument and returns the response as float.</span>
+<span class="sd">		If you do not provide timeout, the method uses current opc_timeout.&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_float_with_opc</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Utilities.write_bin_block"><a class="viewcode-back" href="../../../utilities.html#RsSmbv.CustomFiles.utilities.Utilities.write_bin_block">[docs]</a>	<span class="k">def</span> <span class="nf">write_bin_block</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cmd</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">payload</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Writes all the payload as binary data block to the instrument.</span>
+<span class="sd">		The binary data header is added at the beginning of the transmission automatically, do not include it in the payload!!!&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write_bin_block</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Utilities.query_bin_block"><a class="viewcode-back" href="../../../utilities.html#RsSmbv.CustomFiles.utilities.Utilities.query_bin_block">[docs]</a>	<span class="k">def</span> <span class="nf">query_bin_block</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Queries binary data block to bytes.</span>
+<span class="sd">		Throws an exception if the returned data was not a binary data.</span>
+<span class="sd">		Returns data:bytes&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_bin_block</span><span class="p">(</span><span class="n">query</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Utilities.query_bin_block_with_opc"><a class="viewcode-back" href="../../../utilities.html#RsSmbv.CustomFiles.utilities.Utilities.query_bin_block_with_opc">[docs]</a>	<span class="k">def</span> <span class="nf">query_bin_block_with_opc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">timeout</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Sends a OPC-synced query and returns binary data block to bytes.</span>
+<span class="sd">		If you do not provide timeout, the method uses current opc_timeout.&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_bin_block_with_opc</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Utilities.query_str_list"><a class="viewcode-back" href="../../../utilities.html#RsSmbv.CustomFiles.utilities.Utilities.query_str_list">[docs]</a>	<span class="k">def</span> <span class="nf">query_str_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">remove_blank_response</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+		<span class="sd">&quot;&quot;&quot;Sends the string query to the instrument and returns the response as List of strings, where the delimiter is comma (&#39;,&#39;).</span>
+<span class="sd">		Each element of the list is trimmed for leading and trailing quotes.</span>
+<span class="sd">		Meaning of the &#39;remove_blank_response&#39;:</span>
+<span class="sd">			- False(default): whitespaces-only response is returned as a list with one empty element [&#39;&#39;].</span>
+<span class="sd">			- True: whitespaces-only response is returned as an empty list [].&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str_list</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">remove_blank_response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Utilities.query_str_list_with_opc"><a class="viewcode-back" href="../../../utilities.html#RsSmbv.CustomFiles.utilities.Utilities.query_str_list_with_opc">[docs]</a>	<span class="k">def</span> <span class="nf">query_str_list_with_opc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">timeout</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">remove_blank_response</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+		<span class="sd">&quot;&quot;&quot;Sends a OPC-synced query and reads response from the instrument as csv-list.</span>
+<span class="sd">		If you do not provide timeout, the method uses current opc_timeout.</span>
+<span class="sd">		Meaning of the &#39;remove_blank_response&#39;:</span>
+<span class="sd">			- False(default): whitespaces-only response is returned as a list with one empty element [&#39;&#39;].</span>
+<span class="sd">			- True: whitespaces-only response is returned as an empty list [].&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str_list_with_opc</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">timeout</span><span class="p">,</span> <span class="n">remove_blank_response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Utilities.query_bool_list"><a class="viewcode-back" href="../../../utilities.html#RsSmbv.CustomFiles.utilities.Utilities.query_bool_list">[docs]</a>	<span class="k">def</span> <span class="nf">query_bool_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">bool</span><span class="p">]:</span>
+		<span class="sd">&quot;&quot;&quot;Sends the string query to the instrument and returns the response as List of booleans,</span>
+<span class="sd">		where the delimiter is comma (&#39;,&#39;).</span>
+<span class="sd">		Blank or empty response is returned as an empty list.&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_bool_list</span><span class="p">(</span><span class="n">query</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Utilities.query_bool_list_with_opc"><a class="viewcode-back" href="../../../utilities.html#RsSmbv.CustomFiles.utilities.Utilities.query_bool_list_with_opc">[docs]</a>	<span class="k">def</span> <span class="nf">query_bool_list_with_opc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">timeout</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">bool</span><span class="p">]:</span>
+		<span class="sd">&quot;&quot;&quot;Sends a OPC-synced query and reads response from the instrument as csv-list of booleans.</span>
+<span class="sd">		If you do not provide timeout, the method uses current opc_timeout.</span>
+<span class="sd">		Blank or empty response is returned as an empty list.&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_bool_list_with_opc</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Utilities.query_bin_or_ascii_float_list"><a class="viewcode-back" href="../../../utilities.html#RsSmbv.CustomFiles.utilities.Utilities.query_bin_or_ascii_float_list">[docs]</a>	<span class="k">def</span> <span class="nf">query_bin_or_ascii_float_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+		<span class="sd">&quot;&quot;&quot;Queries a list of floating-point numbers that can be returned in ASCII format or in binary format.</span>
+<span class="sd">		- For ASCII format, the list numbers are decoded as comma-separated values.</span>
+<span class="sd">		- For Binary Format, the numbers are decoded based on the property BinFloatFormat, usually float 32-bit (FORM REAL,32).&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_bin_or_ascii_float_list</span><span class="p">(</span><span class="n">query</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Utilities.query_bin_or_ascii_float_list_with_opc"><a class="viewcode-back" href="../../../utilities.html#RsSmbv.CustomFiles.utilities.Utilities.query_bin_or_ascii_float_list_with_opc">[docs]</a>	<span class="k">def</span> <span class="nf">query_bin_or_ascii_float_list_with_opc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">timeout</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+		<span class="sd">&quot;&quot;&quot;Sends a OPC-synced query and reads a list of floating-point numbers that can be returned in ASCII format or in binary format.</span>
+<span class="sd">		- For ASCII format, the list numbers are decoded as comma-separated values.</span>
+<span class="sd">		- For Binary Format, the numbers are decoded based on the property BinFloatFormat, usually float 32-bit (FORM REAL,32).</span>
+<span class="sd">		If you do not provide timeout, the method uses current opc_timeout.&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_bin_or_ascii_float_list_with_opc</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Utilities.query_bin_or_ascii_int_list"><a class="viewcode-back" href="../../../utilities.html#RsSmbv.CustomFiles.utilities.Utilities.query_bin_or_ascii_int_list">[docs]</a>	<span class="k">def</span> <span class="nf">query_bin_or_ascii_int_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+		<span class="sd">&quot;&quot;&quot;Queries a list of floating-point numbers that can be returned in ASCII format or in binary format.</span>
+<span class="sd">		- For ASCII format, the list numbers are decoded as comma-separated values.</span>
+<span class="sd">		- For Binary Format, the numbers are decoded based on the property BinFloatFormat, usually float 32-bit (FORM REAL,32).&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_bin_or_ascii_int_list</span><span class="p">(</span><span class="n">query</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Utilities.query_bin_or_ascii_int_list_with_opc"><a class="viewcode-back" href="../../../utilities.html#RsSmbv.CustomFiles.utilities.Utilities.query_bin_or_ascii_int_list_with_opc">[docs]</a>	<span class="k">def</span> <span class="nf">query_bin_or_ascii_int_list_with_opc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">timeout</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+		<span class="sd">&quot;&quot;&quot;Sends a OPC-synced query and reads a list of floating-point numbers that can be returned in ASCII format or in binary format.</span>
+<span class="sd">		- For ASCII format, the list numbers are decoded as comma-separated values.</span>
+<span class="sd">		- For Binary Format, the numbers are decoded based on the property BinFloatFormat, usually float 32-bit (FORM REAL,32).</span>
+<span class="sd">		If you do not provide timeout, the method uses current opc_timeout.&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_bin_or_ascii_int_list_with_opc</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span></div>
+
+	<span class="c1"># Write / Read to file</span>
+<div class="viewcode-block" id="Utilities.query_bin_block_to_file"><a class="viewcode-back" href="../../../utilities.html#RsSmbv.CustomFiles.utilities.Utilities.query_bin_block_to_file">[docs]</a>	<span class="k">def</span> <span class="nf">query_bin_block_to_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">file_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">append</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Queries binary data block to the provided file.</span>
+<span class="sd">		If append is False, any existing file content is discarded.</span>
+<span class="sd">		If append is True, the new content is added to the end of the existing file, or if the file does not exit, it is created.</span>
+<span class="sd">		Throws an exception if the returned data was not a binary data.</span>
+<span class="sd">		Example for transferring a file from Instrument -&gt; PC:</span>
+<span class="sd">		query = f&quot;MMEM:DATA? &#39;{INSTR_FILE_PATH}&#39;&quot;.</span>
+<span class="sd">		Alternatively, use the dedicated methods for this purpose:</span>
+<span class="sd">			- ``send_file_from_pc_to_instrument()``</span>
+<span class="sd">			- ``read_file_from_instrument_to_pc()``&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_bin_block_to_file</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">file_path</span><span class="p">,</span> <span class="n">append</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Utilities.query_bin_block_to_file_with_opc"><a class="viewcode-back" href="../../../utilities.html#RsSmbv.CustomFiles.utilities.Utilities.query_bin_block_to_file_with_opc">[docs]</a>	<span class="k">def</span> <span class="nf">query_bin_block_to_file_with_opc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">file_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">append</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">timeout</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Sends a OPC-synced query and writes the returned data to the provided file.</span>
+<span class="sd">		If append is False, any existing file content is discarded.</span>
+<span class="sd">		If append is True, the new content is added to the end of the existing file, or if the file does not exit, it is created.</span>
+<span class="sd">		Throws an exception if the returned data was not a binary data.&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_bin_block_to_file_with_opc</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">file_path</span><span class="p">,</span> <span class="n">append</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Utilities.write_bin_block_from_file"><a class="viewcode-back" href="../../../utilities.html#RsSmbv.CustomFiles.utilities.Utilities.write_bin_block_from_file">[docs]</a>	<span class="k">def</span> <span class="nf">write_bin_block_from_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cmd</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">file_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Writes data from the file as binary data block to the instrument using the provided command.</span>
+<span class="sd">		Example for transferring a file from PC -&gt; Instrument:</span>
+<span class="sd">		cmd = f&quot;MMEM:DATA &#39;{INSTR_FILE_PATH}&#39;,&quot;.</span>
+<span class="sd">		Alternatively, use the dedicated methods for this purpose:</span>
+<span class="sd">			- ``send_file_from_pc_to_instrument()``</span>
+<span class="sd">			- ``read_file_from_instrument_to_pc()``&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write_bin_block_from_file</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">file_path</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Utilities.send_file_from_pc_to_instrument"><a class="viewcode-back" href="../../../utilities.html#RsSmbv.CustomFiles.utilities.Utilities.send_file_from_pc_to_instrument">[docs]</a>	<span class="k">def</span> <span class="nf">send_file_from_pc_to_instrument</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source_pc_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">target_instr_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI Command: MMEM:DATA \n</span>
+<span class="sd">		Sends file from PC to the instrument&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">send_file_from_pc_to_instrument</span><span class="p">(</span><span class="n">source_pc_file</span><span class="p">,</span> <span class="n">target_instr_file</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Utilities.read_file_from_instrument_to_pc"><a class="viewcode-back" href="../../../utilities.html#RsSmbv.CustomFiles.utilities.Utilities.read_file_from_instrument_to_pc">[docs]</a>	<span class="k">def</span> <span class="nf">read_file_from_instrument_to_pc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source_instr_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">target_pc_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">append_to_pc_file</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI Command: MMEM:DATA? \n</span>
+<span class="sd">		Reads file from instrument to the PC. \n</span>
+<span class="sd">		Set the ``append_to_pc_file`` to True if you want to append the read content to the end of the existing PC file&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">read_file_from_instrument_to_pc</span><span class="p">(</span><span class="n">source_instr_file</span><span class="p">,</span> <span class="n">target_pc_file</span><span class="p">,</span> <span class="n">append_to_pc_file</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Utilities.get_last_sent_cmd"><a class="viewcode-back" href="../../../utilities.html#RsSmbv.CustomFiles.utilities.Utilities.get_last_sent_cmd">[docs]</a>	<span class="k">def</span> <span class="nf">get_last_sent_cmd</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Returns the last commands sent to the instrument. Only works in simulation mode&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">get_last_sent_cmd</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="Utilities.go_to_local"><a class="viewcode-back" href="../../../utilities.html#RsSmbv.CustomFiles.utilities.Utilities.go_to_local">[docs]</a>	<span class="k">def</span> <span class="nf">go_to_local</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Puts the instrument into local state.&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">go_to_local</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="Utilities.go_to_remote"><a class="viewcode-back" href="../../../utilities.html#RsSmbv.CustomFiles.utilities.Utilities.go_to_remote">[docs]</a>	<span class="k">def</span> <span class="nf">go_to_remote</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Puts the instrument into remote state.&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">go_to_remote</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="Utilities.get_lock"><a class="viewcode-back" href="../../../utilities.html#RsSmbv.CustomFiles.utilities.Utilities.get_lock">[docs]</a>	<span class="k">def</span> <span class="nf">get_lock</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">threading</span><span class="o">.</span><span class="n">RLock</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Returns the thread lock for the current session. \n</span>
+<span class="sd">		By default:</span>
+<span class="sd">			- If you create standard new RsSmbv instance with new VISA session, the session gets a new thread lock. You can assign it to other RsSmbv sessions in order to share one physical instrument with a multi-thread access.</span>
+<span class="sd">			- If you create new RsSmbv from an existing session, the thread lock is shared automatically making both instances multi-thread safe.</span>
+<span class="sd">		You can always assign new thread lock by calling ``driver.utilities.assign_lock()``&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">get_lock</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="Utilities.assign_lock"><a class="viewcode-back" href="../../../utilities.html#RsSmbv.CustomFiles.utilities.Utilities.assign_lock">[docs]</a>	<span class="k">def</span> <span class="nf">assign_lock</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lock</span><span class="p">:</span> <span class="n">threading</span><span class="o">.</span><span class="n">RLock</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Assigns the provided thread lock.&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">assign_lock</span><span class="p">(</span><span class="n">lock</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Utilities.clear_lock"><a class="viewcode-back" href="../../../utilities.html#RsSmbv.CustomFiles.utilities.Utilities.clear_lock">[docs]</a>	<span class="k">def</span> <span class="nf">clear_lock</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;Clears the existing thread lock, making the current session thread-independent from others that might share the current thread lock.&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">clear_lock</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="Utilities.instr_err_suppressor"><a class="viewcode-back" href="../../../utilities.html#RsSmbv.CustomFiles.utilities.Utilities.instr_err_suppressor">[docs]</a>	<span class="k">def</span> <span class="nf">instr_err_suppressor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">visa_tout_ms</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">suppress_only_codes</span><span class="p">:</span> <span class="nb">int</span> <span class="ow">or</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">InstrErrorSuppressor</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Returns Context Manager that suppresses the instrument errors.</span>
+<span class="sd">		Other exceptions types are still raised.</span>
+<span class="sd">		On entering the context, this class clears all the instrument status errors.</span>
+<span class="sd">		:param visa_tout_ms: VISA Timeout in milliseconds, that is set for this context. Afterward, it is changed back. Default value: do-not-change.</span>
+<span class="sd">		:param suppress_only_codes: You can enter a code or list of codes for errors to be suppressed. Other errors will be reported. Example: If you enter -113 here, only the &#39;Undefined Header&#39; error will be suppressed. Default value: suppress-all-errors.&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="n">InstrErrorSuppressor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="p">,</span> <span class="n">visa_tout_ms</span><span class="p">,</span> <span class="n">suppress_only_codes</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Utilities.visa_tout_suppressor"><a class="viewcode-back" href="../../../utilities.html#RsSmbv.CustomFiles.utilities.Utilities.visa_tout_suppressor">[docs]</a>	<span class="k">def</span> <span class="nf">visa_tout_suppressor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">visa_tout_ms</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VisaTimeoutSuppressor</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Returns Context Manager that suppresses the VISA timeout error.</span>
+<span class="sd">		Careful!!!: Only the very first VISA Timeout exception is suppressed,</span>
+<span class="sd">		and afterward the context ends. Therefore, use only one command per context manager,</span>
+<span class="sd">		if you do not want to skip the following ones.</span>
+<span class="sd">		:param visa_tout_ms: VISA Timeout in milliseconds, that is set for this context. Afterward, it is changed back. Default value: do-not-change.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="n">VisaTimeoutSuppressor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="p">,</span> <span class="n">visa_tout_ms</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Utilities.sync_from"><a class="viewcode-back" href="../../../utilities.html#RsSmbv.CustomFiles.utilities.Utilities.sync_from">[docs]</a>	<span class="k">def</span> <span class="nf">sync_from</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span> <span class="s1">&#39;Utilities&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Synchronises these Utils with the source.&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">sync_from</span><span class="p">(</span><span class="n">source</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">assign_lock</span><span class="p">(</span><span class="n">source</span><span class="o">.</span><span class="n">get_lock</span><span class="p">())</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">bin_float_numbers_format</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">bin_float_numbers_format</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">bin_int_numbers_format</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">bin_int_numbers_format</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">data_chunk_size</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">data_chunk_size</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">encoding</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">encoding</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">instrument_status_checking</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">instrument_status_checking</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">opc_query_after_write</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">opc_query_after_write</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">opc_timeout</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">opc_timeout</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RsSmbv.Implementations.Source.Bb.Btooth.DtTest &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../../../" id="documentation_options" src="../../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../../_static/jquery.js"></script>
+        <script src="../../../../../../_static/underscore.js"></script>
+        <script src="../../../../../../_static/doctools.js"></script>
+        <script src="../../../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../../../_static/copybutton.js"></script>
+    <script src="../../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../../../index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../RsSmbv.html">RsSmbv API Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../../../index.html">Module code</a> &raquo;</li>
+          <li><a href="../../../Source.html">RsSmbv.Implementations.Source</a> &raquo;</li>
+          <li><a href="../../Bb.html">RsSmbv.Implementations.Source.Bb</a> &raquo;</li>
+          <li><a href="../Btooth.html">RsSmbv.Implementations.Source.Bb.Btooth</a> &raquo;</li>
+      <li>RsSmbv.Implementations.Source.Bb.Btooth.DtTest</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for RsSmbv.Implementations.Source.Bb.Btooth.DtTest</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">......Internal.Core</span> <span class="kn">import</span> <span class="n">Core</span>
+<span class="kn">from</span> <span class="nn">......Internal.CommandsGroup</span> <span class="kn">import</span> <span class="n">CommandsGroup</span>
+<span class="kn">from</span> <span class="nn">......Internal</span> <span class="kn">import</span> <span class="n">Conversions</span>
+<span class="kn">from</span> <span class="nn">......</span> <span class="kn">import</span> <span class="n">enums</span>
+
+
+<span class="c1"># noinspection PyPep8Naming,PyAttributeOutsideInit,SpellCheckingInspection</span>
+<div class="viewcode-block" id="DtTestCls"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_DtTest.html#RsSmbv.Implementations.Source.Bb.Btooth.DtTest.DtTestCls">[docs]</a><span class="k">class</span> <span class="nc">DtTestCls</span><span class="p">:</span>
+	<span class="sd">&quot;&quot;&quot;DtTest commands group definition. 18 total commands, 3 Subgroups, 7 group commands&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">core</span><span class="p">:</span> <span class="n">Core</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span> <span class="o">=</span> <span class="n">core</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span> <span class="o">=</span> <span class="n">CommandsGroup</span><span class="p">(</span><span class="s2">&quot;dtTest&quot;</span><span class="p">,</span> <span class="n">core</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">stDefault</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;stDefault commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_stDefault&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.StDefault</span> <span class="kn">import</span> <span class="n">StDefaultCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_stDefault</span> <span class="o">=</span> <span class="n">StDefaultCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stDefault</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">table</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;table commands group. 2 Sub-classes, 0 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_table&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Table</span> <span class="kn">import</span> <span class="n">TableCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_table</span> <span class="o">=</span> <span class="n">TableCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_table</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">tpConfiguration</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;tpConfiguration commands group. 0 Sub-classes, 3 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_tpConfiguration&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.TpConfiguration</span> <span class="kn">import</span> <span class="n">TpConfigurationCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_tpConfiguration</span> <span class="o">=</span> <span class="n">TpConfigurationCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tpConfiguration</span>
+
+<div class="viewcode-block" id="DtTestCls.get_drift"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_DtTest.html#RsSmbv.Implementations.Source.Bb.Btooth.DtTest.DtTestCls.get_drift">[docs]</a>	<span class="k">def</span> <span class="nf">get_drift</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:DTTest:DIRft \n</span>
+<span class="sd">		Snippet: value: bool = driver.source.bb.btooth.dtTest.get_drift() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: drift: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:DTTest:DIRft?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_bool</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DtTestCls.set_drift"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_DtTest.html#RsSmbv.Implementations.Source.Bb.Btooth.DtTest.DtTestCls.set_drift">[docs]</a>	<span class="k">def</span> <span class="nf">set_drift</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">drift</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:DTTest:DIRft \n</span>
+<span class="sd">		Snippet: driver.source.bb.btooth.dtTest.set_drift(drift = False) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param drift: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">bool_to_str</span><span class="p">(</span><span class="n">drift</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:DTTest:DIRft </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DtTestCls.get_dtt_state"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_DtTest.html#RsSmbv.Implementations.Source.Bb.Btooth.DtTest.DtTestCls.get_dtt_state">[docs]</a>	<span class="k">def</span> <span class="nf">get_dtt_state</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:DTTest:DTTState \n</span>
+<span class="sd">		Snippet: value: bool = driver.source.bb.btooth.dtTest.get_dtt_state() \n</span>
+<span class="sd">		Activates the &#39;Dirty Transmitter Test&#39;. For EDR packets, the parameter sets apply for 20 packets each. \n</span>
+<span class="sd">			:return: dtt_state: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:DTTest:DTTState?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_bool</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DtTestCls.set_dtt_state"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_DtTest.html#RsSmbv.Implementations.Source.Bb.Btooth.DtTest.DtTestCls.set_dtt_state">[docs]</a>	<span class="k">def</span> <span class="nf">set_dtt_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dtt_state</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:DTTest:DTTState \n</span>
+<span class="sd">		Snippet: driver.source.bb.btooth.dtTest.set_dtt_state(dtt_state = False) \n</span>
+<span class="sd">		Activates the &#39;Dirty Transmitter Test&#39;. For EDR packets, the parameter sets apply for 20 packets each. \n</span>
+<span class="sd">			:param dtt_state: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">bool_to_str</span><span class="p">(</span><span class="n">dtt_state</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:DTTest:DTTState </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DtTestCls.get_fd_deviation"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_DtTest.html#RsSmbv.Implementations.Source.Bb.Btooth.DtTest.DtTestCls.get_fd_deviation">[docs]</a>	<span class="k">def</span> <span class="nf">get_fd_deviation</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:DTTest:FDDeviation \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.btooth.dtTest.get_fd_deviation() \n</span>
+<span class="sd">		Sets a frequency drift rate. A sine wave is used to drift the modulated Bluetooth signal around center frequency +</span>
+<span class="sd">		carrier frequency offset. The maximum deviation reached during the drift equals the set frequency drift deviation. \n</span>
+<span class="sd">			:return: fd_deviation: integer Range: -100 to 100</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:DTTest:FDDeviation?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DtTestCls.set_fd_deviation"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_DtTest.html#RsSmbv.Implementations.Source.Bb.Btooth.DtTest.DtTestCls.set_fd_deviation">[docs]</a>	<span class="k">def</span> <span class="nf">set_fd_deviation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fd_deviation</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:DTTest:FDDeviation \n</span>
+<span class="sd">		Snippet: driver.source.bb.btooth.dtTest.set_fd_deviation(fd_deviation = 1) \n</span>
+<span class="sd">		Sets a frequency drift rate. A sine wave is used to drift the modulated Bluetooth signal around center frequency +</span>
+<span class="sd">		carrier frequency offset. The maximum deviation reached during the drift equals the set frequency drift deviation. \n</span>
+<span class="sd">			:param fd_deviation: integer Range: -100 to 100</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">fd_deviation</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:DTTest:FDDeviation </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DtTestCls.get_fd_rate"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_DtTest.html#RsSmbv.Implementations.Source.Bb.Btooth.DtTest.DtTestCls.get_fd_rate">[docs]</a>	<span class="k">def</span> <span class="nf">get_fd_rate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:DTTest:FDRate \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.btooth.dtTest.get_fd_rate() \n</span>
+<span class="sd">		Sets a frequency drift rate. A sine wave is used to drift the modulated Bluetooth signal around center frequency +</span>
+<span class="sd">		carrier frequency offset with the set frequency drift rate. \n</span>
+<span class="sd">			:return: fd_rate: 0.3 KHz| 0.5 KHz| 1.6 KHz| 10 KHz Range: depends on packet type to depends on packet type</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:DTTest:FDRate?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DtTestCls.set_fd_rate"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_DtTest.html#RsSmbv.Implementations.Source.Bb.Btooth.DtTest.DtTestCls.set_fd_rate">[docs]</a>	<span class="k">def</span> <span class="nf">set_fd_rate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fd_rate</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:DTTest:FDRate \n</span>
+<span class="sd">		Snippet: driver.source.bb.btooth.dtTest.set_fd_rate(fd_rate = 1.0) \n</span>
+<span class="sd">		Sets a frequency drift rate. A sine wave is used to drift the modulated Bluetooth signal around center frequency +</span>
+<span class="sd">		carrier frequency offset with the set frequency drift rate. \n</span>
+<span class="sd">			:param fd_rate: 0.3 KHz| 0.5 KHz| 1.6 KHz| 10 KHz Range: depends on packet type to depends on packet type</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">fd_rate</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:DTTest:FDRate </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="DtTestCls.get_mi_mode"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_DtTest.html#RsSmbv.Implementations.Source.Bb.Btooth.DtTest.DtTestCls.get_mi_mode">[docs]</a>	<span class="k">def</span> <span class="nf">get_mi_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoModIdxMode</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:DTTest:MIMode \n</span>
+<span class="sd">		Snippet: value: enums.BtoModIdxMode = driver.source.bb.btooth.dtTest.get_mi_mode() \n</span>
+<span class="sd">		Determines standard or stable mode for the modulation index of dirty transmitter according to the Bluetooth core</span>
+<span class="sd">		specification. \n</span>
+<span class="sd">			:return: mi_mode: STANdard| STABle</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:DTTest:MIMode?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoModIdxMode</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DtTestCls.set_mi_mode"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_DtTest.html#RsSmbv.Implementations.Source.Bb.Btooth.DtTest.DtTestCls.set_mi_mode">[docs]</a>	<span class="k">def</span> <span class="nf">set_mi_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mi_mode</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoModIdxMode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:DTTest:MIMode \n</span>
+<span class="sd">		Snippet: driver.source.bb.btooth.dtTest.set_mi_mode(mi_mode = enums.BtoModIdxMode.STABle) \n</span>
+<span class="sd">		Determines standard or stable mode for the modulation index of dirty transmitter according to the Bluetooth core</span>
+<span class="sd">		specification. \n</span>
+<span class="sd">			:param mi_mode: STANdard| STABle</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">mi_mode</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoModIdxMode</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:DTTest:MIMode </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="DtTestCls.get_nppset"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_DtTest.html#RsSmbv.Implementations.Source.Bb.Btooth.DtTest.DtTestCls.get_nppset">[docs]</a>	<span class="k">def</span> <span class="nf">get_nppset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoNumOfPackPerSet</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:DTTest:NPPSet \n</span>
+<span class="sd">		Snippet: value: enums.BtoNumOfPackPerSet = driver.source.bb.btooth.dtTest.get_nppset() \n</span>
+<span class="sd">		Specifies the number of packets per dirty transmitter set.</span>
+<span class="sd">			Table Header: Bluetooth mode / Channel type / Number of packets \n</span>
+<span class="sd">			- BR + EDR / 50, 2, 1 packets</span>
+<span class="sd">			- LE / Advertising, data / 50, 2, 1 packets \n</span>
+<span class="sd">			:return: num_pack: NP50| NP2| NP1</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:DTTest:NPPSet?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoNumOfPackPerSet</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DtTestCls.set_nppset"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_DtTest.html#RsSmbv.Implementations.Source.Bb.Btooth.DtTest.DtTestCls.set_nppset">[docs]</a>	<span class="k">def</span> <span class="nf">set_nppset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_pack</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoNumOfPackPerSet</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:DTTest:NPPSet \n</span>
+<span class="sd">		Snippet: driver.source.bb.btooth.dtTest.set_nppset(num_pack = enums.BtoNumOfPackPerSet.NP1) \n</span>
+<span class="sd">		Specifies the number of packets per dirty transmitter set.</span>
+<span class="sd">			Table Header: Bluetooth mode / Channel type / Number of packets \n</span>
+<span class="sd">			- BR + EDR / 50, 2, 1 packets</span>
+<span class="sd">			- LE / Advertising, data / 50, 2, 1 packets \n</span>
+<span class="sd">			:param num_pack: NP50| NP2| NP1</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">num_pack</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoNumOfPackPerSet</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:DTTest:NPPSet </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DtTestCls.get_sphase"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_DtTest.html#RsSmbv.Implementations.Source.Bb.Btooth.DtTest.DtTestCls.get_sphase">[docs]</a>	<span class="k">def</span> <span class="nf">get_sphase</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:DTTest:SPHase \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.btooth.dtTest.get_sphase() \n</span>
+<span class="sd">		The command enters a start phase. The start phase applies to the sine wave that is used to drift the modulated Bluetooth</span>
+<span class="sd">		signal. The drift is around the center frequency plus the carrier frequency offset. \n</span>
+<span class="sd">			:return: sphase: integer Range: 0 to 359, Unit: degree</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:DTTest:SPHase?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DtTestCls.set_sphase"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_DtTest.html#RsSmbv.Implementations.Source.Bb.Btooth.DtTest.DtTestCls.set_sphase">[docs]</a>	<span class="k">def</span> <span class="nf">set_sphase</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sphase</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:DTTest:SPHase \n</span>
+<span class="sd">		Snippet: driver.source.bb.btooth.dtTest.set_sphase(sphase = 1) \n</span>
+<span class="sd">		The command enters a start phase. The start phase applies to the sine wave that is used to drift the modulated Bluetooth</span>
+<span class="sd">		signal. The drift is around the center frequency plus the carrier frequency offset. \n</span>
+<span class="sd">			:param sphase: integer Range: 0 to 359, Unit: degree</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">sphase</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:DTTest:SPHase </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;DtTestCls&#39;</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Clones the group by creating new object from it and its whole existing subgroups</span>
+<span class="sd">		Also copies all the existing default Repeated Capabilities setting,</span>
+<span class="sd">		which you can change independently without affecting the original group&quot;&quot;&quot;</span>
+		<span class="n">new_group</span> <span class="o">=</span> <span class="n">DtTestCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">synchronize_repcaps</span><span class="p">(</span><span class="n">new_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">new_group</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

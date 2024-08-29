@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RsSmbv.Implementations.Source.Bb.W3Gpp.Mstation.Udtx &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../../../../" id="documentation_options" src="../../../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../../../_static/jquery.js"></script>
+        <script src="../../../../../../../_static/underscore.js"></script>
+        <script src="../../../../../../../_static/doctools.js"></script>
+        <script src="../../../../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../../../../_static/copybutton.js"></script>
+    <script src="../../../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../../../../index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../RsSmbv.html">RsSmbv API Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../../index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../../../../index.html">Module code</a> &raquo;</li>
+          <li><a href="../../../../Source.html">RsSmbv.Implementations.Source</a> &raquo;</li>
+          <li><a href="../../../Bb.html">RsSmbv.Implementations.Source.Bb</a> &raquo;</li>
+          <li><a href="../../W3Gpp.html">RsSmbv.Implementations.Source.Bb.W3Gpp</a> &raquo;</li>
+          <li><a href="../Mstation.html">RsSmbv.Implementations.Source.Bb.W3Gpp.Mstation</a> &raquo;</li>
+      <li>RsSmbv.Implementations.Source.Bb.W3Gpp.Mstation.Udtx</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for RsSmbv.Implementations.Source.Bb.W3Gpp.Mstation.Udtx</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">.......Internal.Core</span> <span class="kn">import</span> <span class="n">Core</span>
+<span class="kn">from</span> <span class="nn">.......Internal.CommandsGroup</span> <span class="kn">import</span> <span class="n">CommandsGroup</span>
+<span class="kn">from</span> <span class="nn">.......Internal</span> <span class="kn">import</span> <span class="n">Conversions</span>
+<span class="kn">from</span> <span class="nn">.......</span> <span class="kn">import</span> <span class="n">enums</span>
+
+
+<span class="c1"># noinspection PyPep8Naming,PyAttributeOutsideInit,SpellCheckingInspection</span>
+<div class="viewcode-block" id="UdtxCls"><a class="viewcode-back" href="../../../../../../../Source_Bb_W3Gpp_Mstation_Udtx.html#RsSmbv.Implementations.Source.Bb.W3Gpp.Mstation.Udtx.UdtxCls">[docs]</a><span class="k">class</span> <span class="nc">UdtxCls</span><span class="p">:</span>
+	<span class="sd">&quot;&quot;&quot;Udtx commands group definition. 18 total commands, 6 Subgroups, 6 group commands&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">core</span><span class="p">:</span> <span class="n">Core</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span> <span class="o">=</span> <span class="n">core</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span> <span class="o">=</span> <span class="n">CommandsGroup</span><span class="p">(</span><span class="s2">&quot;udtx&quot;</span><span class="p">,</span> <span class="n">core</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">burst</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;burst commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_burst&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Burst</span> <span class="kn">import</span> <span class="n">BurstCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_burst</span> <span class="o">=</span> <span class="n">BurstCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_burst</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">cycle</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;cycle commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_cycle&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Cycle</span> <span class="kn">import</span> <span class="n">CycleCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_cycle</span> <span class="o">=</span> <span class="n">CycleCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cycle</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">dpcc</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;dpcc commands group. 0 Sub-classes, 5 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_dpcc&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Dpcc</span> <span class="kn">import</span> <span class="n">DpccCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_dpcc</span> <span class="o">=</span> <span class="n">DpccCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dpcc</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">postamble</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;postamble commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_postamble&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Postamble</span> <span class="kn">import</span> <span class="n">PostambleCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_postamble</span> <span class="o">=</span> <span class="n">PostambleCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_postamble</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">preamble</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;preamble commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_preamble&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Preamble</span> <span class="kn">import</span> <span class="n">PreambleCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_preamble</span> <span class="o">=</span> <span class="n">PreambleCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_preamble</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">usch</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;usch commands group. 0 Sub-classes, 3 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_usch&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Usch</span> <span class="kn">import</span> <span class="n">UschCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_usch</span> <span class="o">=</span> <span class="n">UschCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_usch</span>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="UdtxCls.get_ithreshold"><a class="viewcode-back" href="../../../../../../../Source_Bb_W3Gpp_Mstation_Udtx.html#RsSmbv.Implementations.Source.Bb.W3Gpp.Mstation.Udtx.UdtxCls.get_ithreshold">[docs]</a>	<span class="k">def</span> <span class="nf">get_ithreshold</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">WcdmaUlDtxThreshold</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:W3GPp:MSTation:UDTX:ITHReshold \n</span>
+<span class="sd">		Snippet: value: enums.WcdmaUlDtxThreshold = driver.source.bb.w3Gpp.mstation.udtx.get_ithreshold() \n</span>
+<span class="sd">		Defines the number of consecutive E-DCH TTIs without an E-DCH transmission, after which the UE shall immediately move</span>
+<span class="sd">		from UE-DTX cycle 1 to using UE-DTX cycle 2. \n</span>
+<span class="sd">			:return: threshold: 1| 4| 8| 16| 32| 64| 128| 256</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:W3GPp:MSTation:UDTX:ITHReshold?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">WcdmaUlDtxThreshold</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="UdtxCls.set_ithreshold"><a class="viewcode-back" href="../../../../../../../Source_Bb_W3Gpp_Mstation_Udtx.html#RsSmbv.Implementations.Source.Bb.W3Gpp.Mstation.Udtx.UdtxCls.set_ithreshold">[docs]</a>	<span class="k">def</span> <span class="nf">set_ithreshold</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">threshold</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">WcdmaUlDtxThreshold</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:W3GPp:MSTation:UDTX:ITHReshold \n</span>
+<span class="sd">		Snippet: driver.source.bb.w3Gpp.mstation.udtx.set_ithreshold(threshold = enums.WcdmaUlDtxThreshold._1) \n</span>
+<span class="sd">		Defines the number of consecutive E-DCH TTIs without an E-DCH transmission, after which the UE shall immediately move</span>
+<span class="sd">		from UE-DTX cycle 1 to using UE-DTX cycle 2. \n</span>
+<span class="sd">			:param threshold: 1| 4| 8| 16| 32| 64| 128| 256</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">threshold</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">WcdmaUlDtxThreshold</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:W3GPp:MSTation:UDTX:ITHReshold </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="UdtxCls.get_lp_length"><a class="viewcode-back" href="../../../../../../../Source_Bb_W3Gpp_Mstation_Udtx.html#RsSmbv.Implementations.Source.Bb.W3Gpp.Mstation.Udtx.UdtxCls.get_lp_length">[docs]</a>	<span class="k">def</span> <span class="nf">get_lp_length</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">WcdmaUlDtxLongPreLen</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:W3GPp:MSTation:UDTX:LPLength \n</span>
+<span class="sd">		Snippet: value: enums.WcdmaUlDtxLongPreLen = driver.source.bb.w3Gpp.mstation.udtx.get_lp_length() \n</span>
+<span class="sd">		Determines the length in slots of the preamble associated with the UE-DTX cycle 2. \n</span>
+<span class="sd">			:return: long_preamble: 2| 4| 15</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:W3GPp:MSTation:UDTX:LPLength?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">WcdmaUlDtxLongPreLen</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="UdtxCls.set_lp_length"><a class="viewcode-back" href="../../../../../../../Source_Bb_W3Gpp_Mstation_Udtx.html#RsSmbv.Implementations.Source.Bb.W3Gpp.Mstation.Udtx.UdtxCls.set_lp_length">[docs]</a>	<span class="k">def</span> <span class="nf">set_lp_length</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">long_preamble</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">WcdmaUlDtxLongPreLen</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:W3GPp:MSTation:UDTX:LPLength \n</span>
+<span class="sd">		Snippet: driver.source.bb.w3Gpp.mstation.udtx.set_lp_length(long_preamble = enums.WcdmaUlDtxLongPreLen._15) \n</span>
+<span class="sd">		Determines the length in slots of the preamble associated with the UE-DTX cycle 2. \n</span>
+<span class="sd">			:param long_preamble: 2| 4| 15</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">long_preamble</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">WcdmaUlDtxLongPreLen</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:W3GPp:MSTation:UDTX:LPLength </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="UdtxCls.get_mode"><a class="viewcode-back" href="../../../../../../../Source_Bb_W3Gpp_Mstation_Udtx.html#RsSmbv.Implementations.Source.Bb.W3Gpp.Mstation.Udtx.UdtxCls.get_mode">[docs]</a>	<span class="k">def</span> <span class="nf">get_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">WcdmaUlDtxMode</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:W3GPp:MSTation:UDTX:MODE \n</span>
+<span class="sd">		Snippet: value: enums.WcdmaUlDtxMode = driver.source.bb.w3Gpp.mstation.udtx.get_mode() \n</span>
+<span class="sd">		The mode is fixed to UL-DTX. \n</span>
+<span class="sd">			:return: uld_tx_mode: UDTX</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:W3GPp:MSTation:UDTX:MODE?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">WcdmaUlDtxMode</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="UdtxCls.set_mode"><a class="viewcode-back" href="../../../../../../../Source_Bb_W3Gpp_Mstation_Udtx.html#RsSmbv.Implementations.Source.Bb.W3Gpp.Mstation.Udtx.UdtxCls.set_mode">[docs]</a>	<span class="k">def</span> <span class="nf">set_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uld_tx_mode</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">WcdmaUlDtxMode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:W3GPp:MSTation:UDTX:MODE \n</span>
+<span class="sd">		Snippet: driver.source.bb.w3Gpp.mstation.udtx.set_mode(uld_tx_mode = enums.WcdmaUlDtxMode.UDTX) \n</span>
+<span class="sd">		The mode is fixed to UL-DTX. \n</span>
+<span class="sd">			:param uld_tx_mode: UDTX</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">uld_tx_mode</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">WcdmaUlDtxMode</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:W3GPp:MSTation:UDTX:MODE </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="UdtxCls.get_offset"><a class="viewcode-back" href="../../../../../../../Source_Bb_W3Gpp_Mstation_Udtx.html#RsSmbv.Implementations.Source.Bb.W3Gpp.Mstation.Udtx.UdtxCls.get_offset">[docs]</a>	<span class="k">def</span> <span class="nf">get_offset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:W3GPp:MSTation:UDTX:OFFSet \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.w3Gpp.mstation.udtx.get_offset() \n</span>
+<span class="sd">		Sets the parameter UE_DTX_DRX_Offset and determines the start offset in subframes of the first uplink DPCCH burst (after</span>
+<span class="sd">		the preamble) . The offset is applied only for bursts belonging to the DPCCH burst pattern; HS-DPCCH or E-DCH</span>
+<span class="sd">		transmissions are not affected. \n</span>
+<span class="sd">			:return: offset: integer Range: 0 to 159</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:W3GPp:MSTation:UDTX:OFFSet?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="UdtxCls.set_offset"><a class="viewcode-back" href="../../../../../../../Source_Bb_W3Gpp_Mstation_Udtx.html#RsSmbv.Implementations.Source.Bb.W3Gpp.Mstation.Udtx.UdtxCls.set_offset">[docs]</a>	<span class="k">def</span> <span class="nf">set_offset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">offset</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:W3GPp:MSTation:UDTX:OFFSet \n</span>
+<span class="sd">		Snippet: driver.source.bb.w3Gpp.mstation.udtx.set_offset(offset = 1) \n</span>
+<span class="sd">		Sets the parameter UE_DTX_DRX_Offset and determines the start offset in subframes of the first uplink DPCCH burst (after</span>
+<span class="sd">		the preamble) . The offset is applied only for bursts belonging to the DPCCH burst pattern; HS-DPCCH or E-DCH</span>
+<span class="sd">		transmissions are not affected. \n</span>
+<span class="sd">			:param offset: integer Range: 0 to 159</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">offset</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:W3GPp:MSTation:UDTX:OFFSet </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="UdtxCls.get_state"><a class="viewcode-back" href="../../../../../../../Source_Bb_W3Gpp_Mstation_Udtx.html#RsSmbv.Implementations.Source.Bb.W3Gpp.Mstation.Udtx.UdtxCls.get_state">[docs]</a>	<span class="k">def</span> <span class="nf">get_state</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:W3GPp:MSTation:UDTX:STATe \n</span>
+<span class="sd">		Snippet: value: bool = driver.source.bb.w3Gpp.mstation.udtx.get_state() \n</span>
+<span class="sd">		Enables/disables UL-DTX. Enabling the UL-DTX deactivates the DPDCH and the HSUPA FRC. \n</span>
+<span class="sd">			:return: state: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:W3GPp:MSTation:UDTX:STATe?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_bool</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="UdtxCls.set_state"><a class="viewcode-back" href="../../../../../../../Source_Bb_W3Gpp_Mstation_Udtx.html#RsSmbv.Implementations.Source.Bb.W3Gpp.Mstation.Udtx.UdtxCls.set_state">[docs]</a>	<span class="k">def</span> <span class="nf">set_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:W3GPp:MSTation:UDTX:STATe \n</span>
+<span class="sd">		Snippet: driver.source.bb.w3Gpp.mstation.udtx.set_state(state = False) \n</span>
+<span class="sd">		Enables/disables UL-DTX. Enabling the UL-DTX deactivates the DPDCH and the HSUPA FRC. \n</span>
+<span class="sd">			:param state: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">bool_to_str</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:W3GPp:MSTation:UDTX:STATe </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="UdtxCls.get_ttiedch"><a class="viewcode-back" href="../../../../../../../Source_Bb_W3Gpp_Mstation_Udtx.html#RsSmbv.Implementations.Source.Bb.W3Gpp.Mstation.Udtx.UdtxCls.get_ttiedch">[docs]</a>	<span class="k">def</span> <span class="nf">get_ttiedch</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">HsUpaDchTti</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:W3GPp:MSTation:UDTX:TTIEdch \n</span>
+<span class="sd">		Snippet: value: enums.HsUpaDchTti = driver.source.bb.w3Gpp.mstation.udtx.get_ttiedch() \n</span>
+<span class="sd">		Sets the duration of a E-DCH TTI. \n</span>
+<span class="sd">			:return: edch_tti: 2ms| 10ms Range: 2ms to 10ms</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:W3GPp:MSTation:UDTX:TTIEdch?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">HsUpaDchTti</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="UdtxCls.set_ttiedch"><a class="viewcode-back" href="../../../../../../../Source_Bb_W3Gpp_Mstation_Udtx.html#RsSmbv.Implementations.Source.Bb.W3Gpp.Mstation.Udtx.UdtxCls.set_ttiedch">[docs]</a>	<span class="k">def</span> <span class="nf">set_ttiedch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">edch_tti</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">HsUpaDchTti</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:W3GPp:MSTation:UDTX:TTIEdch \n</span>
+<span class="sd">		Snippet: driver.source.bb.w3Gpp.mstation.udtx.set_ttiedch(edch_tti = enums.HsUpaDchTti._10ms) \n</span>
+<span class="sd">		Sets the duration of a E-DCH TTI. \n</span>
+<span class="sd">			:param edch_tti: 2ms| 10ms Range: 2ms to 10ms</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">edch_tti</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">HsUpaDchTti</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:W3GPp:MSTation:UDTX:TTIEdch </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;UdtxCls&#39;</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Clones the group by creating new object from it and its whole existing subgroups</span>
+<span class="sd">		Also copies all the existing default Repeated Capabilities setting,</span>
+<span class="sd">		which you can change independently without affecting the original group&quot;&quot;&quot;</span>
+		<span class="n">new_group</span> <span class="o">=</span> <span class="n">UdtxCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">synchronize_repcaps</span><span class="p">(</span><span class="n">new_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">new_group</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

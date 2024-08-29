@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RsSmbv.Implementations.Source.Bb.Ils.Mbeacon.Comid &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../../../../" id="documentation_options" src="../../../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../../../_static/jquery.js"></script>
+        <script src="../../../../../../../_static/underscore.js"></script>
+        <script src="../../../../../../../_static/doctools.js"></script>
+        <script src="../../../../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../../../../_static/copybutton.js"></script>
+    <script src="../../../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../../../../index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../RsSmbv.html">RsSmbv API Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../../index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../../../../index.html">Module code</a> &raquo;</li>
+          <li><a href="../../../../Source.html">RsSmbv.Implementations.Source</a> &raquo;</li>
+          <li><a href="../../../Bb.html">RsSmbv.Implementations.Source.Bb</a> &raquo;</li>
+          <li><a href="../../Ils.html">RsSmbv.Implementations.Source.Bb.Ils</a> &raquo;</li>
+          <li><a href="../Mbeacon.html">RsSmbv.Implementations.Source.Bb.Ils.Mbeacon</a> &raquo;</li>
+      <li>RsSmbv.Implementations.Source.Bb.Ils.Mbeacon.Comid</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for RsSmbv.Implementations.Source.Bb.Ils.Mbeacon.Comid</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">.......Internal.Core</span> <span class="kn">import</span> <span class="n">Core</span>
+<span class="kn">from</span> <span class="nn">.......Internal.CommandsGroup</span> <span class="kn">import</span> <span class="n">CommandsGroup</span>
+<span class="kn">from</span> <span class="nn">.......Internal</span> <span class="kn">import</span> <span class="n">Conversions</span>
+<span class="kn">from</span> <span class="nn">.......</span> <span class="kn">import</span> <span class="n">enums</span>
+
+
+<span class="c1"># noinspection PyPep8Naming,PyAttributeOutsideInit,SpellCheckingInspection</span>
+<div class="viewcode-block" id="ComidCls"><a class="viewcode-back" href="../../../../../../../Source_Bb_Ils_Mbeacon_Comid.html#RsSmbv.Implementations.Source.Bb.Ils.Mbeacon.Comid.ComidCls">[docs]</a><span class="k">class</span> <span class="nc">ComidCls</span><span class="p">:</span>
+	<span class="sd">&quot;&quot;&quot;Comid commands group definition. 11 total commands, 1 Subgroups, 9 group commands&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">core</span><span class="p">:</span> <span class="n">Core</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span> <span class="o">=</span> <span class="n">core</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span> <span class="o">=</span> <span class="n">CommandsGroup</span><span class="p">(</span><span class="s2">&quot;comid&quot;</span><span class="p">,</span> <span class="n">core</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">code</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;code commands group. 0 Sub-classes, 2 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_code&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Code</span> <span class="kn">import</span> <span class="n">CodeCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_code</span> <span class="o">=</span> <span class="n">CodeCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_code</span>
+
+<div class="viewcode-block" id="ComidCls.get_dash"><a class="viewcode-back" href="../../../../../../../Source_Bb_Ils_Mbeacon_Comid.html#RsSmbv.Implementations.Source.Bb.Ils.Mbeacon.Comid.ComidCls.get_dash">[docs]</a>	<span class="k">def</span> <span class="nf">get_dash</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:[ILS]:MBEacon:COMid:DASH \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.ils.mbeacon.comid.get_dash() \n</span>
+<span class="sd">		Sets the length of a Morse code dash. \n</span>
+<span class="sd">			:return: dash: float Range: 0.05 to 1</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:ILS:MBEacon:COMid:DASH?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ComidCls.set_dash"><a class="viewcode-back" href="../../../../../../../Source_Bb_Ils_Mbeacon_Comid.html#RsSmbv.Implementations.Source.Bb.Ils.Mbeacon.Comid.ComidCls.set_dash">[docs]</a>	<span class="k">def</span> <span class="nf">set_dash</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dash</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:[ILS]:MBEacon:COMid:DASH \n</span>
+<span class="sd">		Snippet: driver.source.bb.ils.mbeacon.comid.set_dash(dash = 1.0) \n</span>
+<span class="sd">		Sets the length of a Morse code dash. \n</span>
+<span class="sd">			:param dash: float Range: 0.05 to 1</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">dash</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:ILS:MBEacon:COMid:DASH </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ComidCls.get_depth"><a class="viewcode-back" href="../../../../../../../Source_Bb_Ils_Mbeacon_Comid.html#RsSmbv.Implementations.Source.Bb.Ils.Mbeacon.Comid.ComidCls.get_depth">[docs]</a>	<span class="k">def</span> <span class="nf">get_depth</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:[ILS]:MBEacon:COMid:DEPTh \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.ils.mbeacon.comid.get_depth() \n</span>
+<span class="sd">		Sets the AM modulation depth of the COM/ID signal. \n</span>
+<span class="sd">			:return: depth: float Range: 0 to 100</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:ILS:MBEacon:COMid:DEPTh?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ComidCls.set_depth"><a class="viewcode-back" href="../../../../../../../Source_Bb_Ils_Mbeacon_Comid.html#RsSmbv.Implementations.Source.Bb.Ils.Mbeacon.Comid.ComidCls.set_depth">[docs]</a>	<span class="k">def</span> <span class="nf">set_depth</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">depth</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:[ILS]:MBEacon:COMid:DEPTh \n</span>
+<span class="sd">		Snippet: driver.source.bb.ils.mbeacon.comid.set_depth(depth = 1.0) \n</span>
+<span class="sd">		Sets the AM modulation depth of the COM/ID signal. \n</span>
+<span class="sd">			:param depth: float Range: 0 to 100</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">depth</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:ILS:MBEacon:COMid:DEPTh </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ComidCls.get_dot"><a class="viewcode-back" href="../../../../../../../Source_Bb_Ils_Mbeacon_Comid.html#RsSmbv.Implementations.Source.Bb.Ils.Mbeacon.Comid.ComidCls.get_dot">[docs]</a>	<span class="k">def</span> <span class="nf">get_dot</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:[ILS]:MBEacon:COMid:DOT \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.ils.mbeacon.comid.get_dot() \n</span>
+<span class="sd">		Sets the length of a Morse code dot. \n</span>
+<span class="sd">			:return: dot: float Range: 0.05 to 1</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:ILS:MBEacon:COMid:DOT?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ComidCls.set_dot"><a class="viewcode-back" href="../../../../../../../Source_Bb_Ils_Mbeacon_Comid.html#RsSmbv.Implementations.Source.Bb.Ils.Mbeacon.Comid.ComidCls.set_dot">[docs]</a>	<span class="k">def</span> <span class="nf">set_dot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dot</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:[ILS]:MBEacon:COMid:DOT \n</span>
+<span class="sd">		Snippet: driver.source.bb.ils.mbeacon.comid.set_dot(dot = 1.0) \n</span>
+<span class="sd">		Sets the length of a Morse code dot. \n</span>
+<span class="sd">			:param dot: float Range: 0.05 to 1</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">dot</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:ILS:MBEacon:COMid:DOT </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ComidCls.get_frequency"><a class="viewcode-back" href="../../../../../../../Source_Bb_Ils_Mbeacon_Comid.html#RsSmbv.Implementations.Source.Bb.Ils.Mbeacon.Comid.ComidCls.get_frequency">[docs]</a>	<span class="k">def</span> <span class="nf">get_frequency</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:[ILS]:MBEacon:COMid:FREQuency \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.ils.mbeacon.comid.get_frequency() \n</span>
+<span class="sd">		Sets the frequency of the COM/ID signal. \n</span>
+<span class="sd">			:return: frequency: float Range: 0.1 to 20E3</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:ILS:MBEacon:COMid:FREQuency?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ComidCls.set_frequency"><a class="viewcode-back" href="../../../../../../../Source_Bb_Ils_Mbeacon_Comid.html#RsSmbv.Implementations.Source.Bb.Ils.Mbeacon.Comid.ComidCls.set_frequency">[docs]</a>	<span class="k">def</span> <span class="nf">set_frequency</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frequency</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:[ILS]:MBEacon:COMid:FREQuency \n</span>
+<span class="sd">		Snippet: driver.source.bb.ils.mbeacon.comid.set_frequency(frequency = 1.0) \n</span>
+<span class="sd">		Sets the frequency of the COM/ID signal. \n</span>
+<span class="sd">			:param frequency: float Range: 0.1 to 20E3</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">frequency</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:ILS:MBEacon:COMid:FREQuency </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ComidCls.get_letter"><a class="viewcode-back" href="../../../../../../../Source_Bb_Ils_Mbeacon_Comid.html#RsSmbv.Implementations.Source.Bb.Ils.Mbeacon.Comid.ComidCls.get_letter">[docs]</a>	<span class="k">def</span> <span class="nf">get_letter</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:[ILS]:MBEacon:COMid:LETTer \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.ils.mbeacon.comid.get_letter() \n</span>
+<span class="sd">		Sets the length of a Morse code letter space. \n</span>
+<span class="sd">			:return: letter: float Range: 0.05 to 1</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:ILS:MBEacon:COMid:LETTer?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ComidCls.set_letter"><a class="viewcode-back" href="../../../../../../../Source_Bb_Ils_Mbeacon_Comid.html#RsSmbv.Implementations.Source.Bb.Ils.Mbeacon.Comid.ComidCls.set_letter">[docs]</a>	<span class="k">def</span> <span class="nf">set_letter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">letter</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:[ILS]:MBEacon:COMid:LETTer \n</span>
+<span class="sd">		Snippet: driver.source.bb.ils.mbeacon.comid.set_letter(letter = 1.0) \n</span>
+<span class="sd">		Sets the length of a Morse code letter space. \n</span>
+<span class="sd">			:param letter: float Range: 0.05 to 1</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">letter</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:ILS:MBEacon:COMid:LETTer </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ComidCls.get_period"><a class="viewcode-back" href="../../../../../../../Source_Bb_Ils_Mbeacon_Comid.html#RsSmbv.Implementations.Source.Bb.Ils.Mbeacon.Comid.ComidCls.get_period">[docs]</a>	<span class="k">def</span> <span class="nf">get_period</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:[ILS]:MBEacon:COMid:PERiod \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.ils.mbeacon.comid.get_period() \n</span>
+<span class="sd">		Sets the period of the COM/ID signal. \n</span>
+<span class="sd">			:return: period: float Range: 0 to 120</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:ILS:MBEacon:COMid:PERiod?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ComidCls.set_period"><a class="viewcode-back" href="../../../../../../../Source_Bb_Ils_Mbeacon_Comid.html#RsSmbv.Implementations.Source.Bb.Ils.Mbeacon.Comid.ComidCls.set_period">[docs]</a>	<span class="k">def</span> <span class="nf">set_period</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">period</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:[ILS]:MBEacon:COMid:PERiod \n</span>
+<span class="sd">		Snippet: driver.source.bb.ils.mbeacon.comid.set_period(period = 1.0) \n</span>
+<span class="sd">		Sets the period of the COM/ID signal. \n</span>
+<span class="sd">			:param period: float Range: 0 to 120</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">period</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:ILS:MBEacon:COMid:PERiod </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ComidCls.get_symbol"><a class="viewcode-back" href="../../../../../../../Source_Bb_Ils_Mbeacon_Comid.html#RsSmbv.Implementations.Source.Bb.Ils.Mbeacon.Comid.ComidCls.get_symbol">[docs]</a>	<span class="k">def</span> <span class="nf">get_symbol</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:[ILS]:MBEacon:COMid:SYMBol \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.ils.mbeacon.comid.get_symbol() \n</span>
+<span class="sd">		Sets the length of the Morse code symbol space. \n</span>
+<span class="sd">			:return: symbol: float Range: 0.05 to 1</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:ILS:MBEacon:COMid:SYMBol?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ComidCls.set_symbol"><a class="viewcode-back" href="../../../../../../../Source_Bb_Ils_Mbeacon_Comid.html#RsSmbv.Implementations.Source.Bb.Ils.Mbeacon.Comid.ComidCls.set_symbol">[docs]</a>	<span class="k">def</span> <span class="nf">set_symbol</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symbol</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:[ILS]:MBEacon:COMid:SYMBol \n</span>
+<span class="sd">		Snippet: driver.source.bb.ils.mbeacon.comid.set_symbol(symbol = 1.0) \n</span>
+<span class="sd">		Sets the length of the Morse code symbol space. \n</span>
+<span class="sd">			:param symbol: float Range: 0.05 to 1</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">symbol</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:ILS:MBEacon:COMid:SYMBol </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="ComidCls.get_tschema"><a class="viewcode-back" href="../../../../../../../Source_Bb_Ils_Mbeacon_Comid.html#RsSmbv.Implementations.Source.Bb.Ils.Mbeacon.Comid.ComidCls.get_tschema">[docs]</a>	<span class="k">def</span> <span class="nf">get_tschema</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">AvionicComIdTimeSchem</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:[ILS]:MBEacon:COMid:TSCHema \n</span>
+<span class="sd">		Snippet: value: enums.AvionicComIdTimeSchem = driver.source.bb.ils.mbeacon.comid.get_tschema() \n</span>
+<span class="sd">		Sets the time schema of the Morse code for the COM/ID signal. \n</span>
+<span class="sd">			:return: tschema: STD| USER STD Activates the standard time schema of the Morse code. The set dot length determines the dash length, which is 3 times the dot length. USER Activates the user-defined time schema of the Morse code. Dot and dash length, as well as symbol and letter space can be set separately.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:ILS:MBEacon:COMid:TSCHema?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">AvionicComIdTimeSchem</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ComidCls.set_tschema"><a class="viewcode-back" href="../../../../../../../Source_Bb_Ils_Mbeacon_Comid.html#RsSmbv.Implementations.Source.Bb.Ils.Mbeacon.Comid.ComidCls.set_tschema">[docs]</a>	<span class="k">def</span> <span class="nf">set_tschema</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tschema</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">AvionicComIdTimeSchem</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:[ILS]:MBEacon:COMid:TSCHema \n</span>
+<span class="sd">		Snippet: driver.source.bb.ils.mbeacon.comid.set_tschema(tschema = enums.AvionicComIdTimeSchem.STD) \n</span>
+<span class="sd">		Sets the time schema of the Morse code for the COM/ID signal. \n</span>
+<span class="sd">			:param tschema: STD| USER STD Activates the standard time schema of the Morse code. The set dot length determines the dash length, which is 3 times the dot length. USER Activates the user-defined time schema of the Morse code. Dot and dash length, as well as symbol and letter space can be set separately.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">tschema</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">AvionicComIdTimeSchem</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:ILS:MBEacon:COMid:TSCHema </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ComidCls.get_state"><a class="viewcode-back" href="../../../../../../../Source_Bb_Ils_Mbeacon_Comid.html#RsSmbv.Implementations.Source.Bb.Ils.Mbeacon.Comid.ComidCls.get_state">[docs]</a>	<span class="k">def</span> <span class="nf">get_state</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:[ILS]:MBEacon:COMid:[STATe] \n</span>
+<span class="sd">		Snippet: value: bool = driver.source.bb.ils.mbeacon.comid.get_state() \n</span>
+<span class="sd">		Enables/disables the COM/ID signal. \n</span>
+<span class="sd">			:return: state: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:ILS:MBEacon:COMid:STATe?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_bool</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ComidCls.set_state"><a class="viewcode-back" href="../../../../../../../Source_Bb_Ils_Mbeacon_Comid.html#RsSmbv.Implementations.Source.Bb.Ils.Mbeacon.Comid.ComidCls.set_state">[docs]</a>	<span class="k">def</span> <span class="nf">set_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:[ILS]:MBEacon:COMid:[STATe] \n</span>
+<span class="sd">		Snippet: driver.source.bb.ils.mbeacon.comid.set_state(state = False) \n</span>
+<span class="sd">		Enables/disables the COM/ID signal. \n</span>
+<span class="sd">			:param state: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">bool_to_str</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:ILS:MBEacon:COMid:STATe </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;ComidCls&#39;</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Clones the group by creating new object from it and its whole existing subgroups</span>
+<span class="sd">		Also copies all the existing default Repeated Capabilities setting,</span>
+<span class="sd">		which you can change independently without affecting the original group&quot;&quot;&quot;</span>
+		<span class="n">new_group</span> <span class="o">=</span> <span class="n">ComidCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">synchronize_repcaps</span><span class="p">(</span><span class="n">new_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">new_group</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

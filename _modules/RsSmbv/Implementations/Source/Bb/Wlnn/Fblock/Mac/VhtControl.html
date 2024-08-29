@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RsSmbv.Implementations.Source.Bb.Wlnn.Fblock.Mac.VhtControl &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="../../../../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../../../../../" id="documentation_options" src="../../../../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../../../../_static/jquery.js"></script>
+        <script src="../../../../../../../../_static/underscore.js"></script>
+        <script src="../../../../../../../../_static/doctools.js"></script>
+        <script src="../../../../../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../../../../../_static/copybutton.js"></script>
+    <script src="../../../../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../../../../../index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../RsSmbv.html">RsSmbv API Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../../../index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../../../../../index.html">Module code</a> &raquo;</li>
+          <li><a href="../../../../../Source.html">RsSmbv.Implementations.Source</a> &raquo;</li>
+          <li><a href="../../../../Bb.html">RsSmbv.Implementations.Source.Bb</a> &raquo;</li>
+          <li><a href="../../../Wlnn.html">RsSmbv.Implementations.Source.Bb.Wlnn</a> &raquo;</li>
+          <li><a href="../../Fblock.html">RsSmbv.Implementations.Source.Bb.Wlnn.Fblock</a> &raquo;</li>
+          <li><a href="../Mac.html">RsSmbv.Implementations.Source.Bb.Wlnn.Fblock.Mac</a> &raquo;</li>
+      <li>RsSmbv.Implementations.Source.Bb.Wlnn.Fblock.Mac.VhtControl</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for RsSmbv.Implementations.Source.Bb.Wlnn.Fblock.Mac.VhtControl</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">........Internal.Core</span> <span class="kn">import</span> <span class="n">Core</span>
+<span class="kn">from</span> <span class="nn">........Internal.CommandsGroup</span> <span class="kn">import</span> <span class="n">CommandsGroup</span>
+<span class="kn">from</span> <span class="nn">........Internal</span> <span class="kn">import</span> <span class="n">Conversions</span>
+<span class="kn">from</span> <span class="nn">........Internal.Utilities</span> <span class="kn">import</span> <span class="n">trim_str_response</span>
+<span class="kn">from</span> <span class="nn">........</span> <span class="kn">import</span> <span class="n">repcap</span>
+
+
+<span class="c1"># noinspection PyPep8Naming,PyAttributeOutsideInit,SpellCheckingInspection</span>
+<div class="viewcode-block" id="VhtControlCls"><a class="viewcode-back" href="../../../../../../../../Source_Bb_Wlnn_Fblock_Mac_VhtControl.html#RsSmbv.Implementations.Source.Bb.Wlnn.Fblock.Mac.VhtControl.VhtControlCls">[docs]</a><span class="k">class</span> <span class="nc">VhtControlCls</span><span class="p">:</span>
+	<span class="sd">&quot;&quot;&quot;VhtControl commands group definition. 13 total commands, 12 Subgroups, 1 group commands&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">core</span><span class="p">:</span> <span class="n">Core</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span> <span class="o">=</span> <span class="n">core</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span> <span class="o">=</span> <span class="n">CommandsGroup</span><span class="p">(</span><span class="s2">&quot;vhtControl&quot;</span><span class="p">,</span> <span class="n">core</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">acConstraint</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;acConstraint commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_acConstraint&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.AcConstraint</span> <span class="kn">import</span> <span class="n">AcConstraintCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_acConstraint</span> <span class="o">=</span> <span class="n">AcConstraintCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_acConstraint</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">ctype</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;ctype commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_ctype&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Ctype</span> <span class="kn">import</span> <span class="n">CtypeCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_ctype</span> <span class="o">=</span> <span class="n">CtypeCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ctype</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">ftType</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;ftType commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_ftType&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.FtType</span> <span class="kn">import</span> <span class="n">FtTypeCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_ftType</span> <span class="o">=</span> <span class="n">FtTypeCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ftType</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">gidh</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;gidh commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_gidh&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Gidh</span> <span class="kn">import</span> <span class="n">GidhCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_gidh</span> <span class="o">=</span> <span class="n">GidhCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gidh</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">mfb</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;mfb commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_mfb&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Mfb</span> <span class="kn">import</span> <span class="n">MfbCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_mfb</span> <span class="o">=</span> <span class="n">MfbCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mfb</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">mgl</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;mgl commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_mgl&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Mgl</span> <span class="kn">import</span> <span class="n">MglCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_mgl</span> <span class="o">=</span> <span class="n">MglCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mgl</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">mrq</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;mrq commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_mrq&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Mrq</span> <span class="kn">import</span> <span class="n">MrqCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_mrq</span> <span class="o">=</span> <span class="n">MrqCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mrq</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">msi</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;msi commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_msi&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Msi</span> <span class="kn">import</span> <span class="n">MsiCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_msi</span> <span class="o">=</span> <span class="n">MsiCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_msi</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">rdgMore</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;rdgMore commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_rdgMore&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.RdgMore</span> <span class="kn">import</span> <span class="n">RdgMoreCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_rdgMore</span> <span class="o">=</span> <span class="n">RdgMoreCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rdgMore</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">s1G</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;s1G commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_s1G&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.S1G</span> <span class="kn">import</span> <span class="n">S1GCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_s1G</span> <span class="o">=</span> <span class="n">S1GCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_s1G</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">umfb</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;umfb commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_umfb&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Umfb</span> <span class="kn">import</span> <span class="n">UmfbCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_umfb</span> <span class="o">=</span> <span class="n">UmfbCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_umfb</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">vreserved</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;vreserved commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_vreserved&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Vreserved</span> <span class="kn">import</span> <span class="n">VreservedCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_vreserved</span> <span class="o">=</span> <span class="n">VreservedCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vreserved</span>
+
+<div class="viewcode-block" id="VhtControlCls.set"><a class="viewcode-back" href="../../../../../../../../Source_Bb_Wlnn_Fblock_Mac_VhtControl.html#RsSmbv.Implementations.Source.Bb.Wlnn.Fblock.Mac.VhtControl.VhtControlCls.set">[docs]</a>	<span class="k">def</span> <span class="nf">set</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vht_contol</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">frameBlock</span><span class="o">=</span><span class="n">repcap</span><span class="o">.</span><span class="n">FrameBlock</span><span class="o">.</span><span class="n">Default</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:WLNN:FBLock&lt;CH&gt;:MAC:VHTControl \n</span>
+<span class="sd">		Snippet: driver.source.bb.wlnn.fblock.mac.vhtControl.set(vht_contol = rawAbc, frameBlock = repcap.FrameBlock.Default) \n</span>
+<span class="sd">		The command sets the value for the VHT control field. \n</span>
+<span class="sd">			:param vht_contol: integer Range: #H00000000,32 to #HFFFFFFFF,32</span>
+<span class="sd">			:param frameBlock: optional repeated capability selector. Default value: Nr1 (settable in the interface &#39;Fblock&#39;)</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">value_to_str</span><span class="p">(</span><span class="n">vht_contol</span><span class="p">)</span>
+		<span class="n">frameBlock_cmd_val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">get_repcap_cmd_value</span><span class="p">(</span><span class="n">frameBlock</span><span class="p">,</span> <span class="n">repcap</span><span class="o">.</span><span class="n">FrameBlock</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:WLNN:FBLock</span><span class="si">{</span><span class="n">frameBlock_cmd_val</span><span class="si">}</span><span class="s1">:MAC:VHTControl </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="VhtControlCls.get"><a class="viewcode-back" href="../../../../../../../../Source_Bb_Wlnn_Fblock_Mac_VhtControl.html#RsSmbv.Implementations.Source.Bb.Wlnn.Fblock.Mac.VhtControl.VhtControlCls.get">[docs]</a>	<span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frameBlock</span><span class="o">=</span><span class="n">repcap</span><span class="o">.</span><span class="n">FrameBlock</span><span class="o">.</span><span class="n">Default</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:WLNN:FBLock&lt;CH&gt;:MAC:VHTControl \n</span>
+<span class="sd">		Snippet: value: str = driver.source.bb.wlnn.fblock.mac.vhtControl.get(frameBlock = repcap.FrameBlock.Default) \n</span>
+<span class="sd">		The command sets the value for the VHT control field. \n</span>
+<span class="sd">			:param frameBlock: optional repeated capability selector. Default value: Nr1 (settable in the interface &#39;Fblock&#39;)</span>
+<span class="sd">			:return: vht_contol: integer Range: #H00000000,32 to #HFFFFFFFF,32&quot;&quot;&quot;</span>
+		<span class="n">frameBlock_cmd_val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">get_repcap_cmd_value</span><span class="p">(</span><span class="n">frameBlock</span><span class="p">,</span> <span class="n">repcap</span><span class="o">.</span><span class="n">FrameBlock</span><span class="p">)</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:WLNN:FBLock</span><span class="si">{</span><span class="n">frameBlock_cmd_val</span><span class="si">}</span><span class="s1">:MAC:VHTControl?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">trim_str_response</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+	<span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;VhtControlCls&#39;</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Clones the group by creating new object from it and its whole existing subgroups</span>
+<span class="sd">		Also copies all the existing default Repeated Capabilities setting,</span>
+<span class="sd">		which you can change independently without affecting the original group&quot;&quot;&quot;</span>
+		<span class="n">new_group</span> <span class="o">=</span> <span class="n">VhtControlCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">synchronize_repcaps</span><span class="p">(</span><span class="n">new_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">new_group</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

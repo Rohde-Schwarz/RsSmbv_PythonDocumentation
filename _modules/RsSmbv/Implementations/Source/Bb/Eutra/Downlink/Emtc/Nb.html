@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RsSmbv.Implementations.Source.Bb.Eutra.Downlink.Emtc.Nb &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="../../../../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../../../../../" id="documentation_options" src="../../../../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../../../../_static/jquery.js"></script>
+        <script src="../../../../../../../../_static/underscore.js"></script>
+        <script src="../../../../../../../../_static/doctools.js"></script>
+        <script src="../../../../../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../../../../../_static/copybutton.js"></script>
+    <script src="../../../../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../../../../../index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../RsSmbv.html">RsSmbv API Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../../../index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../../../../../index.html">Module code</a> &raquo;</li>
+          <li><a href="../../../../../Source.html">RsSmbv.Implementations.Source</a> &raquo;</li>
+          <li><a href="../../../../Bb.html">RsSmbv.Implementations.Source.Bb</a> &raquo;</li>
+          <li><a href="../../../Eutra.html">RsSmbv.Implementations.Source.Bb.Eutra</a> &raquo;</li>
+          <li><a href="../../Downlink.html">RsSmbv.Implementations.Source.Bb.Eutra.Downlink</a> &raquo;</li>
+          <li><a href="../Emtc.html">RsSmbv.Implementations.Source.Bb.Eutra.Downlink.Emtc</a> &raquo;</li>
+      <li>RsSmbv.Implementations.Source.Bb.Eutra.Downlink.Emtc.Nb</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for RsSmbv.Implementations.Source.Bb.Eutra.Downlink.Emtc.Nb</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">.......Internal.Core</span> <span class="kn">import</span> <span class="n">Core</span>
+<span class="kn">from</span> <span class="nn">.......Internal.CommandsGroup</span> <span class="kn">import</span> <span class="n">CommandsGroup</span>
+<span class="kn">from</span> <span class="nn">.......Internal</span> <span class="kn">import</span> <span class="n">Conversions</span>
+<span class="kn">from</span> <span class="nn">.......</span> <span class="kn">import</span> <span class="n">enums</span>
+
+
+<span class="c1"># noinspection PyPep8Naming,PyAttributeOutsideInit,SpellCheckingInspection</span>
+<div class="viewcode-block" id="NbCls"><a class="viewcode-back" href="../../../../../../../../Source_Bb_Eutra_Downlink_Emtc_Nb.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.Emtc.Nb.NbCls">[docs]</a><span class="k">class</span> <span class="nc">NbCls</span><span class="p">:</span>
+	<span class="sd">&quot;&quot;&quot;Nb commands group definition. 9 total commands, 0 Subgroups, 9 group commands&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">core</span><span class="p">:</span> <span class="n">Core</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span> <span class="o">=</span> <span class="n">core</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span> <span class="o">=</span> <span class="n">CommandsGroup</span><span class="p">(</span><span class="s2">&quot;nb&quot;</span><span class="p">,</span> <span class="n">core</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+
+<div class="viewcode-block" id="NbCls.get_hoffset"><a class="viewcode-back" href="../../../../../../../../Source_Bb_Eutra_Downlink_Emtc_Nb.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.Emtc.Nb.NbCls.get_hoffset">[docs]</a>	<span class="k">def</span> <span class="nf">get_hoffset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:EMTC:NB:HOFFset \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.eutra.downlink.emtc.nb.get_hoffset() \n</span>
+<span class="sd">		Sets the number of narrowbands between two consecutive MPDCCH or PDSCH hops. \n</span>
+<span class="sd">			:return: hopping_offset: integer Range: 1 to 16</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:EMTC:NB:HOFFset?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="NbCls.set_hoffset"><a class="viewcode-back" href="../../../../../../../../Source_Bb_Eutra_Downlink_Emtc_Nb.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.Emtc.Nb.NbCls.set_hoffset">[docs]</a>	<span class="k">def</span> <span class="nf">set_hoffset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hopping_offset</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:EMTC:NB:HOFFset \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.downlink.emtc.nb.set_hoffset(hopping_offset = 1) \n</span>
+<span class="sd">		Sets the number of narrowbands between two consecutive MPDCCH or PDSCH hops. \n</span>
+<span class="sd">			:param hopping_offset: integer Range: 1 to 16</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">hopping_offset</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:EMTC:NB:HOFFset </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="NbCls.get_hopping"><a class="viewcode-back" href="../../../../../../../../Source_Bb_Eutra_Downlink_Emtc_Nb.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.Emtc.Nb.NbCls.get_hopping">[docs]</a>	<span class="k">def</span> <span class="nf">get_hopping</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">NumbersD</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:EMTC:NB:HOPPing \n</span>
+<span class="sd">		Snippet: value: enums.NumbersD = driver.source.bb.eutra.downlink.emtc.nb.get_hopping() \n</span>
+<span class="sd">		Sets the number of narrowbands over which MPDCCH or PDSCH hops. \n</span>
+<span class="sd">			:return: num_nb_hopping: 2| 4</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:EMTC:NB:HOPPing?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">NumbersD</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="NbCls.set_hopping"><a class="viewcode-back" href="../../../../../../../../Source_Bb_Eutra_Downlink_Emtc_Nb.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.Emtc.Nb.NbCls.set_hopping">[docs]</a>	<span class="k">def</span> <span class="nf">set_hopping</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_nb_hopping</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">NumbersD</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:EMTC:NB:HOPPing \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.downlink.emtc.nb.set_hopping(num_nb_hopping = enums.NumbersD._2) \n</span>
+<span class="sd">		Sets the number of narrowbands over which MPDCCH or PDSCH hops. \n</span>
+<span class="sd">			:param num_nb_hopping: 2| 4</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">num_nb_hopping</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">NumbersD</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:EMTC:NB:HOPPing </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="NbCls.get_ivla"><a class="viewcode-back" href="../../../../../../../../Source_Bb_Eutra_Downlink_Emtc_Nb.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.Emtc.Nb.NbCls.get_ivla">[docs]</a>	<span class="k">def</span> <span class="nf">get_ivla</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraIotHoppingIvl</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:EMTC:NB:IVLA \n</span>
+<span class="sd">		Snippet: value: enums.EutraIotHoppingIvl = driver.source.bb.eutra.downlink.emtc.nb.get_ivla() \n</span>
+<span class="sd">		Sets the number of consecutive subframes during which MPDCCH or PDSCH stays at the same narrowband before hopping to</span>
+<span class="sd">		another narrowband. \n</span>
+<span class="sd">			:return: hopping_ivla: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:EMTC:NB:IVLA?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraIotHoppingIvl</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="NbCls.set_ivla"><a class="viewcode-back" href="../../../../../../../../Source_Bb_Eutra_Downlink_Emtc_Nb.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.Emtc.Nb.NbCls.set_ivla">[docs]</a>	<span class="k">def</span> <span class="nf">set_ivla</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hopping_ivla</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraIotHoppingIvl</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:EMTC:NB:IVLA \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.downlink.emtc.nb.set_ivla(hopping_ivla = enums.EutraIotHoppingIvl.H1) \n</span>
+<span class="sd">		Sets the number of consecutive subframes during which MPDCCH or PDSCH stays at the same narrowband before hopping to</span>
+<span class="sd">		another narrowband. \n</span>
+<span class="sd">			:param hopping_ivla: H1| H2| H4| H5| H8| H10| H16| H20| H40</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">hopping_ivla</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraIotHoppingIvl</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:EMTC:NB:IVLA </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="NbCls.get_ivlb"><a class="viewcode-back" href="../../../../../../../../Source_Bb_Eutra_Downlink_Emtc_Nb.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.Emtc.Nb.NbCls.get_ivlb">[docs]</a>	<span class="k">def</span> <span class="nf">get_ivlb</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraIotHoppingIvl</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:EMTC:NB:IVLB \n</span>
+<span class="sd">		Snippet: value: enums.EutraIotHoppingIvl = driver.source.bb.eutra.downlink.emtc.nb.get_ivlb() \n</span>
+<span class="sd">		Sets the number of consecutive subframes during which MPDCCH or PDSCH stays at the same narrowband before hopping to</span>
+<span class="sd">		another narrowband. \n</span>
+<span class="sd">			:return: hopping_ivlb: H1| H2| H4| H5| H8| H10| H16| H20| H40</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:EMTC:NB:IVLB?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraIotHoppingIvl</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="NbCls.set_ivlb"><a class="viewcode-back" href="../../../../../../../../Source_Bb_Eutra_Downlink_Emtc_Nb.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.Emtc.Nb.NbCls.set_ivlb">[docs]</a>	<span class="k">def</span> <span class="nf">set_ivlb</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hopping_ivlb</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraIotHoppingIvl</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:EMTC:NB:IVLB \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.downlink.emtc.nb.set_ivlb(hopping_ivlb = enums.EutraIotHoppingIvl.H1) \n</span>
+<span class="sd">		Sets the number of consecutive subframes during which MPDCCH or PDSCH stays at the same narrowband before hopping to</span>
+<span class="sd">		another narrowband. \n</span>
+<span class="sd">			:param hopping_ivlb: H1| H2| H4| H5| H8| H10| H16| H20| H40</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">hopping_ivlb</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraIotHoppingIvl</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:EMTC:NB:IVLB </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="NbCls.get_nn_bands"><a class="viewcode-back" href="../../../../../../../../Source_Bb_Eutra_Downlink_Emtc_Nb.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.Emtc.Nb.NbCls.get_nn_bands">[docs]</a>	<span class="k">def</span> <span class="nf">get_nn_bands</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:EMTC:NB:NNBands \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.eutra.downlink.emtc.nb.get_nn_bands() \n</span>
+<span class="sd">		Queries the number of narrowbands. \n</span>
+<span class="sd">			:return: num_narrowbands: integer Range: 1 to 16</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:EMTC:NB:NNBands?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="NbCls.get_phopping"><a class="viewcode-back" href="../../../../../../../../Source_Bb_Eutra_Downlink_Emtc_Nb.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.Emtc.Nb.NbCls.get_phopping">[docs]</a>	<span class="k">def</span> <span class="nf">get_phopping</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:EMTC:NB:PHOPping \n</span>
+<span class="sd">		Snippet: value: bool = driver.source.bb.eutra.downlink.emtc.nb.get_phopping() \n</span>
+<span class="sd">		Enables hopping for the random access. \n</span>
+<span class="sd">			:return: paging_hopping: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:EMTC:NB:PHOPping?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_bool</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="NbCls.set_phopping"><a class="viewcode-back" href="../../../../../../../../Source_Bb_Eutra_Downlink_Emtc_Nb.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.Emtc.Nb.NbCls.set_phopping">[docs]</a>	<span class="k">def</span> <span class="nf">set_phopping</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">paging_hopping</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:EMTC:NB:PHOPping \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.downlink.emtc.nb.set_phopping(paging_hopping = False) \n</span>
+<span class="sd">		Enables hopping for the random access. \n</span>
+<span class="sd">			:param paging_hopping: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">bool_to_str</span><span class="p">(</span><span class="n">paging_hopping</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:EMTC:NB:PHOPping </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="NbCls.get_pstnb"><a class="viewcode-back" href="../../../../../../../../Source_Bb_Eutra_Downlink_Emtc_Nb.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.Emtc.Nb.NbCls.get_pstnb">[docs]</a>	<span class="k">def</span> <span class="nf">get_pstnb</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:EMTC:NB:PSTNb \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.eutra.downlink.emtc.nb.get_pstnb() \n</span>
+<span class="sd">		Sets the first used narrowband, if hoping is enabeld. \n</span>
+<span class="sd">			:return: paging_starting_n: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:EMTC:NB:PSTNb?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="NbCls.set_pstnb"><a class="viewcode-back" href="../../../../../../../../Source_Bb_Eutra_Downlink_Emtc_Nb.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.Emtc.Nb.NbCls.set_pstnb">[docs]</a>	<span class="k">def</span> <span class="nf">set_pstnb</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">paging_starting_n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:EMTC:NB:PSTNb \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.downlink.emtc.nb.set_pstnb(paging_starting_n = 1) \n</span>
+<span class="sd">		Sets the first used narrowband, if hoping is enabeld. \n</span>
+<span class="sd">			:param paging_starting_n: integer Range: 0 to 15</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">paging_starting_n</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:EMTC:NB:PSTNb </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="NbCls.get_rhoppping"><a class="viewcode-back" href="../../../../../../../../Source_Bb_Eutra_Downlink_Emtc_Nb.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.Emtc.Nb.NbCls.get_rhoppping">[docs]</a>	<span class="k">def</span> <span class="nf">get_rhoppping</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:EMTC:NB:RHOPpping \n</span>
+<span class="sd">		Snippet: value: bool = driver.source.bb.eutra.downlink.emtc.nb.get_rhoppping() \n</span>
+<span class="sd">		Enables hopping for the random access. \n</span>
+<span class="sd">			:return: ra_hopping: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:EMTC:NB:RHOPpping?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_bool</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="NbCls.set_rhoppping"><a class="viewcode-back" href="../../../../../../../../Source_Bb_Eutra_Downlink_Emtc_Nb.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.Emtc.Nb.NbCls.set_rhoppping">[docs]</a>	<span class="k">def</span> <span class="nf">set_rhoppping</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ra_hopping</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:EMTC:NB:RHOPpping \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.downlink.emtc.nb.set_rhoppping(ra_hopping = False) \n</span>
+<span class="sd">		Enables hopping for the random access. \n</span>
+<span class="sd">			:param ra_hopping: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">bool_to_str</span><span class="p">(</span><span class="n">ra_hopping</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:EMTC:NB:RHOPpping </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="NbCls.get_rstnb"><a class="viewcode-back" href="../../../../../../../../Source_Bb_Eutra_Downlink_Emtc_Nb.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.Emtc.Nb.NbCls.get_rstnb">[docs]</a>	<span class="k">def</span> <span class="nf">get_rstnb</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:EMTC:NB:RSTNb \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.eutra.downlink.emtc.nb.get_rstnb() \n</span>
+<span class="sd">		Sets the first used narrowband, if hoping is enabeld. \n</span>
+<span class="sd">			:return: ra_starting_nb: integer Range: 0 to 15</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:EMTC:NB:RSTNb?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="NbCls.set_rstnb"><a class="viewcode-back" href="../../../../../../../../Source_Bb_Eutra_Downlink_Emtc_Nb.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.Emtc.Nb.NbCls.set_rstnb">[docs]</a>	<span class="k">def</span> <span class="nf">set_rstnb</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ra_starting_nb</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:EMTC:NB:RSTNb \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.downlink.emtc.nb.set_rstnb(ra_starting_nb = 1) \n</span>
+<span class="sd">		Sets the first used narrowband, if hoping is enabeld. \n</span>
+<span class="sd">			:param ra_starting_nb: integer Range: 0 to 15</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">ra_starting_nb</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:EMTC:NB:RSTNb </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

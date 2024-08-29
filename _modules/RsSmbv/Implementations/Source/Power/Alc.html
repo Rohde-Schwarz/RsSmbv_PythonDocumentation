@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RsSmbv.Implementations.Source.Power.Alc &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../_static/jquery.js"></script>
+        <script src="../../../../../_static/underscore.js"></script>
+        <script src="../../../../../_static/doctools.js"></script>
+        <script src="../../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../../_static/copybutton.js"></script>
+    <script src="../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../../index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../RsSmbv.html">RsSmbv API Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../../index.html">Module code</a> &raquo;</li>
+          <li><a href="../../Source.html">RsSmbv.Implementations.Source</a> &raquo;</li>
+          <li><a href="../Power.html">RsSmbv.Implementations.Source.Power</a> &raquo;</li>
+      <li>RsSmbv.Implementations.Source.Power.Alc</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for RsSmbv.Implementations.Source.Power.Alc</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">.....Internal.Core</span> <span class="kn">import</span> <span class="n">Core</span>
+<span class="kn">from</span> <span class="nn">.....Internal.CommandsGroup</span> <span class="kn">import</span> <span class="n">CommandsGroup</span>
+<span class="kn">from</span> <span class="nn">.....Internal</span> <span class="kn">import</span> <span class="n">Conversions</span>
+<span class="kn">from</span> <span class="nn">.....</span> <span class="kn">import</span> <span class="n">enums</span>
+
+
+<span class="c1"># noinspection PyPep8Naming,PyAttributeOutsideInit,SpellCheckingInspection</span>
+<div class="viewcode-block" id="AlcCls"><a class="viewcode-back" href="../../../../../Source_Power_Alc.html#RsSmbv.Implementations.Source.Power.Alc.AlcCls">[docs]</a><span class="k">class</span> <span class="nc">AlcCls</span><span class="p">:</span>
+	<span class="sd">&quot;&quot;&quot;Alc commands group definition. 7 total commands, 1 Subgroups, 6 group commands&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">core</span><span class="p">:</span> <span class="n">Core</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span> <span class="o">=</span> <span class="n">core</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span> <span class="o">=</span> <span class="n">CommandsGroup</span><span class="p">(</span><span class="s2">&quot;alc&quot;</span><span class="p">,</span> <span class="n">core</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">sonce</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;sonce commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_sonce&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Sonce</span> <span class="kn">import</span> <span class="n">SonceCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_sonce</span> <span class="o">=</span> <span class="n">SonceCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sonce</span>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="AlcCls.get_dsensitivity"><a class="viewcode-back" href="../../../../../Source_Power_Alc.html#RsSmbv.Implementations.Source.Power.Alc.AlcCls.get_dsensitivity">[docs]</a>	<span class="k">def</span> <span class="nf">get_dsensitivity</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">PowAlcDetSensitivity</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:POWer:ALC:DSENsitivity \n</span>
+<span class="sd">		Snippet: value: enums.PowAlcDetSensitivity = driver.source.power.alc.get_dsensitivity() \n</span>
+<span class="sd">		Sets the sensitivity of the ALC detector. \n</span>
+<span class="sd">			:return: sensitivity: AUTO| FIXed AUTO Selects the optimum sensitivity automatically. FIXed Fixes the internal level detector.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:POWer:ALC:DSENsitivity?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">PowAlcDetSensitivity</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="AlcCls.set_dsensitivity"><a class="viewcode-back" href="../../../../../Source_Power_Alc.html#RsSmbv.Implementations.Source.Power.Alc.AlcCls.set_dsensitivity">[docs]</a>	<span class="k">def</span> <span class="nf">set_dsensitivity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sensitivity</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">PowAlcDetSensitivity</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:POWer:ALC:DSENsitivity \n</span>
+<span class="sd">		Snippet: driver.source.power.alc.set_dsensitivity(sensitivity = enums.PowAlcDetSensitivity.AUTO) \n</span>
+<span class="sd">		Sets the sensitivity of the ALC detector. \n</span>
+<span class="sd">			:param sensitivity: AUTO| FIXed AUTO Selects the optimum sensitivity automatically. FIXed Fixes the internal level detector.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">sensitivity</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">PowAlcDetSensitivity</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:POWer:ALC:DSENsitivity </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="AlcCls.get_mode"><a class="viewcode-back" href="../../../../../Source_Power_Alc.html#RsSmbv.Implementations.Source.Power.Alc.AlcCls.get_mode">[docs]</a>	<span class="k">def</span> <span class="nf">get_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">AlcOnOffAuto</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:POWer:ALC:MODE \n</span>
+<span class="sd">		Snippet: value: enums.AlcOnOffAuto = driver.source.power.alc.get_mode() \n</span>
+<span class="sd">		Queries the currently set ALC mode. See [:SOURce&lt;hw&gt;]:POWer:ALC[:STATe]. \n</span>
+<span class="sd">			:return: pow_alc_mode: 0| AUTO| 1| PRESet| OFFTable| ON| OFF| ONSample| ONTable</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:POWer:ALC:MODE?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">AlcOnOffAuto</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="AlcCls.get_omode"><a class="viewcode-back" href="../../../../../Source_Power_Alc.html#RsSmbv.Implementations.Source.Power.Alc.AlcCls.get_omode">[docs]</a>	<span class="k">def</span> <span class="nf">get_omode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">AlcOffModeSmbv</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:POWer:ALC:OMODe \n</span>
+<span class="sd">		Snippet: value: enums.AlcOffModeSmbv = driver.source.power.alc.get_omode() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: off_mode: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:POWer:ALC:OMODe?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">AlcOffModeSmbv</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="AlcCls.set_omode"><a class="viewcode-back" href="../../../../../Source_Power_Alc.html#RsSmbv.Implementations.Source.Power.Alc.AlcCls.set_omode">[docs]</a>	<span class="k">def</span> <span class="nf">set_omode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">off_mode</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">AlcOffModeSmbv</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:POWer:ALC:OMODe \n</span>
+<span class="sd">		Snippet: driver.source.power.alc.set_omode(off_mode = enums.AlcOffModeSmbv.HIGHaccuracy) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param off_mode: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">off_mode</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">AlcOffModeSmbv</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:POWer:ALC:OMODe </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="AlcCls.get_search"><a class="viewcode-back" href="../../../../../Source_Power_Alc.html#RsSmbv.Implementations.Source.Power.Alc.AlcCls.get_search">[docs]</a>	<span class="k">def</span> <span class="nf">get_search</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:POWer:ALC:SEARch \n</span>
+<span class="sd">		Snippet: value: bool = driver.source.power.alc.get_search() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: search: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:POWer:ALC:SEARch?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_bool</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="AlcCls.set_search"><a class="viewcode-back" href="../../../../../Source_Power_Alc.html#RsSmbv.Implementations.Source.Power.Alc.AlcCls.set_search">[docs]</a>	<span class="k">def</span> <span class="nf">set_search</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">search</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:POWer:ALC:SEARch \n</span>
+<span class="sd">		Snippet: driver.source.power.alc.set_search(search = False) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param search: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">bool_to_str</span><span class="p">(</span><span class="n">search</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:POWer:ALC:SEARch </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="AlcCls.get_slevel"><a class="viewcode-back" href="../../../../../Source_Power_Alc.html#RsSmbv.Implementations.Source.Power.Alc.AlcCls.get_slevel">[docs]</a>	<span class="k">def</span> <span class="nf">get_slevel</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">PowAlcSampleLev</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:POWer:ALC:SLEVel \n</span>
+<span class="sd">		Snippet: value: enums.PowAlcSampleLev = driver.source.power.alc.get_slevel() \n</span>
+<span class="sd">		Sets the sample level of automatic level control (ALC) . How To: See &#39;How to enable the ALC&#39;. \n</span>
+<span class="sd">			:return: samp_level: FULL| MINimum| ATTenuated</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:POWer:ALC:SLEVel?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">PowAlcSampleLev</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="AlcCls.set_slevel"><a class="viewcode-back" href="../../../../../Source_Power_Alc.html#RsSmbv.Implementations.Source.Power.Alc.AlcCls.set_slevel">[docs]</a>	<span class="k">def</span> <span class="nf">set_slevel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">samp_level</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">PowAlcSampleLev</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:POWer:ALC:SLEVel \n</span>
+<span class="sd">		Snippet: driver.source.power.alc.set_slevel(samp_level = enums.PowAlcSampleLev.ATTenuated) \n</span>
+<span class="sd">		Sets the sample level of automatic level control (ALC) . How To: See &#39;How to enable the ALC&#39;. \n</span>
+<span class="sd">			:param samp_level: FULL| MINimum| ATTenuated</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">samp_level</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">PowAlcSampleLev</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:POWer:ALC:SLEVel </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="AlcCls.get_state"><a class="viewcode-back" href="../../../../../Source_Power_Alc.html#RsSmbv.Implementations.Source.Power.Alc.AlcCls.get_state">[docs]</a>	<span class="k">def</span> <span class="nf">get_state</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">AlcOnOffAuto</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:POWer:ALC:[STATe] \n</span>
+<span class="sd">		Snippet: value: enums.AlcOnOffAuto = driver.source.power.alc.get_state() \n</span>
+<span class="sd">		Activates automatic level control in the selected mode. How to: See &#39;How to enable the ALC&#39;. \n</span>
+<span class="sd">			:return: state: AUTO| OFFTable| ON| ONSample| ONTable| OFF AUTO Adjusts the output level to the operating conditions automatically. OFFTable Controls the level with the attenuation values of the internal ALC table. ON Activates internal level control permanently. OFF Deactivates internal level control, &#39;Sample &amp; Hold&#39; mode is active. ONSample Starts the internal level control with the first change. ONTable Starts with the attenuation setting from the table and continues with automatic level control. For more details on the individual settings, an overview of the functionality and details on what is to be considered, see &#39;ALC states and their effects&#39;.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:POWer:ALC:STATe?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">AlcOnOffAuto</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="AlcCls.set_state"><a class="viewcode-back" href="../../../../../Source_Power_Alc.html#RsSmbv.Implementations.Source.Power.Alc.AlcCls.set_state">[docs]</a>	<span class="k">def</span> <span class="nf">set_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">AlcOnOffAuto</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:POWer:ALC:[STATe] \n</span>
+<span class="sd">		Snippet: driver.source.power.alc.set_state(state = enums.AlcOnOffAuto._0) \n</span>
+<span class="sd">		Activates automatic level control in the selected mode. How to: See &#39;How to enable the ALC&#39;. \n</span>
+<span class="sd">			:param state: AUTO| OFFTable| ON| ONSample| ONTable| OFF AUTO Adjusts the output level to the operating conditions automatically. OFFTable Controls the level with the attenuation values of the internal ALC table. ON Activates internal level control permanently. OFF Deactivates internal level control, &#39;Sample &amp; Hold&#39; mode is active. ONSample Starts the internal level control with the first change. ONTable Starts with the attenuation setting from the table and continues with automatic level control. For more details on the individual settings, an overview of the functionality and details on what is to be considered, see &#39;ALC states and their effects&#39;.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">AlcOnOffAuto</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:POWer:ALC:STATe </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;AlcCls&#39;</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Clones the group by creating new object from it and its whole existing subgroups</span>
+<span class="sd">		Also copies all the existing default Repeated Capabilities setting,</span>
+<span class="sd">		which you can change independently without affecting the original group&quot;&quot;&quot;</span>
+		<span class="n">new_group</span> <span class="o">=</span> <span class="n">AlcCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">synchronize_repcaps</span><span class="p">(</span><span class="n">new_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">new_group</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

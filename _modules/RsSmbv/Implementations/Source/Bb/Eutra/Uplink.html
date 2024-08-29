@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RsSmbv.Implementations.Source.Bb.Eutra.Uplink &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../../../" id="documentation_options" src="../../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../../_static/jquery.js"></script>
+        <script src="../../../../../../_static/underscore.js"></script>
+        <script src="../../../../../../_static/doctools.js"></script>
+        <script src="../../../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../../../_static/copybutton.js"></script>
+    <script src="../../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../../../index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../RsSmbv.html">RsSmbv API Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../../../index.html">Module code</a> &raquo;</li>
+          <li><a href="../../../Source.html">RsSmbv.Implementations.Source</a> &raquo;</li>
+          <li><a href="../../Bb.html">RsSmbv.Implementations.Source.Bb</a> &raquo;</li>
+          <li><a href="../Eutra.html">RsSmbv.Implementations.Source.Bb.Eutra</a> &raquo;</li>
+      <li>RsSmbv.Implementations.Source.Bb.Eutra.Uplink</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for RsSmbv.Implementations.Source.Bb.Eutra.Uplink</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">......Internal.Core</span> <span class="kn">import</span> <span class="n">Core</span>
+<span class="kn">from</span> <span class="nn">......Internal.CommandsGroup</span> <span class="kn">import</span> <span class="n">CommandsGroup</span>
+<span class="kn">from</span> <span class="nn">......Internal</span> <span class="kn">import</span> <span class="n">Conversions</span>
+<span class="kn">from</span> <span class="nn">......</span> <span class="kn">import</span> <span class="n">enums</span>
+
+
+<span class="c1"># noinspection PyPep8Naming,PyAttributeOutsideInit,SpellCheckingInspection</span>
+<div class="viewcode-block" id="UplinkCls"><a class="viewcode-back" href="../../../../../../Source_Bb_Eutra_Uplink.html#RsSmbv.Implementations.Source.Bb.Eutra.Uplink.UplinkCls">[docs]</a><span class="k">class</span> <span class="nc">UplinkCls</span><span class="p">:</span>
+	<span class="sd">&quot;&quot;&quot;Uplink commands group definition. 446 total commands, 15 Subgroups, 13 group commands&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">core</span><span class="p">:</span> <span class="n">Core</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span> <span class="o">=</span> <span class="n">core</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span> <span class="o">=</span> <span class="n">CommandsGroup</span><span class="p">(</span><span class="s2">&quot;uplink&quot;</span><span class="p">,</span> <span class="n">core</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">apMap</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;apMap commands group. 1 Sub-classes, 0 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_apMap&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.ApMap</span> <span class="kn">import</span> <span class="n">ApMapCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_apMap</span> <span class="o">=</span> <span class="n">ApMapCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_apMap</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">ca</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;ca commands group. 1 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_ca&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Ca</span> <span class="kn">import</span> <span class="n">CaCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_ca</span> <span class="o">=</span> <span class="n">CaCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ca</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">emtc</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;emtc commands group. 1 Sub-classes, 4 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_emtc&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Emtc</span> <span class="kn">import</span> <span class="n">EmtcCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_emtc</span> <span class="o">=</span> <span class="n">EmtcCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_emtc</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">niot</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;niot commands group. 1 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_niot&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Niot</span> <span class="kn">import</span> <span class="n">NiotCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_niot</span> <span class="o">=</span> <span class="n">NiotCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_niot</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">prach</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;prach commands group. 2 Sub-classes, 3 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_prach&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Prach</span> <span class="kn">import</span> <span class="n">PrachCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_prach</span> <span class="o">=</span> <span class="n">PrachCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prach</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">pucch</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;pucch commands group. 0 Sub-classes, 10 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_pucch&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Pucch</span> <span class="kn">import</span> <span class="n">PucchCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_pucch</span> <span class="o">=</span> <span class="n">PucchCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pucch</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">pusch</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;pusch commands group. 0 Sub-classes, 5 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_pusch&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Pusch</span> <span class="kn">import</span> <span class="n">PuschCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_pusch</span> <span class="o">=</span> <span class="n">PuschCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pusch</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">refsig</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;refsig commands group. 2 Sub-classes, 4 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_refsig&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Refsig</span> <span class="kn">import</span> <span class="n">RefsigCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_refsig</span> <span class="o">=</span> <span class="n">RefsigCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_refsig</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">rstFrame</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;rstFrame commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_rstFrame&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.RstFrame</span> <span class="kn">import</span> <span class="n">RstFrameCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_rstFrame</span> <span class="o">=</span> <span class="n">RstFrameCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rstFrame</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">rtfb</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;rtfb commands group. 0 Sub-classes, 16 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_rtfb&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Rtfb</span> <span class="kn">import</span> <span class="n">RtfbCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_rtfb</span> <span class="o">=</span> <span class="n">RtfbCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rtfb</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">ue</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;ue commands group. 17 Sub-classes, 0 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_ue&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Ue</span> <span class="kn">import</span> <span class="n">UeCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_ue</span> <span class="o">=</span> <span class="n">UeCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ue</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">view</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;view commands group. 0 Sub-classes, 4 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_view&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.View</span> <span class="kn">import</span> <span class="n">ViewCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_view</span> <span class="o">=</span> <span class="n">ViewCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_view</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">cell</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;cell commands group. 1 Sub-classes, 0 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_cell&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Cell</span> <span class="kn">import</span> <span class="n">CellCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_cell</span> <span class="o">=</span> <span class="n">CellCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cell</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">plci</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;plci commands group. 0 Sub-classes, 3 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_plci&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Plci</span> <span class="kn">import</span> <span class="n">PlciCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_plci</span> <span class="o">=</span> <span class="n">PlciCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_plci</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">subf</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;subf commands group. 3 Sub-classes, 0 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_subf&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Subf</span> <span class="kn">import</span> <span class="n">SubfCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_subf</span> <span class="o">=</span> <span class="n">SubfCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_subf</span>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="UplinkCls.get_bw"><a class="viewcode-back" href="../../../../../../Source_Bb_Eutra_Uplink.html#RsSmbv.Implementations.Source.Bb.Eutra.Uplink.UplinkCls.get_bw">[docs]</a>	<span class="k">def</span> <span class="nf">get_bw</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraChannelBandwidth</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:UL:BW \n</span>
+<span class="sd">		Snippet: value: enums.EutraChannelBandwidth = driver.source.bb.eutra.uplink.get_bw() \n</span>
+<span class="sd">		Sets the UL channel bandwidth. \n</span>
+<span class="sd">			:return: bandwidth: BW1_40| BW3_00| BW5_00| BW10_00| BW15_00| BW20_00 | BW0_20 | USER</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:UL:BW?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraChannelBandwidth</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="UplinkCls.set_bw"><a class="viewcode-back" href="../../../../../../Source_Bb_Eutra_Uplink.html#RsSmbv.Implementations.Source.Bb.Eutra.Uplink.UplinkCls.set_bw">[docs]</a>	<span class="k">def</span> <span class="nf">set_bw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bandwidth</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraChannelBandwidth</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:UL:BW \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.uplink.set_bw(bandwidth = enums.EutraChannelBandwidth.BW0_20) \n</span>
+<span class="sd">		Sets the UL channel bandwidth. \n</span>
+<span class="sd">			:param bandwidth: BW1_40| BW3_00| BW5_00| BW10_00| BW15_00| BW20_00 | BW0_20 | USER</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">bandwidth</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraChannelBandwidth</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:UL:BW </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="UplinkCls.get_con_sub_frames"><a class="viewcode-back" href="../../../../../../Source_Bb_Eutra_Uplink.html#RsSmbv.Implementations.Source.Bb.Eutra.Uplink.UplinkCls.get_con_sub_frames">[docs]</a>	<span class="k">def</span> <span class="nf">get_con_sub_frames</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:UL:CONSubframes \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.eutra.uplink.get_con_sub_frames() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: conf_subframes: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:UL:CONSubframes?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="UplinkCls.set_con_sub_frames"><a class="viewcode-back" href="../../../../../../Source_Bb_Eutra_Uplink.html#RsSmbv.Implementations.Source.Bb.Eutra.Uplink.UplinkCls.set_con_sub_frames">[docs]</a>	<span class="k">def</span> <span class="nf">set_con_sub_frames</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">conf_subframes</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:UL:CONSubframes \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.uplink.set_con_sub_frames(conf_subframes = 1) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param conf_subframes: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">conf_subframes</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:UL:CONSubframes </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="UplinkCls.get_cpc"><a class="viewcode-back" href="../../../../../../Source_Bb_Eutra_Uplink.html#RsSmbv.Implementations.Source.Bb.Eutra.Uplink.UplinkCls.get_cpc">[docs]</a>	<span class="k">def</span> <span class="nf">get_cpc</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraCyclicPrefixGs</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:UL:CPC \n</span>
+<span class="sd">		Snippet: value: enums.EutraCyclicPrefixGs = driver.source.bb.eutra.uplink.get_cpc() \n</span>
+<span class="sd">		Sets the cyclic prefix length for all subframes. \n</span>
+<span class="sd">			:return: cyclic_prefix: NORMal| EXTended | USER</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:UL:CPC?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraCyclicPrefixGs</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="UplinkCls.set_cpc"><a class="viewcode-back" href="../../../../../../Source_Bb_Eutra_Uplink.html#RsSmbv.Implementations.Source.Bb.Eutra.Uplink.UplinkCls.set_cpc">[docs]</a>	<span class="k">def</span> <span class="nf">set_cpc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cyclic_prefix</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraCyclicPrefixGs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:UL:CPC \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.uplink.set_cpc(cyclic_prefix = enums.EutraCyclicPrefixGs.EXTended) \n</span>
+<span class="sd">		Sets the cyclic prefix length for all subframes. \n</span>
+<span class="sd">			:param cyclic_prefix: NORMal| EXTended | USER</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">cyclic_prefix</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraCyclicPrefixGs</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:UL:CPC </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="UplinkCls.get_dl_cpc"><a class="viewcode-back" href="../../../../../../Source_Bb_Eutra_Uplink.html#RsSmbv.Implementations.Source.Bb.Eutra.Uplink.UplinkCls.get_dl_cpc">[docs]</a>	<span class="k">def</span> <span class="nf">get_dl_cpc</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">EuTraDuration</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:UL:DLCPc \n</span>
+<span class="sd">		Snippet: value: enums.EuTraDuration = driver.source.bb.eutra.uplink.get_dl_cpc() \n</span>
+<span class="sd">		In TDD mode, determines the cyclic prefix for the appropriate opposite direction. \n</span>
+<span class="sd">			:return: gs_cpc_opp_dir: NORMal| EXTended</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:UL:DLCPc?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EuTraDuration</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="UplinkCls.set_dl_cpc"><a class="viewcode-back" href="../../../../../../Source_Bb_Eutra_Uplink.html#RsSmbv.Implementations.Source.Bb.Eutra.Uplink.UplinkCls.set_dl_cpc">[docs]</a>	<span class="k">def</span> <span class="nf">set_dl_cpc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gs_cpc_opp_dir</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">EuTraDuration</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:UL:DLCPc \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.uplink.set_dl_cpc(gs_cpc_opp_dir = enums.EuTraDuration.EXTended) \n</span>
+<span class="sd">		In TDD mode, determines the cyclic prefix for the appropriate opposite direction. \n</span>
+<span class="sd">			:param gs_cpc_opp_dir: NORMal| EXTended</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">gs_cpc_opp_dir</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EuTraDuration</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:UL:DLCPc </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="UplinkCls.get_fft"><a class="viewcode-back" href="../../../../../../Source_Bb_Eutra_Uplink.html#RsSmbv.Implementations.Source.Bb.Eutra.Uplink.UplinkCls.get_fft">[docs]</a>	<span class="k">def</span> <span class="nf">get_fft</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:UL:FFT \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.eutra.uplink.get_fft() \n</span>
+<span class="sd">		Sets the FFT (Fast Fourier Transformation) size. The available values depend on the selected number of resource blocks</span>
+<span class="sd">		per slot. \n</span>
+<span class="sd">			:return: fft_size: integer Range: 64 to 2048</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:UL:FFT?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="UplinkCls.set_fft"><a class="viewcode-back" href="../../../../../../Source_Bb_Eutra_Uplink.html#RsSmbv.Implementations.Source.Bb.Eutra.Uplink.UplinkCls.set_fft">[docs]</a>	<span class="k">def</span> <span class="nf">set_fft</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fft_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:UL:FFT \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.uplink.set_fft(fft_size = 1) \n</span>
+<span class="sd">		Sets the FFT (Fast Fourier Transformation) size. The available values depend on the selected number of resource blocks</span>
+<span class="sd">		per slot. \n</span>
+<span class="sd">			:param fft_size: integer Range: 64 to 2048</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">fft_size</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:UL:FFT </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="UplinkCls.get_lgs"><a class="viewcode-back" href="../../../../../../Source_Bb_Eutra_Uplink.html#RsSmbv.Implementations.Source.Bb.Eutra.Uplink.UplinkCls.get_lgs">[docs]</a>	<span class="k">def</span> <span class="nf">get_lgs</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:UL:LGS \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.eutra.uplink.get_lgs() \n</span>
+<span class="sd">		Queries the number of left guard subcarriers. The value is set automatically according to the selected number of resource</span>
+<span class="sd">		blocks per slot. \n</span>
+<span class="sd">			:return: lg_sub_carr: integer Range: 28 to 364</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:UL:LGS?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="UplinkCls.get_no_rb"><a class="viewcode-back" href="../../../../../../Source_Bb_Eutra_Uplink.html#RsSmbv.Implementations.Source.Bb.Eutra.Uplink.UplinkCls.get_no_rb">[docs]</a>	<span class="k">def</span> <span class="nf">get_no_rb</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:UL:NORB \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.eutra.uplink.get_no_rb() \n</span>
+<span class="sd">		Selects the number of physical resource blocks per slot. \n</span>
+<span class="sd">			:return: num_res_blocks: integer Range: 6 to 110</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:UL:NORB?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="UplinkCls.set_no_rb"><a class="viewcode-back" href="../../../../../../Source_Bb_Eutra_Uplink.html#RsSmbv.Implementations.Source.Bb.Eutra.Uplink.UplinkCls.set_no_rb">[docs]</a>	<span class="k">def</span> <span class="nf">set_no_rb</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_res_blocks</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:UL:NORB \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.uplink.set_no_rb(num_res_blocks = 1) \n</span>
+<span class="sd">		Selects the number of physical resource blocks per slot. \n</span>
+<span class="sd">			:param num_res_blocks: integer Range: 6 to 110</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">num_res_blocks</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:UL:NORB </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="UplinkCls.get_occ_bandwidth"><a class="viewcode-back" href="../../../../../../Source_Bb_Eutra_Uplink.html#RsSmbv.Implementations.Source.Bb.Eutra.Uplink.UplinkCls.get_occ_bandwidth">[docs]</a>	<span class="k">def</span> <span class="nf">get_occ_bandwidth</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:UL:OCCBandwidth \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.eutra.uplink.get_occ_bandwidth() \n</span>
+<span class="sd">		Queries the occupied bandwidth. This value is set automatically according to the selected number of resource blocks per</span>
+<span class="sd">		slot. \n</span>
+<span class="sd">			:return: occ_bandwidth: float Unit: MHz</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:UL:OCCBandwidth?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="UplinkCls.get_occ_subcarriers"><a class="viewcode-back" href="../../../../../../Source_Bb_Eutra_Uplink.html#RsSmbv.Implementations.Source.Bb.Eutra.Uplink.UplinkCls.get_occ_subcarriers">[docs]</a>	<span class="k">def</span> <span class="nf">get_occ_subcarriers</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:UL:OCCSubcarriers \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.eutra.uplink.get_occ_subcarriers() \n</span>
+<span class="sd">		Queries the occupied subcarriers. The value is set automatically according to the selected number of resource blocks per</span>
+<span class="sd">		slot. \n</span>
+<span class="sd">			:return: occ_subcarriers: integer Range: 72 to 1320</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:UL:OCCSubcarriers?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="UplinkCls.get_rgs"><a class="viewcode-back" href="../../../../../../Source_Bb_Eutra_Uplink.html#RsSmbv.Implementations.Source.Bb.Eutra.Uplink.UplinkCls.get_rgs">[docs]</a>	<span class="k">def</span> <span class="nf">get_rgs</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:UL:RGS \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.eutra.uplink.get_rgs() \n</span>
+<span class="sd">		Queries the number of right guard subcarriers. The value is set automatically according to the selected number of</span>
+<span class="sd">		resource blocks per slot. \n</span>
+<span class="sd">			:return: rg_sub_carr: integer Range: 35 to 601</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:UL:RGS?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="UplinkCls.get_sf_selection"><a class="viewcode-back" href="../../../../../../Source_Bb_Eutra_Uplink.html#RsSmbv.Implementations.Source.Bb.Eutra.Uplink.UplinkCls.get_sf_selection">[docs]</a>	<span class="k">def</span> <span class="nf">get_sf_selection</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:UL:SFSelection \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.eutra.uplink.get_sf_selection() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: sub_frame_sel: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:UL:SFSelection?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="UplinkCls.set_sf_selection"><a class="viewcode-back" href="../../../../../../Source_Bb_Eutra_Uplink.html#RsSmbv.Implementations.Source.Bb.Eutra.Uplink.UplinkCls.set_sf_selection">[docs]</a>	<span class="k">def</span> <span class="nf">set_sf_selection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sub_frame_sel</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:UL:SFSelection \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.uplink.set_sf_selection(sub_frame_sel = 1) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param sub_frame_sel: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">sub_frame_sel</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:UL:SFSelection </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="UplinkCls.get_soffset"><a class="viewcode-back" href="../../../../../../Source_Bb_Eutra_Uplink.html#RsSmbv.Implementations.Source.Bb.Eutra.Uplink.UplinkCls.get_soffset">[docs]</a>	<span class="k">def</span> <span class="nf">get_soffset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:UL:SOFFset \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.eutra.uplink.get_soffset() \n</span>
+<span class="sd">		Set the start SFN value. \n</span>
+<span class="sd">			:return: sfn_offset: integer Range: 0 to 4095, Unit: Frames</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:UL:SOFFset?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="UplinkCls.set_soffset"><a class="viewcode-back" href="../../../../../../Source_Bb_Eutra_Uplink.html#RsSmbv.Implementations.Source.Bb.Eutra.Uplink.UplinkCls.set_soffset">[docs]</a>	<span class="k">def</span> <span class="nf">set_soffset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sfn_offset</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:UL:SOFFset \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.uplink.set_soffset(sfn_offset = 1) \n</span>
+<span class="sd">		Set the start SFN value. \n</span>
+<span class="sd">			:param sfn_offset: integer Range: 0 to 4095, Unit: Frames</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">sfn_offset</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:UL:SOFFset </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="UplinkCls.get_symbol_rate"><a class="viewcode-back" href="../../../../../../Source_Bb_Eutra_Uplink.html#RsSmbv.Implementations.Source.Bb.Eutra.Uplink.UplinkCls.get_symbol_rate">[docs]</a>	<span class="k">def</span> <span class="nf">get_symbol_rate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:UL:SRATe \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.eutra.uplink.get_symbol_rate() \n</span>
+<span class="sd">		Queries the sampling rate. \n</span>
+<span class="sd">			:return: samp_rate: float Range: 192E4 to 3072E4</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:UL:SRATe?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+	<span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;UplinkCls&#39;</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Clones the group by creating new object from it and its whole existing subgroups</span>
+<span class="sd">		Also copies all the existing default Repeated Capabilities setting,</span>
+<span class="sd">		which you can change independently without affecting the original group&quot;&quot;&quot;</span>
+		<span class="n">new_group</span> <span class="o">=</span> <span class="n">UplinkCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">synchronize_repcaps</span><span class="p">(</span><span class="n">new_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">new_group</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

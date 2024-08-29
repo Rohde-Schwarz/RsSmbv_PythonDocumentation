@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RsSmbv.Implementations.Source.Bb.Arbitrary.Cfr &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../../../" id="documentation_options" src="../../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../../_static/jquery.js"></script>
+        <script src="../../../../../../_static/underscore.js"></script>
+        <script src="../../../../../../_static/doctools.js"></script>
+        <script src="../../../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../../../_static/copybutton.js"></script>
+    <script src="../../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../../../index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../RsSmbv.html">RsSmbv API Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../../../index.html">Module code</a> &raquo;</li>
+          <li><a href="../../../Source.html">RsSmbv.Implementations.Source</a> &raquo;</li>
+          <li><a href="../../Bb.html">RsSmbv.Implementations.Source.Bb</a> &raquo;</li>
+          <li><a href="../Arbitrary.html">RsSmbv.Implementations.Source.Bb.Arbitrary</a> &raquo;</li>
+      <li>RsSmbv.Implementations.Source.Bb.Arbitrary.Cfr</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for RsSmbv.Implementations.Source.Bb.Arbitrary.Cfr</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">......Internal.Core</span> <span class="kn">import</span> <span class="n">Core</span>
+<span class="kn">from</span> <span class="nn">......Internal.CommandsGroup</span> <span class="kn">import</span> <span class="n">CommandsGroup</span>
+<span class="kn">from</span> <span class="nn">......Internal</span> <span class="kn">import</span> <span class="n">Conversions</span>
+<span class="kn">from</span> <span class="nn">......</span> <span class="kn">import</span> <span class="n">enums</span>
+
+
+<span class="c1"># noinspection PyPep8Naming,PyAttributeOutsideInit,SpellCheckingInspection</span>
+<div class="viewcode-block" id="CfrCls"><a class="viewcode-back" href="../../../../../../Source_Bb_Arbitrary_Cfr.html#RsSmbv.Implementations.Source.Bb.Arbitrary.Cfr.CfrCls">[docs]</a><span class="k">class</span> <span class="nc">CfrCls</span><span class="p">:</span>
+	<span class="sd">&quot;&quot;&quot;Cfr commands group definition. 17 total commands, 3 Subgroups, 14 group commands&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">core</span><span class="p">:</span> <span class="n">Core</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span> <span class="o">=</span> <span class="n">core</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span> <span class="o">=</span> <span class="n">CommandsGroup</span><span class="p">(</span><span class="s2">&quot;cfr&quot;</span><span class="p">,</span> <span class="n">core</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">cfWaveform</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;cfWaveform commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_cfWaveform&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.CfWaveform</span> <span class="kn">import</span> <span class="n">CfWaveformCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_cfWaveform</span> <span class="o">=</span> <span class="n">CfWaveformCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cfWaveform</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">measure</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;measure commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_measure&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Measure</span> <span class="kn">import</span> <span class="n">MeasureCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_measure</span> <span class="o">=</span> <span class="n">MeasureCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_measure</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">waveform</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;waveform commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_waveform&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Waveform</span> <span class="kn">import</span> <span class="n">WaveformCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_waveform</span> <span class="o">=</span> <span class="n">WaveformCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_waveform</span>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="CfrCls.get_algorithm"><a class="viewcode-back" href="../../../../../../Source_Bb_Arbitrary_Cfr.html#RsSmbv.Implementations.Source.Bb.Arbitrary.Cfr.CfrCls.get_algorithm">[docs]</a>	<span class="k">def</span> <span class="nf">get_algorithm</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">CfrAlgo</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:ARBitrary:CFR:ALGorithm \n</span>
+<span class="sd">		Snippet: value: enums.CfrAlgo = driver.source.bb.arbitrary.cfr.get_algorithm() \n</span>
+<span class="sd">		Defines the algorithm for crest factor reduction. \n</span>
+<span class="sd">			:return: arb_cfr_algorithm: CLFiltering| PCANcellation CLFiltering Clipping and filtering algorithm. This algorithm performs a hard clipping of the baseband signal. It is followed by a low pass filtering of the result in an iterative manner until the target crest factor is reached. You can define the settings of the filter that is used for the calculation. PCANcellation Peak cancelation algorithm. This algorithm subtracts Blackman windowed sinc pulses from the signal wherever the amplitude is above a defined threshold.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:ARBitrary:CFR:ALGorithm?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">CfrAlgo</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CfrCls.set_algorithm"><a class="viewcode-back" href="../../../../../../Source_Bb_Arbitrary_Cfr.html#RsSmbv.Implementations.Source.Bb.Arbitrary.Cfr.CfrCls.set_algorithm">[docs]</a>	<span class="k">def</span> <span class="nf">set_algorithm</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arb_cfr_algorithm</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">CfrAlgo</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:ARBitrary:CFR:ALGorithm \n</span>
+<span class="sd">		Snippet: driver.source.bb.arbitrary.cfr.set_algorithm(arb_cfr_algorithm = enums.CfrAlgo.CLFiltering) \n</span>
+<span class="sd">		Defines the algorithm for crest factor reduction. \n</span>
+<span class="sd">			:param arb_cfr_algorithm: CLFiltering| PCANcellation CLFiltering Clipping and filtering algorithm. This algorithm performs a hard clipping of the baseband signal. It is followed by a low pass filtering of the result in an iterative manner until the target crest factor is reached. You can define the settings of the filter that is used for the calculation. PCANcellation Peak cancelation algorithm. This algorithm subtracts Blackman windowed sinc pulses from the signal wherever the amplitude is above a defined threshold.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">arb_cfr_algorithm</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">CfrAlgo</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:ARBitrary:CFR:ALGorithm </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CfrCls.get_cp_bandwidth"><a class="viewcode-back" href="../../../../../../Source_Bb_Arbitrary_Cfr.html#RsSmbv.Implementations.Source.Bb.Arbitrary.Cfr.CfrCls.get_cp_bandwidth">[docs]</a>	<span class="k">def</span> <span class="nf">get_cp_bandwidth</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:ARBitrary:CFR:CPBandwidth \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.arbitrary.cfr.get_cp_bandwidth() \n</span>
+<span class="sd">		Sets the cancellation pulse bandwidth for peak cancellation CFR algorithm. \n</span>
+<span class="sd">			:return: arb_cfr_canc_pul_bw: float Range: 0 to 250E6</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:ARBitrary:CFR:CPBandwidth?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CfrCls.set_cp_bandwidth"><a class="viewcode-back" href="../../../../../../Source_Bb_Arbitrary_Cfr.html#RsSmbv.Implementations.Source.Bb.Arbitrary.Cfr.CfrCls.set_cp_bandwidth">[docs]</a>	<span class="k">def</span> <span class="nf">set_cp_bandwidth</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arb_cfr_canc_pul_bw</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:ARBitrary:CFR:CPBandwidth \n</span>
+<span class="sd">		Snippet: driver.source.bb.arbitrary.cfr.set_cp_bandwidth(arb_cfr_canc_pul_bw = 1.0) \n</span>
+<span class="sd">		Sets the cancellation pulse bandwidth for peak cancellation CFR algorithm. \n</span>
+<span class="sd">			:param arb_cfr_canc_pul_bw: float Range: 0 to 250E6</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">arb_cfr_canc_pul_bw</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:ARBitrary:CFR:CPBandwidth </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CfrCls.get_cspacing"><a class="viewcode-back" href="../../../../../../Source_Bb_Arbitrary_Cfr.html#RsSmbv.Implementations.Source.Bb.Arbitrary.Cfr.CfrCls.get_cspacing">[docs]</a>	<span class="k">def</span> <span class="nf">get_cspacing</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:ARBitrary:CFR:CSPacing \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.arbitrary.cfr.get_cspacing() \n</span>
+<span class="sd">		Sets the channel spacing, if [:SOURce&lt;hw&gt;]:BB:ARBitrary:CFR:FILTer is set to SIMPle. \n</span>
+<span class="sd">			:return: arb_cfr_chan_spac: float Range: 0 to depends on the sample rate of the loaded file</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:ARBitrary:CFR:CSPacing?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CfrCls.set_cspacing"><a class="viewcode-back" href="../../../../../../Source_Bb_Arbitrary_Cfr.html#RsSmbv.Implementations.Source.Bb.Arbitrary.Cfr.CfrCls.set_cspacing">[docs]</a>	<span class="k">def</span> <span class="nf">set_cspacing</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arb_cfr_chan_spac</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:ARBitrary:CFR:CSPacing \n</span>
+<span class="sd">		Snippet: driver.source.bb.arbitrary.cfr.set_cspacing(arb_cfr_chan_spac = 1.0) \n</span>
+<span class="sd">		Sets the channel spacing, if [:SOURce&lt;hw&gt;]:BB:ARBitrary:CFR:FILTer is set to SIMPle. \n</span>
+<span class="sd">			:param arb_cfr_chan_spac: float Range: 0 to depends on the sample rate of the loaded file</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">arb_cfr_chan_spac</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:ARBitrary:CFR:CSPacing </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CfrCls.get_dcfdelta"><a class="viewcode-back" href="../../../../../../Source_Bb_Arbitrary_Cfr.html#RsSmbv.Implementations.Source.Bb.Arbitrary.Cfr.CfrCls.get_dcfdelta">[docs]</a>	<span class="k">def</span> <span class="nf">get_dcfdelta</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:ARBitrary:CFR:DCFDelta \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.arbitrary.cfr.get_dcfdelta() \n</span>
+<span class="sd">		Sets the value difference by which you want to change your crest factor. \n</span>
+<span class="sd">			:return: arb_cfr_dcf_delta: float Range: -20 to 0</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:ARBitrary:CFR:DCFDelta?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CfrCls.set_dcfdelta"><a class="viewcode-back" href="../../../../../../Source_Bb_Arbitrary_Cfr.html#RsSmbv.Implementations.Source.Bb.Arbitrary.Cfr.CfrCls.set_dcfdelta">[docs]</a>	<span class="k">def</span> <span class="nf">set_dcfdelta</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arb_cfr_dcf_delta</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:ARBitrary:CFR:DCFDelta \n</span>
+<span class="sd">		Snippet: driver.source.bb.arbitrary.cfr.set_dcfdelta(arb_cfr_dcf_delta = 1.0) \n</span>
+<span class="sd">		Sets the value difference by which you want to change your crest factor. \n</span>
+<span class="sd">			:param arb_cfr_dcf_delta: float Range: -20 to 0</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">arb_cfr_dcf_delta</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:ARBitrary:CFR:DCFDelta </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="CfrCls.get_filter_py"><a class="viewcode-back" href="../../../../../../Source_Bb_Arbitrary_Cfr.html#RsSmbv.Implementations.Source.Bb.Arbitrary.Cfr.CfrCls.get_filter_py">[docs]</a>	<span class="k">def</span> <span class="nf">get_filter_py</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">CfrFiltMode</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:ARBitrary:CFR:FILTer \n</span>
+<span class="sd">		Snippet: value: enums.CfrFiltMode = driver.source.bb.arbitrary.cfr.get_filter_py() \n</span>
+<span class="sd">		Selects which filter mode is used for the filtering. \n</span>
+<span class="sd">			:return: arb_cfr_filter_mod: SIMPle| ENHanced</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:ARBitrary:CFR:FILTer?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">CfrFiltMode</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CfrCls.set_filter_py"><a class="viewcode-back" href="../../../../../../Source_Bb_Arbitrary_Cfr.html#RsSmbv.Implementations.Source.Bb.Arbitrary.Cfr.CfrCls.set_filter_py">[docs]</a>	<span class="k">def</span> <span class="nf">set_filter_py</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arb_cfr_filter_mod</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">CfrFiltMode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:ARBitrary:CFR:FILTer \n</span>
+<span class="sd">		Snippet: driver.source.bb.arbitrary.cfr.set_filter_py(arb_cfr_filter_mod = enums.CfrFiltMode.ENHanced) \n</span>
+<span class="sd">		Selects which filter mode is used for the filtering. \n</span>
+<span class="sd">			:param arb_cfr_filter_mod: SIMPle| ENHanced</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">arb_cfr_filter_mod</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">CfrFiltMode</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:ARBitrary:CFR:FILTer </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CfrCls.get_forder"><a class="viewcode-back" href="../../../../../../Source_Bb_Arbitrary_Cfr.html#RsSmbv.Implementations.Source.Bb.Arbitrary.Cfr.CfrCls.get_forder">[docs]</a>	<span class="k">def</span> <span class="nf">get_forder</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:ARBitrary:CFR:FORDer \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.arbitrary.cfr.get_forder() \n</span>
+<span class="sd">		Sets the maximum filter order, if [:SOURce&lt;hw&gt;]:BB:ARBitrary:CFR:FILTer is set to ENHanced. \n</span>
+<span class="sd">			:return: arb_cfr_max_file_order: integer Range: 0 to 300</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:ARBitrary:CFR:FORDer?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CfrCls.set_forder"><a class="viewcode-back" href="../../../../../../Source_Bb_Arbitrary_Cfr.html#RsSmbv.Implementations.Source.Bb.Arbitrary.Cfr.CfrCls.set_forder">[docs]</a>	<span class="k">def</span> <span class="nf">set_forder</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arb_cfr_max_file_order</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:ARBitrary:CFR:FORDer \n</span>
+<span class="sd">		Snippet: driver.source.bb.arbitrary.cfr.set_forder(arb_cfr_max_file_order = 1) \n</span>
+<span class="sd">		Sets the maximum filter order, if [:SOURce&lt;hw&gt;]:BB:ARBitrary:CFR:FILTer is set to ENHanced. \n</span>
+<span class="sd">			:param arb_cfr_max_file_order: integer Range: 0 to 300</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">arb_cfr_max_file_order</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:ARBitrary:CFR:FORDer </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CfrCls.get_iterations"><a class="viewcode-back" href="../../../../../../Source_Bb_Arbitrary_Cfr.html#RsSmbv.Implementations.Source.Bb.Arbitrary.Cfr.CfrCls.get_iterations">[docs]</a>	<span class="k">def</span> <span class="nf">get_iterations</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:ARBitrary:CFR:ITERations \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.arbitrary.cfr.get_iterations() \n</span>
+<span class="sd">		Sets the number of iterations that are used for calculating the resulting crest factor. The iteration process is stopped</span>
+<span class="sd">		when the desired crest factor delta is achieved by 0.1 dB. \n</span>
+<span class="sd">			:return: arb_cfr_max_iter: integer Range: 1 to 10</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:ARBitrary:CFR:ITERations?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CfrCls.set_iterations"><a class="viewcode-back" href="../../../../../../Source_Bb_Arbitrary_Cfr.html#RsSmbv.Implementations.Source.Bb.Arbitrary.Cfr.CfrCls.set_iterations">[docs]</a>	<span class="k">def</span> <span class="nf">set_iterations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arb_cfr_max_iter</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:ARBitrary:CFR:ITERations \n</span>
+<span class="sd">		Snippet: driver.source.bb.arbitrary.cfr.set_iterations(arb_cfr_max_iter = 1) \n</span>
+<span class="sd">		Sets the number of iterations that are used for calculating the resulting crest factor. The iteration process is stopped</span>
+<span class="sd">		when the desired crest factor delta is achieved by 0.1 dB. \n</span>
+<span class="sd">			:param arb_cfr_max_iter: integer Range: 1 to 10</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">arb_cfr_max_iter</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:ARBitrary:CFR:ITERations </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CfrCls.get_oc_factor"><a class="viewcode-back" href="../../../../../../Source_Bb_Arbitrary_Cfr.html#RsSmbv.Implementations.Source.Bb.Arbitrary.Cfr.CfrCls.get_oc_factor">[docs]</a>	<span class="k">def</span> <span class="nf">get_oc_factor</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:ARBitrary:CFR:OCFactor \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.arbitrary.cfr.get_oc_factor() \n</span>
+<span class="sd">		Queries the original crest factor of the waveform after the calculation of the resulting crest factor is completed. The</span>
+<span class="sd">		original crest factor is calculated as an average over the whole waveform, including any idle periods that might be</span>
+<span class="sd">		present in TDD waveforms. \n</span>
+<span class="sd">			:return: arb_cfro_crest_factor: float Range: 1 to 100</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:ARBitrary:CFR:OCFactor?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CfrCls.get_pfreq"><a class="viewcode-back" href="../../../../../../Source_Bb_Arbitrary_Cfr.html#RsSmbv.Implementations.Source.Bb.Arbitrary.Cfr.CfrCls.get_pfreq">[docs]</a>	<span class="k">def</span> <span class="nf">get_pfreq</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:ARBitrary:CFR:PFReq \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.arbitrary.cfr.get_pfreq() \n</span>
+<span class="sd">		Sets the passband frequency, if [:SOURce&lt;hw&gt;]:BB:ARBitrary:CFR:FILTer is set to ENHanced. Frequency components lower than</span>
+<span class="sd">		the passband frequency are passed through unfiltered. \n</span>
+<span class="sd">			:return: arb_cfr_pass_band_freq: float Range: 0 to depends on the sample rate of the loaded file</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:ARBitrary:CFR:PFReq?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CfrCls.set_pfreq"><a class="viewcode-back" href="../../../../../../Source_Bb_Arbitrary_Cfr.html#RsSmbv.Implementations.Source.Bb.Arbitrary.Cfr.CfrCls.set_pfreq">[docs]</a>	<span class="k">def</span> <span class="nf">set_pfreq</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arb_cfr_pass_band_freq</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:ARBitrary:CFR:PFReq \n</span>
+<span class="sd">		Snippet: driver.source.bb.arbitrary.cfr.set_pfreq(arb_cfr_pass_band_freq = 1.0) \n</span>
+<span class="sd">		Sets the passband frequency, if [:SOURce&lt;hw&gt;]:BB:ARBitrary:CFR:FILTer is set to ENHanced. Frequency components lower than</span>
+<span class="sd">		the passband frequency are passed through unfiltered. \n</span>
+<span class="sd">			:param arb_cfr_pass_band_freq: float Range: 0 to depends on the sample rate of the loaded file</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">arb_cfr_pass_band_freq</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:ARBitrary:CFR:PFReq </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CfrCls.get_rc_factor"><a class="viewcode-back" href="../../../../../../Source_Bb_Arbitrary_Cfr.html#RsSmbv.Implementations.Source.Bb.Arbitrary.Cfr.CfrCls.get_rc_factor">[docs]</a>	<span class="k">def</span> <span class="nf">get_rc_factor</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:ARBitrary:CFR:RCFactor \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.arbitrary.cfr.get_rc_factor() \n</span>
+<span class="sd">		Queries the resulting crest factor of the waveform after the calculations are completed. The resulting crest factor is</span>
+<span class="sd">		calculated as an average over the whole waveform, including any idle periods that might be present in TDD waveforms. \n</span>
+<span class="sd">			:return: arb_cfr_res_crest_factor: float Range: 1 to 100</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:ARBitrary:CFR:RCFactor?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CfrCls.get_sbandwidth"><a class="viewcode-back" href="../../../../../../Source_Bb_Arbitrary_Cfr.html#RsSmbv.Implementations.Source.Bb.Arbitrary.Cfr.CfrCls.get_sbandwidth">[docs]</a>	<span class="k">def</span> <span class="nf">get_sbandwidth</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:ARBitrary:CFR:SBANdwidth \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.arbitrary.cfr.get_sbandwidth() \n</span>
+<span class="sd">		Sets the signal bandwidth, if [:SOURce&lt;hw&gt;]:BB:ARBitrary:CFR:FILTer is set to SIMPle. The value of the signal bandwidth</span>
+<span class="sd">		should not be higher than the channel spacing ([:SOURce&lt;hw&gt;]:BB:ARBitrary:CFR:CSPacing) . \n</span>
+<span class="sd">			:return: arb_cfr_signal_bw: float Range: 0 to depends on the sample rate of the loaded file</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:ARBitrary:CFR:SBANdwidth?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CfrCls.set_sbandwidth"><a class="viewcode-back" href="../../../../../../Source_Bb_Arbitrary_Cfr.html#RsSmbv.Implementations.Source.Bb.Arbitrary.Cfr.CfrCls.set_sbandwidth">[docs]</a>	<span class="k">def</span> <span class="nf">set_sbandwidth</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arb_cfr_signal_bw</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:ARBitrary:CFR:SBANdwidth \n</span>
+<span class="sd">		Snippet: driver.source.bb.arbitrary.cfr.set_sbandwidth(arb_cfr_signal_bw = 1.0) \n</span>
+<span class="sd">		Sets the signal bandwidth, if [:SOURce&lt;hw&gt;]:BB:ARBitrary:CFR:FILTer is set to SIMPle. The value of the signal bandwidth</span>
+<span class="sd">		should not be higher than the channel spacing ([:SOURce&lt;hw&gt;]:BB:ARBitrary:CFR:CSPacing) . \n</span>
+<span class="sd">			:param arb_cfr_signal_bw: float Range: 0 to depends on the sample rate of the loaded file</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">arb_cfr_signal_bw</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:ARBitrary:CFR:SBANdwidth </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CfrCls.get_sfreq"><a class="viewcode-back" href="../../../../../../Source_Bb_Arbitrary_Cfr.html#RsSmbv.Implementations.Source.Bb.Arbitrary.Cfr.CfrCls.get_sfreq">[docs]</a>	<span class="k">def</span> <span class="nf">get_sfreq</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:ARBitrary:CFR:SFReq \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.arbitrary.cfr.get_sfreq() \n</span>
+<span class="sd">		Sets the stopband frequency of the filter, if [:SOURce&lt;hw&gt;]:BB:ARBitrary:CFR:FILTer is set to ENHanced.</span>
+<span class="sd">		Frequency components higher than the stopband frequency are filtered out by the lowpass filter. \n</span>
+<span class="sd">			:return: arb_cfr_stop_band_freq: float Range: 0 to depends on the sample rate of the loaded file</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:ARBitrary:CFR:SFReq?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CfrCls.set_sfreq"><a class="viewcode-back" href="../../../../../../Source_Bb_Arbitrary_Cfr.html#RsSmbv.Implementations.Source.Bb.Arbitrary.Cfr.CfrCls.set_sfreq">[docs]</a>	<span class="k">def</span> <span class="nf">set_sfreq</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arb_cfr_stop_band_freq</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:ARBitrary:CFR:SFReq \n</span>
+<span class="sd">		Snippet: driver.source.bb.arbitrary.cfr.set_sfreq(arb_cfr_stop_band_freq = 1.0) \n</span>
+<span class="sd">		Sets the stopband frequency of the filter, if [:SOURce&lt;hw&gt;]:BB:ARBitrary:CFR:FILTer is set to ENHanced.</span>
+<span class="sd">		Frequency components higher than the stopband frequency are filtered out by the lowpass filter. \n</span>
+<span class="sd">			:param arb_cfr_stop_band_freq: float Range: 0 to depends on the sample rate of the loaded file</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">arb_cfr_stop_band_freq</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:ARBitrary:CFR:SFReq </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CfrCls.get_tbandwidth"><a class="viewcode-back" href="../../../../../../Source_Bb_Arbitrary_Cfr.html#RsSmbv.Implementations.Source.Bb.Arbitrary.Cfr.CfrCls.get_tbandwidth">[docs]</a>	<span class="k">def</span> <span class="nf">get_tbandwidth</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:ARBitrary:CFR:TBANdwidth \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.arbitrary.cfr.get_tbandwidth() \n</span>
+<span class="sd">		Sets the transition bandwidth of the cancellation pulse for peak cancellation CFR algorithm. \n</span>
+<span class="sd">			:return: dda_rb_cfr_tran_bw: float Range: 0 to 250E6</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:ARBitrary:CFR:TBANdwidth?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CfrCls.set_tbandwidth"><a class="viewcode-back" href="../../../../../../Source_Bb_Arbitrary_Cfr.html#RsSmbv.Implementations.Source.Bb.Arbitrary.Cfr.CfrCls.set_tbandwidth">[docs]</a>	<span class="k">def</span> <span class="nf">set_tbandwidth</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dda_rb_cfr_tran_bw</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:ARBitrary:CFR:TBANdwidth \n</span>
+<span class="sd">		Snippet: driver.source.bb.arbitrary.cfr.set_tbandwidth(dda_rb_cfr_tran_bw = 1.0) \n</span>
+<span class="sd">		Sets the transition bandwidth of the cancellation pulse for peak cancellation CFR algorithm. \n</span>
+<span class="sd">			:param dda_rb_cfr_tran_bw: float Range: 0 to 250E6</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">dda_rb_cfr_tran_bw</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:ARBitrary:CFR:TBANdwidth </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CfrCls.get_state"><a class="viewcode-back" href="../../../../../../Source_Bb_Arbitrary_Cfr.html#RsSmbv.Implementations.Source.Bb.Arbitrary.Cfr.CfrCls.get_state">[docs]</a>	<span class="k">def</span> <span class="nf">get_state</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:ARBitrary:CFR:[STATe] \n</span>
+<span class="sd">		Snippet: value: bool = driver.source.bb.arbitrary.cfr.get_state() \n</span>
+<span class="sd">		Enables the crest factor reduction calculation. \n</span>
+<span class="sd">			:return: arb_cfr_state: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:ARBitrary:CFR:STATe?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_bool</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CfrCls.set_state"><a class="viewcode-back" href="../../../../../../Source_Bb_Arbitrary_Cfr.html#RsSmbv.Implementations.Source.Bb.Arbitrary.Cfr.CfrCls.set_state">[docs]</a>	<span class="k">def</span> <span class="nf">set_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arb_cfr_state</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:ARBitrary:CFR:[STATe] \n</span>
+<span class="sd">		Snippet: driver.source.bb.arbitrary.cfr.set_state(arb_cfr_state = False) \n</span>
+<span class="sd">		Enables the crest factor reduction calculation. \n</span>
+<span class="sd">			:param arb_cfr_state: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">bool_to_str</span><span class="p">(</span><span class="n">arb_cfr_state</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:ARBitrary:CFR:STATe </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;CfrCls&#39;</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Clones the group by creating new object from it and its whole existing subgroups</span>
+<span class="sd">		Also copies all the existing default Repeated Capabilities setting,</span>
+<span class="sd">		which you can change independently without affecting the original group&quot;&quot;&quot;</span>
+		<span class="n">new_group</span> <span class="o">=</span> <span class="n">CfrCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">synchronize_repcaps</span><span class="p">(</span><span class="n">new_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">new_group</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RsSmbv.Implementations.Source.Bb.Dme.Analysis &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../../../" id="documentation_options" src="../../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../../_static/jquery.js"></script>
+        <script src="../../../../../../_static/underscore.js"></script>
+        <script src="../../../../../../_static/doctools.js"></script>
+        <script src="../../../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../../../_static/copybutton.js"></script>
+    <script src="../../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../../../index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../RsSmbv.html">RsSmbv API Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../../../index.html">Module code</a> &raquo;</li>
+          <li><a href="../../../Source.html">RsSmbv.Implementations.Source</a> &raquo;</li>
+          <li><a href="../../Bb.html">RsSmbv.Implementations.Source.Bb</a> &raquo;</li>
+          <li><a href="../Dme.html">RsSmbv.Implementations.Source.Bb.Dme</a> &raquo;</li>
+      <li>RsSmbv.Implementations.Source.Bb.Dme.Analysis</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for RsSmbv.Implementations.Source.Bb.Dme.Analysis</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">......Internal.Core</span> <span class="kn">import</span> <span class="n">Core</span>
+<span class="kn">from</span> <span class="nn">......Internal.CommandsGroup</span> <span class="kn">import</span> <span class="n">CommandsGroup</span>
+<span class="kn">from</span> <span class="nn">......Internal</span> <span class="kn">import</span> <span class="n">Conversions</span>
+<span class="kn">from</span> <span class="nn">......</span> <span class="kn">import</span> <span class="n">enums</span>
+
+
+<span class="c1"># noinspection PyPep8Naming,PyAttributeOutsideInit,SpellCheckingInspection</span>
+<div class="viewcode-block" id="AnalysisCls"><a class="viewcode-back" href="../../../../../../Source_Bb_Dme_Analysis.html#RsSmbv.Implementations.Source.Bb.Dme.Analysis.AnalysisCls">[docs]</a><span class="k">class</span> <span class="nc">AnalysisCls</span><span class="p">:</span>
+	<span class="sd">&quot;&quot;&quot;Analysis commands group definition. 14 total commands, 1 Subgroups, 11 group commands&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">core</span><span class="p">:</span> <span class="n">Core</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span> <span class="o">=</span> <span class="n">core</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span> <span class="o">=</span> <span class="n">CommandsGroup</span><span class="p">(</span><span class="s2">&quot;analysis&quot;</span><span class="p">,</span> <span class="n">core</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">gate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;gate commands group. 0 Sub-classes, 3 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_gate&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Gate</span> <span class="kn">import</span> <span class="n">GateCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_gate</span> <span class="o">=</span> <span class="n">GateCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gate</span>
+
+<div class="viewcode-block" id="AnalysisCls.get_efficiency"><a class="viewcode-back" href="../../../../../../Source_Bb_Dme_Analysis.html#RsSmbv.Implementations.Source.Bb.Dme.Analysis.AnalysisCls.get_efficiency">[docs]</a>	<span class="k">def</span> <span class="nf">get_efficiency</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:DME:ANALysis:EFFiciency \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.dme.analysis.get_efficiency() \n</span>
+<span class="sd">		Queries the measured reply efficiency in percent. The measurement is the ratio of the number of measured valid reply</span>
+<span class="sd">		pulse pairs to transmitted pulse pairs in a measurement cycle. \n</span>
+<span class="sd">			:return: efficiency: float Range: 0 to 100</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DME:ANALysis:EFFiciency?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="AnalysisCls.get_ia_factor"><a class="viewcode-back" href="../../../../../../Source_Bb_Dme_Analysis.html#RsSmbv.Implementations.Source.Bb.Dme.Analysis.AnalysisCls.get_ia_factor">[docs]</a>	<span class="k">def</span> <span class="nf">get_ia_factor</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:DME:ANALysis:IAFactor \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.dme.analysis.get_ia_factor() \n</span>
+<span class="sd">		Queries the internal adjustment factor, the mathematically calculated value of the time, when the pulse reaches its 50%</span>
+<span class="sd">		level. \n</span>
+<span class="sd">			:return: internal_adj_fact: float Range: 0 to 200</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DME:ANALysis:IAFactor?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="AnalysisCls.get_normalize"><a class="viewcode-back" href="../../../../../../Source_Bb_Dme_Analysis.html#RsSmbv.Implementations.Source.Bb.Dme.Analysis.AnalysisCls.get_normalize">[docs]</a>	<span class="k">def</span> <span class="nf">get_normalize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:DME:ANALysis:NORMalize \n</span>
+<span class="sd">		Snippet: value: bool = driver.source.bb.dme.analysis.get_normalize() \n</span>
+<span class="sd">		Performs a normalization of the test setup. The delay due to the test setup is measured and subsequently considered in</span>
+<span class="sd">		the reply measurements. \n</span>
+<span class="sd">			:return: normalize: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DME:ANALysis:NORMalize?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_bool</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="AnalysisCls.get_ok"><a class="viewcode-back" href="../../../../../../Source_Bb_Dme_Analysis.html#RsSmbv.Implementations.Source.Bb.Dme.Analysis.AnalysisCls.get_ok">[docs]</a>	<span class="k">def</span> <span class="nf">get_ok</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:DME:ANALysis:OK \n</span>
+<span class="sd">		Snippet: value: bool = driver.source.bb.dme.analysis.get_ok() \n</span>
+<span class="sd">		Queries if there are DME measurement values in the set measurement window. \n</span>
+<span class="sd">			:return: status: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DME:ANALysis:OK?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_bool</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="AnalysisCls.get_power"><a class="viewcode-back" href="../../../../../../Source_Bb_Dme_Analysis.html#RsSmbv.Implementations.Source.Bb.Dme.Analysis.AnalysisCls.get_power">[docs]</a>	<span class="k">def</span> <span class="nf">get_power</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:DME:ANALysis:POWer \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.dme.analysis.get_power() \n</span>
+<span class="sd">		Queries the measured average peak level of all valid pulse pairs in a measurement cycle. \n</span>
+<span class="sd">			:return: power: float Range: -200 to 200</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DME:ANALysis:POWer?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="AnalysisCls.get_pr_rate"><a class="viewcode-back" href="../../../../../../Source_Bb_Dme_Analysis.html#RsSmbv.Implementations.Source.Bb.Dme.Analysis.AnalysisCls.get_pr_rate">[docs]</a>	<span class="k">def</span> <span class="nf">get_pr_rate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:DME:ANALysis:PRRate \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.dme.analysis.get_pr_rate() \n</span>
+<span class="sd">		Queries the measured mean pulse repetition rate of the DME ground station. All received pulses of the DME ground station</span>
+<span class="sd">		are considered. \n</span>
+<span class="sd">			:return: rate: float Range: 0 to 10000</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DME:ANALysis:PRRate?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="AnalysisCls.get_psa_factor"><a class="viewcode-back" href="../../../../../../Source_Bb_Dme_Analysis.html#RsSmbv.Implementations.Source.Bb.Dme.Analysis.AnalysisCls.get_psa_factor">[docs]</a>	<span class="k">def</span> <span class="nf">get_psa_factor</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:DME:ANALysis:PSAFactor \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.dme.analysis.get_psa_factor() \n</span>
+<span class="sd">		Queries the power sensor adjustment factor determined during a normalization of the setup. You can normalize the setup</span>
+<span class="sd">		with [:SOURce&lt;hw&gt;][:BB]:DME:ANALysis:NORMalize?. \n</span>
+<span class="sd">			:return: pow_sens_adj_fact: float Range: 0 to 200</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DME:ANALysis:PSAFactor?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="AnalysisCls.get_rdistance"><a class="viewcode-back" href="../../../../../../Source_Bb_Dme_Analysis.html#RsSmbv.Implementations.Source.Bb.Dme.Analysis.AnalysisCls.get_rdistance">[docs]</a>	<span class="k">def</span> <span class="nf">get_rdistance</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:DME:ANALysis:RDIStance \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.dme.analysis.get_rdistance() \n</span>
+<span class="sd">		Queries the measured average range distance of all valid pulse pairs in a measurement cycle. \n</span>
+<span class="sd">			:return: range_distance: float</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DME:ANALysis:RDIStance?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="AnalysisCls.get_state"><a class="viewcode-back" href="../../../../../../Source_Bb_Dme_Analysis.html#RsSmbv.Implementations.Source.Bb.Dme.Analysis.AnalysisCls.get_state">[docs]</a>	<span class="k">def</span> <span class="nf">get_state</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:DME:ANALysis:STATe \n</span>
+<span class="sd">		Snippet: value: bool = driver.source.bb.dme.analysis.get_state() \n</span>
+<span class="sd">		Activates the DME analysis. Activation requires a connection between R&amp;S SMBV100B and a power sensor, for example, the</span>
+<span class="sd">		R&amp;S NRP-Z81. \n</span>
+<span class="sd">			:return: state: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DME:ANALysis:STATe?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_bool</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="AnalysisCls.set_state"><a class="viewcode-back" href="../../../../../../Source_Bb_Dme_Analysis.html#RsSmbv.Implementations.Source.Bb.Dme.Analysis.AnalysisCls.set_state">[docs]</a>	<span class="k">def</span> <span class="nf">set_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:DME:ANALysis:STATe \n</span>
+<span class="sd">		Snippet: driver.source.bb.dme.analysis.set_state(state = False) \n</span>
+<span class="sd">		Activates the DME analysis. Activation requires a connection between R&amp;S SMBV100B and a power sensor, for example, the</span>
+<span class="sd">		R&amp;S NRP-Z81. \n</span>
+<span class="sd">			:param state: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">bool_to_str</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DME:ANALysis:STATe </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="AnalysisCls.get_time"><a class="viewcode-back" href="../../../../../../Source_Bb_Dme_Analysis.html#RsSmbv.Implementations.Source.Bb.Dme.Analysis.AnalysisCls.get_time">[docs]</a>	<span class="k">def</span> <span class="nf">get_time</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:DME:ANALysis:TIME \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.dme.analysis.get_time() \n</span>
+<span class="sd">		Queries the measured average reply delay of all valid pulse pairs in a measurement cycle. \n</span>
+<span class="sd">			:return: time: float Range: -1E-3 to 1E-3</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DME:ANALysis:TIME?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="AnalysisCls.get_ua_factor"><a class="viewcode-back" href="../../../../../../Source_Bb_Dme_Analysis.html#RsSmbv.Implementations.Source.Bb.Dme.Analysis.AnalysisCls.get_ua_factor">[docs]</a>	<span class="k">def</span> <span class="nf">get_ua_factor</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">AvionicDmeUsedFact</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:DME:ANALysis:UAFactor \n</span>
+<span class="sd">		Snippet: value: enums.AvionicDmeUsedFact = driver.source.bb.dme.analysis.get_ua_factor() \n</span>
+<span class="sd">		Sets which internal adjustment factor is used. \n</span>
+<span class="sd">			:return: used_factor: INTernal| PSENsor INTernal The mathematically calculated value of the time, when the pulse reaches its 50% level. Query the internal adjustment factor with [:SOURcehw][:BB]:DME:ANALysis:IAFactor? PSENsor The adjustment factor measured during a normalization setup. Query the power sensor adjustment factor with [:SOURcehw][:BB]:DME:ANALysis:PSAFactor?</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DME:ANALysis:UAFactor?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">AvionicDmeUsedFact</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="AnalysisCls.set_ua_factor"><a class="viewcode-back" href="../../../../../../Source_Bb_Dme_Analysis.html#RsSmbv.Implementations.Source.Bb.Dme.Analysis.AnalysisCls.set_ua_factor">[docs]</a>	<span class="k">def</span> <span class="nf">set_ua_factor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">used_factor</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">AvionicDmeUsedFact</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:DME:ANALysis:UAFactor \n</span>
+<span class="sd">		Snippet: driver.source.bb.dme.analysis.set_ua_factor(used_factor = enums.AvionicDmeUsedFact.INTernal) \n</span>
+<span class="sd">		Sets which internal adjustment factor is used. \n</span>
+<span class="sd">			:param used_factor: INTernal| PSENsor INTernal The mathematically calculated value of the time, when the pulse reaches its 50% level. Query the internal adjustment factor with [:SOURcehw][:BB]:DME:ANALysis:IAFactor? PSENsor The adjustment factor measured during a normalization setup. Query the power sensor adjustment factor with [:SOURcehw][:BB]:DME:ANALysis:PSAFactor?</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">used_factor</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">AvionicDmeUsedFact</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DME:ANALysis:UAFactor </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;AnalysisCls&#39;</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Clones the group by creating new object from it and its whole existing subgroups</span>
+<span class="sd">		Also copies all the existing default Repeated Capabilities setting,</span>
+<span class="sd">		which you can change independently without affecting the original group&quot;&quot;&quot;</span>
+		<span class="n">new_group</span> <span class="o">=</span> <span class="n">AnalysisCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">synchronize_repcaps</span><span class="p">(</span><span class="n">new_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">new_group</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

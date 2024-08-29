@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RsSmbv.Implementations.Source.Bb.Btooth.Pconfiguration &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../../../" id="documentation_options" src="../../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../../_static/jquery.js"></script>
+        <script src="../../../../../../_static/underscore.js"></script>
+        <script src="../../../../../../_static/doctools.js"></script>
+        <script src="../../../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../../../_static/copybutton.js"></script>
+    <script src="../../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../../../index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../RsSmbv.html">RsSmbv API Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../../../index.html">Module code</a> &raquo;</li>
+          <li><a href="../../../Source.html">RsSmbv.Implementations.Source</a> &raquo;</li>
+          <li><a href="../../Bb.html">RsSmbv.Implementations.Source.Bb</a> &raquo;</li>
+          <li><a href="../Btooth.html">RsSmbv.Implementations.Source.Bb.Btooth</a> &raquo;</li>
+      <li>RsSmbv.Implementations.Source.Bb.Btooth.Pconfiguration</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for RsSmbv.Implementations.Source.Bb.Btooth.Pconfiguration</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">......Internal.Core</span> <span class="kn">import</span> <span class="n">Core</span>
+<span class="kn">from</span> <span class="nn">......Internal.CommandsGroup</span> <span class="kn">import</span> <span class="n">CommandsGroup</span>
+<span class="kn">from</span> <span class="nn">......Internal</span> <span class="kn">import</span> <span class="n">Conversions</span>
+<span class="kn">from</span> <span class="nn">......</span> <span class="kn">import</span> <span class="n">enums</span>
+
+
+<span class="c1"># noinspection PyPep8Naming,PyAttributeOutsideInit,SpellCheckingInspection</span>
+<div class="viewcode-block" id="PconfigurationCls"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Pconfiguration.html#RsSmbv.Implementations.Source.Bb.Btooth.Pconfiguration.PconfigurationCls">[docs]</a><span class="k">class</span> <span class="nc">PconfigurationCls</span><span class="p">:</span>
+	<span class="sd">&quot;&quot;&quot;Pconfiguration commands group definition. 25 total commands, 6 Subgroups, 15 group commands&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">core</span><span class="p">:</span> <span class="n">Core</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span> <span class="o">=</span> <span class="n">core</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span> <span class="o">=</span> <span class="n">CommandsGroup</span><span class="p">(</span><span class="s2">&quot;pconfiguration&quot;</span><span class="p">,</span> <span class="n">core</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">bdaLap</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;bdaLap commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_bdaLap&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.BdaLap</span> <span class="kn">import</span> <span class="n">BdaLapCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_bdaLap</span> <span class="o">=</span> <span class="n">BdaLapCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bdaLap</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">bdaNap</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;bdaNap commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_bdaNap&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.BdaNap</span> <span class="kn">import</span> <span class="n">BdaNapCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_bdaNap</span> <span class="o">=</span> <span class="n">BdaNapCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bdaNap</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">bdaUap</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;bdaUap commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_bdaUap&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.BdaUap</span> <span class="kn">import</span> <span class="n">BdaUapCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_bdaUap</span> <span class="o">=</span> <span class="n">BdaUapCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bdaUap</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">coDevice</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;coDevice commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_coDevice&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.CoDevice</span> <span class="kn">import</span> <span class="n">CoDeviceCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_coDevice</span> <span class="o">=</span> <span class="n">CoDeviceCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_coDevice</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;data commands group. 2 Sub-classes, 3 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_data&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Data</span> <span class="kn">import</span> <span class="n">DataCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="n">DataCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">lfsWord</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;lfsWord commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_lfsWord&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.LfsWord</span> <span class="kn">import</span> <span class="n">LfsWordCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_lfsWord</span> <span class="o">=</span> <span class="n">LfsWordCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lfsWord</span>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="PconfigurationCls.get_acknowledgement"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Pconfiguration.html#RsSmbv.Implementations.Source.Bb.Btooth.Pconfiguration.PconfigurationCls.get_acknowledgement">[docs]</a>	<span class="k">def</span> <span class="nf">get_acknowledgement</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoAckNldgmt</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:PCONfiguration:ACKNowledgement \n</span>
+<span class="sd">		Snippet: value: enums.BtoAckNldgmt = driver.source.bb.btooth.pconfiguration.get_acknowledgement() \n</span>
+<span class="sd">		Sets the ARQN bit of the packet header.. \n</span>
+<span class="sd">			:return: acknowledgement: NAK| ACK NAK Request to retransmit the previous payload. ACK Previous payload has been received successfully.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:PCONfiguration:ACKNowledgement?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoAckNldgmt</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PconfigurationCls.set_acknowledgement"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Pconfiguration.html#RsSmbv.Implementations.Source.Bb.Btooth.Pconfiguration.PconfigurationCls.set_acknowledgement">[docs]</a>	<span class="k">def</span> <span class="nf">set_acknowledgement</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">acknowledgement</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoAckNldgmt</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:PCONfiguration:ACKNowledgement \n</span>
+<span class="sd">		Snippet: driver.source.bb.btooth.pconfiguration.set_acknowledgement(acknowledgement = enums.BtoAckNldgmt.ACK) \n</span>
+<span class="sd">		Sets the ARQN bit of the packet header.. \n</span>
+<span class="sd">			:param acknowledgement: NAK| ACK NAK Request to retransmit the previous payload. ACK Previous payload has been received successfully.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">acknowledgement</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoAckNldgmt</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:PCONfiguration:ACKNowledgement </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PconfigurationCls.get_byte_interleaving"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Pconfiguration.html#RsSmbv.Implementations.Source.Bb.Btooth.Pconfiguration.PconfigurationCls.get_byte_interleaving">[docs]</a>	<span class="k">def</span> <span class="nf">get_byte_interleaving</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:PCONfiguration:BYTEInterleaving \n</span>
+<span class="sd">		Snippet: value: bool = driver.source.bb.btooth.pconfiguration.get_byte_interleaving() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: state: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:PCONfiguration:BYTEInterleaving?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_bool</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PconfigurationCls.set_byte_interleaving"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Pconfiguration.html#RsSmbv.Implementations.Source.Bb.Btooth.Pconfiguration.PconfigurationCls.set_byte_interleaving">[docs]</a>	<span class="k">def</span> <span class="nf">set_byte_interleaving</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:PCONfiguration:BYTEInterleaving \n</span>
+<span class="sd">		Snippet: driver.source.bb.btooth.pconfiguration.set_byte_interleaving(state = False) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param state: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">bool_to_str</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:PCONfiguration:BYTEInterleaving </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PconfigurationCls.get_dlength"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Pconfiguration.html#RsSmbv.Implementations.Source.Bb.Btooth.Pconfiguration.PconfigurationCls.get_dlength">[docs]</a>	<span class="k">def</span> <span class="nf">get_dlength</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:PCONfiguration:DLENgth \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.btooth.pconfiguration.get_dlength() \n</span>
+<span class="sd">		Sets the payload data length in bytes. \n</span>
+<span class="sd">			:return: dlength: integer Range: 0 to depends on packet type</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:PCONfiguration:DLENgth?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PconfigurationCls.set_dlength"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Pconfiguration.html#RsSmbv.Implementations.Source.Bb.Btooth.Pconfiguration.PconfigurationCls.set_dlength">[docs]</a>	<span class="k">def</span> <span class="nf">set_dlength</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dlength</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:PCONfiguration:DLENgth \n</span>
+<span class="sd">		Snippet: driver.source.bb.btooth.pconfiguration.set_dlength(dlength = 1) \n</span>
+<span class="sd">		Sets the payload data length in bytes. \n</span>
+<span class="sd">			:param dlength: integer Range: 0 to depends on packet type</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">dlength</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:PCONfiguration:DLENgth </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="PconfigurationCls.get_dsf_packet"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Pconfiguration.html#RsSmbv.Implementations.Source.Bb.Btooth.Pconfiguration.PconfigurationCls.get_dsf_packet">[docs]</a>	<span class="k">def</span> <span class="nf">get_dsf_packet</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoDataSourForPck</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:PCONfiguration:DSFPacket \n</span>
+<span class="sd">		Snippet: value: enums.BtoDataSourForPck = driver.source.bb.btooth.pconfiguration.get_dsf_packet() \n</span>
+<span class="sd">		Selects the data source for the selected packet type. \n</span>
+<span class="sd">			:return: dsf_packet: PEDit| ADATa PED Enables the &#39;Packet Editor&#39;. All packet fields can be configured individually. ADAT Fills the generated packets with the selected data source. Useful if predefined data contents are loaded with a data list file or the data contents of the packet are not of interest.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:PCONfiguration:DSFPacket?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoDataSourForPck</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PconfigurationCls.set_dsf_packet"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Pconfiguration.html#RsSmbv.Implementations.Source.Bb.Btooth.Pconfiguration.PconfigurationCls.set_dsf_packet">[docs]</a>	<span class="k">def</span> <span class="nf">set_dsf_packet</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dsf_packet</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoDataSourForPck</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:PCONfiguration:DSFPacket \n</span>
+<span class="sd">		Snippet: driver.source.bb.btooth.pconfiguration.set_dsf_packet(dsf_packet = enums.BtoDataSourForPck.ADATa) \n</span>
+<span class="sd">		Selects the data source for the selected packet type. \n</span>
+<span class="sd">			:param dsf_packet: PEDit| ADATa PED Enables the &#39;Packet Editor&#39;. All packet fields can be configured individually. ADAT Fills the generated packets with the selected data source. Useful if predefined data contents are loaded with a data list file or the data contents of the packet are not of interest.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">dsf_packet</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoDataSourForPck</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:PCONfiguration:DSFPacket </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PconfigurationCls.get_dwhitening"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Pconfiguration.html#RsSmbv.Implementations.Source.Bb.Btooth.Pconfiguration.PconfigurationCls.get_dwhitening">[docs]</a>	<span class="k">def</span> <span class="nf">get_dwhitening</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:PCONfiguration:DWHitening \n</span>
+<span class="sd">		Snippet: value: bool = driver.source.bb.btooth.pconfiguration.get_dwhitening() \n</span>
+<span class="sd">		Activates the &#39;Data Whitening&#39;. \n</span>
+<span class="sd">			:return: dwhitening: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:PCONfiguration:DWHitening?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_bool</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PconfigurationCls.set_dwhitening"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Pconfiguration.html#RsSmbv.Implementations.Source.Bb.Btooth.Pconfiguration.PconfigurationCls.set_dwhitening">[docs]</a>	<span class="k">def</span> <span class="nf">set_dwhitening</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dwhitening</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:PCONfiguration:DWHitening \n</span>
+<span class="sd">		Snippet: driver.source.bb.btooth.pconfiguration.set_dwhitening(dwhitening = False) \n</span>
+<span class="sd">		Activates the &#39;Data Whitening&#39;. \n</span>
+<span class="sd">			:param dwhitening: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">bool_to_str</span><span class="p">(</span><span class="n">dwhitening</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:PCONfiguration:DWHitening </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="PconfigurationCls.get_eir_packet_follows"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Pconfiguration.html#RsSmbv.Implementations.Source.Bb.Btooth.Pconfiguration.PconfigurationCls.get_eir_packet_follows">[docs]</a>	<span class="k">def</span> <span class="nf">get_eir_packet_follows</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">YesNoStatus</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:PCONfiguration:EIRPacketfollows \n</span>
+<span class="sd">		Snippet: value: enums.YesNoStatus = driver.source.bb.btooth.pconfiguration.get_eir_packet_follows() \n</span>
+<span class="sd">		Indicates that an extended inquiry response packet can follow. \n</span>
+<span class="sd">			:return: eir_packet_follow: YES| NO YES Indicates that EIR packet follows. NO Indicates that EIR packet does not follow.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:PCONfiguration:EIRPacketfollows?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">YesNoStatus</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PconfigurationCls.set_eir_packet_follows"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Pconfiguration.html#RsSmbv.Implementations.Source.Bb.Btooth.Pconfiguration.PconfigurationCls.set_eir_packet_follows">[docs]</a>	<span class="k">def</span> <span class="nf">set_eir_packet_follows</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">eir_packet_follow</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">YesNoStatus</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:PCONfiguration:EIRPacketfollows \n</span>
+<span class="sd">		Snippet: driver.source.bb.btooth.pconfiguration.set_eir_packet_follows(eir_packet_follow = enums.YesNoStatus.NO) \n</span>
+<span class="sd">		Indicates that an extended inquiry response packet can follow. \n</span>
+<span class="sd">			:param eir_packet_follow: YES| NO YES Indicates that EIR packet follows. NO Indicates that EIR packet does not follow.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">eir_packet_follow</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">YesNoStatus</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:PCONfiguration:EIRPacketfollows </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="PconfigurationCls.get_hf_control"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Pconfiguration.html#RsSmbv.Implementations.Source.Bb.Btooth.Pconfiguration.PconfigurationCls.get_hf_control">[docs]</a>	<span class="k">def</span> <span class="nf">get_hf_control</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoFlowCtrl</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:PCONfiguration:HFControl \n</span>
+<span class="sd">		Snippet: value: enums.BtoFlowCtrl = driver.source.bb.btooth.pconfiguration.get_hf_control() \n</span>
+<span class="sd">		The command sets the FLOW bit in the header. This bit indicates start or stop of transmission of packets over the ACL</span>
+<span class="sd">		logical transport. \n</span>
+<span class="sd">			:return: hf_control: GO| STOP GO Allows the other devices to transmit new data. STOP Stops the other devices from transmitting data temporarily.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:PCONfiguration:HFControl?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoFlowCtrl</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PconfigurationCls.set_hf_control"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Pconfiguration.html#RsSmbv.Implementations.Source.Bb.Btooth.Pconfiguration.PconfigurationCls.set_hf_control">[docs]</a>	<span class="k">def</span> <span class="nf">set_hf_control</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hf_control</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoFlowCtrl</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:PCONfiguration:HFControl \n</span>
+<span class="sd">		Snippet: driver.source.bb.btooth.pconfiguration.set_hf_control(hf_control = enums.BtoFlowCtrl.GO) \n</span>
+<span class="sd">		The command sets the FLOW bit in the header. This bit indicates start or stop of transmission of packets over the ACL</span>
+<span class="sd">		logical transport. \n</span>
+<span class="sd">			:param hf_control: GO| STOP GO Allows the other devices to transmit new data. STOP Stops the other devices from transmitting data temporarily.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">hf_control</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoFlowCtrl</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:PCONfiguration:HFControl </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PconfigurationCls.get_hr_interleav"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Pconfiguration.html#RsSmbv.Implementations.Source.Bb.Btooth.Pconfiguration.PconfigurationCls.get_hr_interleav">[docs]</a>	<span class="k">def</span> <span class="nf">get_hr_interleav</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:PCONfiguration:HRINterleav \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.btooth.pconfiguration.get_hr_interleav() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: hr_interleaving: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:PCONfiguration:HRINterleav?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PconfigurationCls.set_hr_interleav"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Pconfiguration.html#RsSmbv.Implementations.Source.Bb.Btooth.Pconfiguration.PconfigurationCls.set_hr_interleav">[docs]</a>	<span class="k">def</span> <span class="nf">set_hr_interleav</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hr_interleaving</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:PCONfiguration:HRINterleav \n</span>
+<span class="sd">		Snippet: driver.source.bb.btooth.pconfiguration.set_hr_interleav(hr_interleaving = 1) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param hr_interleaving: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">hr_interleaving</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:PCONfiguration:HRINterleav </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PconfigurationCls.get_lt_address"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Pconfiguration.html#RsSmbv.Implementations.Source.Bb.Btooth.Pconfiguration.PconfigurationCls.get_lt_address">[docs]</a>	<span class="k">def</span> <span class="nf">get_lt_address</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:PCONfiguration:LTADdress \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.btooth.pconfiguration.get_lt_address() \n</span>
+<span class="sd">		The command enters the logical transport address for the header. Each Peripheral active in a piconet is assigned a</span>
+<span class="sd">		primary logical transport address (LT_ADDR) . The all-zero LT_ADDR is reserved for broadcast messages. \n</span>
+<span class="sd">			:return: lt_address: integer Range: 0 to 7</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:PCONfiguration:LTADdress?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PconfigurationCls.set_lt_address"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Pconfiguration.html#RsSmbv.Implementations.Source.Bb.Btooth.Pconfiguration.PconfigurationCls.set_lt_address">[docs]</a>	<span class="k">def</span> <span class="nf">set_lt_address</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lt_address</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:PCONfiguration:LTADdress \n</span>
+<span class="sd">		Snippet: driver.source.bb.btooth.pconfiguration.set_lt_address(lt_address = 1) \n</span>
+<span class="sd">		The command enters the logical transport address for the header. Each Peripheral active in a piconet is assigned a</span>
+<span class="sd">		primary logical transport address (LT_ADDR) . The all-zero LT_ADDR is reserved for broadcast messages. \n</span>
+<span class="sd">			:param lt_address: integer Range: 0 to 7</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">lt_address</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:PCONfiguration:LTADdress </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="PconfigurationCls.get_pf_control"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Pconfiguration.html#RsSmbv.Implementations.Source.Bb.Btooth.Pconfiguration.PconfigurationCls.get_pf_control">[docs]</a>	<span class="k">def</span> <span class="nf">get_pf_control</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoFlowCtrl</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:PCONfiguration:PFControl \n</span>
+<span class="sd">		Snippet: value: enums.BtoFlowCtrl = driver.source.bb.btooth.pconfiguration.get_pf_control() \n</span>
+<span class="sd">		The command sets the FLOW bit in the payload (flow control per logical link) . \n</span>
+<span class="sd">			:return: pf_control: GO| STOP GO Indicates the start of transmission of ACL packets after a new connection has been established. STOP Indicates the stop of transmission of ACL packets before an additional amount of payload data is sent.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:PCONfiguration:PFControl?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoFlowCtrl</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PconfigurationCls.set_pf_control"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Pconfiguration.html#RsSmbv.Implementations.Source.Bb.Btooth.Pconfiguration.PconfigurationCls.set_pf_control">[docs]</a>	<span class="k">def</span> <span class="nf">set_pf_control</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pf_control</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoFlowCtrl</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:PCONfiguration:PFControl \n</span>
+<span class="sd">		Snippet: driver.source.bb.btooth.pconfiguration.set_pf_control(pf_control = enums.BtoFlowCtrl.GO) \n</span>
+<span class="sd">		The command sets the FLOW bit in the payload (flow control per logical link) . \n</span>
+<span class="sd">			:param pf_control: GO| STOP GO Indicates the start of transmission of ACL packets after a new connection has been established. STOP Indicates the stop of transmission of ACL packets before an additional amount of payload data is sent.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">pf_control</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoFlowCtrl</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:PCONfiguration:PFControl </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PconfigurationCls.get_plength"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Pconfiguration.html#RsSmbv.Implementations.Source.Bb.Btooth.Pconfiguration.PconfigurationCls.get_plength">[docs]</a>	<span class="k">def</span> <span class="nf">get_plength</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:PCONfiguration:PLENgth \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.btooth.pconfiguration.get_plength() \n</span>
+<span class="sd">		Sets the packet length in symbols. \n</span>
+<span class="sd">			:return: plength: integer Range: 1 to depends on packet type</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:PCONfiguration:PLENgth?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PconfigurationCls.set_plength"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Pconfiguration.html#RsSmbv.Implementations.Source.Bb.Btooth.Pconfiguration.PconfigurationCls.set_plength">[docs]</a>	<span class="k">def</span> <span class="nf">set_plength</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plength</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:PCONfiguration:PLENgth \n</span>
+<span class="sd">		Snippet: driver.source.bb.btooth.pconfiguration.set_plength(plength = 1) \n</span>
+<span class="sd">		Sets the packet length in symbols. \n</span>
+<span class="sd">			:param plength: integer Range: 1 to depends on packet type</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">plength</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:PCONfiguration:PLENgth </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PconfigurationCls.get_slap"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Pconfiguration.html#RsSmbv.Implementations.Source.Bb.Btooth.Pconfiguration.PconfigurationCls.get_slap">[docs]</a>	<span class="k">def</span> <span class="nf">get_slap</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:PCONfiguration:SLAP \n</span>
+<span class="sd">		Snippet: value: bool = driver.source.bb.btooth.pconfiguration.get_slap() \n</span>
+<span class="sd">		Activates synchronization of the lower address part (LAP) of the sync word and Bluetooth device address. \n</span>
+<span class="sd">			:return: state: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:PCONfiguration:SLAP?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_bool</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PconfigurationCls.set_slap"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Pconfiguration.html#RsSmbv.Implementations.Source.Bb.Btooth.Pconfiguration.PconfigurationCls.set_slap">[docs]</a>	<span class="k">def</span> <span class="nf">set_slap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:PCONfiguration:SLAP \n</span>
+<span class="sd">		Snippet: driver.source.bb.btooth.pconfiguration.set_slap(state = False) \n</span>
+<span class="sd">		Activates synchronization of the lower address part (LAP) of the sync word and Bluetooth device address. \n</span>
+<span class="sd">			:param state: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">bool_to_str</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:PCONfiguration:SLAP </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PconfigurationCls.get_sns_value"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Pconfiguration.html#RsSmbv.Implementations.Source.Bb.Btooth.Pconfiguration.PconfigurationCls.get_sns_value">[docs]</a>	<span class="k">def</span> <span class="nf">get_sns_value</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:PCONfiguration:SNSValue \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.btooth.pconfiguration.get_sns_value() \n</span>
+<span class="sd">		Sets the start value of the header SEQN bit. The SEQN bit is present in the header to filter out retransmissions in the</span>
+<span class="sd">		destination. The signal generator is altering this bit automatically on consecutive frames, if a sequence length of at</span>
+<span class="sd">		least 2 frames is set. \n</span>
+<span class="sd">			:return: sns_value: integer Range: 0 to 1</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:PCONfiguration:SNSValue?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PconfigurationCls.set_sns_value"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Pconfiguration.html#RsSmbv.Implementations.Source.Bb.Btooth.Pconfiguration.PconfigurationCls.set_sns_value">[docs]</a>	<span class="k">def</span> <span class="nf">set_sns_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sns_value</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:PCONfiguration:SNSValue \n</span>
+<span class="sd">		Snippet: driver.source.bb.btooth.pconfiguration.set_sns_value(sns_value = 1) \n</span>
+<span class="sd">		Sets the start value of the header SEQN bit. The SEQN bit is present in the header to filter out retransmissions in the</span>
+<span class="sd">		destination. The signal generator is altering this bit automatically on consecutive frames, if a sequence length of at</span>
+<span class="sd">		least 2 frames is set. \n</span>
+<span class="sd">			:param sns_value: integer Range: 0 to 1</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">sns_value</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:PCONfiguration:SNSValue </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="PconfigurationCls.get_sr_mode"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Pconfiguration.html#RsSmbv.Implementations.Source.Bb.Btooth.Pconfiguration.PconfigurationCls.get_sr_mode">[docs]</a>	<span class="k">def</span> <span class="nf">get_sr_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoScanReMode</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:PCONfiguration:SRMode \n</span>
+<span class="sd">		Snippet: value: enums.BtoScanReMode = driver.source.bb.btooth.pconfiguration.get_sr_mode() \n</span>
+<span class="sd">		The command indicates the interval between two consecutive page scan windows, determines the behavior of the paging</span>
+<span class="sd">		device. \n</span>
+<span class="sd">			:return: sr_mode: R0| R1| R2 R0 The scan interval is equal to the scan window T w page scan (continuous nscan) and maximal 1.28s. R1 The scan interval is maximal 1.28s. R2 The scan interval is maximal 2.56s.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:PCONfiguration:SRMode?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoScanReMode</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PconfigurationCls.set_sr_mode"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Pconfiguration.html#RsSmbv.Implementations.Source.Bb.Btooth.Pconfiguration.PconfigurationCls.set_sr_mode">[docs]</a>	<span class="k">def</span> <span class="nf">set_sr_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sr_mode</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoScanReMode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:PCONfiguration:SRMode \n</span>
+<span class="sd">		Snippet: driver.source.bb.btooth.pconfiguration.set_sr_mode(sr_mode = enums.BtoScanReMode.R0) \n</span>
+<span class="sd">		The command indicates the interval between two consecutive page scan windows, determines the behavior of the paging</span>
+<span class="sd">		device. \n</span>
+<span class="sd">			:param sr_mode: R0| R1| R2 R0 The scan interval is equal to the scan window T w page scan (continuous nscan) and maximal 1.28s. R1 The scan interval is maximal 1.28s. R2 The scan interval is maximal 2.56s.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">sr_mode</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoScanReMode</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:PCONfiguration:SRMode </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="PconfigurationCls.get_vdata"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Pconfiguration.html#RsSmbv.Implementations.Source.Bb.Btooth.Pconfiguration.PconfigurationCls.get_vdata">[docs]</a>	<span class="k">def</span> <span class="nf">get_vdata</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">DataSourceB</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:PCONfiguration:VDATa \n</span>
+<span class="sd">		Snippet: value: enums.DataSourceB = driver.source.bb.btooth.pconfiguration.get_vdata() \n</span>
+<span class="sd">		Selects the data source for the voice field. \n</span>
+<span class="sd">			:return: vdata: ALL0| ALL1| PATTern| PN09| PN11| PN15| PN16| PN20| PN21| PN23| DLISt</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:PCONfiguration:VDATa?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">DataSourceB</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PconfigurationCls.set_vdata"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Pconfiguration.html#RsSmbv.Implementations.Source.Bb.Btooth.Pconfiguration.PconfigurationCls.set_vdata">[docs]</a>	<span class="k">def</span> <span class="nf">set_vdata</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vdata</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">DataSourceB</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:PCONfiguration:VDATa \n</span>
+<span class="sd">		Snippet: driver.source.bb.btooth.pconfiguration.set_vdata(vdata = enums.DataSourceB.ALL0) \n</span>
+<span class="sd">		Selects the data source for the voice field. \n</span>
+<span class="sd">			:param vdata: ALL0| ALL1| PATTern| PN09| PN11| PN15| PN16| PN20| PN21| PN23| DLISt</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">vdata</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">DataSourceB</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:PCONfiguration:VDATa </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;PconfigurationCls&#39;</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Clones the group by creating new object from it and its whole existing subgroups</span>
+<span class="sd">		Also copies all the existing default Repeated Capabilities setting,</span>
+<span class="sd">		which you can change independently without affecting the original group&quot;&quot;&quot;</span>
+		<span class="n">new_group</span> <span class="o">=</span> <span class="n">PconfigurationCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">synchronize_repcaps</span><span class="p">(</span><span class="n">new_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">new_group</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

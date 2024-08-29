@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ue&lt;UserEquipment&gt; &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Aapto" href="Source_Bb_Eutra_Uplink_Ue_Aapto.html" />
+    <link rel="prev" title="RbOffset" href="Source_Bb_Eutra_Uplink_Subf_Slot_Alloc_RbOffset.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="RsSmbv.html">RsSmbv API Structure</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Bert.html">Bert</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Bler.html">Bler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Calibration.html">Calibration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clock.html">Clock</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Connector.html">Connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Device.html">Device</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Diagnostic.html">Diagnostic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Display.html">Display</a></li>
+<li class="toctree-l2"><a class="reference internal" href="FormatPy.html">FormatPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Fpanel.html">Fpanel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HardCopy.html">HardCopy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Initiate.html">Initiate&lt;Channel&gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Kboard.html">Kboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MassMemory.html">MassMemory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Memory.html">Memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Output.html">Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Read.html">Read&lt;Channel&gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Sconfiguration.html">Sconfiguration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Sense.html">Sense&lt;Channel&gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slist.html">Slist</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="Source.html">Source</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="Source_Adf.html">Adf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Am.html">Am&lt;GeneratorIx&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_AreGenerator.html">AreGenerator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Awgn.html">Awgn</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="Source_Bb.html">Bb</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Arbitrary.html">Arbitrary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Btooth.html">Btooth</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_C2K.html">C2K</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Coder.html">Coder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Dab.html">Dab</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Dme.html">Dme</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="Source_Bb_Eutra.html">Eutra</a><ul class="current">
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Bbfs.html">Bbfs</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Clipping.html">Clipping</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Clock.html">Clock</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Downlink.html">Downlink</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_FilterPy.html">FilterPy</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_LogGen.html">LogGen</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Notch.html">Notch&lt;NotchFilter&gt;</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Powc.html">Powc</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Setting.html">Setting</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_SymbolRate.html">SymbolRate</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Tcw.html">Tcw</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Tdd.html">Tdd</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Tdw.html">Tdw</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Timc.html">Timc</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Trigger.html">Trigger</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Udt.html">Udt</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Uplane.html">Uplane</a></li>
+<li class="toctree-l5 current"><a class="reference internal" href="Source_Bb_Eutra_Uplink.html">Uplink</a><ul class="current">
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Uplink_ApMap.html">ApMap</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ca.html">Ca</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Cell.html">Cell&lt;CellNull&gt;</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Emtc.html">Emtc</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Niot.html">Niot</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Plci.html">Plci</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Prach.html">Prach</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Pucch.html">Pucch</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Pusch.html">Pusch</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Refsig.html">Refsig</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Uplink_RstFrame.html">RstFrame</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Rtfb.html">Rtfb</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Subf.html">Subf&lt;SubframeNull&gt;</a></li>
+<li class="toctree-l6 current"><a class="current reference internal" href="#">Ue&lt;UserEquipment&gt;</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Aapto.html">Aapto</a></li>
+<li class="toctree-l7"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_ApMap.html">ApMap</a></li>
+<li class="toctree-l7"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Cell.html">Cell&lt;CellNull&gt;</a></li>
+<li class="toctree-l7"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Cid.html">Cid</a></li>
+<li class="toctree-l7"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_ConSubFrames.html">ConSubFrames</a></li>
+<li class="toctree-l7"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_DacRestart.html">DacRestart</a></li>
+<li class="toctree-l7"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Emtc.html">Emtc</a></li>
+<li class="toctree-l7"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Id.html">Id</a></li>
+<li class="toctree-l7"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Mode.html">Mode</a></li>
+<li class="toctree-l7"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Niot.html">Niot</a></li>
+<li class="toctree-l7"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Ocid.html">Ocid</a></li>
+<li class="toctree-l7"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Power.html">Power</a></li>
+<li class="toctree-l7"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Prach.html">Prach</a></li>
+<li class="toctree-l7"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Pucch.html">Pucch</a></li>
+<li class="toctree-l7"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Release.html">Release</a></li>
+<li class="toctree-l7"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl.html">Sl</a></li>
+<li class="toctree-l7"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_State.html">State</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Eutra_Uplink_View.html">View</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Waveform.html">Waveform</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Evdo.html">Evdo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Gbas.html">Gbas</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Gnpr.html">Gnpr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Gnss.html">Gnss</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Graphics.html">Graphics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Gsm.html">Gsm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Huwb.html">Huwb</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Ils.html">Ils</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Impairment.html">Impairment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Info.html">Info</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Lora.html">Lora</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Mccw.html">Mccw</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nfc.html">Nfc</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G.html">Nr5G</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Ofdm.html">Ofdm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Path.html">Path</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Power.html">Power</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Pramp.html">Pramp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Progress.html">Progress</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Tdscdma.html">Tdscdma</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Trigger.html">Trigger</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Vor.html">Vor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_W3Gpp.html">W3Gpp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Wlnn.html">Wlnn</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bbin.html">Bbin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Combined.html">Combined</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Correction.html">Correction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Dme.html">Dme</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Efrontend.html">Efrontend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Fm.html">Fm&lt;GeneratorIx&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_FreqSweep.html">FreqSweep</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Frequency.html">Frequency</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Ils.html">Ils</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_InputPy.html">InputPy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Iq.html">Iq</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_LffSweep.html">LffSweep</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_LfOutput.html">LfOutput&lt;LfOutput&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_ListPy.html">ListPy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Mbeacon.html">Mbeacon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Modulation.html">Modulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Noise.html">Noise</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Occupy.html">Occupy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Path.html">Path</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Pgenerator.html">Pgenerator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Phase.html">Phase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Pm.html">Pm&lt;GeneratorIx&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Power.html">Power</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Psweep.html">Psweep</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Pulm.html">Pulm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Roscillator.html">Roscillator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Sweep.html">Sweep</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_ValRf.html">ValRf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Vor.html">Vor</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Status.html">Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Sweep.html">Sweep</a></li>
+<li class="toctree-l2"><a class="reference internal" href="System.html">System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Test.html">Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Trigger.html">Trigger&lt;InputIx&gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Unit.html">Unit</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="RsSmbv.html">RsSmbv API Structure</a> &raquo;</li>
+          <li><a href="Source.html">Source</a> &raquo;</li>
+          <li><a href="Source_Bb.html">Bb</a> &raquo;</li>
+          <li><a href="Source_Bb_Eutra.html">Eutra</a> &raquo;</li>
+          <li><a href="Source_Bb_Eutra_Uplink.html">Uplink</a> &raquo;</li>
+      <li>Ue&lt;UserEquipment&gt;</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Source_Bb_Eutra_Uplink_Ue.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ue-userequipment">
+<h1>Ue&lt;UserEquipment&gt;<a class="headerlink" href="#ue-userequipment" title="Permalink to this headline"></a></h1>
+<p class="rubric">RepCap Settings</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Range: Nr1 .. Nr16</span>
+<span class="n">rc</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">eutra</span><span class="o">.</span><span class="n">uplink</span><span class="o">.</span><span class="n">ue</span><span class="o">.</span><span class="n">repcap_userEquipment_get</span><span class="p">()</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">eutra</span><span class="o">.</span><span class="n">uplink</span><span class="o">.</span><span class="n">ue</span><span class="o">.</span><span class="n">repcap_userEquipment_set</span><span class="p">(</span><span class="n">repcap</span><span class="o">.</span><span class="n">UserEquipment</span><span class="o">.</span><span class="n">Nr1</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">UeCls</span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Eutra/Uplink/Ue.html#UeCls"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Ue commands group definition. 273 total commands, 17 Subgroups, 0 group commands
+Repeated Capability: UserEquipment, default value after init: UserEquipment.Nr1</p>
+</dd></dl>
+
+<p class="rubric">Cloning the Group</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a clone of the original group, that exists independently</span>
+<span class="n">group2</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">eutra</span><span class="o">.</span><span class="n">uplink</span><span class="o">.</span><span class="n">ue</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+</pre></div>
+</div>
+<p class="rubric">Subgroups</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Aapto.html">Aapto</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_ApMap.html">ApMap</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_ApMap_Ap1000Map.html">Ap1000Map</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_ApMap_Ap1000Map_Row.html">Row&lt;RowNull&gt;</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_ApMap_Ap100Map.html">Ap100Map</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_ApMap_Ap100Map_Row.html">Row&lt;RowNull&gt;</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_ApMap_Ap1010Map.html">Ap1010Map</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_ApMap_Ap1010Map_Row.html">Row&lt;RowNull&gt;</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_ApMap_Ap1020Map.html">Ap1020Map</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_ApMap_Ap1020Map_Row.html">Row&lt;RowNull&gt;</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_ApMap_Ap10Map.html">Ap10Map</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_ApMap_Ap10Map_Row.html">Row&lt;RowNull&gt;</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_ApMap_Ap200Map.html">Ap200Map</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_ApMap_Ap200Map_Row.html">Row&lt;RowNull&gt;</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_ApMap_Ap201Map.html">Ap201Map</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_ApMap_Ap201Map_Row.html">Row&lt;RowNull&gt;</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_ApMap_Ap20Map.html">Ap20Map</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_ApMap_Ap20Map_Row.html">Row&lt;RowNull&gt;</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_ApMap_Ap21Map.html">Ap21Map</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_ApMap_Ap21Map_Row.html">Row&lt;RowNull&gt;</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_ApMap_Ap40Map.html">Ap40Map</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_ApMap_Ap40Map_Row.html">Row&lt;RowNull&gt;</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_ApMap_Ap41Map.html">Ap41Map</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_ApMap_Ap41Map_Row.html">Row&lt;RowNull&gt;</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_ApMap_Ap42Map.html">Ap42Map</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_ApMap_Ap42Map_Row.html">Row&lt;RowNull&gt;</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_ApMap_Ap43Map.html">Ap43Map</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_ApMap_Ap43Map_Row.html">Row&lt;RowNull&gt;</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Cell.html">Cell&lt;CellNull&gt;</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Cell_Eimta.html">Eimta</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Cell_Eimta_State.html">State</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Cell_Frc.html">Frc</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Cell_Frc_Alrb.html">Alrb</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Cell_Frc_Modulation.html">Modulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Cell_Frc_N2Dmrs.html">N2Dmrs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Cell_Frc_PaSize.html">PaSize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Cell_Frc_State.html">State</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Cell_Frc_TnoBits.html">TnoBits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Cell_Frc_TypePy.html">TypePy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Cell_Frc_VrbOffset.html">VrbOffset</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Cell_Poffset.html">Poffset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Cell_Pusch.html">Pusch</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Cell_Pusch_Ccoding.html">Ccoding</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Cell_Pusch_Ccoding_IcqiOffset.html">IcqiOffset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Cell_Pusch_Ccoding_IharqOffset.html">IharqOffset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Cell_Pusch_Ccoding_IriOffset.html">IriOffset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Cell_Pusch_Ccoding_Mode.html">Mode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Cell_Pusch_Ccoding_OcqiMin.html">OcqiMin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Cell_Pusch_Ccoding_State.html">State</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Cell_Pusch_Data.html">Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Cell_Pusch_Dselect.html">Dselect</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Cell_Pusch_InitPattern.html">InitPattern</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Cell_Pusch_NaPort.html">NaPort</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Cell_Pusch_Pattern.html">Pattern</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Cell_Pusch_Scrambling.html">Scrambling</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Cell_Pusch_Scrambling_State.html">State</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Cell_Pusch_TxMode.html">TxMode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Cell_Pusch_Uppts.html">Uppts</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Cell_Pusch_Uppts_LdMrs.html">LdMrs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Cell_Pusch_Uppts_Nsym.html">Nsym</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Cell_Pusch_Uppts_State.html">State</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Cell_Refsig.html">Refsig</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Cell_Refsig_AnsTx.html">AnsTx</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Cell_Refsig_Drs.html">Drs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Cell_Refsig_Drs_Dwocc.html">Dwocc</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Cell_Refsig_Drs_Enhanced.html">Enhanced</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Cell_Refsig_Drs_PowOffset.html">PowOffset</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Cell_Refsig_Srs.html">Srs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Cell_Refsig_Srs_Bhop.html">Bhop</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Cell_Refsig_Srs_Bsrs.html">Bsrs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Cell_Refsig_Srs_CycShift.html">CycShift</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Cell_Refsig_Srs_Isrs.html">Isrs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Cell_Refsig_Srs_NaPort.html">NaPort</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Cell_Refsig_Srs_Nktc.html">Nktc</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Cell_Refsig_Srs_Nrrc.html">Nrrc</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Cell_Refsig_Srs_Ntrans.html">Ntrans</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Cell_Refsig_Srs_PowOffset.html">PowOffset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Cell_Refsig_Srs_State.html">State</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Cell_Refsig_Srs_Subf.html">Subf&lt;SubframeNull&gt;</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Cell_Refsig_Srs_Toffset.html">Toffset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Cell_Refsig_Srs_TrComb.html">TrComb</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Cell_Refsig_Srs_Tsrs.html">Tsrs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Cell_Refsig_Srs_Tt0.html">Tt0</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Cell_Refsig_Srs_Upptsadd.html">Upptsadd</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Cid.html">Cid</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_ConSubFrames.html">ConSubFrames</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_ConSubFrames_Pucch.html">Pucch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_ConSubFrames_Pusch.html">Pusch</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_DacRestart.html">DacRestart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Emtc.html">Emtc</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Emtc_Arb.html">Arb</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Emtc_Arb_Suggested.html">Suggested</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Emtc_CeLevel.html">CeLevel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Emtc_Hopp.html">Hopp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Emtc_Ntransmiss.html">Ntransmiss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Emtc_Trans.html">Trans&lt;Transmission&gt;</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Emtc_Trans_AsFrame.html">AsFrame</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Emtc_Trans_Ccoding.html">Ccoding</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Emtc_Trans_Ccoding_RvIndex.html">RvIndex</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Emtc_Trans_Ccoding_TbSize.html">TbSize</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Emtc_Trans_Content.html">Content</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Emtc_Trans_Drs.html">Drs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Emtc_Trans_Drs_CycShift.html">CycShift</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Emtc_Trans_FormatPy.html">FormatPy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Emtc_Trans_Harq.html">Harq</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Emtc_Trans_Harq_Bits.html">Bits</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Emtc_Trans_Harq_Cbits.html">Cbits</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Emtc_Trans_Harq_Mode.html">Mode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Emtc_Trans_Harq_Pattern.html">Pattern</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Emtc_Trans_Modulation.html">Modulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Emtc_Trans_NapUsed.html">NapUsed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Emtc_Trans_Ndmrs.html">Ndmrs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Emtc_Trans_Npucch.html">Npucch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Emtc_Trans_NrBlocks.html">NrBlocks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Emtc_Trans_PhysBits.html">PhysBits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Emtc_Trans_Power.html">Power</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Emtc_Trans_Pucch.html">Pucch</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Emtc_Trans_Pucch_Cqi.html">Cqi</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Emtc_Trans_Pucch_Cqi_Bits.html">Bits</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Emtc_Trans_Pucch_Cqi_Cbits.html">Cbits</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Emtc_Trans_Pucch_Cqi_Pattern.html">Pattern</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Emtc_Trans_Pucch_Harq.html">Harq</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Emtc_Trans_Pucch_Harq_Pattern.html">Pattern</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Emtc_Trans_Pusch.html">Pusch</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Emtc_Trans_Pusch_Cqi.html">Cqi</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Emtc_Trans_Pusch_Cqi_Bits.html">Bits</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Emtc_Trans_Pusch_Cqi_Cbits.html">Cbits</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Emtc_Trans_Pusch_Cqi_Pattern.html">Pattern</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Emtc_Trans_RbOffset.html">RbOffset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Emtc_Trans_Repetitions.html">Repetitions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Emtc_Trans_StnBand.html">StnBand</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Emtc_Trans_StsFrame.html">StsFrame</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Emtc_Trans_StwBand.html">StwBand</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Emtc_Trans_Ulsch.html">Ulsch</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Emtc_Trans_Ulsch_Bits.html">Bits</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Emtc_Trans_WbrbOffset.html">WbrbOffset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Emtc_Trans_WrBlocks.html">WrBlocks</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Id.html">Id</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Mode.html">Mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Niot.html">Niot</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Niot_Arb.html">Arb</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Niot_Arb_Suggested.html">Suggested</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Niot_Dfreq.html">Dfreq</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Niot_Frc.html">Frc</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Niot_Frc_AlResunits.html">AlResunits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Niot_Frc_BpresUnit.html">BpresUnit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Niot_Frc_Modulation.html">Modulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Niot_Frc_NnPrep.html">NnPrep</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Niot_Frc_NosCarriers.html">NosCarriers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Niot_Frc_PaSize.html">PaSize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Niot_Frc_ScSpacing.html">ScSpacing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Niot_Frc_State.html">State</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Niot_Frc_TbssIndex.html">TbssIndex</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Niot_Frc_TypePy.html">TypePy</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Niot_GhDisable.html">GhDisable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Niot_Mode.html">Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Niot_Npssim.html">Npssim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Niot_Ntransmiss.html">Ntransmiss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Niot_RbIndex.html">RbIndex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Niot_ScSpacing.html">ScSpacing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Niot_Trans.html">Trans&lt;Transmission&gt;</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Niot_Trans_FormatPy.html">FormatPy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Niot_Trans_Harq.html">Harq</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Niot_Trans_Harq_Bits.html">Bits</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Niot_Trans_Harq_Cbits.html">Cbits</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Niot_Trans_Harq_Pattern.html">Pattern</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Niot_Trans_Harq_Sr.html">Sr</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Niot_Trans_Modulation.html">Modulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Niot_Trans_NrUnits.html">NrUnits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Niot_Trans_Nscarriers.html">Nscarriers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Niot_Trans_Nslts.html">Nslts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Niot_Trans_Power.html">Power</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Niot_Trans_Pusch.html">Pusch</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Niot_Trans_Pusch_Esupport.html">Esupport</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Niot_Trans_Pusch_Etbs.html">Etbs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Niot_Trans_Pusch_EtrSize.html">EtrSize</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Niot_Trans_Pusch_PhysBits.html">PhysBits</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Niot_Trans_Pusch_RuIndex.html">RuIndex</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Niot_Trans_Pusch_RvIndex.html">RvIndex</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Niot_Trans_Pusch_TbIndex.html">TbIndex</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Niot_Trans_Pusch_TbSize.html">TbSize</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Niot_Trans_Repetitions.html">Repetitions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Niot_Trans_Sirf.html">Sirf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Niot_Trans_StsCarrier.html">StsCarrier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Niot_Trans_StsFrame.html">StsFrame</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Niot_Trans_Stslot.html">Stslot</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Ocid.html">Ocid</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Ocid_State.html">State</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Power.html">Power</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Prach.html">Prach</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Prach_Att.html">Att&lt;AttenuationNull&gt;</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Prach_Att_Emtc.html">Emtc</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Prach_Att_Emtc_Celv.html">Celv</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Prach_Att_Emtc_Dt.html">Dt</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Prach_Att_Emtc_FrIndex.html">FrIndex</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Prach_Att_Emtc_NcsConf.html">NcsConf</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Prach_Att_Emtc_Power.html">Power</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Prach_Att_Emtc_Rsequence.html">Rsequence</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Prach_Att_Emtc_SfStart.html">SfStart</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Prach_Att_Emtc_Sindex.html">Sindex</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Prach_Att_Niot.html">Niot</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Prach_Att_Niot_Config.html">Config</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Prach_Att_Niot_Init.html">Init</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Prach_Att_Niot_Power.html">Power</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Prach_Att_Niot_SfStart.html">SfStart</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Prach_Att_Niot_Strt.html">Strt</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Prach_Cframes.html">Cframes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Prach_Emtc.html">Emtc</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Prach_Emtc_Arb.html">Arb</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Prach_Emtc_Arb_Suggested.html">Suggested</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Prach_Emtc_PrAttempts.html">PrAttempts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Prach_Niot.html">Niot</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Prach_Niot_Arb.html">Arb</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Prach_Niot_Arb_Suggested.html">Suggested</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Prach_Niot_Dfreq.html">Dfreq</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Prach_Niot_Mod.html">Mod</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Prach_Niot_PrAttempts.html">PrAttempts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Prach_Niot_Rbid.html">Rbid</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Prach_PrFormat.html">PrFormat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Prach_PrState.html">PrState</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Prach_Prtt.html">Prtt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Prach_Subf.html">Subf&lt;SubframeNull&gt;</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Prach_Subf_Dt.html">Dt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Prach_Subf_FrIndex.html">FrIndex</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Prach_Subf_NcsConf.html">NcsConf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Prach_Subf_Power.html">Power</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Prach_Subf_RbOffset.html">RbOffset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Prach_Subf_Rsequence.html">Rsequence</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Prach_Subf_Sindex.html">Sindex</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Prach_Subf_State.html">State</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Pucch.html">Pucch</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Pucch_F1Naport.html">F1Naport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Pucch_F2Naport.html">F2Naport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Pucch_F3Naport.html">F3Naport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Pucch_F4Naport.html">F4Naport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Pucch_F5Naport.html">F5Naport</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Release.html">Release</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl.html">Sl</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Alloc.html">Alloc&lt;AllocationNull&gt;</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Alloc_Ccoding.html">Ccoding</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Alloc_Ccoding_State.html">State</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Alloc_Ccoding_Tbsi.html">Tbsi</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Alloc_Ccoding_TbSize.html">TbSize</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Alloc_Conflict.html">Conflict</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Alloc_Content.html">Content</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Alloc_CycShift.html">CycShift</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Alloc_DiscType.html">DiscType</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Alloc_Modulation.html">Modulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Alloc_Npdsch.html">Npdsch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Alloc_PhysBits.html">PhysBits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Alloc_Power.html">Power</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Alloc_PsdPeriod.html">PsdPeriod</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Alloc_Scrambling.html">Scrambling</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Alloc_Scrambling_State.html">State</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Alloc_Sf.html">Sf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Alloc_State.html">State</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Data.html">Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Dselect.html">Dselect</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Mode.html">Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Nalloc.html">Nalloc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Nsci.html">Nsci</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Pattern.html">Pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Rctrl.html">Rctrl</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Rctrl_Cperiod.html">Cperiod</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Rctrl_OffsetInd.html">OffsetInd</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Rctrl_PrbNumber.html">PrbNumber</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Rctrl_PrbStart.html">PrbStart</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Rctrl_Prend.html">Prend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Rctrl_Sfbmp.html">Sfbmp</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Rdata.html">Rdata</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Rdata_HoppingParam.html">HoppingParam</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Rdata_Nsubbands.html">Nsubbands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Rdata_OffsetInd.html">OffsetInd</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Rdata_PrbNumber.html">PrbNumber</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Rdata_PrbStart.html">PrbStart</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Rdata_Prend.html">Prend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Rdata_RbOffset.html">RbOffset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Rdata_Sfbmp.html">Sfbmp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Rdata_TrptSubset.html">TrptSubset</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Rdisc.html">Rdisc</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Rdisc_Cperiod.html">Cperiod</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Rdisc_N1Pdsch.html">N1Pdsch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Rdisc_N2Pdsch.html">N2Pdsch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Rdisc_N3Pdsch.html">N3Pdsch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Rdisc_Nrepetitions.html">Nrepetitions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Rdisc_Nretrans.html">Nretrans</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Rdisc_OffsetInd.html">OffsetInd</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Rdisc_PrbNumber.html">PrbNumber</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Rdisc_PrbStart.html">PrbStart</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Rdisc_Prend.html">Prend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Rdisc_PrIndex.html">PrIndex</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Rdisc_Sfbmp.html">Sfbmp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Rdisc_SfIndex.html">SfIndex</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Restart.html">Restart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Rmc.html">Rmc</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Rmc_ArBlocks.html">ArBlocks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Rmc_Modulation.html">Modulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Rmc_PaySize.html">PaySize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Rmc_PhysBits.html">PhysBits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Rmc_Rmc.html">Rmc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Rmc_State.html">State</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Sci.html">Sci&lt;IndexNull&gt;</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Sci_BitData.html">BitData</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Sci_FhFlag.html">FhFlag</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Sci_FormatPy.html">FormatPy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Sci_FreqResloc.html">FreqResloc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Sci_Grid.html">Grid</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Sci_Mcs.html">Mcs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Sci_Npscch.html">Npscch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Sci_Pririty.html">Pririty</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Sci_PscPeriod.html">PscPeriod</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Sci_RbahoppAlloc.html">RbahoppAlloc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Sci_Rreservation.html">Rreservation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Sci_Sf.html">Sf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Sci_StartSf.html">StartSf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Sci_SubChannel.html">SubChannel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Sci_TaInd.html">TaInd</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Sci_TimGap.html">TimGap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Sci_Trp.html">Trp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Sci_TxIndex.html">TxIndex</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Sci_TxMode.html">TxMode</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_State.html">State</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Sync.html">Sync</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Sync_InCoverage.html">InCoverage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Sync_OffsetInd.html">OffsetInd</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Sync_SlssId.html">SlssId</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_Sync_State.html">State</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_V2X.html">V2X</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_V2X_Adjc.html">Adjc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_V2X_BitHigh.html">BitHigh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_V2X_BitLow.html">BitLow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_V2X_BmpLength.html">BmpLength</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_V2X_Offset.html">Offset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_V2X_SrbPscch.html">SrbPscch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_V2X_SrbSubchan.html">SrbSubchan</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_V2X_SubChannels.html">SubChannels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_Sl_V2X_SubSize.html">SubSize</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Eutra_Uplink_Ue_State.html">State</a></li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Source_Bb_Eutra_Uplink_Subf_Slot_Alloc_RbOffset.html" class="btn btn-neutral float-left" title="RbOffset" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Source_Bb_Eutra_Uplink_Ue_Aapto.html" class="btn btn-neutral float-right" title="Aapto" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

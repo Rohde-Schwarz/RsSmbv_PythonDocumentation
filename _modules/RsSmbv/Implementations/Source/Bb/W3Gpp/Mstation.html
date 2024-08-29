@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RsSmbv.Implementations.Source.Bb.W3Gpp.Mstation &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../../../" id="documentation_options" src="../../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../../_static/jquery.js"></script>
+        <script src="../../../../../../_static/underscore.js"></script>
+        <script src="../../../../../../_static/doctools.js"></script>
+        <script src="../../../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../../../_static/copybutton.js"></script>
+    <script src="../../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../../../index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../RsSmbv.html">RsSmbv API Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../../../index.html">Module code</a> &raquo;</li>
+          <li><a href="../../../Source.html">RsSmbv.Implementations.Source</a> &raquo;</li>
+          <li><a href="../../Bb.html">RsSmbv.Implementations.Source.Bb</a> &raquo;</li>
+          <li><a href="../W3Gpp.html">RsSmbv.Implementations.Source.Bb.W3Gpp</a> &raquo;</li>
+      <li>RsSmbv.Implementations.Source.Bb.W3Gpp.Mstation</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for RsSmbv.Implementations.Source.Bb.W3Gpp.Mstation</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">......Internal.Core</span> <span class="kn">import</span> <span class="n">Core</span>
+<span class="kn">from</span> <span class="nn">......Internal.CommandsGroup</span> <span class="kn">import</span> <span class="n">CommandsGroup</span>
+<span class="kn">from</span> <span class="nn">......Internal.RepeatedCapability</span> <span class="kn">import</span> <span class="n">RepeatedCapability</span>
+<span class="kn">from</span> <span class="nn">......</span> <span class="kn">import</span> <span class="n">repcap</span>
+
+
+<span class="c1"># noinspection PyPep8Naming,PyAttributeOutsideInit,SpellCheckingInspection</span>
+<div class="viewcode-block" id="MstationCls"><a class="viewcode-back" href="../../../../../../Source_Bb_W3Gpp_Mstation.html#RsSmbv.Implementations.Source.Bb.W3Gpp.Mstation.MstationCls">[docs]</a><span class="k">class</span> <span class="nc">MstationCls</span><span class="p">:</span>
+	<span class="sd">&quot;&quot;&quot;Mstation commands group definition. 260 total commands, 14 Subgroups, 1 group commands</span>
+<span class="sd">	Repeated Capability: MobileStation, default value after init: MobileStation.Nr1&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">core</span><span class="p">:</span> <span class="n">Core</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span> <span class="o">=</span> <span class="n">core</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span> <span class="o">=</span> <span class="n">CommandsGroup</span><span class="p">(</span><span class="s2">&quot;mstation&quot;</span><span class="p">,</span> <span class="n">core</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">rep_cap</span> <span class="o">=</span> <span class="n">RepeatedCapability</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">group_name</span><span class="p">,</span> <span class="s1">&#39;repcap_mobileStation_get&#39;</span><span class="p">,</span> <span class="s1">&#39;repcap_mobileStation_set&#39;</span><span class="p">,</span> <span class="n">repcap</span><span class="o">.</span><span class="n">MobileStation</span><span class="o">.</span><span class="n">Nr1</span><span class="p">)</span>
+
+	<span class="k">def</span> <span class="nf">repcap_mobileStation_set</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mobileStation</span><span class="p">:</span> <span class="n">repcap</span><span class="o">.</span><span class="n">MobileStation</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Repeated Capability default value numeric suffix.</span>
+<span class="sd">		This value is used, if you do not explicitely set it in the child set/get methods, or if you leave it to MobileStation.Default</span>
+<span class="sd">		Default value after init: MobileStation.Nr1&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">set_repcap_enum_value</span><span class="p">(</span><span class="n">mobileStation</span><span class="p">)</span>
+
+	<span class="k">def</span> <span class="nf">repcap_mobileStation_get</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">repcap</span><span class="o">.</span><span class="n">MobileStation</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Returns the current default repeated capability for the child set/get methods&quot;&quot;&quot;</span>
+		<span class="c1"># noinspection PyTypeChecker</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">get_repcap_enum_value</span><span class="p">()</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">additional</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;additional commands group. 3 Sub-classes, 2 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_additional&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Additional</span> <span class="kn">import</span> <span class="n">AdditionalCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_additional</span> <span class="o">=</span> <span class="n">AdditionalCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_additional</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">channel</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;channel commands group. 1 Sub-classes, 0 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_channel&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Channel</span> <span class="kn">import</span> <span class="n">ChannelCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_channel</span> <span class="o">=</span> <span class="n">ChannelCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_channel</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">cmode</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;cmode commands group. 5 Sub-classes, 0 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_cmode&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Cmode</span> <span class="kn">import</span> <span class="n">CmodeCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_cmode</span> <span class="o">=</span> <span class="n">CmodeCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmode</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">dpcch</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;dpcch commands group. 8 Sub-classes, 0 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_dpcch&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Dpcch</span> <span class="kn">import</span> <span class="n">DpcchCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_dpcch</span> <span class="o">=</span> <span class="n">DpcchCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dpcch</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">dpdch</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;dpdch commands group. 4 Sub-classes, 0 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_dpdch&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Dpdch</span> <span class="kn">import</span> <span class="n">DpdchCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_dpdch</span> <span class="o">=</span> <span class="n">DpdchCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dpdch</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">enhanced</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;enhanced commands group. 3 Sub-classes, 0 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_enhanced&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Enhanced</span> <span class="kn">import</span> <span class="n">EnhancedCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_enhanced</span> <span class="o">=</span> <span class="n">EnhancedCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_enhanced</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">mode</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;mode commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_mode&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Mode</span> <span class="kn">import</span> <span class="n">ModeCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_mode</span> <span class="o">=</span> <span class="n">ModeCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">pcpch</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;pcpch commands group. 18 Sub-classes, 0 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_pcpch&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Pcpch</span> <span class="kn">import</span> <span class="n">PcpchCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_pcpch</span> <span class="o">=</span> <span class="n">PcpchCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pcpch</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">prach</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;prach commands group. 15 Sub-classes, 0 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_prach&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Prach</span> <span class="kn">import</span> <span class="n">PrachCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_prach</span> <span class="o">=</span> <span class="n">PrachCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prach</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">scode</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;scode commands group. 1 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_scode&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Scode</span> <span class="kn">import</span> <span class="n">ScodeCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_scode</span> <span class="o">=</span> <span class="n">ScodeCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_scode</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">state</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;state commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_state&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.State</span> <span class="kn">import</span> <span class="n">StateCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_state</span> <span class="o">=</span> <span class="n">StateCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_state</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">tdelay</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;tdelay commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_tdelay&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Tdelay</span> <span class="kn">import</span> <span class="n">TdelayCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_tdelay</span> <span class="o">=</span> <span class="n">TdelayCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tdelay</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">udtx</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;udtx commands group. 6 Sub-classes, 6 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_udtx&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Udtx</span> <span class="kn">import</span> <span class="n">UdtxCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_udtx</span> <span class="o">=</span> <span class="n">UdtxCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_udtx</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">hsupa</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;hsupa commands group. 4 Sub-classes, 0 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_hsupa&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Hsupa</span> <span class="kn">import</span> <span class="n">HsupaCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_hsupa</span> <span class="o">=</span> <span class="n">HsupaCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hsupa</span>
+
+<div class="viewcode-block" id="MstationCls.preset"><a class="viewcode-back" href="../../../../../../Source_Bb_W3Gpp_Mstation.html#RsSmbv.Implementations.Source.Bb.W3Gpp.Mstation.MstationCls.preset">[docs]</a>	<span class="k">def</span> <span class="nf">preset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:W3GPp:MSTation:PRESet \n</span>
+<span class="sd">		Snippet: driver.source.bb.w3Gpp.mstation.preset() \n</span>
+<span class="sd">		The command produces a standardized default for all the user equipment. The settings correspond to the *RST values</span>
+<span class="sd">		specified for the commands. All user equipment settings are preset. \n</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:W3GPp:MSTation:PRESet&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MstationCls.preset_with_opc"><a class="viewcode-back" href="../../../../../../Source_Bb_W3Gpp_Mstation.html#RsSmbv.Implementations.Source.Bb.W3Gpp.Mstation.MstationCls.preset_with_opc">[docs]</a>	<span class="k">def</span> <span class="nf">preset_with_opc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">opc_timeout_ms</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:W3GPp:MSTation:PRESet \n</span>
+<span class="sd">		Snippet: driver.source.bb.w3Gpp.mstation.preset_with_opc() \n</span>
+<span class="sd">		The command produces a standardized default for all the user equipment. The settings correspond to the *RST values</span>
+<span class="sd">		specified for the commands. All user equipment settings are preset. \n</span>
+<span class="sd">		Same as preset, but waits for the operation to complete before continuing further. Use the RsSmbv.utilities.opc_timeout_set() to set the timeout value. \n</span>
+<span class="sd">			:param opc_timeout_ms: Maximum time to wait in milliseconds, valid only for this call.&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write_with_opc</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:W3GPp:MSTation:PRESet&#39;</span><span class="p">,</span> <span class="n">opc_timeout_ms</span><span class="p">)</span></div>
+
+	<span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;MstationCls&#39;</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Clones the group by creating new object from it and its whole existing subgroups</span>
+<span class="sd">		Also copies all the existing default Repeated Capabilities setting,</span>
+<span class="sd">		which you can change independently without affecting the original group&quot;&quot;&quot;</span>
+		<span class="n">new_group</span> <span class="o">=</span> <span class="n">MstationCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">synchronize_repcaps</span><span class="p">(</span><span class="n">new_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">new_group</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

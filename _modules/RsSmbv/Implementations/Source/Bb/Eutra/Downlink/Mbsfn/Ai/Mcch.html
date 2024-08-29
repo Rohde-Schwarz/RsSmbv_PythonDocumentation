@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RsSmbv.Implementations.Source.Bb.Eutra.Downlink.Mbsfn.Ai.Mcch &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="../../../../../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../../../../../../" id="documentation_options" src="../../../../../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../../../../../_static/jquery.js"></script>
+        <script src="../../../../../../../../../_static/underscore.js"></script>
+        <script src="../../../../../../../../../_static/doctools.js"></script>
+        <script src="../../../../../../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../../../../../../_static/copybutton.js"></script>
+    <script src="../../../../../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../../../../../../index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../RsSmbv.html">RsSmbv API Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../../../../index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../../../../../../index.html">Module code</a> &raquo;</li>
+          <li><a href="../../../../../../Source.html">RsSmbv.Implementations.Source</a> &raquo;</li>
+          <li><a href="../../../../../Bb.html">RsSmbv.Implementations.Source.Bb</a> &raquo;</li>
+          <li><a href="../../../../Eutra.html">RsSmbv.Implementations.Source.Bb.Eutra</a> &raquo;</li>
+          <li><a href="../../../Downlink.html">RsSmbv.Implementations.Source.Bb.Eutra.Downlink</a> &raquo;</li>
+          <li><a href="../../Mbsfn.html">RsSmbv.Implementations.Source.Bb.Eutra.Downlink.Mbsfn</a> &raquo;</li>
+          <li><a href="../Ai.html">RsSmbv.Implementations.Source.Bb.Eutra.Downlink.Mbsfn.Ai</a> &raquo;</li>
+      <li>RsSmbv.Implementations.Source.Bb.Eutra.Downlink.Mbsfn.Ai.Mcch</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for RsSmbv.Implementations.Source.Bb.Eutra.Downlink.Mbsfn.Ai.Mcch</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">.........Internal.Core</span> <span class="kn">import</span> <span class="n">Core</span>
+<span class="kn">from</span> <span class="nn">.........Internal.CommandsGroup</span> <span class="kn">import</span> <span class="n">CommandsGroup</span>
+<span class="kn">from</span> <span class="nn">.........Internal</span> <span class="kn">import</span> <span class="n">Conversions</span>
+<span class="kn">from</span> <span class="nn">.........Internal.Utilities</span> <span class="kn">import</span> <span class="n">trim_str_response</span>
+<span class="kn">from</span> <span class="nn">.........</span> <span class="kn">import</span> <span class="n">enums</span>
+
+
+<span class="c1"># noinspection PyPep8Naming,PyAttributeOutsideInit,SpellCheckingInspection</span>
+<div class="viewcode-block" id="McchCls"><a class="viewcode-back" href="../../../../../../../../../Source_Bb_Eutra_Downlink_Mbsfn_Ai_Mcch.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.Mbsfn.Ai.Mcch.McchCls">[docs]</a><span class="k">class</span> <span class="nc">McchCls</span><span class="p">:</span>
+	<span class="sd">&quot;&quot;&quot;Mcch commands group definition. 15 total commands, 5 Subgroups, 10 group commands&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">core</span><span class="p">:</span> <span class="n">Core</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span> <span class="o">=</span> <span class="n">core</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span> <span class="o">=</span> <span class="n">CommandsGroup</span><span class="p">(</span><span class="s2">&quot;mcch&quot;</span><span class="p">,</span> <span class="n">core</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">aval</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;aval commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_aval&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Aval</span> <span class="kn">import</span> <span class="n">AvalCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_aval</span> <span class="o">=</span> <span class="n">AvalCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_aval</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">modulation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;modulation commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_modulation&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Modulation</span> <span class="kn">import</span> <span class="n">ModulationCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_modulation</span> <span class="o">=</span> <span class="n">ModulationCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_modulation</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">npattern</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;npattern commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_npattern&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Npattern</span> <span class="kn">import</span> <span class="n">NpatternCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_npattern</span> <span class="o">=</span> <span class="n">NpatternCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_npattern</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">pattern</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;pattern commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_pattern&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Pattern</span> <span class="kn">import</span> <span class="n">PatternCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_pattern</span> <span class="o">=</span> <span class="n">PatternCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pattern</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">tbSize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;tbSize commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_tbSize&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.TbSize</span> <span class="kn">import</span> <span class="n">TbSizeCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_tbSize</span> <span class="o">=</span> <span class="n">TbSizeCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tbSize</span>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="McchCls.get_data"><a class="viewcode-back" href="../../../../../../../../../Source_Bb_Eutra_Downlink_Mbsfn_Ai_Mcch.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.Mbsfn.Ai.Mcch.McchCls.get_data">[docs]</a>	<span class="k">def</span> <span class="nf">get_data</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">DataSourceA</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:MBSFn:AI:MCCH:DATA \n</span>
+<span class="sd">		Snippet: value: enums.DataSourceA = driver.source.bb.eutra.downlink.mbsfn.ai.mcch.get_data() \n</span>
+<span class="sd">		Sets the data source used for the MCCH. \n</span>
+<span class="sd">			:return: data_source: PN9| PN11| PN15| PN16| PN20| PN21| PN23| PATTern| DLISt| ZERO| ONE</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:MBSFn:AI:MCCH:DATA?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">DataSourceA</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="McchCls.set_data"><a class="viewcode-back" href="../../../../../../../../../Source_Bb_Eutra_Downlink_Mbsfn_Ai_Mcch.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.Mbsfn.Ai.Mcch.McchCls.set_data">[docs]</a>	<span class="k">def</span> <span class="nf">set_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_source</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">DataSourceA</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:MBSFn:AI:MCCH:DATA \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.downlink.mbsfn.ai.mcch.set_data(data_source = enums.DataSourceA.DLISt) \n</span>
+<span class="sd">		Sets the data source used for the MCCH. \n</span>
+<span class="sd">			:param data_source: PN9| PN11| PN15| PN16| PN20| PN21| PN23| PATTern| DLISt| ZERO| ONE</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">data_source</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">DataSourceA</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:MBSFn:AI:MCCH:DATA </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="McchCls.get_dlist"><a class="viewcode-back" href="../../../../../../../../../Source_Bb_Eutra_Downlink_Mbsfn_Ai_Mcch.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.Mbsfn.Ai.Mcch.McchCls.get_dlist">[docs]</a>	<span class="k">def</span> <span class="nf">get_dlist</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:MBSFn:AI:MCCH:DLISt \n</span>
+<span class="sd">		Snippet: value: str = driver.source.bb.eutra.downlink.mbsfn.ai.mcch.get_dlist() \n</span>
+<span class="sd">		Sets the data list used as data source for MCCH. \n</span>
+<span class="sd">			:return: data_list: string</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:MBSFn:AI:MCCH:DLISt?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">trim_str_response</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="McchCls.set_dlist"><a class="viewcode-back" href="../../../../../../../../../Source_Bb_Eutra_Downlink_Mbsfn_Ai_Mcch.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.Mbsfn.Ai.Mcch.McchCls.set_dlist">[docs]</a>	<span class="k">def</span> <span class="nf">set_dlist</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_list</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:MBSFn:AI:MCCH:DLISt \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.downlink.mbsfn.ai.mcch.set_dlist(data_list = &#39;abc&#39;) \n</span>
+<span class="sd">		Sets the data list used as data source for MCCH. \n</span>
+<span class="sd">			:param data_list: string</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">value_to_quoted_str</span><span class="p">(</span><span class="n">data_list</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:MBSFn:AI:MCCH:DLISt </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="McchCls.get_mcs"><a class="viewcode-back" href="../../../../../../../../../Source_Bb_Eutra_Downlink_Mbsfn_Ai_Mcch.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.Mbsfn.Ai.Mcch.McchCls.get_mcs">[docs]</a>	<span class="k">def</span> <span class="nf">get_mcs</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraMcchMcs</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:MBSFn:AI:MCCH:MCS \n</span>
+<span class="sd">		Snippet: value: enums.EutraMcchMcs = driver.source.bb.eutra.downlink.mbsfn.ai.mcch.get_mcs() \n</span>
+<span class="sd">		Defines the Modulation and Coding Scheme (MCS) applicable for the subframes indicated by the &#39;MCCH Allocation value&#39; and</span>
+<span class="sd">		for the first subframe of each MCH scheduling period (which may contain the MCH scheduling information provided by MAC) . \n</span>
+<span class="sd">			:return: mcs: MCS19| MCS13| MCS7| MCS2</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:MBSFn:AI:MCCH:MCS?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraMcchMcs</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="McchCls.set_mcs"><a class="viewcode-back" href="../../../../../../../../../Source_Bb_Eutra_Downlink_Mbsfn_Ai_Mcch.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.Mbsfn.Ai.Mcch.McchCls.set_mcs">[docs]</a>	<span class="k">def</span> <span class="nf">set_mcs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mcs</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraMcchMcs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:MBSFn:AI:MCCH:MCS \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.downlink.mbsfn.ai.mcch.set_mcs(mcs = enums.EutraMcchMcs.MCS13) \n</span>
+<span class="sd">		Defines the Modulation and Coding Scheme (MCS) applicable for the subframes indicated by the &#39;MCCH Allocation value&#39; and</span>
+<span class="sd">		for the first subframe of each MCH scheduling period (which may contain the MCH scheduling information provided by MAC) . \n</span>
+<span class="sd">			:param mcs: MCS19| MCS13| MCS7| MCS2</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">mcs</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraMcchMcs</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:MBSFn:AI:MCCH:MCS </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="McchCls.get_mper"><a class="viewcode-back" href="../../../../../../../../../Source_Bb_Eutra_Downlink_Mbsfn_Ai_Mcch.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.Mbsfn.Ai.Mcch.McchCls.get_mper">[docs]</a>	<span class="k">def</span> <span class="nf">get_mper</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraMcchModPer</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:MBSFn:AI:MCCH:MPER \n</span>
+<span class="sd">		Snippet: value: enums.EutraMcchModPer = driver.source.bb.eutra.downlink.mbsfn.ai.mcch.get_mper() \n</span>
+<span class="sd">		Sets the MCCH Modification Period. \n</span>
+<span class="sd">			:return: modif_period: MP512| MP1024</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:MBSFn:AI:MCCH:MPER?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraMcchModPer</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="McchCls.set_mper"><a class="viewcode-back" href="../../../../../../../../../Source_Bb_Eutra_Downlink_Mbsfn_Ai_Mcch.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.Mbsfn.Ai.Mcch.McchCls.set_mper">[docs]</a>	<span class="k">def</span> <span class="nf">set_mper</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">modif_period</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraMcchModPer</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:MBSFn:AI:MCCH:MPER \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.downlink.mbsfn.ai.mcch.set_mper(modif_period = enums.EutraMcchModPer.MP1024) \n</span>
+<span class="sd">		Sets the MCCH Modification Period. \n</span>
+<span class="sd">			:param modif_period: MP512| MP1024</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">modif_period</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraMcchModPer</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:MBSFn:AI:MCCH:MPER </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="McchCls.get_noffset"><a class="viewcode-back" href="../../../../../../../../../Source_Bb_Eutra_Downlink_Mbsfn_Ai_Mcch.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.Mbsfn.Ai.Mcch.McchCls.get_noffset">[docs]</a>	<span class="k">def</span> <span class="nf">get_noffset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:MBSFn:AI:MCCH:NOFFset \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.eutra.downlink.mbsfn.ai.mcch.get_noffset() \n</span>
+<span class="sd">		Defines, together with the [:SOURce&lt;hw&gt;]:BB:EUTRa:DL:MBSFn:AI:MCCH:NRC, the radio frames in which the MCCH information</span>
+<span class="sd">		change notification is scheduled. \n</span>
+<span class="sd">			:return: notif_offset: integer Range: 0 to 10</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:MBSFn:AI:MCCH:NOFFset?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="McchCls.set_noffset"><a class="viewcode-back" href="../../../../../../../../../Source_Bb_Eutra_Downlink_Mbsfn_Ai_Mcch.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.Mbsfn.Ai.Mcch.McchCls.set_noffset">[docs]</a>	<span class="k">def</span> <span class="nf">set_noffset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">notif_offset</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:MBSFn:AI:MCCH:NOFFset \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.downlink.mbsfn.ai.mcch.set_noffset(notif_offset = 1) \n</span>
+<span class="sd">		Defines, together with the [:SOURce&lt;hw&gt;]:BB:EUTRa:DL:MBSFn:AI:MCCH:NRC, the radio frames in which the MCCH information</span>
+<span class="sd">		change notification is scheduled. \n</span>
+<span class="sd">			:param notif_offset: integer Range: 0 to 10</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">notif_offset</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:MBSFn:AI:MCCH:NOFFset </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="McchCls.get_nrc"><a class="viewcode-back" href="../../../../../../../../../Source_Bb_Eutra_Downlink_Mbsfn_Ai_Mcch.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.Mbsfn.Ai.Mcch.McchCls.get_nrc">[docs]</a>	<span class="k">def</span> <span class="nf">get_nrc</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraMbsfnNotRepCoef</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:MBSFn:AI:MCCH:NRC \n</span>
+<span class="sd">		Snippet: value: enums.EutraMbsfnNotRepCoef = driver.source.bb.eutra.downlink.mbsfn.ai.mcch.get_nrc() \n</span>
+<span class="sd">		Selects the current change notification repetition period common for all MCCHs that are configured. \n</span>
+<span class="sd">			:return: notif_repet_coeff: NRC2| NRC4</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:MBSFn:AI:MCCH:NRC?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraMbsfnNotRepCoef</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="McchCls.set_nrc"><a class="viewcode-back" href="../../../../../../../../../Source_Bb_Eutra_Downlink_Mbsfn_Ai_Mcch.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.Mbsfn.Ai.Mcch.McchCls.set_nrc">[docs]</a>	<span class="k">def</span> <span class="nf">set_nrc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">notif_repet_coeff</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraMbsfnNotRepCoef</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:MBSFn:AI:MCCH:NRC \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.downlink.mbsfn.ai.mcch.set_nrc(notif_repet_coeff = enums.EutraMbsfnNotRepCoef.NRC2) \n</span>
+<span class="sd">		Selects the current change notification repetition period common for all MCCHs that are configured. \n</span>
+<span class="sd">			:param notif_repet_coeff: NRC2| NRC4</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">notif_repet_coeff</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraMbsfnNotRepCoef</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:MBSFn:AI:MCCH:NRC </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="McchCls.get_nsi"><a class="viewcode-back" href="../../../../../../../../../Source_Bb_Eutra_Downlink_Mbsfn_Ai_Mcch.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.Mbsfn.Ai.Mcch.McchCls.get_nsi">[docs]</a>	<span class="k">def</span> <span class="nf">get_nsi</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:MBSFn:AI:MCCH:NSI \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.eutra.downlink.mbsfn.ai.mcch.get_nsi() \n</span>
+<span class="sd">		Defines the subframe used to transmit MCCH change notifications on PDCCH. \n</span>
+<span class="sd">			:return: index: integer In FDD: values 1 to 6 correspond with subframes #1, #2, #3, #6, #7 and #8 In TDD: values 1 to 5 correspond with subframe #3, #4, #7, #8 and #9 Range: 1 to dynamic</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:MBSFn:AI:MCCH:NSI?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="McchCls.set_nsi"><a class="viewcode-back" href="../../../../../../../../../Source_Bb_Eutra_Downlink_Mbsfn_Ai_Mcch.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.Mbsfn.Ai.Mcch.McchCls.set_nsi">[docs]</a>	<span class="k">def</span> <span class="nf">set_nsi</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:MBSFn:AI:MCCH:NSI \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.downlink.mbsfn.ai.mcch.set_nsi(index = 1) \n</span>
+<span class="sd">		Defines the subframe used to transmit MCCH change notifications on PDCCH. \n</span>
+<span class="sd">			:param index: integer In FDD: values 1 to 6 correspond with subframes #1, #2, #3, #6, #7 and #8 In TDD: values 1 to 5 correspond with subframe #3, #4, #7, #8 and #9 Range: 1 to dynamic</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:MBSFn:AI:MCCH:NSI </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="McchCls.get_offs"><a class="viewcode-back" href="../../../../../../../../../Source_Bb_Eutra_Downlink_Mbsfn_Ai_Mcch.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.Mbsfn.Ai.Mcch.McchCls.get_offs">[docs]</a>	<span class="k">def</span> <span class="nf">get_offs</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:MBSFn:AI:MCCH:OFFS \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.eutra.downlink.mbsfn.ai.mcch.get_offs() \n</span>
+<span class="sd">		Indicates, together with the [:SOURce&lt;hw&gt;]:BB:EUTRa:DL:MBSFn:AI:MCCH:RPER, the radio frames in which MCCH is scheduled. \n</span>
+<span class="sd">			:return: mcch_offset: integer Range: 0 to 10</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:MBSFn:AI:MCCH:OFFS?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="McchCls.set_offs"><a class="viewcode-back" href="../../../../../../../../../Source_Bb_Eutra_Downlink_Mbsfn_Ai_Mcch.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.Mbsfn.Ai.Mcch.McchCls.set_offs">[docs]</a>	<span class="k">def</span> <span class="nf">set_offs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mcch_offset</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:MBSFn:AI:MCCH:OFFS \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.downlink.mbsfn.ai.mcch.set_offs(mcch_offset = 1) \n</span>
+<span class="sd">		Indicates, together with the [:SOURce&lt;hw&gt;]:BB:EUTRa:DL:MBSFn:AI:MCCH:RPER, the radio frames in which MCCH is scheduled. \n</span>
+<span class="sd">			:param mcch_offset: integer Range: 0 to 10</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">mcch_offset</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:MBSFn:AI:MCCH:OFFS </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="McchCls.get_rper"><a class="viewcode-back" href="../../../../../../../../../Source_Bb_Eutra_Downlink_Mbsfn_Ai_Mcch.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.Mbsfn.Ai.Mcch.McchCls.get_rper">[docs]</a>	<span class="k">def</span> <span class="nf">get_rper</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraMcchRepPer</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:MBSFn:AI:MCCH:RPER \n</span>
+<span class="sd">		Snippet: value: enums.EutraMcchRepPer = driver.source.bb.eutra.downlink.mbsfn.ai.mcch.get_rper() \n</span>
+<span class="sd">		Defines the interval between transmissions of MCCH information in radio frames. \n</span>
+<span class="sd">			:return: repet_period: RP64| RP32| RP128| RP256</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:MBSFn:AI:MCCH:RPER?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraMcchRepPer</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="McchCls.set_rper"><a class="viewcode-back" href="../../../../../../../../../Source_Bb_Eutra_Downlink_Mbsfn_Ai_Mcch.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.Mbsfn.Ai.Mcch.McchCls.set_rper">[docs]</a>	<span class="k">def</span> <span class="nf">set_rper</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">repet_period</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraMcchRepPer</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:MBSFn:AI:MCCH:RPER \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.downlink.mbsfn.ai.mcch.set_rper(repet_period = enums.EutraMcchRepPer.RP128) \n</span>
+<span class="sd">		Defines the interval between transmissions of MCCH information in radio frames. \n</span>
+<span class="sd">			:param repet_period: RP64| RP32| RP128| RP256</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">repet_period</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraMcchRepPer</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:MBSFn:AI:MCCH:RPER </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="McchCls.get_state"><a class="viewcode-back" href="../../../../../../../../../Source_Bb_Eutra_Downlink_Mbsfn_Ai_Mcch.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.Mbsfn.Ai.Mcch.McchCls.get_state">[docs]</a>	<span class="k">def</span> <span class="nf">get_state</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:MBSFn:AI:MCCH:STATe \n</span>
+<span class="sd">		Snippet: value: bool = driver.source.bb.eutra.downlink.mbsfn.ai.mcch.get_state() \n</span>
+<span class="sd">		Enables/disables the MCCH. \n</span>
+<span class="sd">			:return: mcch_state: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:MBSFn:AI:MCCH:STATe?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_bool</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="McchCls.set_state"><a class="viewcode-back" href="../../../../../../../../../Source_Bb_Eutra_Downlink_Mbsfn_Ai_Mcch.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.Mbsfn.Ai.Mcch.McchCls.set_state">[docs]</a>	<span class="k">def</span> <span class="nf">set_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mcch_state</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:MBSFn:AI:MCCH:STATe \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.downlink.mbsfn.ai.mcch.set_state(mcch_state = False) \n</span>
+<span class="sd">		Enables/disables the MCCH. \n</span>
+<span class="sd">			:param mcch_state: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">bool_to_str</span><span class="p">(</span><span class="n">mcch_state</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:MBSFn:AI:MCCH:STATe </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;McchCls&#39;</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Clones the group by creating new object from it and its whole existing subgroups</span>
+<span class="sd">		Also copies all the existing default Repeated Capabilities setting,</span>
+<span class="sd">		which you can change independently without affecting the original group&quot;&quot;&quot;</span>
+		<span class="n">new_group</span> <span class="o">=</span> <span class="n">McchCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">synchronize_repcaps</span><span class="p">(</span><span class="n">new_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">new_group</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

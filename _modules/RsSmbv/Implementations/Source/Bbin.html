@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RsSmbv.Implementations.Source.Bbin &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../_static/copybutton.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../RsSmbv.html">RsSmbv API Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+          <li><a href="../Source.html">RsSmbv.Implementations.Source</a> &raquo;</li>
+      <li>RsSmbv.Implementations.Source.Bbin</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for RsSmbv.Implementations.Source.Bbin</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">....Internal.Core</span> <span class="kn">import</span> <span class="n">Core</span>
+<span class="kn">from</span> <span class="nn">....Internal.CommandsGroup</span> <span class="kn">import</span> <span class="n">CommandsGroup</span>
+<span class="kn">from</span> <span class="nn">....Internal</span> <span class="kn">import</span> <span class="n">Conversions</span>
+<span class="kn">from</span> <span class="nn">....Internal.Utilities</span> <span class="kn">import</span> <span class="n">trim_str_response</span>
+<span class="kn">from</span> <span class="nn">....</span> <span class="kn">import</span> <span class="n">enums</span>
+
+
+<span class="c1"># noinspection PyPep8Naming,PyAttributeOutsideInit,SpellCheckingInspection</span>
+<div class="viewcode-block" id="BbinCls"><a class="viewcode-back" href="../../../../Source_Bbin.html#RsSmbv.Implementations.Source.Bbin.BbinCls">[docs]</a><span class="k">class</span> <span class="nc">BbinCls</span><span class="p">:</span>
+	<span class="sd">&quot;&quot;&quot;Bbin commands group definition. 30 total commands, 7 Subgroups, 9 group commands&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">core</span><span class="p">:</span> <span class="n">Core</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span> <span class="o">=</span> <span class="n">core</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span> <span class="o">=</span> <span class="n">CommandsGroup</span><span class="p">(</span><span class="s2">&quot;bbin&quot;</span><span class="p">,</span> <span class="n">core</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">alevel</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;alevel commands group. 1 Sub-classes, 0 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_alevel&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Alevel</span> <span class="kn">import</span> <span class="n">AlevelCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_alevel</span> <span class="o">=</span> <span class="n">AlevelCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_alevel</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">channel</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;channel commands group. 4 Sub-classes, 0 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_channel&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Channel</span> <span class="kn">import</span> <span class="n">ChannelCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_channel</span> <span class="o">=</span> <span class="n">ChannelCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_channel</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">digital</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;digital commands group. 1 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_digital&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Digital</span> <span class="kn">import</span> <span class="n">DigitalCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_digital</span> <span class="o">=</span> <span class="n">DigitalCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_digital</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">iqswap</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;iqswap commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_iqswap&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Iqswap</span> <span class="kn">import</span> <span class="n">IqswapCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_iqswap</span> <span class="o">=</span> <span class="n">IqswapCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_iqswap</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">oload</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;oload commands group. 1 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_oload&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Oload</span> <span class="kn">import</span> <span class="n">OloadCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_oload</span> <span class="o">=</span> <span class="n">OloadCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_oload</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">power</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;power commands group. 0 Sub-classes, 3 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_power&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Power</span> <span class="kn">import</span> <span class="n">PowerCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_power</span> <span class="o">=</span> <span class="n">PowerCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_power</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">symbolRate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;symbolRate commands group. 0 Sub-classes, 4 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_symbolRate&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.SymbolRate</span> <span class="kn">import</span> <span class="n">SymbolRateCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_symbolRate</span> <span class="o">=</span> <span class="n">SymbolRateCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_symbolRate</span>
+
+<div class="viewcode-block" id="BbinCls.get_cdevice"><a class="viewcode-back" href="../../../../Source_Bbin.html#RsSmbv.Implementations.Source.Bbin.BbinCls.get_cdevice">[docs]</a>	<span class="k">def</span> <span class="nf">get_cdevice</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BBIN:CDEVice \n</span>
+<span class="sd">		Snippet: value: str = driver.source.bbin.get_cdevice() \n</span>
+<span class="sd">		Indicates the ID of an externally connected Rohde &amp; Schwarz Instrument or Rohde &amp; Schwarz device. \n</span>
+<span class="sd">			:return: cdevice: string &#39;None&#39; - no device is connected.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BBIN:CDEVice?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">trim_str_response</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="BbinCls.get_cfactor"><a class="viewcode-back" href="../../../../Source_Bbin.html#RsSmbv.Implementations.Source.Bbin.BbinCls.get_cfactor">[docs]</a>	<span class="k">def</span> <span class="nf">get_cfactor</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BBIN:CFACtor \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bbin.get_cfactor() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: cfactor: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BBIN:CFACtor?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="BbinCls.set_cfactor"><a class="viewcode-back" href="../../../../Source_Bbin.html#RsSmbv.Implementations.Source.Bbin.BbinCls.set_cfactor">[docs]</a>	<span class="k">def</span> <span class="nf">set_cfactor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cfactor</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BBIN:CFACtor \n</span>
+<span class="sd">		Snippet: driver.source.bbin.set_cfactor(cfactor = 1.0) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param cfactor: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">cfactor</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BBIN:CFACtor </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="BbinCls.get_foffset"><a class="viewcode-back" href="../../../../Source_Bbin.html#RsSmbv.Implementations.Source.Bbin.BbinCls.get_foffset">[docs]</a>	<span class="k">def</span> <span class="nf">get_foffset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BBIN:FOFFset \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bbin.get_foffset() \n</span>
+<span class="sd">		Sets a frequency offset for the internal/external baseband signal. The offset affects the generated baseband signal. \n</span>
+<span class="sd">			:return: foffset: float Range: depends on the installed options , Unit: Hz E.g. -60 MHz to +60 MHz (base unit)</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BBIN:FOFFset?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="BbinCls.set_foffset"><a class="viewcode-back" href="../../../../Source_Bbin.html#RsSmbv.Implementations.Source.Bbin.BbinCls.set_foffset">[docs]</a>	<span class="k">def</span> <span class="nf">set_foffset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">foffset</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BBIN:FOFFset \n</span>
+<span class="sd">		Snippet: driver.source.bbin.set_foffset(foffset = 1.0) \n</span>
+<span class="sd">		Sets a frequency offset for the internal/external baseband signal. The offset affects the generated baseband signal. \n</span>
+<span class="sd">			:param foffset: float Range: depends on the installed options , Unit: Hz E.g. -60 MHz to +60 MHz (base unit)</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">foffset</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BBIN:FOFFset </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="BbinCls.get_mode"><a class="viewcode-back" href="../../../../Source_Bbin.html#RsSmbv.Implementations.Source.Bbin.BbinCls.get_mode">[docs]</a>	<span class="k">def</span> <span class="nf">get_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">BbinModeDigital</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BBIN:MODE \n</span>
+<span class="sd">		Snippet: value: enums.BbinModeDigital = driver.source.bbin.get_mode() \n</span>
+<span class="sd">		Defines that a digital external signal is applied. \n</span>
+<span class="sd">			:return: mode: DIGital</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BBIN:MODE?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">BbinModeDigital</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="BbinCls.set_mode"><a class="viewcode-back" href="../../../../Source_Bbin.html#RsSmbv.Implementations.Source.Bbin.BbinCls.set_mode">[docs]</a>	<span class="k">def</span> <span class="nf">set_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">BbinModeDigital</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BBIN:MODE \n</span>
+<span class="sd">		Snippet: driver.source.bbin.set_mode(mode = enums.BbinModeDigital.DIGital) \n</span>
+<span class="sd">		Defines that a digital external signal is applied. \n</span>
+<span class="sd">			:param mode: DIGital</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">mode</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">BbinModeDigital</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BBIN:MODE </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="BbinCls.get_mperiod"><a class="viewcode-back" href="../../../../Source_Bbin.html#RsSmbv.Implementations.Source.Bbin.BbinCls.get_mperiod">[docs]</a>	<span class="k">def</span> <span class="nf">get_mperiod</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BBIN:MPERiod \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bbin.get_mperiod() \n</span>
+<span class="sd">		Sets the recording duration for measuring the baseband input signal by executed [:SOURce&lt;hw&gt;]:BBIN:ALEVel:EXECute. \n</span>
+<span class="sd">			:return: mperiod: integer Range: 1 to 32, Unit: s</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BBIN:MPERiod?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="BbinCls.set_mperiod"><a class="viewcode-back" href="../../../../Source_Bbin.html#RsSmbv.Implementations.Source.Bbin.BbinCls.set_mperiod">[docs]</a>	<span class="k">def</span> <span class="nf">set_mperiod</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mperiod</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BBIN:MPERiod \n</span>
+<span class="sd">		Snippet: driver.source.bbin.set_mperiod(mperiod = 1) \n</span>
+<span class="sd">		Sets the recording duration for measuring the baseband input signal by executed [:SOURce&lt;hw&gt;]:BBIN:ALEVel:EXECute. \n</span>
+<span class="sd">			:param mperiod: integer Range: 1 to 32, Unit: s</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">mperiod</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BBIN:MPERiod </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="BbinCls.get_pgain"><a class="viewcode-back" href="../../../../Source_Bbin.html#RsSmbv.Implementations.Source.Bbin.BbinCls.get_pgain">[docs]</a>	<span class="k">def</span> <span class="nf">get_pgain</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BBIN:PGAin \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bbin.get_pgain() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: pgain: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BBIN:PGAin?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="BbinCls.set_pgain"><a class="viewcode-back" href="../../../../Source_Bbin.html#RsSmbv.Implementations.Source.Bbin.BbinCls.set_pgain">[docs]</a>	<span class="k">def</span> <span class="nf">set_pgain</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pgain</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BBIN:PGAin \n</span>
+<span class="sd">		Snippet: driver.source.bbin.set_pgain(pgain = 1.0) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param pgain: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">pgain</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BBIN:PGAin </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="BbinCls.get_poffset"><a class="viewcode-back" href="../../../../Source_Bbin.html#RsSmbv.Implementations.Source.Bbin.BbinCls.get_poffset">[docs]</a>	<span class="k">def</span> <span class="nf">get_poffset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BBIN:POFFset \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bbin.get_poffset() \n</span>
+<span class="sd">		Sets the relative phase offset for the external baseband signal. \n</span>
+<span class="sd">			:return: poffset: float Range: -999.99 to 999.99, Unit: DEG</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BBIN:POFFset?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="BbinCls.set_poffset"><a class="viewcode-back" href="../../../../Source_Bbin.html#RsSmbv.Implementations.Source.Bbin.BbinCls.set_poffset">[docs]</a>	<span class="k">def</span> <span class="nf">set_poffset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">poffset</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BBIN:POFFset \n</span>
+<span class="sd">		Snippet: driver.source.bbin.set_poffset(poffset = 1.0) \n</span>
+<span class="sd">		Sets the relative phase offset for the external baseband signal. \n</span>
+<span class="sd">			:param poffset: float Range: -999.99 to 999.99, Unit: DEG</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">poffset</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BBIN:POFFset </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="BbinCls.get_route"><a class="viewcode-back" href="../../../../Source_Bbin.html#RsSmbv.Implementations.Source.Bbin.BbinCls.get_route">[docs]</a>	<span class="k">def</span> <span class="nf">get_route</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">PathUniCodBbin</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BBIN:ROUTe \n</span>
+<span class="sd">		Snippet: value: enums.PathUniCodBbin = driver.source.bbin.get_route() \n</span>
+<span class="sd">		Selects the signal route for the internal/external baseband signal. \n</span>
+<span class="sd">			:return: route: A</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BBIN:ROUTe?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">PathUniCodBbin</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="BbinCls.set_route"><a class="viewcode-back" href="../../../../Source_Bbin.html#RsSmbv.Implementations.Source.Bbin.BbinCls.set_route">[docs]</a>	<span class="k">def</span> <span class="nf">set_route</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">route</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">PathUniCodBbin</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BBIN:ROUTe \n</span>
+<span class="sd">		Snippet: driver.source.bbin.set_route(route = enums.PathUniCodBbin.A) \n</span>
+<span class="sd">		Selects the signal route for the internal/external baseband signal. \n</span>
+<span class="sd">			:param route: A</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">route</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">PathUniCodBbin</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BBIN:ROUTe </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="BbinCls.get_state"><a class="viewcode-back" href="../../../../Source_Bbin.html#RsSmbv.Implementations.Source.Bbin.BbinCls.get_state">[docs]</a>	<span class="k">def</span> <span class="nf">get_state</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BBIN:STATe \n</span>
+<span class="sd">		Snippet: value: bool = driver.source.bbin.get_state() \n</span>
+<span class="sd">		Enables feeding of an external digital signal into the signal path. Note: Interdependencies</span>
+<span class="sd">			INTRO_CMD_HELP: The following functions cannot be activated simultaneously. They deactivate each other. \n</span>
+<span class="sd">			- The internal baseband generator ([:SOURce&lt;hw&gt;]:BB:&lt;DigStd&gt;:STATe) and the external digital baseband input ([:SOURce&lt;hw&gt;]:BBIN:STATe)</span>
+<span class="sd">			- The external digital baseband input ([:SOURce&lt;hw&gt;]:BBIN:STATe) and digital output ([:SOURce&lt;hw&gt;]:IQ:OUTPut:DIGital:STATe) because they share the same physical connectors (Dig I/Q and the HS Dig I/Q) .</span>
+<span class="sd">			- The digital output ([:SOURce&lt;hw&gt;]:IQ:OUTPut:DIGital:STATe) and the output of analog I/Q signals:</span>
+<span class="sd">			Table Header:  \n</span>
+<span class="sd">			- If [:SOURce&lt;hw&gt;]:IQ:SOURce BASeband, [:SOURce&lt;hw&gt;]:IQ:STATe + OUTPut&lt;hw&gt;:STATe or</span>
+<span class="sd">			- [:SOURce&lt;hw&gt;]:IQ:OUTPut:ANALog:STATe \n</span>
+<span class="sd">			:return: state: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BBIN:STATe?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_bool</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="BbinCls.set_state"><a class="viewcode-back" href="../../../../Source_Bbin.html#RsSmbv.Implementations.Source.Bbin.BbinCls.set_state">[docs]</a>	<span class="k">def</span> <span class="nf">set_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BBIN:STATe \n</span>
+<span class="sd">		Snippet: driver.source.bbin.set_state(state = False) \n</span>
+<span class="sd">		Enables feeding of an external digital signal into the signal path. Note: Interdependencies</span>
+<span class="sd">			INTRO_CMD_HELP: The following functions cannot be activated simultaneously. They deactivate each other. \n</span>
+<span class="sd">			- The internal baseband generator ([:SOURce&lt;hw&gt;]:BB:&lt;DigStd&gt;:STATe) and the external digital baseband input ([:SOURce&lt;hw&gt;]:BBIN:STATe)</span>
+<span class="sd">			- The external digital baseband input ([:SOURce&lt;hw&gt;]:BBIN:STATe) and digital output ([:SOURce&lt;hw&gt;]:IQ:OUTPut:DIGital:STATe) because they share the same physical connectors (Dig I/Q and the HS Dig I/Q) .</span>
+<span class="sd">			- The digital output ([:SOURce&lt;hw&gt;]:IQ:OUTPut:DIGital:STATe) and the output of analog I/Q signals:</span>
+<span class="sd">			Table Header:  \n</span>
+<span class="sd">			- If [:SOURce&lt;hw&gt;]:IQ:SOURce BASeband, [:SOURce&lt;hw&gt;]:IQ:STATe + OUTPut&lt;hw&gt;:STATe or</span>
+<span class="sd">			- [:SOURce&lt;hw&gt;]:IQ:OUTPut:ANALog:STATe \n</span>
+<span class="sd">			:param state: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">bool_to_str</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BBIN:STATe </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;BbinCls&#39;</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Clones the group by creating new object from it and its whole existing subgroups</span>
+<span class="sd">		Also copies all the existing default Repeated Capabilities setting,</span>
+<span class="sd">		which you can change independently without affecting the original group&quot;&quot;&quot;</span>
+		<span class="n">new_group</span> <span class="o">=</span> <span class="n">BbinCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">synchronize_repcaps</span><span class="p">(</span><span class="n">new_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">new_group</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

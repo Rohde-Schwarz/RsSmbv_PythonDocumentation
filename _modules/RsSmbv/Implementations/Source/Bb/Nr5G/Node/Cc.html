@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RsSmbv.Implementations.Source.Bb.Nr5G.Node.Cc &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../../../../" id="documentation_options" src="../../../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../../../_static/jquery.js"></script>
+        <script src="../../../../../../../_static/underscore.js"></script>
+        <script src="../../../../../../../_static/doctools.js"></script>
+        <script src="../../../../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../../../../_static/copybutton.js"></script>
+    <script src="../../../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../../../../index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../RsSmbv.html">RsSmbv API Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../../index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../../../../index.html">Module code</a> &raquo;</li>
+          <li><a href="../../../../Source.html">RsSmbv.Implementations.Source</a> &raquo;</li>
+          <li><a href="../../../Bb.html">RsSmbv.Implementations.Source.Bb</a> &raquo;</li>
+          <li><a href="../../Nr5G.html">RsSmbv.Implementations.Source.Bb.Nr5G</a> &raquo;</li>
+          <li><a href="../Node.html">RsSmbv.Implementations.Source.Bb.Nr5G.Node</a> &raquo;</li>
+      <li>RsSmbv.Implementations.Source.Bb.Nr5G.Node.Cc</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for RsSmbv.Implementations.Source.Bb.Nr5G.Node.Cc</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">.......Internal.Core</span> <span class="kn">import</span> <span class="n">Core</span>
+<span class="kn">from</span> <span class="nn">.......Internal.CommandsGroup</span> <span class="kn">import</span> <span class="n">CommandsGroup</span>
+<span class="kn">from</span> <span class="nn">.......Internal</span> <span class="kn">import</span> <span class="n">Conversions</span>
+<span class="kn">from</span> <span class="nn">.......Internal.Utilities</span> <span class="kn">import</span> <span class="n">trim_str_response</span>
+<span class="kn">from</span> <span class="nn">.......</span> <span class="kn">import</span> <span class="n">enums</span>
+
+
+<span class="c1"># noinspection PyPep8Naming,PyAttributeOutsideInit,SpellCheckingInspection</span>
+<div class="viewcode-block" id="CcCls"><a class="viewcode-back" href="../../../../../../../Source_Bb_Nr5G_Node_Cc.html#RsSmbv.Implementations.Source.Bb.Nr5G.Node.Cc.CcCls">[docs]</a><span class="k">class</span> <span class="nc">CcCls</span><span class="p">:</span>
+	<span class="sd">&quot;&quot;&quot;Cc commands group definition. 7 total commands, 1 Subgroups, 6 group commands&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">core</span><span class="p">:</span> <span class="n">Core</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span> <span class="o">=</span> <span class="n">core</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span> <span class="o">=</span> <span class="n">CommandsGroup</span><span class="p">(</span><span class="s2">&quot;cc&quot;</span><span class="p">,</span> <span class="n">core</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;add commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_add&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Add</span> <span class="kn">import</span> <span class="n">AddCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_add</span> <span class="o">=</span> <span class="n">AddCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_add</span>
+
+<div class="viewcode-block" id="CcCls.get_cinfo"><a class="viewcode-back" href="../../../../../../../Source_Bb_Nr5G_Node_Cc.html#RsSmbv.Implementations.Source.Bb.Nr5G.Node.Cc.CcCls.get_cinfo">[docs]</a>	<span class="k">def</span> <span class="nf">get_cinfo</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:NODE:CC:CINFo \n</span>
+<span class="sd">		Snippet: value: str = driver.source.bb.nr5G.node.cc.get_cinfo() \n</span>
+<span class="sd">		Queries basic information about the carrier you want to duplicate.</span>
+<span class="sd">			INTRO_CMD_HELP: Prerequisites for this command \n</span>
+<span class="sd">			- Select a file as the source of the new carrier ([:SOURce&lt;hw&gt;]:BB:NR5G:NODE:CC:CPYSel) . \n</span>
+<span class="sd">			:return: sel_carrier_info: string String containing the information about the carrier.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:NODE:CC:CINFo?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">trim_str_response</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CcCls.get_cpy_from"><a class="viewcode-back" href="../../../../../../../Source_Bb_Nr5G_Node_Cc.html#RsSmbv.Implementations.Source.Bb.Nr5G.Node.Cc.CcCls.get_cpy_from">[docs]</a>	<span class="k">def</span> <span class="nf">get_cpy_from</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:NODE:CC:CPYFrom \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.nr5G.node.cc.get_cpy_from() \n</span>
+<span class="sd">		Selects the carrier you want to duplicate.</span>
+<span class="sd">			INTRO_CMD_HELP: Prerequisites for this command \n</span>
+<span class="sd">			- Selecting a carrier is only possible if there are more than one carrier in the table or in the configuration file. \n</span>
+<span class="sd">			:return: copy_from: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:NODE:CC:CPYFrom?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CcCls.set_cpy_from"><a class="viewcode-back" href="../../../../../../../Source_Bb_Nr5G_Node_Cc.html#RsSmbv.Implementations.Source.Bb.Nr5G.Node.Cc.CcCls.set_cpy_from">[docs]</a>	<span class="k">def</span> <span class="nf">set_cpy_from</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">copy_from</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:NODE:CC:CPYFrom \n</span>
+<span class="sd">		Snippet: driver.source.bb.nr5G.node.cc.set_cpy_from(copy_from = 1) \n</span>
+<span class="sd">		Selects the carrier you want to duplicate.</span>
+<span class="sd">			INTRO_CMD_HELP: Prerequisites for this command \n</span>
+<span class="sd">			- Selecting a carrier is only possible if there are more than one carrier in the table or in the configuration file. \n</span>
+<span class="sd">			:param copy_from: integer Range: 0 to 15</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">copy_from</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:NODE:CC:CPYFrom </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="CcCls.get_cpy_sel"><a class="viewcode-back" href="../../../../../../../Source_Bb_Nr5G_Node_Cc.html#RsSmbv.Implementations.Source.Bb.Nr5G.Node.Cc.CcCls.get_cpy_sel">[docs]</a>	<span class="k">def</span> <span class="nf">get_cpy_sel</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">CopySelection</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:NODE:CC:CPYSel \n</span>
+<span class="sd">		Snippet: value: enums.CopySelection = driver.source.bb.nr5G.node.cc.get_cpy_sel() \n</span>
+<span class="sd">		Selects the source of a carrier that you want to create based on an existing carrier. \n</span>
+<span class="sd">			:return: copy_selection: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:NODE:CC:CPYSel?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">CopySelection</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CcCls.set_cpy_sel"><a class="viewcode-back" href="../../../../../../../Source_Bb_Nr5G_Node_Cc.html#RsSmbv.Implementations.Source.Bb.Nr5G.Node.Cc.CcCls.set_cpy_sel">[docs]</a>	<span class="k">def</span> <span class="nf">set_cpy_sel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">copy_selection</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">CopySelection</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:NODE:CC:CPYSel \n</span>
+<span class="sd">		Snippet: driver.source.bb.nr5G.node.cc.set_cpy_sel(copy_selection = enums.CopySelection.CARRier) \n</span>
+<span class="sd">		Selects the source of a carrier that you want to create based on an existing carrier. \n</span>
+<span class="sd">			:param copy_selection: CARRier Carrier from the current carrier table. LOADfile Carrier from a previously saved signal configuration (.nr5g file) .</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">copy_selection</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">CopySelection</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:NODE:CC:CPYSel </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CcCls.get_cpy_to"><a class="viewcode-back" href="../../../../../../../Source_Bb_Nr5G_Node_Cc.html#RsSmbv.Implementations.Source.Bb.Nr5G.Node.Cc.CcCls.get_cpy_to">[docs]</a>	<span class="k">def</span> <span class="nf">get_cpy_to</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:NODE:CC:CPYTo \n</span>
+<span class="sd">		Snippet: value: str = driver.source.bb.nr5G.node.cc.get_cpy_to() \n</span>
+<span class="sd">		Queries the index number the new carriers are created with. \n</span>
+<span class="sd">			:return: copy_from: string String containing the number of the new carriers.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:NODE:CC:CPYTo?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">trim_str_response</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CcCls.get_load"><a class="viewcode-back" href="../../../../../../../Source_Bb_Nr5G_Node_Cc.html#RsSmbv.Implementations.Source.Bb.Nr5G.Node.Cc.CcCls.get_load">[docs]</a>	<span class="k">def</span> <span class="nf">get_load</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:NODE:CC:LOAD \n</span>
+<span class="sd">		Snippet: value: str = driver.source.bb.nr5G.node.cc.get_load() \n</span>
+<span class="sd">		Selects a file containing an existing carrier you want to duplicate.</span>
+<span class="sd">			INTRO_CMD_HELP: Prerequisites for this command \n</span>
+<span class="sd">			- Select a file as the source of the new carrier ([:SOURce&lt;hw&gt;]:BB:NR5G:NODE:CC:CPYSel) . \n</span>
+<span class="sd">			:return: filename: string String containing the file name.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:NODE:CC:LOAD?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">trim_str_response</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CcCls.set_load"><a class="viewcode-back" href="../../../../../../../Source_Bb_Nr5G_Node_Cc.html#RsSmbv.Implementations.Source.Bb.Nr5G.Node.Cc.CcCls.set_load">[docs]</a>	<span class="k">def</span> <span class="nf">set_load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:NODE:CC:LOAD \n</span>
+<span class="sd">		Snippet: driver.source.bb.nr5G.node.cc.set_load(filename = &#39;abc&#39;) \n</span>
+<span class="sd">		Selects a file containing an existing carrier you want to duplicate.</span>
+<span class="sd">			INTRO_CMD_HELP: Prerequisites for this command \n</span>
+<span class="sd">			- Select a file as the source of the new carrier ([:SOURce&lt;hw&gt;]:BB:NR5G:NODE:CC:CPYSel) . \n</span>
+<span class="sd">			:param filename: string String containing the file name.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">value_to_quoted_str</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:NODE:CC:LOAD </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CcCls.get_new_carriers"><a class="viewcode-back" href="../../../../../../../Source_Bb_Nr5G_Node_Cc.html#RsSmbv.Implementations.Source.Bb.Nr5G.Node.Cc.CcCls.get_new_carriers">[docs]</a>	<span class="k">def</span> <span class="nf">get_new_carriers</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:NODE:CC:NEWCarriers \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.nr5G.node.cc.get_new_carriers() \n</span>
+<span class="sd">		Defines the number of carriers you want to create based on an existing carrier. \n</span>
+<span class="sd">			:return: num_of_new: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:NODE:CC:NEWCarriers?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CcCls.set_new_carriers"><a class="viewcode-back" href="../../../../../../../Source_Bb_Nr5G_Node_Cc.html#RsSmbv.Implementations.Source.Bb.Nr5G.Node.Cc.CcCls.set_new_carriers">[docs]</a>	<span class="k">def</span> <span class="nf">set_new_carriers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_of_new</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:NODE:CC:NEWCarriers \n</span>
+<span class="sd">		Snippet: driver.source.bb.nr5G.node.cc.set_new_carriers(num_of_new = 1) \n</span>
+<span class="sd">		Defines the number of carriers you want to create based on an existing carrier. \n</span>
+<span class="sd">			:param num_of_new: integer Range: 0 to 15</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">num_of_new</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:NODE:CC:NEWCarriers </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;CcCls&#39;</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Clones the group by creating new object from it and its whole existing subgroups</span>
+<span class="sd">		Also copies all the existing default Repeated Capabilities setting,</span>
+<span class="sd">		which you can change independently without affecting the original group&quot;&quot;&quot;</span>
+		<span class="n">new_group</span> <span class="o">=</span> <span class="n">CcCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">synchronize_repcaps</span><span class="p">(</span><span class="n">new_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">new_group</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

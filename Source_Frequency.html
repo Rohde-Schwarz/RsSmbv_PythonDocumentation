@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Frequency &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Cw" href="Source_Frequency_Cw.html" />
+    <link rel="prev" title="Source" href="Source_FreqSweep_Trigger_Source.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="RsSmbv.html">RsSmbv API Structure</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Bert.html">Bert</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Bler.html">Bler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Calibration.html">Calibration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clock.html">Clock</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Connector.html">Connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Device.html">Device</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Diagnostic.html">Diagnostic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Display.html">Display</a></li>
+<li class="toctree-l2"><a class="reference internal" href="FormatPy.html">FormatPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Fpanel.html">Fpanel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HardCopy.html">HardCopy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Initiate.html">Initiate&lt;Channel&gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Kboard.html">Kboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MassMemory.html">MassMemory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Memory.html">Memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Output.html">Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Read.html">Read&lt;Channel&gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Sconfiguration.html">Sconfiguration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Sense.html">Sense&lt;Channel&gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slist.html">Slist</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="Source.html">Source</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="Source_Adf.html">Adf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Am.html">Am&lt;GeneratorIx&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_AreGenerator.html">AreGenerator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Awgn.html">Awgn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb.html">Bb</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bbin.html">Bbin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Combined.html">Combined</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Correction.html">Correction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Dme.html">Dme</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Efrontend.html">Efrontend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Fm.html">Fm&lt;GeneratorIx&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_FreqSweep.html">FreqSweep</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Frequency</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Frequency_Cw.html">Cw</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Frequency_Fixed.html">Fixed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Frequency_Loscillator.html">Loscillator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Frequency_Step.html">Step</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Ils.html">Ils</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_InputPy.html">InputPy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Iq.html">Iq</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_LffSweep.html">LffSweep</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_LfOutput.html">LfOutput&lt;LfOutput&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_ListPy.html">ListPy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Mbeacon.html">Mbeacon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Modulation.html">Modulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Noise.html">Noise</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Occupy.html">Occupy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Path.html">Path</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Pgenerator.html">Pgenerator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Phase.html">Phase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Pm.html">Pm&lt;GeneratorIx&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Power.html">Power</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Psweep.html">Psweep</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Pulm.html">Pulm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Roscillator.html">Roscillator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Sweep.html">Sweep</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_ValRf.html">ValRf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Vor.html">Vor</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Status.html">Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Sweep.html">Sweep</a></li>
+<li class="toctree-l2"><a class="reference internal" href="System.html">System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Test.html">Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Trigger.html">Trigger&lt;InputIx&gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Unit.html">Unit</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="RsSmbv.html">RsSmbv API Structure</a> &raquo;</li>
+          <li><a href="Source.html">Source</a> &raquo;</li>
+      <li>Frequency</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Source_Frequency.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="frequency">
+<h1>Frequency<a class="headerlink" href="#frequency" title="Permalink to this headline"></a></h1>
+<p class="rubric">SCPI Commands :</p>
+<div class="highlight-python notranslate" id="index-0"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">FREQuency</span><span class="p">:</span><span class="n">CENTer</span>
+<span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">FREQuency</span><span class="p">:</span><span class="n">FREQuency</span>
+<span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">FREQuency</span><span class="p">:</span><span class="n">MANual</span>
+<span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">FREQuency</span><span class="p">:</span><span class="n">MODE</span>
+<span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">FREQuency</span><span class="p">:</span><span class="n">MULTiplier</span>
+<span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">FREQuency</span><span class="p">:</span><span class="n">OFFSet</span>
+<span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">FREQuency</span><span class="p">:</span><span class="n">SPAN</span>
+<span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">FREQuency</span><span class="p">:</span><span class="n">STARt</span>
+<span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">FREQuency</span><span class="p">:</span><span class="n">STOP</span>
+</pre></div>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">FrequencyCls</span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Frequency.html#FrequencyCls"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Frequency commands group definition. 19 total commands, 4 Subgroups, 9 group commands</p>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_center</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Frequency.html#FrequencyCls.get_center"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:FREQuency:CENTer</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">frequency</span><span class="o">.</span><span class="n">get_center</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Sets the center frequency of the sweep. See ‘Correlating parameters in sweep mode’.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>center: float Range: 300 kHz to RFmax, Unit: Hz</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_frequency</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Frequency.html#FrequencyCls.get_frequency"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:FREQuency:FREQuency</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">frequency</span><span class="o">.</span><span class="n">get_frequency</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>No command help available</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>frequency: No help available</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_manual</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Frequency.html#FrequencyCls.get_manual"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:FREQuency:MANual</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">frequency</span><span class="o">.</span><span class="n">get_manual</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Sets the frequency and triggers a sweep step manually if SWEep:MODE MAN.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>manual: float You can select any frequency within the setting range, where: STARt is set with [:SOURcehw]:FREQuency:STARt STOP is set with [:SOURcehw]:FREQuency:STOP OFFSet is set with [:SOURcehw]:FREQuency:OFFSet Range: (STARt + OFFSet) to (STOP + OFFSet) , Unit: Hz</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_mode</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">RsSmbv.enums.FreqMode</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Frequency.html#FrequencyCls.get_mode"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:FREQuency:MODE</span>
+<span class="n">value</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">FreqMode</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">frequency</span><span class="o">.</span><span class="n">get_mode</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Sets the frequency mode for generating the RF output signal. The selected mode determines the parameters to be used for
+further frequency settings.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>mode: CW| FIXed | SWEep| LIST | COMBined CW|FIXed Sets the fixed frequency mode. CW and FIXed are synonyms. The instrument operates at a defined frequency, set with command [:SOURcehw]:FREQuency[:CW|FIXed]. SWEep Sets sweep mode. The instrument processes frequency (and level) settings in defined sweep steps. Set the range and current frequency with the commands: [:SOURcehw]:FREQuency:STARt and [:SOURcehw]:FREQuency:STOP, [:SOURcehw]:FREQuency:CENTer, [:SOURcehw]:FREQuency:SPAN, [:SOURcehw]:FREQuency:MANual LIST Sets list mode. The instrument processes frequency and level settings by means of values loaded from a list. To configure list mode settings, use the commands of the ‘SOURce:LIST subsystem’. COMBined Sets the combined RF frequency / level sweep mode. The instrument processes frequency and level settings in defined sweep steps. Set the range and current frequency with the commands: [:SOURcehw]:COMBined:FREQuency:STARt and [:SOURcehw]:COMBined:FREQuency:STOP, [:SOURcehw]:COMBined:POWer:STARt and [:SOURcehw]:COMBined:POWer:STOP</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_multiplier</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Frequency.html#FrequencyCls.get_multiplier"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:FREQuency:MULTiplier</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">frequency</span><span class="o">.</span><span class="n">get_multiplier</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Sets the multiplication factor NFREQ:MULT of a subsequent downstream instrument. The parameters offset fFREQ:OFFSer and
+multiplier NFREQ:MULT affect the frequency value set with the command [:SOURce&lt;hw&gt;]:FREQuency[:CW|FIXed].
+The query [:SOURce&lt;hw&gt;]:FREQuency[:CW|FIXed] returns the value corresponding to the formula: fFREQ = fRFout * NFREQ:MULT
++ fFREQ:OFFSer See ‘RF frequency and level display with a downstream instrument’.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>multiplier: float Range: -10000 to 10000</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_offset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Frequency.html#FrequencyCls.get_offset"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:FREQuency:OFFSet</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">frequency</span><span class="o">.</span><span class="n">get_offset</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Sets the frequency offset fFREQ:OFFSet of a downstream instrument. The parameters offset fFREQ:OFFSer and multiplier
+NFREQ:MULT affect the frequency value set with the command [:SOURce&lt;hw&gt;]:FREQuency[:CW|FIXed].
+The query [:SOURce&lt;hw&gt;]:FREQuency[:CW|FIXed] returns the value corresponding to the formula: fFREQ = fRFout * NFREQ:MULT
++ fFREQ:OFFSer See ‘RF frequency and level display with a downstream instrument’. Note: The offset also affects RF
+frequency sweep.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>offset: float</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_span</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Frequency.html#FrequencyCls.get_span"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:FREQuency:SPAN</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">frequency</span><span class="o">.</span><span class="n">get_span</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Sets the sapn of the frequency sweep range. See ‘Correlating parameters in sweep mode’.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>span: float Full freqeuncy range</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_start</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Frequency.html#FrequencyCls.get_start"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:FREQuency:STARt</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">frequency</span><span class="o">.</span><span class="n">get_start</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Sets the start frequency for the RF sweep. See ‘Correlating parameters in sweep mode’.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>start: float Range: 300kHz to RFmax</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_stop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Frequency.html#FrequencyCls.get_stop"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:FREQuency:STOP</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">frequency</span><span class="o">.</span><span class="n">get_stop</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Sets the stop frequency range for the RF sweep. See ‘Correlating parameters in sweep mode’.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>stop: float Range: 300kHz to RFmax, Unit: Hz</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_center</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">center</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Frequency.html#FrequencyCls.set_center"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:FREQuency:CENTer</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">frequency</span><span class="o">.</span><span class="n">set_center</span><span class="p">(</span><span class="n">center</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Sets the center frequency of the sweep. See ‘Correlating parameters in sweep mode’.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param center</dt>
+<dd class="field-odd"><p>float Range: 300 kHz to RFmax, Unit: Hz</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_frequency</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frequency</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Frequency.html#FrequencyCls.set_frequency"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:FREQuency:FREQuency</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">frequency</span><span class="o">.</span><span class="n">set_frequency</span><span class="p">(</span><span class="n">frequency</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>No command help available</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param frequency</dt>
+<dd class="field-odd"><p>No help available</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_manual</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">manual</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Frequency.html#FrequencyCls.set_manual"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:FREQuency:MANual</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">frequency</span><span class="o">.</span><span class="n">set_manual</span><span class="p">(</span><span class="n">manual</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Sets the frequency and triggers a sweep step manually if SWEep:MODE MAN.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param manual</dt>
+<dd class="field-odd"><p>float You can select any frequency within the setting range, where: STARt is set with [:SOURcehw]:FREQuency:STARt STOP is set with [:SOURcehw]:FREQuency:STOP OFFSet is set with [:SOURcehw]:FREQuency:OFFSet Range: (STARt + OFFSet) to (STOP + OFFSet) , Unit: Hz</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_mode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">RsSmbv.enums.FreqMode</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Frequency.html#FrequencyCls.set_mode"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:FREQuency:MODE</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">frequency</span><span class="o">.</span><span class="n">set_mode</span><span class="p">(</span><span class="n">mode</span> <span class="o">=</span> <span class="n">enums</span><span class="o">.</span><span class="n">FreqMode</span><span class="o">.</span><span class="n">COMBined</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Sets the frequency mode for generating the RF output signal. The selected mode determines the parameters to be used for
+further frequency settings.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param mode</dt>
+<dd class="field-odd"><p>CW| FIXed | SWEep| LIST | COMBined CW|FIXed Sets the fixed frequency mode. CW and FIXed are synonyms. The instrument operates at a defined frequency, set with command [:SOURcehw]:FREQuency[:CW|FIXed]. SWEep Sets sweep mode. The instrument processes frequency (and level) settings in defined sweep steps. Set the range and current frequency with the commands: [:SOURcehw]:FREQuency:STARt and [:SOURcehw]:FREQuency:STOP, [:SOURcehw]:FREQuency:CENTer, [:SOURcehw]:FREQuency:SPAN, [:SOURcehw]:FREQuency:MANual LIST Sets list mode. The instrument processes frequency and level settings by means of values loaded from a list. To configure list mode settings, use the commands of the ‘SOURce:LIST subsystem’. COMBined Sets the combined RF frequency / level sweep mode. The instrument processes frequency and level settings in defined sweep steps. Set the range and current frequency with the commands: [:SOURcehw]:COMBined:FREQuency:STARt and [:SOURcehw]:COMBined:FREQuency:STOP, [:SOURcehw]:COMBined:POWer:STARt and [:SOURcehw]:COMBined:POWer:STOP</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_multiplier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">multiplier</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Frequency.html#FrequencyCls.set_multiplier"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:FREQuency:MULTiplier</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">frequency</span><span class="o">.</span><span class="n">set_multiplier</span><span class="p">(</span><span class="n">multiplier</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Sets the multiplication factor NFREQ:MULT of a subsequent downstream instrument. The parameters offset fFREQ:OFFSer and
+multiplier NFREQ:MULT affect the frequency value set with the command [:SOURce&lt;hw&gt;]:FREQuency[:CW|FIXed].
+The query [:SOURce&lt;hw&gt;]:FREQuency[:CW|FIXed] returns the value corresponding to the formula: fFREQ = fRFout * NFREQ:MULT
++ fFREQ:OFFSer See ‘RF frequency and level display with a downstream instrument’.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param multiplier</dt>
+<dd class="field-odd"><p>float Range: -10000 to 10000</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_offset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Frequency.html#FrequencyCls.set_offset"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:FREQuency:OFFSet</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">frequency</span><span class="o">.</span><span class="n">set_offset</span><span class="p">(</span><span class="n">offset</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Sets the frequency offset fFREQ:OFFSet of a downstream instrument. The parameters offset fFREQ:OFFSer and multiplier
+NFREQ:MULT affect the frequency value set with the command [:SOURce&lt;hw&gt;]:FREQuency[:CW|FIXed].
+The query [:SOURce&lt;hw&gt;]:FREQuency[:CW|FIXed] returns the value corresponding to the formula: fFREQ = fRFout * NFREQ:MULT
++ fFREQ:OFFSer See ‘RF frequency and level display with a downstream instrument’. Note: The offset also affects RF
+frequency sweep.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param offset</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_span</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">span</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Frequency.html#FrequencyCls.set_span"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:FREQuency:SPAN</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">frequency</span><span class="o">.</span><span class="n">set_span</span><span class="p">(</span><span class="n">span</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Sets the sapn of the frequency sweep range. See ‘Correlating parameters in sweep mode’.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param span</dt>
+<dd class="field-odd"><p>float Full freqeuncy range</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_start</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Frequency.html#FrequencyCls.set_start"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:FREQuency:STARt</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">frequency</span><span class="o">.</span><span class="n">set_start</span><span class="p">(</span><span class="n">start</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Sets the start frequency for the RF sweep. See ‘Correlating parameters in sweep mode’.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param start</dt>
+<dd class="field-odd"><p>float Range: 300kHz to RFmax</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_stop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stop</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Frequency.html#FrequencyCls.set_stop"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:FREQuency:STOP</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">frequency</span><span class="o">.</span><span class="n">set_stop</span><span class="p">(</span><span class="n">stop</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Sets the stop frequency range for the RF sweep. See ‘Correlating parameters in sweep mode’.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param stop</dt>
+<dd class="field-odd"><p>float Range: 300kHz to RFmax, Unit: Hz</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+</dd></dl>
+
+<p class="rubric">Cloning the Group</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a clone of the original group, that exists independently</span>
+<span class="n">group2</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">frequency</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+</pre></div>
+</div>
+<p class="rubric">Subgroups</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Source_Frequency_Cw.html">Cw</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Frequency_Fixed.html">Fixed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Frequency_Loscillator.html">Loscillator</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Source_Frequency_Loscillator_InputPy.html">InputPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Frequency_Loscillator_Output.html">Output</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Frequency_Step.html">Step</a></li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Source_FreqSweep_Trigger_Source.html" class="btn btn-neutral float-left" title="Source" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Source_Frequency_Cw.html" class="btn btn-neutral float-right" title="Cw" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

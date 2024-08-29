@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RsSmbv.Implementations.Source.Bb.Gbas &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../_static/jquery.js"></script>
+        <script src="../../../../../_static/underscore.js"></script>
+        <script src="../../../../../_static/doctools.js"></script>
+        <script src="../../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../../_static/copybutton.js"></script>
+    <script src="../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../../index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../RsSmbv.html">RsSmbv API Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../../index.html">Module code</a> &raquo;</li>
+          <li><a href="../../Source.html">RsSmbv.Implementations.Source</a> &raquo;</li>
+          <li><a href="../Bb.html">RsSmbv.Implementations.Source.Bb</a> &raquo;</li>
+      <li>RsSmbv.Implementations.Source.Bb.Gbas</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for RsSmbv.Implementations.Source.Bb.Gbas</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">.....Internal.Core</span> <span class="kn">import</span> <span class="n">Core</span>
+<span class="kn">from</span> <span class="nn">.....Internal.CommandsGroup</span> <span class="kn">import</span> <span class="n">CommandsGroup</span>
+<span class="kn">from</span> <span class="nn">.....Internal</span> <span class="kn">import</span> <span class="n">Conversions</span>
+<span class="kn">from</span> <span class="nn">.....Internal.Utilities</span> <span class="kn">import</span> <span class="n">trim_str_response</span>
+<span class="kn">from</span> <span class="nn">.....</span> <span class="kn">import</span> <span class="n">enums</span>
+
+
+<span class="c1"># noinspection PyPep8Naming,PyAttributeOutsideInit,SpellCheckingInspection</span>
+<div class="viewcode-block" id="GbasCls"><a class="viewcode-back" href="../../../../../Source_Bb_Gbas.html#RsSmbv.Implementations.Source.Bb.Gbas.GbasCls">[docs]</a><span class="k">class</span> <span class="nc">GbasCls</span><span class="p">:</span>
+	<span class="sd">&quot;&quot;&quot;Gbas commands group definition. 190 total commands, 8 Subgroups, 9 group commands&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">core</span><span class="p">:</span> <span class="n">Core</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span> <span class="o">=</span> <span class="n">core</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span> <span class="o">=</span> <span class="n">CommandsGroup</span><span class="p">(</span><span class="s2">&quot;gbas&quot;</span><span class="p">,</span> <span class="n">core</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">clipping</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;clipping commands group. 0 Sub-classes, 3 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_clipping&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Clipping</span> <span class="kn">import</span> <span class="n">ClippingCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_clipping</span> <span class="o">=</span> <span class="n">ClippingCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_clipping</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">clock</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;clock commands group. 0 Sub-classes, 3 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_clock&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Clock</span> <span class="kn">import</span> <span class="n">ClockCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_clock</span> <span class="o">=</span> <span class="n">ClockCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_clock</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">filterPy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;filterPy commands group. 3 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_filterPy&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.FilterPy</span> <span class="kn">import</span> <span class="n">FilterPyCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_filterPy</span> <span class="o">=</span> <span class="n">FilterPyCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_filterPy</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">mset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;mset commands group. 0 Sub-classes, 2 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_mset&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Mset</span> <span class="kn">import</span> <span class="n">MsetCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_mset</span> <span class="o">=</span> <span class="n">MsetCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mset</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">setting</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;setting commands group. 0 Sub-classes, 4 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_setting&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Setting</span> <span class="kn">import</span> <span class="n">SettingCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_setting</span> <span class="o">=</span> <span class="n">SettingCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_setting</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">trigger</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;trigger commands group. 5 Sub-classes, 5 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_trigger&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Trigger</span> <span class="kn">import</span> <span class="n">TriggerCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_trigger</span> <span class="o">=</span> <span class="n">TriggerCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_trigger</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">vdb</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;vdb commands group. 12 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_vdb&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Vdb</span> <span class="kn">import</span> <span class="n">VdbCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_vdb</span> <span class="o">=</span> <span class="n">VdbCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vdb</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">waveform</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;waveform commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_waveform&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Waveform</span> <span class="kn">import</span> <span class="n">WaveformCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_waveform</span> <span class="o">=</span> <span class="n">WaveformCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_waveform</span>
+
+<div class="viewcode-block" id="GbasCls.get_gpow"><a class="viewcode-back" href="../../../../../Source_Bb_Gbas.html#RsSmbv.Implementations.Source.Bb.Gbas.GbasCls.get_gpow">[docs]</a>	<span class="k">def</span> <span class="nf">get_gpow</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:GBAS:GPOW \n</span>
+<span class="sd">		Snippet: value: bool = driver.source.bb.gbas.get_gpow() \n</span>
+<span class="sd">		Enables gated power mode. \n</span>
+<span class="sd">			:return: gpow: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:GBAS:GPOW?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_bool</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="GbasCls.set_gpow"><a class="viewcode-back" href="../../../../../Source_Bb_Gbas.html#RsSmbv.Implementations.Source.Bb.Gbas.GbasCls.set_gpow">[docs]</a>	<span class="k">def</span> <span class="nf">set_gpow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gpow</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:GBAS:GPOW \n</span>
+<span class="sd">		Snippet: driver.source.bb.gbas.set_gpow(gpow = False) \n</span>
+<span class="sd">		Enables gated power mode. \n</span>
+<span class="sd">			:param gpow: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">bool_to_str</span><span class="p">(</span><span class="n">gpow</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:GBAS:GPOW </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="GbasCls.get_mf_channels"><a class="viewcode-back" href="../../../../../Source_Bb_Gbas.html#RsSmbv.Implementations.Source.Bb.Gbas.GbasCls.get_mf_channels">[docs]</a>	<span class="k">def</span> <span class="nf">get_mf_channels</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:GBAS:MFCHannels \n</span>
+<span class="sd">		Snippet: value: bool = driver.source.bb.gbas.get_mf_channels() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: mfch: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:GBAS:MFCHannels?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_bool</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="GbasCls.set_mf_channels"><a class="viewcode-back" href="../../../../../Source_Bb_Gbas.html#RsSmbv.Implementations.Source.Bb.Gbas.GbasCls.set_mf_channels">[docs]</a>	<span class="k">def</span> <span class="nf">set_mf_channels</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mfch</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:GBAS:MFCHannels \n</span>
+<span class="sd">		Snippet: driver.source.bb.gbas.set_mf_channels(mfch = False) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param mfch: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">bool_to_str</span><span class="p">(</span><span class="n">mfch</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:GBAS:MFCHannels </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="GbasCls.get_mode"><a class="viewcode-back" href="../../../../../Source_Bb_Gbas.html#RsSmbv.Implementations.Source.Bb.Gbas.GbasCls.get_mode">[docs]</a>	<span class="k">def</span> <span class="nf">get_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">GbasMode</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:GBAS:MODE \n</span>
+<span class="sd">		Snippet: value: enums.GbasMode = driver.source.bb.gbas.get_mode() \n</span>
+<span class="sd">		Sets the GBAS mode. Select between GBAS (LAAS) header information or SCAT-I header information. \n</span>
+<span class="sd">			:return: scat: GBAS| SCAT</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:GBAS:MODE?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">GbasMode</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="GbasCls.set_mode"><a class="viewcode-back" href="../../../../../Source_Bb_Gbas.html#RsSmbv.Implementations.Source.Bb.Gbas.GbasCls.set_mode">[docs]</a>	<span class="k">def</span> <span class="nf">set_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scat</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">GbasMode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:GBAS:MODE \n</span>
+<span class="sd">		Snippet: driver.source.bb.gbas.set_mode(scat = enums.GbasMode.GBAS) \n</span>
+<span class="sd">		Sets the GBAS mode. Select between GBAS (LAAS) header information or SCAT-I header information. \n</span>
+<span class="sd">			:param scat: GBAS| SCAT</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">scat</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">GbasMode</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:GBAS:MODE </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="GbasCls.get_no_frames"><a class="viewcode-back" href="../../../../../Source_Bb_Gbas.html#RsSmbv.Implementations.Source.Bb.Gbas.GbasCls.get_no_frames">[docs]</a>	<span class="k">def</span> <span class="nf">get_no_frames</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:GBAS:NOFRames \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.gbas.get_no_frames() \n</span>
+<span class="sd">		Queries the number of VDB frames. \n</span>
+<span class="sd">			:return: no_frame: integer Range: 1 to 12500</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:GBAS:NOFRames?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="GbasCls.preset"><a class="viewcode-back" href="../../../../../Source_Bb_Gbas.html#RsSmbv.Implementations.Source.Bb.Gbas.GbasCls.preset">[docs]</a>	<span class="k">def</span> <span class="nf">preset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:GBAS:PRESet \n</span>
+<span class="sd">		Snippet: driver.source.bb.gbas.preset() \n</span>
+<span class="sd">		Sets the parameters of the digital standard to their default values (*RST values specified for the commands) .</span>
+<span class="sd">		Not affected is the state set with the command SOURce&lt;hw&gt;:BB:GBAS:STATe. \n</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:GBAS:PRESet&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="GbasCls.preset_with_opc"><a class="viewcode-back" href="../../../../../Source_Bb_Gbas.html#RsSmbv.Implementations.Source.Bb.Gbas.GbasCls.preset_with_opc">[docs]</a>	<span class="k">def</span> <span class="nf">preset_with_opc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">opc_timeout_ms</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:GBAS:PRESet \n</span>
+<span class="sd">		Snippet: driver.source.bb.gbas.preset_with_opc() \n</span>
+<span class="sd">		Sets the parameters of the digital standard to their default values (*RST values specified for the commands) .</span>
+<span class="sd">		Not affected is the state set with the command SOURce&lt;hw&gt;:BB:GBAS:STATe. \n</span>
+<span class="sd">		Same as preset, but waits for the operation to complete before continuing further. Use the RsSmbv.utilities.opc_timeout_set() to set the timeout value. \n</span>
+<span class="sd">			:param opc_timeout_ms: Maximum time to wait in milliseconds, valid only for this call.&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write_with_opc</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:GBAS:PRESet&#39;</span><span class="p">,</span> <span class="n">opc_timeout_ms</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="GbasCls.get_scati"><a class="viewcode-back" href="../../../../../Source_Bb_Gbas.html#RsSmbv.Implementations.Source.Bb.Gbas.GbasCls.get_scati">[docs]</a>	<span class="k">def</span> <span class="nf">get_scati</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:GBAS:SCATi \n</span>
+<span class="sd">		Snippet: value: bool = driver.source.bb.gbas.get_scati() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: scat: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:GBAS:SCATi?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_bool</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="GbasCls.set_scati"><a class="viewcode-back" href="../../../../../Source_Bb_Gbas.html#RsSmbv.Implementations.Source.Bb.Gbas.GbasCls.set_scati">[docs]</a>	<span class="k">def</span> <span class="nf">set_scati</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scat</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:GBAS:SCATi \n</span>
+<span class="sd">		Snippet: driver.source.bb.gbas.set_scati(scat = False) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param scat: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">bool_to_str</span><span class="p">(</span><span class="n">scat</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:GBAS:SCATi </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="GbasCls.get_sr_info"><a class="viewcode-back" href="../../../../../Source_Bb_Gbas.html#RsSmbv.Implementations.Source.Bb.Gbas.GbasCls.get_sr_info">[docs]</a>	<span class="k">def</span> <span class="nf">get_sr_info</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:GBAS:SRINfo \n</span>
+<span class="sd">		Snippet: value: str = driver.source.bb.gbas.get_sr_info() \n</span>
+<span class="sd">		Queries the used sample rate. \n</span>
+<span class="sd">			:return: sr_info: string</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:GBAS:SRINfo?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">trim_str_response</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="GbasCls.get_state"><a class="viewcode-back" href="../../../../../Source_Bb_Gbas.html#RsSmbv.Implementations.Source.Bb.Gbas.GbasCls.get_state">[docs]</a>	<span class="k">def</span> <span class="nf">get_state</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:GBAS:STATe \n</span>
+<span class="sd">		Snippet: value: bool = driver.source.bb.gbas.get_state() \n</span>
+<span class="sd">		Activates the standard and deactivates all the other digital standards and digital modulation modes in the same path. \n</span>
+<span class="sd">			:return: state: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:GBAS:STATe?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_bool</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="GbasCls.set_state"><a class="viewcode-back" href="../../../../../Source_Bb_Gbas.html#RsSmbv.Implementations.Source.Bb.Gbas.GbasCls.set_state">[docs]</a>	<span class="k">def</span> <span class="nf">set_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:GBAS:STATe \n</span>
+<span class="sd">		Snippet: driver.source.bb.gbas.set_state(state = False) \n</span>
+<span class="sd">		Activates the standard and deactivates all the other digital standards and digital modulation modes in the same path. \n</span>
+<span class="sd">			:param state: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">bool_to_str</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:GBAS:STATe </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="GbasCls.get_version"><a class="viewcode-back" href="../../../../../Source_Bb_Gbas.html#RsSmbv.Implementations.Source.Bb.Gbas.GbasCls.get_version">[docs]</a>	<span class="k">def</span> <span class="nf">get_version</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:GBAS:VERSion \n</span>
+<span class="sd">		Snippet: value: str = driver.source.bb.gbas.get_version() \n</span>
+<span class="sd">		Queries the GBAS specification version that corresponds to the set GBAS mode. \n</span>
+<span class="sd">			:return: version: string</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:GBAS:VERSion?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">trim_str_response</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+	<span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;GbasCls&#39;</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Clones the group by creating new object from it and its whole existing subgroups</span>
+<span class="sd">		Also copies all the existing default Repeated Capabilities setting,</span>
+<span class="sd">		which you can change independently without affecting the original group&quot;&quot;&quot;</span>
+		<span class="n">new_group</span> <span class="o">=</span> <span class="n">GbasCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">synchronize_repcaps</span><span class="p">(</span><span class="n">new_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">new_group</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

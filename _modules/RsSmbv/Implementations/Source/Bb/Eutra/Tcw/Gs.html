@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Gs &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../../../../" id="documentation_options" src="../../../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../../../_static/jquery.js"></script>
+        <script src="../../../../../../../_static/underscore.js"></script>
+        <script src="../../../../../../../_static/doctools.js"></script>
+        <script src="../../../../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../../../../_static/copybutton.js"></script>
+    <script src="../../../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../../../../index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../RsSmbv.html">RsSmbv API Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../../index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../../../../index.html">Module code</a> &raquo;</li>
+          <li><a href="../../../../Source.html">RsSmbv.Implementations.Source</a> &raquo;</li>
+          <li><a href="../../../Bb.html">RsSmbv.Implementations.Source.Bb</a> &raquo;</li>
+          <li><a href="../../Eutra.html">RsSmbv.Implementations.Source.Bb.Eutra</a> &raquo;</li>
+          <li><a href="../Tcw.html">RsSmbv.Implementations.Source.Bb.Eutra.Tcw</a> &raquo;</li>
+      <li>RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Gs</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Gs</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">......Internal.Core</span> <span class="kn">import</span> <span class="n">Core</span>
+<span class="kn">from</span> <span class="nn">......Internal.CommandsGroup</span> <span class="kn">import</span> <span class="n">CommandsGroup</span>
+<span class="kn">from</span> <span class="nn">......Internal</span> <span class="kn">import</span> <span class="n">Conversions</span>
+<span class="kn">from</span> <span class="nn">......</span> <span class="kn">import</span> <span class="n">enums</span>
+
+
+<span class="c1"># noinspection PyPep8Naming,PyAttributeOutsideInit,SpellCheckingInspection</span>
+<div class="viewcode-block" id="GsCls"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Gs.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Gs.GsCls">[docs]</a><span class="k">class</span> <span class="nc">GsCls</span><span class="p">:</span>
+	<span class="sd">&quot;&quot;&quot;Gs commands group definition. 14 total commands, 0 Subgroups, 14 group commands&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">core</span><span class="p">:</span> <span class="n">Core</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span> <span class="o">=</span> <span class="n">core</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span> <span class="o">=</span> <span class="n">CommandsGroup</span><span class="p">(</span><span class="s2">&quot;gs&quot;</span><span class="p">,</span> <span class="n">core</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="GsCls.get_ant_subset"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Gs.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Gs.GsCls.get_ant_subset">[docs]</a>	<span class="k">def</span> <span class="nf">get_ant_subset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwaNtSubset</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:GS:ANTSubset \n</span>
+<span class="sd">		Snippet: value: enums.EutraTcwaNtSubset = driver.source.bb.eutra.tcw.gs.get_ant_subset() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: antenna_subset: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:GS:ANTSubset?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwaNtSubset</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="GsCls.set_ant_subset"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Gs.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Gs.GsCls.set_ant_subset">[docs]</a>	<span class="k">def</span> <span class="nf">set_ant_subset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">antenna_subset</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwaNtSubset</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:GS:ANTSubset \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.tcw.gs.set_ant_subset(antenna_subset = enums.EutraTcwaNtSubset.ALL) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param antenna_subset: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">antenna_subset</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwaNtSubset</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:GS:ANTSubset </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="GsCls.get_bs_class"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Gs.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Gs.GsCls.get_bs_class">[docs]</a>	<span class="k">def</span> <span class="nf">get_bs_class</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">UtraTcwbSclass</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:GS:BSCLass \n</span>
+<span class="sd">		Snippet: value: enums.UtraTcwbSclass = driver.source.bb.eutra.tcw.gs.get_bs_class() \n</span>
+<span class="sd">		Sets the base station class. \n</span>
+<span class="sd">			:return: bs_class: WIDE| LOCal| HOME| MEDium</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:GS:BSCLass?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">UtraTcwbSclass</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="GsCls.set_bs_class"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Gs.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Gs.GsCls.set_bs_class">[docs]</a>	<span class="k">def</span> <span class="nf">set_bs_class</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bs_class</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">UtraTcwbSclass</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:GS:BSCLass \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.tcw.gs.set_bs_class(bs_class = enums.UtraTcwbSclass.HOME) \n</span>
+<span class="sd">		Sets the base station class. \n</span>
+<span class="sd">			:param bs_class: WIDE| LOCal| HOME| MEDium</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">bs_class</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">UtraTcwbSclass</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:GS:BSCLass </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="GsCls.get_gen_signals"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Gs.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Gs.GsCls.get_gen_signals">[docs]</a>	<span class="k">def</span> <span class="nf">get_gen_signals</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwGeneratedSig</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:GS:GENSignals \n</span>
+<span class="sd">		Snippet: value: enums.EutraTcwGeneratedSig = driver.source.bb.eutra.tcw.gs.get_gen_signals() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: generated_signal: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:GS:GENSignals?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwGeneratedSig</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="GsCls.set_gen_signals"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Gs.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Gs.GsCls.set_gen_signals">[docs]</a>	<span class="k">def</span> <span class="nf">set_gen_signals</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">generated_signal</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwGeneratedSig</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:GS:GENSignals \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.tcw.gs.set_gen_signals(generated_signal = enums.EutraTcwGeneratedSig.IF) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param generated_signal: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">generated_signal</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwGeneratedSig</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:GS:GENSignals </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="GsCls.get_inst_setup"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Gs.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Gs.GsCls.get_inst_setup">[docs]</a>	<span class="k">def</span> <span class="nf">get_inst_setup</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwiNstSetup</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:GS:INSTsetup \n</span>
+<span class="sd">		Snippet: value: enums.EutraTcwiNstSetup = driver.source.bb.eutra.tcw.gs.get_inst_setup() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: instrument_setup: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:GS:INSTsetup?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwiNstSetup</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="GsCls.set_inst_setup"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Gs.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Gs.GsCls.set_inst_setup">[docs]</a>	<span class="k">def</span> <span class="nf">set_inst_setup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instrument_setup</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwiNstSetup</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:GS:INSTsetup \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.tcw.gs.set_inst_setup(instrument_setup = enums.EutraTcwiNstSetup.U1PATH) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param instrument_setup: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">instrument_setup</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwiNstSetup</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:GS:INSTsetup </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="GsCls.get_marker_config"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Gs.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Gs.GsCls.get_marker_config">[docs]</a>	<span class="k">def</span> <span class="nf">get_marker_config</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwMarkConf</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:GS:MARKerconfig \n</span>
+<span class="sd">		Snippet: value: enums.EutraTcwMarkConf = driver.source.bb.eutra.tcw.gs.get_marker_config() \n</span>
+<span class="sd">		Selects the marker configuration. The marker can be used to synchronize the measuring equipment to the signal generator. \n</span>
+<span class="sd">			:return: marker_config: UNCHanged| FRAMe FRAMe The marker settings are customized for the selected test case. &#39;Radio Frame Start&#39; markers are output; the marker delays are set equal to zero. UNCHanged The current marker settings of the signal generator are retained unchanged.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:GS:MARKerconfig?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwMarkConf</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="GsCls.set_marker_config"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Gs.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Gs.GsCls.set_marker_config">[docs]</a>	<span class="k">def</span> <span class="nf">set_marker_config</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">marker_config</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwMarkConf</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:GS:MARKerconfig \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.tcw.gs.set_marker_config(marker_config = enums.EutraTcwMarkConf.FRAMe) \n</span>
+<span class="sd">		Selects the marker configuration. The marker can be used to synchronize the measuring equipment to the signal generator. \n</span>
+<span class="sd">			:param marker_config: UNCHanged| FRAMe FRAMe The marker settings are customized for the selected test case. &#39;Radio Frame Start&#39; markers are output; the marker delays are set equal to zero. UNCHanged The current marker settings of the signal generator are retained unchanged.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">marker_config</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwMarkConf</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:GS:MARKerconfig </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="GsCls.get_mode"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Gs.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Gs.GsCls.get_mode">[docs]</a>	<span class="k">def</span> <span class="nf">get_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwGsModeDefaultRange</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:GS:MODE \n</span>
+<span class="sd">		Snippet: value: enums.EutraTcwGsModeDefaultRange = driver.source.bb.eutra.tcw.gs.get_mode() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: mode: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:GS:MODE?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwGsModeDefaultRange</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="GsCls.set_mode"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Gs.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Gs.GsCls.set_mode">[docs]</a>	<span class="k">def</span> <span class="nf">set_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwGsModeDefaultRange</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:GS:MODE \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.tcw.gs.set_mode(mode = enums.EutraTcwGsModeDefaultRange.ADRate) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param mode: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">mode</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwGsModeDefaultRange</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:GS:MODE </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="GsCls.get_option"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Gs.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Gs.GsCls.get_option">[docs]</a>	<span class="k">def</span> <span class="nf">get_option</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">UtraTcwgsoPtion</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:GS:OPTion \n</span>
+<span class="sd">		Snippet: value: enums.UtraTcwgsoPtion = driver.source.bb.eutra.tcw.gs.get_option() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: option: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:GS:OPTion?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">UtraTcwgsoPtion</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="GsCls.set_option"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Gs.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Gs.GsCls.set_option">[docs]</a>	<span class="k">def</span> <span class="nf">set_option</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">option</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">UtraTcwgsoPtion</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:GS:OPTion \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.tcw.gs.set_option(option = enums.UtraTcwgsoPtion.OPT1) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param option: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">option</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">UtraTcwgsoPtion</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:GS:OPTion </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="GsCls.get_release"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Gs.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Gs.GsCls.get_release">[docs]</a>	<span class="k">def</span> <span class="nf">get_release</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwRelease</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:GS:RELease \n</span>
+<span class="sd">		Snippet: value: enums.EutraTcwRelease = driver.source.bb.eutra.tcw.gs.get_release() \n</span>
+<span class="sd">		Sets the 3GPP test specification used as a guideline for the test cases. \n</span>
+<span class="sd">			:return: release: REL8| REL9| REL10| REL11</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:GS:RELease?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwRelease</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="GsCls.set_release"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Gs.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Gs.GsCls.set_release">[docs]</a>	<span class="k">def</span> <span class="nf">set_release</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">release</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwRelease</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:GS:RELease \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.tcw.gs.set_release(release = enums.EutraTcwRelease.REL10) \n</span>
+<span class="sd">		Sets the 3GPP test specification used as a guideline for the test cases. \n</span>
+<span class="sd">			:param release: REL8| REL9| REL10| REL11</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">release</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwRelease</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:GS:RELease </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="GsCls.get_rx_antennas"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Gs.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Gs.GsCls.get_rx_antennas">[docs]</a>	<span class="k">def</span> <span class="nf">get_rx_antennas</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwNumOfRxAnt</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:GS:RXANtennas \n</span>
+<span class="sd">		Snippet: value: enums.EutraTcwNumOfRxAnt = driver.source.bb.eutra.tcw.gs.get_rx_antennas() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: num_of_rx_antennas: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:GS:RXANtennas?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwNumOfRxAnt</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="GsCls.set_rx_antennas"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Gs.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Gs.GsCls.set_rx_antennas">[docs]</a>	<span class="k">def</span> <span class="nf">set_rx_antennas</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_of_rx_antennas</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwNumOfRxAnt</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:GS:RXANtennas \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.tcw.gs.set_rx_antennas(num_of_rx_antennas = enums.EutraTcwNumOfRxAnt.ANT1) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param num_of_rx_antennas: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">num_of_rx_antennas</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwNumOfRxAnt</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:GS:RXANtennas </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="GsCls.get_sig_rout"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Gs.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Gs.GsCls.get_sig_rout">[docs]</a>	<span class="k">def</span> <span class="nf">get_sig_rout</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwSignalRout</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:GS:SIGRout \n</span>
+<span class="sd">		Snippet: value: enums.EutraTcwSignalRout = driver.source.bb.eutra.tcw.gs.get_sig_rout() \n</span>
+<span class="sd">		Selects the signal routing for baseband A signal which usually represents the wanted signal. \n</span>
+<span class="sd">			:return: signal_routing: PORTA</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:GS:SIGRout?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwSignalRout</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="GsCls.set_sig_rout"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Gs.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Gs.GsCls.set_sig_rout">[docs]</a>	<span class="k">def</span> <span class="nf">set_sig_rout</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">signal_routing</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwSignalRout</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:GS:SIGRout \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.tcw.gs.set_sig_rout(signal_routing = enums.EutraTcwSignalRout.PORTA) \n</span>
+<span class="sd">		Selects the signal routing for baseband A signal which usually represents the wanted signal. \n</span>
+<span class="sd">			:param signal_routing: PORTA</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">signal_routing</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwSignalRout</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:GS:SIGRout </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="GsCls.get_spec"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Gs.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Gs.GsCls.get_spec">[docs]</a>	<span class="k">def</span> <span class="nf">get_spec</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">UtraTcwsPec</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:GS:SPEC \n</span>
+<span class="sd">		Snippet: value: enums.UtraTcwsPec = driver.source.bb.eutra.tcw.gs.get_spec() \n</span>
+<span class="sd">		Selects the 3GPP test specification used as a guideline for the test cases. \n</span>
+<span class="sd">			:return: gs_spec: TS36141</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:GS:SPEC?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">UtraTcwsPec</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="GsCls.set_spec"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Gs.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Gs.GsCls.set_spec">[docs]</a>	<span class="k">def</span> <span class="nf">set_spec</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gs_spec</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">UtraTcwsPec</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:GS:SPEC \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.tcw.gs.set_spec(gs_spec = enums.UtraTcwsPec.TS36141) \n</span>
+<span class="sd">		Selects the 3GPP test specification used as a guideline for the test cases. \n</span>
+<span class="sd">			:param gs_spec: TS36141</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">gs_spec</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">UtraTcwsPec</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:GS:SPEC </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="GsCls.get_stc"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Gs.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Gs.GsCls.get_stc">[docs]</a>	<span class="k">def</span> <span class="nf">get_stc</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">UtraTcwgssUbtest</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:GS:STC \n</span>
+<span class="sd">		Snippet: value: enums.UtraTcwgssUbtest = driver.source.bb.eutra.tcw.gs.get_stc() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: sub_test_case: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:GS:STC?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">UtraTcwgssUbtest</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="GsCls.set_stc"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Gs.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Gs.GsCls.set_stc">[docs]</a>	<span class="k">def</span> <span class="nf">set_stc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sub_test_case</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">UtraTcwgssUbtest</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:GS:STC \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.tcw.gs.set_stc(sub_test_case = enums.UtraTcwgssUbtest.STC1) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param sub_test_case: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">sub_test_case</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">UtraTcwgssUbtest</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:GS:STC </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="GsCls.get_trigger_config"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Gs.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Gs.GsCls.get_trigger_config">[docs]</a>	<span class="k">def</span> <span class="nf">get_trigger_config</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwtRigConf</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:GS:TRIGgerconfig \n</span>
+<span class="sd">		Snippet: value: enums.EutraTcwtRigConf = driver.source.bb.eutra.tcw.gs.get_trigger_config() \n</span>
+<span class="sd">		Selects the trigger configuration. The trigger is used to synchronize the signal generator to the other equipment. \n</span>
+<span class="sd">			:return: trigger_config: UNCHanged| AAUTo UNCHanged The current trigger settings of the signal generator are retained unchanged. AAUTo The trigger settings are customized for the selected test case. The trigger setting &#39;Armed Auto&#39; with external trigger source is used; the trigger delay is set to zero. Thus, the base station frame timing is able to synchronize the signal generator by a periodic trigger.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:GS:TRIGgerconfig?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwtRigConf</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="GsCls.set_trigger_config"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Gs.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Gs.GsCls.set_trigger_config">[docs]</a>	<span class="k">def</span> <span class="nf">set_trigger_config</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">trigger_config</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwtRigConf</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:GS:TRIGgerconfig \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.tcw.gs.set_trigger_config(trigger_config = enums.EutraTcwtRigConf.AAUTo) \n</span>
+<span class="sd">		Selects the trigger configuration. The trigger is used to synchronize the signal generator to the other equipment. \n</span>
+<span class="sd">			:param trigger_config: UNCHanged| AAUTo UNCHanged The current trigger settings of the signal generator are retained unchanged. AAUTo The trigger settings are customized for the selected test case. The trigger setting &#39;Armed Auto&#39; with external trigger source is used; the trigger delay is set to zero. Thus, the base station frame timing is able to synchronize the signal generator by a periodic trigger.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">trigger_config</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwtRigConf</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:GS:TRIGgerconfig </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="GsCls.get_tx_antennas"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Gs.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Gs.GsCls.get_tx_antennas">[docs]</a>	<span class="k">def</span> <span class="nf">get_tx_antennas</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">TxAntenna</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:GS:TXANtennas \n</span>
+<span class="sd">		Snippet: value: enums.TxAntenna = driver.source.bb.eutra.tcw.gs.get_tx_antennas() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: num_of_tx_antennas: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:GS:TXANtennas?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">TxAntenna</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="GsCls.set_tx_antennas"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Gs.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Gs.GsCls.set_tx_antennas">[docs]</a>	<span class="k">def</span> <span class="nf">set_tx_antennas</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_of_tx_antennas</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">TxAntenna</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:GS:TXANtennas \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.tcw.gs.set_tx_antennas(num_of_tx_antennas = enums.TxAntenna.ANT1) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param num_of_tx_antennas: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">num_of_tx_antennas</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">TxAntenna</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:GS:TXANtennas </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

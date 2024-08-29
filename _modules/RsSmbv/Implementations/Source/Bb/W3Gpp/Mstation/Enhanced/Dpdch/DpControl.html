@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RsSmbv.Implementations.Source.Bb.W3Gpp.Mstation.Enhanced.Dpdch.DpControl &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="../../../../../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../../../../../../" id="documentation_options" src="../../../../../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../../../../../_static/jquery.js"></script>
+        <script src="../../../../../../../../../_static/underscore.js"></script>
+        <script src="../../../../../../../../../_static/doctools.js"></script>
+        <script src="../../../../../../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../../../../../../_static/copybutton.js"></script>
+    <script src="../../../../../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../../../../../../index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../RsSmbv.html">RsSmbv API Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../../../../index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../../../../../../index.html">Module code</a> &raquo;</li>
+          <li><a href="../../../../../../Source.html">RsSmbv.Implementations.Source</a> &raquo;</li>
+          <li><a href="../../../../../Bb.html">RsSmbv.Implementations.Source.Bb</a> &raquo;</li>
+          <li><a href="../../../../W3Gpp.html">RsSmbv.Implementations.Source.Bb.W3Gpp</a> &raquo;</li>
+          <li><a href="../../../Mstation.html">RsSmbv.Implementations.Source.Bb.W3Gpp.Mstation</a> &raquo;</li>
+          <li><a href="../../Enhanced.html">RsSmbv.Implementations.Source.Bb.W3Gpp.Mstation.Enhanced</a> &raquo;</li>
+          <li><a href="../Dpdch.html">RsSmbv.Implementations.Source.Bb.W3Gpp.Mstation.Enhanced.Dpdch</a> &raquo;</li>
+      <li>RsSmbv.Implementations.Source.Bb.W3Gpp.Mstation.Enhanced.Dpdch.DpControl</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for RsSmbv.Implementations.Source.Bb.W3Gpp.Mstation.Enhanced.Dpdch.DpControl</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">.........Internal.Core</span> <span class="kn">import</span> <span class="n">Core</span>
+<span class="kn">from</span> <span class="nn">.........Internal.CommandsGroup</span> <span class="kn">import</span> <span class="n">CommandsGroup</span>
+<span class="kn">from</span> <span class="nn">.........Internal</span> <span class="kn">import</span> <span class="n">Conversions</span>
+<span class="kn">from</span> <span class="nn">.........</span> <span class="kn">import</span> <span class="n">enums</span>
+
+
+<span class="c1"># noinspection PyPep8Naming,PyAttributeOutsideInit,SpellCheckingInspection</span>
+<div class="viewcode-block" id="DpControlCls"><a class="viewcode-back" href="../../../../../../../../../Source_Bb_W3Gpp_Mstation_Enhanced_Dpdch_DpControl.html#RsSmbv.Implementations.Source.Bb.W3Gpp.Mstation.Enhanced.Dpdch.DpControl.DpControlCls">[docs]</a><span class="k">class</span> <span class="nc">DpControlCls</span><span class="p">:</span>
+	<span class="sd">&quot;&quot;&quot;DpControl commands group definition. 9 total commands, 2 Subgroups, 5 group commands&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">core</span><span class="p">:</span> <span class="n">Core</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span> <span class="o">=</span> <span class="n">core</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span> <span class="o">=</span> <span class="n">CommandsGroup</span><span class="p">(</span><span class="s2">&quot;dpControl&quot;</span><span class="p">,</span> <span class="n">core</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">range</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;range commands group. 0 Sub-classes, 2 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_range&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Range</span> <span class="kn">import</span> <span class="n">RangeCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_range</span> <span class="o">=</span> <span class="n">RangeCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_range</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;step commands group. 0 Sub-classes, 2 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_step&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Step</span> <span class="kn">import</span> <span class="n">StepCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_step</span> <span class="o">=</span> <span class="n">StepCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_step</span>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="DpControlCls.get_assignment"><a class="viewcode-back" href="../../../../../../../../../Source_Bb_W3Gpp_Mstation_Enhanced_Dpdch_DpControl.html#RsSmbv.Implementations.Source.Bb.W3Gpp.Mstation.Enhanced.Dpdch.DpControl.DpControlCls.get_assignment">[docs]</a>	<span class="k">def</span> <span class="nf">get_assignment</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">PowContAssMode</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:W3GPp:MSTation:[ENHanced]:[DPDCh]:DPControl:ASSignment \n</span>
+<span class="sd">		Snippet: value: enums.PowContAssMode = driver.source.bb.w3Gpp.mstation.enhanced.dpdch.dpControl.get_assignment() \n</span>
+<span class="sd">		Enabled for UL-DTX mode only ([:SOURce&lt;hw&gt;]:BB:W3GPp:MSTation:UDTX:STATe ON) . The power control recognizes the UL-DPCCH</span>
+<span class="sd">		gaps according to 3GPP TS 25.214. Some of the TPC commands sent to the instrument over the external line or by the TPC</span>
+<span class="sd">		pattern are ignored, whereas others are summed up and applied later. The processing of the TPC commands depends only on</span>
+<span class="sd">		whether the BS sends the TPC bits on the F-DPCH with slot format 0/ slot format 9 or not. \n</span>
+<span class="sd">			:return: assignment: NORMal| FDPCh</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:W3GPp:MSTation:ENHanced:DPDCh:DPControl:ASSignment?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">PowContAssMode</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DpControlCls.set_assignment"><a class="viewcode-back" href="../../../../../../../../../Source_Bb_W3Gpp_Mstation_Enhanced_Dpdch_DpControl.html#RsSmbv.Implementations.Source.Bb.W3Gpp.Mstation.Enhanced.Dpdch.DpControl.DpControlCls.set_assignment">[docs]</a>	<span class="k">def</span> <span class="nf">set_assignment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">assignment</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">PowContAssMode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:W3GPp:MSTation:[ENHanced]:[DPDCh]:DPControl:ASSignment \n</span>
+<span class="sd">		Snippet: driver.source.bb.w3Gpp.mstation.enhanced.dpdch.dpControl.set_assignment(assignment = enums.PowContAssMode.FDPCh) \n</span>
+<span class="sd">		Enabled for UL-DTX mode only ([:SOURce&lt;hw&gt;]:BB:W3GPp:MSTation:UDTX:STATe ON) . The power control recognizes the UL-DPCCH</span>
+<span class="sd">		gaps according to 3GPP TS 25.214. Some of the TPC commands sent to the instrument over the external line or by the TPC</span>
+<span class="sd">		pattern are ignored, whereas others are summed up and applied later. The processing of the TPC commands depends only on</span>
+<span class="sd">		whether the BS sends the TPC bits on the F-DPCH with slot format 0/ slot format 9 or not. \n</span>
+<span class="sd">			:param assignment: NORMal| FDPCh</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">assignment</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">PowContAssMode</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:W3GPp:MSTation:ENHanced:DPDCh:DPControl:ASSignment </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="DpControlCls.get_direction"><a class="viewcode-back" href="../../../../../../../../../Source_Bb_W3Gpp_Mstation_Enhanced_Dpdch_DpControl.html#RsSmbv.Implementations.Source.Bb.W3Gpp.Mstation.Enhanced.Dpdch.DpControl.DpControlCls.get_direction">[docs]</a>	<span class="k">def</span> <span class="nf">get_direction</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">UpDownDirection</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:W3GPp:MSTation:[ENHanced]:[DPDCh]:DPControl:DIRection \n</span>
+<span class="sd">		Snippet: value: enums.UpDownDirection = driver.source.bb.w3Gpp.mstation.enhanced.dpdch.dpControl.get_direction() \n</span>
+<span class="sd">		The command selects the Dynamic Power Control direction. The selected direction determines if the channel power is</span>
+<span class="sd">		increased (UP) or decreased (DOWN) by control signal with high level. \n</span>
+<span class="sd">			:return: direction: UP| DOWN</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:W3GPp:MSTation:ENHanced:DPDCh:DPControl:DIRection?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">UpDownDirection</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DpControlCls.set_direction"><a class="viewcode-back" href="../../../../../../../../../Source_Bb_W3Gpp_Mstation_Enhanced_Dpdch_DpControl.html#RsSmbv.Implementations.Source.Bb.W3Gpp.Mstation.Enhanced.Dpdch.DpControl.DpControlCls.set_direction">[docs]</a>	<span class="k">def</span> <span class="nf">set_direction</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">direction</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">UpDownDirection</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:W3GPp:MSTation:[ENHanced]:[DPDCh]:DPControl:DIRection \n</span>
+<span class="sd">		Snippet: driver.source.bb.w3Gpp.mstation.enhanced.dpdch.dpControl.set_direction(direction = enums.UpDownDirection.DOWN) \n</span>
+<span class="sd">		The command selects the Dynamic Power Control direction. The selected direction determines if the channel power is</span>
+<span class="sd">		increased (UP) or decreased (DOWN) by control signal with high level. \n</span>
+<span class="sd">			:param direction: UP| DOWN</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">direction</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">UpDownDirection</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:W3GPp:MSTation:ENHanced:DPDCh:DPControl:DIRection </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="DpControlCls.get_mode"><a class="viewcode-back" href="../../../../../../../../../Source_Bb_W3Gpp_Mstation_Enhanced_Dpdch_DpControl.html#RsSmbv.Implementations.Source.Bb.W3Gpp.Mstation.Enhanced.Dpdch.DpControl.DpControlCls.get_mode">[docs]</a>	<span class="k">def</span> <span class="nf">get_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">PowContMode</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:W3GPp:MSTation:[ENHanced]:[DPDCh]:DPControl:MODE \n</span>
+<span class="sd">		Snippet: value: enums.PowContMode = driver.source.bb.w3Gpp.mstation.enhanced.dpdch.dpControl.get_mode() \n</span>
+<span class="sd">		Determines the source of the control signal. \n</span>
+<span class="sd">			:return: mode: TPC| MANual</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:W3GPp:MSTation:ENHanced:DPDCh:DPControl:MODE?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">PowContMode</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DpControlCls.set_mode"><a class="viewcode-back" href="../../../../../../../../../Source_Bb_W3Gpp_Mstation_Enhanced_Dpdch_DpControl.html#RsSmbv.Implementations.Source.Bb.W3Gpp.Mstation.Enhanced.Dpdch.DpControl.DpControlCls.set_mode">[docs]</a>	<span class="k">def</span> <span class="nf">set_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">PowContMode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:W3GPp:MSTation:[ENHanced]:[DPDCh]:DPControl:MODE \n</span>
+<span class="sd">		Snippet: driver.source.bb.w3Gpp.mstation.enhanced.dpdch.dpControl.set_mode(mode = enums.PowContMode.EXTernal) \n</span>
+<span class="sd">		Determines the source of the control signal. \n</span>
+<span class="sd">			:param mode: TPC| MANual</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">mode</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">PowContMode</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:W3GPp:MSTation:ENHanced:DPDCh:DPControl:MODE </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DpControlCls.get_state"><a class="viewcode-back" href="../../../../../../../../../Source_Bb_W3Gpp_Mstation_Enhanced_Dpdch_DpControl.html#RsSmbv.Implementations.Source.Bb.W3Gpp.Mstation.Enhanced.Dpdch.DpControl.DpControlCls.get_state">[docs]</a>	<span class="k">def</span> <span class="nf">get_state</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:W3GPp:MSTation:[ENHanced]:[DPDCh]:DPControl:STATe \n</span>
+<span class="sd">		Snippet: value: bool = driver.source.bb.w3Gpp.mstation.enhanced.dpdch.dpControl.get_state() \n</span>
+<span class="sd">		Activates/deactivates Dynamic Power Control. \n</span>
+<span class="sd">			:return: state: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:W3GPp:MSTation:ENHanced:DPDCh:DPControl:STATe?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_bool</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DpControlCls.set_state"><a class="viewcode-back" href="../../../../../../../../../Source_Bb_W3Gpp_Mstation_Enhanced_Dpdch_DpControl.html#RsSmbv.Implementations.Source.Bb.W3Gpp.Mstation.Enhanced.Dpdch.DpControl.DpControlCls.set_state">[docs]</a>	<span class="k">def</span> <span class="nf">set_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:W3GPp:MSTation:[ENHanced]:[DPDCh]:DPControl:STATe \n</span>
+<span class="sd">		Snippet: driver.source.bb.w3Gpp.mstation.enhanced.dpdch.dpControl.set_state(state = False) \n</span>
+<span class="sd">		Activates/deactivates Dynamic Power Control. \n</span>
+<span class="sd">			:param state: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">bool_to_str</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:W3GPp:MSTation:ENHanced:DPDCh:DPControl:STATe </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DpControlCls.get_power"><a class="viewcode-back" href="../../../../../../../../../Source_Bb_W3Gpp_Mstation_Enhanced_Dpdch_DpControl.html#RsSmbv.Implementations.Source.Bb.W3Gpp.Mstation.Enhanced.Dpdch.DpControl.DpControlCls.get_power">[docs]</a>	<span class="k">def</span> <span class="nf">get_power</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:W3GPp:MSTation:[ENHanced]:[DPDCh]:DPControl:[POWer] \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.w3Gpp.mstation.enhanced.dpdch.dpControl.get_power() \n</span>
+<span class="sd">		The command queries the deviation of the channel power (delta POW) from the set power start value of the DPDCH. \n</span>
+<span class="sd">			:return: power: float Range: -60 to 60</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:W3GPp:MSTation:ENHanced:DPDCh:DPControl:POWer?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+	<span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;DpControlCls&#39;</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Clones the group by creating new object from it and its whole existing subgroups</span>
+<span class="sd">		Also copies all the existing default Repeated Capabilities setting,</span>
+<span class="sd">		which you can change independently without affecting the original group&quot;&quot;&quot;</span>
+		<span class="n">new_group</span> <span class="o">=</span> <span class="n">DpControlCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">synchronize_repcaps</span><span class="p">(</span><span class="n">new_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">new_group</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

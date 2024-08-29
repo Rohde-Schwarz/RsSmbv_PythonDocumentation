@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RsSmbv.Implementations.Source.Bb.Gnss.Rt.Receiver.V.HilPosition.Latency.Statistics &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="../../../../../../../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../../../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../../../../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../../../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../../../../../../../../" id="documentation_options" src="../../../../../../../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../../../../../../../_static/jquery.js"></script>
+        <script src="../../../../../../../../../../../_static/underscore.js"></script>
+        <script src="../../../../../../../../../../../_static/doctools.js"></script>
+        <script src="../../../../../../../../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../../../../../../../../_static/copybutton.js"></script>
+    <script src="../../../../../../../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../../../../../../../../index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../../../readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../../../enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../../../repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../../../RsSmbv.html">RsSmbv API Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../../../utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../../../logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../../../events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../../../genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../../../../../../index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../../../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../../../../../../../../index.html">Module code</a> &raquo;</li>
+          <li><a href="../../../../../../../../Source.html">RsSmbv.Implementations.Source</a> &raquo;</li>
+          <li><a href="../../../../../../../Bb.html">RsSmbv.Implementations.Source.Bb</a> &raquo;</li>
+          <li><a href="../../../../../../Gnss.html">RsSmbv.Implementations.Source.Bb.Gnss</a> &raquo;</li>
+          <li><a href="../../../../../Rt.html">RsSmbv.Implementations.Source.Bb.Gnss.Rt</a> &raquo;</li>
+          <li><a href="../../../../Receiver.html">RsSmbv.Implementations.Source.Bb.Gnss.Rt.Receiver</a> &raquo;</li>
+          <li><a href="../../../V.html">RsSmbv.Implementations.Source.Bb.Gnss.Rt.Receiver.V</a> &raquo;</li>
+          <li><a href="../../HilPosition.html">RsSmbv.Implementations.Source.Bb.Gnss.Rt.Receiver.V.HilPosition</a> &raquo;</li>
+          <li><a href="../Latency.html">RsSmbv.Implementations.Source.Bb.Gnss.Rt.Receiver.V.HilPosition.Latency</a> &raquo;</li>
+      <li>RsSmbv.Implementations.Source.Bb.Gnss.Rt.Receiver.V.HilPosition.Latency.Statistics</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for RsSmbv.Implementations.Source.Bb.Gnss.Rt.Receiver.V.HilPosition.Latency.Statistics</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">..........Internal.Core</span> <span class="kn">import</span> <span class="n">Core</span>
+<span class="kn">from</span> <span class="nn">..........Internal.CommandsGroup</span> <span class="kn">import</span> <span class="n">CommandsGroup</span>
+<span class="kn">from</span> <span class="nn">..........Internal.StructBase</span> <span class="kn">import</span> <span class="n">StructBase</span>
+<span class="kn">from</span> <span class="nn">..........Internal.ArgStruct</span> <span class="kn">import</span> <span class="n">ArgStruct</span>
+<span class="kn">from</span> <span class="nn">..........</span> <span class="kn">import</span> <span class="n">repcap</span>
+
+
+<span class="c1"># noinspection PyPep8Naming,PyAttributeOutsideInit,SpellCheckingInspection</span>
+<div class="viewcode-block" id="StatisticsCls"><a class="viewcode-back" href="../../../../../../../../../../../Source_Bb_Gnss_Rt_Receiver_V_HilPosition_Latency_Statistics.html#RsSmbv.Implementations.Source.Bb.Gnss.Rt.Receiver.V.HilPosition.Latency.Statistics.StatisticsCls">[docs]</a><span class="k">class</span> <span class="nc">StatisticsCls</span><span class="p">:</span>
+	<span class="sd">&quot;&quot;&quot;Statistics commands group definition. 1 total commands, 0 Subgroups, 1 group commands&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">core</span><span class="p">:</span> <span class="n">Core</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span> <span class="o">=</span> <span class="n">core</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span> <span class="o">=</span> <span class="n">CommandsGroup</span><span class="p">(</span><span class="s2">&quot;statistics&quot;</span><span class="p">,</span> <span class="n">core</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="StatisticsCls.GetStruct"><a class="viewcode-back" href="../../../../../../../../../../../Source_Bb_Gnss_Rt_Receiver_V_HilPosition_Latency_Statistics.html#RsSmbv.Implementations.Source.Bb.Gnss.Rt.Receiver.V.HilPosition.Latency.Statistics.StatisticsCls.GetStruct">[docs]</a>	<span class="k">class</span> <span class="nc">GetStruct</span><span class="p">(</span><span class="n">StructBase</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;Response structure. Fields: \n</span>
+<span class="sd">			- Cmd_Hw_Time: float: float The hardware time at the moment the last HIL command is received.</span>
+<span class="sd">			- Last_Latency: float: float Time delay between the time specified with the parameter ElapsedTime in a HIL command and the time this command is executed in the R&amp;S SMBV100B. Unit: s</span>
+<span class="sd">			- Max_Latency: float: float The largest latency value since the last time this query was sent. Unit: s</span>
+<span class="sd">			- Min_Latency: float: float The smallest latency value since the last time this query was sent. Unit: s</span>
+<span class="sd">			- No_Zero_Values: int: integer Number of non-zero latency values since the last time this query was sent.</span>
+<span class="sd">			- Cmd_Received: int: integer Accumulated LastLatency values since the last time this query was sent.</span>
+<span class="sd">			- Cmd_Used: int: integer The number of used HIL commands, excluding the dropped HIL commands, since the last time this query was sent.</span>
+<span class="sd">			- Cmd_Sync: int: integer The number of HIL commands applied at their specified time</span>
+<span class="sd">			- Cmd_Exterp: int: integer The number of extrapolated HIL commands. The commands are applied later than their specified time.</span>
+<span class="sd">			- Cmd_Interp: int: integer The number of internal position updates. The value includes commands describing both situations, moment of time in past and moment of time in the future.</span>
+<span class="sd">			- Cmd_Predict: int: integer The number of internal position updates performed by the prediction algorithm, see &#39;Trajectory prediction&#39;.</span>
+<span class="sd">			- Max_Used: int: integer The maximum number buffered commands</span>
+<span class="sd">			- Min_Used: int: integer The minimum number buffered commands&quot;&quot;&quot;</span>
+		<span class="n">__meta_args_list</span> <span class="o">=</span> <span class="p">[</span>
+			<span class="n">ArgStruct</span><span class="o">.</span><span class="n">scalar_float</span><span class="p">(</span><span class="s1">&#39;Cmd_Hw_Time&#39;</span><span class="p">),</span>
+			<span class="n">ArgStruct</span><span class="o">.</span><span class="n">scalar_float</span><span class="p">(</span><span class="s1">&#39;Last_Latency&#39;</span><span class="p">),</span>
+			<span class="n">ArgStruct</span><span class="o">.</span><span class="n">scalar_float</span><span class="p">(</span><span class="s1">&#39;Max_Latency&#39;</span><span class="p">),</span>
+			<span class="n">ArgStruct</span><span class="o">.</span><span class="n">scalar_float</span><span class="p">(</span><span class="s1">&#39;Min_Latency&#39;</span><span class="p">),</span>
+			<span class="n">ArgStruct</span><span class="o">.</span><span class="n">scalar_int</span><span class="p">(</span><span class="s1">&#39;No_Zero_Values&#39;</span><span class="p">),</span>
+			<span class="n">ArgStruct</span><span class="o">.</span><span class="n">scalar_int</span><span class="p">(</span><span class="s1">&#39;Cmd_Received&#39;</span><span class="p">),</span>
+			<span class="n">ArgStruct</span><span class="o">.</span><span class="n">scalar_int</span><span class="p">(</span><span class="s1">&#39;Cmd_Used&#39;</span><span class="p">),</span>
+			<span class="n">ArgStruct</span><span class="o">.</span><span class="n">scalar_int</span><span class="p">(</span><span class="s1">&#39;Cmd_Sync&#39;</span><span class="p">),</span>
+			<span class="n">ArgStruct</span><span class="o">.</span><span class="n">scalar_int</span><span class="p">(</span><span class="s1">&#39;Cmd_Exterp&#39;</span><span class="p">),</span>
+			<span class="n">ArgStruct</span><span class="o">.</span><span class="n">scalar_int</span><span class="p">(</span><span class="s1">&#39;Cmd_Interp&#39;</span><span class="p">),</span>
+			<span class="n">ArgStruct</span><span class="o">.</span><span class="n">scalar_int</span><span class="p">(</span><span class="s1">&#39;Cmd_Predict&#39;</span><span class="p">),</span>
+			<span class="n">ArgStruct</span><span class="o">.</span><span class="n">scalar_int</span><span class="p">(</span><span class="s1">&#39;Max_Used&#39;</span><span class="p">),</span>
+			<span class="n">ArgStruct</span><span class="o">.</span><span class="n">scalar_int</span><span class="p">(</span><span class="s1">&#39;Min_Used&#39;</span><span class="p">)]</span>
+
+		<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+			<span class="n">StructBase</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">Cmd_Hw_Time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">Last_Latency</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">Max_Latency</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">Min_Latency</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">No_Zero_Values</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">Cmd_Received</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">Cmd_Used</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">Cmd_Sync</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">Cmd_Exterp</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">Cmd_Interp</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">Cmd_Predict</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">Max_Used</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">Min_Used</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="StatisticsCls.get"><a class="viewcode-back" href="../../../../../../../../../../../Source_Bb_Gnss_Rt_Receiver_V_HilPosition_Latency_Statistics.html#RsSmbv.Implementations.Source.Bb.Gnss.Rt.Receiver.V.HilPosition.Latency.Statistics.StatisticsCls.get">[docs]</a>	<span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vehicle</span><span class="o">=</span><span class="n">repcap</span><span class="o">.</span><span class="n">Vehicle</span><span class="o">.</span><span class="n">Default</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">GetStruct</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:GNSS:RT:RECeiver:[V&lt;ST&gt;]:HILPosition:LATency:STATistics \n</span>
+<span class="sd">		Snippet: value: GetStruct = driver.source.bb.gnss.rt.receiver.v.hilPosition.latency.statistics.get(vehicle = repcap.Vehicle.Default) \n</span>
+<span class="sd">		Queries the current latency tcal.latency,i and statistics on the latency values. This command returns also the minimum</span>
+<span class="sd">		deviation and the maximum deviation from zero latency. Also, it returns the measured number of non-zero latency values</span>
+<span class="sd">		since the last query with this command.</span>
+<span class="sd">			INTRO_CMD_HELP: The following terms are used: \n</span>
+<span class="sd">			- HIL command refers to HiL mode A or HiL mode B commands: [:SOURce&lt;hw&gt;]:BB:GNSS:RT:RECeiver[:V&lt;st&gt;]:HILPosition:MODE:A [:SOURce&lt;hw&gt;]:BB:GNSS:RT:RECeiver[:V&lt;st&gt;]:HILPosition:MODE:B</span>
+<span class="sd">			- Dropped commands are commands that are evaluated, buffered but not applied because they become outdated as more up-to-date information is received</span>
+<span class="sd">			- Return values apply for the period since the last query with this command.</span>
+<span class="sd">		How to: &#39;Latency calibration&#39; \n</span>
+<span class="sd">			:param vehicle: optional repeated capability selector. Default value: Nr1 (settable in the interface &#39;V&#39;)</span>
+<span class="sd">			:return: structure: for return value, see the help for GetStruct structure arguments.&quot;&quot;&quot;</span>
+		<span class="n">vehicle_cmd_val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">get_repcap_cmd_value</span><span class="p">(</span><span class="n">vehicle</span><span class="p">,</span> <span class="n">repcap</span><span class="o">.</span><span class="n">Vehicle</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_struct</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:GNSS:RT:RECeiver:V</span><span class="si">{</span><span class="n">vehicle_cmd_val</span><span class="si">}</span><span class="s1">:HILPosition:LATency:STATistics?&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">GetStruct</span><span class="p">())</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

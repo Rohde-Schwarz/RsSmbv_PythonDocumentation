@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RsSmbv.Implementations.Source.Bb.Dme &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../_static/jquery.js"></script>
+        <script src="../../../../../_static/underscore.js"></script>
+        <script src="../../../../../_static/doctools.js"></script>
+        <script src="../../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../../_static/copybutton.js"></script>
+    <script src="../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../../index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../RsSmbv.html">RsSmbv API Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../../index.html">Module code</a> &raquo;</li>
+          <li><a href="../../Source.html">RsSmbv.Implementations.Source</a> &raquo;</li>
+          <li><a href="../Bb.html">RsSmbv.Implementations.Source.Bb</a> &raquo;</li>
+      <li>RsSmbv.Implementations.Source.Bb.Dme</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for RsSmbv.Implementations.Source.Bb.Dme</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">.....Internal.Core</span> <span class="kn">import</span> <span class="n">Core</span>
+<span class="kn">from</span> <span class="nn">.....Internal.CommandsGroup</span> <span class="kn">import</span> <span class="n">CommandsGroup</span>
+<span class="kn">from</span> <span class="nn">.....Internal</span> <span class="kn">import</span> <span class="n">Conversions</span>
+<span class="kn">from</span> <span class="nn">.....</span> <span class="kn">import</span> <span class="n">enums</span>
+
+
+<span class="c1"># noinspection PyPep8Naming,PyAttributeOutsideInit,SpellCheckingInspection</span>
+<div class="viewcode-block" id="DmeCls"><a class="viewcode-back" href="../../../../../Source_Bb_Dme.html#RsSmbv.Implementations.Source.Bb.Dme.DmeCls">[docs]</a><span class="k">class</span> <span class="nc">DmeCls</span><span class="p">:</span>
+	<span class="sd">&quot;&quot;&quot;Dme commands group definition. 91 total commands, 14 Subgroups, 14 group commands&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">core</span><span class="p">:</span> <span class="n">Core</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span> <span class="o">=</span> <span class="n">core</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span> <span class="o">=</span> <span class="n">CommandsGroup</span><span class="p">(</span><span class="s2">&quot;dme&quot;</span><span class="p">,</span> <span class="n">core</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">clock</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;clock commands group. 0 Sub-classes, 3 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_clock&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Clock</span> <span class="kn">import</span> <span class="n">ClockCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_clock</span> <span class="o">=</span> <span class="n">ClockCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_clock</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">ppst</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;ppst commands group. 0 Sub-classes, 2 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_ppst&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Ppst</span> <span class="kn">import</span> <span class="n">PpstCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_ppst</span> <span class="o">=</span> <span class="n">PpstCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ppst</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">setting</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;setting commands group. 0 Sub-classes, 4 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_setting&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Setting</span> <span class="kn">import</span> <span class="n">SettingCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_setting</span> <span class="o">=</span> <span class="n">SettingCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_setting</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">trigger</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;trigger commands group. 4 Sub-classes, 4 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_trigger&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Trigger</span> <span class="kn">import</span> <span class="n">TriggerCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_trigger</span> <span class="o">=</span> <span class="n">TriggerCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_trigger</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">analysis</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;analysis commands group. 1 Sub-classes, 11 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_analysis&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Analysis</span> <span class="kn">import</span> <span class="n">AnalysisCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_analysis</span> <span class="o">=</span> <span class="n">AnalysisCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_analysis</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">echo</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;echo commands group. 0 Sub-classes, 3 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_echo&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Echo</span> <span class="kn">import</span> <span class="n">EchoCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_echo</span> <span class="o">=</span> <span class="n">EchoCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_echo</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">efficiency</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;efficiency commands group. 0 Sub-classes, 2 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_efficiency&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Efficiency</span> <span class="kn">import</span> <span class="n">EfficiencyCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_efficiency</span> <span class="o">=</span> <span class="n">EfficiencyCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_efficiency</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">flight</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;flight commands group. 4 Sub-classes, 4 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_flight&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Flight</span> <span class="kn">import</span> <span class="n">FlightCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_flight</span> <span class="o">=</span> <span class="n">FlightCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_flight</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">gaussian</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;gaussian commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_gaussian&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Gaussian</span> <span class="kn">import</span> <span class="n">GaussianCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_gaussian</span> <span class="o">=</span> <span class="n">GaussianCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gaussian</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">icao</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;icao commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_icao&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Icao</span> <span class="kn">import</span> <span class="n">IcaoCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_icao</span> <span class="o">=</span> <span class="n">IcaoCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_icao</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;id commands group. 2 Sub-classes, 11 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_id&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Id</span> <span class="kn">import</span> <span class="n">IdCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_id</span> <span class="o">=</span> <span class="n">IdCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_id</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">marker</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;marker commands group. 4 Sub-classes, 0 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_marker&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Marker</span> <span class="kn">import</span> <span class="n">MarkerCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_marker</span> <span class="o">=</span> <span class="n">MarkerCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_marker</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">pinput</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;pinput commands group. 1 Sub-classes, 2 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_pinput&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Pinput</span> <span class="kn">import</span> <span class="n">PinputCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_pinput</span> <span class="o">=</span> <span class="n">PinputCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pinput</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">rdistance</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;rdistance commands group. 0 Sub-classes, 2 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_rdistance&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Rdistance</span> <span class="kn">import</span> <span class="n">RdistanceCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_rdistance</span> <span class="o">=</span> <span class="n">RdistanceCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rdistance</span>
+
+<div class="viewcode-block" id="DmeCls.preset"><a class="viewcode-back" href="../../../../../Source_Bb_Dme.html#RsSmbv.Implementations.Source.Bb.Dme.DmeCls.preset">[docs]</a>	<span class="k">def</span> <span class="nf">preset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:DME:PRESet \n</span>
+<span class="sd">		Snippet: driver.source.bb.dme.preset() \n</span>
+<span class="sd">		Sets the parameters of the digital standard to their default values (*RST values specified for the commands) .</span>
+<span class="sd">		Not affected is the state set with the command SOURce&lt;hw&gt;:BB:VOR|ILS|DME:STATe. \n</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DME:PRESet&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DmeCls.preset_with_opc"><a class="viewcode-back" href="../../../../../Source_Bb_Dme.html#RsSmbv.Implementations.Source.Bb.Dme.DmeCls.preset_with_opc">[docs]</a>	<span class="k">def</span> <span class="nf">preset_with_opc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">opc_timeout_ms</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:DME:PRESet \n</span>
+<span class="sd">		Snippet: driver.source.bb.dme.preset_with_opc() \n</span>
+<span class="sd">		Sets the parameters of the digital standard to their default values (*RST values specified for the commands) .</span>
+<span class="sd">		Not affected is the state set with the command SOURce&lt;hw&gt;:BB:VOR|ILS|DME:STATe. \n</span>
+<span class="sd">		Same as preset, but waits for the operation to complete before continuing further. Use the RsSmbv.utilities.opc_timeout_set() to set the timeout value. \n</span>
+<span class="sd">			:param opc_timeout_ms: Maximum time to wait in milliseconds, valid only for this call.&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write_with_opc</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DME:PRESet&#39;</span><span class="p">,</span> <span class="n">opc_timeout_ms</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DmeCls.get_state"><a class="viewcode-back" href="../../../../../Source_Bb_Dme.html#RsSmbv.Implementations.Source.Bb.Dme.DmeCls.get_state">[docs]</a>	<span class="k">def</span> <span class="nf">get_state</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:DME:STATe \n</span>
+<span class="sd">		Snippet: value: bool = driver.source.bb.dme.get_state() \n</span>
+<span class="sd">		Activates/deactivates the avionic standard. \n</span>
+<span class="sd">			:return: state: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DME:STATe?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_bool</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DmeCls.set_state"><a class="viewcode-back" href="../../../../../Source_Bb_Dme.html#RsSmbv.Implementations.Source.Bb.Dme.DmeCls.set_state">[docs]</a>	<span class="k">def</span> <span class="nf">set_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:DME:STATe \n</span>
+<span class="sd">		Snippet: driver.source.bb.dme.set_state(state = False) \n</span>
+<span class="sd">		Activates/deactivates the avionic standard. \n</span>
+<span class="sd">			:param state: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">bool_to_str</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DME:STATe </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="DmeCls.get_csuffix"><a class="viewcode-back" href="../../../../../Source_Bb_Dme.html#RsSmbv.Implementations.Source.Bb.Dme.DmeCls.get_csuffix">[docs]</a>	<span class="k">def</span> <span class="nf">get_csuffix</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">AvionicDmeChanSuff</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:DME:CSUFfix \n</span>
+<span class="sd">		Snippet: value: enums.AvionicDmeChanSuff = driver.source.bb.dme.get_csuffix() \n</span>
+<span class="sd">		Sets the channel that is simulated. Standard compliant X and Y channels differ in the spacing between the two pulses of</span>
+<span class="sd">		the pulse pair and the delay of the ground station. \n</span>
+<span class="sd">			:return: csuffix: X| Y| ICAO</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DME:CSUFfix?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">AvionicDmeChanSuff</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DmeCls.set_csuffix"><a class="viewcode-back" href="../../../../../Source_Bb_Dme.html#RsSmbv.Implementations.Source.Bb.Dme.DmeCls.set_csuffix">[docs]</a>	<span class="k">def</span> <span class="nf">set_csuffix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">csuffix</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">AvionicDmeChanSuff</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:DME:CSUFfix \n</span>
+<span class="sd">		Snippet: driver.source.bb.dme.set_csuffix(csuffix = enums.AvionicDmeChanSuff.ICAO) \n</span>
+<span class="sd">		Sets the channel that is simulated. Standard compliant X and Y channels differ in the spacing between the two pulses of</span>
+<span class="sd">		the pulse pair and the delay of the ground station. \n</span>
+<span class="sd">			:param csuffix: X| Y| ICAO</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">csuffix</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">AvionicDmeChanSuff</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DME:CSUFfix </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DmeCls.get_fall"><a class="viewcode-back" href="../../../../../Source_Bb_Dme.html#RsSmbv.Implementations.Source.Bb.Dme.DmeCls.get_fall">[docs]</a>	<span class="k">def</span> <span class="nf">get_fall</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:DME:FALL \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.dme.get_fall() \n</span>
+<span class="sd">		Sets the fall time of the pulse (90% to 10% of peak voltage) . \n</span>
+<span class="sd">			:return: fall: float Range: 0.5E-6 to 10E-6</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DME:FALL?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DmeCls.set_fall"><a class="viewcode-back" href="../../../../../Source_Bb_Dme.html#RsSmbv.Implementations.Source.Bb.Dme.DmeCls.set_fall">[docs]</a>	<span class="k">def</span> <span class="nf">set_fall</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fall</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:DME:FALL \n</span>
+<span class="sd">		Snippet: driver.source.bb.dme.set_fall(fall = 1.0) \n</span>
+<span class="sd">		Sets the fall time of the pulse (90% to 10% of peak voltage) . \n</span>
+<span class="sd">			:param fall: float Range: 0.5E-6 to 10E-6</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">fall</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DME:FALL </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DmeCls.get_frequency"><a class="viewcode-back" href="../../../../../Source_Bb_Dme.html#RsSmbv.Implementations.Source.Bb.Dme.DmeCls.get_frequency">[docs]</a>	<span class="k">def</span> <span class="nf">get_frequency</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:DME:FREQuency \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.dme.get_frequency() \n</span>
+<span class="sd">		Sets the carrier frequency of the signal. \n</span>
+<span class="sd">			:return: carrier_freq: float Range: 100E3 to 6E9</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DME:FREQuency?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DmeCls.set_frequency"><a class="viewcode-back" href="../../../../../Source_Bb_Dme.html#RsSmbv.Implementations.Source.Bb.Dme.DmeCls.set_frequency">[docs]</a>	<span class="k">def</span> <span class="nf">set_frequency</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">carrier_freq</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:DME:FREQuency \n</span>
+<span class="sd">		Snippet: driver.source.bb.dme.set_frequency(carrier_freq = 1.0) \n</span>
+<span class="sd">		Sets the carrier frequency of the signal. \n</span>
+<span class="sd">			:param carrier_freq: float Range: 100E3 to 6E9</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">carrier_freq</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DME:FREQuency </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="DmeCls.get_mode"><a class="viewcode-back" href="../../../../../Source_Bb_Dme.html#RsSmbv.Implementations.Source.Bb.Dme.DmeCls.get_mode">[docs]</a>	<span class="k">def</span> <span class="nf">get_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">AvionicDmeMode</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:DME:MODE \n</span>
+<span class="sd">		Snippet: value: enums.AvionicDmeMode = driver.source.bb.dme.get_mode() \n</span>
+<span class="sd">		Selects the mode of the DME modulation. The mode determines the signal type that is simulated. The exact timing of the</span>
+<span class="sd">		signal for each mode is determined by the channel selected with[:SOURce&lt;hw&gt;][:BB]:DME:CSUFfix. \n</span>
+<span class="sd">			:return: mode: INTerrogation| REPLy INTerrogation The interrogation signal of the airborne transmitter is simulated. REPLy The reply signal of the ground based transponder is simulated. The trigger is automatically set to external and the default trigger delay either to 50 us (channel X) or 56 us (channel Y) depending on the selected channel ([:SOURcehw][:BB]:DME:CSUFfix) . The interval between the pulse pairs can be set to a fixed value (repetition rate, [:SOURcehw][:BB]:DME:RATE) or to random generation (pulse squitter, [:SOURcehw][:BB]:DME:SQUitter) . The trigger signal is input via the Pulse Ext connector.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DME:MODE?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">AvionicDmeMode</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DmeCls.set_mode"><a class="viewcode-back" href="../../../../../Source_Bb_Dme.html#RsSmbv.Implementations.Source.Bb.Dme.DmeCls.set_mode">[docs]</a>	<span class="k">def</span> <span class="nf">set_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">AvionicDmeMode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:DME:MODE \n</span>
+<span class="sd">		Snippet: driver.source.bb.dme.set_mode(mode = enums.AvionicDmeMode.INTerrogation) \n</span>
+<span class="sd">		Selects the mode of the DME modulation. The mode determines the signal type that is simulated. The exact timing of the</span>
+<span class="sd">		signal for each mode is determined by the channel selected with[:SOURce&lt;hw&gt;][:BB]:DME:CSUFfix. \n</span>
+<span class="sd">			:param mode: INTerrogation| REPLy INTerrogation The interrogation signal of the airborne transmitter is simulated. REPLy The reply signal of the ground based transponder is simulated. The trigger is automatically set to external and the default trigger delay either to 50 us (channel X) or 56 us (channel Y) depending on the selected channel ([:SOURcehw][:BB]:DME:CSUFfix) . The interval between the pulse pairs can be set to a fixed value (repetition rate, [:SOURcehw][:BB]:DME:RATE) or to random generation (pulse squitter, [:SOURcehw][:BB]:DME:SQUitter) . The trigger signal is input via the Pulse Ext connector.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">mode</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">AvionicDmeMode</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DME:MODE </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DmeCls.get_pps"><a class="viewcode-back" href="../../../../../Source_Bb_Dme.html#RsSmbv.Implementations.Source.Bb.Dme.DmeCls.get_pps">[docs]</a>	<span class="k">def</span> <span class="nf">get_pps</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:DME:PPS \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.dme.get_pps() \n</span>
+<span class="sd">		Sets the spacing between the first and second pulse of a pulse pair (time between halfvoltage points on the leading edge</span>
+<span class="sd">		of each pulse) . Available only for [:SOURce&lt;hw&gt;][:BB]:DME:SINGleOFF \n</span>
+<span class="sd">			:return: pps: float Range: 1E-6 to 200E-6</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DME:PPS?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DmeCls.set_pps"><a class="viewcode-back" href="../../../../../Source_Bb_Dme.html#RsSmbv.Implementations.Source.Bb.Dme.DmeCls.set_pps">[docs]</a>	<span class="k">def</span> <span class="nf">set_pps</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pps</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:DME:PPS \n</span>
+<span class="sd">		Snippet: driver.source.bb.dme.set_pps(pps = 1.0) \n</span>
+<span class="sd">		Sets the spacing between the first and second pulse of a pulse pair (time between halfvoltage points on the leading edge</span>
+<span class="sd">		of each pulse) . Available only for [:SOURce&lt;hw&gt;][:BB]:DME:SINGleOFF \n</span>
+<span class="sd">			:param pps: float Range: 1E-6 to 200E-6</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">pps</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DME:PPS </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DmeCls.get_rate"><a class="viewcode-back" href="../../../../../Source_Bb_Dme.html#RsSmbv.Implementations.Source.Bb.Dme.DmeCls.get_rate">[docs]</a>	<span class="k">def</span> <span class="nf">get_rate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:DME:RATE \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.dme.get_rate() \n</span>
+<span class="sd">		If [:SOURce&lt;hw&gt;][:BB]:DME:MODE is set to INTerrogation, sets the pulse repetition rate. If [:SOURce&lt;hw&gt;][:BB]:DME:MODE is</span>
+<span class="sd">		set to REPLy, indicates the mean pulse repetition rate in squitter mode. \n</span>
+<span class="sd">			:return: rate: integer Range: 10 to 6000</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DME:RATE?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DmeCls.set_rate"><a class="viewcode-back" href="../../../../../Source_Bb_Dme.html#RsSmbv.Implementations.Source.Bb.Dme.DmeCls.set_rate">[docs]</a>	<span class="k">def</span> <span class="nf">set_rate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rate</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:DME:RATE \n</span>
+<span class="sd">		Snippet: driver.source.bb.dme.set_rate(rate = 1) \n</span>
+<span class="sd">		If [:SOURce&lt;hw&gt;][:BB]:DME:MODE is set to INTerrogation, sets the pulse repetition rate. If [:SOURce&lt;hw&gt;][:BB]:DME:MODE is</span>
+<span class="sd">		set to REPLy, indicates the mean pulse repetition rate in squitter mode. \n</span>
+<span class="sd">			:param rate: integer Range: 10 to 6000</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">rate</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DME:RATE </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DmeCls.get_rise"><a class="viewcode-back" href="../../../../../Source_Bb_Dme.html#RsSmbv.Implementations.Source.Bb.Dme.DmeCls.get_rise">[docs]</a>	<span class="k">def</span> <span class="nf">get_rise</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:DME:RISE \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.dme.get_rise() \n</span>
+<span class="sd">		Sets the rise time of the pulse (10% to 90% of peak voltage) . \n</span>
+<span class="sd">			:return: rise: float Range: 0.5E-6 to 10E-6</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DME:RISE?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DmeCls.set_rise"><a class="viewcode-back" href="../../../../../Source_Bb_Dme.html#RsSmbv.Implementations.Source.Bb.Dme.DmeCls.set_rise">[docs]</a>	<span class="k">def</span> <span class="nf">set_rise</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rise</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:DME:RISE \n</span>
+<span class="sd">		Snippet: driver.source.bb.dme.set_rise(rise = 1.0) \n</span>
+<span class="sd">		Sets the rise time of the pulse (10% to 90% of peak voltage) . \n</span>
+<span class="sd">			:param rise: float Range: 0.5E-6 to 10E-6</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">rise</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DME:RISE </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="DmeCls.get_shape"><a class="viewcode-back" href="../../../../../Source_Bb_Dme.html#RsSmbv.Implementations.Source.Bb.Dme.DmeCls.get_shape">[docs]</a>	<span class="k">def</span> <span class="nf">get_shape</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">AvionicDmePulsShap</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:DME:SHAPe \n</span>
+<span class="sd">		Snippet: value: enums.AvionicDmePulsShap = driver.source.bb.dme.get_shape() \n</span>
+<span class="sd">		Sets the pulse shape. \n</span>
+<span class="sd">			:return: shape: COS2| LIN| COS| GAUSs COS2| The rising edge is cos shaped and the falling edge is cos^2 shaped. LIN The falling and the rising edge of the pulse are shaped linear. COS The falling and the rising edge of the pulse are cos^2 shaped.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DME:SHAPe?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">AvionicDmePulsShap</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DmeCls.set_shape"><a class="viewcode-back" href="../../../../../Source_Bb_Dme.html#RsSmbv.Implementations.Source.Bb.Dme.DmeCls.set_shape">[docs]</a>	<span class="k">def</span> <span class="nf">set_shape</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shape</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">AvionicDmePulsShap</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:DME:SHAPe \n</span>
+<span class="sd">		Snippet: driver.source.bb.dme.set_shape(shape = enums.AvionicDmePulsShap.COS) \n</span>
+<span class="sd">		Sets the pulse shape. \n</span>
+<span class="sd">			:param shape: COS2| LIN| COS| GAUSs COS2| The rising edge is cos shaped and the falling edge is cos^2 shaped. LIN The falling and the rising edge of the pulse are shaped linear. COS The falling and the rising edge of the pulse are cos^2 shaped.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">AvionicDmePulsShap</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DME:SHAPe </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DmeCls.get_single"><a class="viewcode-back" href="../../../../../Source_Bb_Dme.html#RsSmbv.Implementations.Source.Bb.Dme.DmeCls.get_single">[docs]</a>	<span class="k">def</span> <span class="nf">get_single</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:DME:SINGle \n</span>
+<span class="sd">		Snippet: value: bool = driver.source.bb.dme.get_single() \n</span>
+<span class="sd">		Activates/deactivates generation of a single test pulse. \n</span>
+<span class="sd">			:return: single: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DME:SINGle?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_bool</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DmeCls.set_single"><a class="viewcode-back" href="../../../../../Source_Bb_Dme.html#RsSmbv.Implementations.Source.Bb.Dme.DmeCls.set_single">[docs]</a>	<span class="k">def</span> <span class="nf">set_single</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">single</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:DME:SINGle \n</span>
+<span class="sd">		Snippet: driver.source.bb.dme.set_single(single = False) \n</span>
+<span class="sd">		Activates/deactivates generation of a single test pulse. \n</span>
+<span class="sd">			:param single: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">bool_to_str</span><span class="p">(</span><span class="n">single</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DME:SINGle </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DmeCls.get_squitter"><a class="viewcode-back" href="../../../../../Source_Bb_Dme.html#RsSmbv.Implementations.Source.Bb.Dme.DmeCls.get_squitter">[docs]</a>	<span class="k">def</span> <span class="nf">get_squitter</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:DME:SQUitter \n</span>
+<span class="sd">		Snippet: value: bool = driver.source.bb.dme.get_squitter() \n</span>
+<span class="sd">		Activates/deactivates the random pulse repetition rate. The average repetition rate is 2700 pp/s. The pulse spacing is</span>
+<span class="sd">		distributed randomly in the range of 60 us to about 1500 us according to EUROCAE EN-54 6.2.12. The squitter pulses are</span>
+<span class="sd">		constantly sent by the ground station in order to ensure proper operation and in order to ease synchronization of the</span>
+<span class="sd">		aircraft interrogator to the ground station. \n</span>
+<span class="sd">			:return: squitter: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DME:SQUitter?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_bool</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DmeCls.set_squitter"><a class="viewcode-back" href="../../../../../Source_Bb_Dme.html#RsSmbv.Implementations.Source.Bb.Dme.DmeCls.set_squitter">[docs]</a>	<span class="k">def</span> <span class="nf">set_squitter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">squitter</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:DME:SQUitter \n</span>
+<span class="sd">		Snippet: driver.source.bb.dme.set_squitter(squitter = False) \n</span>
+<span class="sd">		Activates/deactivates the random pulse repetition rate. The average repetition rate is 2700 pp/s. The pulse spacing is</span>
+<span class="sd">		distributed randomly in the range of 60 us to about 1500 us according to EUROCAE EN-54 6.2.12. The squitter pulses are</span>
+<span class="sd">		constantly sent by the ground station in order to ensure proper operation and in order to ease synchronization of the</span>
+<span class="sd">		aircraft interrogator to the ground station. \n</span>
+<span class="sd">			:param squitter: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">bool_to_str</span><span class="p">(</span><span class="n">squitter</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DME:SQUitter </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DmeCls.get_velocity"><a class="viewcode-back" href="../../../../../Source_Bb_Dme.html#RsSmbv.Implementations.Source.Bb.Dme.DmeCls.get_velocity">[docs]</a>	<span class="k">def</span> <span class="nf">get_velocity</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:DME:VELocity \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.dme.get_velocity() \n</span>
+<span class="sd">		Sets the delay between the DME echo pulse signal and the original DME pulse signal. \n</span>
+<span class="sd">			:return: dme_velocity: float Range: -1E4 to 1E4</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DME:VELocity?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DmeCls.set_velocity"><a class="viewcode-back" href="../../../../../Source_Bb_Dme.html#RsSmbv.Implementations.Source.Bb.Dme.DmeCls.set_velocity">[docs]</a>	<span class="k">def</span> <span class="nf">set_velocity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dme_velocity</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:DME:VELocity \n</span>
+<span class="sd">		Snippet: driver.source.bb.dme.set_velocity(dme_velocity = 1.0) \n</span>
+<span class="sd">		Sets the delay between the DME echo pulse signal and the original DME pulse signal. \n</span>
+<span class="sd">			:param dme_velocity: float Range: -1E4 to 1E4</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">dme_velocity</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DME:VELocity </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DmeCls.get_width"><a class="viewcode-back" href="../../../../../Source_Bb_Dme.html#RsSmbv.Implementations.Source.Bb.Dme.DmeCls.get_width">[docs]</a>	<span class="k">def</span> <span class="nf">get_width</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:DME:WIDTh \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.dme.get_width() \n</span>
+<span class="sd">		Sets the pulse width (50% to 50% of peak voltage) . \n</span>
+<span class="sd">			:return: width: float Range: 1E-6 to 100E-6</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DME:WIDTh?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DmeCls.set_width"><a class="viewcode-back" href="../../../../../Source_Bb_Dme.html#RsSmbv.Implementations.Source.Bb.Dme.DmeCls.set_width">[docs]</a>	<span class="k">def</span> <span class="nf">set_width</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">width</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:DME:WIDTh \n</span>
+<span class="sd">		Snippet: driver.source.bb.dme.set_width(width = 1.0) \n</span>
+<span class="sd">		Sets the pulse width (50% to 50% of peak voltage) . \n</span>
+<span class="sd">			:param width: float Range: 1E-6 to 100E-6</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">width</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DME:WIDTh </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;DmeCls&#39;</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Clones the group by creating new object from it and its whole existing subgroups</span>
+<span class="sd">		Also copies all the existing default Repeated Capabilities setting,</span>
+<span class="sd">		which you can change independently without affecting the original group&quot;&quot;&quot;</span>
+		<span class="n">new_group</span> <span class="o">=</span> <span class="n">DmeCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">synchronize_repcaps</span><span class="p">(</span><span class="n">new_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">new_group</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

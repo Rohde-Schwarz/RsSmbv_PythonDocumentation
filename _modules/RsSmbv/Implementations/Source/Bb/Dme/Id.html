@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RsSmbv.Implementations.Source.Bb.Dme.Id &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../../../" id="documentation_options" src="../../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../../_static/jquery.js"></script>
+        <script src="../../../../../../_static/underscore.js"></script>
+        <script src="../../../../../../_static/doctools.js"></script>
+        <script src="../../../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../../../_static/copybutton.js"></script>
+    <script src="../../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../../../index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../RsSmbv.html">RsSmbv API Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../../../index.html">Module code</a> &raquo;</li>
+          <li><a href="../../../Source.html">RsSmbv.Implementations.Source</a> &raquo;</li>
+          <li><a href="../../Bb.html">RsSmbv.Implementations.Source.Bb</a> &raquo;</li>
+          <li><a href="../Dme.html">RsSmbv.Implementations.Source.Bb.Dme</a> &raquo;</li>
+      <li>RsSmbv.Implementations.Source.Bb.Dme.Id</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for RsSmbv.Implementations.Source.Bb.Dme.Id</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">......Internal.Core</span> <span class="kn">import</span> <span class="n">Core</span>
+<span class="kn">from</span> <span class="nn">......Internal.CommandsGroup</span> <span class="kn">import</span> <span class="n">CommandsGroup</span>
+<span class="kn">from</span> <span class="nn">......Internal</span> <span class="kn">import</span> <span class="n">Conversions</span>
+<span class="kn">from</span> <span class="nn">......</span> <span class="kn">import</span> <span class="n">enums</span>
+
+
+<span class="c1"># noinspection PyPep8Naming,PyAttributeOutsideInit,SpellCheckingInspection</span>
+<div class="viewcode-block" id="IdCls"><a class="viewcode-back" href="../../../../../../Source_Bb_Dme_Id.html#RsSmbv.Implementations.Source.Bb.Dme.Id.IdCls">[docs]</a><span class="k">class</span> <span class="nc">IdCls</span><span class="p">:</span>
+	<span class="sd">&quot;&quot;&quot;Id commands group definition. 14 total commands, 2 Subgroups, 11 group commands&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">core</span><span class="p">:</span> <span class="n">Core</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span> <span class="o">=</span> <span class="n">core</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span> <span class="o">=</span> <span class="n">CommandsGroup</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="n">core</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">code</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;code commands group. 0 Sub-classes, 2 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_code&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Code</span> <span class="kn">import</span> <span class="n">CodeCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_code</span> <span class="o">=</span> <span class="n">CodeCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_code</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">ppp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;ppp commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_ppp&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Ppp</span> <span class="kn">import</span> <span class="n">PppCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_ppp</span> <span class="o">=</span> <span class="n">PppCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ppp</span>
+
+<div class="viewcode-block" id="IdCls.get_dash"><a class="viewcode-back" href="../../../../../../Source_Bb_Dme_Id.html#RsSmbv.Implementations.Source.Bb.Dme.Id.IdCls.get_dash">[docs]</a>	<span class="k">def</span> <span class="nf">get_dash</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:DME:ID:DASH \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.dme.id.get_dash() \n</span>
+<span class="sd">		Sets the length of a Morse code dash. Available only if [:SOURce&lt;hw&gt;][:BB]:DME:ID:TSCHema is set to USER. \n</span>
+<span class="sd">			:return: dash: float Range: 0.05 to 1</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DME:ID:DASH?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="IdCls.set_dash"><a class="viewcode-back" href="../../../../../../Source_Bb_Dme_Id.html#RsSmbv.Implementations.Source.Bb.Dme.Id.IdCls.set_dash">[docs]</a>	<span class="k">def</span> <span class="nf">set_dash</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dash</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:DME:ID:DASH \n</span>
+<span class="sd">		Snippet: driver.source.bb.dme.id.set_dash(dash = 1.0) \n</span>
+<span class="sd">		Sets the length of a Morse code dash. Available only if [:SOURce&lt;hw&gt;][:BB]:DME:ID:TSCHema is set to USER. \n</span>
+<span class="sd">			:param dash: float Range: 0.05 to 1</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">dash</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DME:ID:DASH </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="IdCls.get_dot"><a class="viewcode-back" href="../../../../../../Source_Bb_Dme_Id.html#RsSmbv.Implementations.Source.Bb.Dme.Id.IdCls.get_dot">[docs]</a>	<span class="k">def</span> <span class="nf">get_dot</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:DME:ID:DOT \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.dme.id.get_dot() \n</span>
+<span class="sd">		Sets the length of a Morse code dot. \n</span>
+<span class="sd">			:return: dot: float Range: 0.05 to 1</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DME:ID:DOT?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="IdCls.set_dot"><a class="viewcode-back" href="../../../../../../Source_Bb_Dme_Id.html#RsSmbv.Implementations.Source.Bb.Dme.Id.IdCls.set_dot">[docs]</a>	<span class="k">def</span> <span class="nf">set_dot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dot</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:DME:ID:DOT \n</span>
+<span class="sd">		Snippet: driver.source.bb.dme.id.set_dot(dot = 1.0) \n</span>
+<span class="sd">		Sets the length of a Morse code dot. \n</span>
+<span class="sd">			:param dot: float Range: 0.05 to 1</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">dot</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DME:ID:DOT </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="IdCls.get_dot_length"><a class="viewcode-back" href="../../../../../../Source_Bb_Dme_Id.html#RsSmbv.Implementations.Source.Bb.Dme.Id.IdCls.get_dot_length">[docs]</a>	<span class="k">def</span> <span class="nf">get_dot_length</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:DME:ID:DOTLength \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.dme.id.get_dot_length() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: dot_length: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DME:ID:DOTLength?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="IdCls.set_dot_length"><a class="viewcode-back" href="../../../../../../Source_Bb_Dme_Id.html#RsSmbv.Implementations.Source.Bb.Dme.Id.IdCls.set_dot_length">[docs]</a>	<span class="k">def</span> <span class="nf">set_dot_length</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dot_length</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:DME:ID:DOTLength \n</span>
+<span class="sd">		Snippet: driver.source.bb.dme.id.set_dot_length(dot_length = 1.0) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param dot_length: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">dot_length</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DME:ID:DOTLength </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="IdCls.get_letter"><a class="viewcode-back" href="../../../../../../Source_Bb_Dme_Id.html#RsSmbv.Implementations.Source.Bb.Dme.Id.IdCls.get_letter">[docs]</a>	<span class="k">def</span> <span class="nf">get_letter</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:DME:ID:LETTer \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.dme.id.get_letter() \n</span>
+<span class="sd">		Sets the length of a Morse code letter space. Available only if [:SOURce&lt;hw&gt;][:BB]:DME:ID:TSCHema is set to USER. \n</span>
+<span class="sd">			:return: letter: float Range: 0.05 to 1</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DME:ID:LETTer?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="IdCls.set_letter"><a class="viewcode-back" href="../../../../../../Source_Bb_Dme_Id.html#RsSmbv.Implementations.Source.Bb.Dme.Id.IdCls.set_letter">[docs]</a>	<span class="k">def</span> <span class="nf">set_letter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">letter</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:DME:ID:LETTer \n</span>
+<span class="sd">		Snippet: driver.source.bb.dme.id.set_letter(letter = 1.0) \n</span>
+<span class="sd">		Sets the length of a Morse code letter space. Available only if [:SOURce&lt;hw&gt;][:BB]:DME:ID:TSCHema is set to USER. \n</span>
+<span class="sd">			:param letter: float Range: 0.05 to 1</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">letter</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DME:ID:LETTer </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="IdCls.get_period"><a class="viewcode-back" href="../../../../../../Source_Bb_Dme_Id.html#RsSmbv.Implementations.Source.Bb.Dme.Id.IdCls.get_period">[docs]</a>	<span class="k">def</span> <span class="nf">get_period</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:DME:ID:PERiod \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.dme.id.get_period() \n</span>
+<span class="sd">		Sets the period of the COM/ID signal. \n</span>
+<span class="sd">			:return: period: integer Range: 10 to 120</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DME:ID:PERiod?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="IdCls.set_period"><a class="viewcode-back" href="../../../../../../Source_Bb_Dme_Id.html#RsSmbv.Implementations.Source.Bb.Dme.Id.IdCls.set_period">[docs]</a>	<span class="k">def</span> <span class="nf">set_period</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">period</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:DME:ID:PERiod \n</span>
+<span class="sd">		Snippet: driver.source.bb.dme.id.set_period(period = 1) \n</span>
+<span class="sd">		Sets the period of the COM/ID signal. \n</span>
+<span class="sd">			:param period: integer Range: 10 to 120</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">period</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DME:ID:PERiod </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="IdCls.get_pps"><a class="viewcode-back" href="../../../../../../Source_Bb_Dme_Id.html#RsSmbv.Implementations.Source.Bb.Dme.Id.IdCls.get_pps">[docs]</a>	<span class="k">def</span> <span class="nf">get_pps</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:DME:ID:PPS \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.dme.id.get_pps() \n</span>
+<span class="sd">		Sets the morse pulse pair spacing. \n</span>
+<span class="sd">			:return: pulse_pair_spacing: float Range: 2E-6 to 300E-6</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DME:ID:PPS?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="IdCls.set_pps"><a class="viewcode-back" href="../../../../../../Source_Bb_Dme_Id.html#RsSmbv.Implementations.Source.Bb.Dme.Id.IdCls.set_pps">[docs]</a>	<span class="k">def</span> <span class="nf">set_pps</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pulse_pair_spacing</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:DME:ID:PPS \n</span>
+<span class="sd">		Snippet: driver.source.bb.dme.id.set_pps(pulse_pair_spacing = 1.0) \n</span>
+<span class="sd">		Sets the morse pulse pair spacing. \n</span>
+<span class="sd">			:param pulse_pair_spacing: float Range: 2E-6 to 300E-6</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">pulse_pair_spacing</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DME:ID:PPS </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="IdCls.preset"><a class="viewcode-back" href="../../../../../../Source_Bb_Dme_Id.html#RsSmbv.Implementations.Source.Bb.Dme.Id.IdCls.preset">[docs]</a>	<span class="k">def</span> <span class="nf">preset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:DME:ID:PRESet \n</span>
+<span class="sd">		Snippet: driver.source.bb.dme.id.preset() \n</span>
+<span class="sd">		Sets the default settings for the ID signal. \n</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DME:ID:PRESet&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="IdCls.preset_with_opc"><a class="viewcode-back" href="../../../../../../Source_Bb_Dme_Id.html#RsSmbv.Implementations.Source.Bb.Dme.Id.IdCls.preset_with_opc">[docs]</a>	<span class="k">def</span> <span class="nf">preset_with_opc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">opc_timeout_ms</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:DME:ID:PRESet \n</span>
+<span class="sd">		Snippet: driver.source.bb.dme.id.preset_with_opc() \n</span>
+<span class="sd">		Sets the default settings for the ID signal. \n</span>
+<span class="sd">		Same as preset, but waits for the operation to complete before continuing further. Use the RsSmbv.utilities.opc_timeout_set() to set the timeout value. \n</span>
+<span class="sd">			:param opc_timeout_ms: Maximum time to wait in milliseconds, valid only for this call.&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write_with_opc</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DME:ID:PRESet&#39;</span><span class="p">,</span> <span class="n">opc_timeout_ms</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="IdCls.get_rate"><a class="viewcode-back" href="../../../../../../Source_Bb_Dme_Id.html#RsSmbv.Implementations.Source.Bb.Dme.Id.IdCls.get_rate">[docs]</a>	<span class="k">def</span> <span class="nf">get_rate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:DME:ID:RATE \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.dme.id.get_rate() \n</span>
+<span class="sd">		Sets the pulse repetition rate of the ID sequence. \n</span>
+<span class="sd">			:return: rate: float Range: 100 to 10E3</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DME:ID:RATE?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="IdCls.set_rate"><a class="viewcode-back" href="../../../../../../Source_Bb_Dme_Id.html#RsSmbv.Implementations.Source.Bb.Dme.Id.IdCls.set_rate">[docs]</a>	<span class="k">def</span> <span class="nf">set_rate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rate</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:DME:ID:RATE \n</span>
+<span class="sd">		Snippet: driver.source.bb.dme.id.set_rate(rate = 1.0) \n</span>
+<span class="sd">		Sets the pulse repetition rate of the ID sequence. \n</span>
+<span class="sd">			:param rate: float Range: 100 to 10E3</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">rate</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DME:ID:RATE </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="IdCls.get_symbol"><a class="viewcode-back" href="../../../../../../Source_Bb_Dme_Id.html#RsSmbv.Implementations.Source.Bb.Dme.Id.IdCls.get_symbol">[docs]</a>	<span class="k">def</span> <span class="nf">get_symbol</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:DME:ID:SYMBol \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.dme.id.get_symbol() \n</span>
+<span class="sd">		Sets the length of the Morse code symbol space. Available only if [:SOURce&lt;hw&gt;][:BB]:DME:ID:TSCHema is set to USER. \n</span>
+<span class="sd">			:return: symbol: float Range: 0.05 to 1</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DME:ID:SYMBol?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="IdCls.set_symbol"><a class="viewcode-back" href="../../../../../../Source_Bb_Dme_Id.html#RsSmbv.Implementations.Source.Bb.Dme.Id.IdCls.set_symbol">[docs]</a>	<span class="k">def</span> <span class="nf">set_symbol</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symbol</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:DME:ID:SYMBol \n</span>
+<span class="sd">		Snippet: driver.source.bb.dme.id.set_symbol(symbol = 1.0) \n</span>
+<span class="sd">		Sets the length of the Morse code symbol space. Available only if [:SOURce&lt;hw&gt;][:BB]:DME:ID:TSCHema is set to USER. \n</span>
+<span class="sd">			:param symbol: float Range: 0.05 to 1</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">symbol</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DME:ID:SYMBol </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="IdCls.get_tschema"><a class="viewcode-back" href="../../../../../../Source_Bb_Dme_Id.html#RsSmbv.Implementations.Source.Bb.Dme.Id.IdCls.get_tschema">[docs]</a>	<span class="k">def</span> <span class="nf">get_tschema</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">AvionicComIdTimeSchem</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:DME:ID:TSCHema \n</span>
+<span class="sd">		Snippet: value: enums.AvionicComIdTimeSchem = driver.source.bb.dme.id.get_tschema() \n</span>
+<span class="sd">		Sets the time schema of the Morse code for the COM/ID signal. \n</span>
+<span class="sd">			:return: tschema: STD| USER</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DME:ID:TSCHema?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">AvionicComIdTimeSchem</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="IdCls.set_tschema"><a class="viewcode-back" href="../../../../../../Source_Bb_Dme_Id.html#RsSmbv.Implementations.Source.Bb.Dme.Id.IdCls.set_tschema">[docs]</a>	<span class="k">def</span> <span class="nf">set_tschema</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tschema</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">AvionicComIdTimeSchem</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:DME:ID:TSCHema \n</span>
+<span class="sd">		Snippet: driver.source.bb.dme.id.set_tschema(tschema = enums.AvionicComIdTimeSchem.STD) \n</span>
+<span class="sd">		Sets the time schema of the Morse code for the COM/ID signal. \n</span>
+<span class="sd">			:param tschema: STD| USER</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">tschema</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">AvionicComIdTimeSchem</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DME:ID:TSCHema </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="IdCls.get_state"><a class="viewcode-back" href="../../../../../../Source_Bb_Dme_Id.html#RsSmbv.Implementations.Source.Bb.Dme.Id.IdCls.get_state">[docs]</a>	<span class="k">def</span> <span class="nf">get_state</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:DME:ID:[STATe] \n</span>
+<span class="sd">		Snippet: value: bool = driver.source.bb.dme.id.get_state() \n</span>
+<span class="sd">		Enables/disables the COM/ID signal. \n</span>
+<span class="sd">			:return: state: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DME:ID:STATe?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_bool</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="IdCls.set_state"><a class="viewcode-back" href="../../../../../../Source_Bb_Dme_Id.html#RsSmbv.Implementations.Source.Bb.Dme.Id.IdCls.set_state">[docs]</a>	<span class="k">def</span> <span class="nf">set_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:[BB]:DME:ID:[STATe] \n</span>
+<span class="sd">		Snippet: driver.source.bb.dme.id.set_state(state = False) \n</span>
+<span class="sd">		Enables/disables the COM/ID signal. \n</span>
+<span class="sd">			:param state: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">bool_to_str</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:DME:ID:STATe </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;IdCls&#39;</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Clones the group by creating new object from it and its whole existing subgroups</span>
+<span class="sd">		Also copies all the existing default Repeated Capabilities setting,</span>
+<span class="sd">		which you can change independently without affecting the original group&quot;&quot;&quot;</span>
+		<span class="n">new_group</span> <span class="o">=</span> <span class="n">IdCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">synchronize_repcaps</span><span class="p">(</span><span class="n">new_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">new_group</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

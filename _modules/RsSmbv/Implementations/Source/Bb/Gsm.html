@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RsSmbv.Implementations.Source.Bb.Gsm &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../_static/jquery.js"></script>
+        <script src="../../../../../_static/underscore.js"></script>
+        <script src="../../../../../_static/doctools.js"></script>
+        <script src="../../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../../_static/copybutton.js"></script>
+    <script src="../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../../index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../RsSmbv.html">RsSmbv API Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../../index.html">Module code</a> &raquo;</li>
+          <li><a href="../../Source.html">RsSmbv.Implementations.Source</a> &raquo;</li>
+          <li><a href="../Bb.html">RsSmbv.Implementations.Source.Bb</a> &raquo;</li>
+      <li>RsSmbv.Implementations.Source.Bb.Gsm</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for RsSmbv.Implementations.Source.Bb.Gsm</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">.....Internal.Core</span> <span class="kn">import</span> <span class="n">Core</span>
+<span class="kn">from</span> <span class="nn">.....Internal.CommandsGroup</span> <span class="kn">import</span> <span class="n">CommandsGroup</span>
+<span class="kn">from</span> <span class="nn">.....Internal</span> <span class="kn">import</span> <span class="n">Conversions</span>
+<span class="kn">from</span> <span class="nn">.....</span> <span class="kn">import</span> <span class="n">enums</span>
+
+
+<span class="c1"># noinspection PyPep8Naming,PyAttributeOutsideInit,SpellCheckingInspection</span>
+<div class="viewcode-block" id="GsmCls"><a class="viewcode-back" href="../../../../../Source_Bb_Gsm.html#RsSmbv.Implementations.Source.Bb.Gsm.GsmCls">[docs]</a><span class="k">class</span> <span class="nc">GsmCls</span><span class="p">:</span>
+	<span class="sd">&quot;&quot;&quot;Gsm commands group definition. 104 total commands, 17 Subgroups, 7 group commands&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">core</span><span class="p">:</span> <span class="n">Core</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span> <span class="o">=</span> <span class="n">core</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span> <span class="o">=</span> <span class="n">CommandsGroup</span><span class="p">(</span><span class="s2">&quot;gsm&quot;</span><span class="p">,</span> <span class="n">core</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">aqPsk</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;aqPsk commands group. 2 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_aqPsk&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.AqPsk</span> <span class="kn">import</span> <span class="n">AqPskCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_aqPsk</span> <span class="o">=</span> <span class="n">AqPskCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_aqPsk</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">clock</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;clock commands group. 0 Sub-classes, 4 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_clock&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Clock</span> <span class="kn">import</span> <span class="n">ClockCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_clock</span> <span class="o">=</span> <span class="n">ClockCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_clock</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">edge</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;edge commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_edge&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Edge</span> <span class="kn">import</span> <span class="n">EdgeCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_edge</span> <span class="o">=</span> <span class="n">EdgeCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edge</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">filterPy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;filterPy commands group. 7 Sub-classes, 2 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_filterPy&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.FilterPy</span> <span class="kn">import</span> <span class="n">FilterPyCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_filterPy</span> <span class="o">=</span> <span class="n">FilterPyCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_filterPy</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">frame</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;frame commands group. 5 Sub-classes, 0 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_frame&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Frame</span> <span class="kn">import</span> <span class="n">FrameCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_frame</span> <span class="o">=</span> <span class="n">FrameCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_frame</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">fsk</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;fsk commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_fsk&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Fsk</span> <span class="kn">import</span> <span class="n">FskCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_fsk</span> <span class="o">=</span> <span class="n">FskCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fsk</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">h16Qam</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;h16Qam commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_h16Qam&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.H16Qam</span> <span class="kn">import</span> <span class="n">H16QamCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_h16Qam</span> <span class="o">=</span> <span class="n">H16QamCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_h16Qam</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">h32Qam</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;h32Qam commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_h32Qam&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.H32Qam</span> <span class="kn">import</span> <span class="n">H32QamCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_h32Qam</span> <span class="o">=</span> <span class="n">H32QamCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_h32Qam</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">hqpsk</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;hqpsk commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_hqpsk&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Hqpsk</span> <span class="kn">import</span> <span class="n">HqpskCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_hqpsk</span> <span class="o">=</span> <span class="n">HqpskCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hqpsk</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">mframe</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;mframe commands group. 1 Sub-classes, 0 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_mframe&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Mframe</span> <span class="kn">import</span> <span class="n">MframeCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_mframe</span> <span class="o">=</span> <span class="n">MframeCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mframe</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">n16Qam</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;n16Qam commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_n16Qam&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.N16Qam</span> <span class="kn">import</span> <span class="n">N16QamCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_n16Qam</span> <span class="o">=</span> <span class="n">N16QamCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_n16Qam</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">n32Qam</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;n32Qam commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_n32Qam&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.N32Qam</span> <span class="kn">import</span> <span class="n">N32QamCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_n32Qam</span> <span class="o">=</span> <span class="n">N32QamCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_n32Qam</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">pramp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;pramp commands group. 1 Sub-classes, 4 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_pramp&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Pramp</span> <span class="kn">import</span> <span class="n">PrampCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_pramp</span> <span class="o">=</span> <span class="n">PrampCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pramp</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">sattenuation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;sattenuation commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_sattenuation&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Sattenuation</span> <span class="kn">import</span> <span class="n">SattenuationCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_sattenuation</span> <span class="o">=</span> <span class="n">SattenuationCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sattenuation</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">setting</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;setting commands group. 0 Sub-classes, 4 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_setting&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Setting</span> <span class="kn">import</span> <span class="n">SettingCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_setting</span> <span class="o">=</span> <span class="n">SettingCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_setting</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">symbolRate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;symbolRate commands group. 0 Sub-classes, 2 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_symbolRate&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.SymbolRate</span> <span class="kn">import</span> <span class="n">SymbolRateCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_symbolRate</span> <span class="o">=</span> <span class="n">SymbolRateCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_symbolRate</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">trigger</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;trigger commands group. 5 Sub-classes, 5 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_trigger&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Trigger</span> <span class="kn">import</span> <span class="n">TriggerCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_trigger</span> <span class="o">=</span> <span class="n">TriggerCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_trigger</span>
+
+<div class="viewcode-block" id="GsmCls.get_fone"><a class="viewcode-back" href="../../../../../Source_Bb_Gsm.html#RsSmbv.Implementations.Source.Bb.Gsm.GsmCls.get_fone">[docs]</a>	<span class="k">def</span> <span class="nf">get_fone</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:GSM:FONE \n</span>
+<span class="sd">		Snippet: value: bool = driver.source.bb.gsm.get_fone() \n</span>
+<span class="sd">		A modulating bit stream consisting of consecutive ones is used for inactive slots (according to GSM 05.04) .</span>
+<span class="sd">		If this parameter is disabled, the inactive slots are filled in with 0. \n</span>
+<span class="sd">			:return: fone: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:GSM:FONE?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_bool</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="GsmCls.set_fone"><a class="viewcode-back" href="../../../../../Source_Bb_Gsm.html#RsSmbv.Implementations.Source.Bb.Gsm.GsmCls.set_fone">[docs]</a>	<span class="k">def</span> <span class="nf">set_fone</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fone</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:GSM:FONE \n</span>
+<span class="sd">		Snippet: driver.source.bb.gsm.set_fone(fone = False) \n</span>
+<span class="sd">		A modulating bit stream consisting of consecutive ones is used for inactive slots (according to GSM 05.04) .</span>
+<span class="sd">		If this parameter is disabled, the inactive slots are filled in with 0. \n</span>
+<span class="sd">			:param fone: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">bool_to_str</span><span class="p">(</span><span class="n">fone</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:GSM:FONE </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="GsmCls.get_format_py"><a class="viewcode-back" href="../../../../../Source_Bb_Gsm.html#RsSmbv.Implementations.Source.Bb.Gsm.GsmCls.get_format_py">[docs]</a>	<span class="k">def</span> <span class="nf">get_format_py</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">GsmModTypeGsm</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:GSM:FORMat \n</span>
+<span class="sd">		Snippet: value: enums.GsmModTypeGsm = driver.source.bb.gsm.get_format_py() \n</span>
+<span class="sd">		The command selects the modulation type. \n</span>
+<span class="sd">			:return: format_py: MSK| FSK2</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:GSM:FORMat?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">GsmModTypeGsm</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="GsmCls.set_format_py"><a class="viewcode-back" href="../../../../../Source_Bb_Gsm.html#RsSmbv.Implementations.Source.Bb.Gsm.GsmCls.set_format_py">[docs]</a>	<span class="k">def</span> <span class="nf">set_format_py</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">format_py</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">GsmModTypeGsm</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:GSM:FORMat \n</span>
+<span class="sd">		Snippet: driver.source.bb.gsm.set_format_py(format_py = enums.GsmModTypeGsm.FSK2) \n</span>
+<span class="sd">		The command selects the modulation type. \n</span>
+<span class="sd">			:param format_py: MSK| FSK2</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">format_py</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">GsmModTypeGsm</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:GSM:FORMat </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="GsmCls.get_is_length"><a class="viewcode-back" href="../../../../../Source_Bb_Gsm.html#RsSmbv.Implementations.Source.Bb.Gsm.GsmCls.get_is_length">[docs]</a>	<span class="k">def</span> <span class="nf">get_is_length</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:GSM:ISLength \n</span>
+<span class="sd">		Snippet: value: bool = driver.source.bb.gsm.get_is_length() \n</span>
+<span class="sd">		Selects constant slot length. \n</span>
+<span class="sd">			:return: is_length: 1| ON| 0| OFF For normal symbol rate mode: The command selects whether the 1/4 symbol of a GSM slot is ignored or compensated for by an extra symbol every 4th slot. For higher symbol rate mode: The command selects whether the 1/2 symbol of an average slot with a length of 187.5 symbols are ignored or compensated for by an extra symbol every second slot. ON In normal symbol rate mode, all slots are 156 symbols long In higher symbol rate mode, all slots are 187 symbols long OFF In normal symbol rate mode, some slots are 157 symbols long In higher symbol rate mode, some slots are 188 symbols long</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:GSM:ISLength?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_bool</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="GsmCls.set_is_length"><a class="viewcode-back" href="../../../../../Source_Bb_Gsm.html#RsSmbv.Implementations.Source.Bb.Gsm.GsmCls.set_is_length">[docs]</a>	<span class="k">def</span> <span class="nf">set_is_length</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">is_length</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:GSM:ISLength \n</span>
+<span class="sd">		Snippet: driver.source.bb.gsm.set_is_length(is_length = False) \n</span>
+<span class="sd">		Selects constant slot length. \n</span>
+<span class="sd">			:param is_length: 1| ON| 0| OFF For normal symbol rate mode: The command selects whether the 1/4 symbol of a GSM slot is ignored or compensated for by an extra symbol every 4th slot. For higher symbol rate mode: The command selects whether the 1/2 symbol of an average slot with a length of 187.5 symbols are ignored or compensated for by an extra symbol every second slot. ON In normal symbol rate mode, all slots are 156 symbols long In higher symbol rate mode, all slots are 187 symbols long OFF In normal symbol rate mode, some slots are 157 symbols long In higher symbol rate mode, some slots are 188 symbols long</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">bool_to_str</span><span class="p">(</span><span class="n">is_length</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:GSM:ISLength </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="GsmCls.get_mode"><a class="viewcode-back" href="../../../../../Source_Bb_Gsm.html#RsSmbv.Implementations.Source.Bb.Gsm.GsmCls.get_mode">[docs]</a>	<span class="k">def</span> <span class="nf">get_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">GsmMode</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:GSM:MODE \n</span>
+<span class="sd">		Snippet: value: enums.GsmMode = driver.source.bb.gsm.get_mode() \n</span>
+<span class="sd">		The command selects GSM mode. \n</span>
+<span class="sd">			:return: mode: UNFRamed| SINGle| DOUBle| MULTiframe UNFRamed Modulation signal without slot and frame structure. SINGle Modulation signal consisting of one frame. DOUBle Modulation signal in which two frames are defined and then combined by some method into a single multiframe signal. MULTiframe Multiframe signal.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:GSM:MODE?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">GsmMode</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="GsmCls.set_mode"><a class="viewcode-back" href="../../../../../Source_Bb_Gsm.html#RsSmbv.Implementations.Source.Bb.Gsm.GsmCls.set_mode">[docs]</a>	<span class="k">def</span> <span class="nf">set_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">GsmMode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:GSM:MODE \n</span>
+<span class="sd">		Snippet: driver.source.bb.gsm.set_mode(mode = enums.GsmMode.DOUBle) \n</span>
+<span class="sd">		The command selects GSM mode. \n</span>
+<span class="sd">			:param mode: UNFRamed| SINGle| DOUBle| MULTiframe UNFRamed Modulation signal without slot and frame structure. SINGle Modulation signal consisting of one frame. DOUBle Modulation signal in which two frames are defined and then combined by some method into a single multiframe signal. MULTiframe Multiframe signal.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">mode</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">GsmMode</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:GSM:MODE </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="GsmCls.preset"><a class="viewcode-back" href="../../../../../Source_Bb_Gsm.html#RsSmbv.Implementations.Source.Bb.Gsm.GsmCls.preset">[docs]</a>	<span class="k">def</span> <span class="nf">preset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:GSM:PRESet \n</span>
+<span class="sd">		Snippet: driver.source.bb.gsm.preset() \n</span>
+<span class="sd">		Sets the parameters of the digital standard to their default values (*RST values specified for the commands) .</span>
+<span class="sd">		Not affected is the state set with the command SOURce&lt;hw&gt;:BB:GSM:STATe. \n</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:GSM:PRESet&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="GsmCls.preset_with_opc"><a class="viewcode-back" href="../../../../../Source_Bb_Gsm.html#RsSmbv.Implementations.Source.Bb.Gsm.GsmCls.preset_with_opc">[docs]</a>	<span class="k">def</span> <span class="nf">preset_with_opc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">opc_timeout_ms</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:GSM:PRESet \n</span>
+<span class="sd">		Snippet: driver.source.bb.gsm.preset_with_opc() \n</span>
+<span class="sd">		Sets the parameters of the digital standard to their default values (*RST values specified for the commands) .</span>
+<span class="sd">		Not affected is the state set with the command SOURce&lt;hw&gt;:BB:GSM:STATe. \n</span>
+<span class="sd">		Same as preset, but waits for the operation to complete before continuing further. Use the RsSmbv.utilities.opc_timeout_set() to set the timeout value. \n</span>
+<span class="sd">			:param opc_timeout_ms: Maximum time to wait in milliseconds, valid only for this call.&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write_with_opc</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:GSM:PRESet&#39;</span><span class="p">,</span> <span class="n">opc_timeout_ms</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="GsmCls.get_smode"><a class="viewcode-back" href="../../../../../Source_Bb_Gsm.html#RsSmbv.Implementations.Source.Bb.Gsm.GsmCls.get_smode">[docs]</a>	<span class="k">def</span> <span class="nf">get_smode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">GsmSimMode</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:GSM:SMODe \n</span>
+<span class="sd">		Snippet: value: enums.GsmSimMode = driver.source.bb.gsm.get_smode() \n</span>
+<span class="sd">		Selects the modulation signal for the mode Unframed (BB:GSM:MODE UNFR) . The modulation type and filter type are set in</span>
+<span class="sd">		accordance with the selection.</span>
+<span class="sd">			INTRO_CMD_HELP: The available simulation modes depend on the selected symbol rate: \n</span>
+<span class="sd">			- Normal Symbol Rate - GSM, EDGE (8PSK) , AQPSK, 16QAM and 32QAM</span>
+<span class="sd">			- Higher Symbol Rate - HSR QPSK, HSR 16QAM and HSR 32QAM.</span>
+<span class="sd">		Note:&#39;Higher Symbol Rate&#39; Mode and &#39;Simulation Modes&#39; AQPSK, 16QAM, 32QAM, HSR QPSK, HSR 16QAM and HSR 32QAM are</span>
+<span class="sd">		available for instruments equipped with option R&amp;S SMBVB-K41 only. \n</span>
+<span class="sd">			:return: smode: GSM| EDGE| N16Qam| N32Qam| HQPSk| H16Qam| H32Qam| AQPSk</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:GSM:SMODe?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">GsmSimMode</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="GsmCls.set_smode"><a class="viewcode-back" href="../../../../../Source_Bb_Gsm.html#RsSmbv.Implementations.Source.Bb.Gsm.GsmCls.set_smode">[docs]</a>	<span class="k">def</span> <span class="nf">set_smode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">smode</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">GsmSimMode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:GSM:SMODe \n</span>
+<span class="sd">		Snippet: driver.source.bb.gsm.set_smode(smode = enums.GsmSimMode.AQPSk) \n</span>
+<span class="sd">		Selects the modulation signal for the mode Unframed (BB:GSM:MODE UNFR) . The modulation type and filter type are set in</span>
+<span class="sd">		accordance with the selection.</span>
+<span class="sd">			INTRO_CMD_HELP: The available simulation modes depend on the selected symbol rate: \n</span>
+<span class="sd">			- Normal Symbol Rate - GSM, EDGE (8PSK) , AQPSK, 16QAM and 32QAM</span>
+<span class="sd">			- Higher Symbol Rate - HSR QPSK, HSR 16QAM and HSR 32QAM.</span>
+<span class="sd">		Note:&#39;Higher Symbol Rate&#39; Mode and &#39;Simulation Modes&#39; AQPSK, 16QAM, 32QAM, HSR QPSK, HSR 16QAM and HSR 32QAM are</span>
+<span class="sd">		available for instruments equipped with option R&amp;S SMBVB-K41 only. \n</span>
+<span class="sd">			:param smode: GSM| EDGE| N16Qam| N32Qam| HQPSk| H16Qam| H32Qam| AQPSk</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">smode</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">GsmSimMode</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:GSM:SMODe </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="GsmCls.get_state"><a class="viewcode-back" href="../../../../../Source_Bb_Gsm.html#RsSmbv.Implementations.Source.Bb.Gsm.GsmCls.get_state">[docs]</a>	<span class="k">def</span> <span class="nf">get_state</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:GSM:STATe \n</span>
+<span class="sd">		Snippet: value: bool = driver.source.bb.gsm.get_state() \n</span>
+<span class="sd">		Activates the standard and deactivates all the other digital standards and digital modulation modes in the same path. \n</span>
+<span class="sd">			:return: state: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:GSM:STATe?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_bool</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="GsmCls.set_state"><a class="viewcode-back" href="../../../../../Source_Bb_Gsm.html#RsSmbv.Implementations.Source.Bb.Gsm.GsmCls.set_state">[docs]</a>	<span class="k">def</span> <span class="nf">set_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:GSM:STATe \n</span>
+<span class="sd">		Snippet: driver.source.bb.gsm.set_state(state = False) \n</span>
+<span class="sd">		Activates the standard and deactivates all the other digital standards and digital modulation modes in the same path. \n</span>
+<span class="sd">			:param state: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">bool_to_str</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:GSM:STATe </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;GsmCls&#39;</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Clones the group by creating new object from it and its whole existing subgroups</span>
+<span class="sd">		Also copies all the existing default Repeated Capabilities setting,</span>
+<span class="sd">		which you can change independently without affecting the original group&quot;&quot;&quot;</span>
+		<span class="n">new_group</span> <span class="o">=</span> <span class="n">GsmCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">synchronize_repcaps</span><span class="p">(</span><span class="n">new_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">new_group</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

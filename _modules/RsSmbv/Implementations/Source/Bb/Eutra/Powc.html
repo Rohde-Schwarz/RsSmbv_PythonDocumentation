@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RsSmbv.Implementations.Source.Bb.Eutra.Powc &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../../../" id="documentation_options" src="../../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../../_static/jquery.js"></script>
+        <script src="../../../../../../_static/underscore.js"></script>
+        <script src="../../../../../../_static/doctools.js"></script>
+        <script src="../../../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../../../_static/copybutton.js"></script>
+    <script src="../../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../../../index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../RsSmbv.html">RsSmbv API Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../../../index.html">Module code</a> &raquo;</li>
+          <li><a href="../../../Source.html">RsSmbv.Implementations.Source</a> &raquo;</li>
+          <li><a href="../../Bb.html">RsSmbv.Implementations.Source.Bb</a> &raquo;</li>
+          <li><a href="../Eutra.html">RsSmbv.Implementations.Source.Bb.Eutra</a> &raquo;</li>
+      <li>RsSmbv.Implementations.Source.Bb.Eutra.Powc</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for RsSmbv.Implementations.Source.Bb.Eutra.Powc</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">.....Internal.Core</span> <span class="kn">import</span> <span class="n">Core</span>
+<span class="kn">from</span> <span class="nn">.....Internal.CommandsGroup</span> <span class="kn">import</span> <span class="n">CommandsGroup</span>
+<span class="kn">from</span> <span class="nn">.....Internal</span> <span class="kn">import</span> <span class="n">Conversions</span>
+<span class="kn">from</span> <span class="nn">.....</span> <span class="kn">import</span> <span class="n">enums</span>
+
+
+<span class="c1"># noinspection PyPep8Naming,PyAttributeOutsideInit,SpellCheckingInspection</span>
+<div class="viewcode-block" id="PowcCls"><a class="viewcode-back" href="../../../../../../Source_Bb_Eutra_Powc.html#RsSmbv.Implementations.Source.Bb.Eutra.Powc.PowcCls">[docs]</a><span class="k">class</span> <span class="nc">PowcCls</span><span class="p">:</span>
+	<span class="sd">&quot;&quot;&quot;Powc commands group definition. 5 total commands, 0 Subgroups, 5 group commands&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">core</span><span class="p">:</span> <span class="n">Core</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span> <span class="o">=</span> <span class="n">core</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span> <span class="o">=</span> <span class="n">CommandsGroup</span><span class="p">(</span><span class="s2">&quot;powc&quot;</span><span class="p">,</span> <span class="n">core</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="PowcCls.get_lev_reference"><a class="viewcode-back" href="../../../../../../Source_Bb_Eutra_Powc.html#RsSmbv.Implementations.Source.Bb.Eutra.Powc.PowcCls.get_lev_reference">[docs]</a>	<span class="k">def</span> <span class="nf">get_lev_reference</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraPowcLevRef</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:POWC:LEVReference \n</span>
+<span class="sd">		Snippet: value: enums.EutraPowcLevRef = driver.source.bb.eutra.powc.get_lev_reference() \n</span>
+<span class="sd">		Defines the reference for the &#39;Level&#39; display in the status bar. \n</span>
+<span class="sd">			:return: level_reference: FRMS| DRMS| UEBurst | URMS | NPBCH FRMS The displayed RMS and PEP are measured during the whole frame. All frames are considered, not only the first one. DRMS The displayed RMS and PEP are measured during the DL part of the frame (all DL subframes and the DwPTS) . All frames are considered, not only the first one. URMS The displayed RMS and PEP are measured during the UL part of the frame (all UL subframes and the UpPTS) . All frames are considered, not only the first one. UEBurst The displayed RMS and PEP are measured during a single subframe (or slot) of a certain UE. NPBCH In NB-IoT standalone operation, the displayed RMS and PEP are measured during the NPBCH symbols 3, 9 and 11.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:POWC:LEVReference?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraPowcLevRef</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PowcCls.set_lev_reference"><a class="viewcode-back" href="../../../../../../Source_Bb_Eutra_Powc.html#RsSmbv.Implementations.Source.Bb.Eutra.Powc.PowcCls.set_lev_reference">[docs]</a>	<span class="k">def</span> <span class="nf">set_lev_reference</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">level_reference</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraPowcLevRef</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:POWC:LEVReference \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.powc.set_lev_reference(level_reference = enums.EutraPowcLevRef.DRMS) \n</span>
+<span class="sd">		Defines the reference for the &#39;Level&#39; display in the status bar. \n</span>
+<span class="sd">			:param level_reference: FRMS| DRMS| UEBurst | URMS | NPBCH FRMS The displayed RMS and PEP are measured during the whole frame. All frames are considered, not only the first one. DRMS The displayed RMS and PEP are measured during the DL part of the frame (all DL subframes and the DwPTS) . All frames are considered, not only the first one. URMS The displayed RMS and PEP are measured during the UL part of the frame (all UL subframes and the UpPTS) . All frames are considered, not only the first one. UEBurst The displayed RMS and PEP are measured during a single subframe (or slot) of a certain UE. NPBCH In NB-IoT standalone operation, the displayed RMS and PEP are measured during the NPBCH symbols 3, 9 and 11.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">level_reference</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraPowcLevRef</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:POWC:LEVReference </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PowcCls.get_ort_level"><a class="viewcode-back" href="../../../../../../Source_Bb_Eutra_Powc.html#RsSmbv.Implementations.Source.Bb.Eutra.Powc.PowcCls.get_ort_level">[docs]</a>	<span class="k">def</span> <span class="nf">get_ort_level</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:POWC:ORTLevel \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.eutra.powc.get_ort_level() \n</span>
+<span class="sd">		Sets the power offset of the baseband relative to the RMS level displayed in the instrument&#39;s global Level display in the</span>
+<span class="sd">		header of the instrument. \n</span>
+<span class="sd">			:return: offset_relative_level: float Range: -20 to 0</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:POWC:ORTLevel?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PowcCls.set_ort_level"><a class="viewcode-back" href="../../../../../../Source_Bb_Eutra_Powc.html#RsSmbv.Implementations.Source.Bb.Eutra.Powc.PowcCls.set_ort_level">[docs]</a>	<span class="k">def</span> <span class="nf">set_ort_level</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">offset_relative_level</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:POWC:ORTLevel \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.powc.set_ort_level(offset_relative_level = 1.0) \n</span>
+<span class="sd">		Sets the power offset of the baseband relative to the RMS level displayed in the instrument&#39;s global Level display in the</span>
+<span class="sd">		header of the instrument. \n</span>
+<span class="sd">			:param offset_relative_level: float Range: -20 to 0</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">offset_relative_level</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:POWC:ORTLevel </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="PowcCls.get_ref_channel"><a class="viewcode-back" href="../../../../../../Source_Bb_Eutra_Powc.html#RsSmbv.Implementations.Source.Bb.Eutra.Powc.PowcCls.get_ref_channel">[docs]</a>	<span class="k">def</span> <span class="nf">get_ref_channel</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraPowcRefChan</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:POWC:REFChannel \n</span>
+<span class="sd">		Snippet: value: enums.EutraPowcRefChan = driver.source.bb.eutra.powc.get_ref_channel() \n</span>
+<span class="sd">		If [:SOURce&lt;hw&gt;]:BB:EUTRa:POWC:LEVReferenceUEBurst, queries the channel type to that the measured RMS and PEP are</span>
+<span class="sd">		referring. \n</span>
+<span class="sd">			:return: ref_channel: NF| PUSCH| PUCCH| PRACH| SRS| PUCPUS | SL</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:POWC:REFChannel?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraPowcRefChan</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PowcCls.set_ref_channel"><a class="viewcode-back" href="../../../../../../Source_Bb_Eutra_Powc.html#RsSmbv.Implementations.Source.Bb.Eutra.Powc.PowcCls.set_ref_channel">[docs]</a>	<span class="k">def</span> <span class="nf">set_ref_channel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ref_channel</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraPowcRefChan</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:POWC:REFChannel \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.powc.set_ref_channel(ref_channel = enums.EutraPowcRefChan.NF) \n</span>
+<span class="sd">		If [:SOURce&lt;hw&gt;]:BB:EUTRa:POWC:LEVReferenceUEBurst, queries the channel type to that the measured RMS and PEP are</span>
+<span class="sd">		referring. \n</span>
+<span class="sd">			:param ref_channel: NF| PUSCH| PUCCH| PRACH| SRS| PUCPUS | SL</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">ref_channel</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraPowcRefChan</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:POWC:REFChannel </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PowcCls.get_ref_subframe"><a class="viewcode-back" href="../../../../../../Source_Bb_Eutra_Powc.html#RsSmbv.Implementations.Source.Bb.Eutra.Powc.PowcCls.get_ref_subframe">[docs]</a>	<span class="k">def</span> <span class="nf">get_ref_subframe</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:POWC:REFSubframe \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.eutra.powc.get_ref_subframe() \n</span>
+<span class="sd">		If [:SOURce&lt;hw&gt;]:BB:EUTRa:POWC:LEVReferenceUEBurst, queries the subframe or slot number used as reference for measuring</span>
+<span class="sd">		the RMS and PEP values. \n</span>
+<span class="sd">			:return: ref_subframe: integer Range: 0 to 39</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:POWC:REFSubframe?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="PowcCls.get_rue"><a class="viewcode-back" href="../../../../../../Source_Bb_Eutra_Powc.html#RsSmbv.Implementations.Source.Bb.Eutra.Powc.PowcCls.get_rue">[docs]</a>	<span class="k">def</span> <span class="nf">get_rue</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraMobStatType</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:POWC:RUE \n</span>
+<span class="sd">		Snippet: value: enums.EutraMobStatType = driver.source.bb.eutra.powc.get_rue() \n</span>
+<span class="sd">		If [:SOURce&lt;hw&gt;]:BB:EUTRa:POWC:LEVReferenceUEBurst, queries the UE to that the measured RMS and PEP are referring. \n</span>
+<span class="sd">			:return: reference_ue: UE1| UE2| UE3| UE4</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:POWC:RUE?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraMobStatType</span><span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

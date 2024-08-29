@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RsSmbv Logger &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="RsSmbv Events" href="events.html" />
+    <link rel="prev" title="RsSmbv Utilities" href="utilities.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RsSmbv.html">RsSmbv API Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>RsSmbv Logger</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/logger.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="rssmbv-logger">
+<span id="logger"></span><h1>RsSmbv Logger<a class="headerlink" href="#rssmbv-logger" title="Permalink to this headline"></a></h1>
+<p>Check the usage in the Getting Started chapter <a class="reference internal" href="getting_started.html#getingstarted-logging"><span class="std std-ref">here</span></a>.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="RsSmbv.Internal.ScpiLogger.ScpiLogger">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ScpiLogger</span></span><a class="reference internal" href="_modules/RsSmbv/Internal/ScpiLogger.html#ScpiLogger"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RsSmbv.Internal.ScpiLogger.ScpiLogger" title="Permalink to this definition"></a></dt>
+<dd><p>Base class for SCPI logging</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RsSmbv.Internal.ScpiLogger.ScpiLogger.mode">
+<span class="sig-name descname"><span class="pre">mode</span></span><a class="headerlink" href="#RsSmbv.Internal.ScpiLogger.ScpiLogger.mode" title="Permalink to this definition"></a></dt>
+<dd><p>Sets the logging ON or OFF. Additionally, you can set the logging ON only for errors.
+Possible values:</p>
+<ul class="simple">
+<li><p>LoggingMode.Off  - logging is switched OFF</p></li>
+<li><p>LoggingMode.On  - logging is switched ON</p></li>
+<li><p>LoggingMode.Errors  - logging is switched ON, but only for error entries</p></li>
+<li><p>LoggingMode.Default  - sets the logging to default - the value you have set with logger.default_mode</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="RsSmbv.Internal.ScpiLogger.ScpiLogger.stop">
+<span class="sig-name descname"><span class="pre">stop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Internal/ScpiLogger.html#ScpiLogger.stop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RsSmbv.Internal.ScpiLogger.ScpiLogger.stop" title="Permalink to this definition"></a></dt>
+<dd><p>Stops the logging. This is the same as: mode = LoggingMode.Off</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="RsSmbv.Internal.ScpiLogger.ScpiLogger.start">
+<span class="sig-name descname"><span class="pre">start</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Internal/ScpiLogger.html#ScpiLogger.start"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RsSmbv.Internal.ScpiLogger.ScpiLogger.start" title="Permalink to this definition"></a></dt>
+<dd><p>Starts the logging with the last defined LoggingMode. Default is LoggingMode.On</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RsSmbv.Internal.ScpiLogger.ScpiLogger.default_mode">
+<span class="sig-name descname"><span class="pre">default_mode</span></span><a class="headerlink" href="#RsSmbv.Internal.ScpiLogger.ScpiLogger.default_mode" title="Permalink to this definition"></a></dt>
+<dd><p>Sets / returns the default logging mode.
+You can recall the default mode by calling the ‘logger.mode = LoggingMode.Default’.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RsSmbv.Internal.ScpiLogger.ScpiLogger.device_name">
+<span class="sig-name descname"><span class="pre">device_name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#RsSmbv.Internal.ScpiLogger.ScpiLogger.device_name" title="Permalink to this definition"></a></dt>
+<dd><p>Use this property to change the resource name in the log from the default Resource Name (e.g. TCPIP::192.168.2.101::INSTR)
+to another name e.g. ‘MySigGen1’.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="RsSmbv.Internal.ScpiLogger.ScpiLogger.set_logging_target">
+<span class="sig-name descname"><span class="pre">set_logging_target</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">console_log</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">udp_log</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Internal/ScpiLogger.html#ScpiLogger.set_logging_target"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RsSmbv.Internal.ScpiLogger.ScpiLogger.set_logging_target" title="Permalink to this definition"></a></dt>
+<dd><p>Sets logging target - the target must implement write() and flush().
+You can optionally set the console and UDP logging ON or OFF.
+This method switches the logging target global OFF.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="RsSmbv.Internal.ScpiLogger.ScpiLogger.get_logging_target">
+<span class="sig-name descname"><span class="pre">get_logging_target</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/RsSmbv/Internal/ScpiLogger.html#ScpiLogger.get_logging_target"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RsSmbv.Internal.ScpiLogger.ScpiLogger.get_logging_target" title="Permalink to this definition"></a></dt>
+<dd><p>Based on the global_mode, it returns the logging target: either the local or the global one.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="RsSmbv.Internal.ScpiLogger.ScpiLogger.set_logging_target_global">
+<span class="sig-name descname"><span class="pre">set_logging_target_global</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">console_log</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">udp_log</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Internal/ScpiLogger.html#ScpiLogger.set_logging_target_global"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RsSmbv.Internal.ScpiLogger.ScpiLogger.set_logging_target_global" title="Permalink to this definition"></a></dt>
+<dd><p>Sets logging target to global. The global target must be defined. You can optionally set the console and UDP logging ON or OFF.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RsSmbv.Internal.ScpiLogger.ScpiLogger.log_to_console">
+<span class="sig-name descname"><span class="pre">log_to_console</span></span><a class="headerlink" href="#RsSmbv.Internal.ScpiLogger.ScpiLogger.log_to_console" title="Permalink to this definition"></a></dt>
+<dd><p>Returns logging to console status.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RsSmbv.Internal.ScpiLogger.ScpiLogger.log_to_udp">
+<span class="sig-name descname"><span class="pre">log_to_udp</span></span><a class="headerlink" href="#RsSmbv.Internal.ScpiLogger.ScpiLogger.log_to_udp" title="Permalink to this definition"></a></dt>
+<dd><p>Returns logging to UDP status.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RsSmbv.Internal.ScpiLogger.ScpiLogger.log_to_console_and_udp">
+<span class="sig-name descname"><span class="pre">log_to_console_and_udp</span></span><a class="headerlink" href="#RsSmbv.Internal.ScpiLogger.ScpiLogger.log_to_console_and_udp" title="Permalink to this definition"></a></dt>
+<dd><p>Returns true, if both logging to UDP and console in are True.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="RsSmbv.Internal.ScpiLogger.ScpiLogger.info_raw">
+<span class="sig-name descname"><span class="pre">info_raw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_entry</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_new_line</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Internal/ScpiLogger.html#ScpiLogger.info_raw"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RsSmbv.Internal.ScpiLogger.ScpiLogger.info_raw" title="Permalink to this definition"></a></dt>
+<dd><p>Method for logging the raw string without any formatting.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="RsSmbv.Internal.ScpiLogger.ScpiLogger.info">
+<span class="sig-name descname"><span class="pre">info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">datetime.datetime</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">datetime.datetime</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_string_info</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_string</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmd</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Internal/ScpiLogger.html#ScpiLogger.info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RsSmbv.Internal.ScpiLogger.ScpiLogger.info" title="Permalink to this definition"></a></dt>
+<dd><p>Method for logging one info entry. For binary log_string, use the info_bin()</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="RsSmbv.Internal.ScpiLogger.ScpiLogger.error">
+<span class="sig-name descname"><span class="pre">error</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">datetime.datetime</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">datetime.datetime</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_string_info</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_string</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmd</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Internal/ScpiLogger.html#ScpiLogger.error"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RsSmbv.Internal.ScpiLogger.ScpiLogger.error" title="Permalink to this definition"></a></dt>
+<dd><p>Method for logging one error entry.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="RsSmbv.Internal.ScpiLogger.ScpiLogger.set_relative_timestamp">
+<span class="sig-name descname"><span class="pre">set_relative_timestamp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timestamp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">datetime.datetime</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Internal/ScpiLogger.html#ScpiLogger.set_relative_timestamp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RsSmbv.Internal.ScpiLogger.ScpiLogger.set_relative_timestamp" title="Permalink to this definition"></a></dt>
+<dd><p>If set, the further timestamps will be relative to the entered time.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="RsSmbv.Internal.ScpiLogger.ScpiLogger.set_relative_timestamp_now">
+<span class="sig-name descname"><span class="pre">set_relative_timestamp_now</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Internal/ScpiLogger.html#ScpiLogger.set_relative_timestamp_now"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RsSmbv.Internal.ScpiLogger.ScpiLogger.set_relative_timestamp_now" title="Permalink to this definition"></a></dt>
+<dd><p>Sets the relative timestamp to the current time.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="RsSmbv.Internal.ScpiLogger.ScpiLogger.get_relative_timestamp">
+<span class="sig-name descname"><span class="pre">get_relative_timestamp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">datetime.datetime</span></span></span><a class="reference internal" href="_modules/RsSmbv/Internal/ScpiLogger.html#ScpiLogger.get_relative_timestamp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RsSmbv.Internal.ScpiLogger.ScpiLogger.get_relative_timestamp" title="Permalink to this definition"></a></dt>
+<dd><p>Based on the global_mode, it returns the relative timestamp: either the local or the global one.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="RsSmbv.Internal.ScpiLogger.ScpiLogger.clear_relative_timestamp">
+<span class="sig-name descname"><span class="pre">clear_relative_timestamp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Internal/ScpiLogger.html#ScpiLogger.clear_relative_timestamp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RsSmbv.Internal.ScpiLogger.ScpiLogger.clear_relative_timestamp" title="Permalink to this definition"></a></dt>
+<dd><p>Clears the reference time, and the further logging continues with absolute times.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="RsSmbv.Internal.ScpiLogger.ScpiLogger.flush">
+<span class="sig-name descname"><span class="pre">flush</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Internal/ScpiLogger.html#ScpiLogger.flush"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RsSmbv.Internal.ScpiLogger.ScpiLogger.flush" title="Permalink to this definition"></a></dt>
+<dd><p>Flush all the entries.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="RsSmbv.Internal.ScpiLogger.ScpiLogger.sync_from">
+<span class="sig-name descname"><span class="pre">sync_from</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#RsSmbv.Internal.ScpiLogger.ScpiLogger" title="RsSmbv.Internal.ScpiLogger.ScpiLogger"><span class="pre">RsSmbv.Internal.ScpiLogger.ScpiLogger</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Internal/ScpiLogger.html#ScpiLogger.sync_from"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RsSmbv.Internal.ScpiLogger.ScpiLogger.sync_from" title="Permalink to this definition"></a></dt>
+<dd><p>Synchronises this Logger with the source logger.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RsSmbv.Internal.ScpiLogger.ScpiLogger.log_status_check_ok">
+<span class="sig-name descname"><span class="pre">log_status_check_ok</span></span><a class="headerlink" href="#RsSmbv.Internal.ScpiLogger.ScpiLogger.log_status_check_ok" title="Permalink to this definition"></a></dt>
+<dd><p>Sets / returns the current status of status checking OK.
+If True (default), the log contains logging of the status checking ‘Status check: OK’.
+If False, the ‘Status check: OK’ is skipped - the log is more compact.
+Errors will still be logged.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="RsSmbv.Internal.ScpiLogger.ScpiLogger.clear_cached_entries">
+<span class="sig-name descname"><span class="pre">clear_cached_entries</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Internal/ScpiLogger.html#ScpiLogger.clear_cached_entries"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RsSmbv.Internal.ScpiLogger.ScpiLogger.clear_cached_entries" title="Permalink to this definition"></a></dt>
+<dd><p>Clears potential cached log entries.
+Cached log entries are generated when the Logging is ON, but no target has been defined yet.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="RsSmbv.Internal.ScpiLogger.ScpiLogger.set_format_string">
+<span class="sig-name descname"><span class="pre">set_format_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_divider</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'\n'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Internal/ScpiLogger.html#ScpiLogger.set_format_string"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RsSmbv.Internal.ScpiLogger.ScpiLogger.set_format_string" title="Permalink to this definition"></a></dt>
+<dd><p>Sets new format string and line divider.
+If you just want to set the line divider, set the format string value=None
+The original format string is: <code class="docutils literal notranslate"><span class="pre">PAD_LEFT12(%START_TIME%)</span> <span class="pre">PAD_LEFT25(%DEVICE_NAME%)</span> <span class="pre">PAD_LEFT12(%DURATION%)</span>&#160; <span class="pre">%LOG_STRING_INFO%:</span> <span class="pre">%LOG_STRING%</span></code></p>
+<p>Additional variables to use: <code class="docutils literal notranslate"><span class="pre">%SCPI_COMMAND%</span></code>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="RsSmbv.Internal.ScpiLogger.ScpiLogger.restore_format_string">
+<span class="sig-name descname"><span class="pre">restore_format_string</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Internal/ScpiLogger.html#ScpiLogger.restore_format_string"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RsSmbv.Internal.ScpiLogger.ScpiLogger.restore_format_string" title="Permalink to this definition"></a></dt>
+<dd><p>Restores the original format string and the line divider to LF</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RsSmbv.Internal.ScpiLogger.ScpiLogger.abbreviated_max_len_ascii">
+<span class="sig-name descname"><span class="pre">abbreviated_max_len_ascii</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#RsSmbv.Internal.ScpiLogger.ScpiLogger.abbreviated_max_len_ascii" title="Permalink to this definition"></a></dt>
+<dd><p>Defines the maximum length of one ASCII log entry. Default value is 200 characters.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RsSmbv.Internal.ScpiLogger.ScpiLogger.abbreviated_max_len_bin">
+<span class="sig-name descname"><span class="pre">abbreviated_max_len_bin</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#RsSmbv.Internal.ScpiLogger.ScpiLogger.abbreviated_max_len_bin" title="Permalink to this definition"></a></dt>
+<dd><p>Defines the maximum length of one Binary log entry. Default value is 2048 bytes.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RsSmbv.Internal.ScpiLogger.ScpiLogger.abbreviated_max_len_list">
+<span class="sig-name descname"><span class="pre">abbreviated_max_len_list</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#RsSmbv.Internal.ScpiLogger.ScpiLogger.abbreviated_max_len_list" title="Permalink to this definition"></a></dt>
+<dd><p>Defines the maximum length of one list entry. Default value is 100 elements.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RsSmbv.Internal.ScpiLogger.ScpiLogger.bin_line_block_size">
+<span class="sig-name descname"><span class="pre">bin_line_block_size</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#RsSmbv.Internal.ScpiLogger.ScpiLogger.bin_line_block_size" title="Permalink to this definition"></a></dt>
+<dd><p>Defines number of bytes to display in one line. Default value is 16 bytes.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RsSmbv.Internal.ScpiLogger.ScpiLogger.udp_port">
+<span class="sig-name descname"><span class="pre">udp_port</span></span><a class="headerlink" href="#RsSmbv.Internal.ScpiLogger.ScpiLogger.udp_port" title="Permalink to this definition"></a></dt>
+<dd><p>Returns udp logging port.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RsSmbv.Internal.ScpiLogger.ScpiLogger.target_auto_flushing">
+<span class="sig-name descname"><span class="pre">target_auto_flushing</span></span><a class="headerlink" href="#RsSmbv.Internal.ScpiLogger.ScpiLogger.target_auto_flushing" title="Permalink to this definition"></a></dt>
+<dd><p>Returns status of the auto-flushing for the logging target.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RsSmbv.Internal.ScpiLogger.ScpiLogger.log_info_replacer">
+<span class="sig-name descname"><span class="pre">log_info_replacer</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#RsSmbv.Internal.ScpiLogger.LogInfoReplacer" title="RsSmbv.Internal.ScpiLogger.LogInfoReplacer"><span class="pre">RsSmbv.Internal.ScpiLogger.LogInfoReplacer</span></a></em><a class="headerlink" href="#RsSmbv.Internal.ScpiLogger.ScpiLogger.log_info_replacer" title="Permalink to this definition"></a></dt>
+<dd><p>Replacer for Log Info Strings.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="RsSmbv.Internal.ScpiLogger.LogInfoReplacer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">LogInfoReplacer</span></span><a class="reference internal" href="_modules/RsSmbv/Internal/ScpiLogger.html#LogInfoReplacer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RsSmbv.Internal.ScpiLogger.LogInfoReplacer" title="Permalink to this definition"></a></dt>
+<dd><p>Replacer, that takes the SCPI Logger Log Info and customizes its value.</p>
+<p>Create the new LogInfoReplacer either with empty replacer dictionaries,
+or the ones from another LogInfoReplacer.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="RsSmbv.Internal.ScpiLogger.LogInfoReplacer.set_full_replacer">
+<span class="sig-name descname"><span class="pre">set_full_replacer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">repl_dict</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Internal/ScpiLogger.html#LogInfoReplacer.set_full_replacer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RsSmbv.Internal.ScpiLogger.LogInfoReplacer.set_full_replacer" title="Permalink to this definition"></a></dt>
+<dd><p>Sets the full-replacer dictionary.
+This replacer searches the dictionary (case-sensitive) for the key
+that equals the LogInfoString, and replaces the whole info string
+with the string value associated with that key.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="RsSmbv.Internal.ScpiLogger.LogInfoReplacer.put_full_replacer_item">
+<span class="sig-name descname"><span class="pre">put_full_replacer_item</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">match</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">replace</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Internal/ScpiLogger.html#LogInfoReplacer.put_full_replacer_item"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RsSmbv.Internal.ScpiLogger.LogInfoReplacer.put_full_replacer_item" title="Permalink to this definition"></a></dt>
+<dd><p>Sets/replaces one item in the full replacer.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="RsSmbv.Internal.ScpiLogger.LogInfoReplacer.pop_full_replacer_item">
+<span class="sig-name descname"><span class="pre">pop_full_replacer_item</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">match</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Internal/ScpiLogger.html#LogInfoReplacer.pop_full_replacer_item"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RsSmbv.Internal.ScpiLogger.LogInfoReplacer.pop_full_replacer_item" title="Permalink to this definition"></a></dt>
+<dd><p>Pops(removes) the entered full replacer item.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="RsSmbv.Internal.ScpiLogger.LogInfoReplacer.set_regex_sr_replacer">
+<span class="sig-name descname"><span class="pre">set_regex_sr_replacer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">repl_dict</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">re.Pattern</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Internal/ScpiLogger.html#LogInfoReplacer.set_regex_sr_replacer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RsSmbv.Internal.ScpiLogger.LogInfoReplacer.set_regex_sr_replacer" title="Permalink to this definition"></a></dt>
+<dd><p>Sets the regex search&amp;replace replacer dictionary. The replacer uses the re.sub() method
+of each key and replaces the matched substring with the string value associated with that key.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="RsSmbv.Internal.ScpiLogger.LogInfoReplacer.put_regex_sr_replacer_item">
+<span class="sig-name descname"><span class="pre">put_regex_sr_replacer_item</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">search</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">re.Pattern</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">replace</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">re.Pattern</span></span></span><a class="reference internal" href="_modules/RsSmbv/Internal/ScpiLogger.html#LogInfoReplacer.put_regex_sr_replacer_item"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RsSmbv.Internal.ScpiLogger.LogInfoReplacer.put_regex_sr_replacer_item" title="Permalink to this definition"></a></dt>
+<dd><p>Sets/replaces one item in the regex replacer. The key can be either a regex pattern,
+or a string. In case of the string, the key is compiled to a regex pattern,
+before it is put into the replacing dictionary.
+Returns the resulting search regex pattern.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="RsSmbv.Internal.ScpiLogger.LogInfoReplacer.pop_regex_sr_replacer_item">
+<span class="sig-name descname"><span class="pre">pop_regex_sr_replacer_item</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">search</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">re.Pattern</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Internal/ScpiLogger.html#LogInfoReplacer.pop_regex_sr_replacer_item"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RsSmbv.Internal.ScpiLogger.LogInfoReplacer.pop_regex_sr_replacer_item" title="Permalink to this definition"></a></dt>
+<dd><p>Pops(removes) the entered regex replacer item. The key can be either a regex pattern,
+or a string. In case of the string, the key is compiled to a regex pattern prior to popping.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="RsSmbv.Internal.ScpiLogger.LogInfoReplacer.clear_replacers">
+<span class="sig-name descname"><span class="pre">clear_replacers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/RsSmbv/Internal/ScpiLogger.html#LogInfoReplacer.clear_replacers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RsSmbv.Internal.ScpiLogger.LogInfoReplacer.clear_replacers" title="Permalink to this definition"></a></dt>
+<dd><p>Clears both full and regex replacer dictionaries.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="utilities.html" class="btn btn-neutral float-left" title="RsSmbv Utilities" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="events.html" class="btn btn-neutral float-right" title="RsSmbv Events" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

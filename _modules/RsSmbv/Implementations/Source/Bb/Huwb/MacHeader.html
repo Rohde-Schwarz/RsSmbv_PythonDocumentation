@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RsSmbv.Implementations.Source.Bb.Huwb.MacHeader &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../../../" id="documentation_options" src="../../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../../_static/jquery.js"></script>
+        <script src="../../../../../../_static/underscore.js"></script>
+        <script src="../../../../../../_static/doctools.js"></script>
+        <script src="../../../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../../../_static/copybutton.js"></script>
+    <script src="../../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../../../index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../RsSmbv.html">RsSmbv API Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../../../index.html">Module code</a> &raquo;</li>
+          <li><a href="../../../Source.html">RsSmbv.Implementations.Source</a> &raquo;</li>
+          <li><a href="../../Bb.html">RsSmbv.Implementations.Source.Bb</a> &raquo;</li>
+          <li><a href="../Huwb.html">RsSmbv.Implementations.Source.Bb.Huwb</a> &raquo;</li>
+      <li>RsSmbv.Implementations.Source.Bb.Huwb.MacHeader</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for RsSmbv.Implementations.Source.Bb.Huwb.MacHeader</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">.....Internal.Core</span> <span class="kn">import</span> <span class="n">Core</span>
+<span class="kn">from</span> <span class="nn">.....Internal.CommandsGroup</span> <span class="kn">import</span> <span class="n">CommandsGroup</span>
+<span class="kn">from</span> <span class="nn">.....Internal</span> <span class="kn">import</span> <span class="n">Conversions</span>
+<span class="kn">from</span> <span class="nn">.....Internal.Utilities</span> <span class="kn">import</span> <span class="n">trim_str_response</span>
+<span class="kn">from</span> <span class="nn">.....</span> <span class="kn">import</span> <span class="n">enums</span>
+
+
+<span class="c1"># noinspection PyPep8Naming,PyAttributeOutsideInit,SpellCheckingInspection</span>
+<div class="viewcode-block" id="MacHeaderCls"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_MacHeader.html#RsSmbv.Implementations.Source.Bb.Huwb.MacHeader.MacHeaderCls">[docs]</a><span class="k">class</span> <span class="nc">MacHeaderCls</span><span class="p">:</span>
+	<span class="sd">&quot;&quot;&quot;MacHeader commands group definition. 31 total commands, 0 Subgroups, 31 group commands&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">core</span><span class="p">:</span> <span class="n">Core</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span> <span class="o">=</span> <span class="n">core</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span> <span class="o">=</span> <span class="n">CommandsGroup</span><span class="p">(</span><span class="s2">&quot;macHeader&quot;</span><span class="p">,</span> <span class="n">core</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+
+<div class="viewcode-block" id="MacHeaderCls.get_ar"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_MacHeader.html#RsSmbv.Implementations.Source.Bb.Huwb.MacHeader.MacHeaderCls.get_ar">[docs]</a>	<span class="k">def</span> <span class="nf">get_ar</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:MACHeader:AR \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.huwb.macHeader.get_ar() \n</span>
+<span class="sd">		Sets the bit in the AR field. \n</span>
+<span class="sd">			:return: ar: integer Range: 0 to 1</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:MACHeader:AR?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MacHeaderCls.set_ar"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_MacHeader.html#RsSmbv.Implementations.Source.Bb.Huwb.MacHeader.MacHeaderCls.set_ar">[docs]</a>	<span class="k">def</span> <span class="nf">set_ar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ar</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:MACHeader:AR \n</span>
+<span class="sd">		Snippet: driver.source.bb.huwb.macHeader.set_ar(ar = 1) \n</span>
+<span class="sd">		Sets the bit in the AR field. \n</span>
+<span class="sd">			:param ar: integer Range: 0 to 1</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">ar</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:MACHeader:AR </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MacHeaderCls.get_ctrl"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_MacHeader.html#RsSmbv.Implementations.Source.Bb.Huwb.MacHeader.MacHeaderCls.get_ctrl">[docs]</a>	<span class="k">def</span> <span class="nf">get_ctrl</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:MACHeader:CTRL \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.huwb.macHeader.get_ctrl() \n</span>
+<span class="sd">		Sets the input value of the frame control field. The value is an 8-bit or 16-bit value in hexadecimal representation. \n</span>
+<span class="sd">			:return: frame_control: integer Range: 0 to 65535</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:MACHeader:CTRL?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MacHeaderCls.set_ctrl"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_MacHeader.html#RsSmbv.Implementations.Source.Bb.Huwb.MacHeader.MacHeaderCls.set_ctrl">[docs]</a>	<span class="k">def</span> <span class="nf">set_ctrl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frame_control</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:MACHeader:CTRL \n</span>
+<span class="sd">		Snippet: driver.source.bb.huwb.macHeader.set_ctrl(frame_control = 1) \n</span>
+<span class="sd">		Sets the input value of the frame control field. The value is an 8-bit or 16-bit value in hexadecimal representation. \n</span>
+<span class="sd">			:param frame_control: integer Range: 0 to 65535</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">frame_control</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:MACHeader:CTRL </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MacHeaderCls.get_dad_2"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_MacHeader.html#RsSmbv.Implementations.Source.Bb.Huwb.MacHeader.MacHeaderCls.get_dad_2">[docs]</a>	<span class="k">def</span> <span class="nf">get_dad_2</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:MACHeader:DAD2 \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.huwb.macHeader.get_dad_2() \n</span>
+<span class="sd">		DADD requires destination address length of two or eight octets. DAD2, DAD3 and DAD4 require destination address length</span>
+<span class="sd">		of eight octets. See [:SOURce&lt;hw&gt;]:BB:HUWB:MACHeader:LDADdress. Sets the first, second, third and fourth input value of</span>
+<span class="sd">		the destination address field. \n</span>
+<span class="sd">			:return: dest_addr_2: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:MACHeader:DAD2?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MacHeaderCls.set_dad_2"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_MacHeader.html#RsSmbv.Implementations.Source.Bb.Huwb.MacHeader.MacHeaderCls.set_dad_2">[docs]</a>	<span class="k">def</span> <span class="nf">set_dad_2</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dest_addr_2</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:MACHeader:DAD2 \n</span>
+<span class="sd">		Snippet: driver.source.bb.huwb.macHeader.set_dad_2(dest_addr_2 = 1) \n</span>
+<span class="sd">		DADD requires destination address length of two or eight octets. DAD2, DAD3 and DAD4 require destination address length</span>
+<span class="sd">		of eight octets. See [:SOURce&lt;hw&gt;]:BB:HUWB:MACHeader:LDADdress. Sets the first, second, third and fourth input value of</span>
+<span class="sd">		the destination address field. \n</span>
+<span class="sd">			:param dest_addr_2: integer Range: 0 to 65535</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">dest_addr_2</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:MACHeader:DAD2 </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MacHeaderCls.get_dad_3"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_MacHeader.html#RsSmbv.Implementations.Source.Bb.Huwb.MacHeader.MacHeaderCls.get_dad_3">[docs]</a>	<span class="k">def</span> <span class="nf">get_dad_3</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:MACHeader:DAD3 \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.huwb.macHeader.get_dad_3() \n</span>
+<span class="sd">		DADD requires destination address length of two or eight octets. DAD2, DAD3 and DAD4 require destination address length</span>
+<span class="sd">		of eight octets. See [:SOURce&lt;hw&gt;]:BB:HUWB:MACHeader:LDADdress. Sets the first, second, third and fourth input value of</span>
+<span class="sd">		the destination address field. \n</span>
+<span class="sd">			:return: dest_addr_3: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:MACHeader:DAD3?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MacHeaderCls.set_dad_3"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_MacHeader.html#RsSmbv.Implementations.Source.Bb.Huwb.MacHeader.MacHeaderCls.set_dad_3">[docs]</a>	<span class="k">def</span> <span class="nf">set_dad_3</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dest_addr_3</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:MACHeader:DAD3 \n</span>
+<span class="sd">		Snippet: driver.source.bb.huwb.macHeader.set_dad_3(dest_addr_3 = 1) \n</span>
+<span class="sd">		DADD requires destination address length of two or eight octets. DAD2, DAD3 and DAD4 require destination address length</span>
+<span class="sd">		of eight octets. See [:SOURce&lt;hw&gt;]:BB:HUWB:MACHeader:LDADdress. Sets the first, second, third and fourth input value of</span>
+<span class="sd">		the destination address field. \n</span>
+<span class="sd">			:param dest_addr_3: integer Range: 0 to 65535</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">dest_addr_3</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:MACHeader:DAD3 </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MacHeaderCls.get_dad_4"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_MacHeader.html#RsSmbv.Implementations.Source.Bb.Huwb.MacHeader.MacHeaderCls.get_dad_4">[docs]</a>	<span class="k">def</span> <span class="nf">get_dad_4</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:MACHeader:DAD4 \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.huwb.macHeader.get_dad_4() \n</span>
+<span class="sd">		DADD requires destination address length of two or eight octets. DAD2, DAD3 and DAD4 require destination address length</span>
+<span class="sd">		of eight octets. See [:SOURce&lt;hw&gt;]:BB:HUWB:MACHeader:LDADdress. Sets the first, second, third and fourth input value of</span>
+<span class="sd">		the destination address field. \n</span>
+<span class="sd">			:return: dest_addr_4: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:MACHeader:DAD4?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MacHeaderCls.set_dad_4"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_MacHeader.html#RsSmbv.Implementations.Source.Bb.Huwb.MacHeader.MacHeaderCls.set_dad_4">[docs]</a>	<span class="k">def</span> <span class="nf">set_dad_4</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dest_addr_4</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:MACHeader:DAD4 \n</span>
+<span class="sd">		Snippet: driver.source.bb.huwb.macHeader.set_dad_4(dest_addr_4 = 1) \n</span>
+<span class="sd">		DADD requires destination address length of two or eight octets. DAD2, DAD3 and DAD4 require destination address length</span>
+<span class="sd">		of eight octets. See [:SOURce&lt;hw&gt;]:BB:HUWB:MACHeader:LDADdress. Sets the first, second, third and fourth input value of</span>
+<span class="sd">		the destination address field. \n</span>
+<span class="sd">			:param dest_addr_4: integer Range: 0 to 65535</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">dest_addr_4</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:MACHeader:DAD4 </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MacHeaderCls.get_dadd"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_MacHeader.html#RsSmbv.Implementations.Source.Bb.Huwb.MacHeader.MacHeaderCls.get_dadd">[docs]</a>	<span class="k">def</span> <span class="nf">get_dadd</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:MACHeader:DADD \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.huwb.macHeader.get_dadd() \n</span>
+<span class="sd">		DADD requires destination address length of two or eight octets. DAD2, DAD3 and DAD4 require destination address length</span>
+<span class="sd">		of eight octets. See [:SOURce&lt;hw&gt;]:BB:HUWB:MACHeader:LDADdress. Sets the first, second, third and fourth input value of</span>
+<span class="sd">		the destination address field. \n</span>
+<span class="sd">			:return: destination_addr: integer Range: 0 to 65535</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:MACHeader:DADD?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MacHeaderCls.set_dadd"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_MacHeader.html#RsSmbv.Implementations.Source.Bb.Huwb.MacHeader.MacHeaderCls.set_dadd">[docs]</a>	<span class="k">def</span> <span class="nf">set_dadd</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">destination_addr</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:MACHeader:DADD \n</span>
+<span class="sd">		Snippet: driver.source.bb.huwb.macHeader.set_dadd(destination_addr = 1) \n</span>
+<span class="sd">		DADD requires destination address length of two or eight octets. DAD2, DAD3 and DAD4 require destination address length</span>
+<span class="sd">		of eight octets. See [:SOURce&lt;hw&gt;]:BB:HUWB:MACHeader:LDADdress. Sets the first, second, third and fourth input value of</span>
+<span class="sd">		the destination address field. \n</span>
+<span class="sd">			:param destination_addr: integer Range: 0 to 65535</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">destination_addr</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:MACHeader:DADD </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MacHeaderCls.get_dad_mode"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_MacHeader.html#RsSmbv.Implementations.Source.Bb.Huwb.MacHeader.MacHeaderCls.get_dad_mode">[docs]</a>	<span class="k">def</span> <span class="nf">get_dad_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:MACHeader:DADMode \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.huwb.macHeader.get_dad_mode() \n</span>
+<span class="sd">		Requires frame control length of two octets. See [:SOURce&lt;hw&gt;]:BB:HUWB:MACHeader:LFRControl. Sets bits of the destination</span>
+<span class="sd">		addressing mode. \n</span>
+<span class="sd">			:return: dest_addr_mode: integer Range: 0 to 3</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:MACHeader:DADMode?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MacHeaderCls.set_dad_mode"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_MacHeader.html#RsSmbv.Implementations.Source.Bb.Huwb.MacHeader.MacHeaderCls.set_dad_mode">[docs]</a>	<span class="k">def</span> <span class="nf">set_dad_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dest_addr_mode</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:MACHeader:DADMode \n</span>
+<span class="sd">		Snippet: driver.source.bb.huwb.macHeader.set_dad_mode(dest_addr_mode = 1) \n</span>
+<span class="sd">		Requires frame control length of two octets. See [:SOURce&lt;hw&gt;]:BB:HUWB:MACHeader:LFRControl. Sets bits of the destination</span>
+<span class="sd">		addressing mode. \n</span>
+<span class="sd">			:param dest_addr_mode: integer Range: 0 to 3</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">dest_addr_mode</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:MACHeader:DADMode </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MacHeaderCls.get_dpan_id"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_MacHeader.html#RsSmbv.Implementations.Source.Bb.Huwb.MacHeader.MacHeaderCls.get_dpan_id">[docs]</a>	<span class="k">def</span> <span class="nf">get_dpan_id</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:MACHeader:DPANid \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.huwb.macHeader.get_dpan_id() \n</span>
+<span class="sd">		Sets the length and the input value of the destination PAN ID field. \n</span>
+<span class="sd">			:return: destination_pan_id: integer Range: 0 to 65535</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:MACHeader:DPANid?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MacHeaderCls.set_dpan_id"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_MacHeader.html#RsSmbv.Implementations.Source.Bb.Huwb.MacHeader.MacHeaderCls.set_dpan_id">[docs]</a>	<span class="k">def</span> <span class="nf">set_dpan_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">destination_pan_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:MACHeader:DPANid \n</span>
+<span class="sd">		Snippet: driver.source.bb.huwb.macHeader.set_dpan_id(destination_pan_id = 1) \n</span>
+<span class="sd">		Sets the length and the input value of the destination PAN ID field. \n</span>
+<span class="sd">			:param destination_pan_id: integer Range: 0 to 65535</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">destination_pan_id</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:MACHeader:DPANid </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MacHeaderCls.get_fpending"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_MacHeader.html#RsSmbv.Implementations.Source.Bb.Huwb.MacHeader.MacHeaderCls.get_fpending">[docs]</a>	<span class="k">def</span> <span class="nf">get_fpending</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:MACHeader:FPENding \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.huwb.macHeader.get_fpending() \n</span>
+<span class="sd">		Sets the bit in the frame pending field. \n</span>
+<span class="sd">			:return: frame_pending: integer Range: 0 to 1</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:MACHeader:FPENding?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MacHeaderCls.set_fpending"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_MacHeader.html#RsSmbv.Implementations.Source.Bb.Huwb.MacHeader.MacHeaderCls.set_fpending">[docs]</a>	<span class="k">def</span> <span class="nf">set_fpending</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frame_pending</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:MACHeader:FPENding \n</span>
+<span class="sd">		Snippet: driver.source.bb.huwb.macHeader.set_fpending(frame_pending = 1) \n</span>
+<span class="sd">		Sets the bit in the frame pending field. \n</span>
+<span class="sd">			:param frame_pending: integer Range: 0 to 1</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">frame_pending</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:MACHeader:FPENding </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MacHeaderCls.get_ftype"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_MacHeader.html#RsSmbv.Implementations.Source.Bb.Huwb.MacHeader.MacHeaderCls.get_ftype">[docs]</a>	<span class="k">def</span> <span class="nf">get_ftype</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:MACHeader:FTYPe \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.huwb.macHeader.get_ftype() \n</span>
+<span class="sd">		Sets the bits in the frame type field. The value is a 3-bit value. \n</span>
+<span class="sd">			:return: frame_type: integer Range: 0 to 7</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:MACHeader:FTYPe?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MacHeaderCls.set_ftype"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_MacHeader.html#RsSmbv.Implementations.Source.Bb.Huwb.MacHeader.MacHeaderCls.set_ftype">[docs]</a>	<span class="k">def</span> <span class="nf">set_ftype</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frame_type</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:MACHeader:FTYPe \n</span>
+<span class="sd">		Snippet: driver.source.bb.huwb.macHeader.set_ftype(frame_type = 1) \n</span>
+<span class="sd">		Sets the bits in the frame type field. The value is a 3-bit value. \n</span>
+<span class="sd">			:param frame_type: integer Range: 0 to 7</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">frame_type</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:MACHeader:FTYPe </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MacHeaderCls.get_fversion"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_MacHeader.html#RsSmbv.Implementations.Source.Bb.Huwb.MacHeader.MacHeaderCls.get_fversion">[docs]</a>	<span class="k">def</span> <span class="nf">get_fversion</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:MACHeader:FVERsion \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.huwb.macHeader.get_fversion() \n</span>
+<span class="sd">		Requires frame control length of two octets. See [:SOURce&lt;hw&gt;]:BB:HUWB:MACHeader:LFRControl. Sets the bits in the frame</span>
+<span class="sd">		version field. The value is a 2-bit value. \n</span>
+<span class="sd">			:return: frame_version: integer Range: 0 to 3</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:MACHeader:FVERsion?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MacHeaderCls.set_fversion"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_MacHeader.html#RsSmbv.Implementations.Source.Bb.Huwb.MacHeader.MacHeaderCls.set_fversion">[docs]</a>	<span class="k">def</span> <span class="nf">set_fversion</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frame_version</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:MACHeader:FVERsion \n</span>
+<span class="sd">		Snippet: driver.source.bb.huwb.macHeader.set_fversion(frame_version = 1) \n</span>
+<span class="sd">		Requires frame control length of two octets. See [:SOURce&lt;hw&gt;]:BB:HUWB:MACHeader:LFRControl. Sets the bits in the frame</span>
+<span class="sd">		version field. The value is a 2-bit value. \n</span>
+<span class="sd">			:param frame_version: integer Range: 0 to 3</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">frame_version</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:MACHeader:FVERsion </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MacHeaderCls.get_ie_present"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_MacHeader.html#RsSmbv.Implementations.Source.Bb.Huwb.MacHeader.MacHeaderCls.get_ie_present">[docs]</a>	<span class="k">def</span> <span class="nf">get_ie_present</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:MACHeader:IEPResent \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.huwb.macHeader.get_ie_present() \n</span>
+<span class="sd">		Requires frame control length of two octets. See [:SOURce&lt;hw&gt;]:BB:HUWB:MACHeader:LFRControl. Sets the bit in the</span>
+<span class="sd">		information element (IE) present field. \n</span>
+<span class="sd">			:return: ie_present: integer Range: 0 to 1</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:MACHeader:IEPResent?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MacHeaderCls.set_ie_present"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_MacHeader.html#RsSmbv.Implementations.Source.Bb.Huwb.MacHeader.MacHeaderCls.set_ie_present">[docs]</a>	<span class="k">def</span> <span class="nf">set_ie_present</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ie_present</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:MACHeader:IEPResent \n</span>
+<span class="sd">		Snippet: driver.source.bb.huwb.macHeader.set_ie_present(ie_present = 1) \n</span>
+<span class="sd">		Requires frame control length of two octets. See [:SOURce&lt;hw&gt;]:BB:HUWB:MACHeader:LFRControl. Sets the bit in the</span>
+<span class="sd">		information element (IE) present field. \n</span>
+<span class="sd">			:param ie_present: integer Range: 0 to 1</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">ie_present</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:MACHeader:IEPResent </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="MacHeaderCls.get_ld_address"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_MacHeader.html#RsSmbv.Implementations.Source.Bb.Huwb.MacHeader.MacHeaderCls.get_ld_address">[docs]</a>	<span class="k">def</span> <span class="nf">get_ld_address</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbMacLenAddress</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:MACHeader:LDADdress \n</span>
+<span class="sd">		Snippet: value: enums.HrpUwbMacLenAddress = driver.source.bb.huwb.macHeader.get_ld_address() \n</span>
+<span class="sd">		Sets the length of the destination address field. You can set lengths of zero octets, two octets or eight octets. \n</span>
+<span class="sd">			:return: len_dest_addr: L0| L2| L8 L0 Sets destination address length to zero octets. L2 Sets destination address length to two octets. L8 Sets destination address length to eight octets.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:MACHeader:LDADdress?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbMacLenAddress</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MacHeaderCls.set_ld_address"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_MacHeader.html#RsSmbv.Implementations.Source.Bb.Huwb.MacHeader.MacHeaderCls.set_ld_address">[docs]</a>	<span class="k">def</span> <span class="nf">set_ld_address</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">len_dest_addr</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbMacLenAddress</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:MACHeader:LDADdress \n</span>
+<span class="sd">		Snippet: driver.source.bb.huwb.macHeader.set_ld_address(len_dest_addr = enums.HrpUwbMacLenAddress.L0) \n</span>
+<span class="sd">		Sets the length of the destination address field. You can set lengths of zero octets, two octets or eight octets. \n</span>
+<span class="sd">			:param len_dest_addr: L0| L2| L8 L0 Sets destination address length to zero octets. L2 Sets destination address length to two octets. L8 Sets destination address length to eight octets.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">len_dest_addr</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbMacLenAddress</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:MACHeader:LDADdress </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="MacHeaderCls.get_lde_pan_id"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_MacHeader.html#RsSmbv.Implementations.Source.Bb.Huwb.MacHeader.MacHeaderCls.get_lde_pan_id">[docs]</a>	<span class="k">def</span> <span class="nf">get_lde_pan_id</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbMacLenPanId</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:MACHeader:LDEPanid \n</span>
+<span class="sd">		Snippet: value: enums.HrpUwbMacLenPanId = driver.source.bb.huwb.macHeader.get_lde_pan_id() \n</span>
+<span class="sd">		Sets the length of the destination PAN ID field. You can set lengths of zero octets or two octets. \n</span>
+<span class="sd">			:return: len_dest_pan_id: L0| L2 L0 Sets destination PAN ID length to zero octets. L2 Sets destination PAN ID length to two octets.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:MACHeader:LDEPanid?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbMacLenPanId</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MacHeaderCls.set_lde_pan_id"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_MacHeader.html#RsSmbv.Implementations.Source.Bb.Huwb.MacHeader.MacHeaderCls.set_lde_pan_id">[docs]</a>	<span class="k">def</span> <span class="nf">set_lde_pan_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">len_dest_pan_id</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbMacLenPanId</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:MACHeader:LDEPanid \n</span>
+<span class="sd">		Snippet: driver.source.bb.huwb.macHeader.set_lde_pan_id(len_dest_pan_id = enums.HrpUwbMacLenPanId.L0) \n</span>
+<span class="sd">		Sets the length of the destination PAN ID field. You can set lengths of zero octets or two octets. \n</span>
+<span class="sd">			:param len_dest_pan_id: L0| L2 L0 Sets destination PAN ID length to zero octets. L2 Sets destination PAN ID length to two octets.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">len_dest_pan_id</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbMacLenPanId</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:MACHeader:LDEPanid </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="MacHeaderCls.get_lfr_control"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_MacHeader.html#RsSmbv.Implementations.Source.Bb.Huwb.MacHeader.MacHeaderCls.get_lfr_control">[docs]</a>	<span class="k">def</span> <span class="nf">get_lfr_control</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbMacLenFrameControl</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:MACHeader:LFRControl \n</span>
+<span class="sd">		Snippet: value: enums.HrpUwbMacLenFrameControl = driver.source.bb.huwb.macHeader.get_lfr_control() \n</span>
+<span class="sd">		Sets the length of the frame control field. You can set lengths of one octet or two octets. \n</span>
+<span class="sd">			:return: len_frame_control: L1| L2 L1 Sets frame control length to one octet. L2 Sets frame control length to two octets.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:MACHeader:LFRControl?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbMacLenFrameControl</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MacHeaderCls.set_lfr_control"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_MacHeader.html#RsSmbv.Implementations.Source.Bb.Huwb.MacHeader.MacHeaderCls.set_lfr_control">[docs]</a>	<span class="k">def</span> <span class="nf">set_lfr_control</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">len_frame_control</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbMacLenFrameControl</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:MACHeader:LFRControl \n</span>
+<span class="sd">		Snippet: driver.source.bb.huwb.macHeader.set_lfr_control(len_frame_control = enums.HrpUwbMacLenFrameControl.L1) \n</span>
+<span class="sd">		Sets the length of the frame control field. You can set lengths of one octet or two octets. \n</span>
+<span class="sd">			:param len_frame_control: L1| L2 L1 Sets frame control length to one octet. L2 Sets frame control length to two octets.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">len_frame_control</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbMacLenFrameControl</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:MACHeader:LFRControl </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="MacHeaderCls.get_ls_address"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_MacHeader.html#RsSmbv.Implementations.Source.Bb.Huwb.MacHeader.MacHeaderCls.get_ls_address">[docs]</a>	<span class="k">def</span> <span class="nf">get_ls_address</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbMacLenAddress</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:MACHeader:LSADdress \n</span>
+<span class="sd">		Snippet: value: enums.HrpUwbMacLenAddress = driver.source.bb.huwb.macHeader.get_ls_address() \n</span>
+<span class="sd">		Sets the length of the source address field. You can set lengths of zero octets, two octets or eight octets. \n</span>
+<span class="sd">			:return: len_src_address: L0| L2| L8 L0 Sets source address length to zero octets. L2 Sets source address length to two octets. L8 Sets source address length to eight octets.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:MACHeader:LSADdress?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbMacLenAddress</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MacHeaderCls.set_ls_address"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_MacHeader.html#RsSmbv.Implementations.Source.Bb.Huwb.MacHeader.MacHeaderCls.set_ls_address">[docs]</a>	<span class="k">def</span> <span class="nf">set_ls_address</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">len_src_address</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbMacLenAddress</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:MACHeader:LSADdress \n</span>
+<span class="sd">		Snippet: driver.source.bb.huwb.macHeader.set_ls_address(len_src_address = enums.HrpUwbMacLenAddress.L0) \n</span>
+<span class="sd">		Sets the length of the source address field. You can set lengths of zero octets, two octets or eight octets. \n</span>
+<span class="sd">			:param len_src_address: L0| L2| L8 L0 Sets source address length to zero octets. L2 Sets source address length to two octets. L8 Sets source address length to eight octets.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">len_src_address</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbMacLenAddress</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:MACHeader:LSADdress </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="MacHeaderCls.get_lseq_number"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_MacHeader.html#RsSmbv.Implementations.Source.Bb.Huwb.MacHeader.MacHeaderCls.get_lseq_number">[docs]</a>	<span class="k">def</span> <span class="nf">get_lseq_number</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbMacLenSeqNumber</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:MACHeader:LSEQnumber \n</span>
+<span class="sd">		Snippet: value: enums.HrpUwbMacLenSeqNumber = driver.source.bb.huwb.macHeader.get_lseq_number() \n</span>
+<span class="sd">		Sets the length of the sequence number field. You can set zero octets or one octet. \n</span>
+<span class="sd">			:return: len_seq_number: L0| L1 L0 Sets the sequence number length to zero octets. L1 Sets the sequence number length to one octet.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:MACHeader:LSEQnumber?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbMacLenSeqNumber</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MacHeaderCls.set_lseq_number"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_MacHeader.html#RsSmbv.Implementations.Source.Bb.Huwb.MacHeader.MacHeaderCls.set_lseq_number">[docs]</a>	<span class="k">def</span> <span class="nf">set_lseq_number</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">len_seq_number</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbMacLenSeqNumber</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:MACHeader:LSEQnumber \n</span>
+<span class="sd">		Snippet: driver.source.bb.huwb.macHeader.set_lseq_number(len_seq_number = enums.HrpUwbMacLenSeqNumber.L0) \n</span>
+<span class="sd">		Sets the length of the sequence number field. You can set zero octets or one octet. \n</span>
+<span class="sd">			:param len_seq_number: L0| L1 L0 Sets the sequence number length to zero octets. L1 Sets the sequence number length to one octet.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">len_seq_number</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbMacLenSeqNumber</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:MACHeader:LSEQnumber </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="MacHeaderCls.get_lso_pan_id"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_MacHeader.html#RsSmbv.Implementations.Source.Bb.Huwb.MacHeader.MacHeaderCls.get_lso_pan_id">[docs]</a>	<span class="k">def</span> <span class="nf">get_lso_pan_id</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbMacLenPanId</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:MACHeader:LSOPanid \n</span>
+<span class="sd">		Snippet: value: enums.HrpUwbMacLenPanId = driver.source.bb.huwb.macHeader.get_lso_pan_id() \n</span>
+<span class="sd">		Sets the length of the source PAN ID field. You can set lengths of zero octets or two octets. \n</span>
+<span class="sd">			:return: len_source_pan_id: L0| L2 L0 Sets source PAN ID length to zero octets. L2 Sets source PAN ID length to two octets.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:MACHeader:LSOPanid?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbMacLenPanId</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MacHeaderCls.set_lso_pan_id"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_MacHeader.html#RsSmbv.Implementations.Source.Bb.Huwb.MacHeader.MacHeaderCls.set_lso_pan_id">[docs]</a>	<span class="k">def</span> <span class="nf">set_lso_pan_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">len_source_pan_id</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbMacLenPanId</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:MACHeader:LSOPanid \n</span>
+<span class="sd">		Snippet: driver.source.bb.huwb.macHeader.set_lso_pan_id(len_source_pan_id = enums.HrpUwbMacLenPanId.L0) \n</span>
+<span class="sd">		Sets the length of the source PAN ID field. You can set lengths of zero octets or two octets. \n</span>
+<span class="sd">			:param len_source_pan_id: L0| L2 L0 Sets source PAN ID length to zero octets. L2 Sets source PAN ID length to two octets.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">len_source_pan_id</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbMacLenPanId</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:MACHeader:LSOPanid </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MacHeaderCls.get_pid_comp"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_MacHeader.html#RsSmbv.Implementations.Source.Bb.Huwb.MacHeader.MacHeaderCls.get_pid_comp">[docs]</a>	<span class="k">def</span> <span class="nf">get_pid_comp</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:MACHeader:PIDComp \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.huwb.macHeader.get_pid_comp() \n</span>
+<span class="sd">		Sets the bit in the PAN ID compression field. \n</span>
+<span class="sd">			:return: pan_id_compress: integer Range: 0 to 1</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:MACHeader:PIDComp?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MacHeaderCls.set_pid_comp"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_MacHeader.html#RsSmbv.Implementations.Source.Bb.Huwb.MacHeader.MacHeaderCls.set_pid_comp">[docs]</a>	<span class="k">def</span> <span class="nf">set_pid_comp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pan_id_compress</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:MACHeader:PIDComp \n</span>
+<span class="sd">		Snippet: driver.source.bb.huwb.macHeader.set_pid_comp(pan_id_compress = 1) \n</span>
+<span class="sd">		Sets the bit in the PAN ID compression field. \n</span>
+<span class="sd">			:param pan_id_compress: integer Range: 0 to 1</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">pan_id_compress</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:MACHeader:PIDComp </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MacHeaderCls.get_reserved"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_MacHeader.html#RsSmbv.Implementations.Source.Bb.Huwb.MacHeader.MacHeaderCls.get_reserved">[docs]</a>	<span class="k">def</span> <span class="nf">get_reserved</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:MACHeader:REServed \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.huwb.macHeader.get_reserved() \n</span>
+<span class="sd">		Sets a reserved bit for future use. \n</span>
+<span class="sd">			:return: reserved: integer Range: 0 to 1</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:MACHeader:REServed?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MacHeaderCls.set_reserved"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_MacHeader.html#RsSmbv.Implementations.Source.Bb.Huwb.MacHeader.MacHeaderCls.set_reserved">[docs]</a>	<span class="k">def</span> <span class="nf">set_reserved</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reserved</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:MACHeader:REServed \n</span>
+<span class="sd">		Snippet: driver.source.bb.huwb.macHeader.set_reserved(reserved = 1) \n</span>
+<span class="sd">		Sets a reserved bit for future use. \n</span>
+<span class="sd">			:param reserved: integer Range: 0 to 1</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">reserved</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:MACHeader:REServed </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MacHeaderCls.get_sad_2"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_MacHeader.html#RsSmbv.Implementations.Source.Bb.Huwb.MacHeader.MacHeaderCls.get_sad_2">[docs]</a>	<span class="k">def</span> <span class="nf">get_sad_2</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:MACHeader:SAD2 \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.huwb.macHeader.get_sad_2() \n</span>
+<span class="sd">		SADD requires source address length of two or eight octets. SAD2, SAD3 and SAD4 require source address lengths of eight</span>
+<span class="sd">		octets. See [:SOURce&lt;hw&gt;]:BB:HUWB:MACHeader:LSADdress. Sets the first, second, third and fourth input value of the source</span>
+<span class="sd">		address field. \n</span>
+<span class="sd">			:return: source_address_2: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:MACHeader:SAD2?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MacHeaderCls.set_sad_2"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_MacHeader.html#RsSmbv.Implementations.Source.Bb.Huwb.MacHeader.MacHeaderCls.set_sad_2">[docs]</a>	<span class="k">def</span> <span class="nf">set_sad_2</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source_address_2</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:MACHeader:SAD2 \n</span>
+<span class="sd">		Snippet: driver.source.bb.huwb.macHeader.set_sad_2(source_address_2 = 1) \n</span>
+<span class="sd">		SADD requires source address length of two or eight octets. SAD2, SAD3 and SAD4 require source address lengths of eight</span>
+<span class="sd">		octets. See [:SOURce&lt;hw&gt;]:BB:HUWB:MACHeader:LSADdress. Sets the first, second, third and fourth input value of the source</span>
+<span class="sd">		address field. \n</span>
+<span class="sd">			:param source_address_2: integer Range: 0 to 65535</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">source_address_2</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:MACHeader:SAD2 </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MacHeaderCls.get_sad_3"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_MacHeader.html#RsSmbv.Implementations.Source.Bb.Huwb.MacHeader.MacHeaderCls.get_sad_3">[docs]</a>	<span class="k">def</span> <span class="nf">get_sad_3</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:MACHeader:SAD3 \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.huwb.macHeader.get_sad_3() \n</span>
+<span class="sd">		SADD requires source address length of two or eight octets. SAD2, SAD3 and SAD4 require source address lengths of eight</span>
+<span class="sd">		octets. See [:SOURce&lt;hw&gt;]:BB:HUWB:MACHeader:LSADdress. Sets the first, second, third and fourth input value of the source</span>
+<span class="sd">		address field. \n</span>
+<span class="sd">			:return: source_address_3: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:MACHeader:SAD3?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MacHeaderCls.set_sad_3"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_MacHeader.html#RsSmbv.Implementations.Source.Bb.Huwb.MacHeader.MacHeaderCls.set_sad_3">[docs]</a>	<span class="k">def</span> <span class="nf">set_sad_3</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source_address_3</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:MACHeader:SAD3 \n</span>
+<span class="sd">		Snippet: driver.source.bb.huwb.macHeader.set_sad_3(source_address_3 = 1) \n</span>
+<span class="sd">		SADD requires source address length of two or eight octets. SAD2, SAD3 and SAD4 require source address lengths of eight</span>
+<span class="sd">		octets. See [:SOURce&lt;hw&gt;]:BB:HUWB:MACHeader:LSADdress. Sets the first, second, third and fourth input value of the source</span>
+<span class="sd">		address field. \n</span>
+<span class="sd">			:param source_address_3: integer Range: 0 to 65535</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">source_address_3</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:MACHeader:SAD3 </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MacHeaderCls.get_sad_4"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_MacHeader.html#RsSmbv.Implementations.Source.Bb.Huwb.MacHeader.MacHeaderCls.get_sad_4">[docs]</a>	<span class="k">def</span> <span class="nf">get_sad_4</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:MACHeader:SAD4 \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.huwb.macHeader.get_sad_4() \n</span>
+<span class="sd">		SADD requires source address length of two or eight octets. SAD2, SAD3 and SAD4 require source address lengths of eight</span>
+<span class="sd">		octets. See [:SOURce&lt;hw&gt;]:BB:HUWB:MACHeader:LSADdress. Sets the first, second, third and fourth input value of the source</span>
+<span class="sd">		address field. \n</span>
+<span class="sd">			:return: source_address_4: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:MACHeader:SAD4?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MacHeaderCls.set_sad_4"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_MacHeader.html#RsSmbv.Implementations.Source.Bb.Huwb.MacHeader.MacHeaderCls.set_sad_4">[docs]</a>	<span class="k">def</span> <span class="nf">set_sad_4</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source_address_4</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:MACHeader:SAD4 \n</span>
+<span class="sd">		Snippet: driver.source.bb.huwb.macHeader.set_sad_4(source_address_4 = 1) \n</span>
+<span class="sd">		SADD requires source address length of two or eight octets. SAD2, SAD3 and SAD4 require source address lengths of eight</span>
+<span class="sd">		octets. See [:SOURce&lt;hw&gt;]:BB:HUWB:MACHeader:LSADdress. Sets the first, second, third and fourth input value of the source</span>
+<span class="sd">		address field. \n</span>
+<span class="sd">			:param source_address_4: integer Range: 0 to 65535</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">source_address_4</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:MACHeader:SAD4 </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MacHeaderCls.get_sadd"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_MacHeader.html#RsSmbv.Implementations.Source.Bb.Huwb.MacHeader.MacHeaderCls.get_sadd">[docs]</a>	<span class="k">def</span> <span class="nf">get_sadd</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:MACHeader:SADD \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.huwb.macHeader.get_sadd() \n</span>
+<span class="sd">		SADD requires source address length of two or eight octets. SAD2, SAD3 and SAD4 require source address lengths of eight</span>
+<span class="sd">		octets. See [:SOURce&lt;hw&gt;]:BB:HUWB:MACHeader:LSADdress. Sets the first, second, third and fourth input value of the source</span>
+<span class="sd">		address field. \n</span>
+<span class="sd">			:return: source_address: integer Range: 0 to 65535</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:MACHeader:SADD?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MacHeaderCls.set_sadd"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_MacHeader.html#RsSmbv.Implementations.Source.Bb.Huwb.MacHeader.MacHeaderCls.set_sadd">[docs]</a>	<span class="k">def</span> <span class="nf">set_sadd</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source_address</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:MACHeader:SADD \n</span>
+<span class="sd">		Snippet: driver.source.bb.huwb.macHeader.set_sadd(source_address = 1) \n</span>
+<span class="sd">		SADD requires source address length of two or eight octets. SAD2, SAD3 and SAD4 require source address lengths of eight</span>
+<span class="sd">		octets. See [:SOURce&lt;hw&gt;]:BB:HUWB:MACHeader:LSADdress. Sets the first, second, third and fourth input value of the source</span>
+<span class="sd">		address field. \n</span>
+<span class="sd">			:param source_address: integer Range: 0 to 65535</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">source_address</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:MACHeader:SADD </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MacHeaderCls.get_sad_mode"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_MacHeader.html#RsSmbv.Implementations.Source.Bb.Huwb.MacHeader.MacHeaderCls.get_sad_mode">[docs]</a>	<span class="k">def</span> <span class="nf">get_sad_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:MACHeader:SADMode \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.huwb.macHeader.get_sad_mode() \n</span>
+<span class="sd">		Requires frame control length of two octets. See [:SOURce&lt;hw&gt;]:BB:HUWB:MACHeader:LFRControl. Sets the bits in the source</span>
+<span class="sd">		addressing mode field. The value is a 2-bit value. \n</span>
+<span class="sd">			:return: src_addr_mode: integer Range: 0 to 3</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:MACHeader:SADMode?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MacHeaderCls.set_sad_mode"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_MacHeader.html#RsSmbv.Implementations.Source.Bb.Huwb.MacHeader.MacHeaderCls.set_sad_mode">[docs]</a>	<span class="k">def</span> <span class="nf">set_sad_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">src_addr_mode</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:MACHeader:SADMode \n</span>
+<span class="sd">		Snippet: driver.source.bb.huwb.macHeader.set_sad_mode(src_addr_mode = 1) \n</span>
+<span class="sd">		Requires frame control length of two octets. See [:SOURce&lt;hw&gt;]:BB:HUWB:MACHeader:LFRControl. Sets the bits in the source</span>
+<span class="sd">		addressing mode field. The value is a 2-bit value. \n</span>
+<span class="sd">			:param src_addr_mode: integer Range: 0 to 3</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">src_addr_mode</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:MACHeader:SADMode </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MacHeaderCls.get_se_enabled"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_MacHeader.html#RsSmbv.Implementations.Source.Bb.Huwb.MacHeader.MacHeaderCls.get_se_enabled">[docs]</a>	<span class="k">def</span> <span class="nf">get_se_enabled</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:MACHeader:SEENabled \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.huwb.macHeader.get_se_enabled() \n</span>
+<span class="sd">		Sets the bit in the security enabled field. \n</span>
+<span class="sd">			:return: security_enabled: integer Range: 0 to 1</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:MACHeader:SEENabled?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MacHeaderCls.set_se_enabled"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_MacHeader.html#RsSmbv.Implementations.Source.Bb.Huwb.MacHeader.MacHeaderCls.set_se_enabled">[docs]</a>	<span class="k">def</span> <span class="nf">set_se_enabled</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">security_enabled</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:MACHeader:SEENabled \n</span>
+<span class="sd">		Snippet: driver.source.bb.huwb.macHeader.set_se_enabled(security_enabled = 1) \n</span>
+<span class="sd">		Sets the bit in the security enabled field. \n</span>
+<span class="sd">			:param security_enabled: integer Range: 0 to 1</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">security_enabled</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:MACHeader:SEENabled </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MacHeaderCls.get_sen_supp"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_MacHeader.html#RsSmbv.Implementations.Source.Bb.Huwb.MacHeader.MacHeaderCls.get_sen_supp">[docs]</a>	<span class="k">def</span> <span class="nf">get_sen_supp</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:MACHeader:SENSupp \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.huwb.macHeader.get_sen_supp() \n</span>
+<span class="sd">		Requires frame control length of two octets. See [:SOURce&lt;hw&gt;]:BB:HUWB:MACHeader:LFRControl. Sets the bit in the sequence</span>
+<span class="sd">		number suppression field. \n</span>
+<span class="sd">			:return: seq_numb_suppr: integer Range: 0 to 1</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:MACHeader:SENSupp?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MacHeaderCls.set_sen_supp"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_MacHeader.html#RsSmbv.Implementations.Source.Bb.Huwb.MacHeader.MacHeaderCls.set_sen_supp">[docs]</a>	<span class="k">def</span> <span class="nf">set_sen_supp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">seq_numb_suppr</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:MACHeader:SENSupp \n</span>
+<span class="sd">		Snippet: driver.source.bb.huwb.macHeader.set_sen_supp(seq_numb_suppr = 1) \n</span>
+<span class="sd">		Requires frame control length of two octets. See [:SOURce&lt;hw&gt;]:BB:HUWB:MACHeader:LFRControl. Sets the bit in the sequence</span>
+<span class="sd">		number suppression field. \n</span>
+<span class="sd">			:param seq_numb_suppr: integer Range: 0 to 1</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">seq_numb_suppr</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:MACHeader:SENSupp </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MacHeaderCls.get_seq_number"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_MacHeader.html#RsSmbv.Implementations.Source.Bb.Huwb.MacHeader.MacHeaderCls.get_seq_number">[docs]</a>	<span class="k">def</span> <span class="nf">get_seq_number</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:MACHeader:SEQNumber \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.huwb.macHeader.get_seq_number() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: sequence_number: integer Range: 0 to 65535</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:MACHeader:SEQNumber?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MacHeaderCls.set_seq_number"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_MacHeader.html#RsSmbv.Implementations.Source.Bb.Huwb.MacHeader.MacHeaderCls.set_seq_number">[docs]</a>	<span class="k">def</span> <span class="nf">set_seq_number</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sequence_number</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:MACHeader:SEQNumber \n</span>
+<span class="sd">		Snippet: driver.source.bb.huwb.macHeader.set_seq_number(sequence_number = 1) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param sequence_number: integer Range: 0 to 65535</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">sequence_number</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:MACHeader:SEQNumber </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MacHeaderCls.get_span_id"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_MacHeader.html#RsSmbv.Implementations.Source.Bb.Huwb.MacHeader.MacHeaderCls.get_span_id">[docs]</a>	<span class="k">def</span> <span class="nf">get_span_id</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:MACHeader:SPANid \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.huwb.macHeader.get_span_id() \n</span>
+<span class="sd">		Sets the input value of the source PAN ID field. The value is a 16-bit value in hexadecimal representation. \n</span>
+<span class="sd">			:return: source_pan_id: integer Range: 0 to 65535</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:MACHeader:SPANid?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MacHeaderCls.set_span_id"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_MacHeader.html#RsSmbv.Implementations.Source.Bb.Huwb.MacHeader.MacHeaderCls.set_span_id">[docs]</a>	<span class="k">def</span> <span class="nf">set_span_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source_pan_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:MACHeader:SPANid \n</span>
+<span class="sd">		Snippet: driver.source.bb.huwb.macHeader.set_span_id(source_pan_id = 1) \n</span>
+<span class="sd">		Sets the input value of the source PAN ID field. The value is a 16-bit value in hexadecimal representation. \n</span>
+<span class="sd">			:param source_pan_id: integer Range: 0 to 65535</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">source_pan_id</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:MACHeader:SPANid </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MacHeaderCls.get_state"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_MacHeader.html#RsSmbv.Implementations.Source.Bb.Huwb.MacHeader.MacHeaderCls.get_state">[docs]</a>	<span class="k">def</span> <span class="nf">get_state</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:MACHeader:STATe \n</span>
+<span class="sd">		Snippet: value: bool = driver.source.bb.huwb.macHeader.get_state() \n</span>
+<span class="sd">		Activates or deactivates MAC header information. \n</span>
+<span class="sd">			:return: state: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:MACHeader:STATe?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_bool</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MacHeaderCls.set_state"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_MacHeader.html#RsSmbv.Implementations.Source.Bb.Huwb.MacHeader.MacHeaderCls.set_state">[docs]</a>	<span class="k">def</span> <span class="nf">set_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:MACHeader:STATe \n</span>
+<span class="sd">		Snippet: driver.source.bb.huwb.macHeader.set_state(state = False) \n</span>
+<span class="sd">		Activates or deactivates MAC header information. \n</span>
+<span class="sd">			:param state: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">bool_to_str</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:MACHeader:STATe </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MacHeaderCls.get_string"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_MacHeader.html#RsSmbv.Implementations.Source.Bb.Huwb.MacHeader.MacHeaderCls.get_string">[docs]</a>	<span class="k">def</span> <span class="nf">get_string</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:MACHeader:STRing \n</span>
+<span class="sd">		Snippet: value: str = driver.source.bb.huwb.macHeader.get_string() \n</span>
+<span class="sd">		Queries the length of the MAC header and the MAC address in hexadecimal format. \n</span>
+<span class="sd">			:return: string: string</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:MACHeader:STRing?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">trim_str_response</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

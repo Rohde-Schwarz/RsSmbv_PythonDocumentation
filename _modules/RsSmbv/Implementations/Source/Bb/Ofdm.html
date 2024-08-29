@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RsSmbv.Implementations.Source.Bb.Ofdm &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../_static/jquery.js"></script>
+        <script src="../../../../../_static/underscore.js"></script>
+        <script src="../../../../../_static/doctools.js"></script>
+        <script src="../../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../../_static/copybutton.js"></script>
+    <script src="../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../../index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../RsSmbv.html">RsSmbv API Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../../index.html">Module code</a> &raquo;</li>
+          <li><a href="../../Source.html">RsSmbv.Implementations.Source</a> &raquo;</li>
+          <li><a href="../Bb.html">RsSmbv.Implementations.Source.Bb</a> &raquo;</li>
+      <li>RsSmbv.Implementations.Source.Bb.Ofdm</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for RsSmbv.Implementations.Source.Bb.Ofdm</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">.....Internal.Core</span> <span class="kn">import</span> <span class="n">Core</span>
+<span class="kn">from</span> <span class="nn">.....Internal.CommandsGroup</span> <span class="kn">import</span> <span class="n">CommandsGroup</span>
+<span class="kn">from</span> <span class="nn">.....Internal</span> <span class="kn">import</span> <span class="n">Conversions</span>
+<span class="kn">from</span> <span class="nn">.....Internal.Utilities</span> <span class="kn">import</span> <span class="n">trim_str_response</span>
+<span class="kn">from</span> <span class="nn">.....</span> <span class="kn">import</span> <span class="n">enums</span>
+
+
+<span class="c1"># noinspection PyPep8Naming,PyAttributeOutsideInit,SpellCheckingInspection</span>
+<div class="viewcode-block" id="OfdmCls"><a class="viewcode-back" href="../../../../../Source_Bb_Ofdm.html#RsSmbv.Implementations.Source.Bb.Ofdm.OfdmCls">[docs]</a><span class="k">class</span> <span class="nc">OfdmCls</span><span class="p">:</span>
+	<span class="sd">&quot;&quot;&quot;Ofdm commands group definition. 114 total commands, 16 Subgroups, 18 group commands&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">core</span><span class="p">:</span> <span class="n">Core</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span> <span class="o">=</span> <span class="n">core</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span> <span class="o">=</span> <span class="n">CommandsGroup</span><span class="p">(</span><span class="s2">&quot;ofdm&quot;</span><span class="p">,</span> <span class="n">core</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">alloc</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;alloc commands group. 19 Sub-classes, 0 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_alloc&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Alloc</span> <span class="kn">import</span> <span class="n">AllocCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_alloc</span> <span class="o">=</span> <span class="n">AllocCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_alloc</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">clock</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;clock commands group. 0 Sub-classes, 3 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_clock&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Clock</span> <span class="kn">import</span> <span class="n">ClockCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_clock</span> <span class="o">=</span> <span class="n">ClockCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_clock</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">cpLength</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;cpLength commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_cpLength&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.CpLength</span> <span class="kn">import</span> <span class="n">CpLengthCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_cpLength</span> <span class="o">=</span> <span class="n">CpLengthCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cpLength</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">csLength</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;csLength commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_csLength&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.CsLength</span> <span class="kn">import</span> <span class="n">CsLengthCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_csLength</span> <span class="o">=</span> <span class="n">CsLengthCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_csLength</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">dfts</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;dfts commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_dfts&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Dfts</span> <span class="kn">import</span> <span class="n">DftsCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_dfts</span> <span class="o">=</span> <span class="n">DftsCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dfts</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">filterPy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;filterPy commands group. 0 Sub-classes, 9 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_filterPy&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.FilterPy</span> <span class="kn">import</span> <span class="n">FilterPyCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_filterPy</span> <span class="o">=</span> <span class="n">FilterPyCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_filterPy</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">fofdm</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;fofdm commands group. 0 Sub-classes, 2 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_fofdm&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Fofdm</span> <span class="kn">import</span> <span class="n">FofdmCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_fofdm</span> <span class="o">=</span> <span class="n">FofdmCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fofdm</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">gfdm</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;gfdm commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_gfdm&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Gfdm</span> <span class="kn">import</span> <span class="n">GfdmCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_gfdm</span> <span class="o">=</span> <span class="n">GfdmCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gfdm</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">modPreset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;modPreset commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_modPreset&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.ModPreset</span> <span class="kn">import</span> <span class="n">ModPresetCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_modPreset</span> <span class="o">=</span> <span class="n">ModPresetCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_modPreset</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">notch</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;notch commands group. 4 Sub-classes, 3 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_notch&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Notch</span> <span class="kn">import</span> <span class="n">NotchCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_notch</span> <span class="o">=</span> <span class="n">NotchCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_notch</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">setting</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;setting commands group. 0 Sub-classes, 4 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_setting&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Setting</span> <span class="kn">import</span> <span class="n">SettingCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_setting</span> <span class="o">=</span> <span class="n">SettingCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_setting</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">symbolRate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;symbolRate commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_symbolRate&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.SymbolRate</span> <span class="kn">import</span> <span class="n">SymbolRateCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_symbolRate</span> <span class="o">=</span> <span class="n">SymbolRateCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_symbolRate</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">trigger</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;trigger commands group. 6 Sub-classes, 5 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_trigger&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Trigger</span> <span class="kn">import</span> <span class="n">TriggerCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_trigger</span> <span class="o">=</span> <span class="n">TriggerCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_trigger</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">ufmc</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;ufmc commands group. 0 Sub-classes, 2 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_ufmc&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Ufmc</span> <span class="kn">import</span> <span class="n">UfmcCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_ufmc</span> <span class="o">=</span> <span class="n">UfmcCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ufmc</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">user</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;user commands group. 5 Sub-classes, 0 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_user&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.User</span> <span class="kn">import</span> <span class="n">UserCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_user</span> <span class="o">=</span> <span class="n">UserCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_user</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">waveform</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;waveform commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_waveform&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Waveform</span> <span class="kn">import</span> <span class="n">WaveformCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_waveform</span> <span class="o">=</span> <span class="n">WaveformCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_waveform</span>
+
+<div class="viewcode-block" id="OfdmCls.get_acp_length"><a class="viewcode-back" href="../../../../../Source_Bb_Ofdm.html#RsSmbv.Implementations.Source.Bb.Ofdm.OfdmCls.get_acp_length">[docs]</a>	<span class="k">def</span> <span class="nf">get_acp_length</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:OFDM:ACPLength \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.ofdm.get_acp_length() \n</span>
+<span class="sd">		For f-OFDM/OFDM, enables additional alternative CP. \n</span>
+<span class="sd">			:return: cp_length: integer Range: 0 to 8192</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:OFDM:ACPLength?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="OfdmCls.set_acp_length"><a class="viewcode-back" href="../../../../../Source_Bb_Ofdm.html#RsSmbv.Implementations.Source.Bb.Ofdm.OfdmCls.set_acp_length">[docs]</a>	<span class="k">def</span> <span class="nf">set_acp_length</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cp_length</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:OFDM:ACPLength \n</span>
+<span class="sd">		Snippet: driver.source.bb.ofdm.set_acp_length(cp_length = 1) \n</span>
+<span class="sd">		For f-OFDM/OFDM, enables additional alternative CP. \n</span>
+<span class="sd">			:param cp_length: integer Range: 0 to 8192</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">cp_length</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:OFDM:ACPLength </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="OfdmCls.get_acp_symbols"><a class="viewcode-back" href="../../../../../Source_Bb_Ofdm.html#RsSmbv.Implementations.Source.Bb.Ofdm.OfdmCls.get_acp_symbols">[docs]</a>	<span class="k">def</span> <span class="nf">get_acp_symbols</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:OFDM:ACPSymbols \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.ofdm.get_acp_symbols() \n</span>
+<span class="sd">		For f-OFDM/OFDM, defines number of symbols on that the cyclic prefix/the alternative cyclic prefix is applied. \n</span>
+<span class="sd">			:return: cp_symbols: integer Range: 0 to 8192</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:OFDM:ACPSymbols?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="OfdmCls.set_acp_symbols"><a class="viewcode-back" href="../../../../../Source_Bb_Ofdm.html#RsSmbv.Implementations.Source.Bb.Ofdm.OfdmCls.set_acp_symbols">[docs]</a>	<span class="k">def</span> <span class="nf">set_acp_symbols</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cp_symbols</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:OFDM:ACPSymbols \n</span>
+<span class="sd">		Snippet: driver.source.bb.ofdm.set_acp_symbols(cp_symbols = 1) \n</span>
+<span class="sd">		For f-OFDM/OFDM, defines number of symbols on that the cyclic prefix/the alternative cyclic prefix is applied. \n</span>
+<span class="sd">			:param cp_symbols: integer Range: 0 to 8192</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">cp_symbols</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:OFDM:ACPSymbols </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="OfdmCls.get_bw_occupied"><a class="viewcode-back" href="../../../../../Source_Bb_Ofdm.html#RsSmbv.Implementations.Source.Bb.Ofdm.OfdmCls.get_bw_occupied">[docs]</a>	<span class="k">def</span> <span class="nf">get_bw_occupied</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:OFDM:BWOCcupied \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.ofdm.get_bw_occupied() \n</span>
+<span class="sd">		Queries the occupied bandwidth. \n</span>
+<span class="sd">			:return: occ_bw: float Range: 0.001 to 1000, Unit: MHz</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:OFDM:BWOCcupied?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="OfdmCls.get_cp_symbols"><a class="viewcode-back" href="../../../../../Source_Bb_Ofdm.html#RsSmbv.Implementations.Source.Bb.Ofdm.OfdmCls.get_cp_symbols">[docs]</a>	<span class="k">def</span> <span class="nf">get_cp_symbols</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:OFDM:CPSYmbols \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.ofdm.get_cp_symbols() \n</span>
+<span class="sd">		For f-OFDM/OFDM, defines number of symbols on that the cyclic prefix/the alternative cyclic prefix is applied. \n</span>
+<span class="sd">			:return: cp_symbols: integer Range: 0 to 8192</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:OFDM:CPSYmbols?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="OfdmCls.set_cp_symbols"><a class="viewcode-back" href="../../../../../Source_Bb_Ofdm.html#RsSmbv.Implementations.Source.Bb.Ofdm.OfdmCls.set_cp_symbols">[docs]</a>	<span class="k">def</span> <span class="nf">set_cp_symbols</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cp_symbols</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:OFDM:CPSYmbols \n</span>
+<span class="sd">		Snippet: driver.source.bb.ofdm.set_cp_symbols(cp_symbols = 1) \n</span>
+<span class="sd">		For f-OFDM/OFDM, defines number of symbols on that the cyclic prefix/the alternative cyclic prefix is applied. \n</span>
+<span class="sd">			:param cp_symbols: integer Range: 0 to 8192</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">cp_symbols</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:OFDM:CPSYmbols </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="OfdmCls.get_dc_mode"><a class="viewcode-back" href="../../../../../Source_Bb_Ofdm.html#RsSmbv.Implementations.Source.Bb.Ofdm.OfdmCls.get_dc_mode">[docs]</a>	<span class="k">def</span> <span class="nf">get_dc_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">C5GdcMode</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:OFDM:DCMode \n</span>
+<span class="sd">		Snippet: value: enums.C5GdcMode = driver.source.bb.ofdm.get_dc_mode() \n</span>
+<span class="sd">		Sets the DC subcarrier mode. \n</span>
+<span class="sd">			:return: dc_mode: UTIL| PUNC| SKIP UTIL Uses the DC subcarrier for all allocations. PUNC Replaces the DC subcarrier by zeroes for all allocations. SKIP Skips the DC subcarrier in the discrete Fourier transformation (DFT) .</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:OFDM:DCMode?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">C5GdcMode</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="OfdmCls.set_dc_mode"><a class="viewcode-back" href="../../../../../Source_Bb_Ofdm.html#RsSmbv.Implementations.Source.Bb.Ofdm.OfdmCls.set_dc_mode">[docs]</a>	<span class="k">def</span> <span class="nf">set_dc_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dc_mode</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">C5GdcMode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:OFDM:DCMode \n</span>
+<span class="sd">		Snippet: driver.source.bb.ofdm.set_dc_mode(dc_mode = enums.C5GdcMode.PUNC) \n</span>
+<span class="sd">		Sets the DC subcarrier mode. \n</span>
+<span class="sd">			:param dc_mode: UTIL| PUNC| SKIP UTIL Uses the DC subcarrier for all allocations. PUNC Replaces the DC subcarrier by zeroes for all allocations. SKIP Skips the DC subcarrier in the discrete Fourier transformation (DFT) .</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">dc_mode</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">C5GdcMode</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:OFDM:DCMode </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="OfdmCls.get_lguard"><a class="viewcode-back" href="../../../../../Source_Bb_Ofdm.html#RsSmbv.Implementations.Source.Bb.Ofdm.OfdmCls.get_lguard">[docs]</a>	<span class="k">def</span> <span class="nf">get_lguard</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:OFDM:LGUard \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.ofdm.get_lguard() \n</span>
+<span class="sd">		Queries the number of left guard subcarriers. \n</span>
+<span class="sd">			:return: left_guard_sc: integer Range: 0 to 1000</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:OFDM:LGUard?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="OfdmCls.get_modulation"><a class="viewcode-back" href="../../../../../Source_Bb_Ofdm.html#RsSmbv.Implementations.Source.Bb.Ofdm.OfdmCls.get_modulation">[docs]</a>	<span class="k">def</span> <span class="nf">get_modulation</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">C5Gmod</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:OFDM:MODulation \n</span>
+<span class="sd">		Snippet: value: enums.C5Gmod = driver.source.bb.ofdm.get_modulation() \n</span>
+<span class="sd">		Selects the modulation type. \n</span>
+<span class="sd">			:return: mod_type: UFMC| FBMC| GFDM| FOFDm| OFDM</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:OFDM:MODulation?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">C5Gmod</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="OfdmCls.set_modulation"><a class="viewcode-back" href="../../../../../Source_Bb_Ofdm.html#RsSmbv.Implementations.Source.Bb.Ofdm.OfdmCls.set_modulation">[docs]</a>	<span class="k">def</span> <span class="nf">set_modulation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mod_type</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">C5Gmod</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:OFDM:MODulation \n</span>
+<span class="sd">		Snippet: driver.source.bb.ofdm.set_modulation(mod_type = enums.C5Gmod.FBMC) \n</span>
+<span class="sd">		Selects the modulation type. \n</span>
+<span class="sd">			:param mod_type: UFMC| FBMC| GFDM| FOFDm| OFDM</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">mod_type</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">C5Gmod</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:OFDM:MODulation </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="OfdmCls.get_nalloc"><a class="viewcode-back" href="../../../../../Source_Bb_Ofdm.html#RsSmbv.Implementations.Source.Bb.Ofdm.OfdmCls.get_nalloc">[docs]</a>	<span class="k">def</span> <span class="nf">get_nalloc</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:OFDM:NALLoc \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.ofdm.get_nalloc() \n</span>
+<span class="sd">		Sets the number of scheduled allocations. \n</span>
+<span class="sd">			:return: no_of_alloc: integer Range: 0 to 500</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:OFDM:NALLoc?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="OfdmCls.set_nalloc"><a class="viewcode-back" href="../../../../../Source_Bb_Ofdm.html#RsSmbv.Implementations.Source.Bb.Ofdm.OfdmCls.set_nalloc">[docs]</a>	<span class="k">def</span> <span class="nf">set_nalloc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">no_of_alloc</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:OFDM:NALLoc \n</span>
+<span class="sd">		Snippet: driver.source.bb.ofdm.set_nalloc(no_of_alloc = 1) \n</span>
+<span class="sd">		Sets the number of scheduled allocations. \n</span>
+<span class="sd">			:param no_of_alloc: integer Range: 0 to 500</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">no_of_alloc</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:OFDM:NALLoc </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="OfdmCls.get_noccupied"><a class="viewcode-back" href="../../../../../Source_Bb_Ofdm.html#RsSmbv.Implementations.Source.Bb.Ofdm.OfdmCls.get_noccupied">[docs]</a>	<span class="k">def</span> <span class="nf">get_noccupied</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:OFDM:NOCCupied \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.ofdm.get_noccupied() \n</span>
+<span class="sd">		Sets the number of occupied subcarriers. \n</span>
+<span class="sd">			:return: num_occ_sc: integer Range: 1 to 13107</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:OFDM:NOCCupied?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="OfdmCls.set_noccupied"><a class="viewcode-back" href="../../../../../Source_Bb_Ofdm.html#RsSmbv.Implementations.Source.Bb.Ofdm.OfdmCls.set_noccupied">[docs]</a>	<span class="k">def</span> <span class="nf">set_noccupied</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_occ_sc</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:OFDM:NOCCupied \n</span>
+<span class="sd">		Snippet: driver.source.bb.ofdm.set_noccupied(num_occ_sc = 1) \n</span>
+<span class="sd">		Sets the number of occupied subcarriers. \n</span>
+<span class="sd">			:param num_occ_sc: integer Range: 1 to 13107</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">num_occ_sc</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:OFDM:NOCCupied </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="OfdmCls.get_nsubcarriers"><a class="viewcode-back" href="../../../../../Source_Bb_Ofdm.html#RsSmbv.Implementations.Source.Bb.Ofdm.OfdmCls.get_nsubcarriers">[docs]</a>	<span class="k">def</span> <span class="nf">get_nsubcarriers</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:OFDM:NSUBcarriers \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.ofdm.get_nsubcarriers() \n</span>
+<span class="sd">		Sets the number of available subcarriers. \n</span>
+<span class="sd">			:return: no_of_sub_carr: integer Range: 64 to 16384</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:OFDM:NSUBcarriers?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="OfdmCls.set_nsubcarriers"><a class="viewcode-back" href="../../../../../Source_Bb_Ofdm.html#RsSmbv.Implementations.Source.Bb.Ofdm.OfdmCls.set_nsubcarriers">[docs]</a>	<span class="k">def</span> <span class="nf">set_nsubcarriers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">no_of_sub_carr</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:OFDM:NSUBcarriers \n</span>
+<span class="sd">		Snippet: driver.source.bb.ofdm.set_nsubcarriers(no_of_sub_carr = 1) \n</span>
+<span class="sd">		Sets the number of available subcarriers. \n</span>
+<span class="sd">			:param no_of_sub_carr: integer Range: 64 to 16384</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">no_of_sub_carr</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:OFDM:NSUBcarriers </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="OfdmCls.get_out_path"><a class="viewcode-back" href="../../../../../Source_Bb_Ofdm.html#RsSmbv.Implementations.Source.Bb.Ofdm.OfdmCls.get_out_path">[docs]</a>	<span class="k">def</span> <span class="nf">get_out_path</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:OFDM:OUTPath \n</span>
+<span class="sd">		Snippet: value: str = driver.source.bb.ofdm.get_out_path() \n</span>
+<span class="sd">		Specifies the output path and output file of the exported OFDM signal generation settings. By default, the output path is</span>
+<span class="sd">		/var/user/K114-Export and the output file is Exported_K114_settings_K96.xml.</span>
+<span class="sd">		See also Example &#39;Default &#39;Exported_K114_settings_K96.xml&#39; file&#39;. \n</span>
+<span class="sd">			:return: k_114_output_path: string</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:OFDM:OUTPath?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">trim_str_response</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="OfdmCls.set_out_path"><a class="viewcode-back" href="../../../../../Source_Bb_Ofdm.html#RsSmbv.Implementations.Source.Bb.Ofdm.OfdmCls.set_out_path">[docs]</a>	<span class="k">def</span> <span class="nf">set_out_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k_114_output_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:OFDM:OUTPath \n</span>
+<span class="sd">		Snippet: driver.source.bb.ofdm.set_out_path(k_114_output_path = &#39;abc&#39;) \n</span>
+<span class="sd">		Specifies the output path and output file of the exported OFDM signal generation settings. By default, the output path is</span>
+<span class="sd">		/var/user/K114-Export and the output file is Exported_K114_settings_K96.xml.</span>
+<span class="sd">		See also Example &#39;Default &#39;Exported_K114_settings_K96.xml&#39; file&#39;. \n</span>
+<span class="sd">			:param k_114_output_path: string</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">value_to_quoted_str</span><span class="p">(</span><span class="n">k_114_output_path</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:OFDM:OUTPath </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="OfdmCls.preset"><a class="viewcode-back" href="../../../../../Source_Bb_Ofdm.html#RsSmbv.Implementations.Source.Bb.Ofdm.OfdmCls.preset">[docs]</a>	<span class="k">def</span> <span class="nf">preset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:OFDM:PRESet \n</span>
+<span class="sd">		Snippet: driver.source.bb.ofdm.preset() \n</span>
+<span class="sd">		Sets the parameters of the digital standard to their default values (*RST values specified for the commands) .</span>
+<span class="sd">		Not affected is the state set with the command SOURce&lt;hw&gt;:BB:OFDM:STATe. \n</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:OFDM:PRESet&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="OfdmCls.preset_with_opc"><a class="viewcode-back" href="../../../../../Source_Bb_Ofdm.html#RsSmbv.Implementations.Source.Bb.Ofdm.OfdmCls.preset_with_opc">[docs]</a>	<span class="k">def</span> <span class="nf">preset_with_opc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">opc_timeout_ms</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:OFDM:PRESet \n</span>
+<span class="sd">		Snippet: driver.source.bb.ofdm.preset_with_opc() \n</span>
+<span class="sd">		Sets the parameters of the digital standard to their default values (*RST values specified for the commands) .</span>
+<span class="sd">		Not affected is the state set with the command SOURce&lt;hw&gt;:BB:OFDM:STATe. \n</span>
+<span class="sd">		Same as preset, but waits for the operation to complete before continuing further. Use the RsSmbv.utilities.opc_timeout_set() to set the timeout value. \n</span>
+<span class="sd">			:param opc_timeout_ms: Maximum time to wait in milliseconds, valid only for this call.&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write_with_opc</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:OFDM:PRESet&#39;</span><span class="p">,</span> <span class="n">opc_timeout_ms</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="OfdmCls.get_rguard"><a class="viewcode-back" href="../../../../../Source_Bb_Ofdm.html#RsSmbv.Implementations.Source.Bb.Ofdm.OfdmCls.get_rguard">[docs]</a>	<span class="k">def</span> <span class="nf">get_rguard</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:OFDM:RGUard \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.ofdm.get_rguard() \n</span>
+<span class="sd">		Queries the number of right guard subcarriers. \n</span>
+<span class="sd">			:return: right_guard_sc: integer Range: 0 to 1000</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:OFDM:RGUard?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="OfdmCls.get_sampling"><a class="viewcode-back" href="../../../../../Source_Bb_Ofdm.html#RsSmbv.Implementations.Source.Bb.Ofdm.OfdmCls.get_sampling">[docs]</a>	<span class="k">def</span> <span class="nf">get_sampling</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:OFDM:SAMPling \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.ofdm.get_sampling() \n</span>
+<span class="sd">		Queries the sampling rate. \n</span>
+<span class="sd">			:return: samp_rate: float Range: 0.001 to 1000, Unit: MHz</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:OFDM:SAMPling?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="OfdmCls.get_sc_space"><a class="viewcode-back" href="../../../../../Source_Bb_Ofdm.html#RsSmbv.Implementations.Source.Bb.Ofdm.OfdmCls.get_sc_space">[docs]</a>	<span class="k">def</span> <span class="nf">get_sc_space</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:OFDM:SCSPace \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.ofdm.get_sc_space() \n</span>
+<span class="sd">		Sets the frequency distance between the carrier frequencies of the subcarriers. \n</span>
+<span class="sd">			:return: sub_car_sp: float Range: 0.001 to 2, Unit: MHz</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:OFDM:SCSPace?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="OfdmCls.set_sc_space"><a class="viewcode-back" href="../../../../../Source_Bb_Ofdm.html#RsSmbv.Implementations.Source.Bb.Ofdm.OfdmCls.set_sc_space">[docs]</a>	<span class="k">def</span> <span class="nf">set_sc_space</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sub_car_sp</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:OFDM:SCSPace \n</span>
+<span class="sd">		Snippet: driver.source.bb.ofdm.set_sc_space(sub_car_sp = 1.0) \n</span>
+<span class="sd">		Sets the frequency distance between the carrier frequencies of the subcarriers. \n</span>
+<span class="sd">			:param sub_car_sp: float Range: 0.001 to 2, Unit: MHz</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">sub_car_sp</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:OFDM:SCSPace </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="OfdmCls.get_seq_length"><a class="viewcode-back" href="../../../../../Source_Bb_Ofdm.html#RsSmbv.Implementations.Source.Bb.Ofdm.OfdmCls.get_seq_length">[docs]</a>	<span class="k">def</span> <span class="nf">get_seq_length</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:OFDM:SEQLength \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.ofdm.get_seq_length() \n</span>
+<span class="sd">		Sets the sequence length of the signal in number of symbols. \n</span>
+<span class="sd">			:return: seq_len: integer Range: 1 to 1000</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:OFDM:SEQLength?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="OfdmCls.set_seq_length"><a class="viewcode-back" href="../../../../../Source_Bb_Ofdm.html#RsSmbv.Implementations.Source.Bb.Ofdm.OfdmCls.set_seq_length">[docs]</a>	<span class="k">def</span> <span class="nf">set_seq_length</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">seq_len</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:OFDM:SEQLength \n</span>
+<span class="sd">		Snippet: driver.source.bb.ofdm.set_seq_length(seq_len = 1) \n</span>
+<span class="sd">		Sets the sequence length of the signal in number of symbols. \n</span>
+<span class="sd">			:param seq_len: integer Range: 1 to 1000</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">seq_len</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:OFDM:SEQLength </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="OfdmCls.get_state"><a class="viewcode-back" href="../../../../../Source_Bb_Ofdm.html#RsSmbv.Implementations.Source.Bb.Ofdm.OfdmCls.get_state">[docs]</a>	<span class="k">def</span> <span class="nf">get_state</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:OFDM:STATe \n</span>
+<span class="sd">		Snippet: value: bool = driver.source.bb.ofdm.get_state() \n</span>
+<span class="sd">		Activates the standard. \n</span>
+<span class="sd">			:return: state: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:OFDM:STATe?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_bool</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="OfdmCls.set_state"><a class="viewcode-back" href="../../../../../Source_Bb_Ofdm.html#RsSmbv.Implementations.Source.Bb.Ofdm.OfdmCls.set_state">[docs]</a>	<span class="k">def</span> <span class="nf">set_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:OFDM:STATe \n</span>
+<span class="sd">		Snippet: driver.source.bb.ofdm.set_state(state = False) \n</span>
+<span class="sd">		Activates the standard. \n</span>
+<span class="sd">			:param state: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">bool_to_str</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:OFDM:STATe </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="OfdmCls.get_subcarriers"><a class="viewcode-back" href="../../../../../Source_Bb_Ofdm.html#RsSmbv.Implementations.Source.Bb.Ofdm.OfdmCls.get_subcarriers">[docs]</a>	<span class="k">def</span> <span class="nf">get_subcarriers</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:OFDM:SUBCarriers \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.ofdm.get_subcarriers() \n</span>
+<span class="sd">		Queries the number of subcarriers per subband. \n</span>
+<span class="sd">			:return: subc_per_subband: integer Range: 1 to 16384</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:OFDM:SUBCarriers?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+	<span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;OfdmCls&#39;</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Clones the group by creating new object from it and its whole existing subgroups</span>
+<span class="sd">		Also copies all the existing default Repeated Capabilities setting,</span>
+<span class="sd">		which you can change independently without affecting the original group&quot;&quot;&quot;</span>
+		<span class="n">new_group</span> <span class="o">=</span> <span class="n">OfdmCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">synchronize_repcaps</span><span class="p">(</span><span class="n">new_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">new_group</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RsSmbv.Implementations.Source.Bb.Btooth.Cs &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../../../" id="documentation_options" src="../../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../../_static/jquery.js"></script>
+        <script src="../../../../../../_static/underscore.js"></script>
+        <script src="../../../../../../_static/doctools.js"></script>
+        <script src="../../../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../../../_static/copybutton.js"></script>
+    <script src="../../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../../../index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../RsSmbv.html">RsSmbv API Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../../../index.html">Module code</a> &raquo;</li>
+          <li><a href="../../../Source.html">RsSmbv.Implementations.Source</a> &raquo;</li>
+          <li><a href="../../Bb.html">RsSmbv.Implementations.Source.Bb</a> &raquo;</li>
+          <li><a href="../Btooth.html">RsSmbv.Implementations.Source.Bb.Btooth</a> &raquo;</li>
+      <li>RsSmbv.Implementations.Source.Bb.Btooth.Cs</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for RsSmbv.Implementations.Source.Bb.Btooth.Cs</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">......Internal.Core</span> <span class="kn">import</span> <span class="n">Core</span>
+<span class="kn">from</span> <span class="nn">......Internal.CommandsGroup</span> <span class="kn">import</span> <span class="n">CommandsGroup</span>
+<span class="kn">from</span> <span class="nn">......Internal</span> <span class="kn">import</span> <span class="n">Conversions</span>
+<span class="kn">from</span> <span class="nn">......Internal.StructBase</span> <span class="kn">import</span> <span class="n">StructBase</span>
+<span class="kn">from</span> <span class="nn">......Internal.ArgStruct</span> <span class="kn">import</span> <span class="n">ArgStruct</span>
+<span class="kn">from</span> <span class="nn">......</span> <span class="kn">import</span> <span class="n">enums</span>
+
+
+<span class="c1"># noinspection PyPep8Naming,PyAttributeOutsideInit,SpellCheckingInspection</span>
+<div class="viewcode-block" id="CsCls"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Cs.html#RsSmbv.Implementations.Source.Bb.Btooth.Cs.CsCls">[docs]</a><span class="k">class</span> <span class="nc">CsCls</span><span class="p">:</span>
+	<span class="sd">&quot;&quot;&quot;Cs commands group definition. 108 total commands, 9 Subgroups, 13 group commands&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">core</span><span class="p">:</span> <span class="n">Core</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span> <span class="o">=</span> <span class="n">core</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span> <span class="o">=</span> <span class="n">CommandsGroup</span><span class="p">(</span><span class="s2">&quot;cs&quot;</span><span class="p">,</span> <span class="n">core</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">cdata</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;cdata commands group. 4 Sub-classes, 44 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_cdata&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Cdata</span> <span class="kn">import</span> <span class="n">CdataCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_cdata</span> <span class="o">=</span> <span class="n">CdataCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cdata</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">cinc</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;cinc commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_cinc&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Cinc</span> <span class="kn">import</span> <span class="n">CincCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_cinc</span> <span class="o">=</span> <span class="n">CincCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cinc</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">cinp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;cinp commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_cinp&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Cinp</span> <span class="kn">import</span> <span class="n">CinpCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_cinp</span> <span class="o">=</span> <span class="n">CinpCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cinp</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">civc</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;civc commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_civc&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Civc</span> <span class="kn">import</span> <span class="n">CivcCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_civc</span> <span class="o">=</span> <span class="n">CivcCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_civc</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">civp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;civp commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_civp&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Civp</span> <span class="kn">import</span> <span class="n">CivpCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_civp</span> <span class="o">=</span> <span class="n">CivpCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_civp</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">cpvc</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;cpvc commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_cpvc&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Cpvc</span> <span class="kn">import</span> <span class="n">CpvcCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_cpvc</span> <span class="o">=</span> <span class="n">CpvcCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cpvc</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">cpvp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;cpvp commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_cpvp&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Cpvp</span> <span class="kn">import</span> <span class="n">CpvpCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_cpvp</span> <span class="o">=</span> <span class="n">CpvpCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cpvp</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">correctionTable</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;correctionTable commands group. 1 Sub-classes, 0 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_correctionTable&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.CorrectionTable</span> <span class="kn">import</span> <span class="n">CorrectionTableCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_correctionTable</span> <span class="o">=</span> <span class="n">CorrectionTableCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_correctionTable</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">sevent</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;sevent commands group. 23 Sub-classes, 0 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_sevent&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Sevent</span> <span class="kn">import</span> <span class="n">SeventCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_sevent</span> <span class="o">=</span> <span class="n">SeventCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sevent</span>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="CsCls.CfChmStruct"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Cs.html#RsSmbv.Implementations.Source.Bb.Btooth.Cs.CsCls.CfChmStruct">[docs]</a>	<span class="k">class</span> <span class="nc">CfChmStruct</span><span class="p">(</span><span class="n">StructBase</span><span class="p">):</span>  <span class="c1"># From ReadStructDefinition CmdPropertyTemplate.xml</span>
+		<span class="sd">&quot;&quot;&quot;Structure for reading output parameters. Fields: \n</span>
+<span class="sd">			- Cs_Filtered_Ch_M: str: No parameter help available</span>
+<span class="sd">			- Bitcount: int: No parameter help available&quot;&quot;&quot;</span>
+		<span class="n">__meta_args_list</span> <span class="o">=</span> <span class="p">[</span>
+			<span class="n">ArgStruct</span><span class="o">.</span><span class="n">scalar_raw_str</span><span class="p">(</span><span class="s1">&#39;Cs_Filtered_Ch_M&#39;</span><span class="p">),</span>
+			<span class="n">ArgStruct</span><span class="o">.</span><span class="n">scalar_int</span><span class="p">(</span><span class="s1">&#39;Bitcount&#39;</span><span class="p">)]</span>
+
+		<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+			<span class="n">StructBase</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">Cs_Filtered_Ch_M</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">Bitcount</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="CsCls.get_cf_chm"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Cs.html#RsSmbv.Implementations.Source.Bb.Btooth.Cs.CsCls.get_cf_chm">[docs]</a>	<span class="k">def</span> <span class="nf">get_cf_chm</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CfChmStruct</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:CS:CFCHm \n</span>
+<span class="sd">		Snippet: value: CfChmStruct = driver.source.bb.btooth.cs.get_cf_chm() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: structure: for return value, see the help for CfChmStruct structure arguments.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_struct</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:CS:CFCHm?&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">CfChmStruct</span><span class="p">())</span></div>
+
+<div class="viewcode-block" id="CsCls.get_cinterval"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Cs.html#RsSmbv.Implementations.Source.Bb.Btooth.Cs.CsCls.get_cinterval">[docs]</a>	<span class="k">def</span> <span class="nf">get_cinterval</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:CS:CINTerval \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.btooth.cs.get_cinterval() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: connect_interval: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:CS:CINTerval?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CsCls.set_cinterval"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Cs.html#RsSmbv.Implementations.Source.Bb.Btooth.Cs.CsCls.set_cinterval">[docs]</a>	<span class="k">def</span> <span class="nf">set_cinterval</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">connect_interval</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:CS:CINTerval \n</span>
+<span class="sd">		Snippet: driver.source.bb.btooth.cs.set_cinterval(connect_interval = 1.0) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param connect_interval: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">connect_interval</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:CS:CINTerval </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CsCls.get_cm_repetition"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Cs.html#RsSmbv.Implementations.Source.Bb.Btooth.Cs.CsCls.get_cm_repetition">[docs]</a>	<span class="k">def</span> <span class="nf">get_cm_repetition</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:CS:CMRepetition \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.btooth.cs.get_cm_repetition() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: chm_repetition: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:CS:CMRepetition?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CsCls.set_cm_repetition"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Cs.html#RsSmbv.Implementations.Source.Bb.Btooth.Cs.CsCls.set_cm_repetition">[docs]</a>	<span class="k">def</span> <span class="nf">set_cm_repetition</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">chm_repetition</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:CS:CMRepetition \n</span>
+<span class="sd">		Snippet: driver.source.bb.btooth.cs.set_cm_repetition(chm_repetition = 1) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param chm_repetition: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">chm_repetition</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:CS:CMRepetition </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="CsCls.get_csel"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Cs.html#RsSmbv.Implementations.Source.Bb.Btooth.Cs.CsCls.get_csel">[docs]</a>	<span class="k">def</span> <span class="nf">get_csel</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoCsChSel</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:CS:CSEL \n</span>
+<span class="sd">		Snippet: value: enums.BtoCsChSel = driver.source.bb.btooth.cs.get_csel() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: ch_sel: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:CS:CSEL?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoCsChSel</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CsCls.set_csel"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Cs.html#RsSmbv.Implementations.Source.Bb.Btooth.Cs.CsCls.set_csel">[docs]</a>	<span class="k">def</span> <span class="nf">set_csel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ch_sel</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoCsChSel</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:CS:CSEL \n</span>
+<span class="sd">		Snippet: driver.source.bb.btooth.cs.set_csel(ch_sel = enums.BtoCsChSel.SEL_3B) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param ch_sel: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">ch_sel</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoCsChSel</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:CS:CSEL </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="CsCls.get_ctc_jump"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Cs.html#RsSmbv.Implementations.Source.Bb.Btooth.Cs.CsCls.get_ctc_jump">[docs]</a>	<span class="k">def</span> <span class="nf">get_ctc_jump</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoCsCh3Cjump</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:CS:CTCJump \n</span>
+<span class="sd">		Snippet: value: enums.BtoCsCh3Cjump = driver.source.bb.btooth.cs.get_ctc_jump() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: ch_three_cjump: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:CS:CTCJump?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoCsCh3Cjump</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CsCls.set_ctc_jump"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Cs.html#RsSmbv.Implementations.Source.Bb.Btooth.Cs.CsCls.set_ctc_jump">[docs]</a>	<span class="k">def</span> <span class="nf">set_ctc_jump</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ch_three_cjump</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoCsCh3Cjump</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:CS:CTCJump \n</span>
+<span class="sd">		Snippet: driver.source.bb.btooth.cs.set_ctc_jump(ch_three_cjump = enums.BtoCsCh3Cjump.JUMP_2) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param ch_three_cjump: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">ch_three_cjump</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoCsCh3Cjump</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:CS:CTCJump </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="CsCls.get_ctc_shape"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Cs.html#RsSmbv.Implementations.Source.Bb.Btooth.Cs.CsCls.get_ctc_shape">[docs]</a>	<span class="k">def</span> <span class="nf">get_ctc_shape</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoCsCh3Cshape</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:CS:CTCShape \n</span>
+<span class="sd">		Snippet: value: enums.BtoCsCh3Cshape = driver.source.bb.btooth.cs.get_ctc_shape() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: ch_three_cshape: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:CS:CTCShape?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoCsCh3Cshape</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CsCls.set_ctc_shape"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Cs.html#RsSmbv.Implementations.Source.Bb.Btooth.Cs.CsCls.set_ctc_shape">[docs]</a>	<span class="k">def</span> <span class="nf">set_ctc_shape</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ch_three_cshape</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoCsCh3Cshape</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:CS:CTCShape \n</span>
+<span class="sd">		Snippet: driver.source.bb.btooth.cs.set_ctc_shape(ch_three_cshape = enums.BtoCsCh3Cshape.HAT) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param ch_three_cshape: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">ch_three_cshape</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoCsCh3Cshape</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:CS:CTCShape </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CsCls.get_einterval"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Cs.html#RsSmbv.Implementations.Source.Bb.Btooth.Cs.CsCls.get_einterval">[docs]</a>	<span class="k">def</span> <span class="nf">get_einterval</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:CS:EINTerval \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.btooth.cs.get_einterval() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: event_interval: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:CS:EINTerval?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CsCls.set_einterval"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Cs.html#RsSmbv.Implementations.Source.Bb.Btooth.Cs.CsCls.set_einterval">[docs]</a>	<span class="k">def</span> <span class="nf">set_einterval</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event_interval</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:CS:EINTerval \n</span>
+<span class="sd">		Snippet: driver.source.bb.btooth.cs.set_einterval(event_interval = 1) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param event_interval: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">event_interval</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:CS:EINTerval </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CsCls.get_eoffset"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Cs.html#RsSmbv.Implementations.Source.Bb.Btooth.Cs.CsCls.get_eoffset">[docs]</a>	<span class="k">def</span> <span class="nf">get_eoffset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:CS:EOFFset \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.btooth.cs.get_eoffset() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: event_offset: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:CS:EOFFset?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CsCls.set_eoffset"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Cs.html#RsSmbv.Implementations.Source.Bb.Btooth.Cs.CsCls.set_eoffset">[docs]</a>	<span class="k">def</span> <span class="nf">set_eoffset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event_offset</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:CS:EOFFset \n</span>
+<span class="sd">		Snippet: driver.source.bb.btooth.cs.set_eoffset(event_offset = 1) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param event_offset: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">event_offset</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:CS:EOFFset </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="CsCls.get_role"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Cs.html#RsSmbv.Implementations.Source.Bb.Btooth.Cs.CsCls.get_role">[docs]</a>	<span class="k">def</span> <span class="nf">get_role</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoCsRoles</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:CS:ROLE \n</span>
+<span class="sd">		Snippet: value: enums.BtoCsRoles = driver.source.bb.btooth.cs.get_role() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: role: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:CS:ROLE?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoCsRoles</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CsCls.set_role"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Cs.html#RsSmbv.Implementations.Source.Bb.Btooth.Cs.CsCls.set_role">[docs]</a>	<span class="k">def</span> <span class="nf">set_role</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">role</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoCsRoles</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:CS:ROLE \n</span>
+<span class="sd">		Snippet: driver.source.bb.btooth.cs.set_role(role = enums.BtoCsRoles.INITIATOR) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param role: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">role</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoCsRoles</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:CS:ROLE </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CsCls.get_sinterval"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Cs.html#RsSmbv.Implementations.Source.Bb.Btooth.Cs.CsCls.get_sinterval">[docs]</a>	<span class="k">def</span> <span class="nf">get_sinterval</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:CS:SINTerval \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.btooth.cs.get_sinterval() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: sub_interval: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:CS:SINTerval?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CsCls.set_sinterval"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Cs.html#RsSmbv.Implementations.Source.Bb.Btooth.Cs.CsCls.set_sinterval">[docs]</a>	<span class="k">def</span> <span class="nf">set_sinterval</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sub_interval</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:CS:SINTerval \n</span>
+<span class="sd">		Snippet: driver.source.bb.btooth.cs.set_sinterval(sub_interval = 1) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param sub_interval: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">sub_interval</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:CS:SINTerval </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CsCls.get_slength"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Cs.html#RsSmbv.Implementations.Source.Bb.Btooth.Cs.CsCls.get_slength">[docs]</a>	<span class="k">def</span> <span class="nf">get_slength</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:CS:SLENgth \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.btooth.cs.get_slength() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: sub_length: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:CS:SLENgth?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CsCls.set_slength"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Cs.html#RsSmbv.Implementations.Source.Bb.Btooth.Cs.CsCls.set_slength">[docs]</a>	<span class="k">def</span> <span class="nf">set_slength</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sub_length</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:CS:SLENgth \n</span>
+<span class="sd">		Snippet: driver.source.bb.btooth.cs.set_slength(sub_length = 1) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param sub_length: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">sub_length</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:CS:SLENgth </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CsCls.get_snumber"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Cs.html#RsSmbv.Implementations.Source.Bb.Btooth.Cs.CsCls.get_snumber">[docs]</a>	<span class="k">def</span> <span class="nf">get_snumber</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:CS:SNUMber \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.btooth.cs.get_snumber() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: sub_number: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:CS:SNUMber?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CsCls.set_snumber"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Cs.html#RsSmbv.Implementations.Source.Bb.Btooth.Cs.CsCls.set_snumber">[docs]</a>	<span class="k">def</span> <span class="nf">set_snumber</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sub_number</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:CS:SNUMber \n</span>
+<span class="sd">		Snippet: driver.source.bb.btooth.cs.set_snumber(sub_number = 1) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param sub_number: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">sub_number</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:CS:SNUMber </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="CsCls.get_sscheduling"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Cs.html#RsSmbv.Implementations.Source.Bb.Btooth.Cs.CsCls.get_sscheduling">[docs]</a>	<span class="k">def</span> <span class="nf">get_sscheduling</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">AutoManualModeB</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:CS:SSCHeduling \n</span>
+<span class="sd">		Snippet: value: enums.AutoManualModeB = driver.source.bb.btooth.cs.get_sscheduling() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: step_scheduling: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:CS:SSCHeduling?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">AutoManualModeB</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CsCls.set_sscheduling"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Cs.html#RsSmbv.Implementations.Source.Bb.Btooth.Cs.CsCls.set_sscheduling">[docs]</a>	<span class="k">def</span> <span class="nf">set_sscheduling</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">step_scheduling</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">AutoManualModeB</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:CS:SSCHeduling \n</span>
+<span class="sd">		Snippet: driver.source.bb.btooth.cs.set_sscheduling(step_scheduling = enums.AutoManualModeB.AUTO) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param step_scheduling: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">step_scheduling</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">AutoManualModeB</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:CS:SSCHeduling </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;CsCls&#39;</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Clones the group by creating new object from it and its whole existing subgroups</span>
+<span class="sd">		Also copies all the existing default Repeated Capabilities setting,</span>
+<span class="sd">		which you can change independently without affecting the original group&quot;&quot;&quot;</span>
+		<span class="n">new_group</span> <span class="o">=</span> <span class="n">CsCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">synchronize_repcaps</span><span class="p">(</span><span class="n">new_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">new_group</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

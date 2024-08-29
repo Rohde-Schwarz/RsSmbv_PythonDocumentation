@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pconfiguration &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="BdaLap" href="Source_Bb_Btooth_Pconfiguration_BdaLap.html" />
+    <link rel="prev" title="Msettings" href="Source_Bb_Btooth_Msettings.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="RsSmbv.html">RsSmbv API Structure</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Bert.html">Bert</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Bler.html">Bler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Calibration.html">Calibration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clock.html">Clock</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Connector.html">Connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Device.html">Device</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Diagnostic.html">Diagnostic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Display.html">Display</a></li>
+<li class="toctree-l2"><a class="reference internal" href="FormatPy.html">FormatPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Fpanel.html">Fpanel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HardCopy.html">HardCopy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Initiate.html">Initiate&lt;Channel&gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Kboard.html">Kboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MassMemory.html">MassMemory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Memory.html">Memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Output.html">Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Read.html">Read&lt;Channel&gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Sconfiguration.html">Sconfiguration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Sense.html">Sense&lt;Channel&gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slist.html">Slist</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="Source.html">Source</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="Source_Adf.html">Adf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Am.html">Am&lt;GeneratorIx&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_AreGenerator.html">AreGenerator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Awgn.html">Awgn</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="Source_Bb.html">Bb</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Arbitrary.html">Arbitrary</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="Source_Bb_Btooth.html">Btooth</a><ul class="current">
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Btooth_Ccrc.html">Ccrc</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Btooth_Clipping.html">Clipping</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Btooth_Clock.html">Clock</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Btooth_Cs.html">Cs</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Btooth_DtTest.html">DtTest</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Btooth_Econfig.html">Econfig</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration.html">Econfiguration</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Btooth_FilterPy.html">FilterPy</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Btooth_Hdr.html">Hdr</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Btooth_Hr.html">Hr</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Btooth_Mhdt.html">Mhdt</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Btooth_Msettings.html">Msettings</a></li>
+<li class="toctree-l5 current"><a class="current reference internal" href="#">Pconfiguration</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Btooth_Pconfiguration_BdaLap.html">BdaLap</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Btooth_Pconfiguration_BdaNap.html">BdaNap</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Btooth_Pconfiguration_BdaUap.html">BdaUap</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Btooth_Pconfiguration_CoDevice.html">CoDevice</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Btooth_Pconfiguration_Data.html">Data</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Btooth_Pconfiguration_LfsWord.html">LfsWord</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Btooth_PhymacCfg.html">PhymacCfg</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Btooth_Pramping.html">Pramping</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Btooth_Qhs.html">Qhs</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Btooth_Setting.html">Setting</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Btooth_SymbolRate.html">SymbolRate</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Btooth_Trigger.html">Trigger</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Btooth_Unit.html">Unit</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Btooth_Waveform.html">Waveform</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_C2K.html">C2K</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Coder.html">Coder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Dab.html">Dab</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Dme.html">Dme</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra.html">Eutra</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Evdo.html">Evdo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Gbas.html">Gbas</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Gnpr.html">Gnpr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Gnss.html">Gnss</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Graphics.html">Graphics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Gsm.html">Gsm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Huwb.html">Huwb</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Ils.html">Ils</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Impairment.html">Impairment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Info.html">Info</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Lora.html">Lora</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Mccw.html">Mccw</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nfc.html">Nfc</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G.html">Nr5G</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Ofdm.html">Ofdm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Path.html">Path</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Power.html">Power</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Pramp.html">Pramp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Progress.html">Progress</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Tdscdma.html">Tdscdma</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Trigger.html">Trigger</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Vor.html">Vor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_W3Gpp.html">W3Gpp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Wlnn.html">Wlnn</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bbin.html">Bbin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Combined.html">Combined</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Correction.html">Correction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Dme.html">Dme</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Efrontend.html">Efrontend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Fm.html">Fm&lt;GeneratorIx&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_FreqSweep.html">FreqSweep</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Frequency.html">Frequency</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Ils.html">Ils</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_InputPy.html">InputPy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Iq.html">Iq</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_LffSweep.html">LffSweep</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_LfOutput.html">LfOutput&lt;LfOutput&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_ListPy.html">ListPy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Mbeacon.html">Mbeacon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Modulation.html">Modulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Noise.html">Noise</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Occupy.html">Occupy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Path.html">Path</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Pgenerator.html">Pgenerator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Phase.html">Phase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Pm.html">Pm&lt;GeneratorIx&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Power.html">Power</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Psweep.html">Psweep</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Pulm.html">Pulm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Roscillator.html">Roscillator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Sweep.html">Sweep</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_ValRf.html">ValRf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Vor.html">Vor</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Status.html">Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Sweep.html">Sweep</a></li>
+<li class="toctree-l2"><a class="reference internal" href="System.html">System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Test.html">Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Trigger.html">Trigger&lt;InputIx&gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Unit.html">Unit</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="RsSmbv.html">RsSmbv API Structure</a> &raquo;</li>
+          <li><a href="Source.html">Source</a> &raquo;</li>
+          <li><a href="Source_Bb.html">Bb</a> &raquo;</li>
+          <li><a href="Source_Bb_Btooth.html">Btooth</a> &raquo;</li>
+      <li>Pconfiguration</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Source_Bb_Btooth_Pconfiguration.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="pconfiguration">
+<h1>Pconfiguration<a class="headerlink" href="#pconfiguration" title="Permalink to this headline"></a></h1>
+<p class="rubric">SCPI Commands :</p>
+<div class="highlight-python notranslate" id="index-0"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">BB</span><span class="p">:</span><span class="n">BTOoth</span><span class="p">:</span><span class="n">PCONfiguration</span><span class="p">:</span><span class="n">ACKNowledgement</span>
+<span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">BB</span><span class="p">:</span><span class="n">BTOoth</span><span class="p">:</span><span class="n">PCONfiguration</span><span class="p">:</span><span class="n">BYTEInterleaving</span>
+<span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">BB</span><span class="p">:</span><span class="n">BTOoth</span><span class="p">:</span><span class="n">PCONfiguration</span><span class="p">:</span><span class="n">DLENgth</span>
+<span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">BB</span><span class="p">:</span><span class="n">BTOoth</span><span class="p">:</span><span class="n">PCONfiguration</span><span class="p">:</span><span class="n">DSFPacket</span>
+<span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">BB</span><span class="p">:</span><span class="n">BTOoth</span><span class="p">:</span><span class="n">PCONfiguration</span><span class="p">:</span><span class="n">DWHitening</span>
+<span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">BB</span><span class="p">:</span><span class="n">BTOoth</span><span class="p">:</span><span class="n">PCONfiguration</span><span class="p">:</span><span class="n">EIRPacketfollows</span>
+<span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">BB</span><span class="p">:</span><span class="n">BTOoth</span><span class="p">:</span><span class="n">PCONfiguration</span><span class="p">:</span><span class="n">HFControl</span>
+<span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">BB</span><span class="p">:</span><span class="n">BTOoth</span><span class="p">:</span><span class="n">PCONfiguration</span><span class="p">:</span><span class="n">HRINterleav</span>
+<span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">BB</span><span class="p">:</span><span class="n">BTOoth</span><span class="p">:</span><span class="n">PCONfiguration</span><span class="p">:</span><span class="n">LTADdress</span>
+<span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">BB</span><span class="p">:</span><span class="n">BTOoth</span><span class="p">:</span><span class="n">PCONfiguration</span><span class="p">:</span><span class="n">PFControl</span>
+<span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">BB</span><span class="p">:</span><span class="n">BTOoth</span><span class="p">:</span><span class="n">PCONfiguration</span><span class="p">:</span><span class="n">PLENgth</span>
+<span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">BB</span><span class="p">:</span><span class="n">BTOoth</span><span class="p">:</span><span class="n">PCONfiguration</span><span class="p">:</span><span class="n">SLAP</span>
+<span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">BB</span><span class="p">:</span><span class="n">BTOoth</span><span class="p">:</span><span class="n">PCONfiguration</span><span class="p">:</span><span class="n">SNSValue</span>
+<span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">BB</span><span class="p">:</span><span class="n">BTOoth</span><span class="p">:</span><span class="n">PCONfiguration</span><span class="p">:</span><span class="n">SRMode</span>
+<span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">BB</span><span class="p">:</span><span class="n">BTOoth</span><span class="p">:</span><span class="n">PCONfiguration</span><span class="p">:</span><span class="n">VDATa</span>
+</pre></div>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">PconfigurationCls</span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Btooth/Pconfiguration.html#PconfigurationCls"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Pconfiguration commands group definition. 25 total commands, 6 Subgroups, 15 group commands</p>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_acknowledgement</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">RsSmbv.enums.BtoAckNldgmt</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Btooth/Pconfiguration.html#PconfigurationCls.get_acknowledgement"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:PCONfiguration:ACKNowledgement</span>
+<span class="n">value</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoAckNldgmt</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">btooth</span><span class="o">.</span><span class="n">pconfiguration</span><span class="o">.</span><span class="n">get_acknowledgement</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Sets the ARQN bit of the packet header..</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>acknowledgement: NAK| ACK NAK Request to retransmit the previous payload. ACK Previous payload has been received successfully.</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_byte_interleaving</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Btooth/Pconfiguration.html#PconfigurationCls.get_byte_interleaving"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:PCONfiguration:BYTEInterleaving</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">btooth</span><span class="o">.</span><span class="n">pconfiguration</span><span class="o">.</span><span class="n">get_byte_interleaving</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>No command help available</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>state: No help available</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_dlength</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Btooth/Pconfiguration.html#PconfigurationCls.get_dlength"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:PCONfiguration:DLENgth</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">btooth</span><span class="o">.</span><span class="n">pconfiguration</span><span class="o">.</span><span class="n">get_dlength</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Sets the payload data length in bytes.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>dlength: integer Range: 0 to depends on packet type</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_dsf_packet</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">RsSmbv.enums.BtoDataSourForPck</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Btooth/Pconfiguration.html#PconfigurationCls.get_dsf_packet"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:PCONfiguration:DSFPacket</span>
+<span class="n">value</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoDataSourForPck</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">btooth</span><span class="o">.</span><span class="n">pconfiguration</span><span class="o">.</span><span class="n">get_dsf_packet</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Selects the data source for the selected packet type.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>dsf_packet: PEDit| ADATa PED Enables the ‘Packet Editor’. All packet fields can be configured individually. ADAT Fills the generated packets with the selected data source. Useful if predefined data contents are loaded with a data list file or the data contents of the packet are not of interest.</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_dwhitening</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Btooth/Pconfiguration.html#PconfigurationCls.get_dwhitening"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:PCONfiguration:DWHitening</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">btooth</span><span class="o">.</span><span class="n">pconfiguration</span><span class="o">.</span><span class="n">get_dwhitening</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Activates the ‘Data Whitening’.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>dwhitening: 1| ON| 0| OFF</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_eir_packet_follows</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">RsSmbv.enums.YesNoStatus</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Btooth/Pconfiguration.html#PconfigurationCls.get_eir_packet_follows"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:PCONfiguration:EIRPacketfollows</span>
+<span class="n">value</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">YesNoStatus</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">btooth</span><span class="o">.</span><span class="n">pconfiguration</span><span class="o">.</span><span class="n">get_eir_packet_follows</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Indicates that an extended inquiry response packet can follow.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>eir_packet_follow: YES| NO YES Indicates that EIR packet follows. NO Indicates that EIR packet does not follow.</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_hf_control</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">RsSmbv.enums.BtoFlowCtrl</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Btooth/Pconfiguration.html#PconfigurationCls.get_hf_control"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:PCONfiguration:HFControl</span>
+<span class="n">value</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoFlowCtrl</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">btooth</span><span class="o">.</span><span class="n">pconfiguration</span><span class="o">.</span><span class="n">get_hf_control</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The command sets the FLOW bit in the header. This bit indicates start or stop of transmission of packets over the ACL
+logical transport.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>hf_control: GO| STOP GO Allows the other devices to transmit new data. STOP Stops the other devices from transmitting data temporarily.</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_hr_interleav</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Btooth/Pconfiguration.html#PconfigurationCls.get_hr_interleav"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:PCONfiguration:HRINterleav</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">btooth</span><span class="o">.</span><span class="n">pconfiguration</span><span class="o">.</span><span class="n">get_hr_interleav</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>No command help available</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>hr_interleaving: No help available</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_lt_address</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Btooth/Pconfiguration.html#PconfigurationCls.get_lt_address"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:PCONfiguration:LTADdress</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">btooth</span><span class="o">.</span><span class="n">pconfiguration</span><span class="o">.</span><span class="n">get_lt_address</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The command enters the logical transport address for the header. Each Peripheral active in a piconet is assigned a
+primary logical transport address (LT_ADDR) . The all-zero LT_ADDR is reserved for broadcast messages.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>lt_address: integer Range: 0 to 7</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_pf_control</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">RsSmbv.enums.BtoFlowCtrl</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Btooth/Pconfiguration.html#PconfigurationCls.get_pf_control"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:PCONfiguration:PFControl</span>
+<span class="n">value</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoFlowCtrl</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">btooth</span><span class="o">.</span><span class="n">pconfiguration</span><span class="o">.</span><span class="n">get_pf_control</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The command sets the FLOW bit in the payload (flow control per logical link) .</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>pf_control: GO| STOP GO Indicates the start of transmission of ACL packets after a new connection has been established. STOP Indicates the stop of transmission of ACL packets before an additional amount of payload data is sent.</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_plength</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Btooth/Pconfiguration.html#PconfigurationCls.get_plength"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:PCONfiguration:PLENgth</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">btooth</span><span class="o">.</span><span class="n">pconfiguration</span><span class="o">.</span><span class="n">get_plength</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Sets the packet length in symbols.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>plength: integer Range: 1 to depends on packet type</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_slap</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Btooth/Pconfiguration.html#PconfigurationCls.get_slap"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:PCONfiguration:SLAP</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">btooth</span><span class="o">.</span><span class="n">pconfiguration</span><span class="o">.</span><span class="n">get_slap</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Activates synchronization of the lower address part (LAP) of the sync word and Bluetooth device address.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>state: 1| ON| 0| OFF</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_sns_value</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Btooth/Pconfiguration.html#PconfigurationCls.get_sns_value"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:PCONfiguration:SNSValue</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">btooth</span><span class="o">.</span><span class="n">pconfiguration</span><span class="o">.</span><span class="n">get_sns_value</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Sets the start value of the header SEQN bit. The SEQN bit is present in the header to filter out retransmissions in the
+destination. The signal generator is altering this bit automatically on consecutive frames, if a sequence length of at
+least 2 frames is set.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>sns_value: integer Range: 0 to 1</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_sr_mode</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">RsSmbv.enums.BtoScanReMode</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Btooth/Pconfiguration.html#PconfigurationCls.get_sr_mode"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:PCONfiguration:SRMode</span>
+<span class="n">value</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoScanReMode</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">btooth</span><span class="o">.</span><span class="n">pconfiguration</span><span class="o">.</span><span class="n">get_sr_mode</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The command indicates the interval between two consecutive page scan windows, determines the behavior of the paging
+device.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>sr_mode: R0| R1| R2 R0 The scan interval is equal to the scan window T w page scan (continuous nscan) and maximal 1.28s. R1 The scan interval is maximal 1.28s. R2 The scan interval is maximal 2.56s.</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_vdata</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">RsSmbv.enums.DataSourceB</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Btooth/Pconfiguration.html#PconfigurationCls.get_vdata"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:PCONfiguration:VDATa</span>
+<span class="n">value</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">DataSourceB</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">btooth</span><span class="o">.</span><span class="n">pconfiguration</span><span class="o">.</span><span class="n">get_vdata</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Selects the data source for the voice field.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>vdata: ALL0| ALL1| PATTern| PN09| PN11| PN15| PN16| PN20| PN21| PN23| DLISt</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_acknowledgement</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">acknowledgement</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">RsSmbv.enums.BtoAckNldgmt</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Btooth/Pconfiguration.html#PconfigurationCls.set_acknowledgement"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:PCONfiguration:ACKNowledgement</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">btooth</span><span class="o">.</span><span class="n">pconfiguration</span><span class="o">.</span><span class="n">set_acknowledgement</span><span class="p">(</span><span class="n">acknowledgement</span> <span class="o">=</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoAckNldgmt</span><span class="o">.</span><span class="n">ACK</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Sets the ARQN bit of the packet header..</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param acknowledgement</dt>
+<dd class="field-odd"><p>NAK| ACK NAK Request to retransmit the previous payload. ACK Previous payload has been received successfully.</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_byte_interleaving</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Btooth/Pconfiguration.html#PconfigurationCls.set_byte_interleaving"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:PCONfiguration:BYTEInterleaving</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">btooth</span><span class="o">.</span><span class="n">pconfiguration</span><span class="o">.</span><span class="n">set_byte_interleaving</span><span class="p">(</span><span class="n">state</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>No command help available</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param state</dt>
+<dd class="field-odd"><p>No help available</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_dlength</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dlength</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Btooth/Pconfiguration.html#PconfigurationCls.set_dlength"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:PCONfiguration:DLENgth</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">btooth</span><span class="o">.</span><span class="n">pconfiguration</span><span class="o">.</span><span class="n">set_dlength</span><span class="p">(</span><span class="n">dlength</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Sets the payload data length in bytes.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param dlength</dt>
+<dd class="field-odd"><p>integer Range: 0 to depends on packet type</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_dsf_packet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dsf_packet</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">RsSmbv.enums.BtoDataSourForPck</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Btooth/Pconfiguration.html#PconfigurationCls.set_dsf_packet"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:PCONfiguration:DSFPacket</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">btooth</span><span class="o">.</span><span class="n">pconfiguration</span><span class="o">.</span><span class="n">set_dsf_packet</span><span class="p">(</span><span class="n">dsf_packet</span> <span class="o">=</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoDataSourForPck</span><span class="o">.</span><span class="n">ADATa</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Selects the data source for the selected packet type.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param dsf_packet</dt>
+<dd class="field-odd"><p>PEDit| ADATa PED Enables the ‘Packet Editor’. All packet fields can be configured individually. ADAT Fills the generated packets with the selected data source. Useful if predefined data contents are loaded with a data list file or the data contents of the packet are not of interest.</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_dwhitening</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dwhitening</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Btooth/Pconfiguration.html#PconfigurationCls.set_dwhitening"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:PCONfiguration:DWHitening</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">btooth</span><span class="o">.</span><span class="n">pconfiguration</span><span class="o">.</span><span class="n">set_dwhitening</span><span class="p">(</span><span class="n">dwhitening</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Activates the ‘Data Whitening’.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param dwhitening</dt>
+<dd class="field-odd"><p>1| ON| 0| OFF</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_eir_packet_follows</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eir_packet_follow</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">RsSmbv.enums.YesNoStatus</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Btooth/Pconfiguration.html#PconfigurationCls.set_eir_packet_follows"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:PCONfiguration:EIRPacketfollows</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">btooth</span><span class="o">.</span><span class="n">pconfiguration</span><span class="o">.</span><span class="n">set_eir_packet_follows</span><span class="p">(</span><span class="n">eir_packet_follow</span> <span class="o">=</span> <span class="n">enums</span><span class="o">.</span><span class="n">YesNoStatus</span><span class="o">.</span><span class="n">NO</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Indicates that an extended inquiry response packet can follow.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param eir_packet_follow</dt>
+<dd class="field-odd"><p>YES| NO YES Indicates that EIR packet follows. NO Indicates that EIR packet does not follow.</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_hf_control</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hf_control</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">RsSmbv.enums.BtoFlowCtrl</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Btooth/Pconfiguration.html#PconfigurationCls.set_hf_control"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:PCONfiguration:HFControl</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">btooth</span><span class="o">.</span><span class="n">pconfiguration</span><span class="o">.</span><span class="n">set_hf_control</span><span class="p">(</span><span class="n">hf_control</span> <span class="o">=</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoFlowCtrl</span><span class="o">.</span><span class="n">GO</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The command sets the FLOW bit in the header. This bit indicates start or stop of transmission of packets over the ACL
+logical transport.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param hf_control</dt>
+<dd class="field-odd"><p>GO| STOP GO Allows the other devices to transmit new data. STOP Stops the other devices from transmitting data temporarily.</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_hr_interleav</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hr_interleaving</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Btooth/Pconfiguration.html#PconfigurationCls.set_hr_interleav"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:PCONfiguration:HRINterleav</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">btooth</span><span class="o">.</span><span class="n">pconfiguration</span><span class="o">.</span><span class="n">set_hr_interleav</span><span class="p">(</span><span class="n">hr_interleaving</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>No command help available</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param hr_interleaving</dt>
+<dd class="field-odd"><p>No help available</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_lt_address</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lt_address</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Btooth/Pconfiguration.html#PconfigurationCls.set_lt_address"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:PCONfiguration:LTADdress</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">btooth</span><span class="o">.</span><span class="n">pconfiguration</span><span class="o">.</span><span class="n">set_lt_address</span><span class="p">(</span><span class="n">lt_address</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The command enters the logical transport address for the header. Each Peripheral active in a piconet is assigned a
+primary logical transport address (LT_ADDR) . The all-zero LT_ADDR is reserved for broadcast messages.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param lt_address</dt>
+<dd class="field-odd"><p>integer Range: 0 to 7</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_pf_control</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pf_control</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">RsSmbv.enums.BtoFlowCtrl</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Btooth/Pconfiguration.html#PconfigurationCls.set_pf_control"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:PCONfiguration:PFControl</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">btooth</span><span class="o">.</span><span class="n">pconfiguration</span><span class="o">.</span><span class="n">set_pf_control</span><span class="p">(</span><span class="n">pf_control</span> <span class="o">=</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoFlowCtrl</span><span class="o">.</span><span class="n">GO</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The command sets the FLOW bit in the payload (flow control per logical link) .</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param pf_control</dt>
+<dd class="field-odd"><p>GO| STOP GO Indicates the start of transmission of ACL packets after a new connection has been established. STOP Indicates the stop of transmission of ACL packets before an additional amount of payload data is sent.</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_plength</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plength</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Btooth/Pconfiguration.html#PconfigurationCls.set_plength"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:PCONfiguration:PLENgth</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">btooth</span><span class="o">.</span><span class="n">pconfiguration</span><span class="o">.</span><span class="n">set_plength</span><span class="p">(</span><span class="n">plength</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Sets the packet length in symbols.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param plength</dt>
+<dd class="field-odd"><p>integer Range: 1 to depends on packet type</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_slap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Btooth/Pconfiguration.html#PconfigurationCls.set_slap"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:PCONfiguration:SLAP</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">btooth</span><span class="o">.</span><span class="n">pconfiguration</span><span class="o">.</span><span class="n">set_slap</span><span class="p">(</span><span class="n">state</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Activates synchronization of the lower address part (LAP) of the sync word and Bluetooth device address.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param state</dt>
+<dd class="field-odd"><p>1| ON| 0| OFF</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_sns_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sns_value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Btooth/Pconfiguration.html#PconfigurationCls.set_sns_value"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:PCONfiguration:SNSValue</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">btooth</span><span class="o">.</span><span class="n">pconfiguration</span><span class="o">.</span><span class="n">set_sns_value</span><span class="p">(</span><span class="n">sns_value</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Sets the start value of the header SEQN bit. The SEQN bit is present in the header to filter out retransmissions in the
+destination. The signal generator is altering this bit automatically on consecutive frames, if a sequence length of at
+least 2 frames is set.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param sns_value</dt>
+<dd class="field-odd"><p>integer Range: 0 to 1</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_sr_mode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sr_mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">RsSmbv.enums.BtoScanReMode</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Btooth/Pconfiguration.html#PconfigurationCls.set_sr_mode"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:PCONfiguration:SRMode</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">btooth</span><span class="o">.</span><span class="n">pconfiguration</span><span class="o">.</span><span class="n">set_sr_mode</span><span class="p">(</span><span class="n">sr_mode</span> <span class="o">=</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoScanReMode</span><span class="o">.</span><span class="n">R0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The command indicates the interval between two consecutive page scan windows, determines the behavior of the paging
+device.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param sr_mode</dt>
+<dd class="field-odd"><p>R0| R1| R2 R0 The scan interval is equal to the scan window T w page scan (continuous nscan) and maximal 1.28s. R1 The scan interval is maximal 1.28s. R2 The scan interval is maximal 2.56s.</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_vdata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vdata</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">RsSmbv.enums.DataSourceB</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Btooth/Pconfiguration.html#PconfigurationCls.set_vdata"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:PCONfiguration:VDATa</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">btooth</span><span class="o">.</span><span class="n">pconfiguration</span><span class="o">.</span><span class="n">set_vdata</span><span class="p">(</span><span class="n">vdata</span> <span class="o">=</span> <span class="n">enums</span><span class="o">.</span><span class="n">DataSourceB</span><span class="o">.</span><span class="n">ALL0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Selects the data source for the voice field.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param vdata</dt>
+<dd class="field-odd"><p>ALL0| ALL1| PATTern| PN09| PN11| PN15| PN16| PN20| PN21| PN23| DLISt</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+</dd></dl>
+
+<p class="rubric">Cloning the Group</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a clone of the original group, that exists independently</span>
+<span class="n">group2</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">btooth</span><span class="o">.</span><span class="n">pconfiguration</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+</pre></div>
+</div>
+<p class="rubric">Subgroups</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Btooth_Pconfiguration_BdaLap.html">BdaLap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Btooth_Pconfiguration_BdaNap.html">BdaNap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Btooth_Pconfiguration_BdaUap.html">BdaUap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Btooth_Pconfiguration_CoDevice.html">CoDevice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Btooth_Pconfiguration_Data.html">Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Btooth_Pconfiguration_Data_Dpattern.html">Dpattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Btooth_Pconfiguration_Data_VdPattern.html">VdPattern</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Btooth_Pconfiguration_LfsWord.html">LfsWord</a></li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Source_Bb_Btooth_Msettings.html" class="btn btn-neutral float-left" title="Msettings" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Source_Bb_Btooth_Pconfiguration_BdaLap.html" class="btn btn-neutral float-right" title="BdaLap" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

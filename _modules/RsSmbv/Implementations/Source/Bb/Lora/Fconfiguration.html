@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RsSmbv.Implementations.Source.Bb.Lora.Fconfiguration &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../../../" id="documentation_options" src="../../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../../_static/jquery.js"></script>
+        <script src="../../../../../../_static/underscore.js"></script>
+        <script src="../../../../../../_static/doctools.js"></script>
+        <script src="../../../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../../../_static/copybutton.js"></script>
+    <script src="../../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../../../index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../RsSmbv.html">RsSmbv API Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../../../index.html">Module code</a> &raquo;</li>
+          <li><a href="../../../Source.html">RsSmbv.Implementations.Source</a> &raquo;</li>
+          <li><a href="../../Bb.html">RsSmbv.Implementations.Source.Bb</a> &raquo;</li>
+          <li><a href="../Lora.html">RsSmbv.Implementations.Source.Bb.Lora</a> &raquo;</li>
+      <li>RsSmbv.Implementations.Source.Bb.Lora.Fconfiguration</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for RsSmbv.Implementations.Source.Bb.Lora.Fconfiguration</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">......Internal.Core</span> <span class="kn">import</span> <span class="n">Core</span>
+<span class="kn">from</span> <span class="nn">......Internal.CommandsGroup</span> <span class="kn">import</span> <span class="n">CommandsGroup</span>
+<span class="kn">from</span> <span class="nn">......Internal</span> <span class="kn">import</span> <span class="n">Conversions</span>
+<span class="kn">from</span> <span class="nn">......</span> <span class="kn">import</span> <span class="n">enums</span>
+
+
+<span class="c1"># noinspection PyPep8Naming,PyAttributeOutsideInit,SpellCheckingInspection</span>
+<div class="viewcode-block" id="FconfigurationCls"><a class="viewcode-back" href="../../../../../../Source_Bb_Lora_Fconfiguration.html#RsSmbv.Implementations.Source.Bb.Lora.Fconfiguration.FconfigurationCls">[docs]</a><span class="k">class</span> <span class="nc">FconfigurationCls</span><span class="p">:</span>
+	<span class="sd">&quot;&quot;&quot;Fconfiguration commands group definition. 16 total commands, 9 Subgroups, 5 group commands&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">core</span><span class="p">:</span> <span class="n">Core</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span> <span class="o">=</span> <span class="n">core</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span> <span class="o">=</span> <span class="n">CommandsGroup</span><span class="p">(</span><span class="s2">&quot;fconfiguration&quot;</span><span class="p">,</span> <span class="n">core</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">bmode</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;bmode commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_bmode&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Bmode</span> <span class="kn">import</span> <span class="n">BmodeCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_bmode</span> <span class="o">=</span> <span class="n">BmodeCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bmode</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">cmode</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;cmode commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_cmode&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Cmode</span> <span class="kn">import</span> <span class="n">CmodeCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_cmode</span> <span class="o">=</span> <span class="n">CmodeCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmode</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;data commands group. 1 Sub-classes, 2 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_data&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Data</span> <span class="kn">import</span> <span class="n">DataCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="n">DataCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">eactive</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;eactive commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_eactive&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Eactive</span> <span class="kn">import</span> <span class="n">EactiveCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_eactive</span> <span class="o">=</span> <span class="n">EactiveCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_eactive</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">hactive</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;hactive commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_hactive&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Hactive</span> <span class="kn">import</span> <span class="n">HactiveCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_hactive</span> <span class="o">=</span> <span class="n">HactiveCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hactive</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">iactive</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;iactive commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_iactive&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Iactive</span> <span class="kn">import</span> <span class="n">IactiveCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_iactive</span> <span class="o">=</span> <span class="n">IactiveCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_iactive</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">pcrc</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;pcrc commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_pcrc&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Pcrc</span> <span class="kn">import</span> <span class="n">PcrcCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_pcrc</span> <span class="o">=</span> <span class="n">PcrcCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pcrc</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">prcMode</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;prcMode commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_prcMode&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.PrcMode</span> <span class="kn">import</span> <span class="n">PrcModeCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_prcMode</span> <span class="o">=</span> <span class="n">PrcModeCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prcMode</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">rbit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;rbit commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_rbit&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Rbit</span> <span class="kn">import</span> <span class="n">RbitCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_rbit</span> <span class="o">=</span> <span class="n">RbitCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rbit</span>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="FconfigurationCls.get_crate"><a class="viewcode-back" href="../../../../../../Source_Bb_Lora_Fconfiguration.html#RsSmbv.Implementations.Source.Bb.Lora.Fconfiguration.FconfigurationCls.get_crate">[docs]</a>	<span class="k">def</span> <span class="nf">get_crate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">LoRaCodRate</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:LORA:FCONfiguration:CRATe \n</span>
+<span class="sd">		Snippet: value: enums.LoRaCodRate = driver.source.bb.lora.fconfiguration.get_crate() \n</span>
+<span class="sd">		Sets the coding rate. \n</span>
+<span class="sd">			:return: crate: CR0| CR1| CR2| CR3| CR4 CRx = 0 to 4 The coding rate RCoding is calculated as follows: RCoding = 4 / (4 + CRx) &#39;CR0&#39; corresponds to no coding, i.e. RCoding = 1.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:LORA:FCONfiguration:CRATe?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">LoRaCodRate</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FconfigurationCls.set_crate"><a class="viewcode-back" href="../../../../../../Source_Bb_Lora_Fconfiguration.html#RsSmbv.Implementations.Source.Bb.Lora.Fconfiguration.FconfigurationCls.set_crate">[docs]</a>	<span class="k">def</span> <span class="nf">set_crate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">crate</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">LoRaCodRate</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:LORA:FCONfiguration:CRATe \n</span>
+<span class="sd">		Snippet: driver.source.bb.lora.fconfiguration.set_crate(crate = enums.LoRaCodRate.CR0) \n</span>
+<span class="sd">		Sets the coding rate. \n</span>
+<span class="sd">			:param crate: CR0| CR1| CR2| CR3| CR4 CRx = 0 to 4 The coding rate RCoding is calculated as follows: RCoding = 4 / (4 + CRx) &#39;CR0&#39; corresponds to no coding, i.e. RCoding = 1.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">crate</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">LoRaCodRate</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:LORA:FCONfiguration:CRATe </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FconfigurationCls.get_dlength"><a class="viewcode-back" href="../../../../../../Source_Bb_Lora_Fconfiguration.html#RsSmbv.Implementations.Source.Bb.Lora.Fconfiguration.FconfigurationCls.get_dlength">[docs]</a>	<span class="k">def</span> <span class="nf">get_dlength</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:LORA:FCONfiguration:DLENgth \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.lora.fconfiguration.get_dlength() \n</span>
+<span class="sd">		Sets the data length of the payload in the frame. \n</span>
+<span class="sd">			:return: dlength: integer Range: 1 to 255</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:LORA:FCONfiguration:DLENgth?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FconfigurationCls.set_dlength"><a class="viewcode-back" href="../../../../../../Source_Bb_Lora_Fconfiguration.html#RsSmbv.Implementations.Source.Bb.Lora.Fconfiguration.FconfigurationCls.set_dlength">[docs]</a>	<span class="k">def</span> <span class="nf">set_dlength</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dlength</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:LORA:FCONfiguration:DLENgth \n</span>
+<span class="sd">		Snippet: driver.source.bb.lora.fconfiguration.set_dlength(dlength = 1) \n</span>
+<span class="sd">		Sets the data length of the payload in the frame. \n</span>
+<span class="sd">			:param dlength: integer Range: 1 to 255</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">dlength</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:LORA:FCONfiguration:DLENgth </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="FconfigurationCls.get_sfactor"><a class="viewcode-back" href="../../../../../../Source_Bb_Lora_Fconfiguration.html#RsSmbv.Implementations.Source.Bb.Lora.Fconfiguration.FconfigurationCls.get_sfactor">[docs]</a>	<span class="k">def</span> <span class="nf">get_sfactor</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">LoRaSf</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:LORA:FCONfiguration:SFACtor \n</span>
+<span class="sd">		Snippet: value: enums.LoRaSf = driver.source.bb.lora.fconfiguration.get_sfactor() \n</span>
+<span class="sd">		Sets the spreading factor for the modulation. \n</span>
+<span class="sd">			:return: sf: SF6| SF7| SF8| SF9| SF10| SF11| SF12</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:LORA:FCONfiguration:SFACtor?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">LoRaSf</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FconfigurationCls.set_sfactor"><a class="viewcode-back" href="../../../../../../Source_Bb_Lora_Fconfiguration.html#RsSmbv.Implementations.Source.Bb.Lora.Fconfiguration.FconfigurationCls.set_sfactor">[docs]</a>	<span class="k">def</span> <span class="nf">set_sfactor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sf</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">LoRaSf</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:LORA:FCONfiguration:SFACtor \n</span>
+<span class="sd">		Snippet: driver.source.bb.lora.fconfiguration.set_sfactor(sf = enums.LoRaSf.SF10) \n</span>
+<span class="sd">		Sets the spreading factor for the modulation. \n</span>
+<span class="sd">			:param sf: SF6| SF7| SF8| SF9| SF10| SF11| SF12</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">sf</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">LoRaSf</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:LORA:FCONfiguration:SFACtor </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="FconfigurationCls.get_smode"><a class="viewcode-back" href="../../../../../../Source_Bb_Lora_Fconfiguration.html#RsSmbv.Implementations.Source.Bb.Lora.Fconfiguration.FconfigurationCls.get_smode">[docs]</a>	<span class="k">def</span> <span class="nf">get_smode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">LoRaSyncMode</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:LORA:FCONfiguration:SMODe \n</span>
+<span class="sd">		Snippet: value: enums.LoRaSyncMode = driver.source.bb.lora.fconfiguration.get_smode() \n</span>
+<span class="sd">		Sets the synchronization mode of the preamble. \n</span>
+<span class="sd">			:return: smode: PRIVate| PUBLic PRIVate A preamble with a public sync word is generated. PUBLic A preamble with a private sync word is generated.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:LORA:FCONfiguration:SMODe?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">LoRaSyncMode</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FconfigurationCls.set_smode"><a class="viewcode-back" href="../../../../../../Source_Bb_Lora_Fconfiguration.html#RsSmbv.Implementations.Source.Bb.Lora.Fconfiguration.FconfigurationCls.set_smode">[docs]</a>	<span class="k">def</span> <span class="nf">set_smode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">smode</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">LoRaSyncMode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:LORA:FCONfiguration:SMODe \n</span>
+<span class="sd">		Snippet: driver.source.bb.lora.fconfiguration.set_smode(smode = enums.LoRaSyncMode.PRIVate) \n</span>
+<span class="sd">		Sets the synchronization mode of the preamble. \n</span>
+<span class="sd">			:param smode: PRIVate| PUBLic PRIVate A preamble with a public sync word is generated. PUBLic A preamble with a private sync word is generated.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">smode</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">LoRaSyncMode</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:LORA:FCONfiguration:SMODe </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FconfigurationCls.get_up_length"><a class="viewcode-back" href="../../../../../../Source_Bb_Lora_Fconfiguration.html#RsSmbv.Implementations.Source.Bb.Lora.Fconfiguration.FconfigurationCls.get_up_length">[docs]</a>	<span class="k">def</span> <span class="nf">get_up_length</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:LORA:FCONfiguration:UPLength \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.lora.fconfiguration.get_up_length() \n</span>
+<span class="sd">		Sets the unmodulated preamble length. \n</span>
+<span class="sd">			:return: plength: integer Range: 6 to 8</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:LORA:FCONfiguration:UPLength?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FconfigurationCls.set_up_length"><a class="viewcode-back" href="../../../../../../Source_Bb_Lora_Fconfiguration.html#RsSmbv.Implementations.Source.Bb.Lora.Fconfiguration.FconfigurationCls.set_up_length">[docs]</a>	<span class="k">def</span> <span class="nf">set_up_length</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plength</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:LORA:FCONfiguration:UPLength \n</span>
+<span class="sd">		Snippet: driver.source.bb.lora.fconfiguration.set_up_length(plength = 1) \n</span>
+<span class="sd">		Sets the unmodulated preamble length. \n</span>
+<span class="sd">			:param plength: integer Range: 6 to 8</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">plength</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:LORA:FCONfiguration:UPLength </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;FconfigurationCls&#39;</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Clones the group by creating new object from it and its whole existing subgroups</span>
+<span class="sd">		Also copies all the existing default Repeated Capabilities setting,</span>
+<span class="sd">		which you can change independently without affecting the original group&quot;&quot;&quot;</span>
+		<span class="n">new_group</span> <span class="o">=</span> <span class="n">FconfigurationCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">synchronize_repcaps</span><span class="p">(</span><span class="n">new_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">new_group</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

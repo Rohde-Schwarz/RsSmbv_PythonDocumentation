@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RsSmbv.Implementations.Source.Iq.Output.Analog.Envelope &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../../../../" id="documentation_options" src="../../../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../../../_static/jquery.js"></script>
+        <script src="../../../../../../../_static/underscore.js"></script>
+        <script src="../../../../../../../_static/doctools.js"></script>
+        <script src="../../../../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../../../../_static/copybutton.js"></script>
+    <script src="../../../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../../../../index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../RsSmbv.html">RsSmbv API Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../../index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../../../../index.html">Module code</a> &raquo;</li>
+          <li><a href="../../../../Source.html">RsSmbv.Implementations.Source</a> &raquo;</li>
+          <li><a href="../../../Iq.html">RsSmbv.Implementations.Source.Iq</a> &raquo;</li>
+          <li><a href="../../Output.html">RsSmbv.Implementations.Source.Iq.Output</a> &raquo;</li>
+          <li><a href="../Analog.html">RsSmbv.Implementations.Source.Iq.Output.Analog</a> &raquo;</li>
+      <li>RsSmbv.Implementations.Source.Iq.Output.Analog.Envelope</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for RsSmbv.Implementations.Source.Iq.Output.Analog.Envelope</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">.......Internal.Core</span> <span class="kn">import</span> <span class="n">Core</span>
+<span class="kn">from</span> <span class="nn">.......Internal.CommandsGroup</span> <span class="kn">import</span> <span class="n">CommandsGroup</span>
+<span class="kn">from</span> <span class="nn">.......Internal</span> <span class="kn">import</span> <span class="n">Conversions</span>
+<span class="kn">from</span> <span class="nn">.......</span> <span class="kn">import</span> <span class="n">enums</span>
+
+
+<span class="c1"># noinspection PyPep8Naming,PyAttributeOutsideInit,SpellCheckingInspection</span>
+<div class="viewcode-block" id="EnvelopeCls"><a class="viewcode-back" href="../../../../../../../Source_Iq_Output_Analog_Envelope.html#RsSmbv.Implementations.Source.Iq.Output.Analog.Envelope.EnvelopeCls">[docs]</a><span class="k">class</span> <span class="nc">EnvelopeCls</span><span class="p">:</span>
+	<span class="sd">&quot;&quot;&quot;Envelope commands group definition. 47 total commands, 7 Subgroups, 12 group commands&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">core</span><span class="p">:</span> <span class="n">Core</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span> <span class="o">=</span> <span class="n">core</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span> <span class="o">=</span> <span class="n">CommandsGroup</span><span class="p">(</span><span class="s2">&quot;envelope&quot;</span><span class="p">,</span> <span class="n">core</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">emf</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;emf commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_emf&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Emf</span> <span class="kn">import</span> <span class="n">EmfCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_emf</span> <span class="o">=</span> <span class="n">EmfCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_emf</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">pin</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;pin commands group. 0 Sub-classes, 2 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_pin&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Pin</span> <span class="kn">import</span> <span class="n">PinCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_pin</span> <span class="o">=</span> <span class="n">PinCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pin</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">power</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;power commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_power&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Power</span> <span class="kn">import</span> <span class="n">PowerCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_power</span> <span class="o">=</span> <span class="n">PowerCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_power</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">shaping</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;shaping commands group. 6 Sub-classes, 3 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_shaping&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Shaping</span> <span class="kn">import</span> <span class="n">ShapingCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_shaping</span> <span class="o">=</span> <span class="n">ShapingCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_shaping</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">vcc</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;vcc commands group. 1 Sub-classes, 3 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_vcc&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Vcc</span> <span class="kn">import</span> <span class="n">VccCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_vcc</span> <span class="o">=</span> <span class="n">VccCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vcc</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">vout</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;vout commands group. 0 Sub-classes, 2 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_vout&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Vout</span> <span class="kn">import</span> <span class="n">VoutCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_vout</span> <span class="o">=</span> <span class="n">VoutCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vout</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">vpp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;vpp commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_vpp&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Vpp</span> <span class="kn">import</span> <span class="n">VppCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_vpp</span> <span class="o">=</span> <span class="n">VppCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vpp</span>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="EnvelopeCls.get_adaption"><a class="viewcode-back" href="../../../../../../../Source_Iq_Output_Analog_Envelope.html#RsSmbv.Implementations.Source.Iq.Output.Analog.Envelope.EnvelopeCls.get_adaption">[docs]</a>	<span class="k">def</span> <span class="nf">get_adaption</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">IqOutEnvAdaption</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:IQ:OUTPut:[ANALog]:ENVelope:ADAPtion \n</span>
+<span class="sd">		Snippet: value: enums.IqOutEnvAdaption = driver.source.iq.output.analog.envelope.get_adaption() \n</span>
+<span class="sd">		Defines the envelope voltage adaption mode. \n</span>
+<span class="sd">			:return: adaption_mode: AUTO| MANual| POWer AUTO = Auto Normalized, POWer = Auto Power, MANual = Manual</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:IQ:OUTPut:ANALog:ENVelope:ADAPtion?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">IqOutEnvAdaption</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="EnvelopeCls.set_adaption"><a class="viewcode-back" href="../../../../../../../Source_Iq_Output_Analog_Envelope.html#RsSmbv.Implementations.Source.Iq.Output.Analog.Envelope.EnvelopeCls.set_adaption">[docs]</a>	<span class="k">def</span> <span class="nf">set_adaption</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">adaption_mode</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">IqOutEnvAdaption</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:IQ:OUTPut:[ANALog]:ENVelope:ADAPtion \n</span>
+<span class="sd">		Snippet: driver.source.iq.output.analog.envelope.set_adaption(adaption_mode = enums.IqOutEnvAdaption.AUTO) \n</span>
+<span class="sd">		Defines the envelope voltage adaption mode. \n</span>
+<span class="sd">			:param adaption_mode: AUTO| MANual| POWer AUTO = Auto Normalized, POWer = Auto Power, MANual = Manual</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">adaption_mode</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">IqOutEnvAdaption</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:IQ:OUTPut:ANALog:ENVelope:ADAPtion </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="EnvelopeCls.get_bias"><a class="viewcode-back" href="../../../../../../../Source_Iq_Output_Analog_Envelope.html#RsSmbv.Implementations.Source.Iq.Output.Analog.Envelope.EnvelopeCls.get_bias">[docs]</a>	<span class="k">def</span> <span class="nf">get_bias</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:IQ:OUTPut:[ANALog]:ENVelope:BIAS \n</span>
+<span class="sd">		Snippet: value: float = driver.source.iq.output.analog.envelope.get_bias() \n</span>
+<span class="sd">		Sets a bias. \n</span>
+<span class="sd">			:return: bias: float Range: -3.6V to 3.6V , Unit: V</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:IQ:OUTPut:ANALog:ENVelope:BIAS?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="EnvelopeCls.set_bias"><a class="viewcode-back" href="../../../../../../../Source_Iq_Output_Analog_Envelope.html#RsSmbv.Implementations.Source.Iq.Output.Analog.Envelope.EnvelopeCls.set_bias">[docs]</a>	<span class="k">def</span> <span class="nf">set_bias</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bias</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:IQ:OUTPut:[ANALog]:ENVelope:BIAS \n</span>
+<span class="sd">		Snippet: driver.source.iq.output.analog.envelope.set_bias(bias = 1.0) \n</span>
+<span class="sd">		Sets a bias. \n</span>
+<span class="sd">			:param bias: float Range: -3.6V to 3.6V , Unit: V</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">bias</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:IQ:OUTPut:ANALog:ENVelope:BIAS </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="EnvelopeCls.get_binput"><a class="viewcode-back" href="../../../../../../../Source_Iq_Output_Analog_Envelope.html#RsSmbv.Implementations.Source.Iq.Output.Analog.Envelope.EnvelopeCls.get_binput">[docs]</a>	<span class="k">def</span> <span class="nf">get_binput</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:IQ:OUTPut:[ANALog]:ENVelope:BINPut \n</span>
+<span class="sd">		Snippet: value: bool = driver.source.iq.output.analog.envelope.get_binput() \n</span>
+<span class="sd">		Enables the generation of a bipolar signal. \n</span>
+<span class="sd">			:return: bipolar_input: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:IQ:OUTPut:ANALog:ENVelope:BINPut?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_bool</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="EnvelopeCls.set_binput"><a class="viewcode-back" href="../../../../../../../Source_Iq_Output_Analog_Envelope.html#RsSmbv.Implementations.Source.Iq.Output.Analog.Envelope.EnvelopeCls.set_binput">[docs]</a>	<span class="k">def</span> <span class="nf">set_binput</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bipolar_input</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:IQ:OUTPut:[ANALog]:ENVelope:BINPut \n</span>
+<span class="sd">		Snippet: driver.source.iq.output.analog.envelope.set_binput(bipolar_input = False) \n</span>
+<span class="sd">		Enables the generation of a bipolar signal. \n</span>
+<span class="sd">			:param bipolar_input: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">bool_to_str</span><span class="p">(</span><span class="n">bipolar_input</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:IQ:OUTPut:ANALog:ENVelope:BINPut </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="EnvelopeCls.get_delay"><a class="viewcode-back" href="../../../../../../../Source_Iq_Output_Analog_Envelope.html#RsSmbv.Implementations.Source.Iq.Output.Analog.Envelope.EnvelopeCls.get_delay">[docs]</a>	<span class="k">def</span> <span class="nf">get_delay</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:IQ:OUTPut:[ANALog]:ENVelope:DELay \n</span>
+<span class="sd">		Snippet: value: float = driver.source.iq.output.analog.envelope.get_delay() \n</span>
+<span class="sd">		Enables a time delay of the generated envelope signal relative to the corresponding RF signal. \n</span>
+<span class="sd">			:return: delay: float Range: -500E-9 to 500E-9</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:IQ:OUTPut:ANALog:ENVelope:DELay?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="EnvelopeCls.set_delay"><a class="viewcode-back" href="../../../../../../../Source_Iq_Output_Analog_Envelope.html#RsSmbv.Implementations.Source.Iq.Output.Analog.Envelope.EnvelopeCls.set_delay">[docs]</a>	<span class="k">def</span> <span class="nf">set_delay</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">delay</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:IQ:OUTPut:[ANALog]:ENVelope:DELay \n</span>
+<span class="sd">		Snippet: driver.source.iq.output.analog.envelope.set_delay(delay = 1.0) \n</span>
+<span class="sd">		Enables a time delay of the generated envelope signal relative to the corresponding RF signal. \n</span>
+<span class="sd">			:param delay: float Range: -500E-9 to 500E-9</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">delay</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:IQ:OUTPut:ANALog:ENVelope:DELay </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="EnvelopeCls.get_etrak"><a class="viewcode-back" href="../../../../../../../Source_Iq_Output_Analog_Envelope.html#RsSmbv.Implementations.Source.Iq.Output.Analog.Envelope.EnvelopeCls.get_etrak">[docs]</a>	<span class="k">def</span> <span class="nf">get_etrak</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">IqOutEnvEtRak</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:IQ:OUTPut:[ANALog]:ENVelope:ETRak \n</span>
+<span class="sd">		Snippet: value: enums.IqOutEnvEtRak = driver.source.iq.output.analog.envelope.get_etrak() \n</span>
+<span class="sd">		Selects one of the predefined interface types or allows user-defined settings. See Table &#39;Default parameters per eTrak(R)</span>
+<span class="sd">		Interface Type&#39;. \n</span>
+<span class="sd">			:return: etrak_ifc_type: USER| ET1V2| ET1V5| ET2V0</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:IQ:OUTPut:ANALog:ENVelope:ETRak?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">IqOutEnvEtRak</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="EnvelopeCls.set_etrak"><a class="viewcode-back" href="../../../../../../../Source_Iq_Output_Analog_Envelope.html#RsSmbv.Implementations.Source.Iq.Output.Analog.Envelope.EnvelopeCls.set_etrak">[docs]</a>	<span class="k">def</span> <span class="nf">set_etrak</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">etrak_ifc_type</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">IqOutEnvEtRak</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:IQ:OUTPut:[ANALog]:ENVelope:ETRak \n</span>
+<span class="sd">		Snippet: driver.source.iq.output.analog.envelope.set_etrak(etrak_ifc_type = enums.IqOutEnvEtRak.ET1V2) \n</span>
+<span class="sd">		Selects one of the predefined interface types or allows user-defined settings. See Table &#39;Default parameters per eTrak(R)</span>
+<span class="sd">		Interface Type&#39;. \n</span>
+<span class="sd">			:param etrak_ifc_type: USER| ET1V2| ET1V5| ET2V0</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">etrak_ifc_type</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">IqOutEnvEtRak</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:IQ:OUTPut:ANALog:ENVelope:ETRak </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="EnvelopeCls.get_fdpd"><a class="viewcode-back" href="../../../../../../../Source_Iq_Output_Analog_Envelope.html#RsSmbv.Implementations.Source.Iq.Output.Analog.Envelope.EnvelopeCls.get_fdpd">[docs]</a>	<span class="k">def</span> <span class="nf">get_fdpd</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:IQ:OUTPut:[ANALog]:ENVelope:FDPD \n</span>
+<span class="sd">		Snippet: value: bool = driver.source.iq.output.analog.envelope.get_fdpd() \n</span>
+<span class="sd">		Enables calculation of the envelope from predistorted signal. \n</span>
+<span class="sd">			:return: calc_from_dpd_stat: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:IQ:OUTPut:ANALog:ENVelope:FDPD?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_bool</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="EnvelopeCls.set_fdpd"><a class="viewcode-back" href="../../../../../../../Source_Iq_Output_Analog_Envelope.html#RsSmbv.Implementations.Source.Iq.Output.Analog.Envelope.EnvelopeCls.set_fdpd">[docs]</a>	<span class="k">def</span> <span class="nf">set_fdpd</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">calc_from_dpd_stat</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:IQ:OUTPut:[ANALog]:ENVelope:FDPD \n</span>
+<span class="sd">		Snippet: driver.source.iq.output.analog.envelope.set_fdpd(calc_from_dpd_stat = False) \n</span>
+<span class="sd">		Enables calculation of the envelope from predistorted signal. \n</span>
+<span class="sd">			:param calc_from_dpd_stat: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">bool_to_str</span><span class="p">(</span><span class="n">calc_from_dpd_stat</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:IQ:OUTPut:ANALog:ENVelope:FDPD </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="EnvelopeCls.get_gain"><a class="viewcode-back" href="../../../../../../../Source_Iq_Output_Analog_Envelope.html#RsSmbv.Implementations.Source.Iq.Output.Analog.Envelope.EnvelopeCls.get_gain">[docs]</a>	<span class="k">def</span> <span class="nf">get_gain</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:IQ:OUTPut:[ANALog]:ENVelope:GAIN \n</span>
+<span class="sd">		Snippet: value: float = driver.source.iq.output.analog.envelope.get_gain() \n</span>
+<span class="sd">		Sets the gain of the used external DC modulator. \n</span>
+<span class="sd">			:return: gain: float Range: -50 to 50</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:IQ:OUTPut:ANALog:ENVelope:GAIN?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="EnvelopeCls.set_gain"><a class="viewcode-back" href="../../../../../../../Source_Iq_Output_Analog_Envelope.html#RsSmbv.Implementations.Source.Iq.Output.Analog.Envelope.EnvelopeCls.set_gain">[docs]</a>	<span class="k">def</span> <span class="nf">set_gain</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gain</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:IQ:OUTPut:[ANALog]:ENVelope:GAIN \n</span>
+<span class="sd">		Snippet: driver.source.iq.output.analog.envelope.set_gain(gain = 1.0) \n</span>
+<span class="sd">		Sets the gain of the used external DC modulator. \n</span>
+<span class="sd">			:param gain: float Range: -50 to 50</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">gain</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:IQ:OUTPut:ANALog:ENVelope:GAIN </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="EnvelopeCls.get_offset"><a class="viewcode-back" href="../../../../../../../Source_Iq_Output_Analog_Envelope.html#RsSmbv.Implementations.Source.Iq.Output.Analog.Envelope.EnvelopeCls.get_offset">[docs]</a>	<span class="k">def</span> <span class="nf">get_offset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:IQ:OUTPut:[ANALog]:ENVelope:OFFSet \n</span>
+<span class="sd">		Snippet: value: float = driver.source.iq.output.analog.envelope.get_offset() \n</span>
+<span class="sd">		Sets an offset between the envelope and the inverted envelope signal. \n</span>
+<span class="sd">			:return: offset: float Range: -8V to 8V , Unit: V</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:IQ:OUTPut:ANALog:ENVelope:OFFSet?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="EnvelopeCls.set_offset"><a class="viewcode-back" href="../../../../../../../Source_Iq_Output_Analog_Envelope.html#RsSmbv.Implementations.Source.Iq.Output.Analog.Envelope.EnvelopeCls.set_offset">[docs]</a>	<span class="k">def</span> <span class="nf">set_offset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">offset</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:IQ:OUTPut:[ANALog]:ENVelope:OFFSet \n</span>
+<span class="sd">		Snippet: driver.source.iq.output.analog.envelope.set_offset(offset = 1.0) \n</span>
+<span class="sd">		Sets an offset between the envelope and the inverted envelope signal. \n</span>
+<span class="sd">			:param offset: float Range: -8V to 8V , Unit: V</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">offset</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:IQ:OUTPut:ANALog:ENVelope:OFFSet </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="EnvelopeCls.get_rin"><a class="viewcode-back" href="../../../../../../../Source_Iq_Output_Analog_Envelope.html#RsSmbv.Implementations.Source.Iq.Output.Analog.Envelope.EnvelopeCls.get_rin">[docs]</a>	<span class="k">def</span> <span class="nf">get_rin</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:IQ:OUTPut:[ANALog]:ENVelope:RIN \n</span>
+<span class="sd">		Snippet: value: float = driver.source.iq.output.analog.envelope.get_rin() \n</span>
+<span class="sd">		Sets the input impedance Rin of the used external DC modulator. \n</span>
+<span class="sd">			:return: ipart_nput_resistance: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:IQ:OUTPut:ANALog:ENVelope:RIN?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="EnvelopeCls.set_rin"><a class="viewcode-back" href="../../../../../../../Source_Iq_Output_Analog_Envelope.html#RsSmbv.Implementations.Source.Iq.Output.Analog.Envelope.EnvelopeCls.set_rin">[docs]</a>	<span class="k">def</span> <span class="nf">set_rin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ipart_nput_resistance</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:IQ:OUTPut:[ANALog]:ENVelope:RIN \n</span>
+<span class="sd">		Snippet: driver.source.iq.output.analog.envelope.set_rin(ipart_nput_resistance = 1.0) \n</span>
+<span class="sd">		Sets the input impedance Rin of the used external DC modulator. \n</span>
+<span class="sd">			:param ipart_nput_resistance: float Range: 50|100 to 1E6</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">ipart_nput_resistance</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:IQ:OUTPut:ANALog:ENVelope:RIN </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="EnvelopeCls.get_state"><a class="viewcode-back" href="../../../../../../../Source_Iq_Output_Analog_Envelope.html#RsSmbv.Implementations.Source.Iq.Output.Analog.Envelope.EnvelopeCls.get_state">[docs]</a>	<span class="k">def</span> <span class="nf">get_state</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:IQ:OUTPut:[ANALog]:ENVelope:STATe \n</span>
+<span class="sd">		Snippet: value: bool = driver.source.iq.output.analog.envelope.get_state() \n</span>
+<span class="sd">		Enables the output of a control signal that follows the RF envelope. \n</span>
+<span class="sd">			:return: state: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:IQ:OUTPut:ANALog:ENVelope:STATe?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_bool</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="EnvelopeCls.set_state"><a class="viewcode-back" href="../../../../../../../Source_Iq_Output_Analog_Envelope.html#RsSmbv.Implementations.Source.Iq.Output.Analog.Envelope.EnvelopeCls.set_state">[docs]</a>	<span class="k">def</span> <span class="nf">set_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:IQ:OUTPut:[ANALog]:ENVelope:STATe \n</span>
+<span class="sd">		Snippet: driver.source.iq.output.analog.envelope.set_state(state = False) \n</span>
+<span class="sd">		Enables the output of a control signal that follows the RF envelope. \n</span>
+<span class="sd">			:param state: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">bool_to_str</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:IQ:OUTPut:ANALog:ENVelope:STATe </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="EnvelopeCls.get_termination"><a class="viewcode-back" href="../../../../../../../Source_Iq_Output_Analog_Envelope.html#RsSmbv.Implementations.Source.Iq.Output.Analog.Envelope.EnvelopeCls.get_termination">[docs]</a>	<span class="k">def</span> <span class="nf">get_termination</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">IqOutEnvTerm</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:IQ:OUTPut:[ANALog]:ENVelope:TERMination \n</span>
+<span class="sd">		Snippet: value: enums.IqOutEnvTerm = driver.source.iq.output.analog.envelope.get_termination() \n</span>
+<span class="sd">		Sets how the inputs of the DC modulator are terminated. \n</span>
+<span class="sd">			:return: termination: GROund| WIRE</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:IQ:OUTPut:ANALog:ENVelope:TERMination?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">IqOutEnvTerm</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="EnvelopeCls.set_termination"><a class="viewcode-back" href="../../../../../../../Source_Iq_Output_Analog_Envelope.html#RsSmbv.Implementations.Source.Iq.Output.Analog.Envelope.EnvelopeCls.set_termination">[docs]</a>	<span class="k">def</span> <span class="nf">set_termination</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">termination</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">IqOutEnvTerm</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:IQ:OUTPut:[ANALog]:ENVelope:TERMination \n</span>
+<span class="sd">		Snippet: driver.source.iq.output.analog.envelope.set_termination(termination = enums.IqOutEnvTerm.GROund) \n</span>
+<span class="sd">		Sets how the inputs of the DC modulator are terminated. \n</span>
+<span class="sd">			:param termination: GROund| WIRE</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">termination</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">IqOutEnvTerm</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:IQ:OUTPut:ANALog:ENVelope:TERMination </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="EnvelopeCls.get_vref"><a class="viewcode-back" href="../../../../../../../Source_Iq_Output_Analog_Envelope.html#RsSmbv.Implementations.Source.Iq.Output.Analog.Envelope.EnvelopeCls.get_vref">[docs]</a>	<span class="k">def</span> <span class="nf">get_vref</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">IqOutEnvVrEf</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:IQ:OUTPut:[ANALog]:ENVelope:VREF \n</span>
+<span class="sd">		Snippet: value: enums.IqOutEnvVrEf = driver.source.iq.output.analog.envelope.get_vref() \n</span>
+<span class="sd">		Defines whether the envelope voltage Vout is set directly or it is estimated from the selected supply voltage Vcc. \n</span>
+<span class="sd">			:return: voltage_reference: VCC| VOUT</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:IQ:OUTPut:ANALog:ENVelope:VREF?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">IqOutEnvVrEf</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="EnvelopeCls.set_vref"><a class="viewcode-back" href="../../../../../../../Source_Iq_Output_Analog_Envelope.html#RsSmbv.Implementations.Source.Iq.Output.Analog.Envelope.EnvelopeCls.set_vref">[docs]</a>	<span class="k">def</span> <span class="nf">set_vref</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">voltage_reference</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">IqOutEnvVrEf</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:IQ:OUTPut:[ANALog]:ENVelope:VREF \n</span>
+<span class="sd">		Snippet: driver.source.iq.output.analog.envelope.set_vref(voltage_reference = enums.IqOutEnvVrEf.VCC) \n</span>
+<span class="sd">		Defines whether the envelope voltage Vout is set directly or it is estimated from the selected supply voltage Vcc. \n</span>
+<span class="sd">			:param voltage_reference: VCC| VOUT</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">voltage_reference</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">IqOutEnvVrEf</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:IQ:OUTPut:ANALog:ENVelope:VREF </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;EnvelopeCls&#39;</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Clones the group by creating new object from it and its whole existing subgroups</span>
+<span class="sd">		Also copies all the existing default Repeated Capabilities setting,</span>
+<span class="sd">		which you can change independently without affecting the original group&quot;&quot;&quot;</span>
+		<span class="n">new_group</span> <span class="o">=</span> <span class="n">EnvelopeCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">synchronize_repcaps</span><span class="p">(</span><span class="n">new_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">new_group</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

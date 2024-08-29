@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RsSmbv.Implementations.Source.Bb.Huwb.Fconfig &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../../../" id="documentation_options" src="../../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../../_static/jquery.js"></script>
+        <script src="../../../../../../_static/underscore.js"></script>
+        <script src="../../../../../../_static/doctools.js"></script>
+        <script src="../../../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../../../_static/copybutton.js"></script>
+    <script src="../../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../../../index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../RsSmbv.html">RsSmbv API Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../../../index.html">Module code</a> &raquo;</li>
+          <li><a href="../../../Source.html">RsSmbv.Implementations.Source</a> &raquo;</li>
+          <li><a href="../../Bb.html">RsSmbv.Implementations.Source.Bb</a> &raquo;</li>
+          <li><a href="../Huwb.html">RsSmbv.Implementations.Source.Bb.Huwb</a> &raquo;</li>
+      <li>RsSmbv.Implementations.Source.Bb.Huwb.Fconfig</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for RsSmbv.Implementations.Source.Bb.Huwb.Fconfig</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">......Internal.Core</span> <span class="kn">import</span> <span class="n">Core</span>
+<span class="kn">from</span> <span class="nn">......Internal.CommandsGroup</span> <span class="kn">import</span> <span class="n">CommandsGroup</span>
+<span class="kn">from</span> <span class="nn">......Internal</span> <span class="kn">import</span> <span class="n">Conversions</span>
+<span class="kn">from</span> <span class="nn">......</span> <span class="kn">import</span> <span class="n">enums</span>
+
+
+<span class="c1"># noinspection PyPep8Naming,PyAttributeOutsideInit,SpellCheckingInspection</span>
+<div class="viewcode-block" id="FconfigCls"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_Fconfig.html#RsSmbv.Implementations.Source.Bb.Huwb.Fconfig.FconfigCls">[docs]</a><span class="k">class</span> <span class="nc">FconfigCls</span><span class="p">:</span>
+	<span class="sd">&quot;&quot;&quot;Fconfig commands group definition. 24 total commands, 5 Subgroups, 17 group commands&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">core</span><span class="p">:</span> <span class="n">Core</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span> <span class="o">=</span> <span class="n">core</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span> <span class="o">=</span> <span class="n">CommandsGroup</span><span class="p">(</span><span class="s2">&quot;fconfig&quot;</span><span class="p">,</span> <span class="n">core</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;data commands group. 1 Sub-classes, 2 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_data&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Data</span> <span class="kn">import</span> <span class="n">DataCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="n">DataCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">dlength</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;dlength commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_dlength&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Dlength</span> <span class="kn">import</span> <span class="n">DlengthCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_dlength</span> <span class="o">=</span> <span class="n">DlengthCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dlength</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">fecphr</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;fecphr commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_fecphr&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Fecphr</span> <span class="kn">import</span> <span class="n">FecphrCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_fecphr</span> <span class="o">=</span> <span class="n">FecphrCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fecphr</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">fecpl</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;fecpl commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_fecpl&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Fecpl</span> <span class="kn">import</span> <span class="n">FecplCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_fecpl</span> <span class="o">=</span> <span class="n">FecplCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fecpl</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">mcs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;mcs commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_mcs&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Mcs</span> <span class="kn">import</span> <span class="n">McsCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_mcs</span> <span class="o">=</span> <span class="n">McsCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mcs</span>
+
+<div class="viewcode-block" id="FconfigCls.get_add_dap"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_Fconfig.html#RsSmbv.Implementations.Source.Bb.Huwb.Fconfig.FconfigCls.get_add_dap">[docs]</a>	<span class="k">def</span> <span class="nf">get_add_dap</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:FCONfig:ADDGap \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.huwb.fconfig.get_add_dap() \n</span>
+<span class="sd">		Sets additional gap between payload and STS. \n</span>
+<span class="sd">			:return: additional_gap: integer Range: 0 to 127</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:FCONfig:ADDGap?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FconfigCls.set_add_dap"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_Fconfig.html#RsSmbv.Implementations.Source.Bb.Huwb.Fconfig.FconfigCls.set_add_dap">[docs]</a>	<span class="k">def</span> <span class="nf">set_add_dap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">additional_gap</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:FCONfig:ADDGap \n</span>
+<span class="sd">		Snippet: driver.source.bb.huwb.fconfig.set_add_dap(additional_gap = 1) \n</span>
+<span class="sd">		Sets additional gap between payload and STS. \n</span>
+<span class="sd">			:param additional_gap: integer Range: 0 to 127</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">additional_gap</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:FCONfig:ADDGap </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="FconfigCls.get_cindex"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_Fconfig.html#RsSmbv.Implementations.Source.Bb.Huwb.Fconfig.FconfigCls.get_cindex">[docs]</a>	<span class="k">def</span> <span class="nf">get_cindex</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbCodeIndex</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:FCONfig:CINDex \n</span>
+<span class="sd">		Snippet: value: enums.HrpUwbCodeIndex = driver.source.bb.huwb.fconfig.get_cindex() \n</span>
+<span class="sd">		Sets the code index. \n</span>
+<span class="sd">			:return: code_index: CI_1| CI_2| CI_3| CI_4| CI_5| CI_6| CI_7| CI_8| CI_9| CI_10| CI_11| CI_12| CI_13| CI_14| CI_15| CI_16| CI_17| CI_18| CI_19| CI_20| CI_21| CI_22| CI_23| CI_24| CI_25| CI_26| CI_27| CI_28| CI_29| CI_30| CI_31| CI_32</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:FCONfig:CINDex?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbCodeIndex</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FconfigCls.set_cindex"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_Fconfig.html#RsSmbv.Implementations.Source.Bb.Huwb.Fconfig.FconfigCls.set_cindex">[docs]</a>	<span class="k">def</span> <span class="nf">set_cindex</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">code_index</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbCodeIndex</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:FCONfig:CINDex \n</span>
+<span class="sd">		Snippet: driver.source.bb.huwb.fconfig.set_cindex(code_index = enums.HrpUwbCodeIndex.CI_1) \n</span>
+<span class="sd">		Sets the code index. \n</span>
+<span class="sd">			:param code_index: CI_1| CI_2| CI_3| CI_4| CI_5| CI_6| CI_7| CI_8| CI_9| CI_10| CI_11| CI_12| CI_13| CI_14| CI_15| CI_16| CI_17| CI_18| CI_19| CI_20| CI_21| CI_22| CI_23| CI_24| CI_25| CI_26| CI_27| CI_28| CI_29| CI_30| CI_31| CI_32</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">code_index</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbCodeIndex</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:FCONfig:CINDex </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="FconfigCls.get_cp_burst"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_Fconfig.html#RsSmbv.Implementations.Source.Bb.Huwb.Fconfig.FconfigCls.get_cp_burst">[docs]</a>	<span class="k">def</span> <span class="nf">get_cp_burst</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbChipsPerBurst</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:FCONfig:CPBurst \n</span>
+<span class="sd">		Snippet: value: enums.HrpUwbChipsPerBurst = driver.source.bb.huwb.fconfig.get_cp_burst() \n</span>
+<span class="sd">		Sets the chips per burst. \n</span>
+<span class="sd">			:return: chips_per_burst: CPB_1| CPB_2| CPB_4| CPB_16| CPB_8| CPB_32| CPB_64| CPB_128| CPB_512</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:FCONfig:CPBurst?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbChipsPerBurst</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FconfigCls.set_cp_burst"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_Fconfig.html#RsSmbv.Implementations.Source.Bb.Huwb.Fconfig.FconfigCls.set_cp_burst">[docs]</a>	<span class="k">def</span> <span class="nf">set_cp_burst</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">chips_per_burst</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbChipsPerBurst</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:FCONfig:CPBurst \n</span>
+<span class="sd">		Snippet: driver.source.bb.huwb.fconfig.set_cp_burst(chips_per_burst = enums.HrpUwbChipsPerBurst.CPB_1) \n</span>
+<span class="sd">		Sets the chips per burst. \n</span>
+<span class="sd">			:param chips_per_burst: CPB_1| CPB_2| CPB_4| CPB_16| CPB_8| CPB_32| CPB_64| CPB_128| CPB_512</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">chips_per_burst</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbChipsPerBurst</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:FCONfig:CPBurst </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FconfigCls.get_da_length"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_Fconfig.html#RsSmbv.Implementations.Source.Bb.Huwb.Fconfig.FconfigCls.get_da_length">[docs]</a>	<span class="k">def</span> <span class="nf">get_da_length</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:FCONfig:DALEngth \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.huwb.fconfig.get_da_length() \n</span>
+<span class="sd">		Sets the data length of the physical header data in octets. \n</span>
+<span class="sd">			:return: dlength: integer Range: 1 to 4096</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:FCONfig:DALEngth?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FconfigCls.set_da_length"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_Fconfig.html#RsSmbv.Implementations.Source.Bb.Huwb.Fconfig.FconfigCls.set_da_length">[docs]</a>	<span class="k">def</span> <span class="nf">set_da_length</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dlength</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:FCONfig:DALEngth \n</span>
+<span class="sd">		Snippet: driver.source.bb.huwb.fconfig.set_da_length(dlength = 1) \n</span>
+<span class="sd">		Sets the data length of the physical header data in octets. \n</span>
+<span class="sd">			:param dlength: integer Range: 1 to 4096</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">dlength</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:FCONfig:DALEngth </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FconfigCls.get_dr"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_Fconfig.html#RsSmbv.Implementations.Source.Bb.Huwb.Fconfig.FconfigCls.get_dr">[docs]</a>	<span class="k">def</span> <span class="nf">get_dr</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:FCONfig:DR \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.huwb.fconfig.get_dr() \n</span>
+<span class="sd">		Queries the data rate. \n</span>
+<span class="sd">			:return: hrp_uwb_data_rate: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:FCONfig:DR?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="FconfigCls.get_fctpl"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_Fconfig.html#RsSmbv.Implementations.Source.Bb.Huwb.Fconfig.FconfigCls.get_fctpl">[docs]</a>	<span class="k">def</span> <span class="nf">get_fctpl</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">ZigBeeSpreadingFactor</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:FCONfig:FCTPl \n</span>
+<span class="sd">		Snippet: value: enums.ZigBeeSpreadingFactor = driver.source.bb.huwb.fconfig.get_fctpl() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: factor_in_payload: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:FCONfig:FCTPl?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">ZigBeeSpreadingFactor</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="FconfigCls.get_fctshr"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_Fconfig.html#RsSmbv.Implementations.Source.Bb.Huwb.Fconfig.FconfigCls.get_fctshr">[docs]</a>	<span class="k">def</span> <span class="nf">get_fctshr</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">ZigBeeSpreadingFactor</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:FCONfig:FCTShr \n</span>
+<span class="sd">		Snippet: value: enums.ZigBeeSpreadingFactor = driver.source.bb.huwb.fconfig.get_fctshr() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: fcts_hr: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:FCONfig:FCTShr?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">ZigBeeSpreadingFactor</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="FconfigCls.get_hop_burst"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_Fconfig.html#RsSmbv.Implementations.Source.Bb.Huwb.Fconfig.FconfigCls.get_hop_burst">[docs]</a>	<span class="k">def</span> <span class="nf">get_hop_burst</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbHopBurst</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:FCONfig:HOPBurst \n</span>
+<span class="sd">		Snippet: value: enums.HrpUwbHopBurst = driver.source.bb.huwb.fconfig.get_hop_burst() \n</span>
+<span class="sd">		Sets the number of hop bursts. \n</span>
+<span class="sd">			:return: hop_burst: HB_2| HB_8| HB_32</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:FCONfig:HOPBurst?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbHopBurst</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FconfigCls.set_hop_burst"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_Fconfig.html#RsSmbv.Implementations.Source.Bb.Huwb.Fconfig.FconfigCls.set_hop_burst">[docs]</a>	<span class="k">def</span> <span class="nf">set_hop_burst</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hop_burst</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbHopBurst</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:FCONfig:HOPBurst \n</span>
+<span class="sd">		Snippet: driver.source.bb.huwb.fconfig.set_hop_burst(hop_burst = enums.HrpUwbHopBurst.HB_2) \n</span>
+<span class="sd">		Sets the number of hop bursts. \n</span>
+<span class="sd">			:param hop_burst: HB_2| HB_8| HB_32</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">hop_burst</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbHopBurst</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:FCONfig:HOPBurst </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="FconfigCls.get_mdl"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_Fconfig.html#RsSmbv.Implementations.Source.Bb.Huwb.Fconfig.FconfigCls.get_mdl">[docs]</a>	<span class="k">def</span> <span class="nf">get_mdl</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbMaxDataLength</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:FCONfig:MDL \n</span>
+<span class="sd">		Snippet: value: enums.HrpUwbMaxDataLength = driver.source.bb.huwb.fconfig.get_mdl() \n</span>
+<span class="sd">		Sets the maximum data length for HPRF mode. \n</span>
+<span class="sd">			:return: max_data_len: MDL_1023| MDL_2047| MDL_4095 MDL_1023 1023 octets MDL_2047 2047 octets MDL_4095 4095 octets</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:FCONfig:MDL?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbMaxDataLength</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FconfigCls.set_mdl"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_Fconfig.html#RsSmbv.Implementations.Source.Bb.Huwb.Fconfig.FconfigCls.set_mdl">[docs]</a>	<span class="k">def</span> <span class="nf">set_mdl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">max_data_len</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbMaxDataLength</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:FCONfig:MDL \n</span>
+<span class="sd">		Snippet: driver.source.bb.huwb.fconfig.set_mdl(max_data_len = enums.HrpUwbMaxDataLength.MDL_1023) \n</span>
+<span class="sd">		Sets the maximum data length for HPRF mode. \n</span>
+<span class="sd">			:param max_data_len: MDL_1023| MDL_2047| MDL_4095 MDL_1023 1023 octets MDL_2047 2047 octets MDL_4095 4095 octets</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">max_data_len</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbMaxDataLength</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:FCONfig:MDL </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="FconfigCls.get_mfl"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_Fconfig.html#RsSmbv.Implementations.Source.Bb.Huwb.Fconfig.FconfigCls.get_mfl">[docs]</a>	<span class="k">def</span> <span class="nf">get_mfl</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbMacFcsLength</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:FCONfig:MFL \n</span>
+<span class="sd">		Snippet: value: enums.HrpUwbMacFcsLength = driver.source.bb.huwb.fconfig.get_mfl() \n</span>
+<span class="sd">		Sets the length of the frame check sequence field. \n</span>
+<span class="sd">			:return: mac_fcs_len: MFL_2| MFL_4 MFL_2 Two octets MFL_4 Four octets</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:FCONfig:MFL?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbMacFcsLength</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FconfigCls.set_mfl"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_Fconfig.html#RsSmbv.Implementations.Source.Bb.Huwb.Fconfig.FconfigCls.set_mfl">[docs]</a>	<span class="k">def</span> <span class="nf">set_mfl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mac_fcs_len</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbMacFcsLength</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:FCONfig:MFL \n</span>
+<span class="sd">		Snippet: driver.source.bb.huwb.fconfig.set_mfl(mac_fcs_len = enums.HrpUwbMacFcsLength.MFL_2) \n</span>
+<span class="sd">		Sets the length of the frame check sequence field. \n</span>
+<span class="sd">			:param mac_fcs_len: MFL_2| MFL_4 MFL_2 Two octets MFL_4 Four octets</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">mac_fcs_len</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbMacFcsLength</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:FCONfig:MFL </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FconfigCls.get_mprf"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_Fconfig.html#RsSmbv.Implementations.Source.Bb.Huwb.Fconfig.FconfigCls.get_mprf">[docs]</a>	<span class="k">def</span> <span class="nf">get_mprf</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:FCONfig:MPRF \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.huwb.fconfig.get_mprf() \n</span>
+<span class="sd">		Queries the mean pulse repetition frequency (PRF) . \n</span>
+<span class="sd">			:return: mean_prf: float</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:FCONfig:MPRF?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FconfigCls.get_phrb_rate"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_Fconfig.html#RsSmbv.Implementations.Source.Bb.Huwb.Fconfig.FconfigCls.get_phrb_rate">[docs]</a>	<span class="k">def</span> <span class="nf">get_phrb_rate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:FCONfig:PHRBrate \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.huwb.fconfig.get_phrb_rate() \n</span>
+<span class="sd">		Queries the physical header bit rate. \n</span>
+<span class="sd">			:return: hrp_uwb_phr_bitrate: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:FCONfig:PHRBrate?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="FconfigCls.get_phr_length"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_Fconfig.html#RsSmbv.Implementations.Source.Bb.Huwb.Fconfig.FconfigCls.get_phr_length">[docs]</a>	<span class="k">def</span> <span class="nf">get_phr_length</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">ZigBeePhrLengthInSymbols</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:FCONfig:PHRLength \n</span>
+<span class="sd">		Snippet: value: enums.ZigBeePhrLengthInSymbols = driver.source.bb.huwb.fconfig.get_phr_length() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: phr_length: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:FCONfig:PHRLength?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">ZigBeePhrLengthInSymbols</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="FconfigCls.get_sfd_length"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_Fconfig.html#RsSmbv.Implementations.Source.Bb.Huwb.Fconfig.FconfigCls.get_sfd_length">[docs]</a>	<span class="k">def</span> <span class="nf">get_sfd_length</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbSfdlEngth</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:FCONfig:SFDLength \n</span>
+<span class="sd">		Snippet: value: enums.HrpUwbSfdlEngth = driver.source.bb.huwb.fconfig.get_sfd_length() \n</span>
+<span class="sd">		Queries the symbol length of the start-of-frame delimiter (SFD) . The SFD length depends on the set SFD symbol sequence,</span>
+<span class="sd">		see Table &#39;SFD: indices and lengths&#39;. \n</span>
+<span class="sd">			:return: sfd_length: SFDL_4| SFDL_8| SFDL_16| SFDL_32| SFDL_64</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:FCONfig:SFDLength?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbSfdlEngth</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FconfigCls.set_sfd_length"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_Fconfig.html#RsSmbv.Implementations.Source.Bb.Huwb.Fconfig.FconfigCls.set_sfd_length">[docs]</a>	<span class="k">def</span> <span class="nf">set_sfd_length</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sfd_length</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbSfdlEngth</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:FCONfig:SFDLength \n</span>
+<span class="sd">		Snippet: driver.source.bb.huwb.fconfig.set_sfd_length(sfd_length = enums.HrpUwbSfdlEngth.SFDL_16) \n</span>
+<span class="sd">		Queries the symbol length of the start-of-frame delimiter (SFD) . The SFD length depends on the set SFD symbol sequence,</span>
+<span class="sd">		see Table &#39;SFD: indices and lengths&#39;. \n</span>
+<span class="sd">			:param sfd_length: SFDL_4| SFDL_8| SFDL_16| SFDL_32| SFDL_64</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">sfd_length</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbSfdlEngth</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:FCONfig:SFDLength </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FconfigCls.get_sym_rate"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_Fconfig.html#RsSmbv.Implementations.Source.Bb.Huwb.Fconfig.FconfigCls.get_sym_rate">[docs]</a>	<span class="k">def</span> <span class="nf">get_sym_rate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:FCONfig:SYMRate \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.huwb.fconfig.get_sym_rate() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: hrp_uwb_symbol_rate: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:FCONfig:SYMRate?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="FconfigCls.get_syn_length"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_Fconfig.html#RsSmbv.Implementations.Source.Bb.Huwb.Fconfig.FconfigCls.get_syn_length">[docs]</a>	<span class="k">def</span> <span class="nf">get_syn_length</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbSyncLength</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:FCONfig:SYNLength \n</span>
+<span class="sd">		Snippet: value: enums.HrpUwbSyncLength = driver.source.bb.huwb.fconfig.get_syn_length() \n</span>
+<span class="sd">		Sets the sync length. \n</span>
+<span class="sd">			:return: sync_length: SL_16| SL_24| SL_32| SL_48| SL_64| SL_96| SL_128| SL_256| SL_1024| SL_4096</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:FCONfig:SYNLength?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbSyncLength</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FconfigCls.set_syn_length"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_Fconfig.html#RsSmbv.Implementations.Source.Bb.Huwb.Fconfig.FconfigCls.set_syn_length">[docs]</a>	<span class="k">def</span> <span class="nf">set_syn_length</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sync_length</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbSyncLength</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:FCONfig:SYNLength \n</span>
+<span class="sd">		Snippet: driver.source.bb.huwb.fconfig.set_syn_length(sync_length = enums.HrpUwbSyncLength.SL_1024) \n</span>
+<span class="sd">		Sets the sync length. \n</span>
+<span class="sd">			:param sync_length: SL_16| SL_24| SL_32| SL_48| SL_64| SL_96| SL_128| SL_256| SL_1024| SL_4096</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">sync_length</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbSyncLength</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:FCONfig:SYNLength </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="FconfigCls.get_vrate"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_Fconfig.html#RsSmbv.Implementations.Source.Bb.Huwb.Fconfig.FconfigCls.get_vrate">[docs]</a>	<span class="k">def</span> <span class="nf">get_vrate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbViterbiRate</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:FCONfig:VRATe \n</span>
+<span class="sd">		Snippet: value: enums.HrpUwbViterbiRate = driver.source.bb.huwb.fconfig.get_vrate() \n</span>
+<span class="sd">		Queries the viterbi rate for convolutional coding. \n</span>
+<span class="sd">			:return: hrp_uwb_viterbi_rate: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:FCONfig:VRATe?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbViterbiRate</span><span class="p">)</span></div>
+
+	<span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;FconfigCls&#39;</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Clones the group by creating new object from it and its whole existing subgroups</span>
+<span class="sd">		Also copies all the existing default Repeated Capabilities setting,</span>
+<span class="sd">		which you can change independently without affecting the original group&quot;&quot;&quot;</span>
+		<span class="n">new_group</span> <span class="o">=</span> <span class="n">FconfigCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">synchronize_repcaps</span><span class="p">(</span><span class="n">new_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">new_group</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

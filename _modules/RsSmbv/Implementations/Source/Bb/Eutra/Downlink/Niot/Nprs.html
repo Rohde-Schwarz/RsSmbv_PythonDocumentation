@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RsSmbv.Implementations.Source.Bb.Eutra.Downlink.Niot.Nprs &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="../../../../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../../../../../" id="documentation_options" src="../../../../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../../../../_static/jquery.js"></script>
+        <script src="../../../../../../../../_static/underscore.js"></script>
+        <script src="../../../../../../../../_static/doctools.js"></script>
+        <script src="../../../../../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../../../../../_static/copybutton.js"></script>
+    <script src="../../../../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../../../../../index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../RsSmbv.html">RsSmbv API Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../../../index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../../../../../index.html">Module code</a> &raquo;</li>
+          <li><a href="../../../../../Source.html">RsSmbv.Implementations.Source</a> &raquo;</li>
+          <li><a href="../../../../Bb.html">RsSmbv.Implementations.Source.Bb</a> &raquo;</li>
+          <li><a href="../../../Eutra.html">RsSmbv.Implementations.Source.Bb.Eutra</a> &raquo;</li>
+          <li><a href="../../Downlink.html">RsSmbv.Implementations.Source.Bb.Eutra.Downlink</a> &raquo;</li>
+          <li><a href="../Niot.html">RsSmbv.Implementations.Source.Bb.Eutra.Downlink.Niot</a> &raquo;</li>
+      <li>RsSmbv.Implementations.Source.Bb.Eutra.Downlink.Niot.Nprs</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for RsSmbv.Implementations.Source.Bb.Eutra.Downlink.Niot.Nprs</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">........Internal.Core</span> <span class="kn">import</span> <span class="n">Core</span>
+<span class="kn">from</span> <span class="nn">........Internal.CommandsGroup</span> <span class="kn">import</span> <span class="n">CommandsGroup</span>
+<span class="kn">from</span> <span class="nn">........Internal</span> <span class="kn">import</span> <span class="n">Conversions</span>
+<span class="kn">from</span> <span class="nn">........</span> <span class="kn">import</span> <span class="n">enums</span>
+
+
+<span class="c1"># noinspection PyPep8Naming,PyAttributeOutsideInit,SpellCheckingInspection</span>
+<div class="viewcode-block" id="NprsCls"><a class="viewcode-back" href="../../../../../../../../Source_Bb_Eutra_Downlink_Niot_Nprs.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.Niot.Nprs.NprsCls">[docs]</a><span class="k">class</span> <span class="nc">NprsCls</span><span class="p">:</span>
+	<span class="sd">&quot;&quot;&quot;Nprs commands group definition. 12 total commands, 3 Subgroups, 8 group commands&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">core</span><span class="p">:</span> <span class="n">Core</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span> <span class="o">=</span> <span class="n">core</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span> <span class="o">=</span> <span class="n">CommandsGroup</span><span class="p">(</span><span class="s2">&quot;nprs&quot;</span><span class="p">,</span> <span class="n">core</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">bmp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;bmp commands group. 1 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_bmp&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Bmp</span> <span class="kn">import</span> <span class="n">BmpCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_bmp</span> <span class="o">=</span> <span class="n">BmpCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bmp</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">mtia</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;mtia commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_mtia&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Mtia</span> <span class="kn">import</span> <span class="n">MtiaCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_mtia</span> <span class="o">=</span> <span class="n">MtiaCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mtia</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">mtib</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;mtib commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_mtib&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Mtib</span> <span class="kn">import</span> <span class="n">MtibCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_mtib</span> <span class="o">=</span> <span class="n">MtibCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mtib</span>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="NprsCls.get_conf"><a class="viewcode-back" href="../../../../../../../../Source_Bb_Eutra_Downlink_Niot_Nprs.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.Niot.Nprs.NprsCls.get_conf">[docs]</a>	<span class="k">def</span> <span class="nf">get_conf</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraNbiotNprsConfigType</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:NIOT:NPRS:CONF \n</span>
+<span class="sd">		Snippet: value: enums.EutraNbiotNprsConfigType = driver.source.bb.eutra.downlink.niot.nprs.get_conf() \n</span>
+<span class="sd">		Defines which type of NPRS is used. \n</span>
+<span class="sd">			:return: nprs_para_cfg: PA_A| PA_B| PA_AB</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:NIOT:NPRS:CONF?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraNbiotNprsConfigType</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="NprsCls.set_conf"><a class="viewcode-back" href="../../../../../../../../Source_Bb_Eutra_Downlink_Niot_Nprs.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.Niot.Nprs.NprsCls.set_conf">[docs]</a>	<span class="k">def</span> <span class="nf">set_conf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nprs_para_cfg</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraNbiotNprsConfigType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:NIOT:NPRS:CONF \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.downlink.niot.nprs.set_conf(nprs_para_cfg = enums.EutraNbiotNprsConfigType.PA_A) \n</span>
+<span class="sd">		Defines which type of NPRS is used. \n</span>
+<span class="sd">			:param nprs_para_cfg: PA_A| PA_B| PA_AB</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">nprs_para_cfg</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraNbiotNprsConfigType</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:NIOT:NPRS:CONF </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="NprsCls.get_id"><a class="viewcode-back" href="../../../../../../../../Source_Bb_Eutra_Downlink_Niot_Nprs.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.Niot.Nprs.NprsCls.get_id">[docs]</a>	<span class="k">def</span> <span class="nf">get_id</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:NIOT:NPRS:ID \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.eutra.downlink.niot.nprs.get_id() \n</span>
+<span class="sd">		Sets the NPRS-ID used for the generation of the NPRS. \n</span>
+<span class="sd">			:return: nprs_id: Integer Range: 0 to 4095</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:NIOT:NPRS:ID?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="NprsCls.set_id"><a class="viewcode-back" href="../../../../../../../../Source_Bb_Eutra_Downlink_Niot_Nprs.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.Niot.Nprs.NprsCls.set_id">[docs]</a>	<span class="k">def</span> <span class="nf">set_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nprs_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:NIOT:NPRS:ID \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.downlink.niot.nprs.set_id(nprs_id = 1) \n</span>
+<span class="sd">		Sets the NPRS-ID used for the generation of the NPRS. \n</span>
+<span class="sd">			:param nprs_id: Integer Range: 0 to 4095</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">nprs_id</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:NIOT:NPRS:ID </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="NprsCls.get_period"><a class="viewcode-back" href="../../../../../../../../Source_Bb_Eutra_Downlink_Niot_Nprs.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.Niot.Nprs.NprsCls.get_period">[docs]</a>	<span class="k">def</span> <span class="nf">get_period</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraNbiotNprsConfigbPeriod</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:NIOT:NPRS:PERiod \n</span>
+<span class="sd">		Snippet: value: enums.EutraNbiotNprsConfigbPeriod = driver.source.bb.eutra.downlink.niot.nprs.get_period() \n</span>
+<span class="sd">		For NPRS Part B configuration, sets the NPRS occasion period TNPRS. \n</span>
+<span class="sd">			:return: nprs_period: PD_160| PD_320| PD_640| PD_1280</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:NIOT:NPRS:PERiod?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraNbiotNprsConfigbPeriod</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="NprsCls.set_period"><a class="viewcode-back" href="../../../../../../../../Source_Bb_Eutra_Downlink_Niot_Nprs.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.Niot.Nprs.NprsCls.set_period">[docs]</a>	<span class="k">def</span> <span class="nf">set_period</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nprs_period</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraNbiotNprsConfigbPeriod</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:NIOT:NPRS:PERiod \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.downlink.niot.nprs.set_period(nprs_period = enums.EutraNbiotNprsConfigbPeriod.PD_1280) \n</span>
+<span class="sd">		For NPRS Part B configuration, sets the NPRS occasion period TNPRS. \n</span>
+<span class="sd">			:param nprs_period: PD_160| PD_320| PD_640| PD_1280</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">nprs_period</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraNbiotNprsConfigbPeriod</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:NIOT:NPRS:PERiod </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="NprsCls.get_pow"><a class="viewcode-back" href="../../../../../../../../Source_Bb_Eutra_Downlink_Niot_Nprs.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.Niot.Nprs.NprsCls.get_pow">[docs]</a>	<span class="k">def</span> <span class="nf">get_pow</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:NIOT:NPRS:POW \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.eutra.downlink.niot.nprs.get_pow() \n</span>
+<span class="sd">		Sets the power of the narrowband positioning reference signal (NPRS) . \n</span>
+<span class="sd">			:return: nprs_power: float Range: -80 to 10</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:NIOT:NPRS:POW?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="NprsCls.set_pow"><a class="viewcode-back" href="../../../../../../../../Source_Bb_Eutra_Downlink_Niot_Nprs.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.Niot.Nprs.NprsCls.set_pow">[docs]</a>	<span class="k">def</span> <span class="nf">set_pow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nprs_power</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:NIOT:NPRS:POW \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.downlink.niot.nprs.set_pow(nprs_power = 1.0) \n</span>
+<span class="sd">		Sets the power of the narrowband positioning reference signal (NPRS) . \n</span>
+<span class="sd">			:param nprs_power: float Range: -80 to 10</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">nprs_power</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:NIOT:NPRS:POW </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="NprsCls.get_sein"><a class="viewcode-back" href="../../../../../../../../Source_Bb_Eutra_Downlink_Niot_Nprs.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.Niot.Nprs.NprsCls.get_sein">[docs]</a>	<span class="k">def</span> <span class="nf">get_sein</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:NIOT:NPRS:SEIN \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.eutra.downlink.niot.nprs.get_sein() \n</span>
+<span class="sd">		Specifies the index of the physical ressource block (PRB) containing the NPRS. \n</span>
+<span class="sd">			:return: nprs_seq_info: integer Range: 0 to 174</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:NIOT:NPRS:SEIN?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="NprsCls.set_sein"><a class="viewcode-back" href="../../../../../../../../Source_Bb_Eutra_Downlink_Niot_Nprs.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.Niot.Nprs.NprsCls.set_sein">[docs]</a>	<span class="k">def</span> <span class="nf">set_sein</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nprs_seq_info</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:NIOT:NPRS:SEIN \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.downlink.niot.nprs.set_sein(nprs_seq_info = 1) \n</span>
+<span class="sd">		Specifies the index of the physical ressource block (PRB) containing the NPRS. \n</span>
+<span class="sd">			:param nprs_seq_info: integer Range: 0 to 174</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">nprs_seq_info</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:NIOT:NPRS:SEIN </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="NprsCls.get_sfnm"><a class="viewcode-back" href="../../../../../../../../Source_Bb_Eutra_Downlink_Niot_Nprs.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.Niot.Nprs.NprsCls.get_sfnm">[docs]</a>	<span class="k">def</span> <span class="nf">get_sfnm</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraNbiotNprsConfigbSfnumb</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:NIOT:NPRS:SFNM \n</span>
+<span class="sd">		Snippet: value: enums.EutraNbiotNprsConfigbSfnumb = driver.source.bb.eutra.downlink.niot.nprs.get_sfnm() \n</span>
+<span class="sd">		For NPRS Part B configuration, sets the number of consecutive DL subframes NNPRS within one NPRS positioning occasion. \n</span>
+<span class="sd">			:return: nprs_sf_number: SFNM_10| SFNM_20| SFNM_40| SFNM_80| SFNM_160| SFNM_320| SFNM_640| SFNM_1280</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:NIOT:NPRS:SFNM?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraNbiotNprsConfigbSfnumb</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="NprsCls.set_sfnm"><a class="viewcode-back" href="../../../../../../../../Source_Bb_Eutra_Downlink_Niot_Nprs.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.Niot.Nprs.NprsCls.set_sfnm">[docs]</a>	<span class="k">def</span> <span class="nf">set_sfnm</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nprs_sf_number</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraNbiotNprsConfigbSfnumb</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:NIOT:NPRS:SFNM \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.downlink.niot.nprs.set_sfnm(nprs_sf_number = enums.EutraNbiotNprsConfigbSfnumb.SFNM_10) \n</span>
+<span class="sd">		For NPRS Part B configuration, sets the number of consecutive DL subframes NNPRS within one NPRS positioning occasion. \n</span>
+<span class="sd">			:param nprs_sf_number: SFNM_10| SFNM_20| SFNM_40| SFNM_80| SFNM_160| SFNM_320| SFNM_640| SFNM_1280</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">nprs_sf_number</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraNbiotNprsConfigbSfnumb</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:NIOT:NPRS:SFNM </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="NprsCls.get_state"><a class="viewcode-back" href="../../../../../../../../Source_Bb_Eutra_Downlink_Niot_Nprs.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.Niot.Nprs.NprsCls.get_state">[docs]</a>	<span class="k">def</span> <span class="nf">get_state</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:NIOT:NPRS:STATe \n</span>
+<span class="sd">		Snippet: value: bool = driver.source.bb.eutra.downlink.niot.nprs.get_state() \n</span>
+<span class="sd">		Enables the NPRS transmission. \n</span>
+<span class="sd">			:return: nprs_state: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:NIOT:NPRS:STATe?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_bool</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="NprsCls.set_state"><a class="viewcode-back" href="../../../../../../../../Source_Bb_Eutra_Downlink_Niot_Nprs.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.Niot.Nprs.NprsCls.set_state">[docs]</a>	<span class="k">def</span> <span class="nf">set_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nprs_state</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:NIOT:NPRS:STATe \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.downlink.niot.nprs.set_state(nprs_state = False) \n</span>
+<span class="sd">		Enables the NPRS transmission. \n</span>
+<span class="sd">			:param nprs_state: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">bool_to_str</span><span class="p">(</span><span class="n">nprs_state</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:NIOT:NPRS:STATe </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="NprsCls.get_sts_frame"><a class="viewcode-back" href="../../../../../../../../Source_Bb_Eutra_Downlink_Niot_Nprs.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.Niot.Nprs.NprsCls.get_sts_frame">[docs]</a>	<span class="k">def</span> <span class="nf">get_sts_frame</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraNbiotNprsConfigbStartsf</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:NIOT:NPRS:STSFrame \n</span>
+<span class="sd">		Snippet: value: enums.EutraNbiotNprsConfigbStartsf = driver.source.bb.eutra.downlink.niot.nprs.get_sts_frame() \n</span>
+<span class="sd">		For NPRS Part B configuration, sets the subframe offset alphaNPRS. \n</span>
+<span class="sd">			:return: nprs_start_sf: STSF0_8| STSF1_8| STSF2_8| STSF3_8| STSF4_8| STSF5_8| STSF6_8| STSF7_8</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:NIOT:NPRS:STSFrame?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraNbiotNprsConfigbStartsf</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="NprsCls.set_sts_frame"><a class="viewcode-back" href="../../../../../../../../Source_Bb_Eutra_Downlink_Niot_Nprs.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.Niot.Nprs.NprsCls.set_sts_frame">[docs]</a>	<span class="k">def</span> <span class="nf">set_sts_frame</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nprs_start_sf</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraNbiotNprsConfigbStartsf</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:NIOT:NPRS:STSFrame \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.downlink.niot.nprs.set_sts_frame(nprs_start_sf = enums.EutraNbiotNprsConfigbStartsf.STSF0_8) \n</span>
+<span class="sd">		For NPRS Part B configuration, sets the subframe offset alphaNPRS. \n</span>
+<span class="sd">			:param nprs_start_sf: STSF0_8| STSF1_8| STSF2_8| STSF3_8| STSF4_8| STSF5_8| STSF6_8| STSF7_8</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">nprs_start_sf</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraNbiotNprsConfigbStartsf</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:NIOT:NPRS:STSFrame </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;NprsCls&#39;</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Clones the group by creating new object from it and its whole existing subgroups</span>
+<span class="sd">		Also copies all the existing default Repeated Capabilities setting,</span>
+<span class="sd">		which you can change independently without affecting the original group&quot;&quot;&quot;</span>
+		<span class="n">new_group</span> <span class="o">=</span> <span class="n">NprsCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">synchronize_repcaps</span><span class="p">(</span><span class="n">new_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">new_group</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

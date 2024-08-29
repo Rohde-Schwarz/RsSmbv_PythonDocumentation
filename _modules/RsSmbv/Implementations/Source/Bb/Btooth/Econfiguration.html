@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RsSmbv.Implementations.Source.Bb.Btooth.Econfiguration &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../../../" id="documentation_options" src="../../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../../_static/jquery.js"></script>
+        <script src="../../../../../../_static/underscore.js"></script>
+        <script src="../../../../../../_static/doctools.js"></script>
+        <script src="../../../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../../../_static/copybutton.js"></script>
+    <script src="../../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../../../index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../RsSmbv.html">RsSmbv API Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../../../index.html">Module code</a> &raquo;</li>
+          <li><a href="../../../Source.html">RsSmbv.Implementations.Source</a> &raquo;</li>
+          <li><a href="../../Bb.html">RsSmbv.Implementations.Source.Bb</a> &raquo;</li>
+          <li><a href="../Btooth.html">RsSmbv.Implementations.Source.Bb.Btooth</a> &raquo;</li>
+      <li>RsSmbv.Implementations.Source.Bb.Btooth.Econfiguration</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for RsSmbv.Implementations.Source.Bb.Btooth.Econfiguration</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">......Internal.Core</span> <span class="kn">import</span> <span class="n">Core</span>
+<span class="kn">from</span> <span class="nn">......Internal.CommandsGroup</span> <span class="kn">import</span> <span class="n">CommandsGroup</span>
+<span class="kn">from</span> <span class="nn">......Internal</span> <span class="kn">import</span> <span class="n">Conversions</span>
+<span class="kn">from</span> <span class="nn">......Internal.Utilities</span> <span class="kn">import</span> <span class="n">trim_str_response</span>
+<span class="kn">from</span> <span class="nn">......</span> <span class="kn">import</span> <span class="n">enums</span>
+
+
+<span class="c1"># noinspection PyPep8Naming,PyAttributeOutsideInit,SpellCheckingInspection</span>
+<div class="viewcode-block" id="EconfigurationCls"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Econfiguration.html#RsSmbv.Implementations.Source.Bb.Btooth.Econfiguration.EconfigurationCls">[docs]</a><span class="k">class</span> <span class="nc">EconfigurationCls</span><span class="p">:</span>
+	<span class="sd">&quot;&quot;&quot;Econfiguration commands group definition. 139 total commands, 4 Subgroups, 11 group commands&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">core</span><span class="p">:</span> <span class="n">Core</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span> <span class="o">=</span> <span class="n">core</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span> <span class="o">=</span> <span class="n">CommandsGroup</span><span class="p">(</span><span class="s2">&quot;econfiguration&quot;</span><span class="p">,</span> <span class="n">core</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">actable</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;actable commands group. 2 Sub-classes, 0 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_actable&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Actable</span> <span class="kn">import</span> <span class="n">ActableCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_actable</span> <span class="o">=</span> <span class="n">ActableCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_actable</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">dcTable</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;dcTable commands group. 2 Sub-classes, 0 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_dcTable&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.DcTable</span> <span class="kn">import</span> <span class="n">DcTableCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_dcTable</span> <span class="o">=</span> <span class="n">DcTableCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dcTable</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">ltKey</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;ltKey commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_ltKey&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.LtKey</span> <span class="kn">import</span> <span class="n">LtKeyCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_ltKey</span> <span class="o">=</span> <span class="n">LtKeyCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ltKey</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">pconfiguration</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;pconfiguration commands group. 46 Sub-classes, 53 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_pconfiguration&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Pconfiguration</span> <span class="kn">import</span> <span class="n">PconfigurationCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_pconfiguration</span> <span class="o">=</span> <span class="n">PconfigurationCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pconfiguration</span>
+
+<div class="viewcode-block" id="EconfigurationCls.get_ad_interval"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Econfiguration.html#RsSmbv.Implementations.Source.Bb.Btooth.Econfiguration.EconfigurationCls.get_ad_interval">[docs]</a>	<span class="k">def</span> <span class="nf">get_ad_interval</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:ECONfiguration:ADINterval \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.btooth.econfiguration.get_ad_interval() \n</span>
+<span class="sd">		Sets the time interval between two consecutive advertising events for packet type &#39;ADV_DIRECT_IND&#39; and duty cycle high.</span>
+<span class="sd">		Command sets the values in ms. Query returns values in s. \n</span>
+<span class="sd">			:return: ad_interval: float Range: 1.05E-3 s to 3.75E-3 s , Unit: ms</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:ECONfiguration:ADINterval?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="EconfigurationCls.set_ad_interval"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Econfiguration.html#RsSmbv.Implementations.Source.Bb.Btooth.Econfiguration.EconfigurationCls.set_ad_interval">[docs]</a>	<span class="k">def</span> <span class="nf">set_ad_interval</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ad_interval</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:ECONfiguration:ADINterval \n</span>
+<span class="sd">		Snippet: driver.source.bb.btooth.econfiguration.set_ad_interval(ad_interval = 1.0) \n</span>
+<span class="sd">		Sets the time interval between two consecutive advertising events for packet type &#39;ADV_DIRECT_IND&#39; and duty cycle high.</span>
+<span class="sd">		Command sets the values in ms. Query returns values in s. \n</span>
+<span class="sd">			:param ad_interval: float Range: 1.05E-3 s to 3.75E-3 s , Unit: ms</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">ad_interval</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:ECONfiguration:ADINterval </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="EconfigurationCls.get_ae_delay"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Econfiguration.html#RsSmbv.Implementations.Source.Bb.Btooth.Econfiguration.EconfigurationCls.get_ae_delay">[docs]</a>	<span class="k">def</span> <span class="nf">get_ae_delay</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:ECONfiguration:AEDelay \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.btooth.econfiguration.get_ae_delay() \n</span>
+<span class="sd">		Sets a time delay between the start times of two consecutive advertising events. The value is added to the advertising</span>
+<span class="sd">		event interval. Command sets the values in ms. Query returns values in s. \n</span>
+<span class="sd">			:return: ae_delay: float Range: 0 s to 10E-3 s , Unit: ms</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:ECONfiguration:AEDelay?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="EconfigurationCls.set_ae_delay"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Econfiguration.html#RsSmbv.Implementations.Source.Bb.Btooth.Econfiguration.EconfigurationCls.set_ae_delay">[docs]</a>	<span class="k">def</span> <span class="nf">set_ae_delay</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ae_delay</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:ECONfiguration:AEDelay \n</span>
+<span class="sd">		Snippet: driver.source.bb.btooth.econfiguration.set_ae_delay(ae_delay = 1.0) \n</span>
+<span class="sd">		Sets a time delay between the start times of two consecutive advertising events. The value is added to the advertising</span>
+<span class="sd">		event interval. Command sets the values in ms. Query returns values in s. \n</span>
+<span class="sd">			:param ae_delay: float Range: 0 s to 10E-3 s , Unit: ms</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">ae_delay</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:ECONfiguration:AEDelay </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="EconfigurationCls.get_ae_interval"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Econfiguration.html#RsSmbv.Implementations.Source.Bb.Btooth.Econfiguration.EconfigurationCls.get_ae_interval">[docs]</a>	<span class="k">def</span> <span class="nf">get_ae_interval</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:ECONfiguration:AEINterval \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.btooth.econfiguration.get_ae_interval() \n</span>
+<span class="sd">		Sets the time interval between two consecutive advertising events, with regard to the starting points. Command sets the</span>
+<span class="sd">		values in ms. Query returns values in s. \n</span>
+<span class="sd">			:return: ae_interval: float Range: 5E-3 s to depends on oversampling , Unit: ms</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:ECONfiguration:AEINterval?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="EconfigurationCls.set_ae_interval"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Econfiguration.html#RsSmbv.Implementations.Source.Bb.Btooth.Econfiguration.EconfigurationCls.set_ae_interval">[docs]</a>	<span class="k">def</span> <span class="nf">set_ae_interval</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ae_interval</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:ECONfiguration:AEINterval \n</span>
+<span class="sd">		Snippet: driver.source.bb.btooth.econfiguration.set_ae_interval(ae_interval = 1.0) \n</span>
+<span class="sd">		Sets the time interval between two consecutive advertising events, with regard to the starting points. Command sets the</span>
+<span class="sd">		values in ms. Query returns values in s. \n</span>
+<span class="sd">			:param ae_interval: float Range: 5E-3 s to depends on oversampling , Unit: ms</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">ae_interval</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:ECONfiguration:AEINterval </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="EconfigurationCls.get_ap_interval"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Econfiguration.html#RsSmbv.Implementations.Source.Bb.Btooth.Econfiguration.EconfigurationCls.get_ap_interval">[docs]</a>	<span class="k">def</span> <span class="nf">get_ap_interval</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:ECONfiguration:APINterval \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.btooth.econfiguration.get_ap_interval() \n</span>
+<span class="sd">		Sets the time interval between packets starting points of two consecutive packets in the advertising channel. \n</span>
+<span class="sd">			:return: ap_interval: float Range: 1.3E-3 to 28E-3, Unit: ms</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:ECONfiguration:APINterval?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="EconfigurationCls.set_ap_interval"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Econfiguration.html#RsSmbv.Implementations.Source.Bb.Btooth.Econfiguration.EconfigurationCls.set_ap_interval">[docs]</a>	<span class="k">def</span> <span class="nf">set_ap_interval</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ap_interval</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:ECONfiguration:APINterval \n</span>
+<span class="sd">		Snippet: driver.source.bb.btooth.econfiguration.set_ap_interval(ap_interval = 1.0) \n</span>
+<span class="sd">		Sets the time interval between packets starting points of two consecutive packets in the advertising channel. \n</span>
+<span class="sd">			:param ap_interval: float Range: 1.3E-3 to 28E-3, Unit: ms</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">ap_interval</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:ECONfiguration:APINterval </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="EconfigurationCls.get_lc_mode"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Econfiguration.html#RsSmbv.Implementations.Source.Bb.Btooth.Econfiguration.EconfigurationCls.get_lc_mode">[docs]</a>	<span class="k">def</span> <span class="nf">get_lc_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoLlCnctMod</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:ECONfiguration:LCMode \n</span>
+<span class="sd">		Snippet: value: enums.BtoLlCnctMod = driver.source.bb.btooth.econfiguration.get_lc_mode() \n</span>
+<span class="sd">		Selects the link layer connection mode. In order to provide safe transmission of payload data, the data in the packet can</span>
+<span class="sd">		be encrypted. If activated, the payload data follows MIC (Message authentication Code) . \n</span>
+<span class="sd">			:return: lc_mode: UENC| ENC UENC Payload data is transmitted without encoding. ENC The link layer connection runs in encrypted mode.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:ECONfiguration:LCMode?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoLlCnctMod</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="EconfigurationCls.set_lc_mode"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Econfiguration.html#RsSmbv.Implementations.Source.Bb.Btooth.Econfiguration.EconfigurationCls.set_lc_mode">[docs]</a>	<span class="k">def</span> <span class="nf">set_lc_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lc_mode</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoLlCnctMod</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:ECONfiguration:LCMode \n</span>
+<span class="sd">		Snippet: driver.source.bb.btooth.econfiguration.set_lc_mode(lc_mode = enums.BtoLlCnctMod.ENC) \n</span>
+<span class="sd">		Selects the link layer connection mode. In order to provide safe transmission of payload data, the data in the packet can</span>
+<span class="sd">		be encrypted. If activated, the payload data follows MIC (Message authentication Code) . \n</span>
+<span class="sd">			:param lc_mode: UENC| ENC UENC Payload data is transmitted without encoding. ENC The link layer connection runs in encrypted mode.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">lc_mode</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoLlCnctMod</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:ECONfiguration:LCMode </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="EconfigurationCls.get_pnumber"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Econfiguration.html#RsSmbv.Implementations.Source.Bb.Btooth.Econfiguration.EconfigurationCls.get_pnumber">[docs]</a>	<span class="k">def</span> <span class="nf">get_pnumber</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:ECONfiguration:PNUMber \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.btooth.econfiguration.get_pnumber() \n</span>
+<span class="sd">		Sets the number of Tx packets per event. Each connection contains at least one data channel packet. The maximum number of</span>
+<span class="sd">		packets per event is determined by the duration of the connection event interval. \n</span>
+<span class="sd">			:return: pnumber: integer Range: 1 to depends on connection event interval</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:ECONfiguration:PNUMber?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="EconfigurationCls.set_pnumber"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Econfiguration.html#RsSmbv.Implementations.Source.Bb.Btooth.Econfiguration.EconfigurationCls.set_pnumber">[docs]</a>	<span class="k">def</span> <span class="nf">set_pnumber</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pnumber</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:ECONfiguration:PNUMber \n</span>
+<span class="sd">		Snippet: driver.source.bb.btooth.econfiguration.set_pnumber(pnumber = 1) \n</span>
+<span class="sd">		Sets the number of Tx packets per event. Each connection contains at least one data channel packet. The maximum number of</span>
+<span class="sd">		packets per event is determined by the duration of the connection event interval. \n</span>
+<span class="sd">			:param pnumber: integer Range: 1 to depends on connection event interval</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">pnumber</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:ECONfiguration:PNUMber </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="EconfigurationCls.get_sdci"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Econfiguration.html#RsSmbv.Implementations.Source.Bb.Btooth.Econfiguration.EconfigurationCls.get_sdci">[docs]</a>	<span class="k">def</span> <span class="nf">get_sdci</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:ECONfiguration:SDCI \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.btooth.econfiguration.get_sdci() \n</span>
+<span class="sd">		Queries the number of the first active data channel. \n</span>
+<span class="sd">			:return: selected_channel: integer Range: 0 to 36</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:ECONfiguration:SDCI?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="EconfigurationCls.get_sinterval"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Econfiguration.html#RsSmbv.Implementations.Source.Bb.Btooth.Econfiguration.EconfigurationCls.get_sinterval">[docs]</a>	<span class="k">def</span> <span class="nf">get_sinterval</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:ECONfiguration:SINTerval \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.btooth.econfiguration.get_sinterval() \n</span>
+<span class="sd">		Sets the time interval between the starting points of two consecutive windows during which the scanner is operating in an</span>
+<span class="sd">		advertising channel. Command sets the values in ms. Query returns values in s. \n</span>
+<span class="sd">			:return: sinterval: float Range: 10E-3 s to depends on oversampling and the number of advertsing channel table states , Unit: ms</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:ECONfiguration:SINTerval?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="EconfigurationCls.set_sinterval"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Econfiguration.html#RsSmbv.Implementations.Source.Bb.Btooth.Econfiguration.EconfigurationCls.set_sinterval">[docs]</a>	<span class="k">def</span> <span class="nf">set_sinterval</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sinterval</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:ECONfiguration:SINTerval \n</span>
+<span class="sd">		Snippet: driver.source.bb.btooth.econfiguration.set_sinterval(sinterval = 1.0) \n</span>
+<span class="sd">		Sets the time interval between the starting points of two consecutive windows during which the scanner is operating in an</span>
+<span class="sd">		advertising channel. Command sets the values in ms. Query returns values in s. \n</span>
+<span class="sd">			:param sinterval: float Range: 10E-3 s to depends on oversampling and the number of advertsing channel table states , Unit: ms</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">sinterval</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:ECONfiguration:SINTerval </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="EconfigurationCls.get_swindow"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Econfiguration.html#RsSmbv.Implementations.Source.Bb.Btooth.Econfiguration.EconfigurationCls.get_swindow">[docs]</a>	<span class="k">def</span> <span class="nf">get_swindow</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:ECONfiguration:SWINdow \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.btooth.econfiguration.get_swindow() \n</span>
+<span class="sd">		Sets the length of the window during which the scanner is operating in the advertising channel. Note that the scan window</span>
+<span class="sd">		is less or equal to the value of the scan interval. Command sets the values in ms. Query returns values in s. \n</span>
+<span class="sd">			:return: swindow: float Range: 10E-3 s to 10240E-3 s , Unit: ms</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:ECONfiguration:SWINdow?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="EconfigurationCls.set_swindow"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Econfiguration.html#RsSmbv.Implementations.Source.Bb.Btooth.Econfiguration.EconfigurationCls.set_swindow">[docs]</a>	<span class="k">def</span> <span class="nf">set_swindow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">swindow</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:ECONfiguration:SWINdow \n</span>
+<span class="sd">		Snippet: driver.source.bb.btooth.econfiguration.set_swindow(swindow = 1.0) \n</span>
+<span class="sd">		Sets the length of the window during which the scanner is operating in the advertising channel. Note that the scan window</span>
+<span class="sd">		is less or equal to the value of the scan interval. Command sets the values in ms. Query returns values in s. \n</span>
+<span class="sd">			:param swindow: float Range: 10E-3 s to 10240E-3 s , Unit: ms</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">swindow</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:ECONfiguration:SWINdow </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="EconfigurationCls.get_wo_info"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Econfiguration.html#RsSmbv.Implementations.Source.Bb.Btooth.Econfiguration.EconfigurationCls.get_wo_info">[docs]</a>	<span class="k">def</span> <span class="nf">get_wo_info</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:ECONfiguration:WOINfo \n</span>
+<span class="sd">		Snippet: value: str = driver.source.bb.btooth.econfiguration.get_wo_info() \n</span>
+<span class="sd">		Requires data event and advertising frame configuration with the packet type CONNECT_IND. Queries the start point of the</span>
+<span class="sd">		transmit window. \n</span>
+<span class="sd">			:return: wo_info: string</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:ECONfiguration:WOINfo?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">trim_str_response</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="EconfigurationCls.get_ws_info"><a class="viewcode-back" href="../../../../../../Source_Bb_Btooth_Econfiguration.html#RsSmbv.Implementations.Source.Bb.Btooth.Econfiguration.EconfigurationCls.get_ws_info">[docs]</a>	<span class="k">def</span> <span class="nf">get_ws_info</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:ECONfiguration:WSINfo \n</span>
+<span class="sd">		Snippet: value: str = driver.source.bb.btooth.econfiguration.get_ws_info() \n</span>
+<span class="sd">		Requires data event and advertising frame configuration with the packet type CONNECT_IND. Queries the size of the</span>
+<span class="sd">		transmit window, regarding to the start point. \n</span>
+<span class="sd">			:return: ws_info: string</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:BTOoth:ECONfiguration:WSINfo?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">trim_str_response</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+	<span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;EconfigurationCls&#39;</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Clones the group by creating new object from it and its whole existing subgroups</span>
+<span class="sd">		Also copies all the existing default Repeated Capabilities setting,</span>
+<span class="sd">		which you can change independently without affecting the original group&quot;&quot;&quot;</span>
+		<span class="n">new_group</span> <span class="o">=</span> <span class="n">EconfigurationCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">synchronize_repcaps</span><span class="p">(</span><span class="n">new_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">new_group</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

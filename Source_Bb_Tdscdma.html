@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tdscdma &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Clipping" href="Source_Bb_Tdscdma_Clipping.html" />
+    <link rel="prev" title="Arbitrary" href="Source_Bb_Progress_Mcoder_Arbitrary.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="RsSmbv.html">RsSmbv API Structure</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Bert.html">Bert</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Bler.html">Bler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Calibration.html">Calibration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clock.html">Clock</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Connector.html">Connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Device.html">Device</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Diagnostic.html">Diagnostic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Display.html">Display</a></li>
+<li class="toctree-l2"><a class="reference internal" href="FormatPy.html">FormatPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Fpanel.html">Fpanel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HardCopy.html">HardCopy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Initiate.html">Initiate&lt;Channel&gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Kboard.html">Kboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MassMemory.html">MassMemory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Memory.html">Memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Output.html">Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Read.html">Read&lt;Channel&gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Sconfiguration.html">Sconfiguration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Sense.html">Sense&lt;Channel&gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slist.html">Slist</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="Source.html">Source</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="Source_Adf.html">Adf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Am.html">Am&lt;GeneratorIx&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_AreGenerator.html">AreGenerator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Awgn.html">Awgn</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="Source_Bb.html">Bb</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Arbitrary.html">Arbitrary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Btooth.html">Btooth</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_C2K.html">C2K</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Coder.html">Coder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Dab.html">Dab</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Dme.html">Dme</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra.html">Eutra</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Evdo.html">Evdo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Gbas.html">Gbas</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Gnpr.html">Gnpr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Gnss.html">Gnss</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Graphics.html">Graphics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Gsm.html">Gsm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Huwb.html">Huwb</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Ils.html">Ils</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Impairment.html">Impairment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Info.html">Info</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Lora.html">Lora</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Mccw.html">Mccw</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nfc.html">Nfc</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G.html">Nr5G</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Ofdm.html">Ofdm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Path.html">Path</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Power.html">Power</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Pramp.html">Pramp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Progress.html">Progress</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Tdscdma</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Clipping.html">Clipping</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Clock.html">Clock</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Copy.html">Copy</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Crate.html">Crate</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Down.html">Down</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_FilterPy.html">FilterPy</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Power.html">Power</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Pramp.html">Pramp</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Setting.html">Setting</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Trigger.html">Trigger</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Up.html">Up</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Waveform.html">Waveform</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Trigger.html">Trigger</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Vor.html">Vor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_W3Gpp.html">W3Gpp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Wlnn.html">Wlnn</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bbin.html">Bbin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Combined.html">Combined</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Correction.html">Correction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Dme.html">Dme</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Efrontend.html">Efrontend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Fm.html">Fm&lt;GeneratorIx&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_FreqSweep.html">FreqSweep</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Frequency.html">Frequency</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Ils.html">Ils</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_InputPy.html">InputPy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Iq.html">Iq</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_LffSweep.html">LffSweep</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_LfOutput.html">LfOutput&lt;LfOutput&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_ListPy.html">ListPy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Mbeacon.html">Mbeacon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Modulation.html">Modulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Noise.html">Noise</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Occupy.html">Occupy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Path.html">Path</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Pgenerator.html">Pgenerator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Phase.html">Phase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Pm.html">Pm&lt;GeneratorIx&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Power.html">Power</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Psweep.html">Psweep</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Pulm.html">Pulm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Roscillator.html">Roscillator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Sweep.html">Sweep</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_ValRf.html">ValRf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Vor.html">Vor</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Status.html">Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Sweep.html">Sweep</a></li>
+<li class="toctree-l2"><a class="reference internal" href="System.html">System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Test.html">Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Trigger.html">Trigger&lt;InputIx&gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Unit.html">Unit</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="RsSmbv.html">RsSmbv API Structure</a> &raquo;</li>
+          <li><a href="Source.html">Source</a> &raquo;</li>
+          <li><a href="Source_Bb.html">Bb</a> &raquo;</li>
+      <li>Tdscdma</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Source_Bb_Tdscdma.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="tdscdma">
+<h1>Tdscdma<a class="headerlink" href="#tdscdma" title="Permalink to this headline"></a></h1>
+<p class="rubric">SCPI Commands :</p>
+<div class="highlight-python notranslate" id="index-0"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">BB</span><span class="p">:</span><span class="n">TDSCdma</span><span class="p">:</span><span class="n">LINK</span>
+<span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">BB</span><span class="p">:</span><span class="n">TDSCdma</span><span class="p">:</span><span class="n">PRESet</span>
+<span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">BB</span><span class="p">:</span><span class="n">TDSCdma</span><span class="p">:</span><span class="n">RESet</span>
+<span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">BB</span><span class="p">:</span><span class="n">TDSCdma</span><span class="p">:</span><span class="n">SLENgth</span>
+<span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">BB</span><span class="p">:</span><span class="n">TDSCdma</span><span class="p">:</span><span class="n">STATe</span>
+<span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">BB</span><span class="p">:</span><span class="n">TDSCdma</span><span class="p">:</span><span class="n">VERSion</span>
+</pre></div>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TdscdmaCls</span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Tdscdma.html#TdscdmaCls"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Tdscdma commands group definition. 358 total commands, 12 Subgroups, 6 group commands</p>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_link</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">RsSmbv.enums.LinkDir</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Tdscdma.html#TdscdmaCls.get_link"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:TDSCdma:LINK</span>
+<span class="n">value</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">LinkDir</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">tdscdma</span><span class="o">.</span><span class="n">get_link</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Defines the transmission direction.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>link: FORWard| DOWN | REVerse| UP</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_slength</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Tdscdma.html#TdscdmaCls.get_slength"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:TDSCdma:SLENgth</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">tdscdma</span><span class="o">.</span><span class="n">get_slength</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Sets the sequence length of the arbitrary waveform component of the TD-SCDMA signal in the number of frames.
+This component is calculated in advance and output in the arbitrary waveform generator. It is added to the realtime
+signal components.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>slength: integer Range: 1 to 5000</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_state</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Tdscdma.html#TdscdmaCls.get_state"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:TDSCdma:STATe</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">tdscdma</span><span class="o">.</span><span class="n">get_state</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Activates the standard and deactivates all the other digital standards and digital modulation modes in the same path.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>state: 1| ON| 0| OFF</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_version</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Tdscdma.html#TdscdmaCls.get_version"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:TDSCdma:VERSion</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">tdscdma</span><span class="o">.</span><span class="n">get_version</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Queries the version of the TD-SCDMA standard underlying the definitions.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>version: string</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">preset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Tdscdma.html#TdscdmaCls.preset"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:TDSCdma:PRESet</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">tdscdma</span><span class="o">.</span><span class="n">preset</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Sets the parameters of the digital standard to their default values (<a href="#id1"><span class="problematic" id="id2">*</span></a>RST values specified for the commands) .
+Not affected is the state set with the command SOURce&lt;hw&gt;:BB:TDSCdma:STATe.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">preset_with_opc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">opc_timeout_ms</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Tdscdma.html#TdscdmaCls.preset_with_opc"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:TDSCdma:PRESet</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">tdscdma</span><span class="o">.</span><span class="n">preset_with_opc</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Sets the parameters of the digital standard to their default values (<a href="#id3"><span class="problematic" id="id4">*</span></a>RST values specified for the commands) .
+Not affected is the state set with the command SOURce&lt;hw&gt;:BB:TDSCdma:STATe.</p>
+<p>Same as preset, but waits for the operation to complete before continuing further. Use the RsSmbv.utilities.opc_timeout_set() to set the timeout value.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param opc_timeout_ms</dt>
+<dd class="field-odd"><p>Maximum time to wait in milliseconds, valid only for this call.</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Tdscdma.html#TdscdmaCls.reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:TDSCdma:RESet</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">tdscdma</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Resets all cells to the predefined settings. The reset applies to the selected link direction.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">reset_with_opc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">opc_timeout_ms</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Tdscdma.html#TdscdmaCls.reset_with_opc"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:TDSCdma:RESet</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">tdscdma</span><span class="o">.</span><span class="n">reset_with_opc</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Resets all cells to the predefined settings. The reset applies to the selected link direction.</p>
+<p>Same as reset, but waits for the operation to complete before continuing further. Use the RsSmbv.utilities.opc_timeout_set() to set the timeout value.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param opc_timeout_ms</dt>
+<dd class="field-odd"><p>Maximum time to wait in milliseconds, valid only for this call.</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_link</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">link</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">RsSmbv.enums.LinkDir</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Tdscdma.html#TdscdmaCls.set_link"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:TDSCdma:LINK</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">tdscdma</span><span class="o">.</span><span class="n">set_link</span><span class="p">(</span><span class="n">link</span> <span class="o">=</span> <span class="n">enums</span><span class="o">.</span><span class="n">LinkDir</span><span class="o">.</span><span class="n">DOWN</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Defines the transmission direction.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param link</dt>
+<dd class="field-odd"><p>FORWard| DOWN | REVerse| UP</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_slength</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">slength</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Tdscdma.html#TdscdmaCls.set_slength"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:TDSCdma:SLENgth</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">tdscdma</span><span class="o">.</span><span class="n">set_slength</span><span class="p">(</span><span class="n">slength</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Sets the sequence length of the arbitrary waveform component of the TD-SCDMA signal in the number of frames.
+This component is calculated in advance and output in the arbitrary waveform generator. It is added to the realtime
+signal components.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param slength</dt>
+<dd class="field-odd"><p>integer Range: 1 to 5000</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Tdscdma.html#TdscdmaCls.set_state"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:TDSCdma:STATe</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">tdscdma</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="n">state</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Activates the standard and deactivates all the other digital standards and digital modulation modes in the same path.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param state</dt>
+<dd class="field-odd"><p>1| ON| 0| OFF</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+</dd></dl>
+
+<p class="rubric">Cloning the Group</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a clone of the original group, that exists independently</span>
+<span class="n">group2</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">tdscdma</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+</pre></div>
+</div>
+<p class="rubric">Subgroups</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Tdscdma_Clipping.html">Clipping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Tdscdma_Clock.html">Clock</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Tdscdma_Copy.html">Copy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Tdscdma_Copy_Execute.html">Execute</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Tdscdma_Crate.html">Crate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Tdscdma_Down.html">Down</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell.html">Cell&lt;Cell&gt;</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Dwpts.html">Dwpts</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Dwpts_Mode.html">Mode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Dwpts_Power.html">Power</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Dwpts_State.html">State</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh.html">Enh</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Bch.html">Bch</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Bch_BpFrame.html">BpFrame</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Bch_Dtch.html">Dtch&lt;Channel&gt;</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Bch_Dtch_CrcSize.html">CrcSize</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Bch_Dtch_Data.html">Data</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Bch_Dtch_Eprotection.html">Eprotection</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Bch_Dtch_Ione.html">Ione</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Bch_Dtch_Itwo.html">Itwo</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Bch_Dtch_RmAttribute.html">RmAttribute</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Bch_Dtch_State.html">State</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Bch_Dtch_TbCount.html">TbCount</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Bch_Dtch_TbSize.html">TbSize</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Bch_Dtch_TtInterval.html">TtInterval</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Bch_ScsMode.html">ScsMode</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Bch_Sformat.html">Sformat</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Bch_SlotState.html">SlotState&lt;SlotNull&gt;</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Bch_State.html">State</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Bch_TypePy.html">TypePy</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch.html">Dch</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Bit.html">Bit</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Bit_Layer.html">Layer</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Bit_Rate.html">Rate</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Bit_State.html">State</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Block.html">Block</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Block_Rate.html">Rate</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Block_State.html">State</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_BpFrame.html">BpFrame</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Ccount.html">Ccount</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Dcch.html">Dcch</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Dcch_CrcSize.html">CrcSize</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Dcch_Data.html">Data</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Dcch_Eprotection.html">Eprotection</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Dcch_Ione.html">Ione</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Dcch_Itwo.html">Itwo</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Dcch_RmAttribute.html">RmAttribute</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Dcch_State.html">State</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Dcch_TbCount.html">TbCount</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Dcch_TbSize.html">TbSize</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Dcch_TtInterval.html">TtInterval</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Dtch.html">Dtch&lt;Channel&gt;</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Dtch_CrcSize.html">CrcSize</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Dtch_Data.html">Data</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Dtch_Eprotection.html">Eprotection</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Dtch_Ione.html">Ione</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Dtch_Itwo.html">Itwo</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Dtch_RmAttribute.html">RmAttribute</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Dtch_State.html">State</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Dtch_TbCount.html">TbCount</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Dtch_TbSize.html">TbSize</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Dtch_TtInterval.html">TtInterval</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Hsch.html">Hsch</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Hsch_Cvpb.html">Cvpb</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Hsch_Prsr.html">Prsr</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Hsch_Psbs.html">Psbs</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Hsch_RvParameter.html">RvParameter</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Hsdpa.html">Hsdpa</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Hsdpa_Bpayload.html">Bpayload</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Hsdpa_Crate.html">Crate</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Hsdpa_CtsCount.html">CtsCount</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Hsdpa_Data.html">Data</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Hsdpa_Harq.html">Harq</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Hsdpa_Mibt.html">Mibt</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Hsdpa_Modulation.html">Modulation</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Hsdpa_NcbTti.html">NcbTti</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Hsdpa_Rmc.html">Rmc</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Hsdpa_RvParameter.html">RvParameter</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Hsdpa_RvSequence.html">RvSequence</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Hsdpa_Scch.html">Scch</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Hsdpa_Sformat.html">Sformat</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Hsdpa_Spattern.html">Spattern</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Hsdpa_Tbs.html">Tbs</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Hsdpa_TsCount.html">TsCount</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Hsdpa_TtiDistance.html">TtiDistance</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Hsdpa_TtInterval.html">TtInterval</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Hsdpa_UeCategory.html">UeCategory</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Hsdpa_UeId.html">UeId</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Hsdpa_VibSize.html">VibSize</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Hsupa.html">Hsupa</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Hsupa_Bpayload.html">Bpayload</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Hsupa_Crate.html">Crate</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Hsupa_CtsCount.html">CtsCount</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Hsupa_Data.html">Data</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Hsupa_Harq.html">Harq</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Hsupa_Mibt.html">Mibt</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Hsupa_Modulation.html">Modulation</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Hsupa_NcbTti.html">NcbTti</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Hsupa_RvParameter.html">RvParameter</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Hsupa_RvSequence.html">RvSequence</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Hsupa_Sformat.html">Sformat</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Hsupa_Tbs.html">Tbs</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Hsupa_TsCount.html">TsCount</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Hsupa_TtInterval.html">TtInterval</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Hsupa_UeCategory.html">UeCategory</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Plcch.html">Plcch</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Plcch_SsPattern.html">SsPattern</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Plcch_TpcPattern.html">TpcPattern</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Plcch_TtInterval.html">TtInterval</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_RupLayer.html">RupLayer</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_ScsMode.html">ScsMode</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_Sformat.html">Sformat</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_SlotState.html">SlotState&lt;Slot&gt;</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_State.html">State</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_TsCount.html">TsCount</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Enh_Dch_TypePy.html">TypePy</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Mcode.html">Mcode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Protation.html">Protation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Scode.html">Scode</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Scode_State.html">State</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_SdCode.html">SdCode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Slot.html">Slot&lt;SlotNull&gt;</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Slot_Channel.html">Channel&lt;ChannelNull&gt;</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Slot_Channel_Data.html">Data</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Slot_Channel_Data_Dselect.html">Dselect</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Slot_Channel_Data_Pattern.html">Pattern</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Slot_Channel_Dpcch.html">Dpcch</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Slot_Channel_Dpcch_Sync.html">Sync</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Slot_Channel_Dpcch_Tfci.html">Tfci</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Slot_Channel_Dpcch_Tpc.html">Tpc</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Slot_Channel_Enhanced.html">Enhanced</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Slot_Channel_Mshift.html">Mshift</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Slot_Channel_Power.html">Power</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Slot_Channel_Scode.html">Scode</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Slot_Channel_Sfactor.html">Sfactor</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Slot_Channel_Sformat.html">Sformat</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Slot_Channel_State.html">State</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Slot_Channel_TypePy.html">TypePy</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Slot_Channel_User.html">User</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Slot_Dconflict.html">Dconflict</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Slot_State.html">State</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Spoint.html">Spoint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_State.html">State</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_SuCode.html">SuCode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Tdelay.html">Tdelay</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Cell_Users.html">Users</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Pparameter.html">Pparameter</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Pparameter_Dpch.html">Dpch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Pparameter_Execute.html">Execute</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Tdscdma_Down_Pparameter_Pccpch.html">Pccpch</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Tdscdma_FilterPy.html">FilterPy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Tdscdma_FilterPy_Ilength.html">Ilength</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Tdscdma_FilterPy_Osampling.html">Osampling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Tdscdma_FilterPy_Parameter.html">Parameter</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Tdscdma_Power.html">Power</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Tdscdma_Power_Adjust.html">Adjust</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Tdscdma_Pramp.html">Pramp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Tdscdma_Setting.html">Setting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Tdscdma_Setting_Tmodel.html">Tmodel</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Tdscdma_Trigger.html">Trigger</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Tdscdma_Trigger_Arm.html">Arm</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Tdscdma_Trigger_Arm_Execute.html">Execute</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Tdscdma_Trigger_Execute.html">Execute</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Tdscdma_Trigger_External.html">External</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Tdscdma_Trigger_External_Synchronize.html">Synchronize</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Tdscdma_Trigger_Output.html">Output&lt;Output&gt;</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Tdscdma_Trigger_Output_Delay.html">Delay</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Tdscdma_Trigger_Output_Mode.html">Mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Tdscdma_Trigger_Output_OffTime.html">OffTime</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Tdscdma_Trigger_Output_Ontime.html">Ontime</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Tdscdma_Trigger_Output_Period.html">Period</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Tdscdma_Trigger_Time.html">Time</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Tdscdma_Trigger_Time_Date.html">Date</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Tdscdma_Trigger_Time_Time.html">Time</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Tdscdma_Up.html">Up</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell.html">Cell&lt;Cell&gt;</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh.html">Enh</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch.html">Dch</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Bit.html">Bit</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Bit_Layer.html">Layer</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Bit_Rate.html">Rate</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Bit_State.html">State</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Block.html">Block</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Block_Rate.html">Rate</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Block_State.html">State</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_BpFrame.html">BpFrame</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Ccount.html">Ccount</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Dcch.html">Dcch</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Dcch_CrcSize.html">CrcSize</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Dcch_Data.html">Data</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Dcch_Eprotection.html">Eprotection</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Dcch_Ione.html">Ione</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Dcch_Itwo.html">Itwo</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Dcch_RmAttribute.html">RmAttribute</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Dcch_State.html">State</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Dcch_TbCount.html">TbCount</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Dcch_TbSize.html">TbSize</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Dcch_TtInterval.html">TtInterval</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Dtch.html">Dtch&lt;Channel&gt;</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Dtch_CrcSize.html">CrcSize</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Dtch_Data.html">Data</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Dtch_Eprotection.html">Eprotection</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Dtch_Ione.html">Ione</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Dtch_Itwo.html">Itwo</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Dtch_RmAttribute.html">RmAttribute</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Dtch_State.html">State</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Dtch_TbCount.html">TbCount</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Dtch_TbSize.html">TbSize</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Dtch_TtInterval.html">TtInterval</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Hsch.html">Hsch</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Hsch_Cvpb.html">Cvpb</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Hsch_Prsr.html">Prsr</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Hsch_Psbs.html">Psbs</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Hsch_RvParameter.html">RvParameter</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Hsdpa.html">Hsdpa</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Hsdpa_Bpayload.html">Bpayload</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Hsdpa_Crate.html">Crate</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Hsdpa_CtsCount.html">CtsCount</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Hsdpa_Data.html">Data</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Hsdpa_Harq.html">Harq</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Hsdpa_Mibt.html">Mibt</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Hsdpa_Modulation.html">Modulation</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Hsdpa_NcbTti.html">NcbTti</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Hsdpa_RvParameter.html">RvParameter</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Hsdpa_RvSequence.html">RvSequence</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Hsdpa_Sformat.html">Sformat</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Hsdpa_Tbs.html">Tbs</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Hsdpa_TsCount.html">TsCount</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Hsdpa_TtInterval.html">TtInterval</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Hsdpa_UeCategory.html">UeCategory</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Hsich.html">Hsich</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Hsich_AnPattern.html">AnPattern</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Hsich_Cqi.html">Cqi</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Hsich_TtInterval.html">TtInterval</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Hsupa.html">Hsupa</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Hsupa_Bpayload.html">Bpayload</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Hsupa_Crate.html">Crate</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Hsupa_CtsCount.html">CtsCount</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Hsupa_Data.html">Data</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Hsupa_Euctti.html">Euctti</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Hsupa_Frc.html">Frc</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Hsupa_Harq.html">Harq</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Hsupa_Mibt.html">Mibt</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Hsupa_Modulation.html">Modulation</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Hsupa_NcbTti.html">NcbTti</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Hsupa_Rsequence.html">Rsequence</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Hsupa_RsNumber.html">RsNumber</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Hsupa_RvParameter.html">RvParameter</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Hsupa_RvSequence.html">RvSequence</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Hsupa_Sfactor.html">Sfactor</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Hsupa_Sformat.html">Sformat</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Hsupa_Tbs.html">Tbs</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Hsupa_TsCount.html">TsCount</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Hsupa_TtInterval.html">TtInterval</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Hsupa_UeCategory.html">UeCategory</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_RupLayer.html">RupLayer</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_ScsMode.html">ScsMode</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_Sformat.html">Sformat</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_SlotState.html">SlotState&lt;Slot&gt;</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_State.html">State</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_TsCount.html">TsCount</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Enh_Dch_TypePy.html">TypePy</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Mcode.html">Mcode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Protation.html">Protation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Scode.html">Scode</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Scode_State.html">State</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_SdCode.html">SdCode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Slot.html">Slot&lt;SlotNull&gt;</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Slot_Channel.html">Channel&lt;ChannelNull&gt;</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Slot_Channel_Data.html">Data</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Slot_Channel_Data_Dselect.html">Dselect</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Slot_Channel_Data_Pattern.html">Pattern</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Slot_Channel_Dpcch.html">Dpcch</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Slot_Channel_Dpcch_Eucc.html">Eucc</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Slot_Channel_Dpcch_Sync.html">Sync</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Slot_Channel_Dpcch_Tfci.html">Tfci</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Slot_Channel_Dpcch_Tpc.html">Tpc</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Slot_Channel_Enhanced.html">Enhanced</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Slot_Channel_Mshift.html">Mshift</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Slot_Channel_Power.html">Power</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Slot_Channel_Scode.html">Scode</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Slot_Channel_Sfactor.html">Sfactor</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Slot_Channel_Sformat.html">Sformat</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Slot_Channel_State.html">State</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Slot_Channel_TypePy.html">TypePy</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Slot_Channel_User.html">User</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Slot_Dconflict.html">Dconflict</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Slot_Mode.html">Mode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Slot_Prac.html">Prac</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Slot_Prac_Msg.html">Msg</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Slot_Prac_Msg_Data.html">Data</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Slot_Prac_Msg_Length.html">Length</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Slot_Prac_Msg_Mshift.html">Mshift</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Slot_Prac_Msg_Pcorrection.html">Pcorrection</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Slot_Prac_Msg_Power.html">Power</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Slot_Prac_Msg_Scode.html">Scode</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Slot_Prac_Msg_Sfactor.html">Sfactor</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Slot_Prac_Msg_Sformat.html">Sformat</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Slot_Prac_Msg_State.html">State</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Slot_Prac_Msg_User.html">User</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Slot_Prac_Pts.html">Pts</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Slot_Prac_Pts_Distance.html">Distance</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Slot_Prac_Pts_Pcorrection.html">Pcorrection</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Slot_Prac_Pts_Power.html">Power</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Slot_Prac_Pts_Pstep.html">Pstep</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Slot_Prac_Pts_Repetition.html">Repetition</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Slot_Prac_Pts_Start.html">Start</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Slot_Prac_Slength.html">Slength</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Slot_State.html">State</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Spoint.html">Spoint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_State.html">State</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_SuCode.html">SuCode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Tdelay.html">Tdelay</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Uppts.html">Uppts</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Uppts_State.html">State</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Cell_Users.html">Users</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Pparameter.html">Pparameter</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Pparameter_Dpch.html">Dpch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Tdscdma_Up_Pparameter_Execute.html">Execute</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Tdscdma_Waveform.html">Waveform</a></li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Source_Bb_Progress_Mcoder_Arbitrary.html" class="btn btn-neutral float-left" title="Arbitrary" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Source_Bb_Tdscdma_Clipping.html" class="btn btn-neutral float-right" title="Clipping" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

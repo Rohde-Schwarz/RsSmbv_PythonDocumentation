@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RsSmbv.Implementations.Source.Power.Spc &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../_static/jquery.js"></script>
+        <script src="../../../../../_static/underscore.js"></script>
+        <script src="../../../../../_static/doctools.js"></script>
+        <script src="../../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../../_static/copybutton.js"></script>
+    <script src="../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../../index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../RsSmbv.html">RsSmbv API Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../../index.html">Module code</a> &raquo;</li>
+          <li><a href="../../Source.html">RsSmbv.Implementations.Source</a> &raquo;</li>
+          <li><a href="../Power.html">RsSmbv.Implementations.Source.Power</a> &raquo;</li>
+      <li>RsSmbv.Implementations.Source.Power.Spc</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for RsSmbv.Implementations.Source.Power.Spc</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">.....Internal.Core</span> <span class="kn">import</span> <span class="n">Core</span>
+<span class="kn">from</span> <span class="nn">.....Internal.CommandsGroup</span> <span class="kn">import</span> <span class="n">CommandsGroup</span>
+<span class="kn">from</span> <span class="nn">.....Internal</span> <span class="kn">import</span> <span class="n">Conversions</span>
+<span class="kn">from</span> <span class="nn">.....</span> <span class="kn">import</span> <span class="n">enums</span>
+
+
+<span class="c1"># noinspection PyPep8Naming,PyAttributeOutsideInit,SpellCheckingInspection</span>
+<div class="viewcode-block" id="SpcCls"><a class="viewcode-back" href="../../../../../Source_Power_Spc.html#RsSmbv.Implementations.Source.Power.Spc.SpcCls">[docs]</a><span class="k">class</span> <span class="nc">SpcCls</span><span class="p">:</span>
+	<span class="sd">&quot;&quot;&quot;Spc commands group definition. 10 total commands, 2 Subgroups, 8 group commands&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">core</span><span class="p">:</span> <span class="n">Core</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span> <span class="o">=</span> <span class="n">core</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span> <span class="o">=</span> <span class="n">CommandsGroup</span><span class="p">(</span><span class="s2">&quot;spc&quot;</span><span class="p">,</span> <span class="n">core</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">measure</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;measure commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_measure&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Measure</span> <span class="kn">import</span> <span class="n">MeasureCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_measure</span> <span class="o">=</span> <span class="n">MeasureCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_measure</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">single</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;single commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_single&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Single</span> <span class="kn">import</span> <span class="n">SingleCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_single</span> <span class="o">=</span> <span class="n">SingleCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_single</span>
+
+<div class="viewcode-block" id="SpcCls.get_crange"><a class="viewcode-back" href="../../../../../Source_Power_Spc.html#RsSmbv.Implementations.Source.Power.Spc.SpcCls.get_crange">[docs]</a>	<span class="k">def</span> <span class="nf">get_crange</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:POWer:SPC:CRANge \n</span>
+<span class="sd">		Snippet: value: float = driver.source.power.spc.get_crange() \n</span>
+<span class="sd">		Defines the capture range of the power control system. Within the range: Target Level +/- Catch Range the power control</span>
+<span class="sd">		locks and tries to achieve the target level. Readings outside the range are not considered. \n</span>
+<span class="sd">			:return: pow_cntrl_crange: float Range: 0 to 50</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:POWer:SPC:CRANge?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SpcCls.set_crange"><a class="viewcode-back" href="../../../../../Source_Power_Spc.html#RsSmbv.Implementations.Source.Power.Spc.SpcCls.set_crange">[docs]</a>	<span class="k">def</span> <span class="nf">set_crange</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pow_cntrl_crange</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:POWer:SPC:CRANge \n</span>
+<span class="sd">		Snippet: driver.source.power.spc.set_crange(pow_cntrl_crange = 1.0) \n</span>
+<span class="sd">		Defines the capture range of the power control system. Within the range: Target Level +/- Catch Range the power control</span>
+<span class="sd">		locks and tries to achieve the target level. Readings outside the range are not considered. \n</span>
+<span class="sd">			:param pow_cntrl_crange: float Range: 0 to 50</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">pow_cntrl_crange</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:POWer:SPC:CRANge </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SpcCls.get_delay"><a class="viewcode-back" href="../../../../../Source_Power_Spc.html#RsSmbv.Implementations.Source.Power.Spc.SpcCls.get_delay">[docs]</a>	<span class="k">def</span> <span class="nf">get_delay</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:POWer:SPC:DELay \n</span>
+<span class="sd">		Snippet: value: int = driver.source.power.spc.get_delay() \n</span>
+<span class="sd">		Sets a waiting time for the generator to adjust the output level. After the delay time has elapsed, the power sensor</span>
+<span class="sd">		measures the next value. \n</span>
+<span class="sd">			:return: pow_cntrl_delay: integer Range: 0 to 1000</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:POWer:SPC:DELay?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SpcCls.set_delay"><a class="viewcode-back" href="../../../../../Source_Power_Spc.html#RsSmbv.Implementations.Source.Power.Spc.SpcCls.set_delay">[docs]</a>	<span class="k">def</span> <span class="nf">set_delay</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pow_cntrl_delay</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:POWer:SPC:DELay \n</span>
+<span class="sd">		Snippet: driver.source.power.spc.set_delay(pow_cntrl_delay = 1) \n</span>
+<span class="sd">		Sets a waiting time for the generator to adjust the output level. After the delay time has elapsed, the power sensor</span>
+<span class="sd">		measures the next value. \n</span>
+<span class="sd">			:param pow_cntrl_delay: integer Range: 0 to 1000</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">pow_cntrl_delay</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:POWer:SPC:DELay </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="SpcCls.get_mode"><a class="viewcode-back" href="../../../../../Source_Power_Spc.html#RsSmbv.Implementations.Source.Power.Spc.SpcCls.get_mode">[docs]</a>	<span class="k">def</span> <span class="nf">get_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">SensorModeAll</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:POWer:SPC:MODE \n</span>
+<span class="sd">		Snippet: value: enums.SensorModeAll = driver.source.power.spc.get_mode() \n</span>
+<span class="sd">		Selects the measurement mode for the power sensor. \n</span>
+<span class="sd">			:return: control_mode: AUTO| SINGle AUTO Measures the level values continuously. SINGle Executes one measurement, triggered by the command [:SOURcehw]:POWer:SPC:SINGle.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:POWer:SPC:MODE?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">SensorModeAll</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SpcCls.set_mode"><a class="viewcode-back" href="../../../../../Source_Power_Spc.html#RsSmbv.Implementations.Source.Power.Spc.SpcCls.set_mode">[docs]</a>	<span class="k">def</span> <span class="nf">set_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">control_mode</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">SensorModeAll</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:POWer:SPC:MODE \n</span>
+<span class="sd">		Snippet: driver.source.power.spc.set_mode(control_mode = enums.SensorModeAll.AUTO) \n</span>
+<span class="sd">		Selects the measurement mode for the power sensor. \n</span>
+<span class="sd">			:param control_mode: AUTO| SINGle AUTO Measures the level values continuously. SINGle Executes one measurement, triggered by the command [:SOURcehw]:POWer:SPC:SINGle.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">control_mode</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">SensorModeAll</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:POWer:SPC:MODE </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SpcCls.get_peak"><a class="viewcode-back" href="../../../../../Source_Power_Spc.html#RsSmbv.Implementations.Source.Power.Spc.SpcCls.get_peak">[docs]</a>	<span class="k">def</span> <span class="nf">get_peak</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:POWer:SPC:PEAK \n</span>
+<span class="sd">		Snippet: value: bool = driver.source.power.spc.get_peak() \n</span>
+<span class="sd">		Activates power control by means of the peak power values, provided the power sensor supports this function. \n</span>
+<span class="sd">			:return: pow_cntrl_peak: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:POWer:SPC:PEAK?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_bool</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SpcCls.set_peak"><a class="viewcode-back" href="../../../../../Source_Power_Spc.html#RsSmbv.Implementations.Source.Power.Spc.SpcCls.set_peak">[docs]</a>	<span class="k">def</span> <span class="nf">set_peak</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pow_cntrl_peak</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:POWer:SPC:PEAK \n</span>
+<span class="sd">		Snippet: driver.source.power.spc.set_peak(pow_cntrl_peak = False) \n</span>
+<span class="sd">		Activates power control by means of the peak power values, provided the power sensor supports this function. \n</span>
+<span class="sd">			:param pow_cntrl_peak: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">bool_to_str</span><span class="p">(</span><span class="n">pow_cntrl_peak</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:POWer:SPC:PEAK </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="SpcCls.get_select"><a class="viewcode-back" href="../../../../../Source_Power_Spc.html#RsSmbv.Implementations.Source.Power.Spc.SpcCls.get_select">[docs]</a>	<span class="k">def</span> <span class="nf">get_select</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">PowCntrlSelect</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:POWer:SPC:SELect \n</span>
+<span class="sd">		Snippet: value: enums.PowCntrlSelect = driver.source.power.spc.get_select() \n</span>
+<span class="sd">		Selects the power sensor used for power control. \n</span>
+<span class="sd">			:return: pow_cntrl_select: SENS1| SENS2| SENS3| SENS4| SENSor1| SENSor2| SENSor3| SENSor4</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:POWer:SPC:SELect?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">PowCntrlSelect</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SpcCls.set_select"><a class="viewcode-back" href="../../../../../Source_Power_Spc.html#RsSmbv.Implementations.Source.Power.Spc.SpcCls.set_select">[docs]</a>	<span class="k">def</span> <span class="nf">set_select</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pow_cntrl_select</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">PowCntrlSelect</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:POWer:SPC:SELect \n</span>
+<span class="sd">		Snippet: driver.source.power.spc.set_select(pow_cntrl_select = enums.PowCntrlSelect.SENS1) \n</span>
+<span class="sd">		Selects the power sensor used for power control. \n</span>
+<span class="sd">			:param pow_cntrl_select: SENS1| SENS2| SENS3| SENS4| SENSor1| SENSor2| SENSor3| SENSor4</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">pow_cntrl_select</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">PowCntrlSelect</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:POWer:SPC:SELect </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SpcCls.get_state"><a class="viewcode-back" href="../../../../../Source_Power_Spc.html#RsSmbv.Implementations.Source.Power.Spc.SpcCls.get_state">[docs]</a>	<span class="k">def</span> <span class="nf">get_state</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:POWer:SPC:STATe \n</span>
+<span class="sd">		Snippet: value: bool = driver.source.power.spc.get_state() \n</span>
+<span class="sd">		Starts power control using the selected sensor. The control loop periodically adjusts the output level of the signal</span>
+<span class="sd">		generator. After switching off, the running loop is completed. \n</span>
+<span class="sd">			:return: pow_cntrl_state: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:POWer:SPC:STATe?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_bool</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SpcCls.set_state"><a class="viewcode-back" href="../../../../../Source_Power_Spc.html#RsSmbv.Implementations.Source.Power.Spc.SpcCls.set_state">[docs]</a>	<span class="k">def</span> <span class="nf">set_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pow_cntrl_state</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:POWer:SPC:STATe \n</span>
+<span class="sd">		Snippet: driver.source.power.spc.set_state(pow_cntrl_state = False) \n</span>
+<span class="sd">		Starts power control using the selected sensor. The control loop periodically adjusts the output level of the signal</span>
+<span class="sd">		generator. After switching off, the running loop is completed. \n</span>
+<span class="sd">			:param pow_cntrl_state: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">bool_to_str</span><span class="p">(</span><span class="n">pow_cntrl_state</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:POWer:SPC:STATe </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SpcCls.get_target"><a class="viewcode-back" href="../../../../../Source_Power_Spc.html#RsSmbv.Implementations.Source.Power.Spc.SpcCls.get_target">[docs]</a>	<span class="k">def</span> <span class="nf">get_target</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:POWer:SPC:TARGet \n</span>
+<span class="sd">		Snippet: value: float = driver.source.power.spc.get_target() \n</span>
+<span class="sd">		Sets the target level required at the DUT. To define the unit of the power value, use command method RsSmbv.Unit.power. \n</span>
+<span class="sd">			:return: pow_cntrl_target: float Range: -50 to 30</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:POWer:SPC:TARGet?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SpcCls.set_target"><a class="viewcode-back" href="../../../../../Source_Power_Spc.html#RsSmbv.Implementations.Source.Power.Spc.SpcCls.set_target">[docs]</a>	<span class="k">def</span> <span class="nf">set_target</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pow_cntrl_target</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:POWer:SPC:TARGet \n</span>
+<span class="sd">		Snippet: driver.source.power.spc.set_target(pow_cntrl_target = 1.0) \n</span>
+<span class="sd">		Sets the target level required at the DUT. To define the unit of the power value, use command method RsSmbv.Unit.power. \n</span>
+<span class="sd">			:param pow_cntrl_target: float Range: -50 to 30</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">pow_cntrl_target</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:POWer:SPC:TARGet </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SpcCls.get_warning_py"><a class="viewcode-back" href="../../../../../Source_Power_Spc.html#RsSmbv.Implementations.Source.Power.Spc.SpcCls.get_warning_py">[docs]</a>	<span class="k">def</span> <span class="nf">get_warning_py</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:POWer:SPC:WARNing \n</span>
+<span class="sd">		Snippet: value: bool = driver.source.power.spc.get_warning_py() \n</span>
+<span class="sd">		Queries if the activated power control works properly. If the power control does not work, the query returns warning</span>
+<span class="sd">		state 1. On the screen, the R&amp;S SMBV100B indicates a warning icon. \n</span>
+<span class="sd">			:return: warning_state: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:POWer:SPC:WARNing?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_bool</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+	<span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;SpcCls&#39;</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Clones the group by creating new object from it and its whole existing subgroups</span>
+<span class="sd">		Also copies all the existing default Repeated Capabilities setting,</span>
+<span class="sd">		which you can change independently without affecting the original group&quot;&quot;&quot;</span>
+		<span class="n">new_group</span> <span class="o">=</span> <span class="n">SpcCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">synchronize_repcaps</span><span class="p">(</span><span class="n">new_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">new_group</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

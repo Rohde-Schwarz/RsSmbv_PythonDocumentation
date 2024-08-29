@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Ws &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../../../../" id="documentation_options" src="../../../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../../../_static/jquery.js"></script>
+        <script src="../../../../../../../_static/underscore.js"></script>
+        <script src="../../../../../../../_static/doctools.js"></script>
+        <script src="../../../../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../../../../_static/copybutton.js"></script>
+    <script src="../../../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../../../../index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../RsSmbv.html">RsSmbv API Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../../index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../../../../index.html">Module code</a> &raquo;</li>
+          <li><a href="../../../../Source.html">RsSmbv.Implementations.Source</a> &raquo;</li>
+          <li><a href="../../../Bb.html">RsSmbv.Implementations.Source.Bb</a> &raquo;</li>
+          <li><a href="../../Eutra.html">RsSmbv.Implementations.Source.Bb.Eutra</a> &raquo;</li>
+          <li><a href="../Tcw.html">RsSmbv.Implementations.Source.Bb.Eutra.Tcw</a> &raquo;</li>
+      <li>RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Ws</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Ws</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">.......Internal.Core</span> <span class="kn">import</span> <span class="n">Core</span>
+<span class="kn">from</span> <span class="nn">.......Internal.CommandsGroup</span> <span class="kn">import</span> <span class="n">CommandsGroup</span>
+<span class="kn">from</span> <span class="nn">.......Internal</span> <span class="kn">import</span> <span class="n">Conversions</span>
+<span class="kn">from</span> <span class="nn">.......Internal.Utilities</span> <span class="kn">import</span> <span class="n">trim_str_response</span>
+<span class="kn">from</span> <span class="nn">.......Internal.StructBase</span> <span class="kn">import</span> <span class="n">StructBase</span>
+<span class="kn">from</span> <span class="nn">.......Internal.ArgStruct</span> <span class="kn">import</span> <span class="n">ArgStruct</span>
+<span class="kn">from</span> <span class="nn">.......</span> <span class="kn">import</span> <span class="n">enums</span>
+
+
+<span class="c1"># noinspection PyPep8Naming,PyAttributeOutsideInit,SpellCheckingInspection</span>
+<div class="viewcode-block" id="WsCls"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Ws.WsCls">[docs]</a><span class="k">class</span> <span class="nc">WsCls</span><span class="p">:</span>
+	<span class="sd">&quot;&quot;&quot;Ws commands group definition. 32 total commands, 3 Subgroups, 29 group commands&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">core</span><span class="p">:</span> <span class="n">Core</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span> <span class="o">=</span> <span class="n">core</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span> <span class="o">=</span> <span class="n">CommandsGroup</span><span class="p">(</span><span class="s2">&quot;ws&quot;</span><span class="p">,</span> <span class="n">core</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">cqiPattern</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;cqiPattern commands group. 1 Sub-classes, 0 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_cqiPattern&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.CqiPattern</span> <span class="kn">import</span> <span class="n">CqiPatternCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_cqiPattern</span> <span class="o">=</span> <span class="n">CqiPatternCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cqiPattern</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">niot</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;niot commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_niot&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Niot</span> <span class="kn">import</span> <span class="n">NiotCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_niot</span> <span class="o">=</span> <span class="n">NiotCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_niot</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">ortCover</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;ortCover commands group. 1 Sub-classes, 0 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_ortCover&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.OrtCover</span> <span class="kn">import</span> <span class="n">OrtCoverCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_ortCover</span> <span class="o">=</span> <span class="n">OrtCoverCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ortCover</span>
+
+<div class="viewcode-block" id="WsCls.get_ac_pucch"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Ws.WsCls.get_ac_pucch">[docs]</a>	<span class="k">def</span> <span class="nf">get_ac_pucch</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:WS:ACPucch \n</span>
+<span class="sd">		Snippet: value: bool = driver.source.bb.eutra.tcw.ws.get_ac_pucch() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: add_config_pucch: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:WS:ACPucch?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_bool</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="WsCls.set_ac_pucch"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Ws.WsCls.set_ac_pucch">[docs]</a>	<span class="k">def</span> <span class="nf">set_ac_pucch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">add_config_pucch</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:WS:ACPucch \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.tcw.ws.set_ac_pucch(add_config_pucch = False) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param add_config_pucch: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">bool_to_str</span><span class="p">(</span><span class="n">add_config_pucch</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:WS:ACPucch </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="WsCls.get_an_bits"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Ws.WsCls.get_an_bits">[docs]</a>	<span class="k">def</span> <span class="nf">get_an_bits</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">UtraTcwaCkNackBits</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:WS:ANBits \n</span>
+<span class="sd">		Snippet: value: enums.UtraTcwaCkNackBits = driver.source.bb.eutra.tcw.ws.get_an_bits() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: ack_nack_bits: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:WS:ANBits?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">UtraTcwaCkNackBits</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="WsCls.set_an_bits"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Ws.WsCls.set_an_bits">[docs]</a>	<span class="k">def</span> <span class="nf">set_an_bits</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ack_nack_bits</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">UtraTcwaCkNackBits</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:WS:ANBits \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.tcw.ws.set_an_bits(ack_nack_bits = enums.UtraTcwaCkNackBits.ANB16) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param ack_nack_bits: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">ack_nack_bits</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">UtraTcwaCkNackBits</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:WS:ANBits </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="WsCls.AnPatternStruct"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Ws.WsCls.AnPatternStruct">[docs]</a>	<span class="k">class</span> <span class="nc">AnPatternStruct</span><span class="p">(</span><span class="n">StructBase</span><span class="p">):</span>  <span class="c1"># From ReadStructDefinition CmdPropertyTemplate.xml</span>
+		<span class="sd">&quot;&quot;&quot;Structure for reading output parameters. Fields: \n</span>
+<span class="sd">			- Ack_Nack_Pattern: str: No parameter help available</span>
+<span class="sd">			- Bitcount: int: No parameter help available&quot;&quot;&quot;</span>
+		<span class="n">__meta_args_list</span> <span class="o">=</span> <span class="p">[</span>
+			<span class="n">ArgStruct</span><span class="o">.</span><span class="n">scalar_raw_str</span><span class="p">(</span><span class="s1">&#39;Ack_Nack_Pattern&#39;</span><span class="p">),</span>
+			<span class="n">ArgStruct</span><span class="o">.</span><span class="n">scalar_int</span><span class="p">(</span><span class="s1">&#39;Bitcount&#39;</span><span class="p">)]</span>
+
+		<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+			<span class="n">StructBase</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">Ack_Nack_Pattern</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">Bitcount</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="WsCls.get_an_pattern"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Ws.WsCls.get_an_pattern">[docs]</a>	<span class="k">def</span> <span class="nf">get_an_pattern</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AnPatternStruct</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:WS:ANPattern \n</span>
+<span class="sd">		Snippet: value: AnPatternStruct = driver.source.bb.eutra.tcw.ws.get_an_pattern() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: structure: for return value, see the help for AnPatternStruct structure arguments.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_struct</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:WS:ANPattern?&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">AnPatternStruct</span><span class="p">())</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="WsCls.get_bformat"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Ws.WsCls.get_bformat">[docs]</a>	<span class="k">def</span> <span class="nf">get_bformat</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwBurstFormat</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:WS:BFORmat \n</span>
+<span class="sd">		Snippet: value: enums.EutraTcwBurstFormat = driver.source.bb.eutra.tcw.ws.get_bformat() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: burst_format: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:WS:BFORmat?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwBurstFormat</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="WsCls.set_bformat"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Ws.WsCls.set_bformat">[docs]</a>	<span class="k">def</span> <span class="nf">set_bformat</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">burst_format</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwBurstFormat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:WS:BFORmat \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.tcw.ws.set_bformat(burst_format = enums.EutraTcwBurstFormat.BF0) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param burst_format: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">burst_format</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwBurstFormat</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:WS:BFORmat </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="WsCls.get_ce_mode"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Ws.WsCls.get_ce_mode">[docs]</a>	<span class="k">def</span> <span class="nf">get_ce_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">MappingType</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:WS:CEMode \n</span>
+<span class="sd">		Snippet: value: enums.MappingType = driver.source.bb.eutra.tcw.ws.get_ce_mode() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: ce_mode: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:WS:CEMode?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">MappingType</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="WsCls.set_ce_mode"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Ws.WsCls.set_ce_mode">[docs]</a>	<span class="k">def</span> <span class="nf">set_ce_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ce_mode</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">MappingType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:WS:CEMode \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.tcw.ws.set_ce_mode(ce_mode = enums.MappingType.A) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param ce_mode: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">ce_mode</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">MappingType</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:WS:CEMode </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="WsCls.get_chbw"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Ws.WsCls.get_chbw">[docs]</a>	<span class="k">def</span> <span class="nf">get_chbw</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwcHanBw</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:WS:CHBW \n</span>
+<span class="sd">		Snippet: value: enums.EutraTcwcHanBw = driver.source.bb.eutra.tcw.ws.get_chbw() \n</span>
+<span class="sd">		Selects the channel bandwidth in MHz: 20, 10, 5, 3, 1.4, 15, or 0.2 MHz. \n</span>
+<span class="sd">			:return: chan_bandwidth: BW20_00| BW10_00| BW5_00| BW3_00| BW1_40| BW15_00| BW00_20</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:WS:CHBW?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwcHanBw</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="WsCls.set_chbw"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Ws.WsCls.set_chbw">[docs]</a>	<span class="k">def</span> <span class="nf">set_chbw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">chan_bandwidth</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwcHanBw</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:WS:CHBW \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.tcw.ws.set_chbw(chan_bandwidth = enums.EutraTcwcHanBw.BW00_20) \n</span>
+<span class="sd">		Selects the channel bandwidth in MHz: 20, 10, 5, 3, 1.4, 15, or 0.2 MHz. \n</span>
+<span class="sd">			:param chan_bandwidth: BW20_00| BW10_00| BW5_00| BW3_00| BW1_40| BW15_00| BW00_20</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">chan_bandwidth</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwcHanBw</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:WS:CHBW </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="WsCls.get_clid"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Ws.WsCls.get_clid">[docs]</a>	<span class="k">def</span> <span class="nf">get_clid</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:WS:CLID \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.eutra.tcw.ws.get_clid() \n</span>
+<span class="sd">		Sets the Cell ID. \n</span>
+<span class="sd">			:return: cell_id: integer Range: 0 to 503</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:WS:CLID?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="WsCls.set_clid"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Ws.WsCls.set_clid">[docs]</a>	<span class="k">def</span> <span class="nf">set_clid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cell_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:WS:CLID \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.tcw.ws.set_clid(cell_id = 1) \n</span>
+<span class="sd">		Sets the Cell ID. \n</span>
+<span class="sd">			:param cell_id: integer Range: 0 to 503</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">cell_id</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:WS:CLID </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="WsCls.get_cyc_prefix"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Ws.WsCls.get_cyc_prefix">[docs]</a>	<span class="k">def</span> <span class="nf">get_cyc_prefix</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">EuTraDuration</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:WS:CYCPrefix \n</span>
+<span class="sd">		Snippet: value: enums.EuTraDuration = driver.source.bb.eutra.tcw.ws.get_cyc_prefix() \n</span>
+<span class="sd">		Selects normal or extended cyclic prefix. \n</span>
+<span class="sd">			:return: cyclic_prefix: EXTended| NORMal</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:WS:CYCPrefix?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EuTraDuration</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="WsCls.set_cyc_prefix"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Ws.WsCls.set_cyc_prefix">[docs]</a>	<span class="k">def</span> <span class="nf">set_cyc_prefix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cyclic_prefix</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">EuTraDuration</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:WS:CYCPrefix \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.tcw.ws.set_cyc_prefix(cyclic_prefix = enums.EuTraDuration.EXTended) \n</span>
+<span class="sd">		Selects normal or extended cyclic prefix. \n</span>
+<span class="sd">			:param cyclic_prefix: EXTended| NORMal</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">cyclic_prefix</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EuTraDuration</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:WS:CYCPrefix </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="WsCls.get_duplex"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Ws.WsCls.get_duplex">[docs]</a>	<span class="k">def</span> <span class="nf">get_duplex</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraDuplexMode</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:WS:DUPLex \n</span>
+<span class="sd">		Snippet: value: enums.EutraDuplexMode = driver.source.bb.eutra.tcw.ws.get_duplex() \n</span>
+<span class="sd">		Selects whether TDD or FDD duplexing mode is used. \n</span>
+<span class="sd">			:return: duplex: TDD| FDD</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:WS:DUPLex?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraDuplexMode</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="WsCls.set_duplex"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Ws.WsCls.set_duplex">[docs]</a>	<span class="k">def</span> <span class="nf">set_duplex</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">duplex</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraDuplexMode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:WS:DUPLex \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.tcw.ws.set_duplex(duplex = enums.EutraDuplexMode.FDD) \n</span>
+<span class="sd">		Selects whether TDD or FDD duplexing mode is used. \n</span>
+<span class="sd">			:param duplex: TDD| FDD</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">duplex</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraDuplexMode</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:WS:DUPLex </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="WsCls.get_fm_throughput"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Ws.WsCls.get_fm_throughput">[docs]</a>	<span class="k">def</span> <span class="nf">get_fm_throughput</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwfRactMaxThroughput</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:WS:FMTHroughput \n</span>
+<span class="sd">		Snippet: value: enums.EutraTcwfRactMaxThroughput = driver.source.bb.eutra.tcw.ws.get_fm_throughput() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: fract_max_through: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:WS:FMTHroughput?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwfRactMaxThroughput</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="WsCls.set_fm_throughput"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Ws.WsCls.set_fm_throughput">[docs]</a>	<span class="k">def</span> <span class="nf">set_fm_throughput</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fract_max_through</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwfRactMaxThroughput</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:WS:FMTHroughput \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.tcw.ws.set_fm_throughput(fract_max_through = enums.EutraTcwfRactMaxThroughput.FMT30) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param fract_max_through: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">fract_max_through</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwfRactMaxThroughput</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:WS:FMTHroughput </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="WsCls.get_frc"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Ws.WsCls.get_frc">[docs]</a>	<span class="k">def</span> <span class="nf">get_frc</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraUlFrc</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:WS:FRC \n</span>
+<span class="sd">		Snippet: value: enums.EutraUlFrc = driver.source.bb.eutra.tcw.ws.get_frc() \n</span>
+<span class="sd">		Queries the fixed reference channel used. \n</span>
+<span class="sd">			:return: frc: A11| A12| A13| A14| A15| A21| A22| A23| A31| A32| A33| A34| A35| A36| A37| A41| A42| A43| A44| A45| A46| A47| A48| A51| A52| A53| A54| A55| A56| A57| A71| A72| A73| A74| A75| A76| A81| A82| A83| A84| A85| A86| UE11| UE12| UE21| UE22| UE3</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:WS:FRC?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraUlFrc</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="WsCls.set_frc"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Ws.WsCls.set_frc">[docs]</a>	<span class="k">def</span> <span class="nf">set_frc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frc</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraUlFrc</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:WS:FRC \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.tcw.ws.set_frc(frc = enums.EutraUlFrc.A11) \n</span>
+<span class="sd">		Queries the fixed reference channel used. \n</span>
+<span class="sd">			:param frc: A11| A12| A13| A14| A15| A21| A22| A23| A31| A32| A33| A34| A35| A36| A37| A41| A42| A43| A44| A45| A46| A47| A48| A51| A52| A53| A54| A55| A56| A57| A71| A72| A73| A74| A75| A76| A81| A82| A83| A84| A85| A86| UE11| UE12| UE21| UE22| UE3</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">frc</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraUlFrc</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:WS:FRC </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="WsCls.get_fr_offset"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Ws.WsCls.get_fr_offset">[docs]</a>	<span class="k">def</span> <span class="nf">get_fr_offset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwfReqOffset</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:WS:FROFfset \n</span>
+<span class="sd">		Snippet: value: enums.EutraTcwfReqOffset = driver.source.bb.eutra.tcw.ws.get_fr_offset() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: freq_offset: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:WS:FROFfset?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwfReqOffset</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="WsCls.set_fr_offset"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Ws.WsCls.set_fr_offset">[docs]</a>	<span class="k">def</span> <span class="nf">set_fr_offset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">freq_offset</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwfReqOffset</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:WS:FROFfset \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.tcw.ws.set_fr_offset(freq_offset = enums.EutraTcwfReqOffset.FO_0) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param freq_offset: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">freq_offset</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwfReqOffset</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:WS:FROFfset </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="WsCls.get_hs_mode"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Ws.WsCls.get_hs_mode">[docs]</a>	<span class="k">def</span> <span class="nf">get_hs_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:WS:HSMode \n</span>
+<span class="sd">		Snippet: value: bool = driver.source.bb.eutra.tcw.ws.get_hs_mode() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: high_speed_mode: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:WS:HSMode?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_bool</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="WsCls.set_hs_mode"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Ws.WsCls.set_hs_mode">[docs]</a>	<span class="k">def</span> <span class="nf">set_hs_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">high_speed_mode</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:WS:HSMode \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.tcw.ws.set_hs_mode(high_speed_mode = False) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param high_speed_mode: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">bool_to_str</span><span class="p">(</span><span class="n">high_speed_mode</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:WS:HSMode </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="WsCls.get_nta_offset"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Ws.WsCls.get_nta_offset">[docs]</a>	<span class="k">def</span> <span class="nf">get_nta_offset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwsIgAdvNtaOffs</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:WS:NTAOffset \n</span>
+<span class="sd">		Snippet: value: enums.EutraTcwsIgAdvNtaOffs = driver.source.bb.eutra.tcw.ws.get_nta_offset() \n</span>
+<span class="sd">		Sets the parameter NTAoffset. \n</span>
+<span class="sd">			:return: sig_adv_nta_offset: NTA624| NTA0</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:WS:NTAOffset?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwsIgAdvNtaOffs</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="WsCls.set_nta_offset"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Ws.WsCls.set_nta_offset">[docs]</a>	<span class="k">def</span> <span class="nf">set_nta_offset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sig_adv_nta_offset</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwsIgAdvNtaOffs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:WS:NTAOffset \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.tcw.ws.set_nta_offset(sig_adv_nta_offset = enums.EutraTcwsIgAdvNtaOffs.NTA0) \n</span>
+<span class="sd">		Sets the parameter NTAoffset. \n</span>
+<span class="sd">			:param sig_adv_nta_offset: NTA624| NTA0</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">sig_adv_nta_offset</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwsIgAdvNtaOffs</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:WS:NTAOffset </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="WsCls.get_oup_level"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Ws.WsCls.get_oup_level">[docs]</a>	<span class="k">def</span> <span class="nf">get_oup_level</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:WS:OUPLevel \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.eutra.tcw.ws.get_oup_level() \n</span>
+<span class="sd">		The settings of the selected test case become active only after selecting &#39;Apply Settings&#39;. \n</span>
+<span class="sd">			:return: out_power_level: float Range: -115 to 0</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:WS:OUPLevel?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="WsCls.set_oup_level"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Ws.WsCls.set_oup_level">[docs]</a>	<span class="k">def</span> <span class="nf">set_oup_level</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">out_power_level</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:WS:OUPLevel \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.tcw.ws.set_oup_level(out_power_level = 1.0) \n</span>
+<span class="sd">		The settings of the selected test case become active only after selecting &#39;Apply Settings&#39;. \n</span>
+<span class="sd">			:param out_power_level: float Range: -115 to 0</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">out_power_level</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:WS:OUPLevel </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="WsCls.get_ovrb"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Ws.WsCls.get_ovrb">[docs]</a>	<span class="k">def</span> <span class="nf">get_ovrb</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:WS:OVRB \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.eutra.tcw.ws.get_ovrb() \n</span>
+<span class="sd">		Sets the number of RB the allocated RB(s) are shifted with. \n</span>
+<span class="sd">			:return: offset_vrb: integer Range: 0 to 75</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:WS:OVRB?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="WsCls.set_ovrb"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Ws.WsCls.set_ovrb">[docs]</a>	<span class="k">def</span> <span class="nf">set_ovrb</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">offset_vrb</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:WS:OVRB \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.tcw.ws.set_ovrb(offset_vrb = 1) \n</span>
+<span class="sd">		Sets the number of RB the allocated RB(s) are shifted with. \n</span>
+<span class="sd">			:param offset_vrb: integer Range: 0 to 75</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">offset_vrb</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:WS:OVRB </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="WsCls.get_pfmt"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Ws.WsCls.get_pfmt">[docs]</a>	<span class="k">def</span> <span class="nf">get_pfmt</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraPracNbiotPreambleFormat</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:WS:PFMT \n</span>
+<span class="sd">		Snippet: value: enums.EutraPracNbiotPreambleFormat = driver.source.bb.eutra.tcw.ws.get_pfmt() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: preamble_format: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:WS:PFMT?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraPracNbiotPreambleFormat</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="WsCls.set_pfmt"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Ws.WsCls.set_pfmt">[docs]</a>	<span class="k">def</span> <span class="nf">set_pfmt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">preamble_format</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraPracNbiotPreambleFormat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:WS:PFMT \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.tcw.ws.set_pfmt(preamble_format = enums.EutraPracNbiotPreambleFormat._0) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param preamble_format: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">preamble_format</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraPracNbiotPreambleFormat</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:WS:PFMT </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="WsCls.get_plevel"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Ws.WsCls.get_plevel">[docs]</a>	<span class="k">def</span> <span class="nf">get_plevel</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:WS:PLEVel \n</span>
+<span class="sd">		Snippet: value: str = driver.source.bb.eutra.tcw.ws.get_plevel() \n</span>
+<span class="sd">		Queries the Power Level. \n</span>
+<span class="sd">			:return: power_level: string</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:WS:PLEVel?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">trim_str_response</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="WsCls.get_plpc"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Ws.WsCls.get_plpc">[docs]</a>	<span class="k">def</span> <span class="nf">get_plpc</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:WS:PLPC \n</span>
+<span class="sd">		Snippet: value: str = driver.source.bb.eutra.tcw.ws.get_plpc() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: power_level_pucch: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:WS:PLPC?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">trim_str_response</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="WsCls.get_plps"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Ws.WsCls.get_plps">[docs]</a>	<span class="k">def</span> <span class="nf">get_plps</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:WS:PLPS \n</span>
+<span class="sd">		Snippet: value: str = driver.source.bb.eutra.tcw.ws.get_plps() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: power_level_pusch: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:WS:PLPS?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">trim_str_response</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="WsCls.get_pro_condition"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Ws.WsCls.get_pro_condition">[docs]</a>	<span class="k">def</span> <span class="nf">get_pro_condition</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwPropagCond</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:WS:PROCondition \n</span>
+<span class="sd">		Snippet: value: enums.EutraTcwPropagCond = driver.source.bb.eutra.tcw.ws.get_pro_condition() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: propagation_cond: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:WS:PROCondition?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwPropagCond</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="WsCls.set_pro_condition"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Ws.WsCls.set_pro_condition">[docs]</a>	<span class="k">def</span> <span class="nf">set_pro_condition</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">propagation_cond</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwPropagCond</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:WS:PROCondition \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.tcw.ws.set_pro_condition(propagation_cond = enums.EutraTcwPropagCond.AWGNonly) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param propagation_cond: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">propagation_cond</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwPropagCond</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:WS:PROCondition </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="WsCls.get_repetitions"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Ws.WsCls.get_repetitions">[docs]</a>	<span class="k">def</span> <span class="nf">get_repetitions</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraIotRepetitionsTcw</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:WS:REPetitions \n</span>
+<span class="sd">		Snippet: value: enums.EutraIotRepetitionsTcw = driver.source.bb.eutra.tcw.ws.get_repetitions() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: repetitions: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:WS:REPetitions?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraIotRepetitionsTcw</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="WsCls.set_repetitions"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Ws.WsCls.set_repetitions">[docs]</a>	<span class="k">def</span> <span class="nf">set_repetitions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">repetitions</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraIotRepetitionsTcw</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:WS:REPetitions \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.tcw.ws.set_repetitions(repetitions = enums.EutraIotRepetitionsTcw.R1) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param repetitions: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">repetitions</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraIotRepetitionsTcw</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:WS:REPetitions </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="WsCls.get_rf_frequency"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Ws.WsCls.get_rf_frequency">[docs]</a>	<span class="k">def</span> <span class="nf">get_rf_frequency</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:WS:RFFRequency \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.eutra.tcw.ws.get_rf_frequency() \n</span>
+<span class="sd">		Sets the RF frequency of the wanted signal. \n</span>
+<span class="sd">			:return: rf_frequency: integer Range: 100E3 to 6E9</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:WS:RFFRequency?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="WsCls.set_rf_frequency"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Ws.WsCls.set_rf_frequency">[docs]</a>	<span class="k">def</span> <span class="nf">set_rf_frequency</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rf_frequency</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:WS:RFFRequency \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.tcw.ws.set_rf_frequency(rf_frequency = 1) \n</span>
+<span class="sd">		Sets the RF frequency of the wanted signal. \n</span>
+<span class="sd">			:param rf_frequency: integer Range: 100E3 to 6E9</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">rf_frequency</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:WS:RFFRequency </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="WsCls.get_sc_spacing"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Ws.WsCls.get_sc_spacing">[docs]</a>	<span class="k">def</span> <span class="nf">get_sc_spacing</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraSubCarrierSpacing</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:WS:SCSPacing \n</span>
+<span class="sd">		Snippet: value: enums.EutraSubCarrierSpacing = driver.source.bb.eutra.tcw.ws.get_sc_spacing() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: subcarrier_spac: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:WS:SCSPacing?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraSubCarrierSpacing</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="WsCls.set_sc_spacing"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Ws.WsCls.set_sc_spacing">[docs]</a>	<span class="k">def</span> <span class="nf">set_sc_spacing</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">subcarrier_spac</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraSubCarrierSpacing</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:WS:SCSPacing \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.tcw.ws.set_sc_spacing(subcarrier_spac = enums.EutraSubCarrierSpacing.S15) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param subcarrier_spac: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">subcarrier_spac</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraSubCarrierSpacing</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:WS:SCSPacing </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="WsCls.get_sps_frame"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Ws.WsCls.get_sps_frame">[docs]</a>	<span class="k">def</span> <span class="nf">get_sps_frame</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:WS:SPSFrame \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.eutra.tcw.ws.get_sps_frame() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: spec_subframe: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:WS:SPSFrame?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="WsCls.set_sps_frame"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Ws.WsCls.set_sps_frame">[docs]</a>	<span class="k">def</span> <span class="nf">set_sps_frame</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spec_subframe</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:WS:SPSFrame \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.tcw.ws.set_sps_frame(spec_subframe = 1) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param spec_subframe: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">spec_subframe</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:WS:SPSFrame </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="WsCls.get_tdd_config"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Ws.WsCls.get_tdd_config">[docs]</a>	<span class="k">def</span> <span class="nf">get_tdd_config</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:WS:TDDConfig \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.eutra.tcw.ws.get_tdd_config() \n</span>
+<span class="sd">		For TDD mode, selects the UL/DL Configuration number. \n</span>
+<span class="sd">			:return: tdd_config: integer Range: 0 to 6</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:WS:TDDConfig?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="WsCls.set_tdd_config"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Ws.WsCls.set_tdd_config">[docs]</a>	<span class="k">def</span> <span class="nf">set_tdd_config</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tdd_config</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:WS:TDDConfig \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.tcw.ws.set_tdd_config(tdd_config = 1) \n</span>
+<span class="sd">		For TDD mode, selects the UL/DL Configuration number. \n</span>
+<span class="sd">			:param tdd_config: integer Range: 0 to 6</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">tdd_config</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:WS:TDDConfig </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="WsCls.get_tio_base"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Ws.WsCls.get_tio_base">[docs]</a>	<span class="k">def</span> <span class="nf">get_tio_base</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:WS:TIOBase \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.eutra.tcw.ws.get_tio_base() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: timing_offset_base: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:WS:TIOBase?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="WsCls.get_ue_id"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Ws.WsCls.get_ue_id">[docs]</a>	<span class="k">def</span> <span class="nf">get_ue_id</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:WS:UEID \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.eutra.tcw.ws.get_ue_id() \n</span>
+<span class="sd">		Sets the UE ID/n_RNTI. \n</span>
+<span class="sd">			:return: ue_idn_rnti: integer Range: 0 to 65535</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:WS:UEID?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="WsCls.set_ue_id"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Ws.WsCls.set_ue_id">[docs]</a>	<span class="k">def</span> <span class="nf">set_ue_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ue_idn_rnti</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:WS:UEID \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.tcw.ws.set_ue_id(ue_idn_rnti = 1) \n</span>
+<span class="sd">		Sets the UE ID/n_RNTI. \n</span>
+<span class="sd">			:param ue_idn_rnti: integer Range: 0 to 65535</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">ue_idn_rnti</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:WS:UEID </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="WsCls.get_vdr_frequency"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Ws.WsCls.get_vdr_frequency">[docs]</a>	<span class="k">def</span> <span class="nf">get_vdr_frequency</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:WS:VDRFrequency \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.eutra.tcw.ws.get_vdr_frequency() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: virt_dl_rf: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:WS:VDRFrequency?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="WsCls.set_vdr_frequency"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_Ws.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.Ws.WsCls.set_vdr_frequency">[docs]</a>	<span class="k">def</span> <span class="nf">set_vdr_frequency</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">virt_dl_rf</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:WS:VDRFrequency \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.tcw.ws.set_vdr_frequency(virt_dl_rf = 1) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param virt_dl_rf: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">virt_dl_rf</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:WS:VDRFrequency </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;WsCls&#39;</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Clones the group by creating new object from it and its whole existing subgroups</span>
+<span class="sd">		Also copies all the existing default Repeated Capabilities setting,</span>
+<span class="sd">		which you can change independently without affecting the original group&quot;&quot;&quot;</span>
+		<span class="n">new_group</span> <span class="o">=</span> <span class="n">WsCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">synchronize_repcaps</span><span class="p">(</span><span class="n">new_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">new_group</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

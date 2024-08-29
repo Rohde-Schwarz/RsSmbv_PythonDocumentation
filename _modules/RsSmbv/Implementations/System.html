@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RsSmbv.Implementations.System &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../RsSmbv.html">RsSmbv API Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+      <li>RsSmbv.Implementations.System</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for RsSmbv.Implementations.System</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+
+<span class="kn">from</span> <span class="nn">...Internal.Core</span> <span class="kn">import</span> <span class="n">Core</span>
+<span class="kn">from</span> <span class="nn">...Internal.CommandsGroup</span> <span class="kn">import</span> <span class="n">CommandsGroup</span>
+<span class="kn">from</span> <span class="nn">...Internal</span> <span class="kn">import</span> <span class="n">Conversions</span>
+<span class="kn">from</span> <span class="nn">...Internal.Utilities</span> <span class="kn">import</span> <span class="n">trim_str_response</span>
+<span class="kn">from</span> <span class="nn">...</span> <span class="kn">import</span> <span class="n">enums</span>
+
+
+<span class="c1"># noinspection PyPep8Naming,PyAttributeOutsideInit,SpellCheckingInspection</span>
+<div class="viewcode-block" id="SystemCls"><a class="viewcode-back" href="../../../System.html#RsSmbv.Implementations.System.SystemCls">[docs]</a><span class="k">class</span> <span class="nc">SystemCls</span><span class="p">:</span>
+	<span class="sd">&quot;&quot;&quot;System commands group definition. 188 total commands, 39 Subgroups, 28 group commands&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">core</span><span class="p">:</span> <span class="n">Core</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span> <span class="o">=</span> <span class="n">core</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span> <span class="o">=</span> <span class="n">CommandsGroup</span><span class="p">(</span><span class="s2">&quot;system&quot;</span><span class="p">,</span> <span class="n">core</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">beeper</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;beeper commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_beeper&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Beeper</span> <span class="kn">import</span> <span class="n">BeeperCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_beeper</span> <span class="o">=</span> <span class="n">BeeperCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_beeper</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">bios</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;bios commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_bios&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Bios</span> <span class="kn">import</span> <span class="n">BiosCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_bios</span> <span class="o">=</span> <span class="n">BiosCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bios</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">communicate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;communicate commands group. 7 Sub-classes, 0 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_communicate&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Communicate</span> <span class="kn">import</span> <span class="n">CommunicateCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_communicate</span> <span class="o">=</span> <span class="n">CommunicateCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_communicate</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">date</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;date commands group. 0 Sub-classes, 3 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_date&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Date</span> <span class="kn">import</span> <span class="n">DateCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_date</span> <span class="o">=</span> <span class="n">DateCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_date</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">device</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;device commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_device&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Device</span> <span class="kn">import</span> <span class="n">DeviceCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_device</span> <span class="o">=</span> <span class="n">DeviceCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_device</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">dexchange</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;dexchange commands group. 3 Sub-classes, 5 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_dexchange&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Dexchange</span> <span class="kn">import</span> <span class="n">DexchangeCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_dexchange</span> <span class="o">=</span> <span class="n">DexchangeCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dexchange</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">deviceFootprint</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;deviceFootprint commands group. 1 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_deviceFootprint&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.DeviceFootprint</span> <span class="kn">import</span> <span class="n">DeviceFootprintCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_deviceFootprint</span> <span class="o">=</span> <span class="n">DeviceFootprintCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_deviceFootprint</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">error</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;error commands group. 2 Sub-classes, 3 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_error&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Error</span> <span class="kn">import</span> <span class="n">ErrorCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_error</span> <span class="o">=</span> <span class="n">ErrorCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_error</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">extDevices</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;extDevices commands group. 1 Sub-classes, 0 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_extDevices&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.ExtDevices</span> <span class="kn">import</span> <span class="n">ExtDevicesCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_extDevices</span> <span class="o">=</span> <span class="n">ExtDevicesCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_extDevices</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">files</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;files commands group. 1 Sub-classes, 0 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_files&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Files</span> <span class="kn">import</span> <span class="n">FilesCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_files</span> <span class="o">=</span> <span class="n">FilesCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_files</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">fpFpga</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;fpFpga commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_fpFpga&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.FpFpga</span> <span class="kn">import</span> <span class="n">FpFpgaCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_fpFpga</span> <span class="o">=</span> <span class="n">FpFpgaCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fpFpga</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">fpreset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;fpreset commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_fpreset&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Fpreset</span> <span class="kn">import</span> <span class="n">FpresetCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_fpreset</span> <span class="o">=</span> <span class="n">FpresetCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fpreset</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">generic</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;generic commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_generic&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Generic</span> <span class="kn">import</span> <span class="n">GenericCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_generic</span> <span class="o">=</span> <span class="n">GenericCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_generic</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">help</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;help commands group. 1 Sub-classes, 2 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_help&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Help</span> <span class="kn">import</span> <span class="n">HelpCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_help</span> <span class="o">=</span> <span class="n">HelpCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_help</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">identification</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;identification commands group. 0 Sub-classes, 2 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_identification&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Identification</span> <span class="kn">import</span> <span class="n">IdentificationCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_identification</span> <span class="o">=</span> <span class="n">IdentificationCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_identification</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">information</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;information commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_information&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Information</span> <span class="kn">import</span> <span class="n">InformationCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_information</span> <span class="o">=</span> <span class="n">InformationCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_information</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">issd</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;issd commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_issd&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Issd</span> <span class="kn">import</span> <span class="n">IssdCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_issd</span> <span class="o">=</span> <span class="n">IssdCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_issd</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">linux</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;linux commands group. 1 Sub-classes, 0 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_linux&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Linux</span> <span class="kn">import</span> <span class="n">LinuxCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_linux</span> <span class="o">=</span> <span class="n">LinuxCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_linux</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">lock</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;lock commands group. 5 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_lock&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Lock</span> <span class="kn">import</span> <span class="n">LockCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_lock</span> <span class="o">=</span> <span class="n">LockCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lock</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">massMemory</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;massMemory commands group. 1 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_massMemory&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.MassMemory</span> <span class="kn">import</span> <span class="n">MassMemoryCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_massMemory</span> <span class="o">=</span> <span class="n">MassMemoryCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_massMemory</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">ntp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;ntp commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_ntp&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Ntp</span> <span class="kn">import</span> <span class="n">NtpCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_ntp</span> <span class="o">=</span> <span class="n">NtpCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ntp</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">option</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;option commands group. 1 Sub-classes, 0 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_option&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Option</span> <span class="kn">import</span> <span class="n">OptionCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_option</span> <span class="o">=</span> <span class="n">OptionCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_option</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">package</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;package commands group. 3 Sub-classes, 0 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_package&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Package</span> <span class="kn">import</span> <span class="n">PackageCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_package</span> <span class="o">=</span> <span class="n">PackageCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_package</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">pciFpga</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;pciFpga commands group. 1 Sub-classes, 0 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_pciFpga&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.PciFpga</span> <span class="kn">import</span> <span class="n">PciFpgaCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_pciFpga</span> <span class="o">=</span> <span class="n">PciFpgaCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pciFpga</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">profiling</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;profiling commands group. 5 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_profiling&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Profiling</span> <span class="kn">import</span> <span class="n">ProfilingCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_profiling</span> <span class="o">=</span> <span class="n">ProfilingCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_profiling</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">protect</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;protect commands group. 1 Sub-classes, 0 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_protect&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Protect</span> <span class="kn">import</span> <span class="n">ProtectCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_protect</span> <span class="o">=</span> <span class="n">ProtectCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_protect</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">reboot</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;reboot commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_reboot&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Reboot</span> <span class="kn">import</span> <span class="n">RebootCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_reboot</span> <span class="o">=</span> <span class="n">RebootCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reboot</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">restart</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;restart commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_restart&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Restart</span> <span class="kn">import</span> <span class="n">RestartCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_restart</span> <span class="o">=</span> <span class="n">RestartCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_restart</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">scrpt</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;scrpt commands group. 1 Sub-classes, 4 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_scrpt&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Scrpt</span> <span class="kn">import</span> <span class="n">ScrptCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_scrpt</span> <span class="o">=</span> <span class="n">ScrptCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_scrpt</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">security</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;security commands group. 6 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_security&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Security</span> <span class="kn">import</span> <span class="n">SecurityCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_security</span> <span class="o">=</span> <span class="n">SecurityCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_security</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">shutdown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;shutdown commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_shutdown&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Shutdown</span> <span class="kn">import</span> <span class="n">ShutdownCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_shutdown</span> <span class="o">=</span> <span class="n">ShutdownCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_shutdown</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">specification</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;specification commands group. 2 Sub-classes, 0 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_specification&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Specification</span> <span class="kn">import</span> <span class="n">SpecificationCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_specification</span> <span class="o">=</span> <span class="n">SpecificationCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_specification</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">srData</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;srData commands group. 0 Sub-classes, 2 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_srData&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.SrData</span> <span class="kn">import</span> <span class="n">SrDataCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_srData</span> <span class="o">=</span> <span class="n">SrDataCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_srData</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">srexec</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;srexec commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_srexec&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Srexec</span> <span class="kn">import</span> <span class="n">SrexecCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_srexec</span> <span class="o">=</span> <span class="n">SrexecCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_srexec</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">srtime</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;srtime commands group. 1 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_srtime&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Srtime</span> <span class="kn">import</span> <span class="n">SrtimeCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_srtime</span> <span class="o">=</span> <span class="n">SrtimeCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_srtime</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">startup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;startup commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_startup&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Startup</span> <span class="kn">import</span> <span class="n">StartupCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_startup</span> <span class="o">=</span> <span class="n">StartupCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_startup</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">time</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;time commands group. 3 Sub-classes, 4 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_time&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Time</span> <span class="kn">import</span> <span class="n">TimeCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_time</span> <span class="o">=</span> <span class="n">TimeCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_time</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">ulock</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;ulock commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_ulock&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Ulock</span> <span class="kn">import</span> <span class="n">UlockCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_ulock</span> <span class="o">=</span> <span class="n">UlockCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ulock</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">undo</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;undo commands group. 3 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_undo&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Undo</span> <span class="kn">import</span> <span class="n">UndoCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_undo</span> <span class="o">=</span> <span class="n">UndoCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_undo</span>
+
+<div class="viewcode-block" id="SystemCls.set_crash"><a class="viewcode-back" href="../../../System.html#RsSmbv.Implementations.System.SystemCls.set_crash">[docs]</a>	<span class="k">def</span> <span class="nf">set_crash</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">test_scpi_generic</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: SYSTem:CRASh \n</span>
+<span class="sd">		Snippet: driver.system.set_crash(test_scpi_generic = 1.0) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param test_scpi_generic: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">test_scpi_generic</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SYSTem:CRASh </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SystemCls.get_did"><a class="viewcode-back" href="../../../System.html#RsSmbv.Implementations.System.SystemCls.get_did">[docs]</a>	<span class="k">def</span> <span class="nf">get_did</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: SYSTem:DID \n</span>
+<span class="sd">		Snippet: value: str = driver.system.get_did() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: pseudo_string: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SYSTem:DID?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">trim_str_response</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SystemCls.get_dlock"><a class="viewcode-back" href="../../../System.html#RsSmbv.Implementations.System.SystemCls.get_dlock">[docs]</a>	<span class="k">def</span> <span class="nf">get_dlock</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: SYSTem:DLOCk \n</span>
+<span class="sd">		Snippet: value: bool = driver.system.get_dlock() \n</span>
+<span class="sd">		Disables the manual operation over the display, including the front panel keyboard of the instrument. \n</span>
+<span class="sd">			:return: disp_lock_stat: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SYSTem:DLOCk?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_bool</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SystemCls.set_dlock"><a class="viewcode-back" href="../../../System.html#RsSmbv.Implementations.System.SystemCls.set_dlock">[docs]</a>	<span class="k">def</span> <span class="nf">set_dlock</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">disp_lock_stat</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: SYSTem:DLOCk \n</span>
+<span class="sd">		Snippet: driver.system.set_dlock(disp_lock_stat = False) \n</span>
+<span class="sd">		Disables the manual operation over the display, including the front panel keyboard of the instrument. \n</span>
+<span class="sd">			:param disp_lock_stat: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">bool_to_str</span><span class="p">(</span><span class="n">disp_lock_stat</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SYSTem:DLOCk </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SystemCls.set_import_py"><a class="viewcode-back" href="../../../System.html#RsSmbv.Implementations.System.SystemCls.set_import_py">[docs]</a>	<span class="k">def</span> <span class="nf">set_import_py</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: SYSTem:IMPort \n</span>
+<span class="sd">		Snippet: driver.system.set_import_py(filename = &#39;abc&#39;) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param filename: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">value_to_quoted_str</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SYSTem:IMPort </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SystemCls.get_iresponse"><a class="viewcode-back" href="../../../System.html#RsSmbv.Implementations.System.SystemCls.get_iresponse">[docs]</a>	<span class="k">def</span> <span class="nf">get_iresponse</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: SYSTem:IRESponse \n</span>
+<span class="sd">		Snippet: value: str = driver.system.get_iresponse() \n</span>
+<span class="sd">		Defines the user defined identification string for *IDN. Note: While working in an emulation mode, the instrument&#39;s</span>
+<span class="sd">		specific command set is disabled, i.e. the SCPI command method RsSmbv.System.iresponse is discarded. \n</span>
+<span class="sd">			:return: idn_response: string</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SYSTem:IRESponse?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">trim_str_response</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SystemCls.set_iresponse"><a class="viewcode-back" href="../../../System.html#RsSmbv.Implementations.System.SystemCls.set_iresponse">[docs]</a>	<span class="k">def</span> <span class="nf">set_iresponse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idn_response</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: SYSTem:IRESponse \n</span>
+<span class="sd">		Snippet: driver.system.set_iresponse(idn_response = &#39;abc&#39;) \n</span>
+<span class="sd">		Defines the user defined identification string for *IDN. Note: While working in an emulation mode, the instrument&#39;s</span>
+<span class="sd">		specific command set is disabled, i.e. the SCPI command method RsSmbv.System.iresponse is discarded. \n</span>
+<span class="sd">			:param idn_response: string</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">value_to_quoted_str</span><span class="p">(</span><span class="n">idn_response</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SYSTem:IRESponse </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SystemCls.get_klock"><a class="viewcode-back" href="../../../System.html#RsSmbv.Implementations.System.SystemCls.get_klock">[docs]</a>	<span class="k">def</span> <span class="nf">get_klock</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: SYSTem:KLOCk \n</span>
+<span class="sd">		Snippet: value: bool = driver.system.get_klock() \n</span>
+<span class="sd">		Disables the front panel keyboard of the instrument. \n</span>
+<span class="sd">			:return: state: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SYSTem:KLOCk?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_bool</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SystemCls.set_klock"><a class="viewcode-back" href="../../../System.html#RsSmbv.Implementations.System.SystemCls.set_klock">[docs]</a>	<span class="k">def</span> <span class="nf">set_klock</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: SYSTem:KLOCk \n</span>
+<span class="sd">		Snippet: driver.system.set_klock(state = False) \n</span>
+<span class="sd">		Disables the front panel keyboard of the instrument. \n</span>
+<span class="sd">			:param state: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">bool_to_str</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SYSTem:KLOCk </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SystemCls.get_language"><a class="viewcode-back" href="../../../System.html#RsSmbv.Implementations.System.SystemCls.get_language">[docs]</a>	<span class="k">def</span> <span class="nf">get_language</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: SYSTem:LANGuage \n</span>
+<span class="sd">		Snippet: value: str = driver.system.get_language() \n</span>
+<span class="sd">		Sets the remote control command set. \n</span>
+<span class="sd">			:return: language: string</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SYSTem:LANGuage?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">trim_str_response</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SystemCls.set_language"><a class="viewcode-back" href="../../../System.html#RsSmbv.Implementations.System.SystemCls.set_language">[docs]</a>	<span class="k">def</span> <span class="nf">set_language</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">language</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: SYSTem:LANGuage \n</span>
+<span class="sd">		Snippet: driver.system.set_language(language = &#39;abc&#39;) \n</span>
+<span class="sd">		Sets the remote control command set. \n</span>
+<span class="sd">			:param language: string</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">value_to_quoted_str</span><span class="p">(</span><span class="n">language</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SYSTem:LANGuage </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SystemCls.get_ninformation"><a class="viewcode-back" href="../../../System.html#RsSmbv.Implementations.System.SystemCls.get_ninformation">[docs]</a>	<span class="k">def</span> <span class="nf">get_ninformation</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: SYSTem:NINFormation \n</span>
+<span class="sd">		Snippet: value: str = driver.system.get_ninformation() \n</span>
+<span class="sd">		Queries the oldest information message (&#39;Error History &gt; Level &gt; Info&#39;) in the error/event queue. \n</span>
+<span class="sd">			:return: next_info: string</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SYSTem:NINFormation?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">trim_str_response</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SystemCls.get_oresponse"><a class="viewcode-back" href="../../../System.html#RsSmbv.Implementations.System.SystemCls.get_oresponse">[docs]</a>	<span class="k">def</span> <span class="nf">get_oresponse</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: SYSTem:ORESponse \n</span>
+<span class="sd">		Snippet: value: str = driver.system.get_oresponse() \n</span>
+<span class="sd">		Defines the user defined response string for *OPT. Note: While working in an emulation mode, the instrument&#39;s specific</span>
+<span class="sd">		command set is disabled, i.e. the SCPI command method RsSmbv.System.oresponse is discarded. \n</span>
+<span class="sd">			:return: oresponse: string</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SYSTem:ORESponse?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">trim_str_response</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SystemCls.set_oresponse"><a class="viewcode-back" href="../../../System.html#RsSmbv.Implementations.System.SystemCls.set_oresponse">[docs]</a>	<span class="k">def</span> <span class="nf">set_oresponse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">oresponse</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: SYSTem:ORESponse \n</span>
+<span class="sd">		Snippet: driver.system.set_oresponse(oresponse = &#39;abc&#39;) \n</span>
+<span class="sd">		Defines the user defined response string for *OPT. Note: While working in an emulation mode, the instrument&#39;s specific</span>
+<span class="sd">		command set is disabled, i.e. the SCPI command method RsSmbv.System.oresponse is discarded. \n</span>
+<span class="sd">			:param oresponse: string</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">value_to_quoted_str</span><span class="p">(</span><span class="n">oresponse</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SYSTem:ORESponse </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SystemCls.get_osystem"><a class="viewcode-back" href="../../../System.html#RsSmbv.Implementations.System.SystemCls.get_osystem">[docs]</a>	<span class="k">def</span> <span class="nf">get_osystem</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: SYSTem:OSYStem \n</span>
+<span class="sd">		Snippet: value: str = driver.system.get_osystem() \n</span>
+<span class="sd">		Queries the operating system of the instrument. \n</span>
+<span class="sd">			:return: oper_system: string</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SYSTem:OSYStem?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">trim_str_response</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SystemCls.preset"><a class="viewcode-back" href="../../../System.html#RsSmbv.Implementations.System.SystemCls.preset">[docs]</a>	<span class="k">def</span> <span class="nf">preset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pseudo_string</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: SYSTem:PRESet \n</span>
+<span class="sd">		Snippet: driver.system.preset(pseudo_string = &#39;abc&#39;) \n</span>
+<span class="sd">			INTRO_CMD_HELP: Triggers an instrument reset. It has the same effect as: \n</span>
+<span class="sd">			- The [Preset] key. However, the command does not close open GUI dialogs like the key does.</span>
+<span class="sd">			- The *RST command</span>
+<span class="sd">		For an overview of the settings affected by the preset function, see Table &#39;Key parameters affected by preset and</span>
+<span class="sd">		factory preset&#39; \n</span>
+<span class="sd">			:param pseudo_string: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">value_to_quoted_str</span><span class="p">(</span><span class="n">pseudo_string</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SYSTem:PRESet </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SystemCls.preset_all"><a class="viewcode-back" href="../../../System.html#RsSmbv.Implementations.System.SystemCls.preset_all">[docs]</a>	<span class="k">def</span> <span class="nf">preset_all</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pseudo_string</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: SYSTem:PRESet:ALL \n</span>
+<span class="sd">		Snippet: driver.system.preset_all(pseudo_string = &#39;abc&#39;) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param pseudo_string: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">value_to_quoted_str</span><span class="p">(</span><span class="n">pseudo_string</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SYSTem:PRESet:ALL </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SystemCls.preset_base"><a class="viewcode-back" href="../../../System.html#RsSmbv.Implementations.System.SystemCls.preset_base">[docs]</a>	<span class="k">def</span> <span class="nf">preset_base</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pseudo_string</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: SYSTem:PRESet:BASE \n</span>
+<span class="sd">		Snippet: driver.system.preset_base(pseudo_string = &#39;abc&#39;) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param pseudo_string: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">value_to_quoted_str</span><span class="p">(</span><span class="n">pseudo_string</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SYSTem:PRESet:BASE </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SystemCls.recall"><a class="viewcode-back" href="../../../System.html#RsSmbv.Implementations.System.SystemCls.recall">[docs]</a>	<span class="k">def</span> <span class="nf">recall</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: SYSTem:RCL \n</span>
+<span class="sd">		Snippet: driver.system.recall(path_name = &#39;abc&#39;) \n</span>
+<span class="sd">		Selects and uploads a *.savrcltxt file with previously saved R&amp;S SMBV100B settings from the default or a specified</span>
+<span class="sd">		directory. \n</span>
+<span class="sd">			:param path_name: string</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">value_to_quoted_str</span><span class="p">(</span><span class="n">path_name</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SYSTem:RCL </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SystemCls.reset"><a class="viewcode-back" href="../../../System.html#RsSmbv.Implementations.System.SystemCls.reset">[docs]</a>	<span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pseudo_string</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: SYSTem:RESet \n</span>
+<span class="sd">		Snippet: driver.system.reset(pseudo_string = &#39;abc&#39;) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param pseudo_string: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">value_to_quoted_str</span><span class="p">(</span><span class="n">pseudo_string</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SYSTem:RESet </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SystemCls.reset_all"><a class="viewcode-back" href="../../../System.html#RsSmbv.Implementations.System.SystemCls.reset_all">[docs]</a>	<span class="k">def</span> <span class="nf">reset_all</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pseudo_string</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: SYSTem:RESet:ALL \n</span>
+<span class="sd">		Snippet: driver.system.reset_all(pseudo_string = &#39;abc&#39;) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param pseudo_string: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">value_to_quoted_str</span><span class="p">(</span><span class="n">pseudo_string</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SYSTem:RESet:ALL </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SystemCls.reset_base"><a class="viewcode-back" href="../../../System.html#RsSmbv.Implementations.System.SystemCls.reset_base">[docs]</a>	<span class="k">def</span> <span class="nf">reset_base</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pseudo_string</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: SYSTem:RESet:BASE \n</span>
+<span class="sd">		Snippet: driver.system.reset_base(pseudo_string = &#39;abc&#39;) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param pseudo_string: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">value_to_quoted_str</span><span class="p">(</span><span class="n">pseudo_string</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SYSTem:RESet:BASE </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SystemCls.save"><a class="viewcode-back" href="../../../System.html#RsSmbv.Implementations.System.SystemCls.save">[docs]</a>	<span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: SYSTem:SAV \n</span>
+<span class="sd">		Snippet: driver.system.save(path_name = &#39;abc&#39;) \n</span>
+<span class="sd">		Saves the current R&amp;S SMBV100B settings in a file. To deteremine the file name and storage location, enter the directory</span>
+<span class="sd">		and file name with the command. According to the file type, the R&amp;S SMBV100B assigns the extension (*.</span>
+<span class="sd">		savrcltxt) automatically. \n</span>
+<span class="sd">			:param path_name: string</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">value_to_quoted_str</span><span class="p">(</span><span class="n">path_name</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SYSTem:SAV </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SystemCls.get_simulation"><a class="viewcode-back" href="../../../System.html#RsSmbv.Implementations.System.SystemCls.get_simulation">[docs]</a>	<span class="k">def</span> <span class="nf">get_simulation</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: SYSTem:SIMulation \n</span>
+<span class="sd">		Snippet: value: bool = driver.system.get_simulation() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: status: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SYSTem:SIMulation?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_bool</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SystemCls.get_sr_cat"><a class="viewcode-back" href="../../../System.html#RsSmbv.Implementations.System.SystemCls.get_sr_cat">[docs]</a>	<span class="k">def</span> <span class="nf">get_sr_cat</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: SYSTem:SRCat \n</span>
+<span class="sd">		Snippet: value: List[str] = driver.system.get_sr_cat() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: catalog: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SYSTem:SRCat?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_str_list</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SystemCls.set_srestore"><a class="viewcode-back" href="../../../System.html#RsSmbv.Implementations.System.SystemCls.set_srestore">[docs]</a>	<span class="k">def</span> <span class="nf">set_srestore</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_set</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: SYSTem:SREStore \n</span>
+<span class="sd">		Snippet: driver.system.set_srestore(data_set = 1) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param data_set: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">data_set</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SYSTem:SREStore </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="SystemCls.get_sr_mode"><a class="viewcode-back" href="../../../System.html#RsSmbv.Implementations.System.SystemCls.get_sr_mode">[docs]</a>	<span class="k">def</span> <span class="nf">get_sr_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">RecScpiCmdMode</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: SYSTem:SRMode \n</span>
+<span class="sd">		Snippet: value: enums.RecScpiCmdMode = driver.system.get_sr_mode() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: mode: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SYSTem:SRMode?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">RecScpiCmdMode</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SystemCls.set_sr_mode"><a class="viewcode-back" href="../../../System.html#RsSmbv.Implementations.System.SystemCls.set_sr_mode">[docs]</a>	<span class="k">def</span> <span class="nf">set_sr_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">RecScpiCmdMode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: SYSTem:SRMode \n</span>
+<span class="sd">		Snippet: driver.system.set_sr_mode(mode = enums.RecScpiCmdMode.AUTO) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param mode: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">mode</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">RecScpiCmdMode</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SYSTem:SRMode </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SystemCls.get_sr_sel"><a class="viewcode-back" href="../../../System.html#RsSmbv.Implementations.System.SystemCls.get_sr_sel">[docs]</a>	<span class="k">def</span> <span class="nf">get_sr_sel</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: SYSTem:SRSel \n</span>
+<span class="sd">		Snippet: value: str = driver.system.get_sr_sel() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: filename: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SYSTem:SRSel?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">trim_str_response</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SystemCls.set_sr_sel"><a class="viewcode-back" href="../../../System.html#RsSmbv.Implementations.System.SystemCls.set_sr_sel">[docs]</a>	<span class="k">def</span> <span class="nf">set_sr_sel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: SYSTem:SRSel \n</span>
+<span class="sd">		Snippet: driver.system.set_sr_sel(filename = &#39;abc&#39;) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param filename: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">value_to_quoted_str</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SYSTem:SRSel </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SystemCls.set_ssave"><a class="viewcode-back" href="../../../System.html#RsSmbv.Implementations.System.SystemCls.set_ssave">[docs]</a>	<span class="k">def</span> <span class="nf">set_ssave</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_set</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: SYSTem:SSAVe \n</span>
+<span class="sd">		Snippet: driver.system.set_ssave(data_set = 1) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param data_set: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">data_set</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SYSTem:SSAVe </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SystemCls.get_tzone"><a class="viewcode-back" href="../../../System.html#RsSmbv.Implementations.System.SystemCls.get_tzone">[docs]</a>	<span class="k">def</span> <span class="nf">get_tzone</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: SYSTem:TZONe \n</span>
+<span class="sd">		Snippet: value: str = driver.system.get_tzone() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: pseudo_string: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SYSTem:TZONe?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">trim_str_response</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SystemCls.set_tzone"><a class="viewcode-back" href="../../../System.html#RsSmbv.Implementations.System.SystemCls.set_tzone">[docs]</a>	<span class="k">def</span> <span class="nf">set_tzone</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pseudo_string</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: SYSTem:TZONe \n</span>
+<span class="sd">		Snippet: driver.system.set_tzone(pseudo_string = &#39;abc&#39;) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param pseudo_string: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">value_to_quoted_str</span><span class="p">(</span><span class="n">pseudo_string</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SYSTem:TZONe </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SystemCls.get_up_time"><a class="viewcode-back" href="../../../System.html#RsSmbv.Implementations.System.SystemCls.get_up_time">[docs]</a>	<span class="k">def</span> <span class="nf">get_up_time</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: SYSTem:UPTime \n</span>
+<span class="sd">		Snippet: value: str = driver.system.get_up_time() \n</span>
+<span class="sd">		Queries the up time of the operating system. \n</span>
+<span class="sd">			:return: up_time: &#39;ddd.hh:mm:ss&#39;</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SYSTem:UPTime?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">trim_str_response</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SystemCls.get_version"><a class="viewcode-back" href="../../../System.html#RsSmbv.Implementations.System.SystemCls.get_version">[docs]</a>	<span class="k">def</span> <span class="nf">get_version</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: SYSTem:VERSion \n</span>
+<span class="sd">		Snippet: value: str = driver.system.get_version() \n</span>
+<span class="sd">		Queries the SCPI version the instrument&#39;s command set complies with. \n</span>
+<span class="sd">			:return: version: string</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SYSTem:VERSion?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">trim_str_response</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SystemCls.set_wait"><a class="viewcode-back" href="../../../System.html#RsSmbv.Implementations.System.SystemCls.set_wait">[docs]</a>	<span class="k">def</span> <span class="nf">set_wait</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time_ms</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: SYSTem:WAIT \n</span>
+<span class="sd">		Snippet: driver.system.set_wait(time_ms = 1) \n</span>
+<span class="sd">		Delays the execution of the subsequent remote command by the specified time. This function is useful, for example to</span>
+<span class="sd">		execute an SCPI sequence automatically but with a defined time delay between some commands. See &#39;How to assign actions to</span>
+<span class="sd">		the [ (User) ] key&#39;. \n</span>
+<span class="sd">			:param time_ms: integer Wait time in ms Range: 0 to 10000</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">time_ms</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SYSTem:WAIT </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;SystemCls&#39;</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Clones the group by creating new object from it and its whole existing subgroups</span>
+<span class="sd">		Also copies all the existing default Repeated Capabilities setting,</span>
+<span class="sd">		which you can change independently without affecting the original group&quot;&quot;&quot;</span>
+		<span class="n">new_group</span> <span class="o">=</span> <span class="n">SystemCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">synchronize_repcaps</span><span class="p">(</span><span class="n">new_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">new_group</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

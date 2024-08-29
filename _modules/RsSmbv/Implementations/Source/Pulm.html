@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RsSmbv.Implementations.Source.Pulm &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../_static/copybutton.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../RsSmbv.html">RsSmbv API Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+          <li><a href="../Source.html">RsSmbv.Implementations.Source</a> &raquo;</li>
+      <li>RsSmbv.Implementations.Source.Pulm</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for RsSmbv.Implementations.Source.Pulm</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">....Internal.Core</span> <span class="kn">import</span> <span class="n">Core</span>
+<span class="kn">from</span> <span class="nn">....Internal.CommandsGroup</span> <span class="kn">import</span> <span class="n">CommandsGroup</span>
+<span class="kn">from</span> <span class="nn">....Internal</span> <span class="kn">import</span> <span class="n">Conversions</span>
+<span class="kn">from</span> <span class="nn">....</span> <span class="kn">import</span> <span class="n">enums</span>
+
+
+<span class="c1"># noinspection PyPep8Naming,PyAttributeOutsideInit,SpellCheckingInspection</span>
+<div class="viewcode-block" id="PulmCls"><a class="viewcode-back" href="../../../../Source_Pulm.html#RsSmbv.Implementations.Source.Pulm.PulmCls">[docs]</a><span class="k">class</span> <span class="nc">PulmCls</span><span class="p">:</span>
+	<span class="sd">&quot;&quot;&quot;Pulm commands group definition. 46 total commands, 5 Subgroups, 9 group commands&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">core</span><span class="p">:</span> <span class="n">Core</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span> <span class="o">=</span> <span class="n">core</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span> <span class="o">=</span> <span class="n">CommandsGroup</span><span class="p">(</span><span class="s2">&quot;pulm&quot;</span><span class="p">,</span> <span class="n">core</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">double</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;double commands group. 0 Sub-classes, 3 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_double&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Double</span> <span class="kn">import</span> <span class="n">DoubleCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_double</span> <span class="o">=</span> <span class="n">DoubleCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_double</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">output</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;output commands group. 1 Sub-classes, 0 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_output&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Output</span> <span class="kn">import</span> <span class="n">OutputCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_output</span> <span class="o">=</span> <span class="n">OutputCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_output</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;train commands group. 5 Sub-classes, 3 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_train&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Train</span> <span class="kn">import</span> <span class="n">TrainCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_train</span> <span class="o">=</span> <span class="n">TrainCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_train</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">trigger</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;trigger commands group. 1 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_trigger&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Trigger</span> <span class="kn">import</span> <span class="n">TriggerCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_trigger</span> <span class="o">=</span> <span class="n">TriggerCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_trigger</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">internal</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;internal commands group. 1 Sub-classes, 0 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_internal&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Internal</span> <span class="kn">import</span> <span class="n">InternalCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_internal</span> <span class="o">=</span> <span class="n">InternalCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_internal</span>
+
+<div class="viewcode-block" id="PulmCls.get_delay"><a class="viewcode-back" href="../../../../Source_Pulm.html#RsSmbv.Implementations.Source.Pulm.PulmCls.get_delay">[docs]</a>	<span class="k">def</span> <span class="nf">get_delay</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:PULM:DELay \n</span>
+<span class="sd">		Snippet: value: float = driver.source.pulm.get_delay() \n</span>
+<span class="sd">		Sets the pulse delay. \n</span>
+<span class="sd">			:return: delay: float</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:PULM:DELay?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PulmCls.set_delay"><a class="viewcode-back" href="../../../../Source_Pulm.html#RsSmbv.Implementations.Source.Pulm.PulmCls.set_delay">[docs]</a>	<span class="k">def</span> <span class="nf">set_delay</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">delay</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:PULM:DELay \n</span>
+<span class="sd">		Snippet: driver.source.pulm.set_delay(delay = 1.0) \n</span>
+<span class="sd">		Sets the pulse delay. \n</span>
+<span class="sd">			:param delay: float</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">delay</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:PULM:DELay </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="PulmCls.get_impedance"><a class="viewcode-back" href="../../../../Source_Pulm.html#RsSmbv.Implementations.Source.Pulm.PulmCls.get_impedance">[docs]</a>	<span class="k">def</span> <span class="nf">get_impedance</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">InputImpRf</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:PULM:IMPedance \n</span>
+<span class="sd">		Snippet: value: enums.InputImpRf = driver.source.pulm.get_impedance() \n</span>
+<span class="sd">		Sets the impedance for the external pulse trigger and pulse modulation input. \n</span>
+<span class="sd">			:return: impedance: G50| G10K</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:PULM:IMPedance?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">InputImpRf</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PulmCls.set_impedance"><a class="viewcode-back" href="../../../../Source_Pulm.html#RsSmbv.Implementations.Source.Pulm.PulmCls.set_impedance">[docs]</a>	<span class="k">def</span> <span class="nf">set_impedance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">impedance</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">InputImpRf</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:PULM:IMPedance \n</span>
+<span class="sd">		Snippet: driver.source.pulm.set_impedance(impedance = enums.InputImpRf.G10K) \n</span>
+<span class="sd">		Sets the impedance for the external pulse trigger and pulse modulation input. \n</span>
+<span class="sd">			:param impedance: G50| G10K</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">impedance</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">InputImpRf</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:PULM:IMPedance </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="PulmCls.get_mode"><a class="viewcode-back" href="../../../../Source_Pulm.html#RsSmbv.Implementations.Source.Pulm.PulmCls.get_mode">[docs]</a>	<span class="k">def</span> <span class="nf">get_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">PulsMode</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:PULM:MODE \n</span>
+<span class="sd">		Snippet: value: enums.PulsMode = driver.source.pulm.get_mode() \n</span>
+<span class="sd">		Selects the mode for the pulse modulation. \n</span>
+<span class="sd">			:return: mode: SINGle| DOUBle | PTRain SINGle Generates a single pulse. DOUBle Generates two pulses within one pulse period. PTRain Generates a user-defined pulse train. Specify the pulse sequence with the commands: [:SOURcehw]:PULM:TRAin:ONTime [:SOURcehw]:PULM:TRAin:OFFTime [:SOURcehw]:PULM:TRAin:REPetition</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:PULM:MODE?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">PulsMode</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PulmCls.set_mode"><a class="viewcode-back" href="../../../../Source_Pulm.html#RsSmbv.Implementations.Source.Pulm.PulmCls.set_mode">[docs]</a>	<span class="k">def</span> <span class="nf">set_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">PulsMode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:PULM:MODE \n</span>
+<span class="sd">		Snippet: driver.source.pulm.set_mode(mode = enums.PulsMode.DOUBle) \n</span>
+<span class="sd">		Selects the mode for the pulse modulation. \n</span>
+<span class="sd">			:param mode: SINGle| DOUBle | PTRain SINGle Generates a single pulse. DOUBle Generates two pulses within one pulse period. PTRain Generates a user-defined pulse train. Specify the pulse sequence with the commands: [:SOURcehw]:PULM:TRAin:ONTime [:SOURcehw]:PULM:TRAin:OFFTime [:SOURcehw]:PULM:TRAin:REPetition</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">mode</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">PulsMode</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:PULM:MODE </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PulmCls.get_period"><a class="viewcode-back" href="../../../../Source_Pulm.html#RsSmbv.Implementations.Source.Pulm.PulmCls.get_period">[docs]</a>	<span class="k">def</span> <span class="nf">get_period</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:PULM:PERiod \n</span>
+<span class="sd">		Snippet: value: float = driver.source.pulm.get_period() \n</span>
+<span class="sd">		Sets the period of the generated pulse, that means the repetition frequency of the internally generated modulation signal. \n</span>
+<span class="sd">			:return: period: float The minimum value depends on the installed options R&amp;S SMBVB-K22 or R&amp;S SMBVB-K23 Range: 20E-9 to 100</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:PULM:PERiod?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PulmCls.set_period"><a class="viewcode-back" href="../../../../Source_Pulm.html#RsSmbv.Implementations.Source.Pulm.PulmCls.set_period">[docs]</a>	<span class="k">def</span> <span class="nf">set_period</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">period</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:PULM:PERiod \n</span>
+<span class="sd">		Snippet: driver.source.pulm.set_period(period = 1.0) \n</span>
+<span class="sd">		Sets the period of the generated pulse, that means the repetition frequency of the internally generated modulation signal. \n</span>
+<span class="sd">			:param period: float The minimum value depends on the installed options R&amp;S SMBVB-K22 or R&amp;S SMBVB-K23 Range: 20E-9 to 100</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">period</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:PULM:PERiod </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="PulmCls.get_polarity"><a class="viewcode-back" href="../../../../Source_Pulm.html#RsSmbv.Implementations.Source.Pulm.PulmCls.get_polarity">[docs]</a>	<span class="k">def</span> <span class="nf">get_polarity</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">NormalInverted</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:PULM:POLarity \n</span>
+<span class="sd">		Snippet: value: enums.NormalInverted = driver.source.pulm.get_polarity() \n</span>
+<span class="sd">		Sets the polarity of the externally applied modulation signal. \n</span>
+<span class="sd">			:return: polarity: NORMal| INVerted NORMal Suppresses the RF signal during the pulse pause. INVerted Suppresses the RF signal during the pulse.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:PULM:POLarity?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">NormalInverted</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PulmCls.set_polarity"><a class="viewcode-back" href="../../../../Source_Pulm.html#RsSmbv.Implementations.Source.Pulm.PulmCls.set_polarity">[docs]</a>	<span class="k">def</span> <span class="nf">set_polarity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">polarity</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">NormalInverted</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:PULM:POLarity \n</span>
+<span class="sd">		Snippet: driver.source.pulm.set_polarity(polarity = enums.NormalInverted.INVerted) \n</span>
+<span class="sd">		Sets the polarity of the externally applied modulation signal. \n</span>
+<span class="sd">			:param polarity: NORMal| INVerted NORMal Suppresses the RF signal during the pulse pause. INVerted Suppresses the RF signal during the pulse.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">polarity</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">NormalInverted</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:PULM:POLarity </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="PulmCls.get_source"><a class="viewcode-back" href="../../../../Source_Pulm.html#RsSmbv.Implementations.Source.Pulm.PulmCls.get_source">[docs]</a>	<span class="k">def</span> <span class="nf">get_source</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">SourceInt</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:PULM:SOURce \n</span>
+<span class="sd">		Snippet: value: enums.SourceInt = driver.source.pulm.get_source() \n</span>
+<span class="sd">		Selects between the internal (pulse generator) or an external pulse signal for the modulation. \n</span>
+<span class="sd">			:return: source: INTernal| EXTernal</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:PULM:SOURce?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">SourceInt</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PulmCls.set_source"><a class="viewcode-back" href="../../../../Source_Pulm.html#RsSmbv.Implementations.Source.Pulm.PulmCls.set_source">[docs]</a>	<span class="k">def</span> <span class="nf">set_source</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">SourceInt</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:PULM:SOURce \n</span>
+<span class="sd">		Snippet: driver.source.pulm.set_source(source = enums.SourceInt.EXTernal) \n</span>
+<span class="sd">		Selects between the internal (pulse generator) or an external pulse signal for the modulation. \n</span>
+<span class="sd">			:param source: INTernal| EXTernal</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">SourceInt</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:PULM:SOURce </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PulmCls.get_state"><a class="viewcode-back" href="../../../../Source_Pulm.html#RsSmbv.Implementations.Source.Pulm.PulmCls.get_state">[docs]</a>	<span class="k">def</span> <span class="nf">get_state</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:PULM:STATe \n</span>
+<span class="sd">		Snippet: value: bool = driver.source.pulm.get_state() \n</span>
+<span class="sd">		Activates pulse modulation. \n</span>
+<span class="sd">			:return: state: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:PULM:STATe?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_bool</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PulmCls.set_state"><a class="viewcode-back" href="../../../../Source_Pulm.html#RsSmbv.Implementations.Source.Pulm.PulmCls.set_state">[docs]</a>	<span class="k">def</span> <span class="nf">set_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:PULM:STATe \n</span>
+<span class="sd">		Snippet: driver.source.pulm.set_state(state = False) \n</span>
+<span class="sd">		Activates pulse modulation. \n</span>
+<span class="sd">			:param state: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">bool_to_str</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:PULM:STATe </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="PulmCls.get_ttype"><a class="viewcode-back" href="../../../../Source_Pulm.html#RsSmbv.Implementations.Source.Pulm.PulmCls.get_ttype">[docs]</a>	<span class="k">def</span> <span class="nf">get_ttype</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">PulsTransType</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:PULM:TTYPe \n</span>
+<span class="sd">		Snippet: value: enums.PulsTransType = driver.source.pulm.get_ttype() \n</span>
+<span class="sd">		Sets the transition mode for the pulse signal. \n</span>
+<span class="sd">			:return: source: SMOothed| FAST SMOothed flattens the slew rate, resulting in longer rise/fall times. FAST enables fast transitions with shortest rise and fall times.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:PULM:TTYPe?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">PulsTransType</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PulmCls.set_ttype"><a class="viewcode-back" href="../../../../Source_Pulm.html#RsSmbv.Implementations.Source.Pulm.PulmCls.set_ttype">[docs]</a>	<span class="k">def</span> <span class="nf">set_ttype</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">PulsTransType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:PULM:TTYPe \n</span>
+<span class="sd">		Snippet: driver.source.pulm.set_ttype(source = enums.PulsTransType.FAST) \n</span>
+<span class="sd">		Sets the transition mode for the pulse signal. \n</span>
+<span class="sd">			:param source: SMOothed| FAST SMOothed flattens the slew rate, resulting in longer rise/fall times. FAST enables fast transitions with shortest rise and fall times.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">PulsTransType</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:PULM:TTYPe </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PulmCls.get_width"><a class="viewcode-back" href="../../../../Source_Pulm.html#RsSmbv.Implementations.Source.Pulm.PulmCls.get_width">[docs]</a>	<span class="k">def</span> <span class="nf">get_width</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:PULM:WIDTh \n</span>
+<span class="sd">		Snippet: value: float = driver.source.pulm.get_width() \n</span>
+<span class="sd">		Sets the width of the generated pulse, that means the pulse length. It must be at least 20ns less than the set pulse</span>
+<span class="sd">		period. \n</span>
+<span class="sd">			:return: width: float Range: 20E-9 to 100</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:PULM:WIDTh?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PulmCls.set_width"><a class="viewcode-back" href="../../../../Source_Pulm.html#RsSmbv.Implementations.Source.Pulm.PulmCls.set_width">[docs]</a>	<span class="k">def</span> <span class="nf">set_width</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">width</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:PULM:WIDTh \n</span>
+<span class="sd">		Snippet: driver.source.pulm.set_width(width = 1.0) \n</span>
+<span class="sd">		Sets the width of the generated pulse, that means the pulse length. It must be at least 20ns less than the set pulse</span>
+<span class="sd">		period. \n</span>
+<span class="sd">			:param width: float Range: 20E-9 to 100</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">width</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:PULM:WIDTh </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;PulmCls&#39;</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Clones the group by creating new object from it and its whole existing subgroups</span>
+<span class="sd">		Also copies all the existing default Repeated Capabilities setting,</span>
+<span class="sd">		which you can change independently without affecting the original group&quot;&quot;&quot;</span>
+		<span class="n">new_group</span> <span class="o">=</span> <span class="n">PulmCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">synchronize_repcaps</span><span class="p">(</span><span class="n">new_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">new_group</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

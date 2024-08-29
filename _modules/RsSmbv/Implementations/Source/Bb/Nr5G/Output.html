@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RsSmbv.Implementations.Source.Bb.Nr5G.Output &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../../../" id="documentation_options" src="../../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../../_static/jquery.js"></script>
+        <script src="../../../../../../_static/underscore.js"></script>
+        <script src="../../../../../../_static/doctools.js"></script>
+        <script src="../../../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../../../_static/copybutton.js"></script>
+    <script src="../../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../../../index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../RsSmbv.html">RsSmbv API Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../../../index.html">Module code</a> &raquo;</li>
+          <li><a href="../../../Source.html">RsSmbv.Implementations.Source</a> &raquo;</li>
+          <li><a href="../../Bb.html">RsSmbv.Implementations.Source.Bb</a> &raquo;</li>
+          <li><a href="../Nr5G.html">RsSmbv.Implementations.Source.Bb.Nr5G</a> &raquo;</li>
+      <li>RsSmbv.Implementations.Source.Bb.Nr5G.Output</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for RsSmbv.Implementations.Source.Bb.Nr5G.Output</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">......Internal.Core</span> <span class="kn">import</span> <span class="n">Core</span>
+<span class="kn">from</span> <span class="nn">......Internal.CommandsGroup</span> <span class="kn">import</span> <span class="n">CommandsGroup</span>
+<span class="kn">from</span> <span class="nn">......Internal</span> <span class="kn">import</span> <span class="n">Conversions</span>
+<span class="kn">from</span> <span class="nn">......</span> <span class="kn">import</span> <span class="n">enums</span>
+
+
+<span class="c1"># noinspection PyPep8Naming,PyAttributeOutsideInit,SpellCheckingInspection</span>
+<div class="viewcode-block" id="OutputCls"><a class="viewcode-back" href="../../../../../../Source_Bb_Nr5G_Output.html#RsSmbv.Implementations.Source.Bb.Nr5G.Output.OutputCls">[docs]</a><span class="k">class</span> <span class="nc">OutputCls</span><span class="p">:</span>
+	<span class="sd">&quot;&quot;&quot;Output commands group definition. 59 total commands, 6 Subgroups, 7 group commands&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">core</span><span class="p">:</span> <span class="n">Core</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span> <span class="o">=</span> <span class="n">core</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span> <span class="o">=</span> <span class="n">CommandsGroup</span><span class="p">(</span><span class="s2">&quot;output&quot;</span><span class="p">,</span> <span class="n">core</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">bbConf</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;bbConf commands group. 1 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_bbConf&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.BbConf</span> <span class="kn">import</span> <span class="n">BbConfCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_bbConf</span> <span class="o">=</span> <span class="n">BbConfCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bbConf</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">cfReduction</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;cfReduction commands group. 0 Sub-classes, 8 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_cfReduction&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.CfReduction</span> <span class="kn">import</span> <span class="n">CfReductionCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_cfReduction</span> <span class="o">=</span> <span class="n">CfReductionCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cfReduction</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">filterPy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;filterPy commands group. 0 Sub-classes, 4 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_filterPy&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.FilterPy</span> <span class="kn">import</span> <span class="n">FilterPyCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_filterPy</span> <span class="o">=</span> <span class="n">FilterPyCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_filterPy</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">power</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;power commands group. 8 Sub-classes, 2 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_power&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Power</span> <span class="kn">import</span> <span class="n">PowerCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_power</span> <span class="o">=</span> <span class="n">PowerCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_power</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">ssoc</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;ssoc commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_ssoc&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Ssoc</span> <span class="kn">import</span> <span class="n">SsocCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_ssoc</span> <span class="o">=</span> <span class="n">SsocCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ssoc</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">tdWind</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;tdWind commands group. 11 Sub-classes, 0 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_tdWind&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.TdWind</span> <span class="kn">import</span> <span class="n">TdWindCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_tdWind</span> <span class="o">=</span> <span class="n">TdWindCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tdWind</span>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="OutputCls.get_aclr_opt"><a class="viewcode-back" href="../../../../../../Source_Bb_Nr5G_Output.html#RsSmbv.Implementations.Source.Bb.Nr5G.Output.OutputCls.get_aclr_opt">[docs]</a>	<span class="k">def</span> <span class="nf">get_aclr_opt</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">AclrMode</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:OUTPut:ACLRopt \n</span>
+<span class="sd">		Snippet: value: enums.AclrMode = driver.source.bb.nr5G.output.get_aclr_opt() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: aclr_mode: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:OUTPut:ACLRopt?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">AclrMode</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="OutputCls.set_aclr_opt"><a class="viewcode-back" href="../../../../../../Source_Bb_Nr5G_Output.html#RsSmbv.Implementations.Source.Bb.Nr5G.Output.OutputCls.set_aclr_opt">[docs]</a>	<span class="k">def</span> <span class="nf">set_aclr_opt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">aclr_mode</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">AclrMode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:OUTPut:ACLRopt \n</span>
+<span class="sd">		Snippet: driver.source.bb.nr5G.output.set_aclr_opt(aclr_mode = enums.AclrMode.BAL) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param aclr_mode: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">aclr_mode</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">AclrMode</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:OUTPut:ACLRopt </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="OutputCls.get_clevel"><a class="viewcode-back" href="../../../../../../Source_Bb_Nr5G_Output.html#RsSmbv.Implementations.Source.Bb.Nr5G.Output.OutputCls.get_clevel">[docs]</a>	<span class="k">def</span> <span class="nf">get_clevel</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:OUTPut:CLEVel \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.nr5G.output.get_clevel() \n</span>
+<span class="sd">		Sets the limit for level clipping. \n</span>
+<span class="sd">			:return: clipping_level: integer Range: 1 to 100</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:OUTPut:CLEVel?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="OutputCls.set_clevel"><a class="viewcode-back" href="../../../../../../Source_Bb_Nr5G_Output.html#RsSmbv.Implementations.Source.Bb.Nr5G.Output.OutputCls.set_clevel">[docs]</a>	<span class="k">def</span> <span class="nf">set_clevel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">clipping_level</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:OUTPut:CLEVel \n</span>
+<span class="sd">		Snippet: driver.source.bb.nr5G.output.set_clevel(clipping_level = 1) \n</span>
+<span class="sd">		Sets the limit for level clipping. \n</span>
+<span class="sd">			:param clipping_level: integer Range: 1 to 100</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">clipping_level</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:OUTPut:CLEVel </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="OutputCls.get_cmode"><a class="viewcode-back" href="../../../../../../Source_Bb_Nr5G_Output.html#RsSmbv.Implementations.Source.Bb.Nr5G.Output.OutputCls.get_cmode">[docs]</a>	<span class="k">def</span> <span class="nf">get_cmode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">ClipMode</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:OUTPut:CMODe \n</span>
+<span class="sd">		Snippet: value: enums.ClipMode = driver.source.bb.nr5G.output.get_cmode() \n</span>
+<span class="sd">		Sets the method for level clipping. \n</span>
+<span class="sd">			:return: clipping_mode: VECTor| SCALar</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:OUTPut:CMODe?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">ClipMode</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="OutputCls.set_cmode"><a class="viewcode-back" href="../../../../../../Source_Bb_Nr5G_Output.html#RsSmbv.Implementations.Source.Bb.Nr5G.Output.OutputCls.set_cmode">[docs]</a>	<span class="k">def</span> <span class="nf">set_cmode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">clipping_mode</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">ClipMode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:OUTPut:CMODe \n</span>
+<span class="sd">		Snippet: driver.source.bb.nr5G.output.set_cmode(clipping_mode = enums.ClipMode.SCALar) \n</span>
+<span class="sd">		Sets the method for level clipping. \n</span>
+<span class="sd">			:param clipping_mode: VECTor| SCALar</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">clipping_mode</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">ClipMode</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:OUTPut:CMODe </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="OutputCls.get_fmode"><a class="viewcode-back" href="../../../../../../Source_Bb_Nr5G_Output.html#RsSmbv.Implementations.Source.Bb.Nr5G.Output.OutputCls.get_fmode">[docs]</a>	<span class="k">def</span> <span class="nf">get_fmode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">FilterMode</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:OUTPut:FMODe \n</span>
+<span class="sd">		Snippet: value: enums.FilterMode = driver.source.bb.nr5G.output.get_fmode() \n</span>
+<span class="sd">		Defines if and how the filter is applied, on the whole channel bandwidth or on the individual BWPs separately. \n</span>
+<span class="sd">			:return: filter_bwp: CBW| BWP| OFF| FAST| 2| 1| 0| USER| EVM BWP | 1 Applies a filter to each bandwidth part. CBW | 0 Applies the channel BW filter. EVM Applies a filter to optimze the EVM. FAST | 2 Applies fast filtering. OFF No filter. USER Applies a custom filter.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:OUTPut:FMODe?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">FilterMode</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="OutputCls.set_fmode"><a class="viewcode-back" href="../../../../../../Source_Bb_Nr5G_Output.html#RsSmbv.Implementations.Source.Bb.Nr5G.Output.OutputCls.set_fmode">[docs]</a>	<span class="k">def</span> <span class="nf">set_fmode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filter_bwp</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">FilterMode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:OUTPut:FMODe \n</span>
+<span class="sd">		Snippet: driver.source.bb.nr5G.output.set_fmode(filter_bwp = enums.FilterMode._0) \n</span>
+<span class="sd">		Defines if and how the filter is applied, on the whole channel bandwidth or on the individual BWPs separately. \n</span>
+<span class="sd">			:param filter_bwp: CBW| BWP| OFF| FAST| 2| 1| 0| USER| EVM BWP | 1 Applies a filter to each bandwidth part. CBW | 0 Applies the channel BW filter. EVM Applies a filter to optimze the EVM. FAST | 2 Applies fast filtering. OFF No filter. USER Applies a custom filter.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">filter_bwp</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">FilterMode</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:OUTPut:FMODe </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="OutputCls.get_samr_mode"><a class="viewcode-back" href="../../../../../../Source_Bb_Nr5G_Output.html#RsSmbv.Implementations.Source.Bb.Nr5G.Output.OutputCls.get_samr_mode">[docs]</a>	<span class="k">def</span> <span class="nf">get_samr_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">SampRateModeRange</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:OUTPut:SAMRmode \n</span>
+<span class="sd">		Snippet: value: enums.SampRateModeRange = driver.source.bb.nr5G.output.get_samr_mode() \n</span>
+<span class="sd">		Sets the sample rate mode. \n</span>
+<span class="sd">			:return: samp_rate_mode: MIN| FFT</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:OUTPut:SAMRmode?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">SampRateModeRange</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="OutputCls.set_samr_mode"><a class="viewcode-back" href="../../../../../../Source_Bb_Nr5G_Output.html#RsSmbv.Implementations.Source.Bb.Nr5G.Output.OutputCls.set_samr_mode">[docs]</a>	<span class="k">def</span> <span class="nf">set_samr_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">samp_rate_mode</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">SampRateModeRange</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:OUTPut:SAMRmode \n</span>
+<span class="sd">		Snippet: driver.source.bb.nr5G.output.set_samr_mode(samp_rate_mode = enums.SampRateModeRange.FFT) \n</span>
+<span class="sd">		Sets the sample rate mode. \n</span>
+<span class="sd">			:param samp_rate_mode: MIN| FFT</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">samp_rate_mode</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">SampRateModeRange</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:OUTPut:SAMRmode </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="OutputCls.get_seq_len"><a class="viewcode-back" href="../../../../../../Source_Bb_Nr5G_Output.html#RsSmbv.Implementations.Source.Bb.Nr5G.Output.OutputCls.get_seq_len">[docs]</a>	<span class="k">def</span> <span class="nf">get_seq_len</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:OUTPut:SEQLen \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.nr5G.output.get_seq_len() \n</span>
+<span class="sd">		Sets the sequence length of the signal in number of frames. \n</span>
+<span class="sd">			:return: seq_len: integer Range: 1 to depends on settings</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:OUTPut:SEQLen?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="OutputCls.set_seq_len"><a class="viewcode-back" href="../../../../../../Source_Bb_Nr5G_Output.html#RsSmbv.Implementations.Source.Bb.Nr5G.Output.OutputCls.set_seq_len">[docs]</a>	<span class="k">def</span> <span class="nf">set_seq_len</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">seq_len</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:OUTPut:SEQLen \n</span>
+<span class="sd">		Snippet: driver.source.bb.nr5G.output.set_seq_len(seq_len = 1) \n</span>
+<span class="sd">		Sets the sequence length of the signal in number of frames. \n</span>
+<span class="sd">			:param seq_len: integer Range: 1 to depends on settings</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">seq_len</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:OUTPut:SEQLen </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="OutputCls.get_suslen"><a class="viewcode-back" href="../../../../../../Source_Bb_Nr5G_Output.html#RsSmbv.Implementations.Source.Bb.Nr5G.Output.OutputCls.get_suslen">[docs]</a>	<span class="k">def</span> <span class="nf">get_suslen</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:OUTPut:SUSLen \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.nr5G.output.get_suslen() \n</span>
+<span class="sd">		Sets the sequence length of the signal in terms of subframes. \n</span>
+<span class="sd">			:return: seq_len_subfr: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:OUTPut:SUSLen?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="OutputCls.set_suslen"><a class="viewcode-back" href="../../../../../../Source_Bb_Nr5G_Output.html#RsSmbv.Implementations.Source.Bb.Nr5G.Output.OutputCls.set_suslen">[docs]</a>	<span class="k">def</span> <span class="nf">set_suslen</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">seq_len_subfr</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:NR5G:OUTPut:SUSLen \n</span>
+<span class="sd">		Snippet: driver.source.bb.nr5G.output.set_suslen(seq_len_subfr = 1) \n</span>
+<span class="sd">		Sets the sequence length of the signal in terms of subframes. \n</span>
+<span class="sd">			:param seq_len_subfr: integer Range: 1 to device dependent</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">seq_len_subfr</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:NR5G:OUTPut:SUSLen </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;OutputCls&#39;</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Clones the group by creating new object from it and its whole existing subgroups</span>
+<span class="sd">		Also copies all the existing default Repeated Capabilities setting,</span>
+<span class="sd">		which you can change independently without affecting the original group&quot;&quot;&quot;</span>
+		<span class="n">new_group</span> <span class="o">=</span> <span class="n">OutputCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">synchronize_repcaps</span><span class="p">(</span><span class="n">new_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">new_group</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

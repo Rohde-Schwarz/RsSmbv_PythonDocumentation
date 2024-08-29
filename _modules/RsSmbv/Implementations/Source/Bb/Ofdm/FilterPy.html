@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RsSmbv.Implementations.Source.Bb.Ofdm.FilterPy &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../../../" id="documentation_options" src="../../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../../_static/jquery.js"></script>
+        <script src="../../../../../../_static/underscore.js"></script>
+        <script src="../../../../../../_static/doctools.js"></script>
+        <script src="../../../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../../../_static/copybutton.js"></script>
+    <script src="../../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../../../index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../RsSmbv.html">RsSmbv API Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../../../index.html">Module code</a> &raquo;</li>
+          <li><a href="../../../Source.html">RsSmbv.Implementations.Source</a> &raquo;</li>
+          <li><a href="../../Bb.html">RsSmbv.Implementations.Source.Bb</a> &raquo;</li>
+          <li><a href="../Ofdm.html">RsSmbv.Implementations.Source.Bb.Ofdm</a> &raquo;</li>
+      <li>RsSmbv.Implementations.Source.Bb.Ofdm.FilterPy</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for RsSmbv.Implementations.Source.Bb.Ofdm.FilterPy</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+
+<span class="kn">from</span> <span class="nn">.....Internal.Core</span> <span class="kn">import</span> <span class="n">Core</span>
+<span class="kn">from</span> <span class="nn">.....Internal.CommandsGroup</span> <span class="kn">import</span> <span class="n">CommandsGroup</span>
+<span class="kn">from</span> <span class="nn">.....Internal</span> <span class="kn">import</span> <span class="n">Conversions</span>
+<span class="kn">from</span> <span class="nn">.....Internal.Utilities</span> <span class="kn">import</span> <span class="n">trim_str_response</span>
+<span class="kn">from</span> <span class="nn">.....</span> <span class="kn">import</span> <span class="n">enums</span>
+
+
+<span class="c1"># noinspection PyPep8Naming,PyAttributeOutsideInit,SpellCheckingInspection</span>
+<div class="viewcode-block" id="FilterPyCls"><a class="viewcode-back" href="../../../../../../Source_Bb_Ofdm_FilterPy.html#RsSmbv.Implementations.Source.Bb.Ofdm.FilterPy.FilterPyCls">[docs]</a><span class="k">class</span> <span class="nc">FilterPyCls</span><span class="p">:</span>
+	<span class="sd">&quot;&quot;&quot;FilterPy commands group definition. 9 total commands, 0 Subgroups, 9 group commands&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">core</span><span class="p">:</span> <span class="n">Core</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span> <span class="o">=</span> <span class="n">core</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span> <span class="o">=</span> <span class="n">CommandsGroup</span><span class="p">(</span><span class="s2">&quot;filterPy&quot;</span><span class="p">,</span> <span class="n">core</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+
+<div class="viewcode-block" id="FilterPyCls.get_cut_trans"><a class="viewcode-back" href="../../../../../../Source_Bb_Ofdm_FilterPy.html#RsSmbv.Implementations.Source.Bb.Ofdm.FilterPy.FilterPyCls.get_cut_trans">[docs]</a>	<span class="k">def</span> <span class="nf">get_cut_trans</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:OFDM:FILTer:CUTTrans \n</span>
+<span class="sd">		Snippet: value: bool = driver.source.bb.ofdm.filterPy.get_cut_trans() \n</span>
+<span class="sd">		Cuts the transient response of the filtering operation at the beginning and end of the signal. \n</span>
+<span class="sd">			:return: cut_trans_resp: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:OFDM:FILTer:CUTTrans?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_bool</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FilterPyCls.set_cut_trans"><a class="viewcode-back" href="../../../../../../Source_Bb_Ofdm_FilterPy.html#RsSmbv.Implementations.Source.Bb.Ofdm.FilterPy.FilterPyCls.set_cut_trans">[docs]</a>	<span class="k">def</span> <span class="nf">set_cut_trans</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cut_trans_resp</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:OFDM:FILTer:CUTTrans \n</span>
+<span class="sd">		Snippet: driver.source.bb.ofdm.filterPy.set_cut_trans(cut_trans_resp = False) \n</span>
+<span class="sd">		Cuts the transient response of the filtering operation at the beginning and end of the signal. \n</span>
+<span class="sd">			:param cut_trans_resp: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">bool_to_str</span><span class="p">(</span><span class="n">cut_trans_resp</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:OFDM:FILTer:CUTTrans </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FilterPyCls.get_length"><a class="viewcode-back" href="../../../../../../Source_Bb_Ofdm_FilterPy.html#RsSmbv.Implementations.Source.Bb.Ofdm.FilterPy.FilterPyCls.get_length">[docs]</a>	<span class="k">def</span> <span class="nf">get_length</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:OFDM:FILTer:LENGth \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.ofdm.filterPy.get_length() \n</span>
+<span class="sd">		Sets the filter length. \n</span>
+<span class="sd">			:return: filter_length: integer Range: 1 to 800</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:OFDM:FILTer:LENGth?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FilterPyCls.set_length"><a class="viewcode-back" href="../../../../../../Source_Bb_Ofdm_FilterPy.html#RsSmbv.Implementations.Source.Bb.Ofdm.FilterPy.FilterPyCls.set_length">[docs]</a>	<span class="k">def</span> <span class="nf">set_length</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filter_length</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:OFDM:FILTer:LENGth \n</span>
+<span class="sd">		Snippet: driver.source.bb.ofdm.filterPy.set_length(filter_length = 1) \n</span>
+<span class="sd">		Sets the filter length. \n</span>
+<span class="sd">			:param filter_length: integer Range: 1 to 800</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">filter_length</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:OFDM:FILTer:LENGth </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FilterPyCls.get_rolloff"><a class="viewcode-back" href="../../../../../../Source_Bb_Ofdm_FilterPy.html#RsSmbv.Implementations.Source.Bb.Ofdm.FilterPy.FilterPyCls.get_rolloff">[docs]</a>	<span class="k">def</span> <span class="nf">get_rolloff</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:OFDM:FILTer:ROLLoff \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.ofdm.filterPy.get_rolloff() \n</span>
+<span class="sd">		Sets the filter parameter. \n</span>
+<span class="sd">			:return: rolloff: float Range: 0 to 1</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:OFDM:FILTer:ROLLoff?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FilterPyCls.set_rolloff"><a class="viewcode-back" href="../../../../../../Source_Bb_Ofdm_FilterPy.html#RsSmbv.Implementations.Source.Bb.Ofdm.FilterPy.FilterPyCls.set_rolloff">[docs]</a>	<span class="k">def</span> <span class="nf">set_rolloff</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rolloff</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:OFDM:FILTer:ROLLoff \n</span>
+<span class="sd">		Snippet: driver.source.bb.ofdm.filterPy.set_rolloff(rolloff = 1.0) \n</span>
+<span class="sd">		Sets the filter parameter. \n</span>
+<span class="sd">			:param rolloff: float Range: 0 to 1</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">rolloff</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:OFDM:FILTer:ROLLoff </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FilterPyCls.get_sb_attenuation"><a class="viewcode-back" href="../../../../../../Source_Bb_Ofdm_FilterPy.html#RsSmbv.Implementations.Source.Bb.Ofdm.FilterPy.FilterPyCls.get_sb_attenuation">[docs]</a>	<span class="k">def</span> <span class="nf">get_sb_attenuation</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:OFDM:FILTer:SBATtenuation \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.ofdm.filterPy.get_sb_attenuation() \n</span>
+<span class="sd">		Sets the attenuation in the filter stop band. \n</span>
+<span class="sd">			:return: stb_attenuation: float Range: 10 to 120</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:OFDM:FILTer:SBATtenuation?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FilterPyCls.set_sb_attenuation"><a class="viewcode-back" href="../../../../../../Source_Bb_Ofdm_FilterPy.html#RsSmbv.Implementations.Source.Bb.Ofdm.FilterPy.FilterPyCls.set_sb_attenuation">[docs]</a>	<span class="k">def</span> <span class="nf">set_sb_attenuation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stb_attenuation</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:OFDM:FILTer:SBATtenuation \n</span>
+<span class="sd">		Snippet: driver.source.bb.ofdm.filterPy.set_sb_attenuation(stb_attenuation = 1.0) \n</span>
+<span class="sd">		Sets the attenuation in the filter stop band. \n</span>
+<span class="sd">			:param stb_attenuation: float Range: 10 to 120</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">stb_attenuation</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:OFDM:FILTer:SBATtenuation </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="FilterPyCls.get_type_py"><a class="viewcode-back" href="../../../../../../Source_Bb_Ofdm_FilterPy.html#RsSmbv.Implementations.Source.Bb.Ofdm.FilterPy.FilterPyCls.get_type_py">[docs]</a>	<span class="k">def</span> <span class="nf">get_type_py</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">C5GfiltT</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:OFDM:FILTer:TYPE \n</span>
+<span class="sd">		Snippet: value: enums.C5GfiltT = driver.source.bb.ofdm.filterPy.get_type_py() \n</span>
+<span class="sd">		Sets the baseband filter type. \n</span>
+<span class="sd">			:return: filter_type: RC| RRC| DIRichlet| RECT| DCH| STRunc| USER| PHYDyas| NONE</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:OFDM:FILTer:TYPE?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">C5GfiltT</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FilterPyCls.set_type_py"><a class="viewcode-back" href="../../../../../../Source_Bb_Ofdm_FilterPy.html#RsSmbv.Implementations.Source.Bb.Ofdm.FilterPy.FilterPyCls.set_type_py">[docs]</a>	<span class="k">def</span> <span class="nf">set_type_py</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filter_type</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">C5GfiltT</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:OFDM:FILTer:TYPE \n</span>
+<span class="sd">		Snippet: driver.source.bb.ofdm.filterPy.set_type_py(filter_type = enums.C5GfiltT.DCH) \n</span>
+<span class="sd">		Sets the baseband filter type. \n</span>
+<span class="sd">			:param filter_type: RC| RRC| DIRichlet| RECT| DCH| STRunc| USER| PHYDyas| NONE</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">filter_type</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">C5GfiltT</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:OFDM:FILTer:TYPE </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FilterPyCls.get_ucatalog"><a class="viewcode-back" href="../../../../../../Source_Bb_Ofdm_FilterPy.html#RsSmbv.Implementations.Source.Bb.Ofdm.FilterPy.FilterPyCls.get_ucatalog">[docs]</a>	<span class="k">def</span> <span class="nf">get_ucatalog</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:OFDM:FILTer:UCATalog \n</span>
+<span class="sd">		Snippet: value: List[str] = driver.source.bb.ofdm.filterPy.get_ucatalog() \n</span>
+<span class="sd">		Queries the user filter files in the default directory. Only files with the file extension *.dat are listed. \n</span>
+<span class="sd">			:return: c_5_gfilter_cat_name: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:OFDM:FILTer:UCATalog?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_str_list</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FilterPyCls.get_ulength"><a class="viewcode-back" href="../../../../../../Source_Bb_Ofdm_FilterPy.html#RsSmbv.Implementations.Source.Bb.Ofdm.FilterPy.FilterPyCls.get_ulength">[docs]</a>	<span class="k">def</span> <span class="nf">get_ulength</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:OFDM:FILTer:ULENgth \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.ofdm.filterPy.get_ulength() \n</span>
+<span class="sd">		Queries the filter length. \n</span>
+<span class="sd">			:return: user_filter_len: integer Range: 1 to 800</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:OFDM:FILTer:ULENgth?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FilterPyCls.get_uselection"><a class="viewcode-back" href="../../../../../../Source_Bb_Ofdm_FilterPy.html#RsSmbv.Implementations.Source.Bb.Ofdm.FilterPy.FilterPyCls.get_uselection">[docs]</a>	<span class="k">def</span> <span class="nf">get_uselection</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:OFDM:FILTer:USELection \n</span>
+<span class="sd">		Snippet: value: str = driver.source.bb.ofdm.filterPy.get_uselection() \n</span>
+<span class="sd">		Loads the selected file from the default or the specified directory. Loaded are files with extension *.dat.</span>
+<span class="sd">		Refer to &#39;Accessing Files in the Default or Specified Directory&#39; for general information on file handling in the default</span>
+<span class="sd">		and in a specific directory. \n</span>
+<span class="sd">			:return: user_sel: string Complete file path including file name and file extension</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:OFDM:FILTer:USELection?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">trim_str_response</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FilterPyCls.set_uselection"><a class="viewcode-back" href="../../../../../../Source_Bb_Ofdm_FilterPy.html#RsSmbv.Implementations.Source.Bb.Ofdm.FilterPy.FilterPyCls.set_uselection">[docs]</a>	<span class="k">def</span> <span class="nf">set_uselection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user_sel</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:OFDM:FILTer:USELection \n</span>
+<span class="sd">		Snippet: driver.source.bb.ofdm.filterPy.set_uselection(user_sel = &#39;abc&#39;) \n</span>
+<span class="sd">		Loads the selected file from the default or the specified directory. Loaded are files with extension *.dat.</span>
+<span class="sd">		Refer to &#39;Accessing Files in the Default or Specified Directory&#39; for general information on file handling in the default</span>
+<span class="sd">		and in a specific directory. \n</span>
+<span class="sd">			:param user_sel: string Complete file path including file name and file extension</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">value_to_quoted_str</span><span class="p">(</span><span class="n">user_sel</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:OFDM:FILTer:USELection </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="FilterPyCls.get_windowing"><a class="viewcode-back" href="../../../../../../Source_Bb_Ofdm_FilterPy.html#RsSmbv.Implementations.Source.Bb.Ofdm.FilterPy.FilterPyCls.get_windowing">[docs]</a>	<span class="k">def</span> <span class="nf">get_windowing</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">C5GfilterWind</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:OFDM:FILTer:WINDowing \n</span>
+<span class="sd">		Snippet: value: enums.C5GfilterWind = driver.source.bb.ofdm.filterPy.get_windowing() \n</span>
+<span class="sd">		Sets the windowing method. \n</span>
+<span class="sd">			:return: windowing: NONE| HANNing| HAMMing</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:OFDM:FILTer:WINDowing?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">C5GfilterWind</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FilterPyCls.set_windowing"><a class="viewcode-back" href="../../../../../../Source_Bb_Ofdm_FilterPy.html#RsSmbv.Implementations.Source.Bb.Ofdm.FilterPy.FilterPyCls.set_windowing">[docs]</a>	<span class="k">def</span> <span class="nf">set_windowing</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">windowing</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">C5GfilterWind</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:OFDM:FILTer:WINDowing \n</span>
+<span class="sd">		Snippet: driver.source.bb.ofdm.filterPy.set_windowing(windowing = enums.C5GfilterWind.HAMMing) \n</span>
+<span class="sd">		Sets the windowing method. \n</span>
+<span class="sd">			:param windowing: NONE| HANNing| HAMMing</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">windowing</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">C5GfilterWind</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:OFDM:FILTer:WINDowing </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

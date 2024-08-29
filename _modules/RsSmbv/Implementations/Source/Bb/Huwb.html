@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RsSmbv.Implementations.Source.Bb.Huwb &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../_static/jquery.js"></script>
+        <script src="../../../../../_static/underscore.js"></script>
+        <script src="../../../../../_static/doctools.js"></script>
+        <script src="../../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../../_static/copybutton.js"></script>
+    <script src="../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../../index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../RsSmbv.html">RsSmbv API Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../../index.html">Module code</a> &raquo;</li>
+          <li><a href="../../Source.html">RsSmbv.Implementations.Source</a> &raquo;</li>
+          <li><a href="../Bb.html">RsSmbv.Implementations.Source.Bb</a> &raquo;</li>
+      <li>RsSmbv.Implementations.Source.Bb.Huwb</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for RsSmbv.Implementations.Source.Bb.Huwb</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">.....Internal.Core</span> <span class="kn">import</span> <span class="n">Core</span>
+<span class="kn">from</span> <span class="nn">.....Internal.CommandsGroup</span> <span class="kn">import</span> <span class="n">CommandsGroup</span>
+<span class="kn">from</span> <span class="nn">.....Internal</span> <span class="kn">import</span> <span class="n">Conversions</span>
+<span class="kn">from</span> <span class="nn">.....</span> <span class="kn">import</span> <span class="n">enums</span>
+
+
+<span class="c1"># noinspection PyPep8Naming,PyAttributeOutsideInit,SpellCheckingInspection</span>
+<div class="viewcode-block" id="HuwbCls"><a class="viewcode-back" href="../../../../../Source_Bb_Huwb.html#RsSmbv.Implementations.Source.Bb.Huwb.HuwbCls">[docs]</a><span class="k">class</span> <span class="nc">HuwbCls</span><span class="p">:</span>
+	<span class="sd">&quot;&quot;&quot;Huwb commands group definition. 139 total commands, 13 Subgroups, 12 group commands&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">core</span><span class="p">:</span> <span class="n">Core</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span> <span class="o">=</span> <span class="n">core</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span> <span class="o">=</span> <span class="n">CommandsGroup</span><span class="p">(</span><span class="s2">&quot;huwb&quot;</span><span class="p">,</span> <span class="n">core</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">clipping</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;clipping commands group. 0 Sub-classes, 3 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_clipping&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Clipping</span> <span class="kn">import</span> <span class="n">ClippingCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_clipping</span> <span class="o">=</span> <span class="n">ClippingCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_clipping</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">clock</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;clock commands group. 1 Sub-classes, 3 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_clock&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Clock</span> <span class="kn">import</span> <span class="n">ClockCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_clock</span> <span class="o">=</span> <span class="n">ClockCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_clock</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">fconfig</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;fconfig commands group. 5 Sub-classes, 17 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_fconfig&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Fconfig</span> <span class="kn">import</span> <span class="n">FconfigCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_fconfig</span> <span class="o">=</span> <span class="n">FconfigCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fconfig</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">filterPy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;filterPy commands group. 1 Sub-classes, 2 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_filterPy&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.FilterPy</span> <span class="kn">import</span> <span class="n">FilterPyCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_filterPy</span> <span class="o">=</span> <span class="n">FilterPyCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_filterPy</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">impairments</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;impairments commands group. 0 Sub-classes, 3 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_impairments&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Impairments</span> <span class="kn">import</span> <span class="n">ImpairmentsCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_impairments</span> <span class="o">=</span> <span class="n">ImpairmentsCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_impairments</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">macHeader</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;macHeader commands group. 0 Sub-classes, 31 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_macHeader&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.MacHeader</span> <span class="kn">import</span> <span class="n">MacHeaderCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_macHeader</span> <span class="o">=</span> <span class="n">MacHeaderCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_macHeader</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">phr</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;phr commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_phr&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Phr</span> <span class="kn">import</span> <span class="n">PhrCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_phr</span> <span class="o">=</span> <span class="n">PhrCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_phr</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">setting</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;setting commands group. 0 Sub-classes, 4 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_setting&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Setting</span> <span class="kn">import</span> <span class="n">SettingCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_setting</span> <span class="o">=</span> <span class="n">SettingCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_setting</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">sfd</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;sfd commands group. 0 Sub-classes, 2 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_sfd&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Sfd</span> <span class="kn">import</span> <span class="n">SfdCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_sfd</span> <span class="o">=</span> <span class="n">SfdCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sfd</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">symbolRate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;symbolRate commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_symbolRate&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.SymbolRate</span> <span class="kn">import</span> <span class="n">SymbolRateCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_symbolRate</span> <span class="o">=</span> <span class="n">SymbolRateCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_symbolRate</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">sts</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;sts commands group. 1 Sub-classes, 6 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_sts&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Sts</span> <span class="kn">import</span> <span class="n">StsCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_sts</span> <span class="o">=</span> <span class="n">StsCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sts</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">trigger</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;trigger commands group. 7 Sub-classes, 5 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_trigger&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Trigger</span> <span class="kn">import</span> <span class="n">TriggerCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_trigger</span> <span class="o">=</span> <span class="n">TriggerCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_trigger</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">waveform</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;waveform commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_waveform&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Waveform</span> <span class="kn">import</span> <span class="n">WaveformCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_waveform</span> <span class="o">=</span> <span class="n">WaveformCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_waveform</span>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="HuwbCls.get_asl"><a class="viewcode-back" href="../../../../../Source_Bb_Huwb.html#RsSmbv.Implementations.Source.Bb.Huwb.HuwbCls.get_asl">[docs]</a>	<span class="k">def</span> <span class="nf">get_asl</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbActSegmentLength</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:ASL \n</span>
+<span class="sd">		Snippet: value: enums.HrpUwbActSegmentLength = driver.source.bb.huwb.get_asl() \n</span>
+<span class="sd">		Sets the active segment length. \n</span>
+<span class="sd">			:return: act_seg_length: ASL_16| ASL_32| ASL_64| ASL_128| ASL_256| ASL_512| ASL_1024| ASL_2048</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:ASL?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbActSegmentLength</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HuwbCls.set_asl"><a class="viewcode-back" href="../../../../../Source_Bb_Huwb.html#RsSmbv.Implementations.Source.Bb.Huwb.HuwbCls.set_asl">[docs]</a>	<span class="k">def</span> <span class="nf">set_asl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">act_seg_length</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbActSegmentLength</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:ASL \n</span>
+<span class="sd">		Snippet: driver.source.bb.huwb.set_asl(act_seg_length = enums.HrpUwbActSegmentLength.ASL_1024) \n</span>
+<span class="sd">		Sets the active segment length. \n</span>
+<span class="sd">			:param act_seg_length: ASL_16| ASL_32| ASL_64| ASL_128| ASL_256| ASL_512| ASL_1024| ASL_2048</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">act_seg_length</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbActSegmentLength</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:ASL </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="HuwbCls.get_asn"><a class="viewcode-back" href="../../../../../Source_Bb_Huwb.html#RsSmbv.Implementations.Source.Bb.Huwb.HuwbCls.get_asn">[docs]</a>	<span class="k">def</span> <span class="nf">get_asn</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbActSegmentNum</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:ASN \n</span>
+<span class="sd">		Snippet: value: enums.HrpUwbActSegmentNum = driver.source.bb.huwb.get_asn() \n</span>
+<span class="sd">		Sets the number of active segments. \n</span>
+<span class="sd">			:return: acg_seg_number: ASN_1| ASN_2| ASN_3| ASN_4</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:ASN?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbActSegmentNum</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HuwbCls.set_asn"><a class="viewcode-back" href="../../../../../Source_Bb_Huwb.html#RsSmbv.Implementations.Source.Bb.Huwb.HuwbCls.set_asn">[docs]</a>	<span class="k">def</span> <span class="nf">set_asn</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">acg_seg_number</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbActSegmentNum</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:ASN \n</span>
+<span class="sd">		Snippet: driver.source.bb.huwb.set_asn(acg_seg_number = enums.HrpUwbActSegmentNum.ASN_1) \n</span>
+<span class="sd">		Sets the number of active segments. \n</span>
+<span class="sd">			:param acg_seg_number: ASN_1| ASN_2| ASN_3| ASN_4</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">acg_seg_number</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbActSegmentNum</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:ASN </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HuwbCls.get_bandwidth"><a class="viewcode-back" href="../../../../../Source_Bb_Huwb.html#RsSmbv.Implementations.Source.Bb.Huwb.HuwbCls.get_bandwidth">[docs]</a>	<span class="k">def</span> <span class="nf">get_bandwidth</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:BWIDth \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.huwb.get_bandwidth() \n</span>
+<span class="sd">		Queries the channel bandwidth. \n</span>
+<span class="sd">			:return: hrp_uwb_band_width: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:BWIDth?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="HuwbCls.get_cccl"><a class="viewcode-back" href="../../../../../Source_Bb_Huwb.html#RsSmbv.Implementations.Source.Bb.Huwb.HuwbCls.get_cccl">[docs]</a>	<span class="k">def</span> <span class="nf">get_cccl</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbConvConsLen</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:CCCL \n</span>
+<span class="sd">		Snippet: value: enums.HrpUwbConvConsLen = driver.source.bb.huwb.get_cccl() \n</span>
+<span class="sd">		Sets the constraint length of the convolutional code. \n</span>
+<span class="sd">			:return: cccl: CL3| CL7</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:CCCL?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbConvConsLen</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HuwbCls.set_cccl"><a class="viewcode-back" href="../../../../../Source_Bb_Huwb.html#RsSmbv.Implementations.Source.Bb.Huwb.HuwbCls.set_cccl">[docs]</a>	<span class="k">def</span> <span class="nf">set_cccl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cccl</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbConvConsLen</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:CCCL \n</span>
+<span class="sd">		Snippet: driver.source.bb.huwb.set_cccl(cccl = enums.HrpUwbConvConsLen.CL3) \n</span>
+<span class="sd">		Sets the constraint length of the convolutional code. \n</span>
+<span class="sd">			:param cccl: CL3| CL7</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">cccl</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbConvConsLen</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:CCCL </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HuwbCls.get_cnumber"><a class="viewcode-back" href="../../../../../Source_Bb_Huwb.html#RsSmbv.Implementations.Source.Bb.Huwb.HuwbCls.get_cnumber">[docs]</a>	<span class="k">def</span> <span class="nf">get_cnumber</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:CNUMber \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.huwb.get_cnumber() \n</span>
+<span class="sd">		Sets the channel number. \n</span>
+<span class="sd">			:return: channel_number: integer Range: 0 to 15</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:CNUMber?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HuwbCls.set_cnumber"><a class="viewcode-back" href="../../../../../Source_Bb_Huwb.html#RsSmbv.Implementations.Source.Bb.Huwb.HuwbCls.set_cnumber">[docs]</a>	<span class="k">def</span> <span class="nf">set_cnumber</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel_number</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:CNUMber \n</span>
+<span class="sd">		Snippet: driver.source.bb.huwb.set_cnumber(channel_number = 1) \n</span>
+<span class="sd">		Sets the channel number. \n</span>
+<span class="sd">			:param channel_number: integer Range: 0 to 15</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">channel_number</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:CNUMber </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HuwbCls.get_f_2_ms"><a class="viewcode-back" href="../../../../../Source_Bb_Huwb.html#RsSmbv.Implementations.Source.Bb.Huwb.HuwbCls.get_f_2_ms">[docs]</a>	<span class="k">def</span> <span class="nf">get_f_2_ms</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:F2MS \n</span>
+<span class="sd">		Snippet: value: bool = driver.source.bb.huwb.get_f_2_ms() \n</span>
+<span class="sd">		Sets the frame length of a generated waveform shorter than 2 ms to a fixed value of 2 ms. If activated, the idle interval</span>
+<span class="sd">		is set to 0.0 us by default. \n</span>
+<span class="sd">			:return: fixed_2_ms_frame: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:F2MS?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_bool</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HuwbCls.set_f_2_ms"><a class="viewcode-back" href="../../../../../Source_Bb_Huwb.html#RsSmbv.Implementations.Source.Bb.Huwb.HuwbCls.set_f_2_ms">[docs]</a>	<span class="k">def</span> <span class="nf">set_f_2_ms</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fixed_2_ms_frame</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:F2MS \n</span>
+<span class="sd">		Snippet: driver.source.bb.huwb.set_f_2_ms(fixed_2_ms_frame = False) \n</span>
+<span class="sd">		Sets the frame length of a generated waveform shorter than 2 ms to a fixed value of 2 ms. If activated, the idle interval</span>
+<span class="sd">		is set to 0.0 us by default. \n</span>
+<span class="sd">			:param fixed_2_ms_frame: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">bool_to_str</span><span class="p">(</span><span class="n">fixed_2_ms_frame</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:F2MS </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HuwbCls.get_iinterval"><a class="viewcode-back" href="../../../../../Source_Bb_Huwb.html#RsSmbv.Implementations.Source.Bb.Huwb.HuwbCls.get_iinterval">[docs]</a>	<span class="k">def</span> <span class="nf">get_iinterval</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:IINTerval \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.huwb.get_iinterval() \n</span>
+<span class="sd">		Sets the time of the interval separating two frames. \n</span>
+<span class="sd">			:return: iinterval: float Range: 0 to 1000000, Unit: us</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:IINTerval?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HuwbCls.set_iinterval"><a class="viewcode-back" href="../../../../../Source_Bb_Huwb.html#RsSmbv.Implementations.Source.Bb.Huwb.HuwbCls.set_iinterval">[docs]</a>	<span class="k">def</span> <span class="nf">set_iinterval</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">iinterval</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:IINTerval \n</span>
+<span class="sd">		Snippet: driver.source.bb.huwb.set_iinterval(iinterval = 1.0) \n</span>
+<span class="sd">		Sets the time of the interval separating two frames. \n</span>
+<span class="sd">			:param iinterval: float Range: 0 to 1000000, Unit: us</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">iinterval</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:IINTerval </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="HuwbCls.get_oba"><a class="viewcode-back" href="../../../../../Source_Bb_Huwb.html#RsSmbv.Implementations.Source.Bb.Huwb.HuwbCls.get_oba">[docs]</a>	<span class="k">def</span> <span class="nf">get_oba</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">ZigbeeOperatingBand</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:OBA \n</span>
+<span class="sd">		Snippet: value: enums.ZigbeeOperatingBand = driver.source.bb.huwb.get_oba() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: oper_band: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:OBA?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">ZigbeeOperatingBand</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HuwbCls.set_oba"><a class="viewcode-back" href="../../../../../Source_Bb_Huwb.html#RsSmbv.Implementations.Source.Bb.Huwb.HuwbCls.set_oba">[docs]</a>	<span class="k">def</span> <span class="nf">set_oba</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">oper_band</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">ZigbeeOperatingBand</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:OBA \n</span>
+<span class="sd">		Snippet: driver.source.bb.huwb.set_oba(oper_band = enums.ZigbeeOperatingBand.OB2380) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param oper_band: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">oper_band</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">ZigbeeOperatingBand</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:OBA </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HuwbCls.preset"><a class="viewcode-back" href="../../../../../Source_Bb_Huwb.html#RsSmbv.Implementations.Source.Bb.Huwb.HuwbCls.preset">[docs]</a>	<span class="k">def</span> <span class="nf">preset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:PRESet \n</span>
+<span class="sd">		Snippet: driver.source.bb.huwb.preset() \n</span>
+<span class="sd">		Sets the parameters of the digital standard to their default values (*RST values specified for the commands) .</span>
+<span class="sd">		Not affected is the state set with the command SOURce&lt;hw&gt;:BB:HUWB:STATe. \n</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:PRESet&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HuwbCls.preset_with_opc"><a class="viewcode-back" href="../../../../../Source_Bb_Huwb.html#RsSmbv.Implementations.Source.Bb.Huwb.HuwbCls.preset_with_opc">[docs]</a>	<span class="k">def</span> <span class="nf">preset_with_opc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">opc_timeout_ms</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:PRESet \n</span>
+<span class="sd">		Snippet: driver.source.bb.huwb.preset_with_opc() \n</span>
+<span class="sd">		Sets the parameters of the digital standard to their default values (*RST values specified for the commands) .</span>
+<span class="sd">		Not affected is the state set with the command SOURce&lt;hw&gt;:BB:HUWB:STATe. \n</span>
+<span class="sd">		Same as preset, but waits for the operation to complete before continuing further. Use the RsSmbv.utilities.opc_timeout_set() to set the timeout value. \n</span>
+<span class="sd">			:param opc_timeout_ms: Maximum time to wait in milliseconds, valid only for this call.&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write_with_opc</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:PRESet&#39;</span><span class="p">,</span> <span class="n">opc_timeout_ms</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HuwbCls.get_slength"><a class="viewcode-back" href="../../../../../Source_Bb_Huwb.html#RsSmbv.Implementations.Source.Bb.Huwb.HuwbCls.get_slength">[docs]</a>	<span class="k">def</span> <span class="nf">get_slength</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:SLENgth \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.huwb.get_slength() \n</span>
+<span class="sd">		Sets the sequence length of the signal in number of frames. The signal is calculated in advance and output in the</span>
+<span class="sd">		arbitrary waveform generator. The maximum number of frames is calculated as follows: Max. No. of Frames = Arbitrary</span>
+<span class="sd">		waveform memory size/(sampling rate x 10 ms) . \n</span>
+<span class="sd">			:return: slength: integer Range: 1 to 1024</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:SLENgth?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HuwbCls.set_slength"><a class="viewcode-back" href="../../../../../Source_Bb_Huwb.html#RsSmbv.Implementations.Source.Bb.Huwb.HuwbCls.set_slength">[docs]</a>	<span class="k">def</span> <span class="nf">set_slength</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">slength</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:SLENgth \n</span>
+<span class="sd">		Snippet: driver.source.bb.huwb.set_slength(slength = 1) \n</span>
+<span class="sd">		Sets the sequence length of the signal in number of frames. The signal is calculated in advance and output in the</span>
+<span class="sd">		arbitrary waveform generator. The maximum number of frames is calculated as follows: Max. No. of Frames = Arbitrary</span>
+<span class="sd">		waveform memory size/(sampling rate x 10 ms) . \n</span>
+<span class="sd">			:param slength: integer Range: 1 to 1024</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">slength</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:SLENgth </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HuwbCls.get_state"><a class="viewcode-back" href="../../../../../Source_Bb_Huwb.html#RsSmbv.Implementations.Source.Bb.Huwb.HuwbCls.get_state">[docs]</a>	<span class="k">def</span> <span class="nf">get_state</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:STATe \n</span>
+<span class="sd">		Snippet: value: bool = driver.source.bb.huwb.get_state() \n</span>
+<span class="sd">		Activates the standard and deactivates all the other digital standards and digital modulation modes in the same path. \n</span>
+<span class="sd">			:return: hrp_uwb_state: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:STATe?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_bool</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HuwbCls.set_state"><a class="viewcode-back" href="../../../../../Source_Bb_Huwb.html#RsSmbv.Implementations.Source.Bb.Huwb.HuwbCls.set_state">[docs]</a>	<span class="k">def</span> <span class="nf">set_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hrp_uwb_state</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:STATe \n</span>
+<span class="sd">		Snippet: driver.source.bb.huwb.set_state(hrp_uwb_state = False) \n</span>
+<span class="sd">		Activates the standard and deactivates all the other digital standards and digital modulation modes in the same path. \n</span>
+<span class="sd">			:param hrp_uwb_state: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">bool_to_str</span><span class="p">(</span><span class="n">hrp_uwb_state</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:STATe </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="HuwbCls.get_std"><a class="viewcode-back" href="../../../../../Source_Bb_Huwb.html#RsSmbv.Implementations.Source.Bb.Huwb.HuwbCls.get_std">[docs]</a>	<span class="k">def</span> <span class="nf">get_std</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbMode</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:STD \n</span>
+<span class="sd">		Snippet: value: enums.HrpUwbMode = driver.source.bb.huwb.get_std() \n</span>
+<span class="sd">		Sets the HRP UWB mode. \n</span>
+<span class="sd">			:return: mode: NONHRP| HPRF| BPRF NONHRP Enables HRP non-ERDEV mode. BPRF Enables HRP-ERDEV base pulse repetition frequency (BPRF) mode. HPRF Enables HRP-ERDEV higher pulse repetition frequency (HPRF) mode.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:STD?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbMode</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HuwbCls.set_std"><a class="viewcode-back" href="../../../../../Source_Bb_Huwb.html#RsSmbv.Implementations.Source.Bb.Huwb.HuwbCls.set_std">[docs]</a>	<span class="k">def</span> <span class="nf">set_std</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbMode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:STD \n</span>
+<span class="sd">		Snippet: driver.source.bb.huwb.set_std(mode = enums.HrpUwbMode.BPRF) \n</span>
+<span class="sd">		Sets the HRP UWB mode. \n</span>
+<span class="sd">			:param mode: NONHRP| HPRF| BPRF NONHRP Enables HRP non-ERDEV mode. BPRF Enables HRP-ERDEV base pulse repetition frequency (BPRF) mode. HPRF Enables HRP-ERDEV higher pulse repetition frequency (HPRF) mode.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">mode</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbMode</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:STD </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;HuwbCls&#39;</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Clones the group by creating new object from it and its whole existing subgroups</span>
+<span class="sd">		Also copies all the existing default Repeated Capabilities setting,</span>
+<span class="sd">		which you can change independently without affecting the original group&quot;&quot;&quot;</span>
+		<span class="n">new_group</span> <span class="o">=</span> <span class="n">HuwbCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">synchronize_repcaps</span><span class="p">(</span><span class="n">new_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">new_group</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

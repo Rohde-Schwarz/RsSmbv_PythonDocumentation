@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RsSmbv.Implementations.Source.Bb.Gnss.Galileo.Osnma &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../../../../" id="documentation_options" src="../../../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../../../_static/jquery.js"></script>
+        <script src="../../../../../../../_static/underscore.js"></script>
+        <script src="../../../../../../../_static/doctools.js"></script>
+        <script src="../../../../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../../../../_static/copybutton.js"></script>
+    <script src="../../../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../../../../index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../RsSmbv.html">RsSmbv API Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../../index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../../../../index.html">Module code</a> &raquo;</li>
+          <li><a href="../../../../Source.html">RsSmbv.Implementations.Source</a> &raquo;</li>
+          <li><a href="../../../Bb.html">RsSmbv.Implementations.Source.Bb</a> &raquo;</li>
+          <li><a href="../../Gnss.html">RsSmbv.Implementations.Source.Bb.Gnss</a> &raquo;</li>
+          <li><a href="../Galileo.html">RsSmbv.Implementations.Source.Bb.Gnss.Galileo</a> &raquo;</li>
+      <li>RsSmbv.Implementations.Source.Bb.Gnss.Galileo.Osnma</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for RsSmbv.Implementations.Source.Bb.Gnss.Galileo.Osnma</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">.......Internal.Core</span> <span class="kn">import</span> <span class="n">Core</span>
+<span class="kn">from</span> <span class="nn">.......Internal.CommandsGroup</span> <span class="kn">import</span> <span class="n">CommandsGroup</span>
+<span class="kn">from</span> <span class="nn">.......Internal</span> <span class="kn">import</span> <span class="n">Conversions</span>
+<span class="kn">from</span> <span class="nn">.......</span> <span class="kn">import</span> <span class="n">enums</span>
+
+
+<span class="c1"># noinspection PyPep8Naming,PyAttributeOutsideInit,SpellCheckingInspection</span>
+<div class="viewcode-block" id="OsnmaCls"><a class="viewcode-back" href="../../../../../../../Source_Bb_Gnss_Galileo_Osnma.html#RsSmbv.Implementations.Source.Bb.Gnss.Galileo.Osnma.OsnmaCls">[docs]</a><span class="k">class</span> <span class="nc">OsnmaCls</span><span class="p">:</span>
+	<span class="sd">&quot;&quot;&quot;Osnma commands group definition. 20 total commands, 4 Subgroups, 11 group commands&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">core</span><span class="p">:</span> <span class="n">Core</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span> <span class="o">=</span> <span class="n">core</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span> <span class="o">=</span> <span class="n">CommandsGroup</span><span class="p">(</span><span class="s2">&quot;osnma&quot;</span><span class="p">,</span> <span class="n">core</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">aesKey</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;aesKey commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_aesKey&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.AesKey</span> <span class="kn">import</span> <span class="n">AesKeyCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_aesKey</span> <span class="o">=</span> <span class="n">AesKeyCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_aesKey</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">ckey</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;ckey commands group. 1 Sub-classes, 0 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_ckey&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Ckey</span> <span class="kn">import</span> <span class="n">CkeyCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_ckey</span> <span class="o">=</span> <span class="n">CkeyCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ckey</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">pkey</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;pkey commands group. 1 Sub-classes, 2 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_pkey&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Pkey</span> <span class="kn">import</span> <span class="n">PkeyCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_pkey</span> <span class="o">=</span> <span class="n">PkeyCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pkey</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">rkey</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;rkey commands group. 0 Sub-classes, 2 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_rkey&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Rkey</span> <span class="kn">import</span> <span class="n">RkeyCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_rkey</span> <span class="o">=</span> <span class="n">RkeyCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rkey</span>
+
+<div class="viewcode-block" id="OsnmaCls.get_ad_delay"><a class="viewcode-back" href="../../../../../../../Source_Bb_Gnss_Galileo_Osnma.html#RsSmbv.Implementations.Source.Bb.Gnss.Galileo.Osnma.OsnmaCls.get_ad_delay">[docs]</a>	<span class="k">def</span> <span class="nf">get_ad_delay</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:GNSS:GALileo:OSNMa:ADDelay \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.gnss.galileo.osnma.get_ad_delay() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: delay: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:GNSS:GALileo:OSNMa:ADDelay?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="OsnmaCls.set_ad_delay"><a class="viewcode-back" href="../../../../../../../Source_Bb_Gnss_Galileo_Osnma.html#RsSmbv.Implementations.Source.Bb.Gnss.Galileo.Osnma.OsnmaCls.set_ad_delay">[docs]</a>	<span class="k">def</span> <span class="nf">set_ad_delay</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">delay</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:GNSS:GALileo:OSNMa:ADDelay \n</span>
+<span class="sd">		Snippet: driver.source.bb.gnss.galileo.osnma.set_ad_delay(delay = 1) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param delay: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">delay</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:GNSS:GALileo:OSNMa:ADDelay </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="OsnmaCls.get_adkd"><a class="viewcode-back" href="../../../../../../../Source_Bb_Gnss_Galileo_Osnma.html#RsSmbv.Implementations.Source.Bb.Gnss.Galileo.Osnma.OsnmaCls.get_adkd">[docs]</a>	<span class="k">def</span> <span class="nf">get_adkd</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:GNSS:GALileo:OSNMa:ADKD \n</span>
+<span class="sd">		Snippet: value: bool = driver.source.bb.gnss.galileo.osnma.get_adkd() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: state: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:GNSS:GALileo:OSNMa:ADKD?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_bool</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="OsnmaCls.set_adkd"><a class="viewcode-back" href="../../../../../../../Source_Bb_Gnss_Galileo_Osnma.html#RsSmbv.Implementations.Source.Bb.Gnss.Galileo.Osnma.OsnmaCls.set_adkd">[docs]</a>	<span class="k">def</span> <span class="nf">set_adkd</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:GNSS:GALileo:OSNMa:ADKD \n</span>
+<span class="sd">		Snippet: driver.source.bb.gnss.galileo.osnma.set_adkd(state = False) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param state: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">bool_to_str</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:GNSS:GALileo:OSNMa:ADKD </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="OsnmaCls.get_hf"><a class="viewcode-back" href="../../../../../../../Source_Bb_Gnss_Galileo_Osnma.html#RsSmbv.Implementations.Source.Bb.Gnss.Galileo.Osnma.OsnmaCls.get_hf">[docs]</a>	<span class="k">def</span> <span class="nf">get_hf</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">OsnmaHf</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:GNSS:GALileo:OSNMa:HF \n</span>
+<span class="sd">		Snippet: value: enums.OsnmaHf = driver.source.bb.gnss.galileo.osnma.get_hf() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: value: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:GNSS:GALileo:OSNMa:HF?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">OsnmaHf</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="OsnmaCls.set_hf"><a class="viewcode-back" href="../../../../../../../Source_Bb_Gnss_Galileo_Osnma.html#RsSmbv.Implementations.Source.Bb.Gnss.Galileo.Osnma.OsnmaCls.set_hf">[docs]</a>	<span class="k">def</span> <span class="nf">set_hf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">OsnmaHf</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:GNSS:GALileo:OSNMa:HF \n</span>
+<span class="sd">		Snippet: driver.source.bb.gnss.galileo.osnma.set_hf(value = enums.OsnmaHf._0) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param value: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">OsnmaHf</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:GNSS:GALileo:OSNMa:HF </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="OsnmaCls.get_ks"><a class="viewcode-back" href="../../../../../../../Source_Bb_Gnss_Galileo_Osnma.html#RsSmbv.Implementations.Source.Bb.Gnss.Galileo.Osnma.OsnmaCls.get_ks">[docs]</a>	<span class="k">def</span> <span class="nf">get_ks</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">OsnmaKs</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:GNSS:GALileo:OSNMa:KS \n</span>
+<span class="sd">		Snippet: value: enums.OsnmaKs = driver.source.bb.gnss.galileo.osnma.get_ks() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: value: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:GNSS:GALileo:OSNMa:KS?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">OsnmaKs</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="OsnmaCls.set_ks"><a class="viewcode-back" href="../../../../../../../Source_Bb_Gnss_Galileo_Osnma.html#RsSmbv.Implementations.Source.Bb.Gnss.Galileo.Osnma.OsnmaCls.set_ks">[docs]</a>	<span class="k">def</span> <span class="nf">set_ks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">OsnmaKs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:GNSS:GALileo:OSNMa:KS \n</span>
+<span class="sd">		Snippet: driver.source.bb.gnss.galileo.osnma.set_ks(value = enums.OsnmaKs._0) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param value: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">OsnmaKs</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:GNSS:GALileo:OSNMa:KS </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="OsnmaCls.get_mac_lt"><a class="viewcode-back" href="../../../../../../../Source_Bb_Gnss_Galileo_Osnma.html#RsSmbv.Implementations.Source.Bb.Gnss.Galileo.Osnma.OsnmaCls.get_mac_lt">[docs]</a>	<span class="k">def</span> <span class="nf">get_mac_lt</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">OsnmaMaclt</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:GNSS:GALileo:OSNMa:MACLt \n</span>
+<span class="sd">		Snippet: value: enums.OsnmaMaclt = driver.source.bb.gnss.galileo.osnma.get_mac_lt() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: value: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:GNSS:GALileo:OSNMa:MACLt?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">OsnmaMaclt</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="OsnmaCls.set_mac_lt"><a class="viewcode-back" href="../../../../../../../Source_Bb_Gnss_Galileo_Osnma.html#RsSmbv.Implementations.Source.Bb.Gnss.Galileo.Osnma.OsnmaCls.set_mac_lt">[docs]</a>	<span class="k">def</span> <span class="nf">set_mac_lt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">OsnmaMaclt</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:GNSS:GALileo:OSNMa:MACLt \n</span>
+<span class="sd">		Snippet: driver.source.bb.gnss.galileo.osnma.set_mac_lt(value = enums.OsnmaMaclt._27) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param value: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">OsnmaMaclt</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:GNSS:GALileo:OSNMa:MACLt </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="OsnmaCls.get_mf"><a class="viewcode-back" href="../../../../../../../Source_Bb_Gnss_Galileo_Osnma.html#RsSmbv.Implementations.Source.Bb.Gnss.Galileo.Osnma.OsnmaCls.get_mf">[docs]</a>	<span class="k">def</span> <span class="nf">get_mf</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:GNSS:GALileo:OSNMa:MF \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.gnss.galileo.osnma.get_mf() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: mf: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:GNSS:GALileo:OSNMa:MF?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="OsnmaCls.set_mf"><a class="viewcode-back" href="../../../../../../../Source_Bb_Gnss_Galileo_Osnma.html#RsSmbv.Implementations.Source.Bb.Gnss.Galileo.Osnma.OsnmaCls.set_mf">[docs]</a>	<span class="k">def</span> <span class="nf">set_mf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mf</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:GNSS:GALileo:OSNMa:MF \n</span>
+<span class="sd">		Snippet: driver.source.bb.gnss.galileo.osnma.set_mf(mf = 1) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param mf: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">mf</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:GNSS:GALileo:OSNMa:MF </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="OsnmaCls.get_npkt"><a class="viewcode-back" href="../../../../../../../Source_Bb_Gnss_Galileo_Osnma.html#RsSmbv.Implementations.Source.Bb.Gnss.Galileo.Osnma.OsnmaCls.get_npkt">[docs]</a>	<span class="k">def</span> <span class="nf">get_npkt</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">OsnmaNpkt</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:GNSS:GALileo:OSNMa:NPKT \n</span>
+<span class="sd">		Snippet: value: enums.OsnmaNpkt = driver.source.bb.gnss.galileo.osnma.get_npkt() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: value: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:GNSS:GALileo:OSNMa:NPKT?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">OsnmaNpkt</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="OsnmaCls.set_npkt"><a class="viewcode-back" href="../../../../../../../Source_Bb_Gnss_Galileo_Osnma.html#RsSmbv.Implementations.Source.Bb.Gnss.Galileo.Osnma.OsnmaCls.set_npkt">[docs]</a>	<span class="k">def</span> <span class="nf">set_npkt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">OsnmaNpkt</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:GNSS:GALileo:OSNMa:NPKT \n</span>
+<span class="sd">		Snippet: driver.source.bb.gnss.galileo.osnma.set_npkt(value = enums.OsnmaNpkt._1) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param value: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">OsnmaNpkt</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:GNSS:GALileo:OSNMa:NPKT </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="OsnmaCls.get_pid"><a class="viewcode-back" href="../../../../../../../Source_Bb_Gnss_Galileo_Osnma.html#RsSmbv.Implementations.Source.Bb.Gnss.Galileo.Osnma.OsnmaCls.get_pid">[docs]</a>	<span class="k">def</span> <span class="nf">get_pid</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:GNSS:GALileo:OSNMa:PID \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.gnss.galileo.osnma.get_pid() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: pid_input_2: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:GNSS:GALileo:OSNMa:PID?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="OsnmaCls.set_pid"><a class="viewcode-back" href="../../../../../../../Source_Bb_Gnss_Galileo_Osnma.html#RsSmbv.Implementations.Source.Bb.Gnss.Galileo.Osnma.OsnmaCls.set_pid">[docs]</a>	<span class="k">def</span> <span class="nf">set_pid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pid_input_2</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:GNSS:GALileo:OSNMa:PID \n</span>
+<span class="sd">		Snippet: driver.source.bb.gnss.galileo.osnma.set_pid(pid_input_2 = 1) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param pid_input_2: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">pid_input_2</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:GNSS:GALileo:OSNMa:PID </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="OsnmaCls.get_spreemption"><a class="viewcode-back" href="../../../../../../../Source_Bb_Gnss_Galileo_Osnma.html#RsSmbv.Implementations.Source.Bb.Gnss.Galileo.Osnma.OsnmaCls.get_spreemption">[docs]</a>	<span class="k">def</span> <span class="nf">get_spreemption</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:GNSS:GALileo:OSNMa:SPReemption \n</span>
+<span class="sd">		Snippet: value: bool = driver.source.bb.gnss.galileo.osnma.get_spreemption() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: status: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:GNSS:GALileo:OSNMa:SPReemption?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_bool</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="OsnmaCls.set_spreemption"><a class="viewcode-back" href="../../../../../../../Source_Bb_Gnss_Galileo_Osnma.html#RsSmbv.Implementations.Source.Bb.Gnss.Galileo.Osnma.OsnmaCls.set_spreemption">[docs]</a>	<span class="k">def</span> <span class="nf">set_spreemption</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">status</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:GNSS:GALileo:OSNMa:SPReemption \n</span>
+<span class="sd">		Snippet: driver.source.bb.gnss.galileo.osnma.set_spreemption(status = False) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param status: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">bool_to_str</span><span class="p">(</span><span class="n">status</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:GNSS:GALileo:OSNMa:SPReemption </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="OsnmaCls.get_tmode"><a class="viewcode-back" href="../../../../../../../Source_Bb_Gnss_Galileo_Osnma.html#RsSmbv.Implementations.Source.Bb.Gnss.Galileo.Osnma.OsnmaCls.get_tmode">[docs]</a>	<span class="k">def</span> <span class="nf">get_tmode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">OsnmaTran</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:GNSS:GALileo:OSNMa:TMODe \n</span>
+<span class="sd">		Snippet: value: enums.OsnmaTran = driver.source.bb.gnss.galileo.osnma.get_tmode() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: transition_mode: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:GNSS:GALileo:OSNMa:TMODe?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">OsnmaTran</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="OsnmaCls.set_tmode"><a class="viewcode-back" href="../../../../../../../Source_Bb_Gnss_Galileo_Osnma.html#RsSmbv.Implementations.Source.Bb.Gnss.Galileo.Osnma.OsnmaCls.set_tmode">[docs]</a>	<span class="k">def</span> <span class="nf">set_tmode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">transition_mode</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">OsnmaTran</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:GNSS:GALileo:OSNMa:TMODe \n</span>
+<span class="sd">		Snippet: driver.source.bb.gnss.galileo.osnma.set_tmode(transition_mode = enums.OsnmaTran.ALERt) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param transition_mode: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">transition_mode</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">OsnmaTran</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:GNSS:GALileo:OSNMa:TMODe </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="OsnmaCls.get_ts"><a class="viewcode-back" href="../../../../../../../Source_Bb_Gnss_Galileo_Osnma.html#RsSmbv.Implementations.Source.Bb.Gnss.Galileo.Osnma.OsnmaCls.get_ts">[docs]</a>	<span class="k">def</span> <span class="nf">get_ts</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">OsnmaTs</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:GNSS:GALileo:OSNMa:TS \n</span>
+<span class="sd">		Snippet: value: enums.OsnmaTs = driver.source.bb.gnss.galileo.osnma.get_ts() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: value: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:GNSS:GALileo:OSNMa:TS?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">OsnmaTs</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="OsnmaCls.set_ts"><a class="viewcode-back" href="../../../../../../../Source_Bb_Gnss_Galileo_Osnma.html#RsSmbv.Implementations.Source.Bb.Gnss.Galileo.Osnma.OsnmaCls.set_ts">[docs]</a>	<span class="k">def</span> <span class="nf">set_ts</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">OsnmaTs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:GNSS:GALileo:OSNMa:TS \n</span>
+<span class="sd">		Snippet: driver.source.bb.gnss.galileo.osnma.set_ts(value = enums.OsnmaTs._5) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param value: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">OsnmaTs</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:GNSS:GALileo:OSNMa:TS </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;OsnmaCls&#39;</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Clones the group by creating new object from it and its whole existing subgroups</span>
+<span class="sd">		Also copies all the existing default Repeated Capabilities setting,</span>
+<span class="sd">		which you can change independently without affecting the original group&quot;&quot;&quot;</span>
+		<span class="n">new_group</span> <span class="o">=</span> <span class="n">OsnmaCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">synchronize_repcaps</span><span class="p">(</span><span class="n">new_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">new_group</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

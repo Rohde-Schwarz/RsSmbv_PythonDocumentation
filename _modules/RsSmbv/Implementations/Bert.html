@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RsSmbv.Implementations.Bert &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../RsSmbv.html">RsSmbv API Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+      <li>RsSmbv.Implementations.Bert</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for RsSmbv.Implementations.Bert</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">...Internal.Core</span> <span class="kn">import</span> <span class="n">Core</span>
+<span class="kn">from</span> <span class="nn">...Internal.CommandsGroup</span> <span class="kn">import</span> <span class="n">CommandsGroup</span>
+<span class="kn">from</span> <span class="nn">...Internal</span> <span class="kn">import</span> <span class="n">Conversions</span>
+<span class="kn">from</span> <span class="nn">...Internal.StructBase</span> <span class="kn">import</span> <span class="n">StructBase</span>
+<span class="kn">from</span> <span class="nn">...Internal.ArgStruct</span> <span class="kn">import</span> <span class="n">ArgStruct</span>
+<span class="kn">from</span> <span class="nn">...</span> <span class="kn">import</span> <span class="n">enums</span>
+
+
+<span class="c1"># noinspection PyPep8Naming,PyAttributeOutsideInit,SpellCheckingInspection</span>
+<div class="viewcode-block" id="BertCls"><a class="viewcode-back" href="../../../Bert.html#RsSmbv.Implementations.Bert.BertCls">[docs]</a><span class="k">class</span> <span class="nc">BertCls</span><span class="p">:</span>
+	<span class="sd">&quot;&quot;&quot;Bert commands group definition. 19 total commands, 2 Subgroups, 8 group commands&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">core</span><span class="p">:</span> <span class="n">Core</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span> <span class="o">=</span> <span class="n">core</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span> <span class="o">=</span> <span class="n">CommandsGroup</span><span class="p">(</span><span class="s2">&quot;bert&quot;</span><span class="p">,</span> <span class="n">core</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;setup commands group. 2 Sub-classes, 6 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_setup&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Setup</span> <span class="kn">import</span> <span class="n">SetupCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_setup</span> <span class="o">=</span> <span class="n">SetupCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_setup</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">trigger</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;trigger commands group. 1 Sub-classes, 2 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_trigger&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Trigger</span> <span class="kn">import</span> <span class="n">TriggerCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_trigger</span> <span class="o">=</span> <span class="n">TriggerCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_trigger</span>
+
+<div class="viewcode-block" id="BertCls.load"><a class="viewcode-back" href="../../../Bert.html#RsSmbv.Implementations.Bert.BertCls.load">[docs]</a>	<span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: BERT:LOAD \n</span>
+<span class="sd">		Snippet: driver.bert.load(filename = &#39;abc&#39;) \n</span>
+<span class="sd">		Loads the selected file from the default or the specified directory. Loaded are files with extension *.ber_bler Refer to</span>
+<span class="sd">		&#39;Accessing Files in the Default or Specified Directory&#39; for general information on file handling in the default and in a</span>
+<span class="sd">		specific directory. \n</span>
+<span class="sd">			:param filename: string Filename or complete file path; file extension can be omitted</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">value_to_quoted_str</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;BERT:LOAD </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="BertCls.preset"><a class="viewcode-back" href="../../../Bert.html#RsSmbv.Implementations.Bert.BertCls.preset">[docs]</a>	<span class="k">def</span> <span class="nf">preset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: BERT:PRESet \n</span>
+<span class="sd">		Snippet: driver.bert.preset() \n</span>
+<span class="sd">		Sets the parameters of the BERT/BLER test generator to their default values (*RST values specified for the commands) .</span>
+<span class="sd">		Not affected is the state set with the command .method RsSmbv.Bert.state/method RsSmbv.Bler.state. \n</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;BERT:PRESet&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="BertCls.preset_with_opc"><a class="viewcode-back" href="../../../Bert.html#RsSmbv.Implementations.Bert.BertCls.preset_with_opc">[docs]</a>	<span class="k">def</span> <span class="nf">preset_with_opc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">opc_timeout_ms</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: BERT:PRESet \n</span>
+<span class="sd">		Snippet: driver.bert.preset_with_opc() \n</span>
+<span class="sd">		Sets the parameters of the BERT/BLER test generator to their default values (*RST values specified for the commands) .</span>
+<span class="sd">		Not affected is the state set with the command .method RsSmbv.Bert.state/method RsSmbv.Bler.state. \n</span>
+<span class="sd">		Same as preset, but waits for the operation to complete before continuing further. Use the RsSmbv.utilities.opc_timeout_set() to set the timeout value. \n</span>
+<span class="sd">			:param opc_timeout_ms: Maximum time to wait in milliseconds, valid only for this call.&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write_with_opc</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;BERT:PRESet&#39;</span><span class="p">,</span> <span class="n">opc_timeout_ms</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="BertCls.ResultStruct"><a class="viewcode-back" href="../../../Bert.html#RsSmbv.Implementations.Bert.BertCls.ResultStruct">[docs]</a>	<span class="k">class</span> <span class="nc">ResultStruct</span><span class="p">(</span><span class="n">StructBase</span><span class="p">):</span>  <span class="c1"># From ReadStructDefinition CmdPropertyTemplate.xml</span>
+		<span class="sd">&quot;&quot;&quot;Structure for reading output parameters. Fields: \n</span>
+<span class="sd">			- Num_Data_Bits: int: integer Number of checked data bits.</span>
+<span class="sd">			- Num_Errors: int: integer Number of error bits.</span>
+<span class="sd">			- Error_Rate: float: float If no termination criterion has been reached since the beginning of the measurement, display the current quotient of NumErrors (number of error bits) and NumBlock (number of data bits) . When at least one final result has been reached in continuous measurement, display the most recent final result.</span>
+<span class="sd">			- Meas_Finished: int: integer Status of measurement. 1 Measurement has been terminated, i.e. stopped or the defined number of data bits or error bits has been reached. 0 Measurement has not been terminated.</span>
+<span class="sd">			- Clock_Detected: int: integer Status of clock line. 1 Clock line active. 0 Clock line not active.</span>
+<span class="sd">			- Data_Detected: int: integer Status of data line. 1 Data line active. Only clocked data is detected. If the clock signal is missing, a data change is also not detected. 0 Data line is not active.</span>
+<span class="sd">			- Synchronized: int: integer 1 The measurement is synchronized and the ratio is assumed realistic. That is, the clock and data lines are active and the following apples: NumErrors/NumBlock 0.1. 0 The measurement is not synchronized.&quot;&quot;&quot;</span>
+		<span class="n">__meta_args_list</span> <span class="o">=</span> <span class="p">[</span>
+			<span class="n">ArgStruct</span><span class="o">.</span><span class="n">scalar_int</span><span class="p">(</span><span class="s1">&#39;Num_Data_Bits&#39;</span><span class="p">),</span>
+			<span class="n">ArgStruct</span><span class="o">.</span><span class="n">scalar_int</span><span class="p">(</span><span class="s1">&#39;Num_Errors&#39;</span><span class="p">),</span>
+			<span class="n">ArgStruct</span><span class="o">.</span><span class="n">scalar_float</span><span class="p">(</span><span class="s1">&#39;Error_Rate&#39;</span><span class="p">),</span>
+			<span class="n">ArgStruct</span><span class="o">.</span><span class="n">scalar_int</span><span class="p">(</span><span class="s1">&#39;Meas_Finished&#39;</span><span class="p">),</span>
+			<span class="n">ArgStruct</span><span class="o">.</span><span class="n">scalar_int</span><span class="p">(</span><span class="s1">&#39;Clock_Detected&#39;</span><span class="p">),</span>
+			<span class="n">ArgStruct</span><span class="o">.</span><span class="n">scalar_int</span><span class="p">(</span><span class="s1">&#39;Data_Detected&#39;</span><span class="p">),</span>
+			<span class="n">ArgStruct</span><span class="o">.</span><span class="n">scalar_int</span><span class="p">(</span><span class="s1">&#39;Synchronized&#39;</span><span class="p">)]</span>
+
+		<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+			<span class="n">StructBase</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">Num_Data_Bits</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">Num_Errors</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">Error_Rate</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">Meas_Finished</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">Clock_Detected</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">Data_Detected</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">Synchronized</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="BertCls.get_result"><a class="viewcode-back" href="../../../Bert.html#RsSmbv.Implementations.Bert.BertCls.get_result">[docs]</a>	<span class="k">def</span> <span class="nf">get_result</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ResultStruct</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: BERT:RESult \n</span>
+<span class="sd">		Snippet: value: ResultStruct = driver.bert.get_result() \n</span>
+<span class="sd">		Queries the result of the last BLER measurement and responds with seven results, separated by commas.</span>
+<span class="sd">		The first measurement following the start also queries intermediate results for the number of data bits, error bits and</span>
+<span class="sd">		error rate. For method RsSmbv.Bler.Trigger.modeAUTO, only the final results of each single measurement are queried in the</span>
+<span class="sd">		following measurements. Note: The restart of a new measurement is delayed until the first measurement result has been</span>
+<span class="sd">		queried. The resulting brief measurement interruption is irrelevant because the subsequent measurement is synchronized</span>
+<span class="sd">		within 24 data bits. \n</span>
+<span class="sd">			:return: structure: for return value, see the help for ResultStruct structure arguments.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_struct</span><span class="p">(</span><span class="s1">&#39;BERT:RESult?&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">ResultStruct</span><span class="p">())</span></div>
+
+<div class="viewcode-block" id="BertCls.start"><a class="viewcode-back" href="../../../Bert.html#RsSmbv.Implementations.Bert.BertCls.start">[docs]</a>	<span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: BERT:STARt \n</span>
+<span class="sd">		Snippet: driver.bert.start() \n</span>
+<span class="sd">		Starts a continuous measurement. \n</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;BERT:STARt&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="BertCls.start_with_opc"><a class="viewcode-back" href="../../../Bert.html#RsSmbv.Implementations.Bert.BertCls.start_with_opc">[docs]</a>	<span class="k">def</span> <span class="nf">start_with_opc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">opc_timeout_ms</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: BERT:STARt \n</span>
+<span class="sd">		Snippet: driver.bert.start_with_opc() \n</span>
+<span class="sd">		Starts a continuous measurement. \n</span>
+<span class="sd">		Same as start, but waits for the operation to complete before continuing further. Use the RsSmbv.utilities.opc_timeout_set() to set the timeout value. \n</span>
+<span class="sd">			:param opc_timeout_ms: Maximum time to wait in milliseconds, valid only for this call.&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write_with_opc</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;BERT:STARt&#39;</span><span class="p">,</span> <span class="n">opc_timeout_ms</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="BertCls.get_state"><a class="viewcode-back" href="../../../Bert.html#RsSmbv.Implementations.Bert.BertCls.get_state">[docs]</a>	<span class="k">def</span> <span class="nf">get_state</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: BERT:STATe \n</span>
+<span class="sd">		Snippet: value: bool = driver.bert.get_state() \n</span>
+<span class="sd">		Activates/deactivates the measurement. \n</span>
+<span class="sd">			:return: state: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;BERT:STATe?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_bool</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="BertCls.set_state"><a class="viewcode-back" href="../../../Bert.html#RsSmbv.Implementations.Bert.BertCls.set_state">[docs]</a>	<span class="k">def</span> <span class="nf">set_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: BERT:STATe \n</span>
+<span class="sd">		Snippet: driver.bert.set_state(state = False) \n</span>
+<span class="sd">		Activates/deactivates the measurement. \n</span>
+<span class="sd">			:param state: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">bool_to_str</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;BERT:STATe </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="BertCls.stop"><a class="viewcode-back" href="../../../Bert.html#RsSmbv.Implementations.Bert.BertCls.stop">[docs]</a>	<span class="k">def</span> <span class="nf">stop</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: BERT:STOP \n</span>
+<span class="sd">		Snippet: driver.bert.stop() \n</span>
+<span class="sd">		Stops an ongoing measurement. \n</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;BERT:STOP&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="BertCls.stop_with_opc"><a class="viewcode-back" href="../../../Bert.html#RsSmbv.Implementations.Bert.BertCls.stop_with_opc">[docs]</a>	<span class="k">def</span> <span class="nf">stop_with_opc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">opc_timeout_ms</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: BERT:STOP \n</span>
+<span class="sd">		Snippet: driver.bert.stop_with_opc() \n</span>
+<span class="sd">		Stops an ongoing measurement. \n</span>
+<span class="sd">		Same as stop, but waits for the operation to complete before continuing further. Use the RsSmbv.utilities.opc_timeout_set() to set the timeout value. \n</span>
+<span class="sd">			:param opc_timeout_ms: Maximum time to wait in milliseconds, valid only for this call.&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write_with_opc</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;BERT:STOP&#39;</span><span class="p">,</span> <span class="n">opc_timeout_ms</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="BertCls.set_store"><a class="viewcode-back" href="../../../Bert.html#RsSmbv.Implementations.Bert.BertCls.set_store">[docs]</a>	<span class="k">def</span> <span class="nf">set_store</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: BERT:STORe \n</span>
+<span class="sd">		Snippet: driver.bert.set_store(filename = &#39;abc&#39;) \n</span>
+<span class="sd">		Saves the current settings into the selected file; the file extension (*.ber_bler) is assigned automatically. Refer to</span>
+<span class="sd">		&#39;Accessing Files in the Default or Specified Directory&#39; for general information on file handling in the default and in a</span>
+<span class="sd">		specific directory. \n</span>
+<span class="sd">			:param filename: &#39;filename&#39; Filename or complete file path.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">value_to_quoted_str</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;BERT:STORe </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="BertCls.get_unit"><a class="viewcode-back" href="../../../Bert.html#RsSmbv.Implementations.Bert.BertCls.get_unit">[docs]</a>	<span class="k">def</span> <span class="nf">get_unit</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">BertUnit</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: BERT:UNIT \n</span>
+<span class="sd">		Snippet: value: enums.BertUnit = driver.bert.get_unit() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: unit: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;BERT:UNIT?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">BertUnit</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="BertCls.set_unit"><a class="viewcode-back" href="../../../Bert.html#RsSmbv.Implementations.Bert.BertCls.set_unit">[docs]</a>	<span class="k">def</span> <span class="nf">set_unit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">unit</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">BertUnit</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: BERT:UNIT \n</span>
+<span class="sd">		Snippet: driver.bert.set_unit(unit = enums.BertUnit.ENGineering) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param unit: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">BertUnit</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;BERT:UNIT </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;BertCls&#39;</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Clones the group by creating new object from it and its whole existing subgroups</span>
+<span class="sd">		Also copies all the existing default Repeated Capabilities setting,</span>
+<span class="sd">		which you can change independently without affecting the original group&quot;&quot;&quot;</span>
+		<span class="n">new_group</span> <span class="o">=</span> <span class="n">BertCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">synchronize_repcaps</span><span class="p">(</span><span class="n">new_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">new_group</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

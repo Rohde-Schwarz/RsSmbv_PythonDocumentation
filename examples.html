@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Examples &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="RsSmbv API Structure" href="RsSmbv.html" />
+    <link rel="prev" title="RepCaps" href="repcap.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="repcap.html">RepCaps</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RsSmbv.html">RsSmbv API Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Examples</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/examples.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="examples">
+<h1>Examples<a class="headerlink" href="#examples" title="Permalink to this headline"></a></h1>
+<p>For more examples, visit our <a class="reference external" href="https://github.com/Rohde-Schwarz/Examples/tree/main/SignalGenerators/Python/RsSmbv_ScpiPackage">Rohde &amp; Schwarz Github repository</a>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;Getting started - how to work with RsSmbv Python package.</span>
+<span class="sd">This example performs basic RF settings on an SMBV100B instrument.</span>
+<span class="sd">It shows the RsSmbv calls and their corresponding SCPI commands.</span>
+<span class="sd">Notice that the python RsSmbv interfaces track the SCPI commands syntax.&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">RsSmbv</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># Open the session</span>
+<span class="n">smbv</span> <span class="o">=</span> <span class="n">RsSmbv</span><span class="p">(</span><span class="s1">&#39;TCPIP::10.112.0.228::HISLIP&#39;</span><span class="p">)</span>
+<span class="c1"># Greetings, stranger...</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Hello, I am: </span><span class="si">{</span><span class="n">smbv</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">idn_string</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1">#   OUTPut:STATe ON</span>
+<span class="n">smbv</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1">#   SOURce:FREQuency:MODE CW</span>
+<span class="n">smbv</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">frequency</span><span class="o">.</span><span class="n">set_mode</span><span class="p">(</span><span class="n">enums</span><span class="o">.</span><span class="n">FreqMode</span><span class="o">.</span><span class="n">CW</span><span class="p">)</span>
+
+<span class="c1">#   SOURce:POWer:LEVel:IMMediate:AMPLitude -20</span>
+<span class="n">smbv</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">power</span><span class="o">.</span><span class="n">level</span><span class="o">.</span><span class="n">immediate</span><span class="o">.</span><span class="n">set_amplitude</span><span class="p">(</span><span class="o">-</span><span class="mi">20</span><span class="p">)</span>
+
+<span class="c1">#   SOURce:FREQuency:FIXed 223000000</span>
+<span class="n">smbv</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">frequency</span><span class="o">.</span><span class="n">fixed</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="mf">223E6</span><span class="p">)</span>
+
+<span class="c1">#         SOURce:POWer:PEP?</span>
+<span class="n">pep</span> <span class="o">=</span> <span class="n">smbv</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">power</span><span class="o">.</span><span class="n">get_pep</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;PEP level: </span><span class="si">{</span><span class="n">pep</span><span class="si">}</span><span class="s1"> dBm&#39;</span><span class="p">)</span>
+
+
+<span class="c1"># Close the session</span>
+<span class="n">smbv</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;Basic example of importing the package, initializing the session and performing basic generator settings.&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">RsSmbv</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">RsSmbv</span><span class="o">.</span><span class="n">assert_minimum_version</span><span class="p">(</span><span class="s1">&#39;4.80.2&#39;</span><span class="p">)</span>
+<span class="n">smbv</span> <span class="o">=</span> <span class="n">RsSmbv</span><span class="p">(</span><span class="s1">&#39;TCPIP::10.112.0.228::HISLIP&#39;</span><span class="p">)</span>
+<span class="c1"># smcv = RsSmbv(&#39;TCPIP::10.112.1.179::5025::SOCKET&#39;, options=&#39;SelectVisa=SocketIo&#39;) # No VISA needed</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Driver Info: </span><span class="si">{</span><span class="n">smbv</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">driver_version</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Instrument: </span><span class="si">{</span><span class="n">smbv</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">idn_string</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># Instrument options are properly parsed, and sorted (k-options first)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Instrument options: </span><span class="si">{</span><span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">smbv</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">instrument_options</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># Driver&#39;s instrument status checking ( SYST:ERR? ) after each command (default value is True):</span>
+<span class="n">smbv</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">instrument_status_checking</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="n">smbv</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">smbv</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">frequency</span><span class="o">.</span><span class="n">set_mode</span><span class="p">(</span><span class="n">enums</span><span class="o">.</span><span class="n">FreqMode</span><span class="o">.</span><span class="n">CW</span><span class="p">)</span>
+<span class="n">smbv</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">power</span><span class="o">.</span><span class="n">level</span><span class="o">.</span><span class="n">immediate</span><span class="o">.</span><span class="n">set_amplitude</span><span class="p">(</span><span class="o">-</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">smbv</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">frequency</span><span class="o">.</span><span class="n">fixed</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="mf">223E6</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;PEP level: </span><span class="si">{</span><span class="n">smbv</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">power</span><span class="o">.</span><span class="n">get_pep</span><span class="p">()</span><span class="si">}</span><span class="s1"> dBm&#39;</span><span class="p">)</span>
+
+<span class="c1"># You can still use the direct SCPI interface:</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">smbv</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;*IDN?&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Direct SCPI response on *IDN?: </span><span class="si">{</span><span class="n">response</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">smbv</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;The example:</span>
+<span class="sd"> - creates waveform file from a csv-file with I/Q pairs</span>
+<span class="sd"> - sends the file to the SMBV instrument</span>
+<span class="sd"> - activates the waveform</span>
+<span class="sd"> You have the option of auto-scaling the samples to the full range with the parameter &#39;auto_scale&#39;</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">RsSmbv</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">RsSmbv</span><span class="o">.</span><span class="n">assert_minimum_version</span><span class="p">(</span><span class="s1">&#39;4.80.2&#39;</span><span class="p">)</span>
+<span class="n">smbv</span> <span class="o">=</span> <span class="n">RsSmbv</span><span class="p">(</span><span class="s1">&#39;TCPIP::10.112.1.73::HISLIP&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">smbv</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">idn_string</span><span class="p">)</span>
+<span class="n">smbv</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+
+<span class="n">pc_csv_file</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;c:\temp\arbFileExample.csv&#39;</span>
+<span class="n">pc_wv_file</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;c:\temp\arbFileExample.wv&#39;</span>
+<span class="n">instr_wv_file</span> <span class="o">=</span> <span class="s1">&#39;/var/user/InstrDemoFile.wv&#39;</span>
+
+<span class="c1"># Skip this part if you have a csv-file available</span>
+
+<span class="c1"># Samples clock</span>
+<span class="n">clock_freq</span> <span class="o">=</span> <span class="mf">600e6</span>
+<span class="c1"># wave clock</span>
+<span class="n">wave_freq</span> <span class="o">=</span> <span class="mf">120e6</span>
+<span class="c1"># Scale factor - change it to less or more that 1 if you want to see the autoscaling capability of the create_waveform_file...() methods</span>
+<span class="n">scale_factor</span> <span class="o">=</span> <span class="mf">0.43</span>
+<span class="n">time_vector</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span> <span class="o">/</span> <span class="n">wave_freq</span><span class="p">,</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">clock_freq</span><span class="p">)</span>
+<span class="c1"># I-component an Q-component data</span>
+<span class="n">i_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">wave_freq</span> <span class="o">*</span> <span class="n">time_vector</span><span class="p">)</span> <span class="o">*</span> <span class="n">scale_factor</span>
+<span class="n">q_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">wave_freq</span> <span class="o">*</span> <span class="n">time_vector</span><span class="p">)</span> <span class="o">*</span> <span class="n">scale_factor</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">pc_csv_file</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">i_data</span><span class="p">)):</span>
+        <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">i_data</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="si">}</span><span class="s1">,</span><span class="si">{</span><span class="n">q_data</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># Take that csv-file with the IQ-samples and create a wv file</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">smbv</span><span class="o">.</span><span class="n">arb_files</span><span class="o">.</span><span class="n">create_waveform_file_from_samples_file</span><span class="p">(</span><span class="n">pc_csv_file</span><span class="p">,</span> <span class="n">pc_wv_file</span><span class="p">,</span> <span class="n">clock_freq</span><span class="o">=</span><span class="mf">100E6</span><span class="p">,</span> <span class="n">auto_scale</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">comment</span><span class="o">=</span><span class="s1">&#39;Created from a csv file&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+<span class="c1"># Send to the instrument</span>
+<span class="n">smbv</span><span class="o">.</span><span class="n">arb_files</span><span class="o">.</span><span class="n">send_waveform_file_to_instrument</span><span class="p">(</span><span class="n">pc_wv_file</span><span class="p">,</span> <span class="n">instr_wv_file</span><span class="p">)</span>
+
+<span class="c1"># Selecting the waveform and load it in ARB</span>
+<span class="n">smbv</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">arbitrary</span><span class="o">.</span><span class="n">waveform</span><span class="o">.</span><span class="n">set_select</span><span class="p">(</span><span class="n">instr_wv_file</span><span class="p">)</span>
+
+<span class="c1"># Turning on the ARB baseband</span>
+<span class="n">smbv</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">arbitrary</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Turning on the RF output state state</span>
+<span class="n">smbv</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">smbv</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;The example:</span>
+<span class="sd"> - creates waveform file from two i_data and q_data vectors</span>
+<span class="sd"> - sends the file to the SMBV instrument</span>
+<span class="sd"> - activates the waveform</span>
+<span class="sd"> You have the option of auto-scaling the samples to the full range with the parameter &#39;auto_scale&#39;</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">RsSmbv</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">RsSmbv</span><span class="o">.</span><span class="n">assert_minimum_version</span><span class="p">(</span><span class="s1">&#39;4.80.2&#39;</span><span class="p">)</span>
+<span class="n">smbv</span> <span class="o">=</span> <span class="n">RsSmbv</span><span class="p">(</span><span class="s1">&#39;TCPIP::10.112.1.73::HISLIP&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">smbv</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">idn_string</span><span class="p">)</span>
+<span class="n">smbv</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+
+<span class="n">pc_wv_file</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;c:\temp\arbFileExample.wv&#39;</span>
+<span class="n">instr_wv_file</span> <span class="o">=</span> <span class="s1">&#39;/var/user/InstrDemoFile.wv&#39;</span>
+
+<span class="c1"># Creating the I/Q vectors as lists: i_data / q_data</span>
+<span class="c1"># Samples clock</span>
+<span class="n">clock_freq</span> <span class="o">=</span> <span class="mf">100e6</span>
+<span class="c1"># wave clock</span>
+<span class="n">wave_freq</span> <span class="o">=</span> <span class="mf">25e6</span>
+<span class="c1"># Scale factor - change it to less or more that 1 if you want to see the autoscaling capability of the create_waveform_file...() methods</span>
+<span class="n">scale_factor</span> <span class="o">=</span> <span class="mf">0.8</span>
+
+<span class="n">samples_count</span> <span class="o">=</span> <span class="mi">200</span>
+<span class="n">time_step</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">clock_freq</span>
+<span class="n">time_vector</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="o">*</span> <span class="n">time_step</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">samples_count</span><span class="p">)]</span>
+<span class="c1"># I-component an Q-component data</span>
+<span class="n">i_data</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">wave_freq</span> <span class="o">*</span> <span class="n">tv</span><span class="p">)</span> <span class="o">*</span> <span class="n">scale_factor</span> <span class="k">for</span> <span class="n">tv</span> <span class="ow">in</span> <span class="n">time_vector</span><span class="p">]</span>
+<span class="n">q_data</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">wave_freq</span> <span class="o">*</span> <span class="n">tv</span><span class="p">)</span> <span class="o">*</span> <span class="n">scale_factor</span> <span class="k">for</span> <span class="n">tv</span> <span class="ow">in</span> <span class="n">time_vector</span><span class="p">]</span>
+
+<span class="c1"># Take those samples and create a wv file, send it to the instrument with the name instr_wv_file (not auto-scaled)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">smbv</span><span class="o">.</span><span class="n">arb_files</span><span class="o">.</span><span class="n">create_waveform_file_from_samples</span><span class="p">(</span><span class="n">i_data</span><span class="p">,</span> <span class="n">q_data</span><span class="p">,</span> <span class="n">pc_wv_file</span><span class="p">,</span> <span class="n">clock_freq</span><span class="o">=</span><span class="n">clock_freq</span><span class="p">,</span> <span class="n">auto_scale</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">comment</span><span class="o">=</span><span class="s1">&#39;Created from I/Q vectors&#39;</span><span class="p">)</span>
+<span class="n">smbv</span><span class="o">.</span><span class="n">arb_files</span><span class="o">.</span><span class="n">send_waveform_file_to_instrument</span><span class="p">(</span><span class="n">pc_wv_file</span><span class="p">,</span> <span class="n">instr_wv_file</span><span class="p">)</span>
+
+<span class="c1"># Selecting the waveform and load it in the ARB</span>
+<span class="n">smbv</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">arbitrary</span><span class="o">.</span><span class="n">waveform</span><span class="o">.</span><span class="n">set_select</span><span class="p">(</span><span class="n">instr_wv_file</span><span class="p">)</span>
+<span class="n">smbv</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">frequency</span><span class="o">.</span><span class="n">set_frequency</span><span class="p">(</span><span class="mf">1.1E9</span><span class="p">)</span>
+<span class="n">smbv</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">power</span><span class="o">.</span><span class="n">level</span><span class="o">.</span><span class="n">immediate</span><span class="o">.</span><span class="n">set_amplitude</span><span class="p">(</span><span class="o">-</span><span class="mf">11.1</span><span class="p">)</span>
+<span class="c1"># Turning on the ARB baseband</span>
+<span class="n">smbv</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">arbitrary</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># Turning on the RF out state</span>
+<span class="n">smbv</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">smbv</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># This example shows how to work with commands that have many repeated capabilities (numeric suffixes)</span>
+<span class="c1"># The example does not demonstrate any valid instrument settings, rather the instrument driver general rules of working with the repeated capabilities</span>
+
+<span class="kn">from</span> <span class="nn">RsSmbv</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">RsSmbv</span><span class="o">.</span><span class="n">assert_minimum_version</span><span class="p">(</span><span class="s1">&#39;4.80.2&#39;</span><span class="p">)</span>
+<span class="n">smbv</span> <span class="o">=</span> <span class="n">RsSmbv</span><span class="p">(</span><span class="s1">&#39;TCPIP::10.112.0.228::HISLIP&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Driver Info: </span><span class="si">{</span><span class="n">smbv</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">driver_version</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Instrument: </span><span class="si">{</span><span class="n">smbv</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">idn_string</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># Switching the error checking off to avoid errors from invalid parameter settings</span>
+<span class="n">smbv</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">instrument_status_checking</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="n">smbv</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">nr5G</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Setting commands with many repeated capabilities:</span>
+<span class="c1"># [SOURce&lt;HW&gt;]:BB:NR5G:SCHed:CELL&lt;CH&gt;:SUBF&lt;ST&gt;:USER:BWPart:ALLoc:APMap:COL&lt;S2US&gt;:ROW&lt;S3US&gt;:IMAGinary</span>
+
+<span class="c1"># Option 1: explicit definition:</span>
+<span class="c1"># sending SOURce1:BB:NR5G:SCHed:CELL1:SUBF3:USER0:BWPart1:ALLoc0:APMap:COL0:ROW3:IMAGinary 10.0</span>
+<span class="n">smbv</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">nr5G</span><span class="o">.</span><span class="n">scheduling</span><span class="o">.</span><span class="n">cell</span><span class="o">.</span><span class="n">subf</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">bwPart</span><span class="o">.</span><span class="n">alloc</span><span class="o">.</span><span class="n">apMap</span><span class="o">.</span><span class="n">col</span><span class="o">.</span><span class="n">row</span><span class="o">.</span><span class="n">imaginary</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="mf">10.0</span><span class="p">,</span> <span class="n">repcap</span><span class="o">.</span><span class="n">CellNull</span><span class="o">.</span><span class="n">Nr1</span><span class="p">,</span> <span class="n">repcap</span><span class="o">.</span><span class="n">SubframeNull</span><span class="o">.</span><span class="n">Nr3</span><span class="p">,</span> <span class="n">repcap</span><span class="o">.</span><span class="n">UserNull</span><span class="o">.</span><span class="n">Nr0</span><span class="p">,</span> <span class="n">repcap</span><span class="o">.</span><span class="n">BwPartNull</span><span class="o">.</span><span class="n">Nr1</span><span class="p">,</span> <span class="n">repcap</span><span class="o">.</span><span class="n">AllocationNull</span><span class="o">.</span><span class="n">Nr0</span><span class="p">,</span> <span class="n">repcap</span><span class="o">.</span><span class="n">ColumnNull</span><span class="o">.</span><span class="n">Nr0</span><span class="p">,</span> <span class="n">repcap</span><span class="o">.</span><span class="n">RowNull</span><span class="o">.</span><span class="n">Nr3</span><span class="p">)</span>
+
+<span class="c1"># Option 2: only some arguments with keywords, others keep their default values:</span>
+<span class="c1"># sending SOURce1:BB:NR5G:SCHed:CELL1:SUBF3:USER0:BWPart1:ALLoc0:APMap:COL0:ROW3:IMAGinary 10.0</span>
+<span class="c1"># Default values for skipped repCaps:</span>
+<span class="c1"># - repcap.UserNull.Nr0</span>
+<span class="c1"># - repcap.Allocation.Nr0</span>
+<span class="c1"># - repcap.ColumnNull.Nr0</span>
+<span class="n">smbv</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">nr5G</span><span class="o">.</span><span class="n">scheduling</span><span class="o">.</span><span class="n">cell</span><span class="o">.</span><span class="n">subf</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">bwPart</span><span class="o">.</span><span class="n">alloc</span><span class="o">.</span><span class="n">apMap</span><span class="o">.</span><span class="n">col</span><span class="o">.</span><span class="n">row</span><span class="o">.</span><span class="n">imaginary</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="mf">10.0</span><span class="p">,</span> <span class="n">cellNull</span><span class="o">=</span><span class="n">repcap</span><span class="o">.</span><span class="n">CellNull</span><span class="o">.</span><span class="n">Nr1</span><span class="p">,</span> <span class="n">subframeNull</span><span class="o">=</span><span class="n">repcap</span><span class="o">.</span><span class="n">SubframeNull</span><span class="o">.</span><span class="n">Nr3</span><span class="p">,</span> <span class="n">bwPartNull</span><span class="o">=</span><span class="n">repcap</span><span class="o">.</span><span class="n">BwPartNull</span><span class="o">.</span><span class="n">Nr1</span><span class="p">,</span> <span class="n">rowNull</span><span class="o">=</span><span class="n">repcap</span><span class="o">.</span><span class="n">RowNull</span><span class="o">.</span><span class="n">Nr3</span><span class="p">)</span>
+
+<span class="c1"># Option 3: default values are set in the group interfaces, and then left to default in the method call:</span>
+<span class="n">smbv</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">nr5G</span><span class="o">.</span><span class="n">scheduling</span><span class="o">.</span><span class="n">cell</span><span class="o">.</span><span class="n">repcap_cellNull_set</span><span class="p">(</span><span class="n">repcap</span><span class="o">.</span><span class="n">CellNull</span><span class="o">.</span><span class="n">Nr1</span><span class="p">)</span>
+<span class="n">smbv</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">nr5G</span><span class="o">.</span><span class="n">scheduling</span><span class="o">.</span><span class="n">cell</span><span class="o">.</span><span class="n">subf</span><span class="o">.</span><span class="n">repcap_subframeNull_set</span><span class="p">(</span><span class="n">repcap</span><span class="o">.</span><span class="n">SubframeNull</span><span class="o">.</span><span class="n">Nr3</span><span class="p">)</span>
+<span class="n">smbv</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">nr5G</span><span class="o">.</span><span class="n">scheduling</span><span class="o">.</span><span class="n">cell</span><span class="o">.</span><span class="n">subf</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">repcap_userNull_set</span><span class="p">(</span><span class="n">repcap</span><span class="o">.</span><span class="n">UserNull</span><span class="o">.</span><span class="n">Nr0</span><span class="p">)</span>
+<span class="n">smbv</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">nr5G</span><span class="o">.</span><span class="n">scheduling</span><span class="o">.</span><span class="n">cell</span><span class="o">.</span><span class="n">subf</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">bwPart</span><span class="o">.</span><span class="n">repcap_bwPartNull_set</span><span class="p">(</span><span class="n">repcap</span><span class="o">.</span><span class="n">BwPartNull</span><span class="o">.</span><span class="n">Nr1</span><span class="p">)</span>
+<span class="n">smbv</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">nr5G</span><span class="o">.</span><span class="n">scheduling</span><span class="o">.</span><span class="n">cell</span><span class="o">.</span><span class="n">subf</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">bwPart</span><span class="o">.</span><span class="n">alloc</span><span class="o">.</span><span class="n">repcap_allocationNull_set</span><span class="p">(</span><span class="n">repcap</span><span class="o">.</span><span class="n">AllocationNull</span><span class="o">.</span><span class="n">Nr0</span><span class="p">)</span>
+<span class="n">smbv</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">nr5G</span><span class="o">.</span><span class="n">scheduling</span><span class="o">.</span><span class="n">cell</span><span class="o">.</span><span class="n">subf</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">bwPart</span><span class="o">.</span><span class="n">alloc</span><span class="o">.</span><span class="n">apMap</span><span class="o">.</span><span class="n">col</span><span class="o">.</span><span class="n">repcap_columnNull_set</span><span class="p">(</span><span class="n">repcap</span><span class="o">.</span><span class="n">ColumnNull</span><span class="o">.</span><span class="n">Nr0</span><span class="p">)</span>
+<span class="n">smbv</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">nr5G</span><span class="o">.</span><span class="n">scheduling</span><span class="o">.</span><span class="n">cell</span><span class="o">.</span><span class="n">subf</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">bwPart</span><span class="o">.</span><span class="n">alloc</span><span class="o">.</span><span class="n">apMap</span><span class="o">.</span><span class="n">col</span><span class="o">.</span><span class="n">row</span><span class="o">.</span><span class="n">repcap_rowNull_set</span><span class="p">(</span><span class="n">repcap</span><span class="o">.</span><span class="n">RowNull</span><span class="o">.</span><span class="n">Nr3</span><span class="p">)</span>
+<span class="c1"># and then just use the set() method without repeated capabilities:</span>
+<span class="c1"># sending SOURce1:BB:NR5G:SCHed:CELL1:SUBF3:USER0:BWPart1:ALLoc0:APMap:COL0:ROW3:IMAGinary 10.0</span>
+<span class="n">smbv</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">nr5G</span><span class="o">.</span><span class="n">scheduling</span><span class="o">.</span><span class="n">cell</span><span class="o">.</span><span class="n">subf</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">bwPart</span><span class="o">.</span><span class="n">alloc</span><span class="o">.</span><span class="n">apMap</span><span class="o">.</span><span class="n">col</span><span class="o">.</span><span class="n">row</span><span class="o">.</span><span class="n">imaginary</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="mf">10.0</span><span class="p">)</span>
+
+<span class="c1"># We can clone the cell interface and change the default cell from Nr1 to Nr2 without affecting the origin interface:</span>
+<span class="n">cell_nr2</span> <span class="o">=</span> <span class="n">smbv</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">nr5G</span><span class="o">.</span><span class="n">scheduling</span><span class="o">.</span><span class="n">cell</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+<span class="n">cell_nr2</span><span class="o">.</span><span class="n">repcap_cellNull_set</span><span class="p">(</span><span class="n">repcap</span><span class="o">.</span><span class="n">CellNull</span><span class="o">.</span><span class="n">Nr2</span><span class="p">)</span>
+
+<span class="c1"># Now we have an independent object cell_nr2, and can set the same command for cell Nr2</span>
+<span class="c1"># All other repcap default values are the same:</span>
+<span class="c1"># repcap.SubframeNull.Nr3</span>
+<span class="c1"># repcap.ColumnNull.Nr2</span>
+<span class="c1"># repcap.RowNull.Nr3</span>
+<span class="c1"># sending SOURce1:BB:NR5G:SCHed:CELL2:SUBF3:USER:BWPart:ALLoc:APMap:COL2:ROW3:IMAGinary 10.0</span>
+<span class="n">cell_nr2</span><span class="o">.</span><span class="n">subf</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">bwPart</span><span class="o">.</span><span class="n">alloc</span><span class="o">.</span><span class="n">apMap</span><span class="o">.</span><span class="n">col</span><span class="o">.</span><span class="n">row</span><span class="o">.</span><span class="n">imaginary</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="mf">10.0</span><span class="p">)</span>
+
+<span class="c1"># Option 4: Combination of Options 1, 2 and 3 - we use the default values from the group interfaces and explicitly define some of them:</span>
+<span class="c1"># Here we change the channel to 5 and Column to 4, all others are default from the group</span>
+<span class="c1"># sending SOURce1:BB:NR5G:SCHed:CELL5:SUBF3:USER:BWPart:ALLoc:APMap:COL4:ROW3:IMAGinary 10.0</span>
+<span class="n">smbv</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">nr5G</span><span class="o">.</span><span class="n">scheduling</span><span class="o">.</span><span class="n">cell</span><span class="o">.</span><span class="n">subf</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">bwPart</span><span class="o">.</span><span class="n">alloc</span><span class="o">.</span><span class="n">apMap</span><span class="o">.</span><span class="n">col</span><span class="o">.</span><span class="n">row</span><span class="o">.</span><span class="n">imaginary</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="mf">10.0</span><span class="p">,</span> <span class="n">cellNull</span><span class="o">=</span><span class="n">repcap</span><span class="o">.</span><span class="n">CellNull</span><span class="o">.</span><span class="n">Nr5</span><span class="p">,</span> <span class="n">columnNull</span><span class="o">=</span><span class="n">repcap</span><span class="o">.</span><span class="n">ColumnNull</span><span class="o">.</span><span class="n">Nr4</span><span class="p">)</span>
+
+<span class="n">smbv</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;Example showing how you can transfer a big file to the instrument and from the instrument with showing the progress.</span>
+<span class="sd">Since the SMBV100B is quite fast on data transfer, we slow it down by waiting for 100ms between each chunk transfer (1MB)</span>
+<span class="sd">This way we see the transfer progress better and we do not need a file that is so big - let&#39;s take cca 20MB.</span>
+<span class="sd">For big files, use the example without the time.sleep(0.1)&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">RsSmbv</span> <span class="kn">import</span> <span class="o">*</span>
+
+
+<span class="k">def</span> <span class="nf">my_transfer_handler</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Function called each time a chunk of data is transferred&quot;&quot;&quot;</span>
+    <span class="n">total_size</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">total_size</span> <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">total_size</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="s2">&quot;unknown&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Context: &#39;</span><span class="si">{</span><span class="n">args</span><span class="o">.</span><span class="n">context</span><span class="si">}{</span><span class="s1">&#39;with opc&#39;</span> <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">opc_sync</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span><span class="si">}</span><span class="s2">&#39;, &quot;</span>
+          <span class="sa">f</span><span class="s2">&quot;chunk </span><span class="si">{</span><span class="n">args</span><span class="o">.</span><span class="n">chunk_ix</span><span class="si">}</span><span class="s2">, &quot;</span>
+          <span class="sa">f</span><span class="s2">&quot;transferred </span><span class="si">{</span><span class="n">args</span><span class="o">.</span><span class="n">transferred_size</span><span class="si">}</span><span class="s2"> bytes, &quot;</span>
+          <span class="sa">f</span><span class="s2">&quot;total size </span><span class="si">{</span><span class="n">total_size</span><span class="si">}</span><span class="s2">, &quot;</span>
+          <span class="sa">f</span><span class="s2">&quot;direction </span><span class="si">{</span><span class="s1">&#39;reading&#39;</span> <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">reading</span> <span class="k">else</span> <span class="s1">&#39;writing&#39;</span><span class="si">}</span><span class="s2">, &quot;</span>
+          <span class="sa">f</span><span class="s2">&quot;data &#39;</span><span class="si">{</span><span class="n">args</span><span class="o">.</span><span class="n">data</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">end_of_transfer</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;End of Transfer&#39;</span><span class="p">)</span>
+    <span class="c1"># Slow down the transfer by 200ms to see the progress better</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+
+
+<span class="n">RsSmbv</span><span class="o">.</span><span class="n">assert_minimum_version</span><span class="p">(</span><span class="s1">&#39;4.80.2&#39;</span><span class="p">)</span>
+<span class="n">smbv</span> <span class="o">=</span> <span class="n">RsSmbv</span><span class="p">(</span><span class="s1">&#39;TCPIP::10.112.1.73::HISLIP&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">smbv</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">idn_string</span><span class="p">)</span>
+<span class="n">smbv</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+
+<span class="n">pc_file</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;c:\temp\bigFile.bin&#39;</span>
+<span class="n">instr_file</span> <span class="o">=</span> <span class="s1">&#39;/var/user/bigFileInstr.bin&#39;</span>
+<span class="n">pc_file_back</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;c:\temp\bigFileBack.bin&#39;</span>
+
+<span class="c1"># Generate a random file of 20MB size</span>
+<span class="n">x1mb</span> <span class="o">=</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">pc_file</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>
+        <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">bytes</span><span class="p">(</span><span class="n">x1mb</span><span class="p">))</span>
+
+<span class="c1"># Send the file to the instrument with events</span>
+<span class="n">smbv</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">on_write_handler</span> <span class="o">=</span> <span class="n">my_transfer_handler</span>
+<span class="n">smbv</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">data_chunk_size</span> <span class="o">=</span> <span class="n">x1mb</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Sending file to the instrument...&#39;</span><span class="p">)</span>
+<span class="n">smbv</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">send_file_from_pc_to_instrument</span><span class="p">(</span><span class="n">pc_file</span><span class="p">,</span> <span class="n">instr_file</span><span class="p">)</span>
+<span class="n">smbv</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">on_write_handler</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Receiving file from the instrument...&#39;</span><span class="p">)</span>
+<span class="n">smbv</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">on_read_handler</span> <span class="o">=</span> <span class="n">my_transfer_handler</span>
+<span class="n">smbv</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">read_file_from_instrument_to_pc</span><span class="p">(</span><span class="n">instr_file</span><span class="p">,</span> <span class="n">pc_file_back</span><span class="p">)</span>
+<span class="n">smbv</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">on_read_handler</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">smbv</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="repcap.html" class="btn btn-neutral float-left" title="RepCaps" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="RsSmbv.html" class="btn btn-neutral float-right" title="RsSmbv API Structure" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RsSmbv.Implementations.Source.Bb.Huwb.Sts &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../../../" id="documentation_options" src="../../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../../_static/jquery.js"></script>
+        <script src="../../../../../../_static/underscore.js"></script>
+        <script src="../../../../../../_static/doctools.js"></script>
+        <script src="../../../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../../../_static/copybutton.js"></script>
+    <script src="../../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../../../index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../RsSmbv.html">RsSmbv API Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../../../index.html">Module code</a> &raquo;</li>
+          <li><a href="../../../Source.html">RsSmbv.Implementations.Source</a> &raquo;</li>
+          <li><a href="../../Bb.html">RsSmbv.Implementations.Source.Bb</a> &raquo;</li>
+          <li><a href="../Huwb.html">RsSmbv.Implementations.Source.Bb.Huwb</a> &raquo;</li>
+      <li>RsSmbv.Implementations.Source.Bb.Huwb.Sts</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for RsSmbv.Implementations.Source.Bb.Huwb.Sts</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">......Internal.Core</span> <span class="kn">import</span> <span class="n">Core</span>
+<span class="kn">from</span> <span class="nn">......Internal.CommandsGroup</span> <span class="kn">import</span> <span class="n">CommandsGroup</span>
+<span class="kn">from</span> <span class="nn">......Internal</span> <span class="kn">import</span> <span class="n">Conversions</span>
+<span class="kn">from</span> <span class="nn">......Internal.Utilities</span> <span class="kn">import</span> <span class="n">trim_str_response</span>
+<span class="kn">from</span> <span class="nn">......</span> <span class="kn">import</span> <span class="n">enums</span>
+
+
+<span class="c1"># noinspection PyPep8Naming,PyAttributeOutsideInit,SpellCheckingInspection</span>
+<div class="viewcode-block" id="StsCls"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_Sts.html#RsSmbv.Implementations.Source.Bb.Huwb.Sts.StsCls">[docs]</a><span class="k">class</span> <span class="nc">StsCls</span><span class="p">:</span>
+	<span class="sd">&quot;&quot;&quot;Sts commands group definition. 7 total commands, 1 Subgroups, 6 group commands&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">core</span><span class="p">:</span> <span class="n">Core</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span> <span class="o">=</span> <span class="n">core</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span> <span class="o">=</span> <span class="n">CommandsGroup</span><span class="p">(</span><span class="s2">&quot;sts&quot;</span><span class="p">,</span> <span class="n">core</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;data commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_data&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Data</span> <span class="kn">import</span> <span class="n">DataCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="n">DataCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span>
+
+<div class="viewcode-block" id="StsCls.get_cpart"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_Sts.html#RsSmbv.Implementations.Source.Bb.Huwb.Sts.StsCls.get_cpart">[docs]</a>	<span class="k">def</span> <span class="nf">get_cpart</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:STS:CPARt \n</span>
+<span class="sd">		Snippet: value: str = driver.source.bb.huwb.sts.get_cpart() \n</span>
+<span class="sd">		Sets the counter part of the V valued. The value is a 32-bit value in hexadecimal representation. \n</span>
+<span class="sd">			:return: counter_part: integer</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:STS:CPARt?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">trim_str_response</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="StsCls.set_cpart"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_Sts.html#RsSmbv.Implementations.Source.Bb.Huwb.Sts.StsCls.set_cpart">[docs]</a>	<span class="k">def</span> <span class="nf">set_cpart</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">counter_part</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:STS:CPARt \n</span>
+<span class="sd">		Snippet: driver.source.bb.huwb.sts.set_cpart(counter_part = rawAbc) \n</span>
+<span class="sd">		Sets the counter part of the V valued. The value is a 32-bit value in hexadecimal representation. \n</span>
+<span class="sd">			:param counter_part: integer</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">value_to_str</span><span class="p">(</span><span class="n">counter_part</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:STS:CPARt </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="StsCls.get_dlen"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_Sts.html#RsSmbv.Implementations.Source.Bb.Huwb.Sts.StsCls.get_dlen">[docs]</a>	<span class="k">def</span> <span class="nf">get_dlen</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbStsDeltaLen</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:STS:DLEN \n</span>
+<span class="sd">		Snippet: value: enums.HrpUwbStsDeltaLen = driver.source.bb.huwb.sts.get_dlen() \n</span>
+<span class="sd">		Queries the delta length of the scrambled timestamp sequence (STS) . \n</span>
+<span class="sd">			:return: delta_length: DL_4| DL_8</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:STS:DLEN?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbStsDeltaLen</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="StsCls.set_dlen"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_Sts.html#RsSmbv.Implementations.Source.Bb.Huwb.Sts.StsCls.set_dlen">[docs]</a>	<span class="k">def</span> <span class="nf">set_dlen</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">delta_length</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbStsDeltaLen</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:STS:DLEN \n</span>
+<span class="sd">		Snippet: driver.source.bb.huwb.sts.set_dlen(delta_length = enums.HrpUwbStsDeltaLen.DL_4) \n</span>
+<span class="sd">		Queries the delta length of the scrambled timestamp sequence (STS) . \n</span>
+<span class="sd">			:param delta_length: DL_4| DL_8</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">delta_length</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbStsDeltaLen</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:STS:DLEN </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="StsCls.get_dls"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_Sts.html#RsSmbv.Implementations.Source.Bb.Huwb.Sts.StsCls.get_dls">[docs]</a>	<span class="k">def</span> <span class="nf">get_dls</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:STS:DLS \n</span>
+<span class="sd">		Snippet: value: bool = driver.source.bb.huwb.sts.get_dls() \n</span>
+<span class="sd">		Activates the STS source. If activated, you can select an STS data list from a designated folder to import a user defined</span>
+<span class="sd">		STS sequence. \n</span>
+<span class="sd">			:return: sts_datalist: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:STS:DLS?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_bool</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="StsCls.set_dls"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_Sts.html#RsSmbv.Implementations.Source.Bb.Huwb.Sts.StsCls.set_dls">[docs]</a>	<span class="k">def</span> <span class="nf">set_dls</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sts_datalist</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:STS:DLS \n</span>
+<span class="sd">		Snippet: driver.source.bb.huwb.sts.set_dls(sts_datalist = False) \n</span>
+<span class="sd">		Activates the STS source. If activated, you can select an STS data list from a designated folder to import a user defined</span>
+<span class="sd">		STS sequence. \n</span>
+<span class="sd">			:param sts_datalist: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">bool_to_str</span><span class="p">(</span><span class="n">sts_datalist</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:STS:DLS </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="StsCls.get_key"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_Sts.html#RsSmbv.Implementations.Source.Bb.Huwb.Sts.StsCls.get_key">[docs]</a>	<span class="k">def</span> <span class="nf">get_key</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:STS:KEY \n</span>
+<span class="sd">		Snippet: value: str = driver.source.bb.huwb.sts.get_key() \n</span>
+<span class="sd">		Sets the key value of the scrambled timestamp sequence (STS) . The value is a 128-bit value in hexadecimal representation. \n</span>
+<span class="sd">			:return: key: integer</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:STS:KEY?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">trim_str_response</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="StsCls.set_key"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_Sts.html#RsSmbv.Implementations.Source.Bb.Huwb.Sts.StsCls.set_key">[docs]</a>	<span class="k">def</span> <span class="nf">set_key</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:STS:KEY \n</span>
+<span class="sd">		Snippet: driver.source.bb.huwb.sts.set_key(key = rawAbc) \n</span>
+<span class="sd">		Sets the key value of the scrambled timestamp sequence (STS) . The value is a 128-bit value in hexadecimal representation. \n</span>
+<span class="sd">			:param key: integer</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">value_to_str</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:STS:KEY </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="StsCls.get_pc"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_Sts.html#RsSmbv.Implementations.Source.Bb.Huwb.Sts.StsCls.get_pc">[docs]</a>	<span class="k">def</span> <span class="nf">get_pc</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbStspAcketConfig</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:STS:PC \n</span>
+<span class="sd">		Snippet: value: enums.HrpUwbStspAcketConfig = driver.source.bb.huwb.sts.get_pc() \n</span>
+<span class="sd">		Sets the scrambled timestamp sequence (STS) packet configuration. \n</span>
+<span class="sd">			:return: spc: SPC_0| SPC_1| SPC_2| SPC_3</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:STS:PC?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbStspAcketConfig</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="StsCls.set_pc"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_Sts.html#RsSmbv.Implementations.Source.Bb.Huwb.Sts.StsCls.set_pc">[docs]</a>	<span class="k">def</span> <span class="nf">set_pc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spc</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbStspAcketConfig</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:STS:PC \n</span>
+<span class="sd">		Snippet: driver.source.bb.huwb.sts.set_pc(spc = enums.HrpUwbStspAcketConfig.SPC_0) \n</span>
+<span class="sd">		Sets the scrambled timestamp sequence (STS) packet configuration. \n</span>
+<span class="sd">			:param spc: SPC_0| SPC_1| SPC_2| SPC_3</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">spc</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbStspAcketConfig</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:STS:PC </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="StsCls.get_upart"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_Sts.html#RsSmbv.Implementations.Source.Bb.Huwb.Sts.StsCls.get_upart">[docs]</a>	<span class="k">def</span> <span class="nf">get_upart</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:STS:UPARt \n</span>
+<span class="sd">		Snippet: value: str = driver.source.bb.huwb.sts.get_upart() \n</span>
+<span class="sd">		Sets the upper part of the V value. The value is a 96-bit value in hexadecimal representation. \n</span>
+<span class="sd">			:return: upper_part: integer</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:STS:UPARt?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">trim_str_response</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="StsCls.set_upart"><a class="viewcode-back" href="../../../../../../Source_Bb_Huwb_Sts.html#RsSmbv.Implementations.Source.Bb.Huwb.Sts.StsCls.set_upart">[docs]</a>	<span class="k">def</span> <span class="nf">set_upart</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">upper_part</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:STS:UPARt \n</span>
+<span class="sd">		Snippet: driver.source.bb.huwb.sts.set_upart(upper_part = rawAbc) \n</span>
+<span class="sd">		Sets the upper part of the V value. The value is a 96-bit value in hexadecimal representation. \n</span>
+<span class="sd">			:param upper_part: integer</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">value_to_str</span><span class="p">(</span><span class="n">upper_part</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:HUWB:STS:UPARt </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;StsCls&#39;</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Clones the group by creating new object from it and its whole existing subgroups</span>
+<span class="sd">		Also copies all the existing default Repeated Capabilities setting,</span>
+<span class="sd">		which you can change independently without affecting the original group&quot;&quot;&quot;</span>
+		<span class="n">new_group</span> <span class="o">=</span> <span class="n">StsCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">synchronize_repcaps</span><span class="p">(</span><span class="n">new_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">new_group</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

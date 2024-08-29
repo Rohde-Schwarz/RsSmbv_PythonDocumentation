@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RsSmbv.Implementations.Bler.Setup &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../_static/copybutton.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../RsSmbv.html">RsSmbv API Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+          <li><a href="../Bler.html">RsSmbv.Implementations.Bler</a> &raquo;</li>
+      <li>RsSmbv.Implementations.Bler.Setup</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for RsSmbv.Implementations.Bler.Setup</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">....Internal.Core</span> <span class="kn">import</span> <span class="n">Core</span>
+<span class="kn">from</span> <span class="nn">....Internal.CommandsGroup</span> <span class="kn">import</span> <span class="n">CommandsGroup</span>
+<span class="kn">from</span> <span class="nn">....Internal</span> <span class="kn">import</span> <span class="n">Conversions</span>
+<span class="kn">from</span> <span class="nn">....</span> <span class="kn">import</span> <span class="n">enums</span>
+
+
+<span class="c1"># noinspection PyPep8Naming,PyAttributeOutsideInit,SpellCheckingInspection</span>
+<div class="viewcode-block" id="SetupCls"><a class="viewcode-back" href="../../../../Bler_Setup.html#RsSmbv.Implementations.Bler.Setup.SetupCls">[docs]</a><span class="k">class</span> <span class="nc">SetupCls</span><span class="p">:</span>
+	<span class="sd">&quot;&quot;&quot;Setup commands group definition. 7 total commands, 1 Subgroups, 6 group commands&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">core</span><span class="p">:</span> <span class="n">Core</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span> <span class="o">=</span> <span class="n">core</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span> <span class="o">=</span> <span class="n">CommandsGroup</span><span class="p">(</span><span class="s2">&quot;setup&quot;</span><span class="p">,</span> <span class="n">core</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;data commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_data&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Data</span> <span class="kn">import</span> <span class="n">DataCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="n">DataCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="SetupCls.get_corder"><a class="viewcode-back" href="../../../../Bler_Setup.html#RsSmbv.Implementations.Bler.Setup.SetupCls.get_corder">[docs]</a>	<span class="k">def</span> <span class="nf">get_corder</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">BertCrcOrder</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: BLER:SETup:CORDer \n</span>
+<span class="sd">		Snippet: value: enums.BertCrcOrder = driver.bler.setup.get_corder() \n</span>
+<span class="sd">		Sets the byte order of the checksum (CRC) . \n</span>
+<span class="sd">			:return: corder: LSB| MSB LSB The checksum starts with the least significant byte. MSB The checksum starts with the most significant byte.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;BLER:SETup:CORDer?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">BertCrcOrder</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SetupCls.set_corder"><a class="viewcode-back" href="../../../../Bler_Setup.html#RsSmbv.Implementations.Bler.Setup.SetupCls.set_corder">[docs]</a>	<span class="k">def</span> <span class="nf">set_corder</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">corder</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">BertCrcOrder</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: BLER:SETup:CORDer \n</span>
+<span class="sd">		Snippet: driver.bler.setup.set_corder(corder = enums.BertCrcOrder.LSB) \n</span>
+<span class="sd">		Sets the byte order of the checksum (CRC) . \n</span>
+<span class="sd">			:param corder: LSB| MSB LSB The checksum starts with the least significant byte. MSB The checksum starts with the most significant byte.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">corder</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">BertCrcOrder</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;BLER:SETup:CORDer </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="SetupCls.get_denable"><a class="viewcode-back" href="../../../../Bler_Setup.html#RsSmbv.Implementations.Bler.Setup.SetupCls.get_denable">[docs]</a>	<span class="k">def</span> <span class="nf">get_denable</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">LowHigh</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: BLER:SETup:DENable \n</span>
+<span class="sd">		Snippet: value: enums.LowHigh = driver.bler.setup.get_denable() \n</span>
+<span class="sd">		Activates the Data Enable signal and, if activated, sets its polarity. The signal marks the data that is evaluated by the</span>
+<span class="sd">		BERT/BLER measurement. Does not evaluate data supplied by the DUT, that is additional to the PRBS sequence (e.g. sync,</span>
+<span class="sd">		preambles, other channels, etc.) . \n</span>
+<span class="sd">			:return: denable: HIGH| LOW OFF Ignore any signal at the data enable input; use all data at the BERT/BLER data input for the measurement. HIGH Use the data enable signal. Only measures the data at the BERT/BLER data input during a high level of the data enable signal. Interrupts the measurement during a low level. LOW Use the data enable signal. Only measures the data at the BERT/BLER data input during a low level of the data enable signal. Interrupts the measurement during a high level.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;BLER:SETup:DENable?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">LowHigh</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SetupCls.set_denable"><a class="viewcode-back" href="../../../../Bler_Setup.html#RsSmbv.Implementations.Bler.Setup.SetupCls.set_denable">[docs]</a>	<span class="k">def</span> <span class="nf">set_denable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">denable</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">LowHigh</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: BLER:SETup:DENable \n</span>
+<span class="sd">		Snippet: driver.bler.setup.set_denable(denable = enums.LowHigh.HIGH) \n</span>
+<span class="sd">		Activates the Data Enable signal and, if activated, sets its polarity. The signal marks the data that is evaluated by the</span>
+<span class="sd">		BERT/BLER measurement. Does not evaluate data supplied by the DUT, that is additional to the PRBS sequence (e.g. sync,</span>
+<span class="sd">		preambles, other channels, etc.) . \n</span>
+<span class="sd">			:param denable: HIGH| LOW OFF Ignore any signal at the data enable input; use all data at the BERT/BLER data input for the measurement. HIGH Use the data enable signal. Only measures the data at the BERT/BLER data input during a high level of the data enable signal. Interrupts the measurement during a low level. LOW Use the data enable signal. Only measures the data at the BERT/BLER data input during a low level of the data enable signal. Interrupts the measurement during a high level.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">denable</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">LowHigh</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;BLER:SETup:DENable </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SetupCls.get_mcount"><a class="viewcode-back" href="../../../../Bler_Setup.html#RsSmbv.Implementations.Bler.Setup.SetupCls.get_mcount">[docs]</a>	<span class="k">def</span> <span class="nf">get_mcount</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: BLER:SETup:MCOunt \n</span>
+<span class="sd">		Snippet: value: int = driver.bler.setup.get_mcount() \n</span>
+<span class="sd">		Enters the number of transmitted data bits/data blocks to be checked before the measurement is terminated. A BERT/BLER</span>
+<span class="sd">		measurement does not count data suppressed by method RsSmbv.Bert.Setup.denable|method RsSmbv.Bler.Setup.denable.</span>
+<span class="sd">		This termination criteria always terminates the measurement after the specified number of data bits/data blocks. Starting</span>
+<span class="sd">		from this point, outputs the fourth value with 1 (= terminate measurement) if the result is queried. For the continuous</span>
+<span class="sd">		measurement mode, the measurement restarts once the results have been queried. \n</span>
+<span class="sd">			:return: mcount: integer Range: 0 to 4294967295</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;BLER:SETup:MCOunt?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SetupCls.set_mcount"><a class="viewcode-back" href="../../../../Bler_Setup.html#RsSmbv.Implementations.Bler.Setup.SetupCls.set_mcount">[docs]</a>	<span class="k">def</span> <span class="nf">set_mcount</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mcount</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: BLER:SETup:MCOunt \n</span>
+<span class="sd">		Snippet: driver.bler.setup.set_mcount(mcount = 1) \n</span>
+<span class="sd">		Enters the number of transmitted data bits/data blocks to be checked before the measurement is terminated. A BERT/BLER</span>
+<span class="sd">		measurement does not count data suppressed by method RsSmbv.Bert.Setup.denable|method RsSmbv.Bler.Setup.denable.</span>
+<span class="sd">		This termination criteria always terminates the measurement after the specified number of data bits/data blocks. Starting</span>
+<span class="sd">		from this point, outputs the fourth value with 1 (= terminate measurement) if the result is queried. For the continuous</span>
+<span class="sd">		measurement mode, the measurement restarts once the results have been queried. \n</span>
+<span class="sd">			:param mcount: integer Range: 0 to 4294967295</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">mcount</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;BLER:SETup:MCOunt </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SetupCls.get_merror"><a class="viewcode-back" href="../../../../Bler_Setup.html#RsSmbv.Implementations.Bler.Setup.SetupCls.get_merror">[docs]</a>	<span class="k">def</span> <span class="nf">get_merror</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: BLER:SETup:MERRor \n</span>
+<span class="sd">		Snippet: value: int = driver.bler.setup.get_merror() \n</span>
+<span class="sd">		Enters the number of errors to occur before the measurement is terminated. This termination criterion always terminates</span>
+<span class="sd">		the measurement after the specified number of errors. Starting from this point, outputs the fourth value with 1 (=</span>
+<span class="sd">		terminate measurement) if the measurement result is queried. \n</span>
+<span class="sd">			:return: merror: integer Range: 0 to 4294967295</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;BLER:SETup:MERRor?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SetupCls.set_merror"><a class="viewcode-back" href="../../../../Bler_Setup.html#RsSmbv.Implementations.Bler.Setup.SetupCls.set_merror">[docs]</a>	<span class="k">def</span> <span class="nf">set_merror</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">merror</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: BLER:SETup:MERRor \n</span>
+<span class="sd">		Snippet: driver.bler.setup.set_merror(merror = 1) \n</span>
+<span class="sd">		Enters the number of errors to occur before the measurement is terminated. This termination criterion always terminates</span>
+<span class="sd">		the measurement after the specified number of errors. Starting from this point, outputs the fourth value with 1 (=</span>
+<span class="sd">		terminate measurement) if the measurement result is queried. \n</span>
+<span class="sd">			:param merror: integer Range: 0 to 4294967295</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">merror</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;BLER:SETup:MERRor </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SetupCls.get_timeout"><a class="viewcode-back" href="../../../../Bler_Setup.html#RsSmbv.Implementations.Bler.Setup.SetupCls.get_timeout">[docs]</a>	<span class="k">def</span> <span class="nf">get_timeout</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: BLER:SETup:TIMeout \n</span>
+<span class="sd">		Snippet: value: float = driver.bler.setup.get_timeout() \n</span>
+<span class="sd">		Sets the timeout. \n</span>
+<span class="sd">			:return: timeout: float Range: 0.1 to 1</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;BLER:SETup:TIMeout?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SetupCls.set_timeout"><a class="viewcode-back" href="../../../../Bler_Setup.html#RsSmbv.Implementations.Bler.Setup.SetupCls.set_timeout">[docs]</a>	<span class="k">def</span> <span class="nf">set_timeout</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeout</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: BLER:SETup:TIMeout \n</span>
+<span class="sd">		Snippet: driver.bler.setup.set_timeout(timeout = 1.0) \n</span>
+<span class="sd">		Sets the timeout. \n</span>
+<span class="sd">			:param timeout: float Range: 0.1 to 1</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">timeout</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;BLER:SETup:TIMeout </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="SetupCls.get_type_py"><a class="viewcode-back" href="../../../../Bler_Setup.html#RsSmbv.Implementations.Bler.Setup.SetupCls.get_type_py">[docs]</a>	<span class="k">def</span> <span class="nf">get_type_py</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">BertType</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: BLER:SETup:TYPE \n</span>
+<span class="sd">		Snippet: value: enums.BertType = driver.bler.setup.get_type_py() \n</span>
+<span class="sd">		Queries the used CRC polynomial. \n</span>
+<span class="sd">			:return: type_py: CRC16 CCITT CRC 16 : G(x) = x16 + x12 + x5 + x1</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;BLER:SETup:TYPE?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">BertType</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SetupCls.set_type_py"><a class="viewcode-back" href="../../../../Bler_Setup.html#RsSmbv.Implementations.Bler.Setup.SetupCls.set_type_py">[docs]</a>	<span class="k">def</span> <span class="nf">set_type_py</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">type_py</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">BertType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: BLER:SETup:TYPE \n</span>
+<span class="sd">		Snippet: driver.bler.setup.set_type_py(type_py = enums.BertType.CRC16) \n</span>
+<span class="sd">		Queries the used CRC polynomial. \n</span>
+<span class="sd">			:param type_py: CRC16 CCITT CRC 16 : G(x) = x16 + x12 + x5 + x1</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">type_py</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">BertType</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;BLER:SETup:TYPE </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;SetupCls&#39;</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Clones the group by creating new object from it and its whole existing subgroups</span>
+<span class="sd">		Also copies all the existing default Repeated Capabilities setting,</span>
+<span class="sd">		which you can change independently without affecting the original group&quot;&quot;&quot;</span>
+		<span class="n">new_group</span> <span class="o">=</span> <span class="n">SetupCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">synchronize_repcaps</span><span class="p">(</span><span class="n">new_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">new_group</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

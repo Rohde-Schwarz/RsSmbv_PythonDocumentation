@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RsSmbv.Implementations.Source.Bb.Impairment.Digital &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../../../" id="documentation_options" src="../../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../../_static/jquery.js"></script>
+        <script src="../../../../../../_static/underscore.js"></script>
+        <script src="../../../../../../_static/doctools.js"></script>
+        <script src="../../../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../../../_static/copybutton.js"></script>
+    <script src="../../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../../../index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../RsSmbv.html">RsSmbv API Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../../../index.html">Module code</a> &raquo;</li>
+          <li><a href="../../../Source.html">RsSmbv.Implementations.Source</a> &raquo;</li>
+          <li><a href="../../Bb.html">RsSmbv.Implementations.Source.Bb</a> &raquo;</li>
+          <li><a href="../Impairment.html">RsSmbv.Implementations.Source.Bb.Impairment</a> &raquo;</li>
+      <li>RsSmbv.Implementations.Source.Bb.Impairment.Digital</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for RsSmbv.Implementations.Source.Bb.Impairment.Digital</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">......Internal.Core</span> <span class="kn">import</span> <span class="n">Core</span>
+<span class="kn">from</span> <span class="nn">......Internal.CommandsGroup</span> <span class="kn">import</span> <span class="n">CommandsGroup</span>
+<span class="kn">from</span> <span class="nn">......Internal</span> <span class="kn">import</span> <span class="n">Conversions</span>
+
+
+<span class="c1"># noinspection PyPep8Naming,PyAttributeOutsideInit,SpellCheckingInspection</span>
+<div class="viewcode-block" id="DigitalCls"><a class="viewcode-back" href="../../../../../../Source_Bb_Impairment_Digital.html#RsSmbv.Implementations.Source.Bb.Impairment.Digital.DigitalCls">[docs]</a><span class="k">class</span> <span class="nc">DigitalCls</span><span class="p">:</span>
+	<span class="sd">&quot;&quot;&quot;Digital commands group definition. 8 total commands, 3 Subgroups, 4 group commands&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">core</span><span class="p">:</span> <span class="n">Core</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span> <span class="o">=</span> <span class="n">core</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span> <span class="o">=</span> <span class="n">CommandsGroup</span><span class="p">(</span><span class="s2">&quot;digital&quot;</span><span class="p">,</span> <span class="n">core</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">iqRatio</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;iqRatio commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_iqRatio&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.IqRatio</span> <span class="kn">import</span> <span class="n">IqRatioCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_iqRatio</span> <span class="o">=</span> <span class="n">IqRatioCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_iqRatio</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">leakage</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;leakage commands group. 0 Sub-classes, 2 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_leakage&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Leakage</span> <span class="kn">import</span> <span class="n">LeakageCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_leakage</span> <span class="o">=</span> <span class="n">LeakageCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_leakage</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">quadrature</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;quadrature commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_quadrature&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Quadrature</span> <span class="kn">import</span> <span class="n">QuadratureCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_quadrature</span> <span class="o">=</span> <span class="n">QuadratureCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_quadrature</span>
+
+<div class="viewcode-block" id="DigitalCls.get_delay"><a class="viewcode-back" href="../../../../../../Source_Bb_Impairment_Digital.html#RsSmbv.Implementations.Source.Bb.Impairment.Digital.DigitalCls.get_delay">[docs]</a>	<span class="k">def</span> <span class="nf">get_delay</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce]:BB:IMPairment:DIGital:DELay \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.impairment.digital.get_delay() \n</span>
+<span class="sd">		Defines the time delay of both I and Q vectors between the marker signal at the marker outputs relative to the signal</span>
+<span class="sd">		generation start. A positive value means that the I and Q vectors delay relative to the marker/trigger and vice versa.</span>
+<span class="sd">		Value range</span>
+<span class="sd">			Table Header: Output / Min /s / Max /s / Increment \n</span>
+<span class="sd">			- RF&lt;ch&gt; / 0 / 10E-6 / 1E-12</span>
+<span class="sd">			- IQOutput&lt;ch&gt; / 500E-9 / 500E-9 / 1E-12</span>
+<span class="sd">			- DIGital / 500E-9 / 500E-9 / 1E-12 \n</span>
+<span class="sd">			:return: delay: float Range: 0 to 10E-6</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce:BB:IMPairment:DIGital:DELay?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DigitalCls.set_delay"><a class="viewcode-back" href="../../../../../../Source_Bb_Impairment_Digital.html#RsSmbv.Implementations.Source.Bb.Impairment.Digital.DigitalCls.set_delay">[docs]</a>	<span class="k">def</span> <span class="nf">set_delay</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">delay</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce]:BB:IMPairment:DIGital:DELay \n</span>
+<span class="sd">		Snippet: driver.source.bb.impairment.digital.set_delay(delay = 1.0) \n</span>
+<span class="sd">		Defines the time delay of both I and Q vectors between the marker signal at the marker outputs relative to the signal</span>
+<span class="sd">		generation start. A positive value means that the I and Q vectors delay relative to the marker/trigger and vice versa.</span>
+<span class="sd">		Value range</span>
+<span class="sd">			Table Header: Output / Min /s / Max /s / Increment \n</span>
+<span class="sd">			- RF&lt;ch&gt; / 0 / 10E-6 / 1E-12</span>
+<span class="sd">			- IQOutput&lt;ch&gt; / 500E-9 / 500E-9 / 1E-12</span>
+<span class="sd">			- DIGital / 500E-9 / 500E-9 / 1E-12 \n</span>
+<span class="sd">			:param delay: float Range: 0 to 10E-6</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">delay</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce:BB:IMPairment:DIGital:DELay </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DigitalCls.get_poffset"><a class="viewcode-back" href="../../../../../../Source_Bb_Impairment_Digital.html#RsSmbv.Implementations.Source.Bb.Impairment.Digital.DigitalCls.get_poffset">[docs]</a>	<span class="k">def</span> <span class="nf">get_poffset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce]:BB:IMPairment:DIGital:POFFset \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.impairment.digital.get_poffset() \n</span>
+<span class="sd">		Adds an additional phase offset after the stream mapper.</span>
+<span class="sd">			INTRO_CMD_HELP: You can shift the phase at the different stages in the signal generation flow, see: \n</span>
+<span class="sd">			- [:SOURce&lt;hw&gt;]:BB:POFFset \n</span>
+<span class="sd">			:return: phase_offset: float Range: -999.99 to 999.99</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce:BB:IMPairment:DIGital:POFFset?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DigitalCls.set_poffset"><a class="viewcode-back" href="../../../../../../Source_Bb_Impairment_Digital.html#RsSmbv.Implementations.Source.Bb.Impairment.Digital.DigitalCls.set_poffset">[docs]</a>	<span class="k">def</span> <span class="nf">set_poffset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phase_offset</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce]:BB:IMPairment:DIGital:POFFset \n</span>
+<span class="sd">		Snippet: driver.source.bb.impairment.digital.set_poffset(phase_offset = 1.0) \n</span>
+<span class="sd">		Adds an additional phase offset after the stream mapper.</span>
+<span class="sd">			INTRO_CMD_HELP: You can shift the phase at the different stages in the signal generation flow, see: \n</span>
+<span class="sd">			- [:SOURce&lt;hw&gt;]:BB:POFFset \n</span>
+<span class="sd">			:param phase_offset: float Range: -999.99 to 999.99</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">phase_offset</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce:BB:IMPairment:DIGital:POFFset </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DigitalCls.get_skew"><a class="viewcode-back" href="../../../../../../Source_Bb_Impairment_Digital.html#RsSmbv.Implementations.Source.Bb.Impairment.Digital.DigitalCls.get_skew">[docs]</a>	<span class="k">def</span> <span class="nf">get_skew</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce]:BB:IMPairment:DIGital:SKEW \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.impairment.digital.get_skew() \n</span>
+<span class="sd">		Sets a delay between the Q vector and the I vector of the corresponding stream. \n</span>
+<span class="sd">			:return: skew: float Range: -500E-9 to 500E-9</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce:BB:IMPairment:DIGital:SKEW?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DigitalCls.set_skew"><a class="viewcode-back" href="../../../../../../Source_Bb_Impairment_Digital.html#RsSmbv.Implementations.Source.Bb.Impairment.Digital.DigitalCls.set_skew">[docs]</a>	<span class="k">def</span> <span class="nf">set_skew</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">skew</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce]:BB:IMPairment:DIGital:SKEW \n</span>
+<span class="sd">		Snippet: driver.source.bb.impairment.digital.set_skew(skew = 1.0) \n</span>
+<span class="sd">		Sets a delay between the Q vector and the I vector of the corresponding stream. \n</span>
+<span class="sd">			:param skew: float Range: -500E-9 to 500E-9</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">skew</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce:BB:IMPairment:DIGital:SKEW </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DigitalCls.get_state"><a class="viewcode-back" href="../../../../../../Source_Bb_Impairment_Digital.html#RsSmbv.Implementations.Source.Bb.Impairment.Digital.DigitalCls.get_state">[docs]</a>	<span class="k">def</span> <span class="nf">get_state</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce]:BB:IMPairment:DIGital:STATe \n</span>
+<span class="sd">		Snippet: value: bool = driver.source.bb.impairment.digital.get_state() \n</span>
+<span class="sd">		Activates the impairment or correction values LEAKage, QUADrature and IQRatio for the corresponding stream. \n</span>
+<span class="sd">			:return: state: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce:BB:IMPairment:DIGital:STATe?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_bool</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DigitalCls.set_state"><a class="viewcode-back" href="../../../../../../Source_Bb_Impairment_Digital.html#RsSmbv.Implementations.Source.Bb.Impairment.Digital.DigitalCls.set_state">[docs]</a>	<span class="k">def</span> <span class="nf">set_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce]:BB:IMPairment:DIGital:STATe \n</span>
+<span class="sd">		Snippet: driver.source.bb.impairment.digital.set_state(state = False) \n</span>
+<span class="sd">		Activates the impairment or correction values LEAKage, QUADrature and IQRatio for the corresponding stream. \n</span>
+<span class="sd">			:param state: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">bool_to_str</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce:BB:IMPairment:DIGital:STATe </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;DigitalCls&#39;</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Clones the group by creating new object from it and its whole existing subgroups</span>
+<span class="sd">		Also copies all the existing default Repeated Capabilities setting,</span>
+<span class="sd">		which you can change independently without affecting the original group&quot;&quot;&quot;</span>
+		<span class="n">new_group</span> <span class="o">=</span> <span class="n">DigitalCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">synchronize_repcaps</span><span class="p">(</span><span class="n">new_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">new_group</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

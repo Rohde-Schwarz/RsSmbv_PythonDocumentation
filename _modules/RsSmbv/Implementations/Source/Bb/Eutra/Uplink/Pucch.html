@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RsSmbv.Implementations.Source.Bb.Eutra.Uplink.Pucch &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../../../../" id="documentation_options" src="../../../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../../../_static/jquery.js"></script>
+        <script src="../../../../../../../_static/underscore.js"></script>
+        <script src="../../../../../../../_static/doctools.js"></script>
+        <script src="../../../../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../../../../_static/copybutton.js"></script>
+    <script src="../../../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../../../../index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../RsSmbv.html">RsSmbv API Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../../index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../../../../index.html">Module code</a> &raquo;</li>
+          <li><a href="../../../../Source.html">RsSmbv.Implementations.Source</a> &raquo;</li>
+          <li><a href="../../../Bb.html">RsSmbv.Implementations.Source.Bb</a> &raquo;</li>
+          <li><a href="../../Eutra.html">RsSmbv.Implementations.Source.Bb.Eutra</a> &raquo;</li>
+          <li><a href="../Uplink.html">RsSmbv.Implementations.Source.Bb.Eutra.Uplink</a> &raquo;</li>
+      <li>RsSmbv.Implementations.Source.Bb.Eutra.Uplink.Pucch</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for RsSmbv.Implementations.Source.Bb.Eutra.Uplink.Pucch</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">......Internal.Core</span> <span class="kn">import</span> <span class="n">Core</span>
+<span class="kn">from</span> <span class="nn">......Internal.CommandsGroup</span> <span class="kn">import</span> <span class="n">CommandsGroup</span>
+<span class="kn">from</span> <span class="nn">......Internal</span> <span class="kn">import</span> <span class="n">Conversions</span>
+
+
+<span class="c1"># noinspection PyPep8Naming,PyAttributeOutsideInit,SpellCheckingInspection</span>
+<div class="viewcode-block" id="PucchCls"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Uplink_Pucch.html#RsSmbv.Implementations.Source.Bb.Eutra.Uplink.Pucch.PucchCls">[docs]</a><span class="k">class</span> <span class="nc">PucchCls</span><span class="p">:</span>
+	<span class="sd">&quot;&quot;&quot;Pucch commands group definition. 10 total commands, 0 Subgroups, 10 group commands&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">core</span><span class="p">:</span> <span class="n">Core</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span> <span class="o">=</span> <span class="n">core</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span> <span class="o">=</span> <span class="n">CommandsGroup</span><span class="p">(</span><span class="s2">&quot;pucch&quot;</span><span class="p">,</span> <span class="n">core</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+
+<div class="viewcode-block" id="PucchCls.get_de_shift"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Uplink_Pucch.html#RsSmbv.Implementations.Source.Bb.Eutra.Uplink.Pucch.PucchCls.get_de_shift">[docs]</a>	<span class="k">def</span> <span class="nf">get_de_shift</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:UL:PUCCh:DESHift \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.eutra.uplink.pucch.get_de_shift() \n</span>
+<span class="sd">		Sets the delta shift parameter. \n</span>
+<span class="sd">			:return: delta_shift: integer Range: 1 to 3</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:UL:PUCCh:DESHift?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PucchCls.set_de_shift"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Uplink_Pucch.html#RsSmbv.Implementations.Source.Bb.Eutra.Uplink.Pucch.PucchCls.set_de_shift">[docs]</a>	<span class="k">def</span> <span class="nf">set_de_shift</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">delta_shift</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:UL:PUCCh:DESHift \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.uplink.pucch.set_de_shift(delta_shift = 1) \n</span>
+<span class="sd">		Sets the delta shift parameter. \n</span>
+<span class="sd">			:param delta_shift: integer Range: 1 to 3</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">delta_shift</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:UL:PUCCh:DESHift </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PucchCls.get_n_1_cs"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Uplink_Pucch.html#RsSmbv.Implementations.Source.Bb.Eutra.Uplink.Pucch.PucchCls.get_n_1_cs">[docs]</a>	<span class="k">def</span> <span class="nf">get_n_1_cs</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:UL:PUCCh:N1CS \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.eutra.uplink.pucch.get_n_1_cs() \n</span>
+<span class="sd">		Sets the number of cyclic shifts used for PUCCH format 1/1a/1b in a resource block used for a combination of the formats</span>
+<span class="sd">		1/1a/1b and 2/2a/2b. \n</span>
+<span class="sd">			:return: n_1_cs: integer Range: 0 to dynamic</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:UL:PUCCh:N1CS?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PucchCls.set_n_1_cs"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Uplink_Pucch.html#RsSmbv.Implementations.Source.Bb.Eutra.Uplink.Pucch.PucchCls.set_n_1_cs">[docs]</a>	<span class="k">def</span> <span class="nf">set_n_1_cs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_1_cs</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:UL:PUCCh:N1CS \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.uplink.pucch.set_n_1_cs(n_1_cs = 1) \n</span>
+<span class="sd">		Sets the number of cyclic shifts used for PUCCH format 1/1a/1b in a resource block used for a combination of the formats</span>
+<span class="sd">		1/1a/1b and 2/2a/2b. \n</span>
+<span class="sd">			:param n_1_cs: integer Range: 0 to dynamic</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">n_1_cs</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:UL:PUCCh:N1CS </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PucchCls.get_n_1_e_max"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Uplink_Pucch.html#RsSmbv.Implementations.Source.Bb.Eutra.Uplink.Pucch.PucchCls.get_n_1_e_max">[docs]</a>	<span class="k">def</span> <span class="nf">get_n_1_e_max</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:UL:PUCCh:N1EMax \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.eutra.uplink.pucch.get_n_1_e_max() \n</span>
+<span class="sd">		Queries the range of the possible PUCCH format 1/1a/1b transmissions from different users in one subframe and for</span>
+<span class="sd">		extended CP. \n</span>
+<span class="sd">			:return: n_1_e_max: integer Range: 0 to 110</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:UL:PUCCh:N1EMax?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PucchCls.get_n_1_n_max"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Uplink_Pucch.html#RsSmbv.Implementations.Source.Bb.Eutra.Uplink.Pucch.PucchCls.get_n_1_n_max">[docs]</a>	<span class="k">def</span> <span class="nf">get_n_1_n_max</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:UL:PUCCh:N1NMax \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.eutra.uplink.pucch.get_n_1_n_max() \n</span>
+<span class="sd">		Queries the range of the possible PUCCH format 1/1a/1b transmissions from different users in one subframe and for normal</span>
+<span class="sd">		CP. \n</span>
+<span class="sd">			:return: n_1_norm_cp: integer Range: 0 to 110</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:UL:PUCCh:N1NMax?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PucchCls.get_n_2_max"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Uplink_Pucch.html#RsSmbv.Implementations.Source.Bb.Eutra.Uplink.Pucch.PucchCls.get_n_2_max">[docs]</a>	<span class="k">def</span> <span class="nf">get_n_2_max</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:UL:PUCCh:N2Max \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.eutra.uplink.pucch.get_n_2_max() \n</span>
+<span class="sd">		Queries the range of possible number of PUCCH format 2/2a/2b transmissions from different users in one subframe. \n</span>
+<span class="sd">			:return: n_2_max: integer Range: 0 to 110</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:UL:PUCCh:N2Max?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PucchCls.get_n_2_rb"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Uplink_Pucch.html#RsSmbv.Implementations.Source.Bb.Eutra.Uplink.Pucch.PucchCls.get_n_2_rb">[docs]</a>	<span class="k">def</span> <span class="nf">get_n_2_rb</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:UL:PUCCh:N2RB \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.eutra.uplink.pucch.get_n_2_rb() \n</span>
+<span class="sd">		Sets bandwidth in terms of resource blocks that are reserved for PUCCH formats 2/2a/2b transmission in each subframe. \n</span>
+<span class="sd">			:return: n_2_rb: integer Range: 0 to dynamic</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:UL:PUCCh:N2RB?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PucchCls.set_n_2_rb"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Uplink_Pucch.html#RsSmbv.Implementations.Source.Bb.Eutra.Uplink.Pucch.PucchCls.set_n_2_rb">[docs]</a>	<span class="k">def</span> <span class="nf">set_n_2_rb</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_2_rb</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:UL:PUCCh:N2RB \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.uplink.pucch.set_n_2_rb(n_2_rb = 1) \n</span>
+<span class="sd">		Sets bandwidth in terms of resource blocks that are reserved for PUCCH formats 2/2a/2b transmission in each subframe. \n</span>
+<span class="sd">			:param n_2_rb: integer Range: 0 to dynamic</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">n_2_rb</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:UL:PUCCh:N2RB </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PucchCls.get_n_3_max"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Uplink_Pucch.html#RsSmbv.Implementations.Source.Bb.Eutra.Uplink.Pucch.PucchCls.get_n_3_max">[docs]</a>	<span class="k">def</span> <span class="nf">get_n_3_max</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:UL:PUCCh:N3Max \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.eutra.uplink.pucch.get_n_3_max() \n</span>
+<span class="sd">		Queries the range of possible number of PUCCH format x transmissions from different users in one subframe. \n</span>
+<span class="sd">			:return: n_3_max: integer Range: 0 to 549</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:UL:PUCCh:N3Max?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PucchCls.get_n_4_max"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Uplink_Pucch.html#RsSmbv.Implementations.Source.Bb.Eutra.Uplink.Pucch.PucchCls.get_n_4_max">[docs]</a>	<span class="k">def</span> <span class="nf">get_n_4_max</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:UL:PUCCh:N4Max \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.eutra.uplink.pucch.get_n_4_max() \n</span>
+<span class="sd">		Queries the range of possible number of PUCCH format x transmissions from different users in one subframe. \n</span>
+<span class="sd">			:return: n_4_max: integer Range: 0 to 549</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:UL:PUCCh:N4Max?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PucchCls.get_n_5_max"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Uplink_Pucch.html#RsSmbv.Implementations.Source.Bb.Eutra.Uplink.Pucch.PucchCls.get_n_5_max">[docs]</a>	<span class="k">def</span> <span class="nf">get_n_5_max</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:UL:PUCCh:N5Max \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.eutra.uplink.pucch.get_n_5_max() \n</span>
+<span class="sd">		Queries the range of possible number of PUCCH format x transmissions from different users in one subframe. \n</span>
+<span class="sd">			:return: n_5_max: integer Range: 0 to 549</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:UL:PUCCh:N5Max?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PucchCls.get_no_rb"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Uplink_Pucch.html#RsSmbv.Implementations.Source.Bb.Eutra.Uplink.Pucch.PucchCls.get_no_rb">[docs]</a>	<span class="k">def</span> <span class="nf">get_no_rb</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:UL:PUCCh:NORB \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.eutra.uplink.pucch.get_no_rb() \n</span>
+<span class="sd">		Sets the PUCCH region in terms of reserved resource blocks, at the edges of the channel bandwidth. \n</span>
+<span class="sd">			:return: rb_count: integer Range: 0 to 110</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:UL:PUCCh:NORB?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PucchCls.set_no_rb"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Uplink_Pucch.html#RsSmbv.Implementations.Source.Bb.Eutra.Uplink.Pucch.PucchCls.set_no_rb">[docs]</a>	<span class="k">def</span> <span class="nf">set_no_rb</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rb_count</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:UL:PUCCh:NORB \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.uplink.pucch.set_no_rb(rb_count = 1) \n</span>
+<span class="sd">		Sets the PUCCH region in terms of reserved resource blocks, at the edges of the channel bandwidth. \n</span>
+<span class="sd">			:param rb_count: integer Range: 0 to 110</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">rb_count</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:UL:PUCCh:NORB </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

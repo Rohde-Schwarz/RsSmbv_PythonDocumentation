@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RsSmbv.Implementations.MassMemory &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../RsSmbv.html">RsSmbv API Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+      <li>RsSmbv.Implementations.MassMemory</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for RsSmbv.Implementations.MassMemory</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">...Internal.Core</span> <span class="kn">import</span> <span class="n">Core</span>
+<span class="kn">from</span> <span class="nn">...Internal.CommandsGroup</span> <span class="kn">import</span> <span class="n">CommandsGroup</span>
+<span class="kn">from</span> <span class="nn">...Internal</span> <span class="kn">import</span> <span class="n">Conversions</span>
+<span class="kn">from</span> <span class="nn">...Internal.Types</span> <span class="kn">import</span> <span class="n">DataType</span>
+<span class="kn">from</span> <span class="nn">...Internal.Utilities</span> <span class="kn">import</span> <span class="n">trim_str_response</span>
+<span class="kn">from</span> <span class="nn">...Internal.ArgSingleList</span> <span class="kn">import</span> <span class="n">ArgSingleList</span>
+<span class="kn">from</span> <span class="nn">...Internal.ArgSingle</span> <span class="kn">import</span> <span class="n">ArgSingle</span>
+
+
+<span class="c1"># noinspection PyPep8Naming,PyAttributeOutsideInit,SpellCheckingInspection</span>
+<div class="viewcode-block" id="MassMemoryCls"><a class="viewcode-back" href="../../../MassMemory.html#RsSmbv.Implementations.MassMemory.MassMemoryCls">[docs]</a><span class="k">class</span> <span class="nc">MassMemoryCls</span><span class="p">:</span>
+	<span class="sd">&quot;&quot;&quot;MassMemory commands group definition. 15 total commands, 4 Subgroups, 9 group commands&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">core</span><span class="p">:</span> <span class="n">Core</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span> <span class="o">=</span> <span class="n">core</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span> <span class="o">=</span> <span class="n">CommandsGroup</span><span class="p">(</span><span class="s2">&quot;massMemory&quot;</span><span class="p">,</span> <span class="n">core</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">catalog</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;catalog commands group. 1 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_catalog&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Catalog</span> <span class="kn">import</span> <span class="n">CatalogCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_catalog</span> <span class="o">=</span> <span class="n">CatalogCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_catalog</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">dcatalog</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;dcatalog commands group. 1 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_dcatalog&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Dcatalog</span> <span class="kn">import</span> <span class="n">DcatalogCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_dcatalog</span> <span class="o">=</span> <span class="n">DcatalogCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dcatalog</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;load commands group. 1 Sub-classes, 0 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_load&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Load</span> <span class="kn">import</span> <span class="n">LoadCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_load</span> <span class="o">=</span> <span class="n">LoadCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_load</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">store</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;store commands group. 1 Sub-classes, 0 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_store&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Store</span> <span class="kn">import</span> <span class="n">StoreCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_store</span> <span class="o">=</span> <span class="n">StoreCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_store</span>
+
+<div class="viewcode-block" id="MassMemoryCls.get_current_directory"><a class="viewcode-back" href="../../../MassMemory.html#RsSmbv.Implementations.MassMemory.MassMemoryCls.get_current_directory">[docs]</a>	<span class="k">def</span> <span class="nf">get_current_directory</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: MMEMory:CDIRectory \n</span>
+<span class="sd">		Snippet: value: str = driver.massMemory.get_current_directory() \n</span>
+<span class="sd">		Changes the default directory for mass memory storage. The directory is used for all subsequent MMEM commands if no path</span>
+<span class="sd">		is specified with them. \n</span>
+<span class="sd">			:return: directory: directory_name String containing the path to another directory. The path can be relative or absolute. To change to a higher directory, use two dots &#39;..&#39; .</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;MMEMory:CDIRectory?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">trim_str_response</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MassMemoryCls.set_current_directory"><a class="viewcode-back" href="../../../MassMemory.html#RsSmbv.Implementations.MassMemory.MassMemoryCls.set_current_directory">[docs]</a>	<span class="k">def</span> <span class="nf">set_current_directory</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">directory</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: MMEMory:CDIRectory \n</span>
+<span class="sd">		Snippet: driver.massMemory.set_current_directory(directory = &#39;abc&#39;) \n</span>
+<span class="sd">		Changes the default directory for mass memory storage. The directory is used for all subsequent MMEM commands if no path</span>
+<span class="sd">		is specified with them. \n</span>
+<span class="sd">			:param directory: directory_name String containing the path to another directory. The path can be relative or absolute. To change to a higher directory, use two dots &#39;..&#39; .</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">value_to_quoted_str</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;MMEMory:CDIRectory </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MassMemoryCls.copy"><a class="viewcode-back" href="../../../MassMemory.html#RsSmbv.Implementations.MassMemory.MassMemoryCls.copy">[docs]</a>	<span class="k">def</span> <span class="nf">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">destination_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: MMEMory:COPY \n</span>
+<span class="sd">		Snippet: driver.massMemory.copy(source_file = &#39;abc&#39;, destination_file = &#39;abc&#39;) \n</span>
+<span class="sd">		Copies an existing file to a new file. Instead of just a file, this command can also be used to copy a complete directory</span>
+<span class="sd">		together with all its files. \n</span>
+<span class="sd">			:param source_file: string String containing the path and file name of the source file</span>
+<span class="sd">			:param destination_file: string String containing the path and name of the target file. The path can be relative or absolute. If DestinationFile is not specified, the SourceFile is copied to the current directory, queried with the method RsSmbv.MassMemory.currentDirectory command. Note: Existing files with the same name in the destination directory are overwritten without an error message.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">ArgSingleList</span><span class="p">()</span><span class="o">.</span><span class="n">compose_cmd_string</span><span class="p">(</span><span class="n">ArgSingle</span><span class="p">(</span><span class="s1">&#39;source_file&#39;</span><span class="p">,</span> <span class="n">source_file</span><span class="p">,</span> <span class="n">DataType</span><span class="o">.</span><span class="n">String</span><span class="p">),</span> <span class="n">ArgSingle</span><span class="p">(</span><span class="s1">&#39;destination_file&#39;</span><span class="p">,</span> <span class="n">destination_file</span><span class="p">,</span> <span class="n">DataType</span><span class="o">.</span><span class="n">String</span><span class="p">))</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;MMEMory:COPY </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">rstrip</span><span class="p">())</span></div>
+
+<div class="viewcode-block" id="MassMemoryCls.delete"><a class="viewcode-back" href="../../../MassMemory.html#RsSmbv.Implementations.MassMemory.MassMemoryCls.delete">[docs]</a>	<span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: MMEMory:DELete \n</span>
+<span class="sd">		Snippet: driver.massMemory.delete(filename = &#39;abc&#39;) \n</span>
+<span class="sd">		Removes a file from the specified directory. \n</span>
+<span class="sd">			:param filename: string String parameter to specify the name and directory of the file to be removed.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">value_to_quoted_str</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;MMEMory:DELete </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MassMemoryCls.get_drives"><a class="viewcode-back" href="../../../MassMemory.html#RsSmbv.Implementations.MassMemory.MassMemoryCls.get_drives">[docs]</a>	<span class="k">def</span> <span class="nf">get_drives</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: MMEMory:DRIVes \n</span>
+<span class="sd">		Snippet: value: str = driver.massMemory.get_drives() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: drive_list: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;MMEMory:DRIVes?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">trim_str_response</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MassMemoryCls.make_directory"><a class="viewcode-back" href="../../../MassMemory.html#RsSmbv.Implementations.MassMemory.MassMemoryCls.make_directory">[docs]</a>	<span class="k">def</span> <span class="nf">make_directory</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">directory</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: MMEMory:MDIRectory \n</span>
+<span class="sd">		Snippet: driver.massMemory.make_directory(directory = &#39;abc&#39;) \n</span>
+<span class="sd">		Creates a subdirectory for mass memory storage in the specified directory. If no directory is specified, a subdirectory</span>
+<span class="sd">		is created in the default directory. This command can also be used to create a directory tree. \n</span>
+<span class="sd">			:param directory: string String parameter to specify the new directory.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">value_to_quoted_str</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;MMEMory:MDIRectory </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MassMemoryCls.move"><a class="viewcode-back" href="../../../MassMemory.html#RsSmbv.Implementations.MassMemory.MassMemoryCls.move">[docs]</a>	<span class="k">def</span> <span class="nf">move</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">destination_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: MMEMory:MOVE \n</span>
+<span class="sd">		Snippet: driver.massMemory.move(source_file = &#39;abc&#39;, destination_file = &#39;abc&#39;) \n</span>
+<span class="sd">		Moves an existing file to a new location or, if no path is specified, renames an existing file. \n</span>
+<span class="sd">			:param source_file: string String parameter to specify the name of the file to be moved.</span>
+<span class="sd">			:param destination_file: string String parameters to specify the name of the new file.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">ArgSingleList</span><span class="p">()</span><span class="o">.</span><span class="n">compose_cmd_string</span><span class="p">(</span><span class="n">ArgSingle</span><span class="p">(</span><span class="s1">&#39;source_file&#39;</span><span class="p">,</span> <span class="n">source_file</span><span class="p">,</span> <span class="n">DataType</span><span class="o">.</span><span class="n">String</span><span class="p">),</span> <span class="n">ArgSingle</span><span class="p">(</span><span class="s1">&#39;destination_file&#39;</span><span class="p">,</span> <span class="n">destination_file</span><span class="p">,</span> <span class="n">DataType</span><span class="o">.</span><span class="n">String</span><span class="p">))</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;MMEMory:MOVE </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">rstrip</span><span class="p">())</span></div>
+
+<div class="viewcode-block" id="MassMemoryCls.get_msis"><a class="viewcode-back" href="../../../MassMemory.html#RsSmbv.Implementations.MassMemory.MassMemoryCls.get_msis">[docs]</a>	<span class="k">def</span> <span class="nf">get_msis</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: MMEMory:MSIS \n</span>
+<span class="sd">		Snippet: value: str = driver.massMemory.get_msis() \n</span>
+<span class="sd">		Defines the drive or network resource (in the case of networks) for instruments with windows operating system, using msis</span>
+<span class="sd">		(MSIS = Mass Storage Identification String) . Note: Instruments with Linux operating system ignore this command, since</span>
+<span class="sd">		Linux does not use drive letter assignment. \n</span>
+<span class="sd">			:return: path: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;MMEMory:MSIS?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">trim_str_response</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MassMemoryCls.set_msis"><a class="viewcode-back" href="../../../MassMemory.html#RsSmbv.Implementations.MassMemory.MassMemoryCls.set_msis">[docs]</a>	<span class="k">def</span> <span class="nf">set_msis</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: MMEMory:MSIS \n</span>
+<span class="sd">		Snippet: driver.massMemory.set_msis(path = &#39;abc&#39;) \n</span>
+<span class="sd">		Defines the drive or network resource (in the case of networks) for instruments with windows operating system, using msis</span>
+<span class="sd">		(MSIS = Mass Storage Identification String) . Note: Instruments with Linux operating system ignore this command, since</span>
+<span class="sd">		Linux does not use drive letter assignment. \n</span>
+<span class="sd">			:param path: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">value_to_quoted_str</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;MMEMory:MSIS </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MassMemoryCls.delete_directory"><a class="viewcode-back" href="../../../MassMemory.html#RsSmbv.Implementations.MassMemory.MassMemoryCls.delete_directory">[docs]</a>	<span class="k">def</span> <span class="nf">delete_directory</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">directory</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: MMEMory:RDIRectory \n</span>
+<span class="sd">		Snippet: driver.massMemory.delete_directory(directory = &#39;abc&#39;) \n</span>
+<span class="sd">		Removes an empty directory from the mass memory storage system. If no directory is specified, the subdirectory with the</span>
+<span class="sd">		specified name is deleted in the default directory. To remove a directory with contents, use command method RsSmbv.</span>
+<span class="sd">		MassMemory.deleteDirectoryRecursive. \n</span>
+<span class="sd">			:param directory: string String parameter to specify the directory to be deleted.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">value_to_quoted_str</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;MMEMory:RDIRectory </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MassMemoryCls.delete_directory_recursive"><a class="viewcode-back" href="../../../MassMemory.html#RsSmbv.Implementations.MassMemory.MassMemoryCls.delete_directory_recursive">[docs]</a>	<span class="k">def</span> <span class="nf">delete_directory_recursive</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">directory</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: MMEMory:RDIRectory:RECursive \n</span>
+<span class="sd">		Snippet: driver.massMemory.delete_directory_recursive(directory = &#39;abc&#39;) \n</span>
+<span class="sd">		Removes the specified directory, including files and subdirectories from the mass memory storage system. If no directory</span>
+<span class="sd">		is specified, the command removes the subdirectories of the default directory. The command the entire directory without</span>
+<span class="sd">		further prompt or notification. \n</span>
+<span class="sd">			:param directory: string String parameter to specify the directory to be deleted.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">value_to_quoted_str</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;MMEMory:RDIRectory:RECursive </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;MassMemoryCls&#39;</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Clones the group by creating new object from it and its whole existing subgroups</span>
+<span class="sd">		Also copies all the existing default Repeated Capabilities setting,</span>
+<span class="sd">		which you can change independently without affecting the original group&quot;&quot;&quot;</span>
+		<span class="n">new_group</span> <span class="o">=</span> <span class="n">MassMemoryCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">synchronize_repcaps</span><span class="p">(</span><span class="n">new_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">new_group</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

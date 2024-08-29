@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RsSmbv.Implementations.Source.Frequency &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../_static/copybutton.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../RsSmbv.html">RsSmbv API Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+          <li><a href="../Source.html">RsSmbv.Implementations.Source</a> &raquo;</li>
+      <li>RsSmbv.Implementations.Source.Frequency</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for RsSmbv.Implementations.Source.Frequency</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">....Internal.Core</span> <span class="kn">import</span> <span class="n">Core</span>
+<span class="kn">from</span> <span class="nn">....Internal.CommandsGroup</span> <span class="kn">import</span> <span class="n">CommandsGroup</span>
+<span class="kn">from</span> <span class="nn">....Internal</span> <span class="kn">import</span> <span class="n">Conversions</span>
+<span class="kn">from</span> <span class="nn">....</span> <span class="kn">import</span> <span class="n">enums</span>
+
+
+<span class="c1"># noinspection PyPep8Naming,PyAttributeOutsideInit,SpellCheckingInspection</span>
+<div class="viewcode-block" id="FrequencyCls"><a class="viewcode-back" href="../../../../Source_Frequency.html#RsSmbv.Implementations.Source.Frequency.FrequencyCls">[docs]</a><span class="k">class</span> <span class="nc">FrequencyCls</span><span class="p">:</span>
+	<span class="sd">&quot;&quot;&quot;Frequency commands group definition. 19 total commands, 4 Subgroups, 9 group commands&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">core</span><span class="p">:</span> <span class="n">Core</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span> <span class="o">=</span> <span class="n">core</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span> <span class="o">=</span> <span class="n">CommandsGroup</span><span class="p">(</span><span class="s2">&quot;frequency&quot;</span><span class="p">,</span> <span class="n">core</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">loscillator</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;loscillator commands group. 2 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_loscillator&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Loscillator</span> <span class="kn">import</span> <span class="n">LoscillatorCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_loscillator</span> <span class="o">=</span> <span class="n">LoscillatorCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_loscillator</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;step commands group. 0 Sub-classes, 2 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_step&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Step</span> <span class="kn">import</span> <span class="n">StepCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_step</span> <span class="o">=</span> <span class="n">StepCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_step</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">cw</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;cw commands group. 0 Sub-classes, 2 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_cw&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Cw</span> <span class="kn">import</span> <span class="n">CwCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_cw</span> <span class="o">=</span> <span class="n">CwCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cw</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">fixed</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;fixed commands group. 0 Sub-classes, 2 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_fixed&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Fixed</span> <span class="kn">import</span> <span class="n">FixedCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_fixed</span> <span class="o">=</span> <span class="n">FixedCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fixed</span>
+
+<div class="viewcode-block" id="FrequencyCls.get_center"><a class="viewcode-back" href="../../../../Source_Frequency.html#RsSmbv.Implementations.Source.Frequency.FrequencyCls.get_center">[docs]</a>	<span class="k">def</span> <span class="nf">get_center</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:FREQuency:CENTer \n</span>
+<span class="sd">		Snippet: value: float = driver.source.frequency.get_center() \n</span>
+<span class="sd">		Sets the center frequency of the sweep. See &#39;Correlating parameters in sweep mode&#39;. \n</span>
+<span class="sd">			:return: center: float Range: 300 kHz to RFmax, Unit: Hz</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:FREQuency:CENTer?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FrequencyCls.set_center"><a class="viewcode-back" href="../../../../Source_Frequency.html#RsSmbv.Implementations.Source.Frequency.FrequencyCls.set_center">[docs]</a>	<span class="k">def</span> <span class="nf">set_center</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">center</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:FREQuency:CENTer \n</span>
+<span class="sd">		Snippet: driver.source.frequency.set_center(center = 1.0) \n</span>
+<span class="sd">		Sets the center frequency of the sweep. See &#39;Correlating parameters in sweep mode&#39;. \n</span>
+<span class="sd">			:param center: float Range: 300 kHz to RFmax, Unit: Hz</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">center</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:FREQuency:CENTer </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FrequencyCls.get_frequency"><a class="viewcode-back" href="../../../../Source_Frequency.html#RsSmbv.Implementations.Source.Frequency.FrequencyCls.get_frequency">[docs]</a>	<span class="k">def</span> <span class="nf">get_frequency</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:FREQuency:FREQuency \n</span>
+<span class="sd">		Snippet: value: float = driver.source.frequency.get_frequency() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: frequency: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:FREQuency:FREQuency?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FrequencyCls.set_frequency"><a class="viewcode-back" href="../../../../Source_Frequency.html#RsSmbv.Implementations.Source.Frequency.FrequencyCls.set_frequency">[docs]</a>	<span class="k">def</span> <span class="nf">set_frequency</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frequency</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:FREQuency:FREQuency \n</span>
+<span class="sd">		Snippet: driver.source.frequency.set_frequency(frequency = 1.0) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param frequency: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">frequency</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:FREQuency:FREQuency </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FrequencyCls.get_manual"><a class="viewcode-back" href="../../../../Source_Frequency.html#RsSmbv.Implementations.Source.Frequency.FrequencyCls.get_manual">[docs]</a>	<span class="k">def</span> <span class="nf">get_manual</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:FREQuency:MANual \n</span>
+<span class="sd">		Snippet: value: float = driver.source.frequency.get_manual() \n</span>
+<span class="sd">		Sets the frequency and triggers a sweep step manually if SWEep:MODE MAN. \n</span>
+<span class="sd">			:return: manual: float You can select any frequency within the setting range, where: STARt is set with [:SOURcehw]:FREQuency:STARt STOP is set with [:SOURcehw]:FREQuency:STOP OFFSet is set with [:SOURcehw]:FREQuency:OFFSet Range: (STARt + OFFSet) to (STOP + OFFSet) , Unit: Hz</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:FREQuency:MANual?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FrequencyCls.set_manual"><a class="viewcode-back" href="../../../../Source_Frequency.html#RsSmbv.Implementations.Source.Frequency.FrequencyCls.set_manual">[docs]</a>	<span class="k">def</span> <span class="nf">set_manual</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">manual</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:FREQuency:MANual \n</span>
+<span class="sd">		Snippet: driver.source.frequency.set_manual(manual = 1.0) \n</span>
+<span class="sd">		Sets the frequency and triggers a sweep step manually if SWEep:MODE MAN. \n</span>
+<span class="sd">			:param manual: float You can select any frequency within the setting range, where: STARt is set with [:SOURcehw]:FREQuency:STARt STOP is set with [:SOURcehw]:FREQuency:STOP OFFSet is set with [:SOURcehw]:FREQuency:OFFSet Range: (STARt + OFFSet) to (STOP + OFFSet) , Unit: Hz</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">manual</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:FREQuency:MANual </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="FrequencyCls.get_mode"><a class="viewcode-back" href="../../../../Source_Frequency.html#RsSmbv.Implementations.Source.Frequency.FrequencyCls.get_mode">[docs]</a>	<span class="k">def</span> <span class="nf">get_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">FreqMode</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:FREQuency:MODE \n</span>
+<span class="sd">		Snippet: value: enums.FreqMode = driver.source.frequency.get_mode() \n</span>
+<span class="sd">		Sets the frequency mode for generating the RF output signal. The selected mode determines the parameters to be used for</span>
+<span class="sd">		further frequency settings. \n</span>
+<span class="sd">			:return: mode: CW| FIXed | SWEep| LIST | COMBined CW|FIXed Sets the fixed frequency mode. CW and FIXed are synonyms. The instrument operates at a defined frequency, set with command [:SOURcehw]:FREQuency[:CW|FIXed]. SWEep Sets sweep mode. The instrument processes frequency (and level) settings in defined sweep steps. Set the range and current frequency with the commands: [:SOURcehw]:FREQuency:STARt and [:SOURcehw]:FREQuency:STOP, [:SOURcehw]:FREQuency:CENTer, [:SOURcehw]:FREQuency:SPAN, [:SOURcehw]:FREQuency:MANual LIST Sets list mode. The instrument processes frequency and level settings by means of values loaded from a list. To configure list mode settings, use the commands of the &#39;SOURce:LIST subsystem&#39;. COMBined Sets the combined RF frequency / level sweep mode. The instrument processes frequency and level settings in defined sweep steps. Set the range and current frequency with the commands: [:SOURcehw]:COMBined:FREQuency:STARt and [:SOURcehw]:COMBined:FREQuency:STOP, [:SOURcehw]:COMBined:POWer:STARt and [:SOURcehw]:COMBined:POWer:STOP</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:FREQuency:MODE?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">FreqMode</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FrequencyCls.set_mode"><a class="viewcode-back" href="../../../../Source_Frequency.html#RsSmbv.Implementations.Source.Frequency.FrequencyCls.set_mode">[docs]</a>	<span class="k">def</span> <span class="nf">set_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">FreqMode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:FREQuency:MODE \n</span>
+<span class="sd">		Snippet: driver.source.frequency.set_mode(mode = enums.FreqMode.COMBined) \n</span>
+<span class="sd">		Sets the frequency mode for generating the RF output signal. The selected mode determines the parameters to be used for</span>
+<span class="sd">		further frequency settings. \n</span>
+<span class="sd">			:param mode: CW| FIXed | SWEep| LIST | COMBined CW|FIXed Sets the fixed frequency mode. CW and FIXed are synonyms. The instrument operates at a defined frequency, set with command [:SOURcehw]:FREQuency[:CW|FIXed]. SWEep Sets sweep mode. The instrument processes frequency (and level) settings in defined sweep steps. Set the range and current frequency with the commands: [:SOURcehw]:FREQuency:STARt and [:SOURcehw]:FREQuency:STOP, [:SOURcehw]:FREQuency:CENTer, [:SOURcehw]:FREQuency:SPAN, [:SOURcehw]:FREQuency:MANual LIST Sets list mode. The instrument processes frequency and level settings by means of values loaded from a list. To configure list mode settings, use the commands of the &#39;SOURce:LIST subsystem&#39;. COMBined Sets the combined RF frequency / level sweep mode. The instrument processes frequency and level settings in defined sweep steps. Set the range and current frequency with the commands: [:SOURcehw]:COMBined:FREQuency:STARt and [:SOURcehw]:COMBined:FREQuency:STOP, [:SOURcehw]:COMBined:POWer:STARt and [:SOURcehw]:COMBined:POWer:STOP</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">mode</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">FreqMode</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:FREQuency:MODE </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FrequencyCls.get_multiplier"><a class="viewcode-back" href="../../../../Source_Frequency.html#RsSmbv.Implementations.Source.Frequency.FrequencyCls.get_multiplier">[docs]</a>	<span class="k">def</span> <span class="nf">get_multiplier</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:FREQuency:MULTiplier \n</span>
+<span class="sd">		Snippet: value: float = driver.source.frequency.get_multiplier() \n</span>
+<span class="sd">		Sets the multiplication factor NFREQ:MULT of a subsequent downstream instrument. The parameters offset fFREQ:OFFSer and</span>
+<span class="sd">		multiplier NFREQ:MULT affect the frequency value set with the command [:SOURce&lt;hw&gt;]:FREQuency[:CW|FIXed].</span>
+<span class="sd">		The query [:SOURce&lt;hw&gt;]:FREQuency[:CW|FIXed] returns the value corresponding to the formula: fFREQ = fRFout * NFREQ:MULT</span>
+<span class="sd">		+ fFREQ:OFFSer See &#39;RF frequency and level display with a downstream instrument&#39;. \n</span>
+<span class="sd">			:return: multiplier: float Range: -10000 to 10000</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:FREQuency:MULTiplier?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FrequencyCls.set_multiplier"><a class="viewcode-back" href="../../../../Source_Frequency.html#RsSmbv.Implementations.Source.Frequency.FrequencyCls.set_multiplier">[docs]</a>	<span class="k">def</span> <span class="nf">set_multiplier</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">multiplier</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:FREQuency:MULTiplier \n</span>
+<span class="sd">		Snippet: driver.source.frequency.set_multiplier(multiplier = 1.0) \n</span>
+<span class="sd">		Sets the multiplication factor NFREQ:MULT of a subsequent downstream instrument. The parameters offset fFREQ:OFFSer and</span>
+<span class="sd">		multiplier NFREQ:MULT affect the frequency value set with the command [:SOURce&lt;hw&gt;]:FREQuency[:CW|FIXed].</span>
+<span class="sd">		The query [:SOURce&lt;hw&gt;]:FREQuency[:CW|FIXed] returns the value corresponding to the formula: fFREQ = fRFout * NFREQ:MULT</span>
+<span class="sd">		+ fFREQ:OFFSer See &#39;RF frequency and level display with a downstream instrument&#39;. \n</span>
+<span class="sd">			:param multiplier: float Range: -10000 to 10000</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">multiplier</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:FREQuency:MULTiplier </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FrequencyCls.get_offset"><a class="viewcode-back" href="../../../../Source_Frequency.html#RsSmbv.Implementations.Source.Frequency.FrequencyCls.get_offset">[docs]</a>	<span class="k">def</span> <span class="nf">get_offset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:FREQuency:OFFSet \n</span>
+<span class="sd">		Snippet: value: float = driver.source.frequency.get_offset() \n</span>
+<span class="sd">		Sets the frequency offset fFREQ:OFFSet of a downstream instrument. The parameters offset fFREQ:OFFSer and multiplier</span>
+<span class="sd">		NFREQ:MULT affect the frequency value set with the command [:SOURce&lt;hw&gt;]:FREQuency[:CW|FIXed].</span>
+<span class="sd">		The query [:SOURce&lt;hw&gt;]:FREQuency[:CW|FIXed] returns the value corresponding to the formula: fFREQ = fRFout * NFREQ:MULT</span>
+<span class="sd">		+ fFREQ:OFFSer See &#39;RF frequency and level display with a downstream instrument&#39;. Note: The offset also affects RF</span>
+<span class="sd">		frequency sweep. \n</span>
+<span class="sd">			:return: offset: float</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:FREQuency:OFFSet?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FrequencyCls.set_offset"><a class="viewcode-back" href="../../../../Source_Frequency.html#RsSmbv.Implementations.Source.Frequency.FrequencyCls.set_offset">[docs]</a>	<span class="k">def</span> <span class="nf">set_offset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">offset</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:FREQuency:OFFSet \n</span>
+<span class="sd">		Snippet: driver.source.frequency.set_offset(offset = 1.0) \n</span>
+<span class="sd">		Sets the frequency offset fFREQ:OFFSet of a downstream instrument. The parameters offset fFREQ:OFFSer and multiplier</span>
+<span class="sd">		NFREQ:MULT affect the frequency value set with the command [:SOURce&lt;hw&gt;]:FREQuency[:CW|FIXed].</span>
+<span class="sd">		The query [:SOURce&lt;hw&gt;]:FREQuency[:CW|FIXed] returns the value corresponding to the formula: fFREQ = fRFout * NFREQ:MULT</span>
+<span class="sd">		+ fFREQ:OFFSer See &#39;RF frequency and level display with a downstream instrument&#39;. Note: The offset also affects RF</span>
+<span class="sd">		frequency sweep. \n</span>
+<span class="sd">			:param offset: float</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">offset</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:FREQuency:OFFSet </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FrequencyCls.get_span"><a class="viewcode-back" href="../../../../Source_Frequency.html#RsSmbv.Implementations.Source.Frequency.FrequencyCls.get_span">[docs]</a>	<span class="k">def</span> <span class="nf">get_span</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:FREQuency:SPAN \n</span>
+<span class="sd">		Snippet: value: float = driver.source.frequency.get_span() \n</span>
+<span class="sd">		Sets the sapn of the frequency sweep range. See &#39;Correlating parameters in sweep mode&#39;. \n</span>
+<span class="sd">			:return: span: float Full freqeuncy range</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:FREQuency:SPAN?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FrequencyCls.set_span"><a class="viewcode-back" href="../../../../Source_Frequency.html#RsSmbv.Implementations.Source.Frequency.FrequencyCls.set_span">[docs]</a>	<span class="k">def</span> <span class="nf">set_span</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">span</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:FREQuency:SPAN \n</span>
+<span class="sd">		Snippet: driver.source.frequency.set_span(span = 1.0) \n</span>
+<span class="sd">		Sets the sapn of the frequency sweep range. See &#39;Correlating parameters in sweep mode&#39;. \n</span>
+<span class="sd">			:param span: float Full freqeuncy range</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">span</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:FREQuency:SPAN </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FrequencyCls.get_start"><a class="viewcode-back" href="../../../../Source_Frequency.html#RsSmbv.Implementations.Source.Frequency.FrequencyCls.get_start">[docs]</a>	<span class="k">def</span> <span class="nf">get_start</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:FREQuency:STARt \n</span>
+<span class="sd">		Snippet: value: float = driver.source.frequency.get_start() \n</span>
+<span class="sd">		Sets the start frequency for the RF sweep. See &#39;Correlating parameters in sweep mode&#39;. \n</span>
+<span class="sd">			:return: start: float Range: 300kHz to RFmax</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:FREQuency:STARt?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FrequencyCls.set_start"><a class="viewcode-back" href="../../../../Source_Frequency.html#RsSmbv.Implementations.Source.Frequency.FrequencyCls.set_start">[docs]</a>	<span class="k">def</span> <span class="nf">set_start</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:FREQuency:STARt \n</span>
+<span class="sd">		Snippet: driver.source.frequency.set_start(start = 1.0) \n</span>
+<span class="sd">		Sets the start frequency for the RF sweep. See &#39;Correlating parameters in sweep mode&#39;. \n</span>
+<span class="sd">			:param start: float Range: 300kHz to RFmax</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">start</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:FREQuency:STARt </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FrequencyCls.get_stop"><a class="viewcode-back" href="../../../../Source_Frequency.html#RsSmbv.Implementations.Source.Frequency.FrequencyCls.get_stop">[docs]</a>	<span class="k">def</span> <span class="nf">get_stop</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:FREQuency:STOP \n</span>
+<span class="sd">		Snippet: value: float = driver.source.frequency.get_stop() \n</span>
+<span class="sd">		Sets the stop frequency range for the RF sweep. See &#39;Correlating parameters in sweep mode&#39;. \n</span>
+<span class="sd">			:return: stop: float Range: 300kHz to RFmax, Unit: Hz</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:FREQuency:STOP?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FrequencyCls.set_stop"><a class="viewcode-back" href="../../../../Source_Frequency.html#RsSmbv.Implementations.Source.Frequency.FrequencyCls.set_stop">[docs]</a>	<span class="k">def</span> <span class="nf">set_stop</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stop</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:FREQuency:STOP \n</span>
+<span class="sd">		Snippet: driver.source.frequency.set_stop(stop = 1.0) \n</span>
+<span class="sd">		Sets the stop frequency range for the RF sweep. See &#39;Correlating parameters in sweep mode&#39;. \n</span>
+<span class="sd">			:param stop: float Range: 300kHz to RFmax, Unit: Hz</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">stop</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:FREQuency:STOP </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;FrequencyCls&#39;</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Clones the group by creating new object from it and its whole existing subgroups</span>
+<span class="sd">		Also copies all the existing default Repeated Capabilities setting,</span>
+<span class="sd">		which you can change independently without affecting the original group&quot;&quot;&quot;</span>
+		<span class="n">new_group</span> <span class="o">=</span> <span class="n">FrequencyCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">synchronize_repcaps</span><span class="p">(</span><span class="n">new_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">new_group</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

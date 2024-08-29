@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RsSmbv.Implementations.Source.Bb.Eutra.Downlink &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../../../" id="documentation_options" src="../../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../../_static/jquery.js"></script>
+        <script src="../../../../../../_static/underscore.js"></script>
+        <script src="../../../../../../_static/doctools.js"></script>
+        <script src="../../../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../../../_static/copybutton.js"></script>
+    <script src="../../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../../../index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../RsSmbv.html">RsSmbv API Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../../../index.html">Module code</a> &raquo;</li>
+          <li><a href="../../../Source.html">RsSmbv.Implementations.Source</a> &raquo;</li>
+          <li><a href="../../Bb.html">RsSmbv.Implementations.Source.Bb</a> &raquo;</li>
+          <li><a href="../Eutra.html">RsSmbv.Implementations.Source.Bb.Eutra</a> &raquo;</li>
+      <li>RsSmbv.Implementations.Source.Bb.Eutra.Downlink</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for RsSmbv.Implementations.Source.Bb.Eutra.Downlink</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">......Internal.Core</span> <span class="kn">import</span> <span class="n">Core</span>
+<span class="kn">from</span> <span class="nn">......Internal.CommandsGroup</span> <span class="kn">import</span> <span class="n">CommandsGroup</span>
+<span class="kn">from</span> <span class="nn">......Internal</span> <span class="kn">import</span> <span class="n">Conversions</span>
+<span class="kn">from</span> <span class="nn">......</span> <span class="kn">import</span> <span class="n">enums</span>
+
+
+<span class="c1"># noinspection PyPep8Naming,PyAttributeOutsideInit,SpellCheckingInspection</span>
+<div class="viewcode-block" id="DownlinkCls"><a class="viewcode-back" href="../../../../../../Source_Bb_Eutra_Downlink.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.DownlinkCls">[docs]</a><span class="k">class</span> <span class="nc">DownlinkCls</span><span class="p">:</span>
+	<span class="sd">&quot;&quot;&quot;Downlink commands group definition. 619 total commands, 25 Subgroups, 14 group commands&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">core</span><span class="p">:</span> <span class="n">Core</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span> <span class="o">=</span> <span class="n">core</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span> <span class="o">=</span> <span class="n">CommandsGroup</span><span class="p">(</span><span class="s2">&quot;downlink&quot;</span><span class="p">,</span> <span class="n">core</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">ca</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;ca commands group. 1 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_ca&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Ca</span> <span class="kn">import</span> <span class="n">CaCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_ca</span> <span class="o">=</span> <span class="n">CaCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ca</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">carrier</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;carrier commands group. 1 Sub-classes, 0 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_carrier&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Carrier</span> <span class="kn">import</span> <span class="n">CarrierCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_carrier</span> <span class="o">=</span> <span class="n">CarrierCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_carrier</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">conf</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;conf commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_conf&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Conf</span> <span class="kn">import</span> <span class="n">ConfCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_conf</span> <span class="o">=</span> <span class="n">ConfCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_conf</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">csettings</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;csettings commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_csettings&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Csettings</span> <span class="kn">import</span> <span class="n">CsettingsCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_csettings</span> <span class="o">=</span> <span class="n">CsettingsCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_csettings</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">csis</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;csis commands group. 1 Sub-classes, 0 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_csis&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Csis</span> <span class="kn">import</span> <span class="n">CsisCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_csis</span> <span class="o">=</span> <span class="n">CsisCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_csis</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">drs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;drs commands group. 1 Sub-classes, 0 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_drs&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Drs</span> <span class="kn">import</span> <span class="n">DrsCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_drs</span> <span class="o">=</span> <span class="n">DrsCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_drs</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">dumd</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;dumd commands group. 1 Sub-classes, 5 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_dumd&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Dumd</span> <span class="kn">import</span> <span class="n">DumdCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_dumd</span> <span class="o">=</span> <span class="n">DumdCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dumd</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">emtc</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;emtc commands group. 5 Sub-classes, 4 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_emtc&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Emtc</span> <span class="kn">import</span> <span class="n">EmtcCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_emtc</span> <span class="o">=</span> <span class="n">EmtcCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_emtc</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">laa</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;laa commands group. 1 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_laa&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Laa</span> <span class="kn">import</span> <span class="n">LaaCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_laa</span> <span class="o">=</span> <span class="n">LaaCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_laa</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">mbsfn</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;mbsfn commands group. 4 Sub-classes, 3 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_mbsfn&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Mbsfn</span> <span class="kn">import</span> <span class="n">MbsfnCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_mbsfn</span> <span class="o">=</span> <span class="n">MbsfnCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mbsfn</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">mimo</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;mimo commands group. 2 Sub-classes, 2 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_mimo&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Mimo</span> <span class="kn">import</span> <span class="n">MimoCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_mimo</span> <span class="o">=</span> <span class="n">MimoCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mimo</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">niot</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;niot commands group. 9 Sub-classes, 3 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_niot&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Niot</span> <span class="kn">import</span> <span class="n">NiotCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_niot</span> <span class="o">=</span> <span class="n">NiotCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_niot</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">pbch</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;pbch commands group. 0 Sub-classes, 4 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_pbch&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Pbch</span> <span class="kn">import</span> <span class="n">PbchCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_pbch</span> <span class="o">=</span> <span class="n">PbchCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pbch</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">pdcch</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;pdcch commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_pdcch&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Pdcch</span> <span class="kn">import</span> <span class="n">PdcchCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_pdcch</span> <span class="o">=</span> <span class="n">PdcchCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pdcch</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">pdsch</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;pdsch commands group. 0 Sub-classes, 2 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_pdsch&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Pdsch</span> <span class="kn">import</span> <span class="n">PdschCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_pdsch</span> <span class="o">=</span> <span class="n">PdschCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pdsch</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">phich</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;phich commands group. 0 Sub-classes, 2 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_phich&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Phich</span> <span class="kn">import</span> <span class="n">PhichCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_phich</span> <span class="o">=</span> <span class="n">PhichCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_phich</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">prss</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;prss commands group. 2 Sub-classes, 6 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_prss&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Prss</span> <span class="kn">import</span> <span class="n">PrssCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_prss</span> <span class="o">=</span> <span class="n">PrssCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prss</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">refsig</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;refsig commands group. 1 Sub-classes, 6 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_refsig&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Refsig</span> <span class="kn">import</span> <span class="n">RefsigCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_refsig</span> <span class="o">=</span> <span class="n">RefsigCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_refsig</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">rstFrame</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;rstFrame commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_rstFrame&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.RstFrame</span> <span class="kn">import</span> <span class="n">RstFrameCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_rstFrame</span> <span class="o">=</span> <span class="n">RstFrameCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rstFrame</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">sync</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;sync commands group. 1 Sub-classes, 7 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_sync&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Sync</span> <span class="kn">import</span> <span class="n">SyncCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_sync</span> <span class="o">=</span> <span class="n">SyncCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sync</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">user</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;user commands group. 26 Sub-classes, 0 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_user&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.User</span> <span class="kn">import</span> <span class="n">UserCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_user</span> <span class="o">=</span> <span class="n">UserCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_user</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">view</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;view commands group. 0 Sub-classes, 5 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_view&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.View</span> <span class="kn">import</span> <span class="n">ViewCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_view</span> <span class="o">=</span> <span class="n">ViewCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_view</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">cell</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;cell commands group. 1 Sub-classes, 0 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_cell&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Cell</span> <span class="kn">import</span> <span class="n">CellCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_cell</span> <span class="o">=</span> <span class="n">CellCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cell</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">plci</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;plci commands group. 0 Sub-classes, 3 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_plci&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Plci</span> <span class="kn">import</span> <span class="n">PlciCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_plci</span> <span class="o">=</span> <span class="n">PlciCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_plci</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">subf</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;subf commands group. 5 Sub-classes, 0 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_subf&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Subf</span> <span class="kn">import</span> <span class="n">SubfCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_subf</span> <span class="o">=</span> <span class="n">SubfCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_subf</span>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="DownlinkCls.get_bur"><a class="viewcode-back" href="../../../../../../Source_Bb_Eutra_Downlink.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.DownlinkCls.get_bur">[docs]</a>	<span class="k">def</span> <span class="nf">get_bur</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraBehUnsSubFrames</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:BUR \n</span>
+<span class="sd">		Snippet: value: enums.EutraBehUnsSubFrames = driver.source.bb.eutra.downlink.get_bur() \n</span>
+<span class="sd">		Selects either to fill unscheduled resource elements and subframes with dummy data or DTX. In &#39;Mode &gt; eMTC/NB-IoT&#39;,</span>
+<span class="sd">		unused resource elements are filled in with DTX. \n</span>
+<span class="sd">			:return: bur: DUData| DTX</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:BUR?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraBehUnsSubFrames</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DownlinkCls.set_bur"><a class="viewcode-back" href="../../../../../../Source_Bb_Eutra_Downlink.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.DownlinkCls.set_bur">[docs]</a>	<span class="k">def</span> <span class="nf">set_bur</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bur</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraBehUnsSubFrames</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:BUR \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.downlink.set_bur(bur = enums.EutraBehUnsSubFrames.DTX) \n</span>
+<span class="sd">		Selects either to fill unscheduled resource elements and subframes with dummy data or DTX. In &#39;Mode &gt; eMTC/NB-IoT&#39;,</span>
+<span class="sd">		unused resource elements are filled in with DTX. \n</span>
+<span class="sd">			:param bur: DUData| DTX</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">bur</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraBehUnsSubFrames</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:BUR </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="DownlinkCls.get_bw"><a class="viewcode-back" href="../../../../../../Source_Bb_Eutra_Downlink.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.DownlinkCls.get_bw">[docs]</a>	<span class="k">def</span> <span class="nf">get_bw</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraChannelBandwidth</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:BW \n</span>
+<span class="sd">		Snippet: value: enums.EutraChannelBandwidth = driver.source.bb.eutra.downlink.get_bw() \n</span>
+<span class="sd">		Sets the DL channel bandwidth. \n</span>
+<span class="sd">			:return: bw: BW1_40| BW3_00| BW5_00| BW10_00| BW15_00| BW20_00 | BW0_20 | USER</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:BW?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraChannelBandwidth</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DownlinkCls.set_bw"><a class="viewcode-back" href="../../../../../../Source_Bb_Eutra_Downlink.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.DownlinkCls.set_bw">[docs]</a>	<span class="k">def</span> <span class="nf">set_bw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bw</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraChannelBandwidth</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:BW \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.downlink.set_bw(bw = enums.EutraChannelBandwidth.BW0_20) \n</span>
+<span class="sd">		Sets the DL channel bandwidth. \n</span>
+<span class="sd">			:param bw: BW1_40| BW3_00| BW5_00| BW10_00| BW15_00| BW20_00 | BW0_20 | USER</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">bw</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraChannelBandwidth</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:BW </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DownlinkCls.get_con_sub_frames"><a class="viewcode-back" href="../../../../../../Source_Bb_Eutra_Downlink.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.DownlinkCls.get_con_sub_frames">[docs]</a>	<span class="k">def</span> <span class="nf">get_con_sub_frames</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:CONSubframes \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.eutra.downlink.get_con_sub_frames() \n</span>
+<span class="sd">		Sets the number of configurable subframes. \n</span>
+<span class="sd">			:return: con_sub_frames: integer Range: 1 to 40</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:CONSubframes?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DownlinkCls.set_con_sub_frames"><a class="viewcode-back" href="../../../../../../Source_Bb_Eutra_Downlink.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.DownlinkCls.set_con_sub_frames">[docs]</a>	<span class="k">def</span> <span class="nf">set_con_sub_frames</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">con_sub_frames</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:CONSubframes \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.downlink.set_con_sub_frames(con_sub_frames = 1) \n</span>
+<span class="sd">		Sets the number of configurable subframes. \n</span>
+<span class="sd">			:param con_sub_frames: integer Range: 1 to 40</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">con_sub_frames</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:CONSubframes </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="DownlinkCls.get_cpc"><a class="viewcode-back" href="../../../../../../Source_Bb_Eutra_Downlink.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.DownlinkCls.get_cpc">[docs]</a>	<span class="k">def</span> <span class="nf">get_cpc</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraCyclicPrefixGs</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:CPC \n</span>
+<span class="sd">		Snippet: value: enums.EutraCyclicPrefixGs = driver.source.bb.eutra.downlink.get_cpc() \n</span>
+<span class="sd">		Sets the cyclic prefix length for all LTE subframes. \n</span>
+<span class="sd">			:return: cyclic_prefix: NORMal| EXTended | USER</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:CPC?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraCyclicPrefixGs</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DownlinkCls.set_cpc"><a class="viewcode-back" href="../../../../../../Source_Bb_Eutra_Downlink.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.DownlinkCls.set_cpc">[docs]</a>	<span class="k">def</span> <span class="nf">set_cpc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cyclic_prefix</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraCyclicPrefixGs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:CPC \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.downlink.set_cpc(cyclic_prefix = enums.EutraCyclicPrefixGs.EXTended) \n</span>
+<span class="sd">		Sets the cyclic prefix length for all LTE subframes. \n</span>
+<span class="sd">			:param cyclic_prefix: NORMal| EXTended | USER</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">cyclic_prefix</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraCyclicPrefixGs</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:CPC </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DownlinkCls.get_fft"><a class="viewcode-back" href="../../../../../../Source_Bb_Eutra_Downlink.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.DownlinkCls.get_fft">[docs]</a>	<span class="k">def</span> <span class="nf">get_fft</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:FFT \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.eutra.downlink.get_fft() \n</span>
+<span class="sd">		Sets the FFT size. \n</span>
+<span class="sd">			:return: fft: integer Range: 64 to 2048</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:FFT?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DownlinkCls.set_fft"><a class="viewcode-back" href="../../../../../../Source_Bb_Eutra_Downlink.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.DownlinkCls.set_fft">[docs]</a>	<span class="k">def</span> <span class="nf">set_fft</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fft</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:FFT \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.downlink.set_fft(fft = 1) \n</span>
+<span class="sd">		Sets the FFT size. \n</span>
+<span class="sd">			:param fft: integer Range: 64 to 2048</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">fft</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:FFT </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DownlinkCls.get_lgs"><a class="viewcode-back" href="../../../../../../Source_Bb_Eutra_Downlink.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.DownlinkCls.get_lgs">[docs]</a>	<span class="k">def</span> <span class="nf">get_lgs</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:LGS \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.eutra.downlink.get_lgs() \n</span>
+<span class="sd">		Queries the number of left guard subcarriers. \n</span>
+<span class="sd">			:return: lgs: integer Range: 28 to 364</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:LGS?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DownlinkCls.get_no_rb"><a class="viewcode-back" href="../../../../../../Source_Bb_Eutra_Downlink.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.DownlinkCls.get_no_rb">[docs]</a>	<span class="k">def</span> <span class="nf">get_no_rb</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:NORB \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.eutra.downlink.get_no_rb() \n</span>
+<span class="sd">		Selects the number of physical resource blocks per slot. \n</span>
+<span class="sd">			:return: no_rb: integer Range: 6 to 110</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:NORB?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DownlinkCls.set_no_rb"><a class="viewcode-back" href="../../../../../../Source_Bb_Eutra_Downlink.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.DownlinkCls.set_no_rb">[docs]</a>	<span class="k">def</span> <span class="nf">set_no_rb</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">no_rb</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:NORB \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.downlink.set_no_rb(no_rb = 1) \n</span>
+<span class="sd">		Selects the number of physical resource blocks per slot. \n</span>
+<span class="sd">			:param no_rb: integer Range: 6 to 110</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">no_rb</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:NORB </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DownlinkCls.get_occ_bandwidth"><a class="viewcode-back" href="../../../../../../Source_Bb_Eutra_Downlink.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.DownlinkCls.get_occ_bandwidth">[docs]</a>	<span class="k">def</span> <span class="nf">get_occ_bandwidth</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:OCCBandwidth \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.eutra.downlink.get_occ_bandwidth() \n</span>
+<span class="sd">		Queries the occupied bandwidth. \n</span>
+<span class="sd">			:return: occup_bandwidth: float</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:OCCBandwidth?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DownlinkCls.get_occ_subcarriers"><a class="viewcode-back" href="../../../../../../Source_Bb_Eutra_Downlink.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.DownlinkCls.get_occ_subcarriers">[docs]</a>	<span class="k">def</span> <span class="nf">get_occ_subcarriers</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:OCCSubcarriers \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.eutra.downlink.get_occ_subcarriers() \n</span>
+<span class="sd">		Queries the occupied subcarriers. \n</span>
+<span class="sd">			:return: occup_subcarr: integer Range: 72 to 1321</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:OCCSubcarriers?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="DownlinkCls.get_pum"><a class="viewcode-back" href="../../../../../../Source_Bb_Eutra_Downlink.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.DownlinkCls.get_pum">[docs]</a>	<span class="k">def</span> <span class="nf">get_pum</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraPwrUpdMode</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:PUM \n</span>
+<span class="sd">		Snippet: value: enums.EutraPwrUpdMode = driver.source.bb.eutra.downlink.get_pum() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: power_update_mode: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:PUM?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraPwrUpdMode</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DownlinkCls.set_pum"><a class="viewcode-back" href="../../../../../../Source_Bb_Eutra_Downlink.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.DownlinkCls.set_pum">[docs]</a>	<span class="k">def</span> <span class="nf">set_pum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">power_update_mode</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraPwrUpdMode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:PUM \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.downlink.set_pum(power_update_mode = enums.EutraPwrUpdMode.CONTinuous) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param power_update_mode: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">power_update_mode</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraPwrUpdMode</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:PUM </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DownlinkCls.get_rgs"><a class="viewcode-back" href="../../../../../../Source_Bb_Eutra_Downlink.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.DownlinkCls.get_rgs">[docs]</a>	<span class="k">def</span> <span class="nf">get_rgs</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:RGS \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.eutra.downlink.get_rgs() \n</span>
+<span class="sd">		Queries the number of right guard subcarriers. \n</span>
+<span class="sd">			:return: rgs: integer Range: 27 to 364</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:RGS?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DownlinkCls.get_sf_selection"><a class="viewcode-back" href="../../../../../../Source_Bb_Eutra_Downlink.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.DownlinkCls.get_sf_selection">[docs]</a>	<span class="k">def</span> <span class="nf">get_sf_selection</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:SFSelection \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.eutra.downlink.get_sf_selection() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: sub_frame_sel: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:SFSelection?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DownlinkCls.set_sf_selection"><a class="viewcode-back" href="../../../../../../Source_Bb_Eutra_Downlink.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.DownlinkCls.set_sf_selection">[docs]</a>	<span class="k">def</span> <span class="nf">set_sf_selection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sub_frame_sel</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:SFSelection \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.downlink.set_sf_selection(sub_frame_sel = 1) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param sub_frame_sel: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">sub_frame_sel</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:SFSelection </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DownlinkCls.get_symbol_rate"><a class="viewcode-back" href="../../../../../../Source_Bb_Eutra_Downlink.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.DownlinkCls.get_symbol_rate">[docs]</a>	<span class="k">def</span> <span class="nf">get_symbol_rate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:SRATe \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.eutra.downlink.get_symbol_rate() \n</span>
+<span class="sd">		Queries the sampling rate. \n</span>
+<span class="sd">			:return: sample_rate: float Range: 192E4 to 3072E4</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:SRATe?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="DownlinkCls.get_ulcpc"><a class="viewcode-back" href="../../../../../../Source_Bb_Eutra_Downlink.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.DownlinkCls.get_ulcpc">[docs]</a>	<span class="k">def</span> <span class="nf">get_ulcpc</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">EuTraDuration</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:ULCPc \n</span>
+<span class="sd">		Snippet: value: enums.EuTraDuration = driver.source.bb.eutra.downlink.get_ulcpc() \n</span>
+<span class="sd">		In TDD duplexing mode, sets the cyclic prefix for the opposite direction. \n</span>
+<span class="sd">			:return: gs_cpc_opp_dir: NORMal| EXTended</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:ULCPc?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EuTraDuration</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DownlinkCls.set_ulcpc"><a class="viewcode-back" href="../../../../../../Source_Bb_Eutra_Downlink.html#RsSmbv.Implementations.Source.Bb.Eutra.Downlink.DownlinkCls.set_ulcpc">[docs]</a>	<span class="k">def</span> <span class="nf">set_ulcpc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gs_cpc_opp_dir</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">EuTraDuration</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:DL:ULCPc \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.downlink.set_ulcpc(gs_cpc_opp_dir = enums.EuTraDuration.EXTended) \n</span>
+<span class="sd">		In TDD duplexing mode, sets the cyclic prefix for the opposite direction. \n</span>
+<span class="sd">			:param gs_cpc_opp_dir: NORMal| EXTended</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">gs_cpc_opp_dir</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EuTraDuration</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:DL:ULCPc </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;DownlinkCls&#39;</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Clones the group by creating new object from it and its whole existing subgroups</span>
+<span class="sd">		Also copies all the existing default Repeated Capabilities setting,</span>
+<span class="sd">		which you can change independently without affecting the original group&quot;&quot;&quot;</span>
+		<span class="n">new_group</span> <span class="o">=</span> <span class="n">DownlinkCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">synchronize_repcaps</span><span class="p">(</span><span class="n">new_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">new_group</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bert &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Setup" href="Bert_Setup.html" />
+    <link rel="prev" title="RsSmbv API Structure" href="RsSmbv.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="RsSmbv.html">RsSmbv API Structure</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Bert</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Bert_Setup.html">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Bert_Trigger.html">Trigger</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Bler.html">Bler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Calibration.html">Calibration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clock.html">Clock</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Connector.html">Connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Device.html">Device</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Diagnostic.html">Diagnostic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Display.html">Display</a></li>
+<li class="toctree-l2"><a class="reference internal" href="FormatPy.html">FormatPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Fpanel.html">Fpanel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HardCopy.html">HardCopy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Initiate.html">Initiate&lt;Channel&gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Kboard.html">Kboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MassMemory.html">MassMemory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Memory.html">Memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Output.html">Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Read.html">Read&lt;Channel&gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Sconfiguration.html">Sconfiguration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Sense.html">Sense&lt;Channel&gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slist.html">Slist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source.html">Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Status.html">Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Sweep.html">Sweep</a></li>
+<li class="toctree-l2"><a class="reference internal" href="System.html">System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Test.html">Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Trigger.html">Trigger&lt;InputIx&gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Unit.html">Unit</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="RsSmbv.html">RsSmbv API Structure</a> &raquo;</li>
+      <li>Bert</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Bert.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="bert">
+<h1>Bert<a class="headerlink" href="#bert" title="Permalink to this headline"></a></h1>
+<p class="rubric">SCPI Commands :</p>
+<div class="highlight-python notranslate" id="index-0"><div class="highlight"><pre><span></span><span class="n">BERT</span><span class="p">:</span><span class="n">LOAD</span>
+<span class="n">BERT</span><span class="p">:</span><span class="n">PRESet</span>
+<span class="n">BERT</span><span class="p">:</span><span class="n">RESult</span>
+<span class="n">BERT</span><span class="p">:</span><span class="n">STARt</span>
+<span class="n">BERT</span><span class="p">:</span><span class="n">STATe</span>
+<span class="n">BERT</span><span class="p">:</span><span class="n">STOP</span>
+<span class="n">BERT</span><span class="p">:</span><span class="n">STORe</span>
+<span class="n">BERT</span><span class="p">:</span><span class="n">UNIT</span>
+</pre></div>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">BertCls</span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Bert.html#BertCls"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Bert commands group definition. 19 total commands, 2 Subgroups, 8 group commands</p>
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ResultStruct</span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Bert.html#BertCls.ResultStruct"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Structure for reading output parameters. Fields:</p>
+<ul class="simple">
+<li><p>Num_Data_Bits: int: integer Number of checked data bits.</p></li>
+<li><p>Num_Errors: int: integer Number of error bits.</p></li>
+<li><p>Error_Rate: float: float If no termination criterion has been reached since the beginning of the measurement, display the current quotient of NumErrors (number of error bits) and NumBlock (number of data bits) . When at least one final result has been reached in continuous measurement, display the most recent final result.</p></li>
+<li><p>Meas_Finished: int: integer Status of measurement. 1 Measurement has been terminated, i.e. stopped or the defined number of data bits or error bits has been reached. 0 Measurement has not been terminated.</p></li>
+<li><p>Clock_Detected: int: integer Status of clock line. 1 Clock line active. 0 Clock line not active.</p></li>
+<li><p>Data_Detected: int: integer Status of data line. 1 Data line active. Only clocked data is detected. If the clock signal is missing, a data change is also not detected. 0 Data line is not active.</p></li>
+<li><p>Synchronized: int: integer 1 The measurement is synchronized and the ratio is assumed realistic. That is, the clock and data lines are active and the following apples: NumErrors/NumBlock 0.1. 0 The measurement is not synchronized.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_result</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ResultStruct</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Bert.html#BertCls.get_result"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: BERT:RESult</span>
+<span class="n">value</span><span class="p">:</span> <span class="n">ResultStruct</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">bert</span><span class="o">.</span><span class="n">get_result</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Queries the result of the last BLER measurement and responds with seven results, separated by commas.
+The first measurement following the start also queries intermediate results for the number of data bits, error bits and
+error rate. For method RsSmbv.Bler.Trigger.modeAUTO, only the final results of each single measurement are queried in the
+following measurements. Note: The restart of a new measurement is delayed until the first measurement result has been
+queried. The resulting brief measurement interruption is irrelevant because the subsequent measurement is synchronized
+within 24 data bits.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>structure: for return value, see the help for ResultStruct structure arguments.</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_state</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Bert.html#BertCls.get_state"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: BERT:STATe</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">bert</span><span class="o">.</span><span class="n">get_state</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Activates/deactivates the measurement.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>state: 1| ON| 0| OFF</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_unit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">RsSmbv.enums.BertUnit</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Bert.html#BertCls.get_unit"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: BERT:UNIT</span>
+<span class="n">value</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">BertUnit</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">bert</span><span class="o">.</span><span class="n">get_unit</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>No command help available</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>unit: No help available</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Bert.html#BertCls.load"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: BERT:LOAD</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">bert</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;abc&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Loads the selected file from the default or the specified directory. Loaded are files with extension <a href="#id1"><span class="problematic" id="id2">*</span></a>.ber_bler Refer to
+‘Accessing Files in the Default or Specified Directory’ for general information on file handling in the default and in a
+specific directory.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param filename</dt>
+<dd class="field-odd"><p>string Filename or complete file path; file extension can be omitted</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">preset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Bert.html#BertCls.preset"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: BERT:PRESet</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">bert</span><span class="o">.</span><span class="n">preset</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Sets the parameters of the BERT/BLER test generator to their default values (<a href="#id3"><span class="problematic" id="id4">*</span></a>RST values specified for the commands) .
+Not affected is the state set with the command .method RsSmbv.Bert.state/method RsSmbv.Bler.state.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">preset_with_opc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">opc_timeout_ms</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Bert.html#BertCls.preset_with_opc"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: BERT:PRESet</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">bert</span><span class="o">.</span><span class="n">preset_with_opc</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Sets the parameters of the BERT/BLER test generator to their default values (<a href="#id5"><span class="problematic" id="id6">*</span></a>RST values specified for the commands) .
+Not affected is the state set with the command .method RsSmbv.Bert.state/method RsSmbv.Bler.state.</p>
+<p>Same as preset, but waits for the operation to complete before continuing further. Use the RsSmbv.utilities.opc_timeout_set() to set the timeout value.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param opc_timeout_ms</dt>
+<dd class="field-odd"><p>Maximum time to wait in milliseconds, valid only for this call.</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Bert.html#BertCls.set_state"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: BERT:STATe</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">bert</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="n">state</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Activates/deactivates the measurement.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param state</dt>
+<dd class="field-odd"><p>1| ON| 0| OFF</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_store</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Bert.html#BertCls.set_store"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: BERT:STORe</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">bert</span><span class="o">.</span><span class="n">set_store</span><span class="p">(</span><span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;abc&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Saves the current settings into the selected file; the file extension (<a href="#id7"><span class="problematic" id="id8">*</span></a>.ber_bler) is assigned automatically. Refer to
+‘Accessing Files in the Default or Specified Directory’ for general information on file handling in the default and in a
+specific directory.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param filename</dt>
+<dd class="field-odd"><p>‘filename’ Filename or complete file path.</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_unit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">unit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">RsSmbv.enums.BertUnit</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Bert.html#BertCls.set_unit"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: BERT:UNIT</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">bert</span><span class="o">.</span><span class="n">set_unit</span><span class="p">(</span><span class="n">unit</span> <span class="o">=</span> <span class="n">enums</span><span class="o">.</span><span class="n">BertUnit</span><span class="o">.</span><span class="n">ENGineering</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>No command help available</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param unit</dt>
+<dd class="field-odd"><p>No help available</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">start</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Bert.html#BertCls.start"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: BERT:STARt</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">bert</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Starts a continuous measurement.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">start_with_opc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">opc_timeout_ms</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Bert.html#BertCls.start_with_opc"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: BERT:STARt</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">bert</span><span class="o">.</span><span class="n">start_with_opc</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Starts a continuous measurement.</p>
+<p>Same as start, but waits for the operation to complete before continuing further. Use the RsSmbv.utilities.opc_timeout_set() to set the timeout value.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param opc_timeout_ms</dt>
+<dd class="field-odd"><p>Maximum time to wait in milliseconds, valid only for this call.</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">stop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Bert.html#BertCls.stop"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: BERT:STOP</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">bert</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Stops an ongoing measurement.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">stop_with_opc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">opc_timeout_ms</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Bert.html#BertCls.stop_with_opc"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: BERT:STOP</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">bert</span><span class="o">.</span><span class="n">stop_with_opc</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Stops an ongoing measurement.</p>
+<p>Same as stop, but waits for the operation to complete before continuing further. Use the RsSmbv.utilities.opc_timeout_set() to set the timeout value.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param opc_timeout_ms</dt>
+<dd class="field-odd"><p>Maximum time to wait in milliseconds, valid only for this call.</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+</dd></dl>
+
+<p class="rubric">Cloning the Group</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a clone of the original group, that exists independently</span>
+<span class="n">group2</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">bert</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+</pre></div>
+</div>
+<p class="rubric">Subgroups</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Bert_Setup.html">Setup</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Bert_Setup_Data.html">Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Bert_Setup_Restart.html">Restart</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Bert_Trigger.html">Trigger</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Bert_Trigger_Immediate.html">Immediate</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="RsSmbv.html" class="btn btn-neutral float-left" title="RsSmbv API Structure" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Bert_Setup.html" class="btn btn-neutral float-right" title="Setup" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

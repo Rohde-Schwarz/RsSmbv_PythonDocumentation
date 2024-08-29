@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RsSmbv.Implementations.Source.Bb.C2K.Bstation.PdChannel.SubPacket.Parameters &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="../../../../../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../../../../../../" id="documentation_options" src="../../../../../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../../../../../_static/jquery.js"></script>
+        <script src="../../../../../../../../../_static/underscore.js"></script>
+        <script src="../../../../../../../../../_static/doctools.js"></script>
+        <script src="../../../../../../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../../../../../../_static/copybutton.js"></script>
+    <script src="../../../../../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../../../../../../index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../RsSmbv.html">RsSmbv API Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../../../../index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../../../../../../index.html">Module code</a> &raquo;</li>
+          <li><a href="../../../../../../Source.html">RsSmbv.Implementations.Source</a> &raquo;</li>
+          <li><a href="../../../../../Bb.html">RsSmbv.Implementations.Source.Bb</a> &raquo;</li>
+          <li><a href="../../../../C2K.html">RsSmbv.Implementations.Source.Bb.C2K</a> &raquo;</li>
+          <li><a href="../../../Bstation.html">RsSmbv.Implementations.Source.Bb.C2K.Bstation</a> &raquo;</li>
+          <li><a href="../../PdChannel.html">RsSmbv.Implementations.Source.Bb.C2K.Bstation.PdChannel</a> &raquo;</li>
+          <li><a href="../SubPacket.html">RsSmbv.Implementations.Source.Bb.C2K.Bstation.PdChannel.SubPacket</a> &raquo;</li>
+      <li>RsSmbv.Implementations.Source.Bb.C2K.Bstation.PdChannel.SubPacket.Parameters</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for RsSmbv.Implementations.Source.Bb.C2K.Bstation.PdChannel.SubPacket.Parameters</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">........Internal.Core</span> <span class="kn">import</span> <span class="n">Core</span>
+<span class="kn">from</span> <span class="nn">........Internal.CommandsGroup</span> <span class="kn">import</span> <span class="n">CommandsGroup</span>
+<span class="kn">from</span> <span class="nn">........Internal</span> <span class="kn">import</span> <span class="n">Conversions</span>
+<span class="kn">from</span> <span class="nn">........</span> <span class="kn">import</span> <span class="n">enums</span>
+<span class="kn">from</span> <span class="nn">........</span> <span class="kn">import</span> <span class="n">repcap</span>
+
+
+<span class="c1"># noinspection PyPep8Naming,PyAttributeOutsideInit,SpellCheckingInspection</span>
+<div class="viewcode-block" id="ParametersCls"><a class="viewcode-back" href="../../../../../../../../../Source_Bb_C2K_Bstation_PdChannel_SubPacket_Parameters.html#RsSmbv.Implementations.Source.Bb.C2K.Bstation.PdChannel.SubPacket.Parameters.ParametersCls">[docs]</a><span class="k">class</span> <span class="nc">ParametersCls</span><span class="p">:</span>
+	<span class="sd">&quot;&quot;&quot;Parameters commands group definition. 1 total commands, 0 Subgroups, 1 group commands&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">core</span><span class="p">:</span> <span class="n">Core</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span> <span class="o">=</span> <span class="n">core</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span> <span class="o">=</span> <span class="n">CommandsGroup</span><span class="p">(</span><span class="s2">&quot;parameters&quot;</span><span class="p">,</span> <span class="n">core</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+
+<div class="viewcode-block" id="ParametersCls.set"><a class="viewcode-back" href="../../../../../../../../../Source_Bb_C2K_Bstation_PdChannel_SubPacket_Parameters.html#RsSmbv.Implementations.Source.Bb.C2K.Bstation.PdChannel.SubPacket.Parameters.ParametersCls.set">[docs]</a>	<span class="k">def</span> <span class="nf">set</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameters</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">Cdma2KmpPdchFiveColDn</span><span class="p">,</span> <span class="n">baseStation</span><span class="o">=</span><span class="n">repcap</span><span class="o">.</span><span class="n">BaseStation</span><span class="o">.</span><span class="n">Default</span><span class="p">,</span> <span class="n">subpacket</span><span class="o">=</span><span class="n">repcap</span><span class="o">.</span><span class="n">Subpacket</span><span class="o">.</span><span class="n">Default</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:C2K:BSTation&lt;ST&gt;:PDCHannel:SUBPacket&lt;DI&gt;:PARameters \n</span>
+<span class="sd">		Snippet: driver.source.bb.c2K.bstation.pdChannel.subPacket.parameters.set(parameters = enums.Cdma2KmpPdchFiveColDn._1, baseStation = repcap.BaseStation.Default, subpacket = repcap.Subpacket.Default) \n</span>
+<span class="sd">		Selects a fixed combination of parameters &#39;Bits per Encoder Packet&#39;, &#39;Number of 32-Chip Walsh Channels&#39;, &#39;Subpacket Data</span>
+<span class="sd">		Rate&#39;, &#39;Number of Slots per Subpackets&#39; and &#39;Modulation Order&#39;. These combinations are shown in the following list in the</span>
+<span class="sd">		form of a table for all five parameters. The complete range of 127 possible combinations is only available for subpacket</span>
+<span class="sd">		1. If &#39;Same Packet Setup for all Subpackets&#39; is enabled (SOUR:BB:C2K:BST2:PDCH:PSET ON) , this command is only valid for</span>
+<span class="sd">		subpacket 1.</span>
+<span class="sd">			Table Header: Parameter of command SOUR:BB:C2K:BST:PDCH:PAR / Number of Bits per Encoder Packet / Number of 32-Chip Walsh Channels / Subpacket Data Rate (kbps) / Number of Slots per Subpacket / Modulation Order \n</span>
+<span class="sd">			- 1 / 2328 / 28 / 1862.4 / 1 / 8-PSK</span>
+<span class="sd">			- 2 / 3864 / 27 / 1545.6 / 2 / QPSK</span>
+<span class="sd">			- 3 / 3096 / 26 / 2476.8 / 1 / 16-QAM</span>
+<span class="sd">			- 4 / 3864 / 26 / 3091.2 / 1 / 16-QAM</span>
+<span class="sd">			- 5 / 1560 / 25 / 1248.0 / 1 / QPSK</span>
+<span class="sd">			- 6 / 2328 / 25 / 1862.4 / 1 / 8-PSK</span>
+<span class="sd">			- 7 / 3096 / 25 / 1238.4 / 2 / QPSK</span>
+<span class="sd">			- 8 / 3864 / 25 / 1545.6 / 2 / 8-PSK</span>
+<span class="sd">			- 9 / 2328 / 23 / 931.2 / 2 / QPSK</span>
+<span class="sd">			- 10 / 2328 / 23 / 1862.4 / 1 / 16-QAM</span>
+<span class="sd">			- 11 / 3096 / 23 / 2476.8 / 1 / 16-QAM</span>
+<span class="sd">			- 12 / 3864 / 23 / 1545.6 / 2 / 8-PSK</span>
+<span class="sd">			- 13 / 1560 / 22 / 1248.0 / 1 / QPSK</span>
+<span class="sd">			- 14 / 3096 / 22 / 1238.4 / 2 / QPSK</span>
+<span class="sd">			- 15 / 1560 / 21 / 1248.0 / 1 / 8-PSK</span>
+<span class="sd">			- 16 / 3096 / 21 / 1238.4 / 2 / 8-PSK</span>
+<span class="sd">			- 17 / 3096 / 21 / 2476.8 / 1 / 16-QAM</span>
+<span class="sd">			- 18 / 3864 / 21 / 1545.6 / 2 / 8-PSK</span>
+<span class="sd">			- 19 / 1560 / 20 / 624.0 / 2 / QPSK</span>
+<span class="sd">			- 20 / 2328 / 20 / 465.6 / 4 / QPSK</span>
+<span class="sd">			- 21 / 2328 / 20 / 931.2 / 2 / QPSK</span>
+<span class="sd">			- 22 / 2328 / 20 / 1862.4 / 1 / 16-QAM</span>
+<span class="sd">			- 23 / 3096 / 20 / 619.2 / 4 / QPSK</span>
+<span class="sd">			- 24 / 408 / 19 / 326.4 / 1 / QPSK</span>
+<span class="sd">			- 25 / 792 / 19 / 316.8 / 2 / QPSK</span>
+<span class="sd">			- 26 / 792 / 19 / 633.6 / 1 / QPSK</span>
+<span class="sd">			- 27 / 1560 / 19 / 1248.0 / 1 / 8-PSK</span>
+<span class="sd">			- 28 / 3096 / 19 / 1238.4 / 2 / 8-PSK</span>
+<span class="sd">			- 29 / 3864 / 19 / 772.8 / 4 / QPSK</span>
+<span class="sd">			- 30 / 3864 / 19 / 1545.6 / 2 / 16-QAM</span>
+<span class="sd">			- 31 / 2328 / 18 / 1862.4 / 1 / 16-QAM</span>
+<span class="sd">			- 32 / 1560 / 17 / 1248.0 / 1 / 8-PSK</span>
+<span class="sd">			- 33 / 2328 / 17 / 931.2 / 2 / QPSK</span>
+<span class="sd">			- 34 / 3096 / 17 / 1238.4 / 2 / 8-PSK</span>
+<span class="sd">			- 35 / 3864 / 17 / 1545.6 / 2 / 16-QAM</span>
+<span class="sd">			- 36 / 2328 / 16 / 1862.4 / 1 / 16-QAM</span>
+<span class="sd">			- 37 / 3096 / 16 / 619.2 / 4 / QPSK</span>
+<span class="sd">			- 38 / 3864 / 16 / 772.8 / 4 / QPSK</span>
+<span class="sd">			- 39 / 792 / 15 / 633.6 / 1 / QPSK</span>
+<span class="sd">			- 40 / 1560 / 15 / 624.0 / 2 / QPSK</span>
+<span class="sd">			- 41 / 1560 / 15 / 1248.0 / 1 / 16-QAM</span>
+<span class="sd">			- 42 / 2328 / 15 / 931.2 / 2 / 8-PSK</span>
+<span class="sd">			- 43 / 3096 / 15 / 1238.4 / 2 / 16-QAM</span>
+<span class="sd">			- 44 / 3864 / 15 / 1545.6 / 2 / 16-QAM</span>
+<span class="sd">			- 45 / 1560 / 14 / 312.0 / 4 / QPSK</span>
+<span class="sd">			- 46 / 2328 / 14 / 465.6 / 4 / QPSK</span>
+<span class="sd">			- 47 / 3864 / 14 / 772.8 / 4 / QPSK</span>
+<span class="sd">			- 48 / 3864 / 14 / 1545.6 / 2 / 16-QAM</span>
+<span class="sd">			- 49 / 792 / 13 / 633.6 / 1 / QPSK</span>
+<span class="sd">			- 50 / 1560 / 13 / 624.0 / 2 / QPSK</span>
+<span class="sd">			- 51 / 1560 / 13 / 1248.0 / 1 / 16-QAM</span>
+<span class="sd">			- 52 / 2328 / 13 / 931.2 / 2 / 8-PSK</span>
+<span class="sd">			- 53 / 3096 / 13 / 619.2 / 4 / QPSK</span>
+<span class="sd">			- 54 / 3096 / 13 / 1238.4 / 2 / 16-QAM</span>
+<span class="sd">			- 55 / 3864 / 13 / 1545.6 / 2 / 16-QAM</span>
+<span class="sd">			- 56 / 1560 / 12 / 1248.0 / 1 / 16-QAM</span>
+<span class="sd">			- 57 / 3096 / 12 / 1238.4 / 2 / 16-QAM</span>
+<span class="sd">			- 58 / 3864 / 12 / 772.8 / 4 / 8-PSK</span>
+<span class="sd">			- 59 / 408 / 11 / 326.4 / 1 / QPSK</span>
+<span class="sd">			- 60 / 792 / 11 / 158.4 / 4 / QPSK</span>
+<span class="sd">			- 61 / 792 / 11 / 316.8 / 2 / QPSK</span>
+<span class="sd">			- 62 / 792 / 11 / 633.6 / 1 / QPSK</span>
+<span class="sd">			- 63 / 1560 / 11 / 624.0 / 2 / QPSK</span>
+<span class="sd">			- 64 / 1560 / 11 / 1248.0 / 1 / 16-QAM</span>
+<span class="sd">			- 65 / 2328 / 11 / 465.6 / 4 / QPSK</span>
+<span class="sd">			- 66 / 2328 / 11 / 931.2 / 2 / 16-QAM</span>
+<span class="sd">			- 67 / 3096 / 11 / 619.2 / 4 / QPSK</span>
+<span class="sd">			- 68 / 3096 / 11 / 1238.4 / 2 / 16-QAM</span>
+<span class="sd">			- 69 / 3864 / 11 / 772.8 / 4 / 8-PSK</span>
+<span class="sd">			- 70 / 792 / 10 / 633.6 / 1 / 8-PSK</span>
+<span class="sd">			- 71 / 1560 / 10 / 624.0 / 2 / 8-PSK</span>
+<span class="sd">			- 72 / 2328 / 10 / 931.2 / 2 / 16-QAM</span>
+<span class="sd">			- 73 / 3096 / 10 / 619.2 / 4 / 8-PSK</span>
+<span class="sd">			- 74 / 792 / 9 / 633.6 / 1 / 8-PSK</span>
+<span class="sd">			- 75 / 1560 / 9 / 312.0 / 4 / QPSK</span>
+<span class="sd">			- 76 / 1560 / 9 / 624.0 / 2 / 8-PSK</span>
+<span class="sd">			- 77 / 2328 / 9 / 465.6 / 4 / QPSK</span>
+<span class="sd">			- 78 / 2328 / 9 / 931.2 / 2 / 16-QAM</span>
+<span class="sd">			- 79 / 3096 / 9 / 619.2 / 4 / 8-PSK</span>
+<span class="sd">			- 80 / 3864 / 9 / 772.8 / 4 / 16-QAM</span>
+<span class="sd">			- 81 / 408 / 8 / 163.2 / 2 / QPSK</span>
+<span class="sd">			- 82 / 408 / 8 / 326.4 / 1 / QPSK</span>
+<span class="sd">			- 83 / 792 / 8 / 316.8 / 2 / QPSK</span>
+<span class="sd">			- 84 / 792 / 8 / 633.6 / 1 / 16-QAM</span>
+<span class="sd">			- 85 / 1560 / 8 / 624.0 / 2 / 16-QAM</span>
+<span class="sd">			- 86 / 2328 / 8 / 465.6 / 4 / 8-PSK</span>
+<span class="sd">			- 87 / 2328 / 8 / 931.2 / 2 / 16-QAM</span>
+<span class="sd">			- 88 / 3096 / 8 / 619.2 / 4 / 16-QAM</span>
+<span class="sd">			- 89 / 3864 / 8 / 772.8 / 4 / 16-QAM</span>
+<span class="sd">			- 90 / 408 / 7 / 326.4 / 1 / QPSK</span>
+<span class="sd">			- 91 / 792 / 7 / 316.8 / 2 / QPSK</span>
+<span class="sd">			- 92 / 792 / 7 / 633.6 / 1 / 16-QAM</span>
+<span class="sd">			- 93 / 1560 / 7 / 312.0 / 4 / QPSK</span>
+<span class="sd">			- 94 / 1560 / 7 / 624.0 / 2 / 16-QAM</span>
+<span class="sd">			- 95 / 2328 / 7 / 465.6 / 4 / 8-PSK</span>
+<span class="sd">			- 96 / 3096 / 7 / 619.2 / 4 / 16-QAM</span>
+<span class="sd">			- 97 / 3864 / 7 / 772.8 / 4 / 16-QAM</span>
+<span class="sd">			- 98 / 408 / 6 / 326.4 / 1 / QPSK</span>
+<span class="sd">			- 99 / 792 / 6 / 158.4 / 4 / QPSK</span>
+<span class="sd">			- 100 / 792 / 6 / 316.8 / 2 / QPSK</span>
+<span class="sd">			- 101 / 792 / 6 / 633.6 / 1 / 16-QAM</span>
+<span class="sd">			- 102 / 1560 / 6 / 312.0 / 4 / QPSK</span>
+<span class="sd">			- 103 / 1560 / 6 / 624.0 / 2 / 16-QAM</span>
+<span class="sd">			- 104 / 2328 / 6 / 465.6 / 4 / 16-QAM</span>
+<span class="sd">			- 105 / 3096 / 6 / 619.2 / 4 / 16-QAM</span>
+<span class="sd">			- 106 / 408 / 5 / 163.2 / 2 / QPSK</span>
+<span class="sd">			- 107 / 408 / 5 / 326.4 / 1 / 8-PSK</span>
+<span class="sd">			- 108 / 792 / 5 / 316.8 / 2 / 8-PSK</span>
+<span class="sd">			- 109 / 1560 / 5 / 312.0 / 4 / 8-PSK</span>
+<span class="sd">			- 110 / 2328 / 5 / 465.6 / 4 / 16-QAM</span>
+<span class="sd">			- 111 / 408 / 4 / 81.6 / 4 / QPSK</span>
+<span class="sd">			- 112 / 408 / 4 / 163.2 / 2 / QPSK</span>
+<span class="sd">			- 113 / 408 / 4 / 326.4 / 1 / 16-QAM</span>
+<span class="sd">			- 114 / 792 / 4 / 158.4 / 4 / QPSK</span>
+<span class="sd">			- 115 / 792 / 4 / 316.8 / 2 / 16-QAM</span>
+<span class="sd">			- 116 / 1560 / 4 / 312.0 / 4 / 16-QAM</span>
+<span class="sd">			- 117 / 2328 / 4 / 465.6 / 4 / 16-QAM</span>
+<span class="sd">			- 118 / 408 / 3 / 81.6 / 4 / QPSK</span>
+<span class="sd">			- 119 / 408 / 3 / 163.2 / 2 / QPSK</span>
+<span class="sd">			- 120 / 408 / 3 / 326.4 / 1 / 16-QAM</span>
+<span class="sd">			- 121 / 792 / 3 / 158.4 / 4 / QPSK</span>
+<span class="sd">			- 122 / 792 / 3 / 316.8 / 2 / 16-QAM</span>
+<span class="sd">			- 123 / 1560 / 3 / 312.0 / 4 / 16-QAM</span>
+<span class="sd">			- 124 / 408 / 2 / 81.6 / 4 / QPSK</span>
+<span class="sd">			- 125 / 408 / 2 / 163.2 / 2 / 16-QAM</span>
+<span class="sd">			- 126 / 792 / 2 / 158.4 / 4 / 16-QAM</span>
+<span class="sd">			- 127 / 408 / 1 / 81.6 / 4 / 16-QAM \n</span>
+<span class="sd">			:param parameters: 1 to 127</span>
+<span class="sd">			:param baseStation: optional repeated capability selector. Default value: Nr1 (settable in the interface &#39;Bstation&#39;)</span>
+<span class="sd">			:param subpacket: optional repeated capability selector. Default value: Nr1 (settable in the interface &#39;SubPacket&#39;)</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">Cdma2KmpPdchFiveColDn</span><span class="p">)</span>
+		<span class="n">baseStation_cmd_val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">get_repcap_cmd_value</span><span class="p">(</span><span class="n">baseStation</span><span class="p">,</span> <span class="n">repcap</span><span class="o">.</span><span class="n">BaseStation</span><span class="p">)</span>
+		<span class="n">subpacket_cmd_val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">get_repcap_cmd_value</span><span class="p">(</span><span class="n">subpacket</span><span class="p">,</span> <span class="n">repcap</span><span class="o">.</span><span class="n">Subpacket</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:C2K:BSTation</span><span class="si">{</span><span class="n">baseStation_cmd_val</span><span class="si">}</span><span class="s1">:PDCHannel:SUBPacket</span><span class="si">{</span><span class="n">subpacket_cmd_val</span><span class="si">}</span><span class="s1">:PARameters </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="ParametersCls.get"><a class="viewcode-back" href="../../../../../../../../../Source_Bb_C2K_Bstation_PdChannel_SubPacket_Parameters.html#RsSmbv.Implementations.Source.Bb.C2K.Bstation.PdChannel.SubPacket.Parameters.ParametersCls.get">[docs]</a>	<span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">baseStation</span><span class="o">=</span><span class="n">repcap</span><span class="o">.</span><span class="n">BaseStation</span><span class="o">.</span><span class="n">Default</span><span class="p">,</span> <span class="n">subpacket</span><span class="o">=</span><span class="n">repcap</span><span class="o">.</span><span class="n">Subpacket</span><span class="o">.</span><span class="n">Default</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">Cdma2KmpPdchFiveColDn</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:C2K:BSTation&lt;ST&gt;:PDCHannel:SUBPacket&lt;DI&gt;:PARameters \n</span>
+<span class="sd">		Snippet: value: enums.Cdma2KmpPdchFiveColDn = driver.source.bb.c2K.bstation.pdChannel.subPacket.parameters.get(baseStation = repcap.BaseStation.Default, subpacket = repcap.Subpacket.Default) \n</span>
+<span class="sd">		Selects a fixed combination of parameters &#39;Bits per Encoder Packet&#39;, &#39;Number of 32-Chip Walsh Channels&#39;, &#39;Subpacket Data</span>
+<span class="sd">		Rate&#39;, &#39;Number of Slots per Subpackets&#39; and &#39;Modulation Order&#39;. These combinations are shown in the following list in the</span>
+<span class="sd">		form of a table for all five parameters. The complete range of 127 possible combinations is only available for subpacket</span>
+<span class="sd">		1. If &#39;Same Packet Setup for all Subpackets&#39; is enabled (SOUR:BB:C2K:BST2:PDCH:PSET ON) , this command is only valid for</span>
+<span class="sd">		subpacket 1.</span>
+<span class="sd">			Table Header: Parameter of command SOUR:BB:C2K:BST:PDCH:PAR / Number of Bits per Encoder Packet / Number of 32-Chip Walsh Channels / Subpacket Data Rate (kbps) / Number of Slots per Subpacket / Modulation Order \n</span>
+<span class="sd">			- 1 / 2328 / 28 / 1862.4 / 1 / 8-PSK</span>
+<span class="sd">			- 2 / 3864 / 27 / 1545.6 / 2 / QPSK</span>
+<span class="sd">			- 3 / 3096 / 26 / 2476.8 / 1 / 16-QAM</span>
+<span class="sd">			- 4 / 3864 / 26 / 3091.2 / 1 / 16-QAM</span>
+<span class="sd">			- 5 / 1560 / 25 / 1248.0 / 1 / QPSK</span>
+<span class="sd">			- 6 / 2328 / 25 / 1862.4 / 1 / 8-PSK</span>
+<span class="sd">			- 7 / 3096 / 25 / 1238.4 / 2 / QPSK</span>
+<span class="sd">			- 8 / 3864 / 25 / 1545.6 / 2 / 8-PSK</span>
+<span class="sd">			- 9 / 2328 / 23 / 931.2 / 2 / QPSK</span>
+<span class="sd">			- 10 / 2328 / 23 / 1862.4 / 1 / 16-QAM</span>
+<span class="sd">			- 11 / 3096 / 23 / 2476.8 / 1 / 16-QAM</span>
+<span class="sd">			- 12 / 3864 / 23 / 1545.6 / 2 / 8-PSK</span>
+<span class="sd">			- 13 / 1560 / 22 / 1248.0 / 1 / QPSK</span>
+<span class="sd">			- 14 / 3096 / 22 / 1238.4 / 2 / QPSK</span>
+<span class="sd">			- 15 / 1560 / 21 / 1248.0 / 1 / 8-PSK</span>
+<span class="sd">			- 16 / 3096 / 21 / 1238.4 / 2 / 8-PSK</span>
+<span class="sd">			- 17 / 3096 / 21 / 2476.8 / 1 / 16-QAM</span>
+<span class="sd">			- 18 / 3864 / 21 / 1545.6 / 2 / 8-PSK</span>
+<span class="sd">			- 19 / 1560 / 20 / 624.0 / 2 / QPSK</span>
+<span class="sd">			- 20 / 2328 / 20 / 465.6 / 4 / QPSK</span>
+<span class="sd">			- 21 / 2328 / 20 / 931.2 / 2 / QPSK</span>
+<span class="sd">			- 22 / 2328 / 20 / 1862.4 / 1 / 16-QAM</span>
+<span class="sd">			- 23 / 3096 / 20 / 619.2 / 4 / QPSK</span>
+<span class="sd">			- 24 / 408 / 19 / 326.4 / 1 / QPSK</span>
+<span class="sd">			- 25 / 792 / 19 / 316.8 / 2 / QPSK</span>
+<span class="sd">			- 26 / 792 / 19 / 633.6 / 1 / QPSK</span>
+<span class="sd">			- 27 / 1560 / 19 / 1248.0 / 1 / 8-PSK</span>
+<span class="sd">			- 28 / 3096 / 19 / 1238.4 / 2 / 8-PSK</span>
+<span class="sd">			- 29 / 3864 / 19 / 772.8 / 4 / QPSK</span>
+<span class="sd">			- 30 / 3864 / 19 / 1545.6 / 2 / 16-QAM</span>
+<span class="sd">			- 31 / 2328 / 18 / 1862.4 / 1 / 16-QAM</span>
+<span class="sd">			- 32 / 1560 / 17 / 1248.0 / 1 / 8-PSK</span>
+<span class="sd">			- 33 / 2328 / 17 / 931.2 / 2 / QPSK</span>
+<span class="sd">			- 34 / 3096 / 17 / 1238.4 / 2 / 8-PSK</span>
+<span class="sd">			- 35 / 3864 / 17 / 1545.6 / 2 / 16-QAM</span>
+<span class="sd">			- 36 / 2328 / 16 / 1862.4 / 1 / 16-QAM</span>
+<span class="sd">			- 37 / 3096 / 16 / 619.2 / 4 / QPSK</span>
+<span class="sd">			- 38 / 3864 / 16 / 772.8 / 4 / QPSK</span>
+<span class="sd">			- 39 / 792 / 15 / 633.6 / 1 / QPSK</span>
+<span class="sd">			- 40 / 1560 / 15 / 624.0 / 2 / QPSK</span>
+<span class="sd">			- 41 / 1560 / 15 / 1248.0 / 1 / 16-QAM</span>
+<span class="sd">			- 42 / 2328 / 15 / 931.2 / 2 / 8-PSK</span>
+<span class="sd">			- 43 / 3096 / 15 / 1238.4 / 2 / 16-QAM</span>
+<span class="sd">			- 44 / 3864 / 15 / 1545.6 / 2 / 16-QAM</span>
+<span class="sd">			- 45 / 1560 / 14 / 312.0 / 4 / QPSK</span>
+<span class="sd">			- 46 / 2328 / 14 / 465.6 / 4 / QPSK</span>
+<span class="sd">			- 47 / 3864 / 14 / 772.8 / 4 / QPSK</span>
+<span class="sd">			- 48 / 3864 / 14 / 1545.6 / 2 / 16-QAM</span>
+<span class="sd">			- 49 / 792 / 13 / 633.6 / 1 / QPSK</span>
+<span class="sd">			- 50 / 1560 / 13 / 624.0 / 2 / QPSK</span>
+<span class="sd">			- 51 / 1560 / 13 / 1248.0 / 1 / 16-QAM</span>
+<span class="sd">			- 52 / 2328 / 13 / 931.2 / 2 / 8-PSK</span>
+<span class="sd">			- 53 / 3096 / 13 / 619.2 / 4 / QPSK</span>
+<span class="sd">			- 54 / 3096 / 13 / 1238.4 / 2 / 16-QAM</span>
+<span class="sd">			- 55 / 3864 / 13 / 1545.6 / 2 / 16-QAM</span>
+<span class="sd">			- 56 / 1560 / 12 / 1248.0 / 1 / 16-QAM</span>
+<span class="sd">			- 57 / 3096 / 12 / 1238.4 / 2 / 16-QAM</span>
+<span class="sd">			- 58 / 3864 / 12 / 772.8 / 4 / 8-PSK</span>
+<span class="sd">			- 59 / 408 / 11 / 326.4 / 1 / QPSK</span>
+<span class="sd">			- 60 / 792 / 11 / 158.4 / 4 / QPSK</span>
+<span class="sd">			- 61 / 792 / 11 / 316.8 / 2 / QPSK</span>
+<span class="sd">			- 62 / 792 / 11 / 633.6 / 1 / QPSK</span>
+<span class="sd">			- 63 / 1560 / 11 / 624.0 / 2 / QPSK</span>
+<span class="sd">			- 64 / 1560 / 11 / 1248.0 / 1 / 16-QAM</span>
+<span class="sd">			- 65 / 2328 / 11 / 465.6 / 4 / QPSK</span>
+<span class="sd">			- 66 / 2328 / 11 / 931.2 / 2 / 16-QAM</span>
+<span class="sd">			- 67 / 3096 / 11 / 619.2 / 4 / QPSK</span>
+<span class="sd">			- 68 / 3096 / 11 / 1238.4 / 2 / 16-QAM</span>
+<span class="sd">			- 69 / 3864 / 11 / 772.8 / 4 / 8-PSK</span>
+<span class="sd">			- 70 / 792 / 10 / 633.6 / 1 / 8-PSK</span>
+<span class="sd">			- 71 / 1560 / 10 / 624.0 / 2 / 8-PSK</span>
+<span class="sd">			- 72 / 2328 / 10 / 931.2 / 2 / 16-QAM</span>
+<span class="sd">			- 73 / 3096 / 10 / 619.2 / 4 / 8-PSK</span>
+<span class="sd">			- 74 / 792 / 9 / 633.6 / 1 / 8-PSK</span>
+<span class="sd">			- 75 / 1560 / 9 / 312.0 / 4 / QPSK</span>
+<span class="sd">			- 76 / 1560 / 9 / 624.0 / 2 / 8-PSK</span>
+<span class="sd">			- 77 / 2328 / 9 / 465.6 / 4 / QPSK</span>
+<span class="sd">			- 78 / 2328 / 9 / 931.2 / 2 / 16-QAM</span>
+<span class="sd">			- 79 / 3096 / 9 / 619.2 / 4 / 8-PSK</span>
+<span class="sd">			- 80 / 3864 / 9 / 772.8 / 4 / 16-QAM</span>
+<span class="sd">			- 81 / 408 / 8 / 163.2 / 2 / QPSK</span>
+<span class="sd">			- 82 / 408 / 8 / 326.4 / 1 / QPSK</span>
+<span class="sd">			- 83 / 792 / 8 / 316.8 / 2 / QPSK</span>
+<span class="sd">			- 84 / 792 / 8 / 633.6 / 1 / 16-QAM</span>
+<span class="sd">			- 85 / 1560 / 8 / 624.0 / 2 / 16-QAM</span>
+<span class="sd">			- 86 / 2328 / 8 / 465.6 / 4 / 8-PSK</span>
+<span class="sd">			- 87 / 2328 / 8 / 931.2 / 2 / 16-QAM</span>
+<span class="sd">			- 88 / 3096 / 8 / 619.2 / 4 / 16-QAM</span>
+<span class="sd">			- 89 / 3864 / 8 / 772.8 / 4 / 16-QAM</span>
+<span class="sd">			- 90 / 408 / 7 / 326.4 / 1 / QPSK</span>
+<span class="sd">			- 91 / 792 / 7 / 316.8 / 2 / QPSK</span>
+<span class="sd">			- 92 / 792 / 7 / 633.6 / 1 / 16-QAM</span>
+<span class="sd">			- 93 / 1560 / 7 / 312.0 / 4 / QPSK</span>
+<span class="sd">			- 94 / 1560 / 7 / 624.0 / 2 / 16-QAM</span>
+<span class="sd">			- 95 / 2328 / 7 / 465.6 / 4 / 8-PSK</span>
+<span class="sd">			- 96 / 3096 / 7 / 619.2 / 4 / 16-QAM</span>
+<span class="sd">			- 97 / 3864 / 7 / 772.8 / 4 / 16-QAM</span>
+<span class="sd">			- 98 / 408 / 6 / 326.4 / 1 / QPSK</span>
+<span class="sd">			- 99 / 792 / 6 / 158.4 / 4 / QPSK</span>
+<span class="sd">			- 100 / 792 / 6 / 316.8 / 2 / QPSK</span>
+<span class="sd">			- 101 / 792 / 6 / 633.6 / 1 / 16-QAM</span>
+<span class="sd">			- 102 / 1560 / 6 / 312.0 / 4 / QPSK</span>
+<span class="sd">			- 103 / 1560 / 6 / 624.0 / 2 / 16-QAM</span>
+<span class="sd">			- 104 / 2328 / 6 / 465.6 / 4 / 16-QAM</span>
+<span class="sd">			- 105 / 3096 / 6 / 619.2 / 4 / 16-QAM</span>
+<span class="sd">			- 106 / 408 / 5 / 163.2 / 2 / QPSK</span>
+<span class="sd">			- 107 / 408 / 5 / 326.4 / 1 / 8-PSK</span>
+<span class="sd">			- 108 / 792 / 5 / 316.8 / 2 / 8-PSK</span>
+<span class="sd">			- 109 / 1560 / 5 / 312.0 / 4 / 8-PSK</span>
+<span class="sd">			- 110 / 2328 / 5 / 465.6 / 4 / 16-QAM</span>
+<span class="sd">			- 111 / 408 / 4 / 81.6 / 4 / QPSK</span>
+<span class="sd">			- 112 / 408 / 4 / 163.2 / 2 / QPSK</span>
+<span class="sd">			- 113 / 408 / 4 / 326.4 / 1 / 16-QAM</span>
+<span class="sd">			- 114 / 792 / 4 / 158.4 / 4 / QPSK</span>
+<span class="sd">			- 115 / 792 / 4 / 316.8 / 2 / 16-QAM</span>
+<span class="sd">			- 116 / 1560 / 4 / 312.0 / 4 / 16-QAM</span>
+<span class="sd">			- 117 / 2328 / 4 / 465.6 / 4 / 16-QAM</span>
+<span class="sd">			- 118 / 408 / 3 / 81.6 / 4 / QPSK</span>
+<span class="sd">			- 119 / 408 / 3 / 163.2 / 2 / QPSK</span>
+<span class="sd">			- 120 / 408 / 3 / 326.4 / 1 / 16-QAM</span>
+<span class="sd">			- 121 / 792 / 3 / 158.4 / 4 / QPSK</span>
+<span class="sd">			- 122 / 792 / 3 / 316.8 / 2 / 16-QAM</span>
+<span class="sd">			- 123 / 1560 / 3 / 312.0 / 4 / 16-QAM</span>
+<span class="sd">			- 124 / 408 / 2 / 81.6 / 4 / QPSK</span>
+<span class="sd">			- 125 / 408 / 2 / 163.2 / 2 / 16-QAM</span>
+<span class="sd">			- 126 / 792 / 2 / 158.4 / 4 / 16-QAM</span>
+<span class="sd">			- 127 / 408 / 1 / 81.6 / 4 / 16-QAM \n</span>
+<span class="sd">			:param baseStation: optional repeated capability selector. Default value: Nr1 (settable in the interface &#39;Bstation&#39;)</span>
+<span class="sd">			:param subpacket: optional repeated capability selector. Default value: Nr1 (settable in the interface &#39;SubPacket&#39;)</span>
+<span class="sd">			:return: parameters: 1 to 127&quot;&quot;&quot;</span>
+		<span class="n">baseStation_cmd_val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">get_repcap_cmd_value</span><span class="p">(</span><span class="n">baseStation</span><span class="p">,</span> <span class="n">repcap</span><span class="o">.</span><span class="n">BaseStation</span><span class="p">)</span>
+		<span class="n">subpacket_cmd_val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">get_repcap_cmd_value</span><span class="p">(</span><span class="n">subpacket</span><span class="p">,</span> <span class="n">repcap</span><span class="o">.</span><span class="n">Subpacket</span><span class="p">)</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:C2K:BSTation</span><span class="si">{</span><span class="n">baseStation_cmd_val</span><span class="si">}</span><span class="s1">:PDCHannel:SUBPacket</span><span class="si">{</span><span class="n">subpacket_cmd_val</span><span class="si">}</span><span class="s1">:PARameters?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">Cdma2KmpPdchFiveColDn</span><span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

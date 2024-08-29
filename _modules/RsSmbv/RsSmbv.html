@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RsSmbv.RsSmbv &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../RsSmbv.html">RsSmbv API Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+      <li>RsSmbv.RsSmbv</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for RsSmbv.RsSmbv</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">ClassVar</span><span class="p">,</span> <span class="n">List</span>
+
+<span class="kn">from</span> <span class="nn">.Internal.Core</span> <span class="kn">import</span> <span class="n">Core</span>
+<span class="kn">from</span> <span class="nn">.Internal.InstrumentErrors</span> <span class="kn">import</span> <span class="n">RsInstrException</span>
+<span class="kn">from</span> <span class="nn">.Internal.CommandsGroup</span> <span class="kn">import</span> <span class="n">CommandsGroup</span>
+<span class="kn">from</span> <span class="nn">.Internal.VisaSession</span> <span class="kn">import</span> <span class="n">VisaSession</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">repcap</span>
+<span class="kn">from</span> <span class="nn">.Internal.RepeatedCapability</span> <span class="kn">import</span> <span class="n">RepeatedCapability</span>
+
+
+<span class="c1"># noinspection PyPep8Naming,PyAttributeOutsideInit,SpellCheckingInspection</span>
+<div class="viewcode-block" id="RsSmbv"><a class="viewcode-back" href="../../RsSmbv.html#RsSmbv.RsSmbv">[docs]</a><span class="k">class</span> <span class="nc">RsSmbv</span><span class="p">:</span>
+	<span class="sd">&quot;&quot;&quot;9671 total commands, 27 Subgroups, 0 group commands&quot;&quot;&quot;</span>
+	<span class="n">_driver_options</span> <span class="o">=</span> <span class="s2">&quot;SupportedInstrModels = SMW/SMBV/SMCV, SupportedIdnPatterns = SMW/SMBV/SMCV, SimulationIdnString = &#39;Rohde&amp;Schwarz,SMBV100B,100001,5.30.48.0029&#39;&quot;</span>
+	<span class="n">_global_logging_relative_timestamp</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="n">datetime</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+	<span class="n">_global_logging_target_stream</span><span class="p">:</span> <span class="n">ClassVar</span> <span class="o">=</span> <span class="kc">None</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resource_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">id_query</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">reset</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">options</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">direct_session</span><span class="p">:</span> <span class="nb">object</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;Initializes new RsSmbv session. \n</span>
+<span class="sd">		Parameter options tokens examples:</span>
+<span class="sd">			- ``Simulate=True`` - starts the session in simulation mode. Default: ``False``</span>
+<span class="sd">			- ``SelectVisa=socket`` - uses no VISA implementation for socket connections - you do not need any VISA-C installation</span>
+<span class="sd">			- ``SelectVisa=rs`` - forces usage of RohdeSchwarz Visa</span>
+<span class="sd">			- ``SelectVisa=ivi`` - forces usage of National Instruments Visa</span>
+<span class="sd">			- ``QueryInstrumentStatus = False`` - same as ``driver.utilities.instrument_status_checking = False``. Default: ``True``</span>
+<span class="sd">			- ``WriteDelay = 20, ReadDelay = 5`` - Introduces delay of 20ms before each write and 5ms before each read. Default: ``0ms`` for both</span>
+<span class="sd">			- ``OpcWaitMode = OpcQuery`` - mode for all the opc-synchronised write/reads. Other modes: StbPolling, StbPollingSlow, StbPollingSuperSlow. Default: ``StbPolling``</span>
+<span class="sd">			- ``AddTermCharToWriteBinBLock = True`` - Adds one additional LF to the end of the binary data (some instruments require that). Default: ``False``</span>
+<span class="sd">			- ``AssureWriteWithTermChar = True`` - Makes sure each command/query is terminated with termination character. Default: Interface dependent</span>
+<span class="sd">			- ``TerminationCharacter = &quot;\\r&quot;`` - Sets the termination character for reading. Default: ``\\n`` (LineFeed or LF)</span>
+<span class="sd">			- ``DataChunkSize = 10E3`` - Maximum size of one write/read segment. If transferred data is bigger, it is split to more segments. Default: ``1E6`` bytes</span>
+<span class="sd">			- ``OpcTimeout = 10000`` - same as driver.utilities.opc_timeout = 10000. Default: ``30000ms``</span>
+<span class="sd">			- ``VisaTimeout = 5000`` - same as driver.utilities.visa_timeout = 5000. Default: ``10000ms``</span>
+<span class="sd">			- ``ViClearExeMode = Disabled`` - viClear() execution mode. Default: ``execute_on_all``</span>
+<span class="sd">			- ``OpcQueryAfterWrite = True`` - same as driver.utilities.opc_query_after_write = True. Default: ``False``</span>
+<span class="sd">			- ``StbInErrorCheck = False`` - if true, the driver checks errors with *STB? If false, it uses SYST:ERR?. Default: ``True``</span>
+<span class="sd">			- ``ScpiQuotes = double&#39;. - for SCPI commands, you can define how strings are quoted. With single or double quotes. Possible values: single | double | {char}. Default: ``single``</span>
+<span class="sd">			- ``LoggingMode = On`` - Sets the logging status right from the start. Default: ``Off``</span>
+<span class="sd">			- ``LoggingName = &#39;MyDevice&#39;`` - Sets the name to represent the session in the log entries. Default: ``&#39;resource_name&#39;``</span>
+<span class="sd">			- ``LogToGlobalTarget = True`` - Sets the logging target to the class-property previously set with RsSmbv.set_global_logging_target() Default: ``False``</span>
+<span class="sd">			- ``LoggingToConsole = True`` - Immediately starts logging to the console. Default: False</span>
+<span class="sd">			- ``LoggingToUdp = True`` - Immediately starts logging to the UDP port. Default: False</span>
+<span class="sd">			- ``LoggingUdpPort = 49200`` - UDP port to log to. Default: 49200</span>
+<span class="sd">		:param resource_name: VISA resource name, e.g. &#39;TCPIP::192.168.2.1::INSTR&#39;</span>
+<span class="sd">		:param id_query: if True, the instrument&#39;s model name is verified against the models supported by the driver and eventually throws an exception.</span>
+<span class="sd">		:param reset: Resets the instrument (sends *RST command) and clears its status sybsystem.</span>
+<span class="sd">		:param options: string tokens alternating the driver settings.</span>
+<span class="sd">		:param direct_session: Another driver object or pyVisa object to reuse the session instead of opening a new session.&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span> <span class="o">=</span> <span class="n">Core</span><span class="p">(</span><span class="n">resource_name</span><span class="p">,</span> <span class="n">id_query</span><span class="p">,</span> <span class="n">reset</span><span class="p">,</span> <span class="n">RsSmbv</span><span class="o">.</span><span class="n">_driver_options</span><span class="p">,</span> <span class="n">options</span><span class="p">,</span> <span class="n">direct_session</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">driver_version</span> <span class="o">=</span> <span class="s1">&#39;5.30.48.0029&#39;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_options</span> <span class="o">=</span> <span class="n">options</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_add_all_global_repcaps</span><span class="p">()</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_custom_properties_init</span><span class="p">()</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">default_instrument_setup</span><span class="p">()</span>
+		<span class="c1"># noinspection PyTypeChecker</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span> <span class="o">=</span> <span class="n">CommandsGroup</span><span class="p">(</span><span class="s2">&quot;ROOT&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+<div class="viewcode-block" id="RsSmbv.from_existing_session"><a class="viewcode-back" href="../../RsSmbv.html#RsSmbv.RsSmbv.from_existing_session">[docs]</a>	<span class="nd">@classmethod</span>
+	<span class="k">def</span> <span class="nf">from_existing_session</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">session</span><span class="p">:</span> <span class="nb">object</span><span class="p">,</span> <span class="n">options</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;RsSmbv&#39;</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Creates a new RsSmbv object with the entered &#39;session&#39; reused. \n</span>
+<span class="sd">		:param session: can be another driver or a direct pyvisa session.</span>
+<span class="sd">		:param options: string tokens alternating the driver settings.&quot;&quot;&quot;</span>
+		<span class="c1"># noinspection PyTypeChecker</span>
+		<span class="n">resource_name</span> <span class="o">=</span> <span class="kc">None</span>
+		<span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">session</span><span class="p">,</span> <span class="s1">&#39;resource_name&#39;</span><span class="p">):</span>
+			<span class="n">resource_name</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">session</span><span class="p">,</span> <span class="s1">&#39;resource_name&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">resource_name</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="n">options</span><span class="p">,</span> <span class="n">session</span><span class="p">)</span></div>
+		
+<div class="viewcode-block" id="RsSmbv.set_global_logging_target"><a class="viewcode-back" href="../../RsSmbv.html#RsSmbv.RsSmbv.set_global_logging_target">[docs]</a>	<span class="nd">@classmethod</span>
+	<span class="k">def</span> <span class="nf">set_global_logging_target</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Sets global common target stream that each instance can use. To use it, call the following: io.utilities.logger.set_logging_target_global().</span>
+<span class="sd">		If an instance uses global logging target, it automatically uses the global relative timestamp (if set).</span>
+<span class="sd">		You can set the target to None to invalidate it.&quot;&quot;&quot;</span>
+		<span class="bp">cls</span><span class="o">.</span><span class="n">_global_logging_target_stream</span> <span class="o">=</span> <span class="n">target</span></div>
+
+<div class="viewcode-block" id="RsSmbv.get_global_logging_target"><a class="viewcode-back" href="../../RsSmbv.html#RsSmbv.RsSmbv.get_global_logging_target">[docs]</a>	<span class="nd">@classmethod</span>
+	<span class="k">def</span> <span class="nf">get_global_logging_target</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;Returns global common target stream.&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_global_logging_target_stream</span></div>
+
+<div class="viewcode-block" id="RsSmbv.set_global_logging_relative_timestamp"><a class="viewcode-back" href="../../RsSmbv.html#RsSmbv.RsSmbv.set_global_logging_relative_timestamp">[docs]</a>	<span class="nd">@classmethod</span>
+	<span class="k">def</span> <span class="nf">set_global_logging_relative_timestamp</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">timestamp</span><span class="p">:</span> <span class="n">datetime</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Sets global common relative timestamp for log entries. To use it, call the following: io.utilities.logger.set_relative_timestamp_global()&quot;&quot;&quot;</span>
+		<span class="bp">cls</span><span class="o">.</span><span class="n">_global_logging_relative_timestamp</span> <span class="o">=</span> <span class="n">timestamp</span></div>
+
+<div class="viewcode-block" id="RsSmbv.set_global_logging_relative_timestamp_now"><a class="viewcode-back" href="../../RsSmbv.html#RsSmbv.RsSmbv.set_global_logging_relative_timestamp_now">[docs]</a>	<span class="nd">@classmethod</span>
+	<span class="k">def</span> <span class="nf">set_global_logging_relative_timestamp_now</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Sets global common relative timestamp for log entries to this moment.</span>
+<span class="sd">		To use it, call the following: io.utilities.logger.set_relative_timestamp_global().&quot;&quot;&quot;</span>
+		<span class="bp">cls</span><span class="o">.</span><span class="n">_global_logging_relative_timestamp</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="RsSmbv.clear_global_logging_relative_timestamp"><a class="viewcode-back" href="../../RsSmbv.html#RsSmbv.RsSmbv.clear_global_logging_relative_timestamp">[docs]</a>	<span class="nd">@classmethod</span>
+	<span class="k">def</span> <span class="nf">clear_global_logging_relative_timestamp</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Clears the global relative timestamp. After this, all the instances using the global relative timestamp continue logging with the absolute timestamps.&quot;&quot;&quot;</span>
+		<span class="c1"># noinspection PyTypeChecker</span>
+		<span class="bp">cls</span><span class="o">.</span><span class="n">_global_logging_relative_timestamp</span> <span class="o">=</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="RsSmbv.get_global_logging_relative_timestamp"><a class="viewcode-back" href="../../RsSmbv.html#RsSmbv.RsSmbv.get_global_logging_relative_timestamp">[docs]</a>	<span class="nd">@classmethod</span>
+	<span class="k">def</span> <span class="nf">get_global_logging_relative_timestamp</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">datetime</span> <span class="ow">or</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Returns global common relative timestamp for log entries.&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_global_logging_relative_timestamp</span></div>
+
+	<span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+		<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="p">:</span>
+			<span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;RsSmbv session &#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">resource_name</span><span class="si">}</span><span class="s2">&#39;&quot;</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;RsSmbv with session closed&quot;</span>
+
+<div class="viewcode-block" id="RsSmbv.get_total_execution_time"><a class="viewcode-back" href="../../RsSmbv.html#RsSmbv.RsSmbv.get_total_execution_time">[docs]</a>	<span class="k">def</span> <span class="nf">get_total_execution_time</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">timedelta</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Returns total time spent by the library on communicating with the instrument.</span>
+<span class="sd">		This time is always shorter than get_total_time(), since it does not include gaps between the communication.</span>
+<span class="sd">		You can reset this counter with reset_time_statistics().&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">total_execution_time</span></div>
+
+<div class="viewcode-block" id="RsSmbv.get_total_time"><a class="viewcode-back" href="../../RsSmbv.html#RsSmbv.RsSmbv.get_total_time">[docs]</a>	<span class="k">def</span> <span class="nf">get_total_time</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">timedelta</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Returns total time spent by the library on communicating with the instrument.</span>
+<span class="sd">		This time is always shorter than get_total_time(), since it does not include gaps between the communication.</span>
+<span class="sd">		You can reset this counter with reset_time_statistics().&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">total_time_startpoint</span></div>
+
+<div class="viewcode-block" id="RsSmbv.reset_time_statistics"><a class="viewcode-back" href="../../RsSmbv.html#RsSmbv.RsSmbv.reset_time_statistics">[docs]</a>	<span class="k">def</span> <span class="nf">reset_time_statistics</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Resets all execution and total time counters. Affects the results of get_total_time() and get_total_execution_time()&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">reset_time_statistics</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="RsSmbv.assert_minimum_version"><a class="viewcode-back" href="../../RsSmbv.html#RsSmbv.RsSmbv.assert_minimum_version">[docs]</a>	<span class="nd">@staticmethod</span>
+	<span class="k">def</span> <span class="nf">assert_minimum_version</span><span class="p">(</span><span class="n">min_version</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Asserts that the driver version fulfills the minimum required version you have entered.</span>
+<span class="sd">		This way you make sure your installed driver is of the entered version or newer.&quot;&quot;&quot;</span>
+		<span class="n">min_version_list</span> <span class="o">=</span> <span class="n">min_version</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+		<span class="n">curr_version_list</span> <span class="o">=</span> <span class="s1">&#39;5.30.48.0029&#39;</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+		<span class="n">count_min</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">min_version_list</span><span class="p">)</span>
+		<span class="n">count_curr</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">curr_version_list</span><span class="p">)</span>
+		<span class="n">count</span> <span class="o">=</span> <span class="n">count_min</span> <span class="k">if</span> <span class="n">count_min</span> <span class="o">&lt;</span> <span class="n">count_curr</span> <span class="k">else</span> <span class="n">count_curr</span>
+		<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">count</span><span class="p">):</span>
+			<span class="n">minimum</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">min_version_list</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+			<span class="n">curr</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">curr_version_list</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+			<span class="k">if</span> <span class="n">curr</span> <span class="o">&gt;</span> <span class="n">minimum</span><span class="p">:</span>
+				<span class="k">break</span>
+			<span class="k">if</span> <span class="n">curr</span> <span class="o">&lt;</span> <span class="n">minimum</span><span class="p">:</span>
+				<span class="k">raise</span> <span class="n">RsInstrException</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Assertion for minimum RsSmbv version failed. Current version: &#39;5.30.48.0029&#39;, minimum required version: &#39;</span><span class="si">{</span><span class="n">min_version</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="RsSmbv.list_resources"><a class="viewcode-back" href="../../RsSmbv.html#RsSmbv.RsSmbv.list_resources">[docs]</a>	<span class="nd">@staticmethod</span>
+	<span class="k">def</span> <span class="nf">list_resources</span><span class="p">(</span><span class="n">expression</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;?*::INSTR&#39;</span><span class="p">,</span> <span class="n">visa_select</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+		<span class="sd">&quot;&quot;&quot;Finds all the resources defined by the expression</span>
+<span class="sd">			- &#39;?*&#39; - matches all the available instruments</span>
+<span class="sd">			- &#39;USB::?*&#39; - matches all the USB instruments</span>
+<span class="sd">			- &#39;TCPIP::192?*&#39; - matches all the LAN instruments with the IP address starting with 192</span>
+<span class="sd">		:param expression: see the examples in the function</span>
+<span class="sd">		:param visa_select: optional parameter selecting a specific VISA. Examples: &#39;@ivi&#39;, &#39;@rs&#39;</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">rm</span> <span class="o">=</span> <span class="n">VisaSession</span><span class="o">.</span><span class="n">get_resource_manager</span><span class="p">(</span><span class="n">visa_select</span><span class="p">)</span>
+		<span class="n">resources</span> <span class="o">=</span> <span class="n">rm</span><span class="o">.</span><span class="n">list_resources</span><span class="p">(</span><span class="n">expression</span><span class="p">)</span>
+		<span class="n">rm</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+		<span class="c1"># noinspection PyTypeChecker</span>
+		<span class="k">return</span> <span class="n">resources</span></div>
+
+<div class="viewcode-block" id="RsSmbv.close"><a class="viewcode-back" href="../../RsSmbv.html#RsSmbv.RsSmbv.close">[docs]</a>	<span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Closes the active RsSmbv session.&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="RsSmbv.get_session_handle"><a class="viewcode-back" href="../../RsSmbv.html#RsSmbv.RsSmbv.get_session_handle">[docs]</a>	<span class="k">def</span> <span class="nf">get_session_handle</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">object</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Returns the underlying session handle.&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">get_session_handle</span><span class="p">()</span></div>
+
+	<span class="k">def</span> <span class="nf">_add_all_global_repcaps</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Adds all the repcaps defined as global to the instrument&#39;s global repcaps dictionary.&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">add_global_repcap</span><span class="p">(</span><span class="s1">&#39;&lt;HwInstance&gt;&#39;</span><span class="p">,</span> <span class="n">RepeatedCapability</span><span class="p">(</span><span class="s2">&quot;ROOT&quot;</span><span class="p">,</span> <span class="s1">&#39;repcap_hwInstance_get&#39;</span><span class="p">,</span> <span class="s1">&#39;repcap_hwInstance_set&#39;</span><span class="p">,</span> <span class="n">repcap</span><span class="o">.</span><span class="n">HwInstance</span><span class="o">.</span><span class="n">InstA</span><span class="p">))</span>
+
+	<span class="k">def</span> <span class="nf">repcap_hwInstance_get</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">repcap</span><span class="o">.</span><span class="n">HwInstance</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Returns Global Repeated capability HwInstance&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">get_global_repcap_value</span><span class="p">(</span><span class="s1">&#39;&lt;HwInstance&gt;&#39;</span><span class="p">)</span>
+
+	<span class="k">def</span> <span class="nf">repcap_hwInstance_set</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">repcap</span><span class="o">.</span><span class="n">HwInstance</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Sets Global Repeated capability HwInstance</span>
+<span class="sd">		Default value after init: HwInstance.InstA&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">set_global_repcap_value</span><span class="p">(</span><span class="s1">&#39;&lt;HwInstance&gt;&#39;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+	<span class="k">def</span> <span class="nf">_custom_properties_init</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Adds all the interfaces that are custom for the driver.&quot;&quot;&quot;</span>
+		<span class="kn">from</span> <span class="nn">.CustomFiles.utilities</span> <span class="kn">import</span> <span class="n">Utilities</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">utilities</span> <span class="o">=</span> <span class="n">Utilities</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">)</span>
+		<span class="kn">from</span> <span class="nn">.CustomFiles.events</span> <span class="kn">import</span> <span class="n">Events</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">events</span> <span class="o">=</span> <span class="n">Events</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">)</span>
+		<span class="kn">from</span> <span class="nn">.CustomFiles.arb_files</span> <span class="kn">import</span> <span class="n">ArbFiles</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">arb_files</span> <span class="o">=</span> <span class="n">ArbFiles</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">)</span>
+		<span class="kn">from</span> <span class="nn">.CustomFiles.digital_modulation</span> <span class="kn">import</span> <span class="n">DigitalModulation</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">digital_modulation</span> <span class="o">=</span> <span class="n">DigitalModulation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">)</span>
+		
+	<span class="k">def</span> <span class="nf">_sync_to_custom_properties</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cloned</span><span class="p">:</span> <span class="s1">&#39;RsSmbv&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Synchronises the state of all the custom properties to the entered object.&quot;&quot;&quot;</span>
+		<span class="n">cloned</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">sync_from</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">utilities</span><span class="p">)</span>
+		<span class="n">cloned</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">sync_from</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="p">)</span>
+		<span class="n">cloned</span><span class="o">.</span><span class="n">arb_files</span><span class="o">.</span><span class="n">sync_from</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">arb_files</span><span class="p">)</span>
+		<span class="n">cloned</span><span class="o">.</span><span class="n">digital_modulation</span><span class="o">.</span><span class="n">sync_from</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">digital_modulation</span><span class="p">)</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">bert</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;bert commands group. 2 Sub-classes, 8 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_bert&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Implementations.Bert</span> <span class="kn">import</span> <span class="n">BertCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_bert</span> <span class="o">=</span> <span class="n">BertCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bert</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">bler</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;bler commands group. 2 Sub-classes, 8 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_bler&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Implementations.Bler</span> <span class="kn">import</span> <span class="n">BlerCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_bler</span> <span class="o">=</span> <span class="n">BlerCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bler</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">calibration</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;calibration commands group. 12 Sub-classes, 2 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_calibration&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Implementations.Calibration</span> <span class="kn">import</span> <span class="n">CalibrationCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_calibration</span> <span class="o">=</span> <span class="n">CalibrationCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calibration</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">clock</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;clock commands group. 3 Sub-classes, 0 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_clock&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Implementations.Clock</span> <span class="kn">import</span> <span class="n">ClockCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_clock</span> <span class="o">=</span> <span class="n">ClockCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_clock</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">connector</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;connector commands group. 1 Sub-classes, 0 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_connector&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Implementations.Connector</span> <span class="kn">import</span> <span class="n">ConnectorCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_connector</span> <span class="o">=</span> <span class="n">ConnectorCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_connector</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">device</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;device commands group. 1 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_device&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Implementations.Device</span> <span class="kn">import</span> <span class="n">DeviceCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_device</span> <span class="o">=</span> <span class="n">DeviceCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_device</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">diagnostic</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;diagnostic commands group. 7 Sub-classes, 0 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_diagnostic&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Implementations.Diagnostic</span> <span class="kn">import</span> <span class="n">DiagnosticCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_diagnostic</span> <span class="o">=</span> <span class="n">DiagnosticCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_diagnostic</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">display</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;display commands group. 7 Sub-classes, 3 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_display&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Implementations.Display</span> <span class="kn">import</span> <span class="n">DisplayCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_display</span> <span class="o">=</span> <span class="n">DisplayCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_display</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">formatPy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;formatPy commands group. 0 Sub-classes, 3 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_formatPy&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Implementations.FormatPy</span> <span class="kn">import</span> <span class="n">FormatPyCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_formatPy</span> <span class="o">=</span> <span class="n">FormatPyCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_formatPy</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">fpanel</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;fpanel commands group. 1 Sub-classes, 0 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_fpanel&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Implementations.Fpanel</span> <span class="kn">import</span> <span class="n">FpanelCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_fpanel</span> <span class="o">=</span> <span class="n">FpanelCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fpanel</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">hardCopy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;hardCopy commands group. 4 Sub-classes, 2 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_hardCopy&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Implementations.HardCopy</span> <span class="kn">import</span> <span class="n">HardCopyCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_hardCopy</span> <span class="o">=</span> <span class="n">HardCopyCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hardCopy</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">initiate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;initiate commands group. 5 Sub-classes, 0 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_initiate&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Implementations.Initiate</span> <span class="kn">import</span> <span class="n">InitiateCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_initiate</span> <span class="o">=</span> <span class="n">InitiateCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_initiate</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">kboard</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;kboard commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_kboard&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Implementations.Kboard</span> <span class="kn">import</span> <span class="n">KboardCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_kboard</span> <span class="o">=</span> <span class="n">KboardCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_kboard</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">memory</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;memory commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_memory&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Implementations.Memory</span> <span class="kn">import</span> <span class="n">MemoryCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_memory</span> <span class="o">=</span> <span class="n">MemoryCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_memory</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">massMemory</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;massMemory commands group. 4 Sub-classes, 9 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_massMemory&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Implementations.MassMemory</span> <span class="kn">import</span> <span class="n">MassMemoryCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_massMemory</span> <span class="o">=</span> <span class="n">MassMemoryCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_massMemory</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">output</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;output commands group. 5 Sub-classes, 2 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_output&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Implementations.Output</span> <span class="kn">import</span> <span class="n">OutputCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_output</span> <span class="o">=</span> <span class="n">OutputCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_output</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;read commands group. 1 Sub-classes, 0 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_read&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Implementations.Read</span> <span class="kn">import</span> <span class="n">ReadCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_read</span> <span class="o">=</span> <span class="n">ReadCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">sconfiguration</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;sconfiguration commands group. 6 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_sconfiguration&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Implementations.Sconfiguration</span> <span class="kn">import</span> <span class="n">SconfigurationCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_sconfiguration</span> <span class="o">=</span> <span class="n">SconfigurationCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sconfiguration</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">sense</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;sense commands group. 2 Sub-classes, 0 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_sense&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Implementations.Sense</span> <span class="kn">import</span> <span class="n">SenseCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_sense</span> <span class="o">=</span> <span class="n">SenseCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sense</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">slist</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;slist commands group. 4 Sub-classes, 2 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_slist&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Implementations.Slist</span> <span class="kn">import</span> <span class="n">SlistCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_slist</span> <span class="o">=</span> <span class="n">SlistCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_slist</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">source</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;source commands group. 34 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_source&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Implementations.Source</span> <span class="kn">import</span> <span class="n">SourceCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_source</span> <span class="o">=</span> <span class="n">SourceCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_source</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">status</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;status commands group. 3 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_status&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Implementations.Status</span> <span class="kn">import</span> <span class="n">StatusCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_status</span> <span class="o">=</span> <span class="n">StatusCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_status</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">sweep</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;sweep commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_sweep&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Implementations.Sweep</span> <span class="kn">import</span> <span class="n">SweepCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_sweep</span> <span class="o">=</span> <span class="n">SweepCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sweep</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">system</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;system commands group. 39 Sub-classes, 28 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_system&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Implementations.System</span> <span class="kn">import</span> <span class="n">SystemCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_system</span> <span class="o">=</span> <span class="n">SystemCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_system</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;test commands group. 11 Sub-classes, 6 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_test&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Implementations.Test</span> <span class="kn">import</span> <span class="n">TestCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_test</span> <span class="o">=</span> <span class="n">TestCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_test</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">trigger</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;trigger commands group. 6 Sub-classes, 0 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_trigger&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Implementations.Trigger</span> <span class="kn">import</span> <span class="n">TriggerCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_trigger</span> <span class="o">=</span> <span class="n">TriggerCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_trigger</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">unit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;unit commands group. 0 Sub-classes, 3 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_unit&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Implementations.Unit</span> <span class="kn">import</span> <span class="n">UnitCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_unit</span> <span class="o">=</span> <span class="n">UnitCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_unit</span>
+
+	<span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;RsSmbv&#39;</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Creates a deep copy of the RsSmbv object. Also copies:</span>
+<span class="sd">			- All the existing Global repeated capability values</span>
+<span class="sd">			- All the default group repeated capabilities setting \n</span>
+<span class="sd">		Does not check the *IDN? response, and does not perform Reset.</span>
+<span class="sd">		After cloning, you can set all the repeated capabilities settings independentely from the original group.</span>
+<span class="sd">		Calling close() on the new object does not close the original VISA session&quot;&quot;&quot;</span>
+		<span class="n">cloned</span> <span class="o">=</span> <span class="n">RsSmbv</span><span class="o">.</span><span class="n">from_existing_session</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_session_handle</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">synchronize_repcaps</span><span class="p">(</span><span class="n">cloned</span><span class="p">)</span>
+		<span class="n">cloned</span><span class="o">.</span><span class="n">repcap_hwInstance_set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">repcap_hwInstance_get</span><span class="p">())</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_sync_to_custom_properties</span><span class="p">(</span><span class="n">cloned</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">cloned</span>
+
+<div class="viewcode-block" id="RsSmbv.restore_all_repcaps_to_default"><a class="viewcode-back" href="../../RsSmbv.html#RsSmbv.RsSmbv.restore_all_repcaps_to_default">[docs]</a>	<span class="k">def</span> <span class="nf">restore_all_repcaps_to_default</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Sets all the Group and Global repcaps to their initial values&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">restore_repcaps</span><span class="p">()</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">repcap_hwInstance_set</span><span class="p">(</span><span class="n">repcap</span><span class="o">.</span><span class="n">HwInstance</span><span class="o">.</span><span class="n">InstA</span><span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

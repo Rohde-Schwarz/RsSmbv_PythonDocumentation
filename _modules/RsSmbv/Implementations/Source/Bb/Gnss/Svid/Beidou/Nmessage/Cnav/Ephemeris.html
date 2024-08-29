@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RsSmbv.Implementations.Source.Bb.Gnss.Svid.Beidou.Nmessage.Cnav.Ephemeris &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="../../../../../../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../../../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../../../../../../../" id="documentation_options" src="../../../../../../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../../../../../../_static/jquery.js"></script>
+        <script src="../../../../../../../../../../_static/underscore.js"></script>
+        <script src="../../../../../../../../../../_static/doctools.js"></script>
+        <script src="../../../../../../../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../../../../../../../_static/copybutton.js"></script>
+    <script src="../../../../../../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../../../../../../../index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../../readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../../enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../../repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../../RsSmbv.html">RsSmbv API Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../../utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../../logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../../events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../../genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../../../../../index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../../../../../../../index.html">Module code</a> &raquo;</li>
+          <li><a href="../../../../../../../Source.html">RsSmbv.Implementations.Source</a> &raquo;</li>
+          <li><a href="../../../../../../Bb.html">RsSmbv.Implementations.Source.Bb</a> &raquo;</li>
+          <li><a href="../../../../../Gnss.html">RsSmbv.Implementations.Source.Bb.Gnss</a> &raquo;</li>
+          <li><a href="../../../../Svid.html">RsSmbv.Implementations.Source.Bb.Gnss.Svid</a> &raquo;</li>
+          <li><a href="../../../Beidou.html">RsSmbv.Implementations.Source.Bb.Gnss.Svid.Beidou</a> &raquo;</li>
+          <li><a href="../../Nmessage.html">RsSmbv.Implementations.Source.Bb.Gnss.Svid.Beidou.Nmessage</a> &raquo;</li>
+          <li><a href="../Cnav.html">RsSmbv.Implementations.Source.Bb.Gnss.Svid.Beidou.Nmessage.Cnav</a> &raquo;</li>
+      <li>RsSmbv.Implementations.Source.Bb.Gnss.Svid.Beidou.Nmessage.Cnav.Ephemeris</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for RsSmbv.Implementations.Source.Bb.Gnss.Svid.Beidou.Nmessage.Cnav.Ephemeris</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">..........Internal.Core</span> <span class="kn">import</span> <span class="n">Core</span>
+<span class="kn">from</span> <span class="nn">..........Internal.CommandsGroup</span> <span class="kn">import</span> <span class="n">CommandsGroup</span>
+
+
+<span class="c1"># noinspection PyPep8Naming,PyAttributeOutsideInit,SpellCheckingInspection</span>
+<div class="viewcode-block" id="EphemerisCls"><a class="viewcode-back" href="../../../../../../../../../../Source_Bb_Gnss_Svid_Beidou_Nmessage_Cnav_Ephemeris.html#RsSmbv.Implementations.Source.Bb.Gnss.Svid.Beidou.Nmessage.Cnav.Ephemeris.EphemerisCls">[docs]</a><span class="k">class</span> <span class="nc">EphemerisCls</span><span class="p">:</span>
+	<span class="sd">&quot;&quot;&quot;Ephemeris commands group definition. 39 total commands, 20 Subgroups, 0 group commands&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">core</span><span class="p">:</span> <span class="n">Core</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span> <span class="o">=</span> <span class="n">core</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span> <span class="o">=</span> <span class="n">CommandsGroup</span><span class="p">(</span><span class="s2">&quot;ephemeris&quot;</span><span class="p">,</span> <span class="n">core</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">adelta</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;adelta commands group. 1 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_adelta&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Adelta</span> <span class="kn">import</span> <span class="n">AdeltaCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_adelta</span> <span class="o">=</span> <span class="n">AdeltaCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_adelta</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">adot</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;adot commands group. 1 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_adot&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Adot</span> <span class="kn">import</span> <span class="n">AdotCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_adot</span> <span class="o">=</span> <span class="n">AdotCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_adot</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">alert</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;alert commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_alert&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Alert</span> <span class="kn">import</span> <span class="n">AlertCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_alert</span> <span class="o">=</span> <span class="n">AlertCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_alert</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">cic</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;cic commands group. 1 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_cic&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Cic</span> <span class="kn">import</span> <span class="n">CicCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_cic</span> <span class="o">=</span> <span class="n">CicCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cic</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">cis</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;cis commands group. 1 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_cis&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Cis</span> <span class="kn">import</span> <span class="n">CisCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_cis</span> <span class="o">=</span> <span class="n">CisCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cis</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">crc</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;crc commands group. 1 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_crc&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Crc</span> <span class="kn">import</span> <span class="n">CrcCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_crc</span> <span class="o">=</span> <span class="n">CrcCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_crc</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">crs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;crs commands group. 1 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_crs&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Crs</span> <span class="kn">import</span> <span class="n">CrsCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_crs</span> <span class="o">=</span> <span class="n">CrsCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_crs</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">cuc</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;cuc commands group. 1 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_cuc&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Cuc</span> <span class="kn">import</span> <span class="n">CucCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_cuc</span> <span class="o">=</span> <span class="n">CucCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cuc</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">cus</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;cus commands group. 1 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_cus&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Cus</span> <span class="kn">import</span> <span class="n">CusCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_cus</span> <span class="o">=</span> <span class="n">CusCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cus</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">dndot</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;dndot commands group. 1 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_dndot&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Dndot</span> <span class="kn">import</span> <span class="n">DndotCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_dndot</span> <span class="o">=</span> <span class="n">DndotCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dndot</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">eccentricity</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;eccentricity commands group. 1 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_eccentricity&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Eccentricity</span> <span class="kn">import</span> <span class="n">EccentricityCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_eccentricity</span> <span class="o">=</span> <span class="n">EccentricityCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_eccentricity</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">idot</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;idot commands group. 1 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_idot&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Idot</span> <span class="kn">import</span> <span class="n">IdotCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_idot</span> <span class="o">=</span> <span class="n">IdotCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_idot</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">izero</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;izero commands group. 1 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_izero&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Izero</span> <span class="kn">import</span> <span class="n">IzeroCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_izero</span> <span class="o">=</span> <span class="n">IzeroCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_izero</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">mzero</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;mzero commands group. 1 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_mzero&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Mzero</span> <span class="kn">import</span> <span class="n">MzeroCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_mzero</span> <span class="o">=</span> <span class="n">MzeroCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mzero</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">ndelta</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;ndelta commands group. 1 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_ndelta&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Ndelta</span> <span class="kn">import</span> <span class="n">NdeltaCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_ndelta</span> <span class="o">=</span> <span class="n">NdeltaCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ndelta</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">odot</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;odot commands group. 1 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_odot&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Odot</span> <span class="kn">import</span> <span class="n">OdotCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_odot</span> <span class="o">=</span> <span class="n">OdotCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_odot</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">omega</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;omega commands group. 1 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_omega&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Omega</span> <span class="kn">import</span> <span class="n">OmegaCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_omega</span> <span class="o">=</span> <span class="n">OmegaCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_omega</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">ozero</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;ozero commands group. 1 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_ozero&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Ozero</span> <span class="kn">import</span> <span class="n">OzeroCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_ozero</span> <span class="o">=</span> <span class="n">OzeroCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ozero</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">sqra</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;sqra commands group. 1 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_sqra&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Sqra</span> <span class="kn">import</span> <span class="n">SqraCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_sqra</span> <span class="o">=</span> <span class="n">SqraCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sqra</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">toe</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;toe commands group. 1 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_toe&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Toe</span> <span class="kn">import</span> <span class="n">ToeCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_toe</span> <span class="o">=</span> <span class="n">ToeCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_toe</span>
+
+	<span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;EphemerisCls&#39;</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Clones the group by creating new object from it and its whole existing subgroups</span>
+<span class="sd">		Also copies all the existing default Repeated Capabilities setting,</span>
+<span class="sd">		which you can change independently without affecting the original group&quot;&quot;&quot;</span>
+		<span class="n">new_group</span> <span class="o">=</span> <span class="n">EphemerisCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">synchronize_repcaps</span><span class="p">(</span><span class="n">new_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">new_group</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

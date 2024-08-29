@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RsSmbv.Implementations.Source.Bb.Graphics &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../_static/jquery.js"></script>
+        <script src="../../../../../_static/underscore.js"></script>
+        <script src="../../../../../_static/doctools.js"></script>
+        <script src="../../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../../_static/copybutton.js"></script>
+    <script src="../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../../index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../RsSmbv.html">RsSmbv API Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../../index.html">Module code</a> &raquo;</li>
+          <li><a href="../../Source.html">RsSmbv.Implementations.Source</a> &raquo;</li>
+          <li><a href="../Bb.html">RsSmbv.Implementations.Source.Bb</a> &raquo;</li>
+      <li>RsSmbv.Implementations.Source.Bb.Graphics</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for RsSmbv.Implementations.Source.Bb.Graphics</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">.....Internal.Core</span> <span class="kn">import</span> <span class="n">Core</span>
+<span class="kn">from</span> <span class="nn">.....Internal.CommandsGroup</span> <span class="kn">import</span> <span class="n">CommandsGroup</span>
+<span class="kn">from</span> <span class="nn">.....Internal</span> <span class="kn">import</span> <span class="n">Conversions</span>
+<span class="kn">from</span> <span class="nn">.....</span> <span class="kn">import</span> <span class="n">enums</span>
+
+
+<span class="c1"># noinspection PyPep8Naming,PyAttributeOutsideInit,SpellCheckingInspection</span>
+<div class="viewcode-block" id="GraphicsCls"><a class="viewcode-back" href="../../../../../Source_Bb_Graphics.html#RsSmbv.Implementations.Source.Bb.Graphics.GraphicsCls">[docs]</a><span class="k">class</span> <span class="nc">GraphicsCls</span><span class="p">:</span>
+	<span class="sd">&quot;&quot;&quot;Graphics commands group definition. 9 total commands, 2 Subgroups, 6 group commands&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">core</span><span class="p">:</span> <span class="n">Core</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span> <span class="o">=</span> <span class="n">core</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span> <span class="o">=</span> <span class="n">CommandsGroup</span><span class="p">(</span><span class="s2">&quot;graphics&quot;</span><span class="p">,</span> <span class="n">core</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">symbolRate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;symbolRate commands group. 0 Sub-classes, 2 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_symbolRate&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.SymbolRate</span> <span class="kn">import</span> <span class="n">SymbolRateCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_symbolRate</span> <span class="o">=</span> <span class="n">SymbolRateCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_symbolRate</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">trigger</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;trigger commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_trigger&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Trigger</span> <span class="kn">import</span> <span class="n">TriggerCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_trigger</span> <span class="o">=</span> <span class="n">TriggerCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_trigger</span>
+
+<div class="viewcode-block" id="GraphicsCls.set_add"><a class="viewcode-back" href="../../../../../Source_Bb_Graphics.html#RsSmbv.Implementations.Source.Bb.Graphics.GraphicsCls.set_add">[docs]</a>	<span class="k">def</span> <span class="nf">set_add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">TranRecSize</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce]:BB:GRAPhics:ADD \n</span>
+<span class="sd">		Snippet: driver.source.bb.graphics.set_add(size = enums.TranRecSize.MAXimized) \n</span>
+<span class="sd">		Adds a graphical signal display (according to the current MODE, SOURce, SRATe:* and TRIGger:* settings) . \n</span>
+<span class="sd">			:param size: MAXimized| MINimized</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">TranRecSize</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce:BB:GRAPhics:ADD </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="GraphicsCls.close"><a class="viewcode-back" href="../../../../../Source_Bb_Graphics.html#RsSmbv.Implementations.Source.Bb.Graphics.GraphicsCls.close">[docs]</a>	<span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce]:BB:GRAPhics:CLOSe \n</span>
+<span class="sd">		Snippet: driver.source.bb.graphics.close() \n</span>
+<span class="sd">		Closes all graphical signal displays. \n</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce:BB:GRAPhics:CLOSe&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="GraphicsCls.close_with_opc"><a class="viewcode-back" href="../../../../../Source_Bb_Graphics.html#RsSmbv.Implementations.Source.Bb.Graphics.GraphicsCls.close_with_opc">[docs]</a>	<span class="k">def</span> <span class="nf">close_with_opc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">opc_timeout_ms</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce]:BB:GRAPhics:CLOSe \n</span>
+<span class="sd">		Snippet: driver.source.bb.graphics.close_with_opc() \n</span>
+<span class="sd">		Closes all graphical signal displays. \n</span>
+<span class="sd">		Same as close, but waits for the operation to complete before continuing further. Use the RsSmbv.utilities.opc_timeout_set() to set the timeout value. \n</span>
+<span class="sd">			:param opc_timeout_ms: Maximum time to wait in milliseconds, valid only for this call.&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write_with_opc</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce:BB:GRAPhics:CLOSe&#39;</span><span class="p">,</span> <span class="n">opc_timeout_ms</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="GraphicsCls.get_fft_fscale"><a class="viewcode-back" href="../../../../../Source_Bb_Graphics.html#RsSmbv.Implementations.Source.Bb.Graphics.GraphicsCls.get_fft_fscale">[docs]</a>	<span class="k">def</span> <span class="nf">get_fft_fscale</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce]:BB:GRAPhics:FFTFscale \n</span>
+<span class="sd">		Snippet: value: bool = driver.source.bb.graphics.get_fft_fscale() \n</span>
+<span class="sd">		Defines the normalization of the power values in the power spectrum diagram. \n</span>
+<span class="sd">			:return: state: 1| ON| 0| OFF 1 Normalized power in dBFS 0 Shows power distribution in dB/Hz</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce:BB:GRAPhics:FFTFscale?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_bool</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="GraphicsCls.set_fft_fscale"><a class="viewcode-back" href="../../../../../Source_Bb_Graphics.html#RsSmbv.Implementations.Source.Bb.Graphics.GraphicsCls.set_fft_fscale">[docs]</a>	<span class="k">def</span> <span class="nf">set_fft_fscale</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce]:BB:GRAPhics:FFTFscale \n</span>
+<span class="sd">		Snippet: driver.source.bb.graphics.set_fft_fscale(state = False) \n</span>
+<span class="sd">		Defines the normalization of the power values in the power spectrum diagram. \n</span>
+<span class="sd">			:param state: 1| ON| 0| OFF 1 Normalized power in dBFS 0 Shows power distribution in dB/Hz</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">bool_to_str</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce:BB:GRAPhics:FFTFscale </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="GraphicsCls.get_fft_len"><a class="viewcode-back" href="../../../../../Source_Bb_Graphics.html#RsSmbv.Implementations.Source.Bb.Graphics.GraphicsCls.get_fft_len">[docs]</a>	<span class="k">def</span> <span class="nf">get_fft_len</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">TranRecFftLen</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce]:BB:GRAPhics:FFTLen \n</span>
+<span class="sd">		Snippet: value: enums.TranRecFftLen = driver.source.bb.graphics.get_fft_len() \n</span>
+<span class="sd">		Sets the FFT size. \n</span>
+<span class="sd">			:return: mode: LEN256| LEN512| LEN1024| LEN2048| LEN4096</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce:BB:GRAPhics:FFTLen?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">TranRecFftLen</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="GraphicsCls.set_fft_len"><a class="viewcode-back" href="../../../../../Source_Bb_Graphics.html#RsSmbv.Implementations.Source.Bb.Graphics.GraphicsCls.set_fft_len">[docs]</a>	<span class="k">def</span> <span class="nf">set_fft_len</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">TranRecFftLen</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce]:BB:GRAPhics:FFTLen \n</span>
+<span class="sd">		Snippet: driver.source.bb.graphics.set_fft_len(mode = enums.TranRecFftLen.LEN1024) \n</span>
+<span class="sd">		Sets the FFT size. \n</span>
+<span class="sd">			:param mode: LEN256| LEN512| LEN1024| LEN2048| LEN4096</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">mode</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">TranRecFftLen</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce:BB:GRAPhics:FFTLen </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="GraphicsCls.get_mode"><a class="viewcode-back" href="../../../../../Source_Bb_Graphics.html#RsSmbv.Implementations.Source.Bb.Graphics.GraphicsCls.get_mode">[docs]</a>	<span class="k">def</span> <span class="nf">get_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">TranRecMode</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:GRAPhics:MODE \n</span>
+<span class="sd">		Snippet: value: enums.TranRecMode = driver.source.bb.graphics.get_mode() \n</span>
+<span class="sd">		Selects the graphics mode of the graphical signal display. \n</span>
+<span class="sd">			:return: mode: IQ| VECTor| CCDF| PSPectrum| CONStellation| EYEI| EYEQ</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:GRAPhics:MODE?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">TranRecMode</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="GraphicsCls.set_mode"><a class="viewcode-back" href="../../../../../Source_Bb_Graphics.html#RsSmbv.Implementations.Source.Bb.Graphics.GraphicsCls.set_mode">[docs]</a>	<span class="k">def</span> <span class="nf">set_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">TranRecMode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:GRAPhics:MODE \n</span>
+<span class="sd">		Snippet: driver.source.bb.graphics.set_mode(mode = enums.TranRecMode.CCDF) \n</span>
+<span class="sd">		Selects the graphics mode of the graphical signal display. \n</span>
+<span class="sd">			:param mode: IQ| VECTor| CCDF| PSPectrum| CONStellation| EYEI| EYEQ</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">mode</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">TranRecMode</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:GRAPhics:MODE </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="GraphicsCls.get_source"><a class="viewcode-back" href="../../../../../Source_Bb_Graphics.html#RsSmbv.Implementations.Source.Bb.Graphics.GraphicsCls.get_source">[docs]</a>	<span class="k">def</span> <span class="nf">get_source</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">TranRecSour</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce]:BB:GRAPhics:SOURce \n</span>
+<span class="sd">		Snippet: value: enums.TranRecSour = driver.source.bb.graphics.get_source() \n</span>
+<span class="sd">		Defines the signal acquisition point, that is the location in the signal flow where the displayed signal is tapped from.</span>
+<span class="sd">		See &#39;Signal acquisition points&#39;. \n</span>
+<span class="sd">			:return: source: STRA| BBA| RFA| BBIA| DO1| IQO1 | STRA| BBA| RFA| BBIA| IQO1 | DO1 STRA Stream A; input stream of the &#39;IQ Stream Mapper&#39; BBA Baseband signal BBIA Digital baseband input signals RFA RF signal IQO1 Analog I/Q output signal DO1 Digital I/Q output signals; outputs of the &#39;IQ Stream Mapper&#39;</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce:BB:GRAPhics:SOURce?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">TranRecSour</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="GraphicsCls.set_source"><a class="viewcode-back" href="../../../../../Source_Bb_Graphics.html#RsSmbv.Implementations.Source.Bb.Graphics.GraphicsCls.set_source">[docs]</a>	<span class="k">def</span> <span class="nf">set_source</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">TranRecSour</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce]:BB:GRAPhics:SOURce \n</span>
+<span class="sd">		Snippet: driver.source.bb.graphics.set_source(source = enums.TranRecSour.BBA) \n</span>
+<span class="sd">		Defines the signal acquisition point, that is the location in the signal flow where the displayed signal is tapped from.</span>
+<span class="sd">		See &#39;Signal acquisition points&#39;. \n</span>
+<span class="sd">			:param source: STRA| BBA| RFA| BBIA| DO1| IQO1 | STRA| BBA| RFA| BBIA| IQO1 | DO1 STRA Stream A; input stream of the &#39;IQ Stream Mapper&#39; BBA Baseband signal BBIA Digital baseband input signals RFA RF signal IQO1 Analog I/Q output signal DO1 Digital I/Q output signals; outputs of the &#39;IQ Stream Mapper&#39;</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">TranRecSour</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce:BB:GRAPhics:SOURce </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;GraphicsCls&#39;</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Clones the group by creating new object from it and its whole existing subgroups</span>
+<span class="sd">		Also copies all the existing default Repeated Capabilities setting,</span>
+<span class="sd">		which you can change independently without affecting the original group&quot;&quot;&quot;</span>
+		<span class="n">new_group</span> <span class="o">=</span> <span class="n">GraphicsCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">synchronize_repcaps</span><span class="p">(</span><span class="n">new_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">new_group</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

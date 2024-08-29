@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fconfig &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Data" href="Source_Bb_Huwb_Fconfig_Data.html" />
+    <link rel="prev" title="Execute" href="Source_Bb_Huwb_Clock_Sync_Execute.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="RsSmbv.html">RsSmbv API Structure</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Bert.html">Bert</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Bler.html">Bler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Calibration.html">Calibration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clock.html">Clock</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Connector.html">Connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Device.html">Device</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Diagnostic.html">Diagnostic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Display.html">Display</a></li>
+<li class="toctree-l2"><a class="reference internal" href="FormatPy.html">FormatPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Fpanel.html">Fpanel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HardCopy.html">HardCopy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Initiate.html">Initiate&lt;Channel&gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Kboard.html">Kboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MassMemory.html">MassMemory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Memory.html">Memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Output.html">Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Read.html">Read&lt;Channel&gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Sconfiguration.html">Sconfiguration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Sense.html">Sense&lt;Channel&gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slist.html">Slist</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="Source.html">Source</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="Source_Adf.html">Adf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Am.html">Am&lt;GeneratorIx&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_AreGenerator.html">AreGenerator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Awgn.html">Awgn</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="Source_Bb.html">Bb</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Arbitrary.html">Arbitrary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Btooth.html">Btooth</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_C2K.html">C2K</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Coder.html">Coder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Dab.html">Dab</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Dme.html">Dme</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra.html">Eutra</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Evdo.html">Evdo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Gbas.html">Gbas</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Gnpr.html">Gnpr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Gnss.html">Gnss</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Graphics.html">Graphics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Gsm.html">Gsm</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="Source_Bb_Huwb.html">Huwb</a><ul class="current">
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Huwb_Clipping.html">Clipping</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Huwb_Clock.html">Clock</a></li>
+<li class="toctree-l5 current"><a class="current reference internal" href="#">Fconfig</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Huwb_Fconfig_Data.html">Data</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Huwb_Fconfig_Dlength.html">Dlength</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Huwb_Fconfig_Fecphr.html">Fecphr</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Huwb_Fconfig_Fecpl.html">Fecpl</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Huwb_Fconfig_Mcs.html">Mcs</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Huwb_FilterPy.html">FilterPy</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Huwb_Impairments.html">Impairments</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Huwb_MacHeader.html">MacHeader</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Huwb_Phr.html">Phr</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Huwb_Setting.html">Setting</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Huwb_Sfd.html">Sfd</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Huwb_Sts.html">Sts</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Huwb_SymbolRate.html">SymbolRate</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Huwb_Trigger.html">Trigger</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Huwb_Waveform.html">Waveform</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Ils.html">Ils</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Impairment.html">Impairment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Info.html">Info</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Lora.html">Lora</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Mccw.html">Mccw</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nfc.html">Nfc</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G.html">Nr5G</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Ofdm.html">Ofdm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Path.html">Path</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Power.html">Power</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Pramp.html">Pramp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Progress.html">Progress</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Tdscdma.html">Tdscdma</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Trigger.html">Trigger</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Vor.html">Vor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_W3Gpp.html">W3Gpp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Wlnn.html">Wlnn</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bbin.html">Bbin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Combined.html">Combined</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Correction.html">Correction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Dme.html">Dme</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Efrontend.html">Efrontend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Fm.html">Fm&lt;GeneratorIx&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_FreqSweep.html">FreqSweep</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Frequency.html">Frequency</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Ils.html">Ils</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_InputPy.html">InputPy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Iq.html">Iq</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_LffSweep.html">LffSweep</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_LfOutput.html">LfOutput&lt;LfOutput&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_ListPy.html">ListPy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Mbeacon.html">Mbeacon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Modulation.html">Modulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Noise.html">Noise</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Occupy.html">Occupy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Path.html">Path</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Pgenerator.html">Pgenerator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Phase.html">Phase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Pm.html">Pm&lt;GeneratorIx&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Power.html">Power</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Psweep.html">Psweep</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Pulm.html">Pulm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Roscillator.html">Roscillator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Sweep.html">Sweep</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_ValRf.html">ValRf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Vor.html">Vor</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Status.html">Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Sweep.html">Sweep</a></li>
+<li class="toctree-l2"><a class="reference internal" href="System.html">System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Test.html">Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Trigger.html">Trigger&lt;InputIx&gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Unit.html">Unit</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="RsSmbv.html">RsSmbv API Structure</a> &raquo;</li>
+          <li><a href="Source.html">Source</a> &raquo;</li>
+          <li><a href="Source_Bb.html">Bb</a> &raquo;</li>
+          <li><a href="Source_Bb_Huwb.html">Huwb</a> &raquo;</li>
+      <li>Fconfig</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Source_Bb_Huwb_Fconfig.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="fconfig">
+<h1>Fconfig<a class="headerlink" href="#fconfig" title="Permalink to this headline"></a></h1>
+<p class="rubric">SCPI Commands :</p>
+<div class="highlight-python notranslate" id="index-0"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">BB</span><span class="p">:</span><span class="n">HUWB</span><span class="p">:</span><span class="n">FCONfig</span><span class="p">:</span><span class="n">ADDGap</span>
+<span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">BB</span><span class="p">:</span><span class="n">HUWB</span><span class="p">:</span><span class="n">FCONfig</span><span class="p">:</span><span class="n">CINDex</span>
+<span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">BB</span><span class="p">:</span><span class="n">HUWB</span><span class="p">:</span><span class="n">FCONfig</span><span class="p">:</span><span class="n">CPBurst</span>
+<span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">BB</span><span class="p">:</span><span class="n">HUWB</span><span class="p">:</span><span class="n">FCONfig</span><span class="p">:</span><span class="n">DALEngth</span>
+<span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">BB</span><span class="p">:</span><span class="n">HUWB</span><span class="p">:</span><span class="n">FCONfig</span><span class="p">:</span><span class="n">DR</span>
+<span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">BB</span><span class="p">:</span><span class="n">HUWB</span><span class="p">:</span><span class="n">FCONfig</span><span class="p">:</span><span class="n">FCTPl</span>
+<span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">BB</span><span class="p">:</span><span class="n">HUWB</span><span class="p">:</span><span class="n">FCONfig</span><span class="p">:</span><span class="n">FCTShr</span>
+<span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">BB</span><span class="p">:</span><span class="n">HUWB</span><span class="p">:</span><span class="n">FCONfig</span><span class="p">:</span><span class="n">HOPBurst</span>
+<span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">BB</span><span class="p">:</span><span class="n">HUWB</span><span class="p">:</span><span class="n">FCONfig</span><span class="p">:</span><span class="n">MDL</span>
+<span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">BB</span><span class="p">:</span><span class="n">HUWB</span><span class="p">:</span><span class="n">FCONfig</span><span class="p">:</span><span class="n">MFL</span>
+<span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">BB</span><span class="p">:</span><span class="n">HUWB</span><span class="p">:</span><span class="n">FCONfig</span><span class="p">:</span><span class="n">MPRF</span>
+<span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">BB</span><span class="p">:</span><span class="n">HUWB</span><span class="p">:</span><span class="n">FCONfig</span><span class="p">:</span><span class="n">PHRBrate</span>
+<span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">BB</span><span class="p">:</span><span class="n">HUWB</span><span class="p">:</span><span class="n">FCONfig</span><span class="p">:</span><span class="n">PHRLength</span>
+<span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">BB</span><span class="p">:</span><span class="n">HUWB</span><span class="p">:</span><span class="n">FCONfig</span><span class="p">:</span><span class="n">SFDLength</span>
+<span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">BB</span><span class="p">:</span><span class="n">HUWB</span><span class="p">:</span><span class="n">FCONfig</span><span class="p">:</span><span class="n">SYMRate</span>
+<span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">BB</span><span class="p">:</span><span class="n">HUWB</span><span class="p">:</span><span class="n">FCONfig</span><span class="p">:</span><span class="n">SYNLength</span>
+<span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">BB</span><span class="p">:</span><span class="n">HUWB</span><span class="p">:</span><span class="n">FCONfig</span><span class="p">:</span><span class="n">VRATe</span>
+</pre></div>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">FconfigCls</span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Huwb/Fconfig.html#FconfigCls"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Fconfig commands group definition. 24 total commands, 5 Subgroups, 17 group commands</p>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_add_dap</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Huwb/Fconfig.html#FconfigCls.get_add_dap"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:FCONfig:ADDGap</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">huwb</span><span class="o">.</span><span class="n">fconfig</span><span class="o">.</span><span class="n">get_add_dap</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Sets additional gap between payload and STS.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>additional_gap: integer Range: 0 to 127</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_cindex</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">RsSmbv.enums.HrpUwbCodeIndex</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Huwb/Fconfig.html#FconfigCls.get_cindex"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:FCONfig:CINDex</span>
+<span class="n">value</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbCodeIndex</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">huwb</span><span class="o">.</span><span class="n">fconfig</span><span class="o">.</span><span class="n">get_cindex</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Sets the code index.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>code_index: CI_1| CI_2| CI_3| CI_4| CI_5| CI_6| CI_7| CI_8| CI_9| CI_10| CI_11| CI_12| CI_13| CI_14| CI_15| CI_16| CI_17| CI_18| CI_19| CI_20| CI_21| CI_22| CI_23| CI_24| CI_25| CI_26| CI_27| CI_28| CI_29| CI_30| CI_31| CI_32</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_cp_burst</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">RsSmbv.enums.HrpUwbChipsPerBurst</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Huwb/Fconfig.html#FconfigCls.get_cp_burst"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:FCONfig:CPBurst</span>
+<span class="n">value</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbChipsPerBurst</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">huwb</span><span class="o">.</span><span class="n">fconfig</span><span class="o">.</span><span class="n">get_cp_burst</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Sets the chips per burst.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>chips_per_burst: CPB_1| CPB_2| CPB_4| CPB_16| CPB_8| CPB_32| CPB_64| CPB_128| CPB_512</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_da_length</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Huwb/Fconfig.html#FconfigCls.get_da_length"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:FCONfig:DALEngth</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">huwb</span><span class="o">.</span><span class="n">fconfig</span><span class="o">.</span><span class="n">get_da_length</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Sets the data length of the physical header data in octets.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>dlength: integer Range: 1 to 4096</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_dr</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Huwb/Fconfig.html#FconfigCls.get_dr"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:FCONfig:DR</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">huwb</span><span class="o">.</span><span class="n">fconfig</span><span class="o">.</span><span class="n">get_dr</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Queries the data rate.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>hrp_uwb_data_rate: No help available</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_fctpl</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">RsSmbv.enums.ZigBeeSpreadingFactor</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Huwb/Fconfig.html#FconfigCls.get_fctpl"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:FCONfig:FCTPl</span>
+<span class="n">value</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">ZigBeeSpreadingFactor</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">huwb</span><span class="o">.</span><span class="n">fconfig</span><span class="o">.</span><span class="n">get_fctpl</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>No command help available</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>factor_in_payload: No help available</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_fctshr</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">RsSmbv.enums.ZigBeeSpreadingFactor</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Huwb/Fconfig.html#FconfigCls.get_fctshr"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:FCONfig:FCTShr</span>
+<span class="n">value</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">ZigBeeSpreadingFactor</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">huwb</span><span class="o">.</span><span class="n">fconfig</span><span class="o">.</span><span class="n">get_fctshr</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>No command help available</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>fcts_hr: No help available</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_hop_burst</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">RsSmbv.enums.HrpUwbHopBurst</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Huwb/Fconfig.html#FconfigCls.get_hop_burst"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:FCONfig:HOPBurst</span>
+<span class="n">value</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbHopBurst</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">huwb</span><span class="o">.</span><span class="n">fconfig</span><span class="o">.</span><span class="n">get_hop_burst</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Sets the number of hop bursts.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>hop_burst: HB_2| HB_8| HB_32</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_mdl</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">RsSmbv.enums.HrpUwbMaxDataLength</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Huwb/Fconfig.html#FconfigCls.get_mdl"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:FCONfig:MDL</span>
+<span class="n">value</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbMaxDataLength</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">huwb</span><span class="o">.</span><span class="n">fconfig</span><span class="o">.</span><span class="n">get_mdl</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Sets the maximum data length for HPRF mode.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>max_data_len: MDL_1023| MDL_2047| MDL_4095 MDL_1023 1023 octets MDL_2047 2047 octets MDL_4095 4095 octets</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_mfl</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">RsSmbv.enums.HrpUwbMacFcsLength</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Huwb/Fconfig.html#FconfigCls.get_mfl"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:FCONfig:MFL</span>
+<span class="n">value</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbMacFcsLength</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">huwb</span><span class="o">.</span><span class="n">fconfig</span><span class="o">.</span><span class="n">get_mfl</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Sets the length of the frame check sequence field.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>mac_fcs_len: MFL_2| MFL_4 MFL_2 Two octets MFL_4 Four octets</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_mprf</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Huwb/Fconfig.html#FconfigCls.get_mprf"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:FCONfig:MPRF</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">huwb</span><span class="o">.</span><span class="n">fconfig</span><span class="o">.</span><span class="n">get_mprf</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Queries the mean pulse repetition frequency (PRF) .</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>mean_prf: float</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_phr_length</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">RsSmbv.enums.ZigBeePhrLengthInSymbols</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Huwb/Fconfig.html#FconfigCls.get_phr_length"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:FCONfig:PHRLength</span>
+<span class="n">value</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">ZigBeePhrLengthInSymbols</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">huwb</span><span class="o">.</span><span class="n">fconfig</span><span class="o">.</span><span class="n">get_phr_length</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>No command help available</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>phr_length: No help available</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_phrb_rate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Huwb/Fconfig.html#FconfigCls.get_phrb_rate"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:FCONfig:PHRBrate</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">huwb</span><span class="o">.</span><span class="n">fconfig</span><span class="o">.</span><span class="n">get_phrb_rate</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Queries the physical header bit rate.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>hrp_uwb_phr_bitrate: No help available</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_sfd_length</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">RsSmbv.enums.HrpUwbSfdlEngth</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Huwb/Fconfig.html#FconfigCls.get_sfd_length"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:FCONfig:SFDLength</span>
+<span class="n">value</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbSfdlEngth</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">huwb</span><span class="o">.</span><span class="n">fconfig</span><span class="o">.</span><span class="n">get_sfd_length</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Queries the symbol length of the start-of-frame delimiter (SFD) . The SFD length depends on the set SFD symbol sequence,
+see Table ‘SFD: indices and lengths’.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>sfd_length: SFDL_4| SFDL_8| SFDL_16| SFDL_32| SFDL_64</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_sym_rate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Huwb/Fconfig.html#FconfigCls.get_sym_rate"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:FCONfig:SYMRate</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">huwb</span><span class="o">.</span><span class="n">fconfig</span><span class="o">.</span><span class="n">get_sym_rate</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>No command help available</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>hrp_uwb_symbol_rate: No help available</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_syn_length</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">RsSmbv.enums.HrpUwbSyncLength</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Huwb/Fconfig.html#FconfigCls.get_syn_length"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:FCONfig:SYNLength</span>
+<span class="n">value</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbSyncLength</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">huwb</span><span class="o">.</span><span class="n">fconfig</span><span class="o">.</span><span class="n">get_syn_length</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Sets the sync length.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>sync_length: SL_16| SL_24| SL_32| SL_48| SL_64| SL_96| SL_128| SL_256| SL_1024| SL_4096</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_vrate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">RsSmbv.enums.HrpUwbViterbiRate</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Huwb/Fconfig.html#FconfigCls.get_vrate"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:FCONfig:VRATe</span>
+<span class="n">value</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbViterbiRate</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">huwb</span><span class="o">.</span><span class="n">fconfig</span><span class="o">.</span><span class="n">get_vrate</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Queries the viterbi rate for convolutional coding.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>hrp_uwb_viterbi_rate: No help available</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_add_dap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">additional_gap</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Huwb/Fconfig.html#FconfigCls.set_add_dap"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:FCONfig:ADDGap</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">huwb</span><span class="o">.</span><span class="n">fconfig</span><span class="o">.</span><span class="n">set_add_dap</span><span class="p">(</span><span class="n">additional_gap</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Sets additional gap between payload and STS.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param additional_gap</dt>
+<dd class="field-odd"><p>integer Range: 0 to 127</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_cindex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code_index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">RsSmbv.enums.HrpUwbCodeIndex</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Huwb/Fconfig.html#FconfigCls.set_cindex"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:FCONfig:CINDex</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">huwb</span><span class="o">.</span><span class="n">fconfig</span><span class="o">.</span><span class="n">set_cindex</span><span class="p">(</span><span class="n">code_index</span> <span class="o">=</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbCodeIndex</span><span class="o">.</span><span class="n">CI_1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Sets the code index.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param code_index</dt>
+<dd class="field-odd"><p>CI_1| CI_2| CI_3| CI_4| CI_5| CI_6| CI_7| CI_8| CI_9| CI_10| CI_11| CI_12| CI_13| CI_14| CI_15| CI_16| CI_17| CI_18| CI_19| CI_20| CI_21| CI_22| CI_23| CI_24| CI_25| CI_26| CI_27| CI_28| CI_29| CI_30| CI_31| CI_32</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_cp_burst</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chips_per_burst</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">RsSmbv.enums.HrpUwbChipsPerBurst</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Huwb/Fconfig.html#FconfigCls.set_cp_burst"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:FCONfig:CPBurst</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">huwb</span><span class="o">.</span><span class="n">fconfig</span><span class="o">.</span><span class="n">set_cp_burst</span><span class="p">(</span><span class="n">chips_per_burst</span> <span class="o">=</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbChipsPerBurst</span><span class="o">.</span><span class="n">CPB_1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Sets the chips per burst.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param chips_per_burst</dt>
+<dd class="field-odd"><p>CPB_1| CPB_2| CPB_4| CPB_16| CPB_8| CPB_32| CPB_64| CPB_128| CPB_512</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_da_length</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dlength</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Huwb/Fconfig.html#FconfigCls.set_da_length"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:FCONfig:DALEngth</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">huwb</span><span class="o">.</span><span class="n">fconfig</span><span class="o">.</span><span class="n">set_da_length</span><span class="p">(</span><span class="n">dlength</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Sets the data length of the physical header data in octets.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param dlength</dt>
+<dd class="field-odd"><p>integer Range: 1 to 4096</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_hop_burst</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hop_burst</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">RsSmbv.enums.HrpUwbHopBurst</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Huwb/Fconfig.html#FconfigCls.set_hop_burst"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:FCONfig:HOPBurst</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">huwb</span><span class="o">.</span><span class="n">fconfig</span><span class="o">.</span><span class="n">set_hop_burst</span><span class="p">(</span><span class="n">hop_burst</span> <span class="o">=</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbHopBurst</span><span class="o">.</span><span class="n">HB_2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Sets the number of hop bursts.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param hop_burst</dt>
+<dd class="field-odd"><p>HB_2| HB_8| HB_32</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_mdl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_data_len</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">RsSmbv.enums.HrpUwbMaxDataLength</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Huwb/Fconfig.html#FconfigCls.set_mdl"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:FCONfig:MDL</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">huwb</span><span class="o">.</span><span class="n">fconfig</span><span class="o">.</span><span class="n">set_mdl</span><span class="p">(</span><span class="n">max_data_len</span> <span class="o">=</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbMaxDataLength</span><span class="o">.</span><span class="n">MDL_1023</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Sets the maximum data length for HPRF mode.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param max_data_len</dt>
+<dd class="field-odd"><p>MDL_1023| MDL_2047| MDL_4095 MDL_1023 1023 octets MDL_2047 2047 octets MDL_4095 4095 octets</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_mfl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mac_fcs_len</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">RsSmbv.enums.HrpUwbMacFcsLength</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Huwb/Fconfig.html#FconfigCls.set_mfl"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:FCONfig:MFL</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">huwb</span><span class="o">.</span><span class="n">fconfig</span><span class="o">.</span><span class="n">set_mfl</span><span class="p">(</span><span class="n">mac_fcs_len</span> <span class="o">=</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbMacFcsLength</span><span class="o">.</span><span class="n">MFL_2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Sets the length of the frame check sequence field.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param mac_fcs_len</dt>
+<dd class="field-odd"><p>MFL_2| MFL_4 MFL_2 Two octets MFL_4 Four octets</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_sfd_length</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sfd_length</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">RsSmbv.enums.HrpUwbSfdlEngth</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Huwb/Fconfig.html#FconfigCls.set_sfd_length"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:FCONfig:SFDLength</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">huwb</span><span class="o">.</span><span class="n">fconfig</span><span class="o">.</span><span class="n">set_sfd_length</span><span class="p">(</span><span class="n">sfd_length</span> <span class="o">=</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbSfdlEngth</span><span class="o">.</span><span class="n">SFDL_16</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Queries the symbol length of the start-of-frame delimiter (SFD) . The SFD length depends on the set SFD symbol sequence,
+see Table ‘SFD: indices and lengths’.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param sfd_length</dt>
+<dd class="field-odd"><p>SFDL_4| SFDL_8| SFDL_16| SFDL_32| SFDL_64</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_syn_length</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sync_length</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">RsSmbv.enums.HrpUwbSyncLength</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Huwb/Fconfig.html#FconfigCls.set_syn_length"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:HUWB:FCONfig:SYNLength</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">huwb</span><span class="o">.</span><span class="n">fconfig</span><span class="o">.</span><span class="n">set_syn_length</span><span class="p">(</span><span class="n">sync_length</span> <span class="o">=</span> <span class="n">enums</span><span class="o">.</span><span class="n">HrpUwbSyncLength</span><span class="o">.</span><span class="n">SL_1024</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Sets the sync length.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param sync_length</dt>
+<dd class="field-odd"><p>SL_16| SL_24| SL_32| SL_48| SL_64| SL_96| SL_128| SL_256| SL_1024| SL_4096</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+</dd></dl>
+
+<p class="rubric">Cloning the Group</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a clone of the original group, that exists independently</span>
+<span class="n">group2</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">huwb</span><span class="o">.</span><span class="n">fconfig</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+</pre></div>
+</div>
+<p class="rubric">Subgroups</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Huwb_Fconfig_Data.html">Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Huwb_Fconfig_Data_Pattern.html">Pattern</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Huwb_Fconfig_Dlength.html">Dlength</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Huwb_Fconfig_Fecphr.html">Fecphr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Huwb_Fconfig_Fecpl.html">Fecpl</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Huwb_Fconfig_Mcs.html">Mcs</a></li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Source_Bb_Huwb_Clock_Sync_Execute.html" class="btn btn-neutral float-left" title="Execute" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Source_Bb_Huwb_Fconfig_Data.html" class="btn btn-neutral float-right" title="Data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

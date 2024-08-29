@@ -1,0 +1,998 @@
+Getting Started
+==================================================
+
+Introduction
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+.. image:: icon.png
+   :class: with-shadow
+   :align: left
+   
+**RsSmbv** is a Python remote-control communication module for Rohde & Schwarz SCPI-based Test and Measurement Instruments. It represents SCPI commands as fixed APIs and hence provides SCPI autocompletion and helps you to avoid common string typing mistakes.
+
+    | Basic example of the idea:
+    | SCPI command:
+    | ``SYSTem:REFerence:FREQuency:SOURce``
+    | Python module representation:
+    | writing:
+    | ``driver.system.reference.frequency.source.set()``
+    | reading:
+    | ``driver.system.reference.frequency.source.get()``
+
+Check out this RsSmbv example:
+
+.. literalinclude:: RsSmbv_GettingStarted_Example.py
+
+
+
+Couple of reasons why to choose this module over plain SCPI approach:
+
+- Type-safe API using typing module
+- You can still use the plain SCPI communication
+- You can select which VISA to use or even not use any VISA at all
+- Initialization of a new session is straight-forward, no need to set any other properties
+- Many useful features are already implemented - reset, self-test, opc-synchronization, error checking, option checking
+- Binary data blocks transfer in both directions
+- Transfer of arrays of numbers in binary or ASCII format
+- File transfers in both directions
+- Events generation in case of error, sent data, received data, chunk data (for big files transfer)
+- Multithreading session locking - you can use multiple threads talking to one instrument at the same time
+- Logging feature tailored for SCPI communication - different for binary and ascii data
+
+
+Installation
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+RsSmbv is hosted on  `pypi.org <https://pypi.org/project/RsSmbv/>`_. You can install it with pip (for example, ``pip.exe`` for Windows), or if you are using Pycharm (and you should be :-) direct in the Pycharm ``Packet Management GUI``.
+
+.. rubric:: Preconditions
+
+- Installed VISA. You can skip this if you plan to use only socket LAN connection. Download the Rohde & Schwarz VISA for Windows, Linux, Mac OS from `here <https://www.rohde-schwarz.com/appnote/1dc02/>`_
+
+.. rubric:: Option 1 - Installing with pip.exe under Windows
+
+- Start the command console: ``WinKey + R``, type ``cmd`` and hit ENTER
+- Change the working directory to the Python installation of your choice (adjust the user name and python version in the path):
+    
+    ``cd c:\Users\John\AppData\Local\Programs\Python\Python37\Scripts``
+- Install with the command: ``pip install RsSmbv``
+
+.. rubric:: Option 2 - Installing in Pycharm
+
+- In Pycharm Menu ``File->Settings->Project->Project Interpreter`` click on the '``+``' button on the top left (the last PyCharm version)
+- Type ``RsSmbv`` in the search box
+- If you are behind a Proxy server, configure it in the Menu: ``File->Settings->Appearance->System Settings->HTTP Proxy``
+
+For more information about Rohde & Schwarz instrument remote control, check out our
+`Instrument_Remote_Control_Web_Series <https://www.rohde-schwarz.com/driver-pages/remote-control/drivers-remote-control_110753.html>`_ .
+
+.. rubric:: Option 3 - Offline Installation
+
+If you are still reading the installation chapter, it is probably because the options above did not work for you - proxy problems, your boss saw the internet bill...
+Here are 6 step for installing the RsSmbv offline:
+
+- Download this python script (**Save target as**): `rsinstrument_offline_install.py <https://cdn.rohde-schwarz.com/pws/service_support/driver_pagedq/files_1/helloworld/rsinstrument_offline_install.py>`_ This installs all the preconditions that the RsSmbv needs.
+- Execute the script in your offline computer (supported is python 3.6 or newer)
+- Download the RsSmbv package to your computer from the pypi.org: https://pypi.org/project/RsSmbv/#files to for example ``c:\temp\``
+- Start the command line ``WinKey + R``, type ``cmd`` and hit ENTER
+- Change the working directory to the Python installation of your choice (adjust the user name and python version in the path):
+
+    ``cd c:\Users\John\AppData\Local\Programs\Python\Python37\Scripts``
+    
+- Install with the command: ``pip install c:\temp\RsSmbv-5.30.48.29.tar``
+
+Finding Available Instruments
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Like the pyvisa's ResourceManager, the RsSmbv can search for available instruments:
+
+.. code-block:: python
+
+    """"
+    Find the instruments in your environment
+    """
+    
+    from RsSmbv import *
+    
+    # Use the instr_list string items as resource names in the RsSmbv constructor
+    instr_list = RsSmbv.list_resources("?*")
+    print(instr_list)
+
+If you have more VISAs installed, the one actually used by default is defined by a secret widget called Visa Conflict Manager.
+You can force your program to use a VISA of your choice:
+
+.. code-block:: python
+
+    """
+    Find the instruments in your environment with the defined VISA implementation
+    """
+    
+    from RsSmbv import *
+    
+    # In the optional parameter visa_select you can use for example 'rs' or 'ni'
+    # Rs Visa also finds any NRP-Zxx USB sensors
+    instr_list = RsSmbv.list_resources('?*', 'rs')
+    print(instr_list)
+
+.. tip::
+    We believe our R&S VISA is the best choice for our customers. Here are the reasons why:
+    
+    - Small footprint
+    - Superior VXI-11 and HiSLIP performance
+    - Integrated legacy sensors NRP-Zxx support
+    - Additional VXI-11 and LXI devices search
+    - Availability for Windows, Linux, Mac OS
+
+Initiating Instrument Session
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+RsSmbv offers four different types of starting your remote-control session. We begin with the most typical case, and progress with more special ones.
+
+.. rubric:: Standard Session Initialization
+
+Initiating new instrument session happens, when you instantiate the RsSmbv object. Below, is a simple Hello World example. Different resource names are examples for different physical interfaces.
+
+.. code-block:: python
+
+    """
+    Simple example on how to use the RsSmbv module for remote-controlling your instrument
+    Preconditions:
+    
+    - Installed RsSmbv Python module Version 5.30.48 or newer from pypi.org
+    - Installed VISA, for example R&S Visa 5.12 or newer
+    """
+    
+    from RsSmbv import *
+    
+    # A good practice is to assure that you have a certain minimum version installed
+    RsSmbv.assert_minimum_version('5.30.48')
+    resource_string_1 = 'TCPIP::192.168.2.101::INSTR'  # Standard LAN connection (also called VXI-11)
+    resource_string_2 = 'TCPIP::192.168.2.101::hislip0'  # Hi-Speed LAN connection - see 1MA208
+    resource_string_3 = 'GPIB::20::INSTR'  # GPIB Connection
+    resource_string_4 = 'USB::0x0AAD::0x0119::022019943::INSTR'  # USB-TMC (Test and Measurement Class)
+    
+    # Initializing the session
+    driver = RsSmbv(resource_string_1)
+    
+    idn = driver.utilities.query_str('*IDN?')
+    print(f"\nHello, I am: '{idn}'")
+    print(f'RsSmbv package version: {driver.utilities.driver_version}')
+    print(f'Visa manufacturer: {driver.utilities.visa_manufacturer}')
+    print(f'Instrument full name: {driver.utilities.full_instrument_model_name}')
+    print(f'Instrument installed options: {",".join(driver.utilities.instrument_options)}')
+    
+    # Close the session
+    driver.close()
+
+.. note::
+    If you are wondering about the missing ``ASRL1::INSTR``, yes, it works too, but come on... it's 2023.
+
+Do not care about specialty of each session kind; RsSmbv handles all the necessary session settings for you. You immediately have access to many identification properties in the interface ``driver.utilities`` . Here are same of them:
+
+- ``idn_string``
+- ``driver_version``
+- ``visa_manufacturer``
+- ``full_instrument_model_name``
+- ``instrument_serial_number``
+- ``instrument_firmware_version``
+- ``instrument_options``
+
+The constructor also contains optional boolean arguments ``id_query`` and ``reset``:
+
+.. code-block:: python
+    
+    driver = RsSmbv('TCPIP::192.168.56.101::hislip0', id_query=True, reset=True)
+    
+- Setting ``id_query`` to True (default is True) checks, whether your instrument can be used with the RsSmbv module.
+- Setting  ``reset`` to True (default is False) resets your instrument. It is equivalent to calling the ``reset()`` method.
+
+.. rubric:: Selecting a Specific VISA
+
+Just like in the function ``list_resources()``, the RsSmbv allows you to choose which VISA to use:
+
+.. code-block:: python
+
+    """
+    Choosing VISA implementation
+    """
+    
+    from RsSmbv import *
+    
+    # Force use of the Rs Visa. For NI Visa, use the "SelectVisa='ni'"
+    driver = RsSmbv('TCPIP::192.168.56.101::INSTR', True, True, "SelectVisa='rs'")
+    
+    idn = driver.utilities.query_str('*IDN?')
+    print(f"\nHello, I am: '{idn}'")
+    print(f"\nI am using the VISA from: {driver.utilities.visa_manufacturer}")
+    
+    # Close the session
+    driver.close()
+
+.. rubric:: No VISA Session
+
+We recommend using VISA when possible preferrably with HiSlip session because of its low latency. However, if you are a strict VISA denier, RsSmbv has something for you too - **no Visa installation raw LAN socket**:
+
+.. code-block:: python
+
+    """
+    Using RsSmbv without VISA for LAN Raw socket communication
+    """
+    
+    from RsSmbv import *
+    
+    driver = RsSmbv('TCPIP::192.168.56.101::5025::SOCKET', True, True, "SelectVisa='socket'")
+    print(f'Visa manufacturer: {driver.utilities.visa_manufacturer}')
+    print(f"\nHello, I am: '{driver.utilities.idn_string}'")
+    
+    # Close the session
+    driver.close()
+
+.. warning::
+    Not using VISA can cause problems by debugging when you want to use the communication Trace Tool. The good news is, you can easily switch to use VISA and back just by changing the constructor arguments. The rest of your code stays unchanged.
+
+.. rubric:: Simulating Session
+
+If a colleague is currently occupying your instrument, leave him in peace, and open a simulating session:
+
+.. code-block:: python
+    
+    driver = RsSmbv('TCPIP::192.168.56.101::hislip0', True, True, "Simulate=True")
+    
+More ``option_string`` tokens are separated by comma:
+
+.. code-block:: python
+
+    driver = RsSmbv('TCPIP::192.168.56.101::hislip0', True, True, "SelectVisa='rs', Simulate=True")
+    
+.. rubric:: Shared Session
+
+In some scenarios, you want to have two independent objects talking to the same instrument. Rather than opening a second VISA connection, share the same one between two or more RsSmbv objects:
+
+.. code-block:: python
+
+    """
+    Sharing the same physical VISA session by two different RsSmbv objects
+    """
+    
+    from RsSmbv import *
+    
+    driver1 = RsSmbv('TCPIP::192.168.56.101::INSTR', True, True)
+    driver2 = RsSmbv.from_existing_session(driver1)
+    
+    print(f'driver1: {driver1.utilities.idn_string}')
+    print(f'driver2: {driver2.utilities.idn_string}')
+    
+    # Closing the driver2 session does not close the driver1 session - driver1 is the 'session master'
+    driver2.close()
+    print(f'driver2: I am closed now')
+    
+    print(f'driver1: I am  still opened and working: {driver1.utilities.idn_string}')
+    driver1.close()
+    print(f'driver1: Only now I am closed.')
+
+.. note::
+    The ``driver1`` is the object holding the 'master' session. If you call the ``driver1.close()``, the ``driver2`` loses its instrument session as well, and becomes pretty much useless.
+
+Plain SCPI Communication
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+After you have opened the session, you can use the instrument-specific part described in the RsSmbv API Structure.
+If for any reason you want to use the plain SCPI, use the ``utilities`` interface's two basic methods:
+
+- ``write_str()`` - writing a command without an answer, for example **\*RST**
+- ``query_str()`` - querying your instrument, for example the **\*IDN?** query
+    
+You may ask a question. Actually, two questions:
+
+- **Q1**: Why there are not called ``write()`` and ``query()`` ?
+- **Q2**: Where is the ``read()`` ?
+    
+**Answer 1**: Actually, there are - the ``write_str()`` / ``write()`` and ``query_str()`` / ``query()`` are aliases, and you can use any of them. We promote the ``_str`` names, to clearly show you want to work with strings. Strings in Python3 are Unicode, the *bytes* and *string* objects are not interchangeable, since one character might be represented by more than 1 byte.
+To avoid mixing string and binary communication, all the method names for binary transfer contain ``_bin`` in the name.
+
+**Answer 2**: Short answer - you do not need it. Long answer - your instrument never sends unsolicited responses. If you send a set command, you use ``write_str()``. For a query command, you use ``query_str()``. So, you really do not need it...
+
+**Bottom line** - if you are used to ``write()`` and ``query()`` methods, from pyvisa, the ``write_str()`` and ``query_str()`` are their equivalents.
+
+Enough with the theory, let us look at an example. Simple write, and query:
+
+.. code-block:: python
+
+    """
+    Basic string write_str / query_str
+    """
+    
+    from RsSmbv import *
+    
+    driver = RsSmbv('TCPIP::192.168.56.101::INSTR')
+    driver.utilities.write_str('*RST')
+    response = driver.utilities.query_str('*IDN?')
+    print(response)
+    
+    # Close the session
+    driver.close()
+
+
+This example is so-called "*University-Professor-Example*" - good to show a principle, but never used in praxis. The abovementioned commands are already a part of the driver's API. Here is another example, achieving the same goal:
+
+.. code-block:: python
+
+    """
+    Basic string write_str / query_str
+    """
+    
+    from RsSmbv import *
+    
+    driver = RsSmbv('TCPIP::192.168.56.101::INSTR')
+    driver.utilities.reset()
+    print(driver.utilities.idn_string)
+    
+    # Close the session
+    driver.close()
+
+One additional feature we need to mention here: **VISA timeout**. To simplify, VISA timeout plays a role in each ``query_xxx()``, where the controller (your PC) has to prevent waiting forever for an answer from your instrument. VISA timeout defines that maximum waiting time. You can set/read it with the ``visa_timeout`` property:
+
+.. code-block:: python
+
+    # Timeout in milliseconds
+    driver.utilities.visa_timeout = 3000
+
+After this time, the RsSmbv raises an exception. Speaking of exceptions, an important feature of the RsSmbv is **Instrument Status Checking**. Check out the next chapter that describes the error checking in details.
+
+    
+For completion, we mention other string-based ``write_xxx()`` and ``query_xxx()`` methods - all in one example. They are convenient extensions providing type-safe float/boolean/integer setting/querying features:
+
+.. code-block:: python
+
+    """
+    Basic string write_xxx / query_xxx
+    """
+    
+    from RsSmbv import *
+    
+    driver = RsSmbv('TCPIP::192.168.56.101::INSTR')
+    driver.utilities.visa_timeout = 5000
+    driver.utilities.instrument_status_checking = True
+    driver.utilities.write_int('SWEEP:COUNT ', 10)  # sending 'SWEEP:COUNT 10'
+    driver.utilities.write_bool('SOURCE:RF:OUTPUT:STATE ', True)  # sending 'SOURCE:RF:OUTPUT:STATE ON'
+    driver.utilities.write_float('SOURCE:RF:FREQUENCY ', 1E9)  # sending 'SOURCE:RF:FREQUENCY 1000000000'
+    
+    sc = driver.utilities.query_int('SWEEP:COUNT?')  # returning integer number sc=10
+    out = driver.utilities.query_bool('SOURCE:RF:OUTPUT:STATE?')  # returning boolean out=True
+    freq = driver.utilities.query_float('SOURCE:RF:FREQUENCY?')  # returning float number freq=1E9
+    
+    # Close the session
+    driver.close()
+
+Lastly, a method providing basic synchronization: ``query_opc()``. It sends query **\*OPC?** to your instrument. The instrument waits with the answer until all the tasks it currently has in a queue are finished. This way your program waits too, and this way it is synchronized with the actions in the instrument. Remember to have the VISA timeout set to an appropriate value to prevent the timeout exception. Here's the snippet:
+
+.. code-block:: python
+
+    driver.utilities.visa_timeout = 3000
+    driver.utilities.write_str("INIT")
+    driver.utilities.query_opc()
+
+    # The results are ready now to fetch
+    results = driver.utilities.query_str("FETCH:MEASUREMENT?")
+
+.. tip::
+    Wait, there's more: you can send the **\*OPC?** after each ``write_xxx()`` automatically:
+
+    .. code-block:: python
+
+        # Default value after init is False
+        driver.utilities.opc_query_after_write = True
+
+
+Error Checking
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+RsSmbv pushes limits even further (internal R&S joke): It has a built-in mechanism that after each command/query checks the instrument's status subsystem, and raises an exception if it detects an error. For those who are already screaming: **Speed Performance Penalty!!!**, don't worry, you can disable it.
+
+Instrument status checking is very useful since in case your command/query caused an error, you are immediately informed about it. Status checking has in most cases no practical effect on the speed performance of your program. However, if for example, you do many repetitions of short write/query sequences, it might make a difference to switch it off:
+
+.. code-block:: python
+    
+    # Default value after init is True
+    driver.utilities.instrument_status_checking = False
+
+To clear the instrument status subsystem of all errors, call this method:
+
+.. code-block:: python
+    
+    driver.utilities.clear_status()
+    
+Instrument's status system error queue is clear-on-read. It means, if you query its content, you clear it at the same time. To query and clear list of all the current errors, use this snippet:
+    
+.. code-block:: python
+    
+    errors_list = driver.utilities.query_all_errors()
+
+See the next chapter on how to react on errors.
+
+Exception Handling
+------------------------------------------------------------------------------------------------------------------------------------------------------
+The base class for all the exceptions raised by the RsSmbv is ``RsInstrException``. Inherited exception classes:
+
+- ``ResourceError`` raised in the constructor by problems with initiating the instrument, for example wrong or non-existing resource name
+- ``StatusException`` raised if a command or a query generated error in the instrument's error queue
+- ``TimeoutException`` raised if a visa timeout or an opc timeout is reached
+    
+In this example we show usage of all of them. Because it is difficult to generate an error using the instrument-specific SCPI API, we use plain SCPI commands:
+    
+.. code-block:: python
+
+    """
+    Showing how to deal with exceptions
+    """
+    
+    from RsSmbv import *
+    
+    driver = None
+    # Try-catch for initialization. If an error occures, the ResourceError is raised
+    try:
+        driver = RsSmbv('TCPIP::10.112.1.179::hislip0')
+    except ResourceError as e:
+        print(e.args[0])
+        print('Your instrument is probably OFF...')
+        # Exit now, no point of continuing
+        exit(1)
+    
+    # Dealing with commands that potentially generate errors OPTION 1:
+    # Switching the status checking OFF termporarily
+    driver.utilities.instrument_status_checking = False
+    driver.utilities.write_str('MY:MISSpelled:COMMand')
+    # Clear the error queue
+    driver.utilities.clear_status()
+    # Status checking ON again
+    driver.utilities.instrument_status_checking = True
+    
+    # Dealing with queries that potentially generate errors OPTION 2:
+    try:
+        # You migh want to reduce the VISA timeout to avoid long waiting
+        driver.utilities.visa_timeout = 1000
+        driver.utilities.query_str('MY:WRONg:QUERy?')
+    
+    except StatusException as e:
+        # Instrument status error
+        print(e.args[0])
+        print('Nothing to see here, moving on...')
+    
+    except TimeoutException as e:
+        # Timeout error
+        print(e.args[0])
+        print('That took a long time...')
+    
+    except RsInstrException as e:
+        # RsInstrException is a base class for all the RsSmbv exceptions
+        print(e.args[0])
+        print('Some other RsSmbv error...')
+    
+    finally:
+        driver.utilities.visa_timeout = 5000
+        # Close the session in any case
+        driver.close()
+
+.. tip::
+    General rules for exception handling:
+
+    - If you are sending commands that might generate errors in the instrument, for example deleting a file which does not exist, use the **OPTION 1** - temporarily disable status checking, send the command, clear the error queue and enable the status checking again.
+    - If you are sending queries that might generate errors or timeouts, for example querying measurement that can not be performed at the moment, use the **OPTION 2** - try/except with optionally adjusting the timeouts.
+
+Another way to deal with exceptions are error **Context-Managers**. You have two of them available:
+
+    - Instrument Error Suppressor
+    - VISA Timeout Suppressor
+
+**Instrument Error Suppressor** context-manager has several neat features:
+
+    - It can change the VISA timeout for the commands in the context.
+    - It can selectively suppress only certain instrument error codes, and for others it raises exceptions.
+    - In case any other exception is raised within the context, the context-manager sets the VISA Timeout back to its original value.
+
+Let us look at two examples. The following one only suppresses execution error (code -200). Since the command is misspelled, the error generated by the instrument has the code -113,'Undefined Header', and therefore
+the exception is raised anyway. This way you can only suppress certain errors. The context-manager object allows for checking if some errors were suppressed, and you can also read them all out:
+
+.. code-block:: python
+
+    """
+    Suppress instrument errors with certain code with the Suppress Context-manager.
+    """
+    
+    from RsSmbv import *
+    
+    RsSmbv.assert_minimum_version('1.70.0')
+    instr = RsSmbv('TCPIP::10.112.1.179::HISLIP', True, True)
+    
+    with instr.utilities.instr_err_suppressor(suppress_only_codes=-200) as supp:
+        # This will raise the exception anyway, because the Undefined Header error has code -113
+        instr.utilities.write('MY:MISSpelled:COMMand')
+    
+    if supp.get_errors_occurred():
+        print("Errors occurred: ")
+        for err in supp.get_all_errors():
+            print(err)
+	
+You can also change the VISA Timeout inside the context:
+
+.. code-block:: python
+
+    with instr.utilities.instr_err_suppressor(visa_tout_ms=500, suppress_only_codes=-300) as supp:
+		response = instr.utilities.query('*IDaN?')
+		
+Multiple error codes to suppress you enter as an integer list:
+
+.. code-block:: python
+
+	with instr.utilities.instr_err_suppressor(visa_tout_ms=3000, suppress_only_codes=[-200, -300]) as supp:
+		meas = instr.utilities.query('MEASurement:RESult?')
+		
+If VISA Timeout Exceptions are your problem, you'd like to react on them with a workaround, and continue with your code further, you have to do the following steps:
+
+	- adjust the VISA timeout to higher value to give the instrument more time, or to lower value to prevent long waiting times.
+	- execute the command / query.
+	- in case the timeout error occurrs, you clear the error queue to delete any 'Query Interrupted' errors.
+	- change the VISA timeout back to the original value.
+	
+This all is what the **VISA Timeout Suppressor** context-manager does:
+
+.. code-block:: python
+
+    """
+    Suppress VISA Timeout exception for certain commands with the Suppress Context-manager.
+    """
+    
+    from RsSmbv import *
+    
+    RsSmbv.assert_minimum_version('1.70.0')
+    instr = RsSmbv('TCPIP::10.112.1.179::HISLIP', True, True)
+    
+    with instr.utilities..visa_tout_suppressor(visa_tout_ms=500) as supp:
+        instr.utilities.query('*IDaN?')
+    
+    if supp.get_timeout_occurred():
+        print("Timeout occurred inside the context")
+
+Transferring Files
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+.. rubric:: Instrument -> PC
+
+You definitely experienced it: you just did a perfect measurement, saved the results as a screenshot to an instrument's storage drive.
+Now you want to transfer it to your PC.
+With RsSmbv, no problem, just figure out where the screenshot was stored on the instrument. In our case, it is */var/user/instr_screenshot.png*:
+
+.. code-block:: python
+    
+    driver.utilities.read_file_from_instrument_to_pc(
+        r'/var/user/instr_screenshot.png',
+        r'c:\temp\pc_screenshot.png')
+
+.. rubric:: PC -> Instrument
+
+Another common scenario: Your cool test program contains a setup file you want to transfer to your instrument:
+Here is the RsSmbv one-liner split into 3 lines:
+
+.. code-block:: python
+    
+    driver.utilities.send_file_from_pc_to_instrument(
+        r'c:\MyCoolTestProgram\instr_setup.sav',
+        r'/var/appdata/instr_setup.sav')
+
+Writing Binary Data
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+.. rubric:: Writing from bytes
+
+An example where you need to send binary data is a waveform file of a vector signal generator. First, you compose your wform_data as ``bytes``, and then you send it with ``write_bin_block()``:
+
+.. code-block:: python
+    
+    # MyWaveform.wv is an instrument file name under which this data is stored
+    driver.utilities.write_bin_block(
+        "SOUR:BB:ARB:WAV:DATA 'MyWaveform.wv',",
+        wform_data)
+
+.. note::    
+    Notice the ``write_bin_block()`` has two parameters:
+
+    - ``string`` parameter ``cmd`` for the SCPI command
+    - ``bytes`` parameter ``payload`` for the actual binary data to send
+
+.. rubric:: Writing from PC files
+
+Similar to querying binary data to a file, you can write binary data from a file. The second parameter is then the PC file path the content of which you want to send:
+
+.. code-block:: python
+
+    driver.utilities.write_bin_block_from_file(
+        "SOUR:BB:ARB:WAV:DATA 'MyWaveform.wv',",
+        r"c:\temp\wform_data.wv")
+
+.. _GetingStarted_Events:
+
+Transferring Big Data with Progress
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+We can agree that it can be annoying using an application that shows no progress for long-lasting operations. The same is true for remote-control programs. Luckily, the RsSmbv has this covered. And, this feature is quite universal - not just for big files transfer, but for any data in both directions.
+
+RsSmbv allows you to register a function (programmers fancy name is ``callback``), which is then periodicaly invoked after transfer of one data chunk. You can define that chunk size, which gives you control over the callback invoke frequency. You can even slow down the transfer speed, if you want to process the data as they arrive (direction instrument -> PC).
+
+To show this in praxis, we are going to use another *University-Professor-Example*: querying the **\*IDN?** with chunk size of 2 bytes and delay of 200ms between each chunk read:
+
+.. code-block:: python
+
+    """
+    Event handlers by reading
+    """
+    
+    from RsSmbv import *
+    import time
+    
+    
+    def my_transfer_handler(args):
+        """Function called each time a chunk of data is transferred"""
+        # Total size is not always known at the beginning of the transfer
+        total_size = args.total_size if args.total_size is not None else "unknown"
+    
+        print(f"Context: '{args.context}{'with opc' if args.opc_sync else ''}', "
+            f"chunk {args.chunk_ix}, "
+            f"transferred {args.transferred_size} bytes, "
+            f"total size {total_size}, "
+            f"direction {'reading' if args.reading else 'writing'}, "
+            f"data '{args.data}'")
+    
+        if args.end_of_transfer:
+            print('End of Transfer')
+        time.sleep(0.2)
+    
+    
+    driver = RsSmbv('TCPIP::192.168.56.101::INSTR')
+    
+    driver.events.on_read_handler = my_transfer_handler
+    # Switch on the data to be included in the event arguments
+    # The event arguments args.data will be updated
+    driver.events.io_events_include_data = True
+    # Set data chunk size to 2 bytes
+    driver.utilities.data_chunk_size = 2
+    driver.utilities.query_str('*IDN?')
+    # Unregister the event handler
+    driver.utilities.on_read_handler = None
+
+    # Close the session
+    driver.close()
+
+
+If you start it, you might wonder (or maybe not): why is the ``args.total_size = None``? The reason is, in this particular case the RsSmbv does not know the size of the complete response up-front. However, if you use the same mechanism for transfer of a known data size (for example, file transfer), you get the information about the total size too, and hence you can calculate the progress as:
+
+*progress [pct] = 100 \* args.transferred_size / args.total_size*
+
+Snippet of transferring file from PC to instrument, the rest of the code is the same as in the previous example: 
+
+.. code-block:: python
+
+    driver.events.on_write_handler = my_transfer_handler
+    driver.events.io_events_include_data = True
+    driver.data_chunk_size = 1000
+    driver.utilities.send_file_from_pc_to_instrument(
+        r'c:\MyCoolTestProgram\my_big_file.bin',
+        r'/var/user/my_big_file.bin')
+    # Unregister the event handler
+    driver.events.on_write_handler = None
+
+Multithreading
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+You are at the party, many people talking over each other. Not every person can deal with such crosstalk, neither can measurement instruments. For this reason, RsSmbv has a feature of scheduling the access to your instrument by using so-called **Locks**. Locks make sure that there can be just one client at a time *talking* to your instrument. Talking in this context means completing one communication step - one command write or write/read or write/read/error check.
+
+To describe how it works, and where it matters, we take three typical mulithread scenarios:
+
+.. rubric:: One instrument session, accessed from multiple threads
+
+You are all set - the lock is a part of your instrument session. Check out the following example - it will execute properly, although the instrument gets 10 queries at the same time:
+
+.. code-block:: python
+
+    """
+    Multiple threads are accessing one RsSmbv object
+    """
+    
+    import threading
+    from RsSmbv import *
+    
+    
+    def execute(session):
+        """Executed in a separate thread."""
+        session.utilities.query_str('*IDN?')
+    
+    
+    driver = RsSmbv('TCPIP::192.168.56.101::INSTR')
+    threads = []
+    for i in range(10):
+        t = threading.Thread(target=execute, args=(driver, ))
+        t.start()
+        threads.append(t)
+    print('All threads started')
+    
+    # Wait for all threads to join this main thread
+    for t in threads:
+        t.join()
+    print('All threads ended')
+    
+    driver.close()
+
+
+.. rubric:: Shared instrument session, accessed from multiple threads
+
+Same as the previous case, you are all set. The session carries the lock with it. You have two objects, talking to the same instrument from multiple threads. Since the instrument session is shared, the same lock applies to both objects causing the exclusive access to the instrument.
+
+Try the following example:
+
+.. code-block:: python
+
+    """
+    Multiple threads are accessing two RsSmbv objects with shared session
+    """
+    
+    import threading
+    from RsSmbv import *
+    
+    
+    def execute(session: RsSmbv, session_ix, index) -> None:
+        """Executed in a separate thread."""
+        print(f'{index} session {session_ix} query start...')
+        session.utilities.query_str('*IDN?')
+        print(f'{index} session {session_ix} query end')
+    
+
+    driver1 = RsSmbv('TCPIP::192.168.56.101::INSTR')
+    driver2 = RsSmbv.from_existing_session(driver1)
+    driver1.utilities.visa_timeout = 200
+    driver2.utilities.visa_timeout = 200
+    # To see the effect of crosstalk, uncomment this line
+    # driver2.utilities.clear_lock()
+    
+    threads = []
+    for i in range(10):
+        t = threading.Thread(target=execute, args=(driver1, 1, i,))
+        t.start()
+        threads.append(t)
+        t = threading.Thread(target=execute, args=(driver2, 2, i,))
+        t.start()
+        threads.append(t)
+    print('All threads started')
+    
+    # Wait for all threads to join this main thread
+    for t in threads:
+        t.join()
+    print('All threads ended')
+    
+    driver2.close()
+    driver1.close()
+
+As you see, everything works fine. If you want to simulate some party crosstalk, uncomment the line ``driver2.utilities.clear_lock()``. Thich causes the driver2 session lock to break away from the driver1 session lock. Although the driver1 still tries to schedule its instrument access, the driver2 tries to do the same at the same time, which leads to all the fun stuff happening.
+
+
+.. rubric:: Multiple instrument sessions accessed from multiple threads
+
+Here, there are two possible scenarios depending on the instrument's VISA interface:
+
+- Your are lucky, because you instrument handles each remote session completely separately. An example of such instrument is SMW200A. In this case, you have no need for session locking.
+- Your instrument handles all sessions with one set of in/out buffers. You need to lock the session for the duration of a talk. And you are lucky again, because the RsSmbv takes care of it for you. The text below describes this scenario.
+
+Run the following example:
+
+.. code-block:: python
+
+    """
+    Multiple threads are accessing two RsSmbv objects with two separate sessions
+    """
+    
+    import threading
+    from RsSmbv import *
+    
+    
+    def execute(session: RsSmbv, session_ix, index) -> None:
+        """Executed in a separate thread."""
+        print(f'{index} session {session_ix} query start...')
+        session.utilities.query_str('*IDN?')
+        print(f'{index} session {session_ix} query end')
+    
+
+    driver1 = RsSmbv('TCPIP::192.168.56.101::INSTR')
+    driver2 = RsSmbv('TCPIP::192.168.56.101::INSTR')
+    driver1.utilities.visa_timeout = 200
+    driver2.utilities.visa_timeout = 200
+    
+    # Synchronise the sessions by sharing the same lock
+    driver2.utilities.assign_lock(driver1.utilities.get_lock())  # To see the effect of crosstalk, comment this line
+    
+    threads = []
+    for i in range(10):
+        t = threading.Thread(target=execute, args=(driver1, 1, i,))
+        t.start()
+        threads.append(t)
+        t = threading.Thread(target=execute, args=(driver2, 2, i,))
+        t.start()
+        threads.append(t)
+    print('All threads started')
+    
+    # Wait for all threads to join this main thread
+    for t in threads:
+        t.join()
+    print('All threads ended')
+    
+    driver2.close()
+    driver1.close()
+
+You have two completely independent sessions that want to talk to the same instrument at the same time. This will not go well, unless they share the same session lock. The key command to achieve this is ``driver2.utilities.assign_lock(driver1.utilities.get_lock())``
+Try to comment it and see how it goes. If despite commenting the line the example runs without issues, you are lucky to have an instrument similar to the SMW200A.
+
+.. _GetingStarted_Logging:
+
+Logging
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Yes, the logging again. This one is tailored for instrument communication. You will appreciate such handy feature when you troubleshoot your program, or just want to protocol the SCPI communication for your test reports.
+
+What can you actually do with the logger?
+
+- Write SCPI communication to a stream-like object, for example console or file, or both simultaneously
+- Log only errors and skip problem-free parts; this way you avoid going through thousands lines of texts
+- Investigate duration of certain operations to optimize your program's performance
+- Log custom messages from your program
+
+
+Let us take this basic example:
+
+.. code-block:: python
+
+	"""
+	Basic logging example to the console
+	"""
+
+	from RsSmbv import *
+
+	driver = RsSmbv('TCPIP::192.168.1.101::INSTR')
+
+	# Switch ON logging to the console.
+	driver.utilities.logger.log_to_console = True
+	driver.utilities.logger.mode = LoggingMode.On
+	driver.utilities.reset()
+
+	# Close the session
+	driver.close()
+
+Console output:
+
+.. code-block:: console
+
+	10:29:10.819     TCPIP::192.168.1.101::INSTR     0.976 ms  Write: *RST
+	10:29:10.819     TCPIP::192.168.1.101::INSTR  1884.985 ms  Status check: OK
+	10:29:12.704     TCPIP::192.168.1.101::INSTR     0.983 ms  Query OPC: 1
+	10:29:12.705     TCPIP::192.168.1.101::INSTR     2.892 ms  Clear status: OK
+	10:29:12.708     TCPIP::192.168.1.101::INSTR     3.905 ms  Status check: OK
+	10:29:12.712     TCPIP::192.168.1.101::INSTR     1.952 ms  Close: Closing session
+	
+The columns of the log are aligned for better reading. Columns meaning:
+
+- (1) Start time of the operation
+- (2) Device resource name (you can set an alias)
+- (3) Duration of the operation
+- (4) Log entry
+
+.. tip::
+    You can customize the logging format with ``set_format_string()``, and set the maximum log entry length with the properties:
+	
+	- ``abbreviated_max_len_ascii``
+	- ``abbreviated_max_len_bin``
+	- ``abbreviated_max_len_list``
+	
+    See the full logger help :ref:`here <Logger>`.
+	
+
+Notice the SCPI communication starts from the line ``driver.utilities.reset()``. If you want to log the initialization of the session as well, you have to switch the logging ON already in the constructor:
+
+.. code-block:: python
+
+    driver = RsSmbv('TCPIP::192.168.56.101::hislip0', options='LoggingMode=On')
+	
+Parallel to the console logging, you can log to a general stream. Do not fear the programmer's jargon'... under the term **stream** you can just imagine a file. To be a little more technical, a stream in Python is any object that has two methods: ``write()`` and ``flush()``. This example opens a file and sets it as logging target:
+
+.. code-block:: python
+
+	"""
+	Example of logging to a file
+	"""
+
+	from RsSmbv import *
+
+	driver = RsSmbv('TCPIP::192.168.1.101::INSTR')
+
+	# We also want to log to the console.
+	driver.utilities.logger.log_to_console = True
+
+	# Logging target is our file
+	file = open(r'c:\temp\my_file.txt', 'w')
+	driver.utilities.logger.set_logging_target(file)
+	driver.utilities.logger.mode = LoggingMode.On
+
+	# Instead of the 'TCPIP::192.168.1.101::INSTR', show 'MyDevice'
+	driver.utilities.logger.device_name = 'MyDevice'
+
+	# Custom user entry
+	driver.utilities.logger.info_raw('----- This is my custom log entry. ---- ')
+
+	driver.utilities.reset()
+
+	# Close the session
+	driver.close()
+
+	# Close the log file
+	file.close()
+
+.. tip::
+    To make the log more compact, you can skip all the lines with ``Status check: OK``:
+	
+	.. code-block:: python
+
+		driver.utilities.logger.log_status_check_ok = False
+		
+.. hint::
+	You can share the logging file between multiple sessions. In such case, remember to close the file only after you have stopped logging in all your sessions, otherwise you get a log write error.
+
+For logging to a UDP port in addition to other log targets, use one of the lines:
+
+.. code-block:: python
+
+	driver.utilities.logger.log_to_udp = True
+	driver.utilities.logger.log_to_console_and_udp = True
+	
+You can select the UDP port to log to, the default is 49200:
+
+.. code-block:: python
+
+	driver.utilities.logger.udp_port = 49200
+	
+Another cool feature is logging only errors. To make this mode usefull for troubleshooting, you also want to see the circumstances which lead to the errors. Each driver elementary operation, for example, ``write_str()``, can generate a group of log entries - let us call them **Segment**. In the logging mode ``Errors``, a whole segment is logged only if at least one entry of the segment is an error.
+
+The script below demonstrates this feature. We use a direct SCPI communication to send a misspelled SCPI command *CLS, which leads to instrument status error:
+
+.. code-block:: python
+
+	"""
+	Logging example to the console with only errors logged
+	"""
+
+	from RsSmbv import *
+
+	driver = RsSmbv('TCPIP::192.168.1.101::INSTR', options='LoggingMode=Errors')
+
+	# Switch ON logging to the console.
+	driver.utilities.logger.log_to_console = True
+
+	# Reset will not be logged, since no error occurred there
+	driver.utilities.reset()
+
+	# Now a misspelled command.
+	driver.utilities.write('*CLaS')
+
+	# A good command again, no logging here
+	idn = driver.utilities.query('*IDN?')
+
+	# Close the session
+	driver.close()
+
+Console output:
+
+.. code-block:: console
+
+	12:11:02.879 TCPIP::192.168.1.101::INSTR     0.976 ms  Write string: *CLaS
+	12:11:02.879 TCPIP::192.168.1.101::INSTR     6.833 ms  Status check: StatusException:
+	                                             Instrument error detected: Undefined header;*CLaS
+
+Notice the following:
+
+- Although the operation **Write string: *CLaS** finished without an error, it is still logged, because it provides the context for the actual error which occurred during the status checking right after.
+- No other log entries are present, including the session initialization and close, because they were all error-free.

@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Getting Started &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Enums" href="enums.html" />
+    <link rel="prev" title="Revision History" href="readme.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="readme.html">Revision History</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#finding-available-instruments">Finding Available Instruments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#initiating-instrument-session">Initiating Instrument Session</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#plain-scpi-communication">Plain SCPI Communication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#error-checking">Error Checking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exception-handling">Exception Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#transferring-files">Transferring Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#writing-binary-data">Writing Binary Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#transferring-big-data-with-progress">Transferring Big Data with Progress</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#multithreading">Multithreading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#logging">Logging</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RsSmbv.html">RsSmbv API Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Getting Started</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/getting_started.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="getting-started">
+<h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline"></a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline"></a></h2>
+<img alt="_images/icon.png" class="with-shadow align-left" src="_images/icon.png" />
+<p><strong>RsSmbv</strong> is a Python remote-control communication module for Rohde &amp; Schwarz SCPI-based Test and Measurement Instruments. It represents SCPI commands as fixed APIs and hence provides SCPI autocompletion and helps you to avoid common string typing mistakes.</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">Basic example of the idea:</div>
+<div class="line">SCPI command:</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">SYSTem:REFerence:FREQuency:SOURce</span></code></div>
+<div class="line">Python module representation:</div>
+<div class="line">writing:</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">driver.system.reference.frequency.source.set()</span></code></div>
+<div class="line">reading:</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">driver.system.reference.frequency.source.get()</span></code></div>
+</div>
+</div></blockquote>
+<p>Check out this RsSmbv example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;Getting started - how to work with RsSmbv Python package.</span>
+<span class="sd">This example performs basic RF settings on an SMBV100B instrument.</span>
+<span class="sd">It shows the RsSmbv calls and their corresponding SCPI commands.</span>
+<span class="sd">Notice that the python RsSmbv interfaces track the SCPI commands syntax.&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">RsSmbv</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># Open the session</span>
+<span class="n">smbv</span> <span class="o">=</span> <span class="n">RsSmbv</span><span class="p">(</span><span class="s1">&#39;TCPIP::10.112.0.228::HISLIP&#39;</span><span class="p">)</span>
+<span class="c1"># Greetings, stranger...</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Hello, I am: </span><span class="si">{</span><span class="n">smbv</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">idn_string</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1">#   OUTPut:STATe ON</span>
+<span class="n">smbv</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1">#   SOURce:FREQuency:MODE CW</span>
+<span class="n">smbv</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">frequency</span><span class="o">.</span><span class="n">set_mode</span><span class="p">(</span><span class="n">enums</span><span class="o">.</span><span class="n">FreqMode</span><span class="o">.</span><span class="n">CW</span><span class="p">)</span>
+
+<span class="c1">#   SOURce:POWer:LEVel:IMMediate:AMPLitude -20</span>
+<span class="n">smbv</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">power</span><span class="o">.</span><span class="n">level</span><span class="o">.</span><span class="n">immediate</span><span class="o">.</span><span class="n">set_amplitude</span><span class="p">(</span><span class="o">-</span><span class="mi">20</span><span class="p">)</span>
+
+<span class="c1">#   SOURce:FREQuency:FIXed 223000000</span>
+<span class="n">smbv</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">frequency</span><span class="o">.</span><span class="n">fixed</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="mf">223E6</span><span class="p">)</span>
+
+<span class="c1">#         SOURce:POWer:PEP?</span>
+<span class="n">pep</span> <span class="o">=</span> <span class="n">smbv</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">power</span><span class="o">.</span><span class="n">get_pep</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;PEP level: </span><span class="si">{</span><span class="n">pep</span><span class="si">}</span><span class="s1"> dBm&#39;</span><span class="p">)</span>
+
+
+<span class="c1"># Close the session</span>
+<span class="n">smbv</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Couple of reasons why to choose this module over plain SCPI approach:</p>
+<ul class="simple">
+<li><p>Type-safe API using typing module</p></li>
+<li><p>You can still use the plain SCPI communication</p></li>
+<li><p>You can select which VISA to use or even not use any VISA at all</p></li>
+<li><p>Initialization of a new session is straight-forward, no need to set any other properties</p></li>
+<li><p>Many useful features are already implemented - reset, self-test, opc-synchronization, error checking, option checking</p></li>
+<li><p>Binary data blocks transfer in both directions</p></li>
+<li><p>Transfer of arrays of numbers in binary or ASCII format</p></li>
+<li><p>File transfers in both directions</p></li>
+<li><p>Events generation in case of error, sent data, received data, chunk data (for big files transfer)</p></li>
+<li><p>Multithreading session locking - you can use multiple threads talking to one instrument at the same time</p></li>
+<li><p>Logging feature tailored for SCPI communication - different for binary and ascii data</p></li>
+</ul>
+</section>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline"></a></h2>
+<p>RsSmbv is hosted on  <a class="reference external" href="https://pypi.org/project/RsSmbv/">pypi.org</a>. You can install it with pip (for example, <code class="docutils literal notranslate"><span class="pre">pip.exe</span></code> for Windows), or if you are using Pycharm (and you should be :-) direct in the Pycharm <code class="docutils literal notranslate"><span class="pre">Packet</span> <span class="pre">Management</span> <span class="pre">GUI</span></code>.</p>
+<p class="rubric">Preconditions</p>
+<ul class="simple">
+<li><p>Installed VISA. You can skip this if you plan to use only socket LAN connection. Download the Rohde &amp; Schwarz VISA for Windows, Linux, Mac OS from <a class="reference external" href="https://www.rohde-schwarz.com/appnote/1dc02/">here</a></p></li>
+</ul>
+<p class="rubric">Option 1 - Installing with pip.exe under Windows</p>
+<ul>
+<li><p>Start the command console: <code class="docutils literal notranslate"><span class="pre">WinKey</span> <span class="pre">+</span> <span class="pre">R</span></code>, type <code class="docutils literal notranslate"><span class="pre">cmd</span></code> and hit ENTER</p></li>
+<li><p>Change the working directory to the Python installation of your choice (adjust the user name and python version in the path):</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">c:\Users\John\AppData\Local\Programs\Python\Python37\Scripts</span></code></p>
+</div></blockquote>
+</li>
+<li><p>Install with the command: <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">RsSmbv</span></code></p></li>
+</ul>
+<p class="rubric">Option 2 - Installing in Pycharm</p>
+<ul class="simple">
+<li><p>In Pycharm Menu <code class="docutils literal notranslate"><span class="pre">File-&gt;Settings-&gt;Project-&gt;Project</span> <span class="pre">Interpreter</span></code> click on the ‘<code class="docutils literal notranslate"><span class="pre">+</span></code>’ button on the top left (the last PyCharm version)</p></li>
+<li><p>Type <code class="docutils literal notranslate"><span class="pre">RsSmbv</span></code> in the search box</p></li>
+<li><p>If you are behind a Proxy server, configure it in the Menu: <code class="docutils literal notranslate"><span class="pre">File-&gt;Settings-&gt;Appearance-&gt;System</span> <span class="pre">Settings-&gt;HTTP</span> <span class="pre">Proxy</span></code></p></li>
+</ul>
+<p>For more information about Rohde &amp; Schwarz instrument remote control, check out our
+<a class="reference external" href="https://www.rohde-schwarz.com/driver-pages/remote-control/drivers-remote-control_110753.html">Instrument_Remote_Control_Web_Series</a> .</p>
+<p class="rubric">Option 3 - Offline Installation</p>
+<p>If you are still reading the installation chapter, it is probably because the options above did not work for you - proxy problems, your boss saw the internet bill…
+Here are 6 step for installing the RsSmbv offline:</p>
+<ul>
+<li><p>Download this python script (<strong>Save target as</strong>): <a class="reference external" href="https://cdn.rohde-schwarz.com/pws/service_support/driver_pagedq/files_1/helloworld/rsinstrument_offline_install.py">rsinstrument_offline_install.py</a> This installs all the preconditions that the RsSmbv needs.</p></li>
+<li><p>Execute the script in your offline computer (supported is python 3.6 or newer)</p></li>
+<li><p>Download the RsSmbv package to your computer from the pypi.org: <a class="reference external" href="https://pypi.org/project/RsSmbv/#files">https://pypi.org/project/RsSmbv/#files</a> to for example <code class="docutils literal notranslate"><span class="pre">c:\temp\</span></code></p></li>
+<li><p>Start the command line <code class="docutils literal notranslate"><span class="pre">WinKey</span> <span class="pre">+</span> <span class="pre">R</span></code>, type <code class="docutils literal notranslate"><span class="pre">cmd</span></code> and hit ENTER</p></li>
+<li><p>Change the working directory to the Python installation of your choice (adjust the user name and python version in the path):</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">c:\Users\John\AppData\Local\Programs\Python\Python37\Scripts</span></code></p>
+</div></blockquote>
+</li>
+<li><p>Install with the command: <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">c:\temp\RsSmbv-5.30.48.29.tar</span></code></p></li>
+</ul>
+</section>
+<section id="finding-available-instruments">
+<h2>Finding Available Instruments<a class="headerlink" href="#finding-available-instruments" title="Permalink to this headline"></a></h2>
+<p>Like the pyvisa’s ResourceManager, the RsSmbv can search for available instruments:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;&quot;</span>
+<span class="sd">Find the instruments in your environment</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">RsSmbv</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># Use the instr_list string items as resource names in the RsSmbv constructor</span>
+<span class="n">instr_list</span> <span class="o">=</span> <span class="n">RsSmbv</span><span class="o">.</span><span class="n">list_resources</span><span class="p">(</span><span class="s2">&quot;?*&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">instr_list</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If you have more VISAs installed, the one actually used by default is defined by a secret widget called Visa Conflict Manager.
+You can force your program to use a VISA of your choice:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Find the instruments in your environment with the defined VISA implementation</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">RsSmbv</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># In the optional parameter visa_select you can use for example &#39;rs&#39; or &#39;ni&#39;</span>
+<span class="c1"># Rs Visa also finds any NRP-Zxx USB sensors</span>
+<span class="n">instr_list</span> <span class="o">=</span> <span class="n">RsSmbv</span><span class="o">.</span><span class="n">list_resources</span><span class="p">(</span><span class="s1">&#39;?*&#39;</span><span class="p">,</span> <span class="s1">&#39;rs&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">instr_list</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>We believe our R&amp;S VISA is the best choice for our customers. Here are the reasons why:</p>
+<ul class="simple">
+<li><p>Small footprint</p></li>
+<li><p>Superior VXI-11 and HiSLIP performance</p></li>
+<li><p>Integrated legacy sensors NRP-Zxx support</p></li>
+<li><p>Additional VXI-11 and LXI devices search</p></li>
+<li><p>Availability for Windows, Linux, Mac OS</p></li>
+</ul>
+</div>
+</section>
+<section id="initiating-instrument-session">
+<h2>Initiating Instrument Session<a class="headerlink" href="#initiating-instrument-session" title="Permalink to this headline"></a></h2>
+<p>RsSmbv offers four different types of starting your remote-control session. We begin with the most typical case, and progress with more special ones.</p>
+<p class="rubric">Standard Session Initialization</p>
+<p>Initiating new instrument session happens, when you instantiate the RsSmbv object. Below, is a simple Hello World example. Different resource names are examples for different physical interfaces.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Simple example on how to use the RsSmbv module for remote-controlling your instrument</span>
+<span class="sd">Preconditions:</span>
+
+<span class="sd">- Installed RsSmbv Python module Version 5.30.48 or newer from pypi.org</span>
+<span class="sd">- Installed VISA, for example R&amp;S Visa 5.12 or newer</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">RsSmbv</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># A good practice is to assure that you have a certain minimum version installed</span>
+<span class="n">RsSmbv</span><span class="o">.</span><span class="n">assert_minimum_version</span><span class="p">(</span><span class="s1">&#39;5.30.48&#39;</span><span class="p">)</span>
+<span class="n">resource_string_1</span> <span class="o">=</span> <span class="s1">&#39;TCPIP::192.168.2.101::INSTR&#39;</span>  <span class="c1"># Standard LAN connection (also called VXI-11)</span>
+<span class="n">resource_string_2</span> <span class="o">=</span> <span class="s1">&#39;TCPIP::192.168.2.101::hislip0&#39;</span>  <span class="c1"># Hi-Speed LAN connection - see 1MA208</span>
+<span class="n">resource_string_3</span> <span class="o">=</span> <span class="s1">&#39;GPIB::20::INSTR&#39;</span>  <span class="c1"># GPIB Connection</span>
+<span class="n">resource_string_4</span> <span class="o">=</span> <span class="s1">&#39;USB::0x0AAD::0x0119::022019943::INSTR&#39;</span>  <span class="c1"># USB-TMC (Test and Measurement Class)</span>
+
+<span class="c1"># Initializing the session</span>
+<span class="n">driver</span> <span class="o">=</span> <span class="n">RsSmbv</span><span class="p">(</span><span class="n">resource_string_1</span><span class="p">)</span>
+
+<span class="n">idn</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;*IDN?&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Hello, I am: &#39;</span><span class="si">{</span><span class="n">idn</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;RsSmbv package version: </span><span class="si">{</span><span class="n">driver</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">driver_version</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Visa manufacturer: </span><span class="si">{</span><span class="n">driver</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">visa_manufacturer</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Instrument full name: </span><span class="si">{</span><span class="n">driver</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">full_instrument_model_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Instrument installed options: </span><span class="si">{</span><span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">driver</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">instrument_options</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># Close the session</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you are wondering about the missing <code class="docutils literal notranslate"><span class="pre">ASRL1::INSTR</span></code>, yes, it works too, but come on… it’s 2023.</p>
+</div>
+<p>Do not care about specialty of each session kind; RsSmbv handles all the necessary session settings for you. You immediately have access to many identification properties in the interface <code class="docutils literal notranslate"><span class="pre">driver.utilities</span></code> . Here are same of them:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">idn_string</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">driver_version</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">visa_manufacturer</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">full_instrument_model_name</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">instrument_serial_number</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">instrument_firmware_version</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">instrument_options</span></code></p></li>
+</ul>
+<p>The constructor also contains optional boolean arguments <code class="docutils literal notranslate"><span class="pre">id_query</span></code> and <code class="docutils literal notranslate"><span class="pre">reset</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">driver</span> <span class="o">=</span> <span class="n">RsSmbv</span><span class="p">(</span><span class="s1">&#39;TCPIP::192.168.56.101::hislip0&#39;</span><span class="p">,</span> <span class="n">id_query</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">reset</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Setting <code class="docutils literal notranslate"><span class="pre">id_query</span></code> to True (default is True) checks, whether your instrument can be used with the RsSmbv module.</p></li>
+<li><p>Setting  <code class="docutils literal notranslate"><span class="pre">reset</span></code> to True (default is False) resets your instrument. It is equivalent to calling the <code class="docutils literal notranslate"><span class="pre">reset()</span></code> method.</p></li>
+</ul>
+<p class="rubric">Selecting a Specific VISA</p>
+<p>Just like in the function <code class="docutils literal notranslate"><span class="pre">list_resources()</span></code>, the RsSmbv allows you to choose which VISA to use:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Choosing VISA implementation</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">RsSmbv</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># Force use of the Rs Visa. For NI Visa, use the &quot;SelectVisa=&#39;ni&#39;&quot;</span>
+<span class="n">driver</span> <span class="o">=</span> <span class="n">RsSmbv</span><span class="p">(</span><span class="s1">&#39;TCPIP::192.168.56.101::INSTR&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;SelectVisa=&#39;rs&#39;&quot;</span><span class="p">)</span>
+
+<span class="n">idn</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;*IDN?&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Hello, I am: &#39;</span><span class="si">{</span><span class="n">idn</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">I am using the VISA from: </span><span class="si">{</span><span class="n">driver</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">visa_manufacturer</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Close the session</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p class="rubric">No VISA Session</p>
+<p>We recommend using VISA when possible preferrably with HiSlip session because of its low latency. However, if you are a strict VISA denier, RsSmbv has something for you too - <strong>no Visa installation raw LAN socket</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Using RsSmbv without VISA for LAN Raw socket communication</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">RsSmbv</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">driver</span> <span class="o">=</span> <span class="n">RsSmbv</span><span class="p">(</span><span class="s1">&#39;TCPIP::192.168.56.101::5025::SOCKET&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;SelectVisa=&#39;socket&#39;&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Visa manufacturer: </span><span class="si">{</span><span class="n">driver</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">visa_manufacturer</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Hello, I am: &#39;</span><span class="si">{</span><span class="n">driver</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">idn_string</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+
+<span class="c1"># Close the session</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Not using VISA can cause problems by debugging when you want to use the communication Trace Tool. The good news is, you can easily switch to use VISA and back just by changing the constructor arguments. The rest of your code stays unchanged.</p>
+</div>
+<p class="rubric">Simulating Session</p>
+<p>If a colleague is currently occupying your instrument, leave him in peace, and open a simulating session:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">driver</span> <span class="o">=</span> <span class="n">RsSmbv</span><span class="p">(</span><span class="s1">&#39;TCPIP::192.168.56.101::hislip0&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;Simulate=True&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>More <code class="docutils literal notranslate"><span class="pre">option_string</span></code> tokens are separated by comma:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">driver</span> <span class="o">=</span> <span class="n">RsSmbv</span><span class="p">(</span><span class="s1">&#39;TCPIP::192.168.56.101::hislip0&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;SelectVisa=&#39;rs&#39;, Simulate=True&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="rubric">Shared Session</p>
+<p>In some scenarios, you want to have two independent objects talking to the same instrument. Rather than opening a second VISA connection, share the same one between two or more RsSmbv objects:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Sharing the same physical VISA session by two different RsSmbv objects</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">RsSmbv</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">driver1</span> <span class="o">=</span> <span class="n">RsSmbv</span><span class="p">(</span><span class="s1">&#39;TCPIP::192.168.56.101::INSTR&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">driver2</span> <span class="o">=</span> <span class="n">RsSmbv</span><span class="o">.</span><span class="n">from_existing_session</span><span class="p">(</span><span class="n">driver1</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;driver1: </span><span class="si">{</span><span class="n">driver1</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">idn_string</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;driver2: </span><span class="si">{</span><span class="n">driver2</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">idn_string</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># Closing the driver2 session does not close the driver1 session - driver1 is the &#39;session master&#39;</span>
+<span class="n">driver2</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;driver2: I am closed now&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;driver1: I am  still opened and working: </span><span class="si">{</span><span class="n">driver1</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">idn_string</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">driver1</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;driver1: Only now I am closed.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">driver1</span></code> is the object holding the ‘master’ session. If you call the <code class="docutils literal notranslate"><span class="pre">driver1.close()</span></code>, the <code class="docutils literal notranslate"><span class="pre">driver2</span></code> loses its instrument session as well, and becomes pretty much useless.</p>
+</div>
+</section>
+<section id="plain-scpi-communication">
+<h2>Plain SCPI Communication<a class="headerlink" href="#plain-scpi-communication" title="Permalink to this headline"></a></h2>
+<p>After you have opened the session, you can use the instrument-specific part described in the RsSmbv API Structure.
+If for any reason you want to use the plain SCPI, use the <code class="docutils literal notranslate"><span class="pre">utilities</span></code> interface’s two basic methods:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">write_str()</span></code> - writing a command without an answer, for example <strong>*RST</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">query_str()</span></code> - querying your instrument, for example the <strong>*IDN?</strong> query</p></li>
+</ul>
+<p>You may ask a question. Actually, two questions:</p>
+<ul class="simple">
+<li><p><strong>Q1</strong>: Why there are not called <code class="docutils literal notranslate"><span class="pre">write()</span></code> and <code class="docutils literal notranslate"><span class="pre">query()</span></code> ?</p></li>
+<li><p><strong>Q2</strong>: Where is the <code class="docutils literal notranslate"><span class="pre">read()</span></code> ?</p></li>
+</ul>
+<p><strong>Answer 1</strong>: Actually, there are - the <code class="docutils literal notranslate"><span class="pre">write_str()</span></code> / <code class="docutils literal notranslate"><span class="pre">write()</span></code> and <code class="docutils literal notranslate"><span class="pre">query_str()</span></code> / <code class="docutils literal notranslate"><span class="pre">query()</span></code> are aliases, and you can use any of them. We promote the <code class="docutils literal notranslate"><span class="pre">_str</span></code> names, to clearly show you want to work with strings. Strings in Python3 are Unicode, the <em>bytes</em> and <em>string</em> objects are not interchangeable, since one character might be represented by more than 1 byte.
+To avoid mixing string and binary communication, all the method names for binary transfer contain <code class="docutils literal notranslate"><span class="pre">_bin</span></code> in the name.</p>
+<p><strong>Answer 2</strong>: Short answer - you do not need it. Long answer - your instrument never sends unsolicited responses. If you send a set command, you use <code class="docutils literal notranslate"><span class="pre">write_str()</span></code>. For a query command, you use <code class="docutils literal notranslate"><span class="pre">query_str()</span></code>. So, you really do not need it…</p>
+<p><strong>Bottom line</strong> - if you are used to <code class="docutils literal notranslate"><span class="pre">write()</span></code> and <code class="docutils literal notranslate"><span class="pre">query()</span></code> methods, from pyvisa, the <code class="docutils literal notranslate"><span class="pre">write_str()</span></code> and <code class="docutils literal notranslate"><span class="pre">query_str()</span></code> are their equivalents.</p>
+<p>Enough with the theory, let us look at an example. Simple write, and query:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Basic string write_str / query_str</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">RsSmbv</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">driver</span> <span class="o">=</span> <span class="n">RsSmbv</span><span class="p">(</span><span class="s1">&#39;TCPIP::192.168.56.101::INSTR&#39;</span><span class="p">)</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">write_str</span><span class="p">(</span><span class="s1">&#39;*RST&#39;</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;*IDN?&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+
+<span class="c1"># Close the session</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This example is so-called “<em>University-Professor-Example</em>” - good to show a principle, but never used in praxis. The abovementioned commands are already a part of the driver’s API. Here is another example, achieving the same goal:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Basic string write_str / query_str</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">RsSmbv</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">driver</span> <span class="o">=</span> <span class="n">RsSmbv</span><span class="p">(</span><span class="s1">&#39;TCPIP::192.168.56.101::INSTR&#39;</span><span class="p">)</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">driver</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">idn_string</span><span class="p">)</span>
+
+<span class="c1"># Close the session</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>One additional feature we need to mention here: <strong>VISA timeout</strong>. To simplify, VISA timeout plays a role in each <code class="docutils literal notranslate"><span class="pre">query_xxx()</span></code>, where the controller (your PC) has to prevent waiting forever for an answer from your instrument. VISA timeout defines that maximum waiting time. You can set/read it with the <code class="docutils literal notranslate"><span class="pre">visa_timeout</span></code> property:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Timeout in milliseconds</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">visa_timeout</span> <span class="o">=</span> <span class="mi">3000</span>
+</pre></div>
+</div>
+<p>After this time, the RsSmbv raises an exception. Speaking of exceptions, an important feature of the RsSmbv is <strong>Instrument Status Checking</strong>. Check out the next chapter that describes the error checking in details.</p>
+<p>For completion, we mention other string-based <code class="docutils literal notranslate"><span class="pre">write_xxx()</span></code> and <code class="docutils literal notranslate"><span class="pre">query_xxx()</span></code> methods - all in one example. They are convenient extensions providing type-safe float/boolean/integer setting/querying features:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Basic string write_xxx / query_xxx</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">RsSmbv</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">driver</span> <span class="o">=</span> <span class="n">RsSmbv</span><span class="p">(</span><span class="s1">&#39;TCPIP::192.168.56.101::INSTR&#39;</span><span class="p">)</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">visa_timeout</span> <span class="o">=</span> <span class="mi">5000</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">instrument_status_checking</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">write_int</span><span class="p">(</span><span class="s1">&#39;SWEEP:COUNT &#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>  <span class="c1"># sending &#39;SWEEP:COUNT 10&#39;</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">write_bool</span><span class="p">(</span><span class="s1">&#39;SOURCE:RF:OUTPUT:STATE &#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>  <span class="c1"># sending &#39;SOURCE:RF:OUTPUT:STATE ON&#39;</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">write_float</span><span class="p">(</span><span class="s1">&#39;SOURCE:RF:FREQUENCY &#39;</span><span class="p">,</span> <span class="mf">1E9</span><span class="p">)</span>  <span class="c1"># sending &#39;SOURCE:RF:FREQUENCY 1000000000&#39;</span>
+
+<span class="n">sc</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">query_int</span><span class="p">(</span><span class="s1">&#39;SWEEP:COUNT?&#39;</span><span class="p">)</span>  <span class="c1"># returning integer number sc=10</span>
+<span class="n">out</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">query_bool</span><span class="p">(</span><span class="s1">&#39;SOURCE:RF:OUTPUT:STATE?&#39;</span><span class="p">)</span>  <span class="c1"># returning boolean out=True</span>
+<span class="n">freq</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">query_float</span><span class="p">(</span><span class="s1">&#39;SOURCE:RF:FREQUENCY?&#39;</span><span class="p">)</span>  <span class="c1"># returning float number freq=1E9</span>
+
+<span class="c1"># Close the session</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Lastly, a method providing basic synchronization: <code class="docutils literal notranslate"><span class="pre">query_opc()</span></code>. It sends query <strong>*OPC?</strong> to your instrument. The instrument waits with the answer until all the tasks it currently has in a queue are finished. This way your program waits too, and this way it is synchronized with the actions in the instrument. Remember to have the VISA timeout set to an appropriate value to prevent the timeout exception. Here’s the snippet:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">driver</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">visa_timeout</span> <span class="o">=</span> <span class="mi">3000</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">write_str</span><span class="p">(</span><span class="s2">&quot;INIT&quot;</span><span class="p">)</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">query_opc</span><span class="p">()</span>
+
+<span class="c1"># The results are ready now to fetch</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s2">&quot;FETCH:MEASUREMENT?&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Wait, there’s more: you can send the <strong>*OPC?</strong> after each <code class="docutils literal notranslate"><span class="pre">write_xxx()</span></code> automatically:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Default value after init is False</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">opc_query_after_write</span> <span class="o">=</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="error-checking">
+<h2>Error Checking<a class="headerlink" href="#error-checking" title="Permalink to this headline"></a></h2>
+<p>RsSmbv pushes limits even further (internal R&amp;S joke): It has a built-in mechanism that after each command/query checks the instrument’s status subsystem, and raises an exception if it detects an error. For those who are already screaming: <strong>Speed Performance Penalty!!!</strong>, don’t worry, you can disable it.</p>
+<p>Instrument status checking is very useful since in case your command/query caused an error, you are immediately informed about it. Status checking has in most cases no practical effect on the speed performance of your program. However, if for example, you do many repetitions of short write/query sequences, it might make a difference to switch it off:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Default value after init is True</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">instrument_status_checking</span> <span class="o">=</span> <span class="kc">False</span>
+</pre></div>
+</div>
+<p>To clear the instrument status subsystem of all errors, call this method:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">driver</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">clear_status</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Instrument’s status system error queue is clear-on-read. It means, if you query its content, you clear it at the same time. To query and clear list of all the current errors, use this snippet:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">errors_list</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">query_all_errors</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>See the next chapter on how to react on errors.</p>
+</section>
+<section id="exception-handling">
+<h2>Exception Handling<a class="headerlink" href="#exception-handling" title="Permalink to this headline"></a></h2>
+<p>The base class for all the exceptions raised by the RsSmbv is <code class="docutils literal notranslate"><span class="pre">RsInstrException</span></code>. Inherited exception classes:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ResourceError</span></code> raised in the constructor by problems with initiating the instrument, for example wrong or non-existing resource name</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">StatusException</span></code> raised if a command or a query generated error in the instrument’s error queue</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TimeoutException</span></code> raised if a visa timeout or an opc timeout is reached</p></li>
+</ul>
+<p>In this example we show usage of all of them. Because it is difficult to generate an error using the instrument-specific SCPI API, we use plain SCPI commands:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Showing how to deal with exceptions</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">RsSmbv</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">driver</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="c1"># Try-catch for initialization. If an error occures, the ResourceError is raised</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">driver</span> <span class="o">=</span> <span class="n">RsSmbv</span><span class="p">(</span><span class="s1">&#39;TCPIP::10.112.1.179::hislip0&#39;</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">ResourceError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Your instrument is probably OFF...&#39;</span><span class="p">)</span>
+    <span class="c1"># Exit now, no point of continuing</span>
+    <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Dealing with commands that potentially generate errors OPTION 1:</span>
+<span class="c1"># Switching the status checking OFF termporarily</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">instrument_status_checking</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">write_str</span><span class="p">(</span><span class="s1">&#39;MY:MISSpelled:COMMand&#39;</span><span class="p">)</span>
+<span class="c1"># Clear the error queue</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">clear_status</span><span class="p">()</span>
+<span class="c1"># Status checking ON again</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">instrument_status_checking</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="c1"># Dealing with queries that potentially generate errors OPTION 2:</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="c1"># You migh want to reduce the VISA timeout to avoid long waiting</span>
+    <span class="n">driver</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">visa_timeout</span> <span class="o">=</span> <span class="mi">1000</span>
+    <span class="n">driver</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;MY:WRONg:QUERy?&#39;</span><span class="p">)</span>
+
+<span class="k">except</span> <span class="n">StatusException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="c1"># Instrument status error</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Nothing to see here, moving on...&#39;</span><span class="p">)</span>
+
+<span class="k">except</span> <span class="n">TimeoutException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="c1"># Timeout error</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;That took a long time...&#39;</span><span class="p">)</span>
+
+<span class="k">except</span> <span class="n">RsInstrException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="c1"># RsInstrException is a base class for all the RsSmbv exceptions</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Some other RsSmbv error...&#39;</span><span class="p">)</span>
+
+<span class="k">finally</span><span class="p">:</span>
+    <span class="n">driver</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">visa_timeout</span> <span class="o">=</span> <span class="mi">5000</span>
+    <span class="c1"># Close the session in any case</span>
+    <span class="n">driver</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>General rules for exception handling:</p>
+<ul class="simple">
+<li><p>If you are sending commands that might generate errors in the instrument, for example deleting a file which does not exist, use the <strong>OPTION 1</strong> - temporarily disable status checking, send the command, clear the error queue and enable the status checking again.</p></li>
+<li><p>If you are sending queries that might generate errors or timeouts, for example querying measurement that can not be performed at the moment, use the <strong>OPTION 2</strong> - try/except with optionally adjusting the timeouts.</p></li>
+</ul>
+</div>
+<p>Another way to deal with exceptions are error <strong>Context-Managers</strong>. You have two of them available:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Instrument Error Suppressor</p></li>
+<li><p>VISA Timeout Suppressor</p></li>
+</ul>
+</div></blockquote>
+<p><strong>Instrument Error Suppressor</strong> context-manager has several neat features:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>It can change the VISA timeout for the commands in the context.</p></li>
+<li><p>It can selectively suppress only certain instrument error codes, and for others it raises exceptions.</p></li>
+<li><p>In case any other exception is raised within the context, the context-manager sets the VISA Timeout back to its original value.</p></li>
+</ul>
+</div></blockquote>
+<p>Let us look at two examples. The following one only suppresses execution error (code -200). Since the command is misspelled, the error generated by the instrument has the code -113,’Undefined Header’, and therefore
+the exception is raised anyway. This way you can only suppress certain errors. The context-manager object allows for checking if some errors were suppressed, and you can also read them all out:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Suppress instrument errors with certain code with the Suppress Context-manager.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">RsSmbv</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">RsSmbv</span><span class="o">.</span><span class="n">assert_minimum_version</span><span class="p">(</span><span class="s1">&#39;1.70.0&#39;</span><span class="p">)</span>
+<span class="n">instr</span> <span class="o">=</span> <span class="n">RsSmbv</span><span class="p">(</span><span class="s1">&#39;TCPIP::10.112.1.179::HISLIP&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="n">instr</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">instr_err_suppressor</span><span class="p">(</span><span class="n">suppress_only_codes</span><span class="o">=-</span><span class="mi">200</span><span class="p">)</span> <span class="k">as</span> <span class="n">supp</span><span class="p">:</span>
+    <span class="c1"># This will raise the exception anyway, because the Undefined Header error has code -113</span>
+    <span class="n">instr</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;MY:MISSpelled:COMMand&#39;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">supp</span><span class="o">.</span><span class="n">get_errors_occurred</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Errors occurred: &quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">err</span> <span class="ow">in</span> <span class="n">supp</span><span class="o">.</span><span class="n">get_all_errors</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You can also change the VISA Timeout inside the context:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">instr</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">instr_err_suppressor</span><span class="p">(</span><span class="n">visa_tout_ms</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">suppress_only_codes</span><span class="o">=-</span><span class="mi">300</span><span class="p">)</span> <span class="k">as</span> <span class="n">supp</span><span class="p">:</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="n">instr</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;*IDaN?&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Multiple error codes to suppress you enter as an integer list:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">instr</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">instr_err_suppressor</span><span class="p">(</span><span class="n">visa_tout_ms</span><span class="o">=</span><span class="mi">3000</span><span class="p">,</span> <span class="n">suppress_only_codes</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">200</span><span class="p">,</span> <span class="o">-</span><span class="mi">300</span><span class="p">])</span> <span class="k">as</span> <span class="n">supp</span><span class="p">:</span>
+        <span class="n">meas</span> <span class="o">=</span> <span class="n">instr</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;MEASurement:RESult?&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If VISA Timeout Exceptions are your problem, you’d like to react on them with a workaround, and continue with your code further, you have to do the following steps:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>adjust the VISA timeout to higher value to give the instrument more time, or to lower value to prevent long waiting times.</p></li>
+<li><p>execute the command / query.</p></li>
+<li><p>in case the timeout error occurrs, you clear the error queue to delete any ‘Query Interrupted’ errors.</p></li>
+<li><p>change the VISA timeout back to the original value.</p></li>
+</ul>
+</div></blockquote>
+<p>This all is what the <strong>VISA Timeout Suppressor</strong> context-manager does:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Suppress VISA Timeout exception for certain commands with the Suppress Context-manager.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">RsSmbv</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">RsSmbv</span><span class="o">.</span><span class="n">assert_minimum_version</span><span class="p">(</span><span class="s1">&#39;1.70.0&#39;</span><span class="p">)</span>
+<span class="n">instr</span> <span class="o">=</span> <span class="n">RsSmbv</span><span class="p">(</span><span class="s1">&#39;TCPIP::10.112.1.179::HISLIP&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="n">instr</span><span class="o">.</span><span class="n">utilities</span><span class="o">..</span><span class="n">visa_tout_suppressor</span><span class="p">(</span><span class="n">visa_tout_ms</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span> <span class="k">as</span> <span class="n">supp</span><span class="p">:</span>
+    <span class="n">instr</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;*IDaN?&#39;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">supp</span><span class="o">.</span><span class="n">get_timeout_occurred</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Timeout occurred inside the context&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="transferring-files">
+<h2>Transferring Files<a class="headerlink" href="#transferring-files" title="Permalink to this headline"></a></h2>
+<p class="rubric">Instrument -&gt; PC</p>
+<p>You definitely experienced it: you just did a perfect measurement, saved the results as a screenshot to an instrument’s storage drive.
+Now you want to transfer it to your PC.
+With RsSmbv, no problem, just figure out where the screenshot was stored on the instrument. In our case, it is <em>/var/user/instr_screenshot.png</em>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">driver</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">read_file_from_instrument_to_pc</span><span class="p">(</span>
+    <span class="sa">r</span><span class="s1">&#39;/var/user/instr_screenshot.png&#39;</span><span class="p">,</span>
+    <span class="sa">r</span><span class="s1">&#39;c:\temp\pc_screenshot.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="rubric">PC -&gt; Instrument</p>
+<p>Another common scenario: Your cool test program contains a setup file you want to transfer to your instrument:
+Here is the RsSmbv one-liner split into 3 lines:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">driver</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">send_file_from_pc_to_instrument</span><span class="p">(</span>
+    <span class="sa">r</span><span class="s1">&#39;c:\MyCoolTestProgram\instr_setup.sav&#39;</span><span class="p">,</span>
+    <span class="sa">r</span><span class="s1">&#39;/var/appdata/instr_setup.sav&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="writing-binary-data">
+<h2>Writing Binary Data<a class="headerlink" href="#writing-binary-data" title="Permalink to this headline"></a></h2>
+<p class="rubric">Writing from bytes</p>
+<p>An example where you need to send binary data is a waveform file of a vector signal generator. First, you compose your wform_data as <code class="docutils literal notranslate"><span class="pre">bytes</span></code>, and then you send it with <code class="docutils literal notranslate"><span class="pre">write_bin_block()</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># MyWaveform.wv is an instrument file name under which this data is stored</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">write_bin_block</span><span class="p">(</span>
+    <span class="s2">&quot;SOUR:BB:ARB:WAV:DATA &#39;MyWaveform.wv&#39;,&quot;</span><span class="p">,</span>
+    <span class="n">wform_data</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Notice the <code class="docutils literal notranslate"><span class="pre">write_bin_block()</span></code> has two parameters:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">string</span></code> parameter <code class="docutils literal notranslate"><span class="pre">cmd</span></code> for the SCPI command</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bytes</span></code> parameter <code class="docutils literal notranslate"><span class="pre">payload</span></code> for the actual binary data to send</p></li>
+</ul>
+</div>
+<p class="rubric">Writing from PC files</p>
+<p>Similar to querying binary data to a file, you can write binary data from a file. The second parameter is then the PC file path the content of which you want to send:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">driver</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">write_bin_block_from_file</span><span class="p">(</span>
+    <span class="s2">&quot;SOUR:BB:ARB:WAV:DATA &#39;MyWaveform.wv&#39;,&quot;</span><span class="p">,</span>
+    <span class="sa">r</span><span class="s2">&quot;c:\temp\wform_data.wv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="transferring-big-data-with-progress">
+<span id="getingstarted-events"></span><h2>Transferring Big Data with Progress<a class="headerlink" href="#transferring-big-data-with-progress" title="Permalink to this headline"></a></h2>
+<p>We can agree that it can be annoying using an application that shows no progress for long-lasting operations. The same is true for remote-control programs. Luckily, the RsSmbv has this covered. And, this feature is quite universal - not just for big files transfer, but for any data in both directions.</p>
+<p>RsSmbv allows you to register a function (programmers fancy name is <code class="docutils literal notranslate"><span class="pre">callback</span></code>), which is then periodicaly invoked after transfer of one data chunk. You can define that chunk size, which gives you control over the callback invoke frequency. You can even slow down the transfer speed, if you want to process the data as they arrive (direction instrument -&gt; PC).</p>
+<p>To show this in praxis, we are going to use another <em>University-Professor-Example</em>: querying the <strong>*IDN?</strong> with chunk size of 2 bytes and delay of 200ms between each chunk read:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Event handlers by reading</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">RsSmbv</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+
+<span class="k">def</span> <span class="nf">my_transfer_handler</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Function called each time a chunk of data is transferred&quot;&quot;&quot;</span>
+    <span class="c1"># Total size is not always known at the beginning of the transfer</span>
+    <span class="n">total_size</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">total_size</span> <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">total_size</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="s2">&quot;unknown&quot;</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Context: &#39;</span><span class="si">{</span><span class="n">args</span><span class="o">.</span><span class="n">context</span><span class="si">}{</span><span class="s1">&#39;with opc&#39;</span> <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">opc_sync</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span><span class="si">}</span><span class="s2">&#39;, &quot;</span>
+        <span class="sa">f</span><span class="s2">&quot;chunk </span><span class="si">{</span><span class="n">args</span><span class="o">.</span><span class="n">chunk_ix</span><span class="si">}</span><span class="s2">, &quot;</span>
+        <span class="sa">f</span><span class="s2">&quot;transferred </span><span class="si">{</span><span class="n">args</span><span class="o">.</span><span class="n">transferred_size</span><span class="si">}</span><span class="s2"> bytes, &quot;</span>
+        <span class="sa">f</span><span class="s2">&quot;total size </span><span class="si">{</span><span class="n">total_size</span><span class="si">}</span><span class="s2">, &quot;</span>
+        <span class="sa">f</span><span class="s2">&quot;direction </span><span class="si">{</span><span class="s1">&#39;reading&#39;</span> <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">reading</span> <span class="k">else</span> <span class="s1">&#39;writing&#39;</span><span class="si">}</span><span class="s2">, &quot;</span>
+        <span class="sa">f</span><span class="s2">&quot;data &#39;</span><span class="si">{</span><span class="n">args</span><span class="o">.</span><span class="n">data</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">end_of_transfer</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;End of Transfer&#39;</span><span class="p">)</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span>
+
+
+<span class="n">driver</span> <span class="o">=</span> <span class="n">RsSmbv</span><span class="p">(</span><span class="s1">&#39;TCPIP::192.168.56.101::INSTR&#39;</span><span class="p">)</span>
+
+<span class="n">driver</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">on_read_handler</span> <span class="o">=</span> <span class="n">my_transfer_handler</span>
+<span class="c1"># Switch on the data to be included in the event arguments</span>
+<span class="c1"># The event arguments args.data will be updated</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">io_events_include_data</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="c1"># Set data chunk size to 2 bytes</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">data_chunk_size</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;*IDN?&#39;</span><span class="p">)</span>
+<span class="c1"># Unregister the event handler</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">on_read_handler</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="c1"># Close the session</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>If you start it, you might wonder (or maybe not): why is the <code class="docutils literal notranslate"><span class="pre">args.total_size</span> <span class="pre">=</span> <span class="pre">None</span></code>? The reason is, in this particular case the RsSmbv does not know the size of the complete response up-front. However, if you use the same mechanism for transfer of a known data size (for example, file transfer), you get the information about the total size too, and hence you can calculate the progress as:</p>
+<p><em>progress [pct] = 100 * args.transferred_size / args.total_size</em></p>
+<p>Snippet of transferring file from PC to instrument, the rest of the code is the same as in the previous example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">driver</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">on_write_handler</span> <span class="o">=</span> <span class="n">my_transfer_handler</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">io_events_include_data</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">data_chunk_size</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">send_file_from_pc_to_instrument</span><span class="p">(</span>
+    <span class="sa">r</span><span class="s1">&#39;c:\MyCoolTestProgram\my_big_file.bin&#39;</span><span class="p">,</span>
+    <span class="sa">r</span><span class="s1">&#39;/var/user/my_big_file.bin&#39;</span><span class="p">)</span>
+<span class="c1"># Unregister the event handler</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">on_write_handler</span> <span class="o">=</span> <span class="kc">None</span>
+</pre></div>
+</div>
+</section>
+<section id="multithreading">
+<h2>Multithreading<a class="headerlink" href="#multithreading" title="Permalink to this headline"></a></h2>
+<p>You are at the party, many people talking over each other. Not every person can deal with such crosstalk, neither can measurement instruments. For this reason, RsSmbv has a feature of scheduling the access to your instrument by using so-called <strong>Locks</strong>. Locks make sure that there can be just one client at a time <em>talking</em> to your instrument. Talking in this context means completing one communication step - one command write or write/read or write/read/error check.</p>
+<p>To describe how it works, and where it matters, we take three typical mulithread scenarios:</p>
+<p class="rubric">One instrument session, accessed from multiple threads</p>
+<p>You are all set - the lock is a part of your instrument session. Check out the following example - it will execute properly, although the instrument gets 10 queries at the same time:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Multiple threads are accessing one RsSmbv object</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">threading</span>
+<span class="kn">from</span> <span class="nn">RsSmbv</span> <span class="kn">import</span> <span class="o">*</span>
+
+
+<span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="n">session</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Executed in a separate thread.&quot;&quot;&quot;</span>
+    <span class="n">session</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;*IDN?&#39;</span><span class="p">)</span>
+
+
+<span class="n">driver</span> <span class="o">=</span> <span class="n">RsSmbv</span><span class="p">(</span><span class="s1">&#39;TCPIP::192.168.56.101::INSTR&#39;</span><span class="p">)</span>
+<span class="n">threads</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">execute</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">driver</span><span class="p">,</span> <span class="p">))</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+    <span class="n">threads</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;All threads started&#39;</span><span class="p">)</span>
+
+<span class="c1"># Wait for all threads to join this main thread</span>
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">threads</span><span class="p">:</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;All threads ended&#39;</span><span class="p">)</span>
+
+<span class="n">driver</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p class="rubric">Shared instrument session, accessed from multiple threads</p>
+<p>Same as the previous case, you are all set. The session carries the lock with it. You have two objects, talking to the same instrument from multiple threads. Since the instrument session is shared, the same lock applies to both objects causing the exclusive access to the instrument.</p>
+<p>Try the following example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Multiple threads are accessing two RsSmbv objects with shared session</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">threading</span>
+<span class="kn">from</span> <span class="nn">RsSmbv</span> <span class="kn">import</span> <span class="o">*</span>
+
+
+<span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="n">session</span><span class="p">:</span> <span class="n">RsSmbv</span><span class="p">,</span> <span class="n">session_ix</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Executed in a separate thread.&quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s1"> session </span><span class="si">{</span><span class="n">session_ix</span><span class="si">}</span><span class="s1"> query start...&#39;</span><span class="p">)</span>
+    <span class="n">session</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;*IDN?&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s1"> session </span><span class="si">{</span><span class="n">session_ix</span><span class="si">}</span><span class="s1"> query end&#39;</span><span class="p">)</span>
+
+
+<span class="n">driver1</span> <span class="o">=</span> <span class="n">RsSmbv</span><span class="p">(</span><span class="s1">&#39;TCPIP::192.168.56.101::INSTR&#39;</span><span class="p">)</span>
+<span class="n">driver2</span> <span class="o">=</span> <span class="n">RsSmbv</span><span class="o">.</span><span class="n">from_existing_session</span><span class="p">(</span><span class="n">driver1</span><span class="p">)</span>
+<span class="n">driver1</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">visa_timeout</span> <span class="o">=</span> <span class="mi">200</span>
+<span class="n">driver2</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">visa_timeout</span> <span class="o">=</span> <span class="mi">200</span>
+<span class="c1"># To see the effect of crosstalk, uncomment this line</span>
+<span class="c1"># driver2.utilities.clear_lock()</span>
+
+<span class="n">threads</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">execute</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">driver1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">i</span><span class="p">,))</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+    <span class="n">threads</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">execute</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">driver2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">i</span><span class="p">,))</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+    <span class="n">threads</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;All threads started&#39;</span><span class="p">)</span>
+
+<span class="c1"># Wait for all threads to join this main thread</span>
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">threads</span><span class="p">:</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;All threads ended&#39;</span><span class="p">)</span>
+
+<span class="n">driver2</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">driver1</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>As you see, everything works fine. If you want to simulate some party crosstalk, uncomment the line <code class="docutils literal notranslate"><span class="pre">driver2.utilities.clear_lock()</span></code>. Thich causes the driver2 session lock to break away from the driver1 session lock. Although the driver1 still tries to schedule its instrument access, the driver2 tries to do the same at the same time, which leads to all the fun stuff happening.</p>
+<p class="rubric">Multiple instrument sessions accessed from multiple threads</p>
+<p>Here, there are two possible scenarios depending on the instrument’s VISA interface:</p>
+<ul class="simple">
+<li><p>Your are lucky, because you instrument handles each remote session completely separately. An example of such instrument is SMW200A. In this case, you have no need for session locking.</p></li>
+<li><p>Your instrument handles all sessions with one set of in/out buffers. You need to lock the session for the duration of a talk. And you are lucky again, because the RsSmbv takes care of it for you. The text below describes this scenario.</p></li>
+</ul>
+<p>Run the following example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Multiple threads are accessing two RsSmbv objects with two separate sessions</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">threading</span>
+<span class="kn">from</span> <span class="nn">RsSmbv</span> <span class="kn">import</span> <span class="o">*</span>
+
+
+<span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="n">session</span><span class="p">:</span> <span class="n">RsSmbv</span><span class="p">,</span> <span class="n">session_ix</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Executed in a separate thread.&quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s1"> session </span><span class="si">{</span><span class="n">session_ix</span><span class="si">}</span><span class="s1"> query start...&#39;</span><span class="p">)</span>
+    <span class="n">session</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;*IDN?&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s1"> session </span><span class="si">{</span><span class="n">session_ix</span><span class="si">}</span><span class="s1"> query end&#39;</span><span class="p">)</span>
+
+
+<span class="n">driver1</span> <span class="o">=</span> <span class="n">RsSmbv</span><span class="p">(</span><span class="s1">&#39;TCPIP::192.168.56.101::INSTR&#39;</span><span class="p">)</span>
+<span class="n">driver2</span> <span class="o">=</span> <span class="n">RsSmbv</span><span class="p">(</span><span class="s1">&#39;TCPIP::192.168.56.101::INSTR&#39;</span><span class="p">)</span>
+<span class="n">driver1</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">visa_timeout</span> <span class="o">=</span> <span class="mi">200</span>
+<span class="n">driver2</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">visa_timeout</span> <span class="o">=</span> <span class="mi">200</span>
+
+<span class="c1"># Synchronise the sessions by sharing the same lock</span>
+<span class="n">driver2</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">assign_lock</span><span class="p">(</span><span class="n">driver1</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">get_lock</span><span class="p">())</span>  <span class="c1"># To see the effect of crosstalk, comment this line</span>
+
+<span class="n">threads</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">execute</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">driver1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">i</span><span class="p">,))</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+    <span class="n">threads</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">execute</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">driver2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">i</span><span class="p">,))</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+    <span class="n">threads</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;All threads started&#39;</span><span class="p">)</span>
+
+<span class="c1"># Wait for all threads to join this main thread</span>
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">threads</span><span class="p">:</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;All threads ended&#39;</span><span class="p">)</span>
+
+<span class="n">driver2</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">driver1</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>You have two completely independent sessions that want to talk to the same instrument at the same time. This will not go well, unless they share the same session lock. The key command to achieve this is <code class="docutils literal notranslate"><span class="pre">driver2.utilities.assign_lock(driver1.utilities.get_lock())</span></code>
+Try to comment it and see how it goes. If despite commenting the line the example runs without issues, you are lucky to have an instrument similar to the SMW200A.</p>
+</section>
+<section id="logging">
+<span id="getingstarted-logging"></span><h2>Logging<a class="headerlink" href="#logging" title="Permalink to this headline"></a></h2>
+<p>Yes, the logging again. This one is tailored for instrument communication. You will appreciate such handy feature when you troubleshoot your program, or just want to protocol the SCPI communication for your test reports.</p>
+<p>What can you actually do with the logger?</p>
+<ul class="simple">
+<li><p>Write SCPI communication to a stream-like object, for example console or file, or both simultaneously</p></li>
+<li><p>Log only errors and skip problem-free parts; this way you avoid going through thousands lines of texts</p></li>
+<li><p>Investigate duration of certain operations to optimize your program’s performance</p></li>
+<li><p>Log custom messages from your program</p></li>
+</ul>
+<p>Let us take this basic example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Basic logging example to the console</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">RsSmbv</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">driver</span> <span class="o">=</span> <span class="n">RsSmbv</span><span class="p">(</span><span class="s1">&#39;TCPIP::192.168.1.101::INSTR&#39;</span><span class="p">)</span>
+
+<span class="c1"># Switch ON logging to the console.</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_to_console</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="n">LoggingMode</span><span class="o">.</span><span class="n">On</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+
+<span class="c1"># Close the session</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Console output:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">10:29:10.819     TCPIP::192.168.1.101::INSTR     0.976 ms  Write: *RST</span>
+<span class="go">10:29:10.819     TCPIP::192.168.1.101::INSTR  1884.985 ms  Status check: OK</span>
+<span class="go">10:29:12.704     TCPIP::192.168.1.101::INSTR     0.983 ms  Query OPC: 1</span>
+<span class="go">10:29:12.705     TCPIP::192.168.1.101::INSTR     2.892 ms  Clear status: OK</span>
+<span class="go">10:29:12.708     TCPIP::192.168.1.101::INSTR     3.905 ms  Status check: OK</span>
+<span class="go">10:29:12.712     TCPIP::192.168.1.101::INSTR     1.952 ms  Close: Closing session</span>
+</pre></div>
+</div>
+<p>The columns of the log are aligned for better reading. Columns meaning:</p>
+<ul class="simple">
+<li><ol class="arabic simple">
+<li><p>Start time of the operation</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="2">
+<li><p>Device resource name (you can set an alias)</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="3">
+<li><p>Duration of the operation</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="4">
+<li><p>Log entry</p></li>
+</ol>
+</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can customize the logging format with <code class="docutils literal notranslate"><span class="pre">set_format_string()</span></code>, and set the maximum log entry length with the properties:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">abbreviated_max_len_ascii</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">abbreviated_max_len_bin</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">abbreviated_max_len_list</span></code></p></li>
+</ul>
+</div></blockquote>
+<p>See the full logger help <a class="reference internal" href="logger.html#logger"><span class="std std-ref">here</span></a>.</p>
+</div>
+<p>Notice the SCPI communication starts from the line <code class="docutils literal notranslate"><span class="pre">driver.utilities.reset()</span></code>. If you want to log the initialization of the session as well, you have to switch the logging ON already in the constructor:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">driver</span> <span class="o">=</span> <span class="n">RsSmbv</span><span class="p">(</span><span class="s1">&#39;TCPIP::192.168.56.101::hislip0&#39;</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="s1">&#39;LoggingMode=On&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Parallel to the console logging, you can log to a general stream. Do not fear the programmer’s jargon’… under the term <strong>stream</strong> you can just imagine a file. To be a little more technical, a stream in Python is any object that has two methods: <code class="docutils literal notranslate"><span class="pre">write()</span></code> and <code class="docutils literal notranslate"><span class="pre">flush()</span></code>. This example opens a file and sets it as logging target:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Example of logging to a file</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">RsSmbv</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">driver</span> <span class="o">=</span> <span class="n">RsSmbv</span><span class="p">(</span><span class="s1">&#39;TCPIP::192.168.1.101::INSTR&#39;</span><span class="p">)</span>
+
+<span class="c1"># We also want to log to the console.</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_to_console</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="c1"># Logging target is our file</span>
+<span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;c:\temp\my_file.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">set_logging_target</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="n">LoggingMode</span><span class="o">.</span><span class="n">On</span>
+
+<span class="c1"># Instead of the &#39;TCPIP::192.168.1.101::INSTR&#39;, show &#39;MyDevice&#39;</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">device_name</span> <span class="o">=</span> <span class="s1">&#39;MyDevice&#39;</span>
+
+<span class="c1"># Custom user entry</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info_raw</span><span class="p">(</span><span class="s1">&#39;----- This is my custom log entry. ---- &#39;</span><span class="p">)</span>
+
+<span class="n">driver</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+
+<span class="c1"># Close the session</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="c1"># Close the log file</span>
+<span class="n">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>To make the log more compact, you can skip all the lines with <code class="docutils literal notranslate"><span class="pre">Status</span> <span class="pre">check:</span> <span class="pre">OK</span></code>:</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">driver</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_status_check_ok</span> <span class="o">=</span> <span class="kc">False</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>You can share the logging file between multiple sessions. In such case, remember to close the file only after you have stopped logging in all your sessions, otherwise you get a log write error.</p>
+</div>
+<p>For logging to a UDP port in addition to other log targets, use one of the lines:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">driver</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_to_udp</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_to_console_and_udp</span> <span class="o">=</span> <span class="kc">True</span>
+</pre></div>
+</div>
+<p>You can select the UDP port to log to, the default is 49200:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">driver</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">udp_port</span> <span class="o">=</span> <span class="mi">49200</span>
+</pre></div>
+</div>
+<p>Another cool feature is logging only errors. To make this mode usefull for troubleshooting, you also want to see the circumstances which lead to the errors. Each driver elementary operation, for example, <code class="docutils literal notranslate"><span class="pre">write_str()</span></code>, can generate a group of log entries - let us call them <strong>Segment</strong>. In the logging mode <code class="docutils literal notranslate"><span class="pre">Errors</span></code>, a whole segment is logged only if at least one entry of the segment is an error.</p>
+<p>The script below demonstrates this feature. We use a direct SCPI communication to send a misspelled SCPI command <a href="#id1"><span class="problematic" id="id2">*</span></a>CLS, which leads to instrument status error:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Logging example to the console with only errors logged</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">RsSmbv</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">driver</span> <span class="o">=</span> <span class="n">RsSmbv</span><span class="p">(</span><span class="s1">&#39;TCPIP::192.168.1.101::INSTR&#39;</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="s1">&#39;LoggingMode=Errors&#39;</span><span class="p">)</span>
+
+<span class="c1"># Switch ON logging to the console.</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_to_console</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="c1"># Reset will not be logged, since no error occurred there</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+
+<span class="c1"># Now a misspelled command.</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;*CLaS&#39;</span><span class="p">)</span>
+
+<span class="c1"># A good command again, no logging here</span>
+<span class="n">idn</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;*IDN?&#39;</span><span class="p">)</span>
+
+<span class="c1"># Close the session</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Console output:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">12:11:02.879 TCPIP::192.168.1.101::INSTR     0.976 ms  Write string: *CLaS</span>
+<span class="go">12:11:02.879 TCPIP::192.168.1.101::INSTR     6.833 ms  Status check: StatusException:</span>
+<span class="go">                                             Instrument error detected: Undefined header;*CLaS</span>
+</pre></div>
+</div>
+<p>Notice the following:</p>
+<ul class="simple">
+<li><p>Although the operation <strong>Write string: *CLaS</strong> finished without an error, it is still logged, because it provides the context for the actual error which occurred during the status checking right after.</p></li>
+<li><p>No other log entries are present, including the session initialization and close, because they were all error-free.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="readme.html" class="btn btn-neutral float-left" title="Revision History" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="enums.html" class="btn btn-neutral float-right" title="Enums" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

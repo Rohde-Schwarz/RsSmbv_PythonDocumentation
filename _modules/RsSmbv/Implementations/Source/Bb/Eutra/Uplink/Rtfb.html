@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RsSmbv.Implementations.Source.Bb.Eutra.Uplink.Rtfb &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../../../../" id="documentation_options" src="../../../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../../../_static/jquery.js"></script>
+        <script src="../../../../../../../_static/underscore.js"></script>
+        <script src="../../../../../../../_static/doctools.js"></script>
+        <script src="../../../../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../../../../_static/copybutton.js"></script>
+    <script src="../../../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../../../../index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../RsSmbv.html">RsSmbv API Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../../index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../../../../index.html">Module code</a> &raquo;</li>
+          <li><a href="../../../../Source.html">RsSmbv.Implementations.Source</a> &raquo;</li>
+          <li><a href="../../../Bb.html">RsSmbv.Implementations.Source.Bb</a> &raquo;</li>
+          <li><a href="../../Eutra.html">RsSmbv.Implementations.Source.Bb.Eutra</a> &raquo;</li>
+          <li><a href="../Uplink.html">RsSmbv.Implementations.Source.Bb.Eutra.Uplink</a> &raquo;</li>
+      <li>RsSmbv.Implementations.Source.Bb.Eutra.Uplink.Rtfb</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for RsSmbv.Implementations.Source.Bb.Eutra.Uplink.Rtfb</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">......Internal.Core</span> <span class="kn">import</span> <span class="n">Core</span>
+<span class="kn">from</span> <span class="nn">......Internal.CommandsGroup</span> <span class="kn">import</span> <span class="n">CommandsGroup</span>
+<span class="kn">from</span> <span class="nn">......Internal</span> <span class="kn">import</span> <span class="n">Conversions</span>
+<span class="kn">from</span> <span class="nn">......Internal.Utilities</span> <span class="kn">import</span> <span class="n">trim_str_response</span>
+<span class="kn">from</span> <span class="nn">......</span> <span class="kn">import</span> <span class="n">enums</span>
+
+
+<span class="c1"># noinspection PyPep8Naming,PyAttributeOutsideInit,SpellCheckingInspection</span>
+<div class="viewcode-block" id="RtfbCls"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Uplink_Rtfb.html#RsSmbv.Implementations.Source.Bb.Eutra.Uplink.Rtfb.RtfbCls">[docs]</a><span class="k">class</span> <span class="nc">RtfbCls</span><span class="p">:</span>
+	<span class="sd">&quot;&quot;&quot;Rtfb commands group definition. 16 total commands, 0 Subgroups, 16 group commands&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">core</span><span class="p">:</span> <span class="n">Core</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span> <span class="o">=</span> <span class="n">core</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span> <span class="o">=</span> <span class="n">CommandsGroup</span><span class="p">(</span><span class="s2">&quot;rtfb&quot;</span><span class="p">,</span> <span class="n">core</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+
+<div class="viewcode-block" id="RtfbCls.get_aack"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Uplink_Rtfb.html#RsSmbv.Implementations.Source.Bb.Eutra.Uplink.Rtfb.RtfbCls.get_aack">[docs]</a>	<span class="k">def</span> <span class="nf">get_aack</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:UL:RTFB:AACK \n</span>
+<span class="sd">		Snippet: value: bool = driver.source.bb.eutra.uplink.rtfb.get_aack() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: assume_ack: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:UL:RTFB:AACK?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_bool</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="RtfbCls.set_aack"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Uplink_Rtfb.html#RsSmbv.Implementations.Source.Bb.Eutra.Uplink.Rtfb.RtfbCls.set_aack">[docs]</a>	<span class="k">def</span> <span class="nf">set_aack</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">assume_ack</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:UL:RTFB:AACK \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.uplink.rtfb.set_aack(assume_ack = False) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param assume_ack: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">bool_to_str</span><span class="p">(</span><span class="n">assume_ack</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:UL:RTFB:AACK </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="RtfbCls.get_ack_definition"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Uplink_Rtfb.html#RsSmbv.Implementations.Source.Bb.Eutra.Uplink.Rtfb.RtfbCls.get_ack_definition">[docs]</a>	<span class="k">def</span> <span class="nf">get_ack_definition</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">LowHigh</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:UL:RTFB:ACKDefinition \n</span>
+<span class="sd">		Snippet: value: enums.LowHigh = driver.source.bb.eutra.uplink.rtfb.get_ack_definition() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: ack_definition: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:UL:RTFB:ACKDefinition?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">LowHigh</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="RtfbCls.set_ack_definition"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Uplink_Rtfb.html#RsSmbv.Implementations.Source.Bb.Eutra.Uplink.Rtfb.RtfbCls.set_ack_definition">[docs]</a>	<span class="k">def</span> <span class="nf">set_ack_definition</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ack_definition</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">LowHigh</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:UL:RTFB:ACKDefinition \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.uplink.rtfb.set_ack_definition(ack_definition = enums.LowHigh.HIGH) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param ack_definition: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">ack_definition</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">LowHigh</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:UL:RTFB:ACKDefinition </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="RtfbCls.get_adu_delay"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Uplink_Rtfb.html#RsSmbv.Implementations.Source.Bb.Eutra.Uplink.Rtfb.RtfbCls.get_adu_delay">[docs]</a>	<span class="k">def</span> <span class="nf">get_adu_delay</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:UL:RTFB:ADUDelay \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.eutra.uplink.rtfb.get_adu_delay() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: add_user_delay: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:UL:RTFB:ADUDelay?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="RtfbCls.set_adu_delay"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Uplink_Rtfb.html#RsSmbv.Implementations.Source.Bb.Eutra.Uplink.Rtfb.RtfbCls.set_adu_delay">[docs]</a>	<span class="k">def</span> <span class="nf">set_adu_delay</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">add_user_delay</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:UL:RTFB:ADUDelay \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.uplink.rtfb.set_adu_delay(add_user_delay = 1.0) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param add_user_delay: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">add_user_delay</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:UL:RTFB:ADUDelay </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="RtfbCls.get_bb_selector"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Uplink_Rtfb.html#RsSmbv.Implementations.Source.Bb.Eutra.Uplink.Rtfb.RtfbCls.get_bb_selector">[docs]</a>	<span class="k">def</span> <span class="nf">get_bb_selector</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:UL:RTFB:BBSelector \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.eutra.uplink.rtfb.get_bb_selector() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: baseband_select: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:UL:RTFB:BBSelector?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="RtfbCls.set_bb_selector"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Uplink_Rtfb.html#RsSmbv.Implementations.Source.Bb.Eutra.Uplink.Rtfb.RtfbCls.set_bb_selector">[docs]</a>	<span class="k">def</span> <span class="nf">set_bb_selector</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">baseband_select</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:UL:RTFB:BBSelector \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.uplink.rtfb.set_bb_selector(baseband_select = 1) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param baseband_select: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">baseband_select</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:UL:RTFB:BBSelector </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="RtfbCls.get_be_insertion"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Uplink_Rtfb.html#RsSmbv.Implementations.Source.Bb.Eutra.Uplink.Rtfb.RtfbCls.get_be_insertion">[docs]</a>	<span class="k">def</span> <span class="nf">get_be_insertion</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraFeedbackBlerMode</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:UL:RTFB:BEINsertion \n</span>
+<span class="sd">		Snippet: value: enums.EutraFeedbackBlerMode = driver.source.bb.eutra.uplink.rtfb.get_be_insertion() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: block_err_insert: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:UL:RTFB:BEINsertion?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraFeedbackBlerMode</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="RtfbCls.set_be_insertion"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Uplink_Rtfb.html#RsSmbv.Implementations.Source.Bb.Eutra.Uplink.Rtfb.RtfbCls.set_be_insertion">[docs]</a>	<span class="k">def</span> <span class="nf">set_be_insertion</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">block_err_insert</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraFeedbackBlerMode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:UL:RTFB:BEINsertion \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.uplink.rtfb.set_be_insertion(block_err_insert = enums.EutraFeedbackBlerMode.APRocesses) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param block_err_insert: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">block_err_insert</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraFeedbackBlerMode</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:UL:RTFB:BEINsertion </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="RtfbCls.get_bit_error_rate"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Uplink_Rtfb.html#RsSmbv.Implementations.Source.Bb.Eutra.Uplink.Rtfb.RtfbCls.get_bit_error_rate">[docs]</a>	<span class="k">def</span> <span class="nf">get_bit_error_rate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:UL:RTFB:BERate \n</span>
+<span class="sd">		Snippet: value: float = driver.source.bb.eutra.uplink.rtfb.get_bit_error_rate() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: block_err_rate: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:UL:RTFB:BERate?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="RtfbCls.set_bit_error_rate"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Uplink_Rtfb.html#RsSmbv.Implementations.Source.Bb.Eutra.Uplink.Rtfb.RtfbCls.set_bit_error_rate">[docs]</a>	<span class="k">def</span> <span class="nf">set_bit_error_rate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">block_err_rate</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:UL:RTFB:BERate \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.uplink.rtfb.set_bit_error_rate(block_err_rate = 1.0) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param block_err_rate: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">block_err_rate</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:UL:RTFB:BERate </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="RtfbCls.get_connector"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Uplink_Rtfb.html#RsSmbv.Implementations.Source.Bb.Eutra.Uplink.Rtfb.RtfbCls.get_connector">[docs]</a>	<span class="k">def</span> <span class="nf">get_connector</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">FeedbackConnector</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:UL:RTFB:CONNector \n</span>
+<span class="sd">		Snippet: value: enums.FeedbackConnector = driver.source.bb.eutra.uplink.rtfb.get_connector() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: connector: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:UL:RTFB:CONNector?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">FeedbackConnector</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="RtfbCls.set_connector"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Uplink_Rtfb.html#RsSmbv.Implementations.Source.Bb.Eutra.Uplink.Rtfb.RtfbCls.set_connector">[docs]</a>	<span class="k">def</span> <span class="nf">set_connector</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">connector</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">FeedbackConnector</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:UL:RTFB:CONNector \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.uplink.rtfb.set_connector(connector = enums.FeedbackConnector.LEVatt) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param connector: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">connector</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">FeedbackConnector</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:UL:RTFB:CONNector </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="RtfbCls.get_dmode"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Uplink_Rtfb.html#RsSmbv.Implementations.Source.Bb.Eutra.Uplink.Rtfb.RtfbCls.get_dmode">[docs]</a>	<span class="k">def</span> <span class="nf">get_dmode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraFeedbackDistMode</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:UL:RTFB:DMODe \n</span>
+<span class="sd">		Snippet: value: enums.EutraFeedbackDistMode = driver.source.bb.eutra.uplink.rtfb.get_dmode() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: distance_mode: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:UL:RTFB:DMODe?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraFeedbackDistMode</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="RtfbCls.set_dmode"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Uplink_Rtfb.html#RsSmbv.Implementations.Source.Bb.Eutra.Uplink.Rtfb.RtfbCls.set_dmode">[docs]</a>	<span class="k">def</span> <span class="nf">set_dmode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">distance_mode</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraFeedbackDistMode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:UL:RTFB:DMODe \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.uplink.rtfb.set_dmode(distance_mode = enums.EutraFeedbackDistMode.DIRect) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param distance_mode: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">distance_mode</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraFeedbackDistMode</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:UL:RTFB:DMODe </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="RtfbCls.get_gen_reports"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Uplink_Rtfb.html#RsSmbv.Implementations.Source.Bb.Eutra.Uplink.Rtfb.RtfbCls.get_gen_reports">[docs]</a>	<span class="k">def</span> <span class="nf">get_gen_reports</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:UL:RTFB:GENReports \n</span>
+<span class="sd">		Snippet: value: bool = driver.source.bb.eutra.uplink.rtfb.get_gen_reports() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: gen_debug_reports: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:UL:RTFB:GENReports?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_bool</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="RtfbCls.set_gen_reports"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Uplink_Rtfb.html#RsSmbv.Implementations.Source.Bb.Eutra.Uplink.Rtfb.RtfbCls.set_gen_reports">[docs]</a>	<span class="k">def</span> <span class="nf">set_gen_reports</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gen_debug_reports</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:UL:RTFB:GENReports \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.uplink.rtfb.set_gen_reports(gen_debug_reports = False) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param gen_debug_reports: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">bool_to_str</span><span class="p">(</span><span class="n">gen_debug_reports</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:UL:RTFB:GENReports </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="RtfbCls.get_it_advance"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Uplink_Rtfb.html#RsSmbv.Implementations.Source.Bb.Eutra.Uplink.Rtfb.RtfbCls.get_it_advance">[docs]</a>	<span class="k">def</span> <span class="nf">get_it_advance</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:UL:RTFB:ITADvance \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.eutra.uplink.rtfb.get_it_advance() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: init_tim_advance: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:UL:RTFB:ITADvance?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="RtfbCls.set_it_advance"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Uplink_Rtfb.html#RsSmbv.Implementations.Source.Bb.Eutra.Uplink.Rtfb.RtfbCls.set_it_advance">[docs]</a>	<span class="k">def</span> <span class="nf">set_it_advance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">init_tim_advance</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:UL:RTFB:ITADvance \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.uplink.rtfb.set_it_advance(init_tim_advance = 1) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param init_tim_advance: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">init_tim_advance</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:UL:RTFB:ITADvance </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="RtfbCls.get_ita_feedback"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Uplink_Rtfb.html#RsSmbv.Implementations.Source.Bb.Eutra.Uplink.Rtfb.RtfbCls.get_ita_feedback">[docs]</a>	<span class="k">def</span> <span class="nf">get_ita_feedback</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:UL:RTFB:ITAFeedback \n</span>
+<span class="sd">		Snippet: value: bool = driver.source.bb.eutra.uplink.rtfb.get_ita_feedback() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: ignore_timing_adj: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:UL:RTFB:ITAFeedback?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_bool</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="RtfbCls.set_ita_feedback"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Uplink_Rtfb.html#RsSmbv.Implementations.Source.Bb.Eutra.Uplink.Rtfb.RtfbCls.set_ita_feedback">[docs]</a>	<span class="k">def</span> <span class="nf">set_ita_feedback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ignore_timing_adj</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:UL:RTFB:ITAFeedback \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.uplink.rtfb.set_ita_feedback(ignore_timing_adj = False) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param ignore_timing_adj: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">bool_to_str</span><span class="p">(</span><span class="n">ignore_timing_adj</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:UL:RTFB:ITAFeedback </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="RtfbCls.get_loffset"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Uplink_Rtfb.html#RsSmbv.Implementations.Source.Bb.Eutra.Uplink.Rtfb.RtfbCls.get_loffset">[docs]</a>	<span class="k">def</span> <span class="nf">get_loffset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:UL:RTFB:LOFFset \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.eutra.uplink.rtfb.get_loffset() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: logging_offset: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:UL:RTFB:LOFFset?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="RtfbCls.set_loffset"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Uplink_Rtfb.html#RsSmbv.Implementations.Source.Bb.Eutra.Uplink.Rtfb.RtfbCls.set_loffset">[docs]</a>	<span class="k">def</span> <span class="nf">set_loffset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logging_offset</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:UL:RTFB:LOFFset \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.uplink.rtfb.set_loffset(logging_offset = 1) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param logging_offset: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">logging_offset</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:UL:RTFB:LOFFset </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="RtfbCls.get_max_trans"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Uplink_Rtfb.html#RsSmbv.Implementations.Source.Bb.Eutra.Uplink.Rtfb.RtfbCls.get_max_trans">[docs]</a>	<span class="k">def</span> <span class="nf">get_max_trans</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:UL:RTFB:MAXTrans \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.eutra.uplink.rtfb.get_max_trans() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: max_transmission: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:UL:RTFB:MAXTrans?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="RtfbCls.set_max_trans"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Uplink_Rtfb.html#RsSmbv.Implementations.Source.Bb.Eutra.Uplink.Rtfb.RtfbCls.set_max_trans">[docs]</a>	<span class="k">def</span> <span class="nf">set_max_trans</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">max_transmission</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:UL:RTFB:MAXTrans \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.uplink.rtfb.set_max_trans(max_transmission = 1) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param max_transmission: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">max_transmission</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:UL:RTFB:MAXTrans </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="RtfbCls.get_mode"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Uplink_Rtfb.html#RsSmbv.Implementations.Source.Bb.Eutra.Uplink.Rtfb.RtfbCls.get_mode">[docs]</a>	<span class="k">def</span> <span class="nf">get_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraFeedbackMode</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:UL:RTFB:MODE \n</span>
+<span class="sd">		Snippet: value: enums.EutraFeedbackMode = driver.source.bb.eutra.uplink.rtfb.get_mode() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: mode: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:UL:RTFB:MODE?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraFeedbackMode</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="RtfbCls.set_mode"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Uplink_Rtfb.html#RsSmbv.Implementations.Source.Bb.Eutra.Uplink.Rtfb.RtfbCls.set_mode">[docs]</a>	<span class="k">def</span> <span class="nf">set_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraFeedbackMode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:UL:RTFB:MODE \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.uplink.rtfb.set_mode(mode = enums.EutraFeedbackMode.BAN) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param mode: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">mode</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraFeedbackMode</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:UL:RTFB:MODE </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="RtfbCls.get_rv_sequence"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Uplink_Rtfb.html#RsSmbv.Implementations.Source.Bb.Eutra.Uplink.Rtfb.RtfbCls.get_rv_sequence">[docs]</a>	<span class="k">def</span> <span class="nf">get_rv_sequence</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:UL:RTFB:RVSequence \n</span>
+<span class="sd">		Snippet: value: str = driver.source.bb.eutra.uplink.rtfb.get_rv_sequence() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: red_vers_sequence: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:UL:RTFB:RVSequence?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">trim_str_response</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="RtfbCls.set_rv_sequence"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Uplink_Rtfb.html#RsSmbv.Implementations.Source.Bb.Eutra.Uplink.Rtfb.RtfbCls.set_rv_sequence">[docs]</a>	<span class="k">def</span> <span class="nf">set_rv_sequence</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">red_vers_sequence</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:UL:RTFB:RVSequence \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.uplink.rtfb.set_rv_sequence(red_vers_sequence = &#39;abc&#39;) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param red_vers_sequence: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">value_to_quoted_str</span><span class="p">(</span><span class="n">red_vers_sequence</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:UL:RTFB:RVSequence </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="RtfbCls.get_ser_rte"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Uplink_Rtfb.html#RsSmbv.Implementations.Source.Bb.Eutra.Uplink.Rtfb.RtfbCls.get_ser_rte">[docs]</a>	<span class="k">def</span> <span class="nf">get_ser_rte</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraSerialRate</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:UL:RTFB:SERate \n</span>
+<span class="sd">		Snippet: value: enums.EutraSerialRate = driver.source.bb.eutra.uplink.rtfb.get_ser_rte() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: serial_rate: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:UL:RTFB:SERate?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraSerialRate</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="RtfbCls.set_ser_rte"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Uplink_Rtfb.html#RsSmbv.Implementations.Source.Bb.Eutra.Uplink.Rtfb.RtfbCls.set_ser_rte">[docs]</a>	<span class="k">def</span> <span class="nf">set_ser_rte</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">serial_rate</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraSerialRate</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:UL:RTFB:SERate \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.uplink.rtfb.set_ser_rte(serial_rate = enums.EutraSerialRate.SR1_6M) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param serial_rate: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">serial_rate</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraSerialRate</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:UL:RTFB:SERate </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

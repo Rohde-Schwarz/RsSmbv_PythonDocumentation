@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Econfiguration &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Actable" href="Source_Bb_Btooth_Econfiguration_Actable.html" />
+    <link rel="prev" title="AntGain&lt;IndexNull&gt;" href="Source_Bb_Btooth_Econfig_Pconfig_AntGain.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="RsSmbv.html">RsSmbv API Structure</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Bert.html">Bert</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Bler.html">Bler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Calibration.html">Calibration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clock.html">Clock</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Connector.html">Connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Device.html">Device</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Diagnostic.html">Diagnostic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Display.html">Display</a></li>
+<li class="toctree-l2"><a class="reference internal" href="FormatPy.html">FormatPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Fpanel.html">Fpanel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HardCopy.html">HardCopy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Initiate.html">Initiate&lt;Channel&gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Kboard.html">Kboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MassMemory.html">MassMemory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Memory.html">Memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Output.html">Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Read.html">Read&lt;Channel&gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Sconfiguration.html">Sconfiguration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Sense.html">Sense&lt;Channel&gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slist.html">Slist</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="Source.html">Source</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="Source_Adf.html">Adf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Am.html">Am&lt;GeneratorIx&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_AreGenerator.html">AreGenerator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Awgn.html">Awgn</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="Source_Bb.html">Bb</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Arbitrary.html">Arbitrary</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="Source_Bb_Btooth.html">Btooth</a><ul class="current">
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Btooth_Ccrc.html">Ccrc</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Btooth_Clipping.html">Clipping</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Btooth_Clock.html">Clock</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Btooth_Cs.html">Cs</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Btooth_DtTest.html">DtTest</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Btooth_Econfig.html">Econfig</a></li>
+<li class="toctree-l5 current"><a class="current reference internal" href="#">Econfiguration</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Actable.html">Actable</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_DcTable.html">DcTable</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_LtKey.html">LtKey</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration.html">Pconfiguration</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Btooth_FilterPy.html">FilterPy</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Btooth_Hdr.html">Hdr</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Btooth_Hr.html">Hr</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Btooth_Mhdt.html">Mhdt</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Btooth_Msettings.html">Msettings</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Btooth_Pconfiguration.html">Pconfiguration</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Btooth_PhymacCfg.html">PhymacCfg</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Btooth_Pramping.html">Pramping</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Btooth_Qhs.html">Qhs</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Btooth_Setting.html">Setting</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Btooth_SymbolRate.html">SymbolRate</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Btooth_Trigger.html">Trigger</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Btooth_Unit.html">Unit</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Source_Bb_Btooth_Waveform.html">Waveform</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_C2K.html">C2K</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Coder.html">Coder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Dab.html">Dab</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Dme.html">Dme</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Eutra.html">Eutra</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Evdo.html">Evdo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Gbas.html">Gbas</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Gnpr.html">Gnpr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Gnss.html">Gnss</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Graphics.html">Graphics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Gsm.html">Gsm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Huwb.html">Huwb</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Ils.html">Ils</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Impairment.html">Impairment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Info.html">Info</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Lora.html">Lora</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Mccw.html">Mccw</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nfc.html">Nfc</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Nr5G.html">Nr5G</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Ofdm.html">Ofdm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Path.html">Path</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Power.html">Power</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Pramp.html">Pramp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Progress.html">Progress</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Tdscdma.html">Tdscdma</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Trigger.html">Trigger</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Vor.html">Vor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_W3Gpp.html">W3Gpp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Wlnn.html">Wlnn</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bbin.html">Bbin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Combined.html">Combined</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Correction.html">Correction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Dme.html">Dme</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Efrontend.html">Efrontend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Fm.html">Fm&lt;GeneratorIx&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_FreqSweep.html">FreqSweep</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Frequency.html">Frequency</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Ils.html">Ils</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_InputPy.html">InputPy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Iq.html">Iq</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_LffSweep.html">LffSweep</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_LfOutput.html">LfOutput&lt;LfOutput&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_ListPy.html">ListPy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Mbeacon.html">Mbeacon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Modulation.html">Modulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Noise.html">Noise</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Occupy.html">Occupy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Path.html">Path</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Pgenerator.html">Pgenerator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Phase.html">Phase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Pm.html">Pm&lt;GeneratorIx&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Power.html">Power</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Psweep.html">Psweep</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Pulm.html">Pulm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Roscillator.html">Roscillator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Sweep.html">Sweep</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_ValRf.html">ValRf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Vor.html">Vor</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Status.html">Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Sweep.html">Sweep</a></li>
+<li class="toctree-l2"><a class="reference internal" href="System.html">System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Test.html">Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Trigger.html">Trigger&lt;InputIx&gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Unit.html">Unit</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="RsSmbv.html">RsSmbv API Structure</a> &raquo;</li>
+          <li><a href="Source.html">Source</a> &raquo;</li>
+          <li><a href="Source_Bb.html">Bb</a> &raquo;</li>
+          <li><a href="Source_Bb_Btooth.html">Btooth</a> &raquo;</li>
+      <li>Econfiguration</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Source_Bb_Btooth_Econfiguration.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="econfiguration">
+<h1>Econfiguration<a class="headerlink" href="#econfiguration" title="Permalink to this headline"></a></h1>
+<p class="rubric">SCPI Commands :</p>
+<div class="highlight-python notranslate" id="index-0"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">BB</span><span class="p">:</span><span class="n">BTOoth</span><span class="p">:</span><span class="n">ECONfiguration</span><span class="p">:</span><span class="n">ADINterval</span>
+<span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">BB</span><span class="p">:</span><span class="n">BTOoth</span><span class="p">:</span><span class="n">ECONfiguration</span><span class="p">:</span><span class="n">AEDelay</span>
+<span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">BB</span><span class="p">:</span><span class="n">BTOoth</span><span class="p">:</span><span class="n">ECONfiguration</span><span class="p">:</span><span class="n">AEINterval</span>
+<span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">BB</span><span class="p">:</span><span class="n">BTOoth</span><span class="p">:</span><span class="n">ECONfiguration</span><span class="p">:</span><span class="n">APINterval</span>
+<span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">BB</span><span class="p">:</span><span class="n">BTOoth</span><span class="p">:</span><span class="n">ECONfiguration</span><span class="p">:</span><span class="n">LCMode</span>
+<span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">BB</span><span class="p">:</span><span class="n">BTOoth</span><span class="p">:</span><span class="n">ECONfiguration</span><span class="p">:</span><span class="n">PNUMber</span>
+<span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">BB</span><span class="p">:</span><span class="n">BTOoth</span><span class="p">:</span><span class="n">ECONfiguration</span><span class="p">:</span><span class="n">SDCI</span>
+<span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">BB</span><span class="p">:</span><span class="n">BTOoth</span><span class="p">:</span><span class="n">ECONfiguration</span><span class="p">:</span><span class="n">SINTerval</span>
+<span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">BB</span><span class="p">:</span><span class="n">BTOoth</span><span class="p">:</span><span class="n">ECONfiguration</span><span class="p">:</span><span class="n">SWINdow</span>
+<span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">BB</span><span class="p">:</span><span class="n">BTOoth</span><span class="p">:</span><span class="n">ECONfiguration</span><span class="p">:</span><span class="n">WOINfo</span>
+<span class="p">[</span><span class="n">SOURce</span><span class="o">&lt;</span><span class="n">HW</span><span class="o">&gt;</span><span class="p">]:</span><span class="n">BB</span><span class="p">:</span><span class="n">BTOoth</span><span class="p">:</span><span class="n">ECONfiguration</span><span class="p">:</span><span class="n">WSINfo</span>
+</pre></div>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">EconfigurationCls</span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Btooth/Econfiguration.html#EconfigurationCls"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Econfiguration commands group definition. 139 total commands, 4 Subgroups, 11 group commands</p>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_ad_interval</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Btooth/Econfiguration.html#EconfigurationCls.get_ad_interval"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:ECONfiguration:ADINterval</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">btooth</span><span class="o">.</span><span class="n">econfiguration</span><span class="o">.</span><span class="n">get_ad_interval</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Sets the time interval between two consecutive advertising events for packet type ‘ADV_DIRECT_IND’ and duty cycle high.
+Command sets the values in ms. Query returns values in s.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>ad_interval: float Range: 1.05E-3 s to 3.75E-3 s , Unit: ms</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_ae_delay</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Btooth/Econfiguration.html#EconfigurationCls.get_ae_delay"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:ECONfiguration:AEDelay</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">btooth</span><span class="o">.</span><span class="n">econfiguration</span><span class="o">.</span><span class="n">get_ae_delay</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Sets a time delay between the start times of two consecutive advertising events. The value is added to the advertising
+event interval. Command sets the values in ms. Query returns values in s.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>ae_delay: float Range: 0 s to 10E-3 s , Unit: ms</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_ae_interval</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Btooth/Econfiguration.html#EconfigurationCls.get_ae_interval"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:ECONfiguration:AEINterval</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">btooth</span><span class="o">.</span><span class="n">econfiguration</span><span class="o">.</span><span class="n">get_ae_interval</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Sets the time interval between two consecutive advertising events, with regard to the starting points. Command sets the
+values in ms. Query returns values in s.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>ae_interval: float Range: 5E-3 s to depends on oversampling , Unit: ms</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_ap_interval</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Btooth/Econfiguration.html#EconfigurationCls.get_ap_interval"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:ECONfiguration:APINterval</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">btooth</span><span class="o">.</span><span class="n">econfiguration</span><span class="o">.</span><span class="n">get_ap_interval</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Sets the time interval between packets starting points of two consecutive packets in the advertising channel.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>ap_interval: float Range: 1.3E-3 to 28E-3, Unit: ms</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_lc_mode</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">RsSmbv.enums.BtoLlCnctMod</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Btooth/Econfiguration.html#EconfigurationCls.get_lc_mode"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:ECONfiguration:LCMode</span>
+<span class="n">value</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoLlCnctMod</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">btooth</span><span class="o">.</span><span class="n">econfiguration</span><span class="o">.</span><span class="n">get_lc_mode</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Selects the link layer connection mode. In order to provide safe transmission of payload data, the data in the packet can
+be encrypted. If activated, the payload data follows MIC (Message authentication Code) .</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>lc_mode: UENC| ENC UENC Payload data is transmitted without encoding. ENC The link layer connection runs in encrypted mode.</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_pnumber</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Btooth/Econfiguration.html#EconfigurationCls.get_pnumber"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:ECONfiguration:PNUMber</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">btooth</span><span class="o">.</span><span class="n">econfiguration</span><span class="o">.</span><span class="n">get_pnumber</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Sets the number of Tx packets per event. Each connection contains at least one data channel packet. The maximum number of
+packets per event is determined by the duration of the connection event interval.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>pnumber: integer Range: 1 to depends on connection event interval</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_sdci</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Btooth/Econfiguration.html#EconfigurationCls.get_sdci"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:ECONfiguration:SDCI</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">btooth</span><span class="o">.</span><span class="n">econfiguration</span><span class="o">.</span><span class="n">get_sdci</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Queries the number of the first active data channel.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>selected_channel: integer Range: 0 to 36</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_sinterval</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Btooth/Econfiguration.html#EconfigurationCls.get_sinterval"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:ECONfiguration:SINTerval</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">btooth</span><span class="o">.</span><span class="n">econfiguration</span><span class="o">.</span><span class="n">get_sinterval</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Sets the time interval between the starting points of two consecutive windows during which the scanner is operating in an
+advertising channel. Command sets the values in ms. Query returns values in s.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>sinterval: float Range: 10E-3 s to depends on oversampling and the number of advertsing channel table states , Unit: ms</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_swindow</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Btooth/Econfiguration.html#EconfigurationCls.get_swindow"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:ECONfiguration:SWINdow</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">btooth</span><span class="o">.</span><span class="n">econfiguration</span><span class="o">.</span><span class="n">get_swindow</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Sets the length of the window during which the scanner is operating in the advertising channel. Note that the scan window
+is less or equal to the value of the scan interval. Command sets the values in ms. Query returns values in s.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>swindow: float Range: 10E-3 s to 10240E-3 s , Unit: ms</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_wo_info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Btooth/Econfiguration.html#EconfigurationCls.get_wo_info"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:ECONfiguration:WOINfo</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">btooth</span><span class="o">.</span><span class="n">econfiguration</span><span class="o">.</span><span class="n">get_wo_info</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Requires data event and advertising frame configuration with the packet type CONNECT_IND. Queries the start point of the
+transmit window.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>wo_info: string</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_ws_info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Btooth/Econfiguration.html#EconfigurationCls.get_ws_info"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:ECONfiguration:WSINfo</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">btooth</span><span class="o">.</span><span class="n">econfiguration</span><span class="o">.</span><span class="n">get_ws_info</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Requires data event and advertising frame configuration with the packet type CONNECT_IND. Queries the size of the
+transmit window, regarding to the start point.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>ws_info: string</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_ad_interval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ad_interval</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Btooth/Econfiguration.html#EconfigurationCls.set_ad_interval"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:ECONfiguration:ADINterval</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">btooth</span><span class="o">.</span><span class="n">econfiguration</span><span class="o">.</span><span class="n">set_ad_interval</span><span class="p">(</span><span class="n">ad_interval</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Sets the time interval between two consecutive advertising events for packet type ‘ADV_DIRECT_IND’ and duty cycle high.
+Command sets the values in ms. Query returns values in s.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param ad_interval</dt>
+<dd class="field-odd"><p>float Range: 1.05E-3 s to 3.75E-3 s , Unit: ms</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_ae_delay</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ae_delay</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Btooth/Econfiguration.html#EconfigurationCls.set_ae_delay"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:ECONfiguration:AEDelay</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">btooth</span><span class="o">.</span><span class="n">econfiguration</span><span class="o">.</span><span class="n">set_ae_delay</span><span class="p">(</span><span class="n">ae_delay</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Sets a time delay between the start times of two consecutive advertising events. The value is added to the advertising
+event interval. Command sets the values in ms. Query returns values in s.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param ae_delay</dt>
+<dd class="field-odd"><p>float Range: 0 s to 10E-3 s , Unit: ms</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_ae_interval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ae_interval</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Btooth/Econfiguration.html#EconfigurationCls.set_ae_interval"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:ECONfiguration:AEINterval</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">btooth</span><span class="o">.</span><span class="n">econfiguration</span><span class="o">.</span><span class="n">set_ae_interval</span><span class="p">(</span><span class="n">ae_interval</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Sets the time interval between two consecutive advertising events, with regard to the starting points. Command sets the
+values in ms. Query returns values in s.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param ae_interval</dt>
+<dd class="field-odd"><p>float Range: 5E-3 s to depends on oversampling , Unit: ms</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_ap_interval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ap_interval</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Btooth/Econfiguration.html#EconfigurationCls.set_ap_interval"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:ECONfiguration:APINterval</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">btooth</span><span class="o">.</span><span class="n">econfiguration</span><span class="o">.</span><span class="n">set_ap_interval</span><span class="p">(</span><span class="n">ap_interval</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Sets the time interval between packets starting points of two consecutive packets in the advertising channel.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param ap_interval</dt>
+<dd class="field-odd"><p>float Range: 1.3E-3 to 28E-3, Unit: ms</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_lc_mode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lc_mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">RsSmbv.enums.BtoLlCnctMod</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Btooth/Econfiguration.html#EconfigurationCls.set_lc_mode"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:ECONfiguration:LCMode</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">btooth</span><span class="o">.</span><span class="n">econfiguration</span><span class="o">.</span><span class="n">set_lc_mode</span><span class="p">(</span><span class="n">lc_mode</span> <span class="o">=</span> <span class="n">enums</span><span class="o">.</span><span class="n">BtoLlCnctMod</span><span class="o">.</span><span class="n">ENC</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Selects the link layer connection mode. In order to provide safe transmission of payload data, the data in the packet can
+be encrypted. If activated, the payload data follows MIC (Message authentication Code) .</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param lc_mode</dt>
+<dd class="field-odd"><p>UENC| ENC UENC Payload data is transmitted without encoding. ENC The link layer connection runs in encrypted mode.</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_pnumber</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pnumber</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Btooth/Econfiguration.html#EconfigurationCls.set_pnumber"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:ECONfiguration:PNUMber</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">btooth</span><span class="o">.</span><span class="n">econfiguration</span><span class="o">.</span><span class="n">set_pnumber</span><span class="p">(</span><span class="n">pnumber</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Sets the number of Tx packets per event. Each connection contains at least one data channel packet. The maximum number of
+packets per event is determined by the duration of the connection event interval.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param pnumber</dt>
+<dd class="field-odd"><p>integer Range: 1 to depends on connection event interval</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_sinterval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sinterval</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Btooth/Econfiguration.html#EconfigurationCls.set_sinterval"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:ECONfiguration:SINTerval</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">btooth</span><span class="o">.</span><span class="n">econfiguration</span><span class="o">.</span><span class="n">set_sinterval</span><span class="p">(</span><span class="n">sinterval</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Sets the time interval between the starting points of two consecutive windows during which the scanner is operating in an
+advertising channel. Command sets the values in ms. Query returns values in s.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param sinterval</dt>
+<dd class="field-odd"><p>float Range: 10E-3 s to depends on oversampling and the number of advertsing channel table states , Unit: ms</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_swindow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">swindow</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/Implementations/Source/Bb/Btooth/Econfiguration.html#EconfigurationCls.set_swindow"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SCPI: [SOURce&lt;HW&gt;]:BB:BTOoth:ECONfiguration:SWINdow</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">btooth</span><span class="o">.</span><span class="n">econfiguration</span><span class="o">.</span><span class="n">set_swindow</span><span class="p">(</span><span class="n">swindow</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Sets the length of the window during which the scanner is operating in the advertising channel. Note that the scan window
+is less or equal to the value of the scan interval. Command sets the values in ms. Query returns values in s.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param swindow</dt>
+<dd class="field-odd"><p>float Range: 10E-3 s to 10240E-3 s , Unit: ms</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+</dd></dl>
+
+<p class="rubric">Cloning the Group</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a clone of the original group, that exists independently</span>
+<span class="n">group2</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">bb</span><span class="o">.</span><span class="n">btooth</span><span class="o">.</span><span class="n">econfiguration</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+</pre></div>
+</div>
+<p class="rubric">Subgroups</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Actable.html">Actable</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Actable_Channel.html">Channel&lt;ChannelNull&gt;</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Actable_Channel_State.html">State</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Actable_Set.html">Set&lt;Channel&gt;</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Actable_Set_State.html">State</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_DcTable.html">DcTable</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_DcTable_Channel.html">Channel&lt;ChannelNull&gt;</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_DcTable_Channel_State.html">State</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_DcTable_Set.html">Set&lt;Channel&gt;</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_DcTable_Set_State.html">State</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_LtKey.html">LtKey</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration.html">Pconfiguration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_Aaddress.html">Aaddress</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_Acad.html">Acad</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_Acad_Apattern.html">Apattern</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_AcAssigned.html">AcAssigned</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_Acid.html">Acid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_Adid.html">Adid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_Alap.html">Alap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_Anuap.html">Anuap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_Asid.html">Asid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_Cid.html">Cid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_CiValue.html">CiValue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_Data.html">Data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_Data_Dpattern.html">Dpattern</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_DcmTable.html">DcmTable</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_DcmTable_Channel.html">Channel&lt;ChannelNull&gt;</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_DcmTable_Channel_State.html">State</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_DcmTable_Set.html">Set&lt;Channel&gt;</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_DcmTable_Set_State.html">State</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_Ecode.html">Ecode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_Ediversifier.html">Ediversifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_Eheader.html">Eheader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_EhFlags.html">EhFlags</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_EhFlags_Aaddress.html">Aaddress&lt;Channel&gt;</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_EhFlags_Aaddress_State.html">State</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_EhFlags_AdInfo.html">AdInfo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_EhFlags_Aptr.html">Aptr</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_EhFlags_Cinfo.html">Cinfo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_EhFlags_Sinfo.html">Sinfo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_EhFlags_Taddress.html">Taddress</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_EhFlags_Tpower.html">Tpower</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_Fsbit.html">Fsbit&lt;IndexNull&gt;</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_Fsbit_State.html">State</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_IcAssigned.html">IcAssigned</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_Icid.html">Icid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_Id.html">Id</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_Ilap.html">Ilap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_Inuap.html">Inuap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_MiVector.html">MiVector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_Mskd.html">Mskd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_Mtsphy.html">Mtsphy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_Mtsphy_L1M.html">L1M&lt;Channel&gt;</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_Mtsphy_L1M_State.html">State</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_Mtsphy_L2M.html">L2M&lt;ChannelNull&gt;</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_Mtsphy_L2M_State.html">State</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_Mtsphy_Lcod.html">Lcod</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_Offset.html">Offset&lt;OffsetNull&gt;</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_Offset_State.html">State</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_Offset_Value.html">Value</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_Phy.html">Phy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_Phy_L1M.html">L1M&lt;Channel&gt;</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_Phy_L1M_State.html">State</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_Phy_L2M.html">L2M&lt;ChannelNull&gt;</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_Phy_L2M_State.html">State</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_Phy_Lcod.html">Lcod</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_Phys.html">Phys</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_Phys_L1M.html">L1M&lt;Channel&gt;</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_Phys_L1M_State.html">State</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_Phys_L2M.html">L2M&lt;ChannelNull&gt;</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_Phys_L2M_State.html">State</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_Phys_Lcod.html">Lcod</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_RopCode.html">RopCode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_Rphys.html">Rphys</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_Rphys_L1M.html">L1M&lt;Channel&gt;</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_Rphys_L1M_State.html">State</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_Rphys_L2M.html">L2M&lt;ChannelNull&gt;</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_Rphys_L2M_State.html">State</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_Rphys_Lcod.html">Lcod</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_Rvector.html">Rvector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_ScAssigned.html">ScAssigned</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_Scid.html">Scid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_Sid.html">Sid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_SiVector.html">SiVector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_Slap.html">Slap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_Snuap.html">Snuap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_Sskd.html">Sskd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_StmPhy.html">StmPhy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_StmPhy_L1M.html">L1M&lt;Channel&gt;</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_StmPhy_L1M_State.html">State</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_StmPhy_L2M.html">L2M&lt;ChannelNull&gt;</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_StmPhy_L2M_State.html">State</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_StmPhy_Lcod.html">Lcod</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_SvNumber.html">SvNumber</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_Tlap.html">Tlap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_Tnuap.html">Tnuap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_Tphys.html">Tphys</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_Tphys_L1M.html">L1M&lt;Channel&gt;</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_Tphys_L1M_State.html">State</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_Tphys_L2M.html">L2M&lt;ChannelNull&gt;</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_Tphys_L2M_State.html">State</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_Tphys_Lcod.html">Lcod</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_UserPatt.html">UserPatt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_Utype.html">Utype</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Source_Bb_Btooth_Econfiguration_Pconfiguration_Vnumber.html">Vnumber</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Source_Bb_Btooth_Econfig_Pconfig_AntGain.html" class="btn btn-neutral float-left" title="AntGain&lt;IndexNull&gt;" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Source_Bb_Btooth_Econfiguration_Actable.html" class="btn btn-neutral float-right" title="Actable" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RsSmbv.Implementations.Source.Bb.Eutra.Tcw.IsPy &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../../../../" id="documentation_options" src="../../../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../../../_static/jquery.js"></script>
+        <script src="../../../../../../../_static/underscore.js"></script>
+        <script src="../../../../../../../_static/doctools.js"></script>
+        <script src="../../../../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../../../../_static/copybutton.js"></script>
+    <script src="../../../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../../../../index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../RsSmbv.html">RsSmbv API Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../../index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../../../../index.html">Module code</a> &raquo;</li>
+          <li><a href="../../../../Source.html">RsSmbv.Implementations.Source</a> &raquo;</li>
+          <li><a href="../../../Bb.html">RsSmbv.Implementations.Source.Bb</a> &raquo;</li>
+          <li><a href="../../Eutra.html">RsSmbv.Implementations.Source.Bb.Eutra</a> &raquo;</li>
+          <li><a href="../Tcw.html">RsSmbv.Implementations.Source.Bb.Eutra.Tcw</a> &raquo;</li>
+      <li>RsSmbv.Implementations.Source.Bb.Eutra.Tcw.IsPy</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for RsSmbv.Implementations.Source.Bb.Eutra.Tcw.IsPy</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">......Internal.Core</span> <span class="kn">import</span> <span class="n">Core</span>
+<span class="kn">from</span> <span class="nn">......Internal.CommandsGroup</span> <span class="kn">import</span> <span class="n">CommandsGroup</span>
+<span class="kn">from</span> <span class="nn">......Internal</span> <span class="kn">import</span> <span class="n">Conversions</span>
+<span class="kn">from</span> <span class="nn">......Internal.Utilities</span> <span class="kn">import</span> <span class="n">trim_str_response</span>
+<span class="kn">from</span> <span class="nn">......</span> <span class="kn">import</span> <span class="n">enums</span>
+
+
+<span class="c1"># noinspection PyPep8Naming,PyAttributeOutsideInit,SpellCheckingInspection</span>
+<div class="viewcode-block" id="IsPyCls"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_IsPy.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.IsPy.IsPyCls">[docs]</a><span class="k">class</span> <span class="nc">IsPyCls</span><span class="p">:</span>
+	<span class="sd">&quot;&quot;&quot;IsPy commands group definition. 19 total commands, 0 Subgroups, 19 group commands&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">core</span><span class="p">:</span> <span class="n">Core</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span> <span class="o">=</span> <span class="n">core</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span> <span class="o">=</span> <span class="n">CommandsGroup</span><span class="p">(</span><span class="s2">&quot;isPy&quot;</span><span class="p">,</span> <span class="n">core</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="IsPyCls.get_chbw"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_IsPy.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.IsPy.IsPyCls.get_chbw">[docs]</a>	<span class="k">def</span> <span class="nf">get_chbw</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwcHanBw</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:IS:CHBW \n</span>
+<span class="sd">		Snippet: value: enums.EutraTcwcHanBw = driver.source.bb.eutra.tcw.isPy.get_chbw() \n</span>
+<span class="sd">		Queries the channel bandwidth of the interfering signal in MHz: 20, 10, 5, 3, 1.4, 15, or 0.2 MHz. \n</span>
+<span class="sd">			:return: chan_bandwidth: BW20_00| BW10_00| BW5_00| BW3_00| BW1_40| BW15_00| BW00_20</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:IS:CHBW?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwcHanBw</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="IsPyCls.get_clid"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_IsPy.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.IsPy.IsPyCls.get_clid">[docs]</a>	<span class="k">def</span> <span class="nf">get_clid</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:IS:CLID \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.eutra.tcw.isPy.get_clid() \n</span>
+<span class="sd">		Sets the Cell ID for the interfering signal. \n</span>
+<span class="sd">			:return: cell_id: integer Range: 0 to 503</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:IS:CLID?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="IsPyCls.set_clid"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_IsPy.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.IsPy.IsPyCls.set_clid">[docs]</a>	<span class="k">def</span> <span class="nf">set_clid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cell_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:IS:CLID \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.tcw.isPy.set_clid(cell_id = 1) \n</span>
+<span class="sd">		Sets the Cell ID for the interfering signal. \n</span>
+<span class="sd">			:param cell_id: integer Range: 0 to 503</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">cell_id</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:IS:CLID </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="IsPyCls.get_duplex"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_IsPy.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.IsPy.IsPyCls.get_duplex">[docs]</a>	<span class="k">def</span> <span class="nf">get_duplex</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraDuplexMode</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:IS:DUPLex \n</span>
+<span class="sd">		Snippet: value: enums.EutraDuplexMode = driver.source.bb.eutra.tcw.isPy.get_duplex() \n</span>
+<span class="sd">		Selects whether TDD or FDD duplexing mode is used. \n</span>
+<span class="sd">			:return: duplex: TDD| FDD</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:IS:DUPLex?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraDuplexMode</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="IsPyCls.set_duplex"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_IsPy.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.IsPy.IsPyCls.set_duplex">[docs]</a>	<span class="k">def</span> <span class="nf">set_duplex</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">duplex</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraDuplexMode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:IS:DUPLex \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.tcw.isPy.set_duplex(duplex = enums.EutraDuplexMode.FDD) \n</span>
+<span class="sd">		Selects whether TDD or FDD duplexing mode is used. \n</span>
+<span class="sd">			:param duplex: TDD| FDD</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">duplex</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraDuplexMode</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:IS:DUPLex </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="IsPyCls.get_fr_shift"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_IsPy.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.IsPy.IsPyCls.get_fr_shift">[docs]</a>	<span class="k">def</span> <span class="nf">get_fr_shift</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwfReqShift</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:IS:FRSHift \n</span>
+<span class="sd">		Snippet: value: enums.EutraTcwfReqShift = driver.source.bb.eutra.tcw.isPy.get_fr_shift() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: frequency_shift: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:IS:FRSHift?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwfReqShift</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="IsPyCls.set_fr_shift"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_IsPy.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.IsPy.IsPyCls.set_fr_shift">[docs]</a>	<span class="k">def</span> <span class="nf">set_fr_shift</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frequency_shift</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwfReqShift</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:IS:FRSHift \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.tcw.isPy.set_fr_shift(frequency_shift = enums.EutraTcwfReqShift.FS0) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param frequency_shift: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">frequency_shift</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwfReqShift</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:IS:FRSHift </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="IsPyCls.get_if_type"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_IsPy.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.IsPy.IsPyCls.get_if_type">[docs]</a>	<span class="k">def</span> <span class="nf">get_if_type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwInterfType</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:IS:IFTYpe \n</span>
+<span class="sd">		Snippet: value: enums.EutraTcwInterfType = driver.source.bb.eutra.tcw.isPy.get_if_type() \n</span>
+<span class="sd">			INTRO_CMD_HELP: Selects the type of the interfering signal: \n</span>
+<span class="sd">			- For Blocking tests, the interfering signal can be an in-band EUTRA/LTE signal (EUTra) or out-of-band CW signal (CW) .</span>
+<span class="sd">			- For Receiver Intermodulation tests, the first interfering signal can be an EUTRA/LTE signal (EUTra) or narrowband EUTRA signal (NEUTra) . The second interfering signal is always a CW signal (CW) . \n</span>
+<span class="sd">			:return: interferer_type: NEUTra| EUTra| CW| UTRA</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:IS:IFTYpe?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwInterfType</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="IsPyCls.set_if_type"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_IsPy.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.IsPy.IsPyCls.set_if_type">[docs]</a>	<span class="k">def</span> <span class="nf">set_if_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">interferer_type</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwInterfType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:IS:IFTYpe \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.tcw.isPy.set_if_type(interferer_type = enums.EutraTcwInterfType.CW) \n</span>
+<span class="sd">			INTRO_CMD_HELP: Selects the type of the interfering signal: \n</span>
+<span class="sd">			- For Blocking tests, the interfering signal can be an in-band EUTRA/LTE signal (EUTra) or out-of-band CW signal (CW) .</span>
+<span class="sd">			- For Receiver Intermodulation tests, the first interfering signal can be an EUTRA/LTE signal (EUTra) or narrowband EUTRA signal (NEUTra) . The second interfering signal is always a CW signal (CW) . \n</span>
+<span class="sd">			:param interferer_type: NEUTra| EUTra| CW| UTRA</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">interferer_type</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwInterfType</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:IS:IFTYpe </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="IsPyCls.get_nrblock"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_IsPy.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.IsPy.IsPyCls.get_nrblock">[docs]</a>	<span class="k">def</span> <span class="nf">get_nrblock</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:IS:NRBLock \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.eutra.tcw.isPy.get_nrblock() \n</span>
+<span class="sd">		Queries the number of RBs used by the LTE interfering signal. \n</span>
+<span class="sd">			:return: num_res_block: integer Range: 3 to 25</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:IS:NRBLock?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="IsPyCls.get_nta_offset"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_IsPy.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.IsPy.IsPyCls.get_nta_offset">[docs]</a>	<span class="k">def</span> <span class="nf">get_nta_offset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwsIgAdvNtaOffs</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:IS:NTAOffset \n</span>
+<span class="sd">		Snippet: value: enums.EutraTcwsIgAdvNtaOffs = driver.source.bb.eutra.tcw.isPy.get_nta_offset() \n</span>
+<span class="sd">		Sets the parameter NTAoffset. \n</span>
+<span class="sd">			:return: sig_adv_nta_offset: NTA624| NTA0</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:IS:NTAOffset?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwsIgAdvNtaOffs</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="IsPyCls.set_nta_offset"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_IsPy.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.IsPy.IsPyCls.set_nta_offset">[docs]</a>	<span class="k">def</span> <span class="nf">set_nta_offset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sig_adv_nta_offset</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwsIgAdvNtaOffs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:IS:NTAOffset \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.tcw.isPy.set_nta_offset(sig_adv_nta_offset = enums.EutraTcwsIgAdvNtaOffs.NTA0) \n</span>
+<span class="sd">		Sets the parameter NTAoffset. \n</span>
+<span class="sd">			:param sig_adv_nta_offset: NTA624| NTA0</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">sig_adv_nta_offset</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwsIgAdvNtaOffs</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:IS:NTAOffset </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="IsPyCls.get_oc_edge"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_IsPy.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.IsPy.IsPyCls.get_oc_edge">[docs]</a>	<span class="k">def</span> <span class="nf">get_oc_edge</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwoFfsChanEdge</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:IS:OCEDge \n</span>
+<span class="sd">		Snippet: value: enums.EutraTcwoFfsChanEdge = driver.source.bb.eutra.tcw.isPy.get_oc_edge() \n</span>
+<span class="sd">		Defines the offset of the interfering signal center frequency relative to edge of the wanted channel bandwidth. \n</span>
+<span class="sd">			:return: offset_channel_edge: OCE12_5| OCE7_5| OCE2_5</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:IS:OCEDge?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwoFfsChanEdge</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="IsPyCls.set_oc_edge"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_IsPy.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.IsPy.IsPyCls.set_oc_edge">[docs]</a>	<span class="k">def</span> <span class="nf">set_oc_edge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">offset_channel_edge</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwoFfsChanEdge</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:IS:OCEDge \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.tcw.isPy.set_oc_edge(offset_channel_edge = enums.EutraTcwoFfsChanEdge.OCE12_5) \n</span>
+<span class="sd">		Defines the offset of the interfering signal center frequency relative to edge of the wanted channel bandwidth. \n</span>
+<span class="sd">			:param offset_channel_edge: OCE12_5| OCE7_5| OCE2_5</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">offset_channel_edge</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwoFfsChanEdge</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:IS:OCEDge </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="IsPyCls.get_ort_cover"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_IsPy.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.IsPy.IsPyCls.get_ort_cover">[docs]</a>	<span class="k">def</span> <span class="nf">get_ort_cover</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:IS:ORTCover \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.eutra.tcw.isPy.get_ort_cover() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: ortho_cover: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:IS:ORTCover?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="IsPyCls.get_ovrb"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_IsPy.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.IsPy.IsPyCls.get_ovrb">[docs]</a>	<span class="k">def</span> <span class="nf">get_ovrb</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:IS:OVRB \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.eutra.tcw.isPy.get_ovrb() \n</span>
+<span class="sd">		Queries the offset VRB. \n</span>
+<span class="sd">			:return: offset_vrb: integer Range: 0 to 75</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:IS:OVRB?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="IsPyCls.get_plevel"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_IsPy.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.IsPy.IsPyCls.get_plevel">[docs]</a>	<span class="k">def</span> <span class="nf">get_plevel</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:IS:PLEVel \n</span>
+<span class="sd">		Snippet: value: str = driver.source.bb.eutra.tcw.isPy.get_plevel() \n</span>
+<span class="sd">		Queries the power level of the interfering signal. \n</span>
+<span class="sd">			:return: power_level: string</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:IS:PLEVel?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">trim_str_response</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="IsPyCls.get_pr_condition"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_IsPy.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.IsPy.IsPyCls.get_pr_condition">[docs]</a>	<span class="k">def</span> <span class="nf">get_pr_condition</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwPropagCond</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:IS:PRCOndition \n</span>
+<span class="sd">		Snippet: value: enums.EutraTcwPropagCond = driver.source.bb.eutra.tcw.isPy.get_pr_condition() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: propagation_condition: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:IS:PRCOndition?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">EutraTcwPropagCond</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="IsPyCls.get_rbc_frequency"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_IsPy.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.IsPy.IsPyCls.get_rbc_frequency">[docs]</a>	<span class="k">def</span> <span class="nf">get_rbc_frequency</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:IS:RBCFrequency \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.eutra.tcw.isPy.get_rbc_frequency() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: rblock_cent_freq: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:IS:RBCFrequency?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="IsPyCls.get_rf_frequency"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_IsPy.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.IsPy.IsPyCls.get_rf_frequency">[docs]</a>	<span class="k">def</span> <span class="nf">get_rf_frequency</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:IS:RFFRequency \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.eutra.tcw.isPy.get_rf_frequency() \n</span>
+<span class="sd">		Queries the center frequency of the interfering signal. \n</span>
+<span class="sd">			:return: rf_frequency: integer Range: 100E3 to 6E9</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:IS:RFFRequency?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="IsPyCls.set_rf_frequency"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_IsPy.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.IsPy.IsPyCls.set_rf_frequency">[docs]</a>	<span class="k">def</span> <span class="nf">set_rf_frequency</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rf_frequency</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:IS:RFFRequency \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.tcw.isPy.set_rf_frequency(rf_frequency = 1) \n</span>
+<span class="sd">		Queries the center frequency of the interfering signal. \n</span>
+<span class="sd">			:param rf_frequency: integer Range: 100E3 to 6E9</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">rf_frequency</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:IS:RFFRequency </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="IsPyCls.get_tdd_config"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_IsPy.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.IsPy.IsPyCls.get_tdd_config">[docs]</a>	<span class="k">def</span> <span class="nf">get_tdd_config</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:IS:TDDConfig \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.eutra.tcw.isPy.get_tdd_config() \n</span>
+<span class="sd">		For TDD mode, selects the UL/DL Configuration number. \n</span>
+<span class="sd">			:return: tdd_config: integer Range: 0 to 6</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:IS:TDDConfig?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="IsPyCls.set_tdd_config"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_IsPy.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.IsPy.IsPyCls.set_tdd_config">[docs]</a>	<span class="k">def</span> <span class="nf">set_tdd_config</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tdd_config</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:IS:TDDConfig \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.tcw.isPy.set_tdd_config(tdd_config = 1) \n</span>
+<span class="sd">		For TDD mode, selects the UL/DL Configuration number. \n</span>
+<span class="sd">			:param tdd_config: integer Range: 0 to 6</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">tdd_config</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:IS:TDDConfig </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="IsPyCls.get_tm_codes"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_IsPy.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.IsPy.IsPyCls.get_tm_codes">[docs]</a>	<span class="k">def</span> <span class="nf">get_tm_codes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">UtraTcwtMcodes</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:IS:TMCodes \n</span>
+<span class="sd">		Snippet: value: enums.UtraTcwtMcodes = driver.source.bb.eutra.tcw.isPy.get_tm_codes() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: test_model_1_codes: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:IS:TMCodes?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">UtraTcwtMcodes</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="IsPyCls.set_tm_codes"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_IsPy.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.IsPy.IsPyCls.set_tm_codes">[docs]</a>	<span class="k">def</span> <span class="nf">set_tm_codes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">test_model_1_codes</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">UtraTcwtMcodes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:IS:TMCodes \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.tcw.isPy.set_tm_codes(test_model_1_codes = enums.UtraTcwtMcodes.COD16) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param test_model_1_codes: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">test_model_1_codes</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">UtraTcwtMcodes</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:IS:TMCodes </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="IsPyCls.get_tmodel"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_IsPy.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.IsPy.IsPyCls.get_tmodel">[docs]</a>	<span class="k">def</span> <span class="nf">get_tmodel</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">TestModel</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:IS:TMODel \n</span>
+<span class="sd">		Snippet: value: enums.TestModel = driver.source.bb.eutra.tcw.isPy.get_tmodel() \n</span>
+<span class="sd">		Queries the test model. The interfering signal is generated according to E-TM1.1 test model. \n</span>
+<span class="sd">			:return: test_model: TM1_1</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:IS:TMODel?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">TestModel</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="IsPyCls.get_trequire"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_IsPy.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.IsPy.IsPyCls.get_trequire">[docs]</a>	<span class="k">def</span> <span class="nf">get_trequire</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">TestRequire</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:IS:TREQuire \n</span>
+<span class="sd">		Snippet: value: enums.TestRequire = driver.source.bb.eutra.tcw.isPy.get_trequire() \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:return: test_require: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:IS:TREQuire?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">TestRequire</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="IsPyCls.set_trequire"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_IsPy.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.IsPy.IsPyCls.set_trequire">[docs]</a>	<span class="k">def</span> <span class="nf">set_trequire</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">test_require</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">TestRequire</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:IS:TREQuire \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.tcw.isPy.set_trequire(test_require = enums.TestRequire.BLPE) \n</span>
+<span class="sd">		No command help available \n</span>
+<span class="sd">			:param test_require: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">test_require</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">TestRequire</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:IS:TREQuire </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="IsPyCls.get_ue_id"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_IsPy.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.IsPy.IsPyCls.get_ue_id">[docs]</a>	<span class="k">def</span> <span class="nf">get_ue_id</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:IS:UEID \n</span>
+<span class="sd">		Snippet: value: int = driver.source.bb.eutra.tcw.isPy.get_ue_id() \n</span>
+<span class="sd">		Sets the UE ID/n_RNTI for the interfering signal. \n</span>
+<span class="sd">			:return: ue_idn_rnti: integer Range: 0 to 65535</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:IS:UEID?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_int</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="IsPyCls.set_ue_id"><a class="viewcode-back" href="../../../../../../../Source_Bb_Eutra_Tcw_IsPy.html#RsSmbv.Implementations.Source.Bb.Eutra.Tcw.IsPy.IsPyCls.set_ue_id">[docs]</a>	<span class="k">def</span> <span class="nf">set_ue_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ue_idn_rnti</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:BB:EUTRa:TCW:IS:UEID \n</span>
+<span class="sd">		Snippet: driver.source.bb.eutra.tcw.isPy.set_ue_id(ue_idn_rnti = 1) \n</span>
+<span class="sd">		Sets the UE ID/n_RNTI for the interfering signal. \n</span>
+<span class="sd">			:param ue_idn_rnti: integer Range: 0 to 65535</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">ue_idn_rnti</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:BB:EUTRa:TCW:IS:UEID </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

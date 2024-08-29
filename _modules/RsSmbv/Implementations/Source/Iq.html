@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RsSmbv.Implementations.Source.Iq &mdash; RsSmbv 5.30.48.29 documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../_static/copybutton.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../index.html" class="icon icon-home"> RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../RsSmbv.html">RsSmbv API Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../utilities.html">RsSmbv Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../logger.html">RsSmbv Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../events.html">RsSmbv Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+          <li><a href="../Source.html">RsSmbv.Implementations.Source</a> &raquo;</li>
+      <li>RsSmbv.Implementations.Source.Iq</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for RsSmbv.Implementations.Source.Iq</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">....Internal.Core</span> <span class="kn">import</span> <span class="n">Core</span>
+<span class="kn">from</span> <span class="nn">....Internal.CommandsGroup</span> <span class="kn">import</span> <span class="n">CommandsGroup</span>
+<span class="kn">from</span> <span class="nn">....Internal</span> <span class="kn">import</span> <span class="n">Conversions</span>
+<span class="kn">from</span> <span class="nn">....</span> <span class="kn">import</span> <span class="n">enums</span>
+
+
+<span class="c1"># noinspection PyPep8Naming,PyAttributeOutsideInit,SpellCheckingInspection</span>
+<div class="viewcode-block" id="IqCls"><a class="viewcode-back" href="../../../../Source_Iq.html#RsSmbv.Implementations.Source.Iq.IqCls">[docs]</a><span class="k">class</span> <span class="nc">IqCls</span><span class="p">:</span>
+	<span class="sd">&quot;&quot;&quot;Iq commands group definition. 182 total commands, 6 Subgroups, 5 group commands&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">core</span><span class="p">:</span> <span class="n">Core</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span> <span class="o">=</span> <span class="n">core</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span> <span class="o">=</span> <span class="n">CommandsGroup</span><span class="p">(</span><span class="s2">&quot;iq&quot;</span><span class="p">,</span> <span class="n">core</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">doherty</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;doherty commands group. 6 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_doherty&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Doherty</span> <span class="kn">import</span> <span class="n">DohertyCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_doherty</span> <span class="o">=</span> <span class="n">DohertyCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_doherty</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">dpd</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;dpd commands group. 9 Sub-classes, 5 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_dpd&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Dpd</span> <span class="kn">import</span> <span class="n">DpdCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_dpd</span> <span class="o">=</span> <span class="n">DpdCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dpd</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">emixer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;emixer commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_emixer&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Emixer</span> <span class="kn">import</span> <span class="n">EmixerCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_emixer</span> <span class="o">=</span> <span class="n">EmixerCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_emixer</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">impairment</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;impairment commands group. 3 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_impairment&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Impairment</span> <span class="kn">import</span> <span class="n">ImpairmentCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_impairment</span> <span class="o">=</span> <span class="n">ImpairmentCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_impairment</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">output</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;output commands group. 2 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_output&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Output</span> <span class="kn">import</span> <span class="n">OutputCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_output</span> <span class="o">=</span> <span class="n">OutputCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_output</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">swap</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;swap commands group. 0 Sub-classes, 1 commands.&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_swap&#39;</span><span class="p">):</span>
+			<span class="kn">from</span> <span class="nn">.Swap</span> <span class="kn">import</span> <span class="n">SwapCls</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_swap</span> <span class="o">=</span> <span class="n">SwapCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_swap</span>
+
+<div class="viewcode-block" id="IqCls.get_crest_factor"><a class="viewcode-back" href="../../../../Source_Iq.html#RsSmbv.Implementations.Source.Iq.IqCls.get_crest_factor">[docs]</a>	<span class="k">def</span> <span class="nf">get_crest_factor</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:IQ:CREStfactor \n</span>
+<span class="sd">		Snippet: value: float = driver.source.iq.get_crest_factor() \n</span>
+<span class="sd">		Specifies the crest factor for the external analog signal. \n</span>
+<span class="sd">			:return: crest_factor: float Range: 0 to 35, Unit: dB</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:IQ:CREStfactor?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_float</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="IqCls.set_crest_factor"><a class="viewcode-back" href="../../../../Source_Iq.html#RsSmbv.Implementations.Source.Iq.IqCls.set_crest_factor">[docs]</a>	<span class="k">def</span> <span class="nf">set_crest_factor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">crest_factor</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:IQ:CREStfactor \n</span>
+<span class="sd">		Snippet: driver.source.iq.set_crest_factor(crest_factor = 1.0) \n</span>
+<span class="sd">		Specifies the crest factor for the external analog signal. \n</span>
+<span class="sd">			:param crest_factor: float Range: 0 to 35, Unit: dB</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">decimal_value_to_str</span><span class="p">(</span><span class="n">crest_factor</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:IQ:CREStfactor </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="IqCls.get_gain"><a class="viewcode-back" href="../../../../Source_Iq.html#RsSmbv.Implementations.Source.Iq.IqCls.get_gain">[docs]</a>	<span class="k">def</span> <span class="nf">get_gain</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">IqGain</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:IQ:GAIN \n</span>
+<span class="sd">		Snippet: value: enums.IqGain = driver.source.iq.get_gain() \n</span>
+<span class="sd">		Optimizes the modulation of the I/Q modulator for a subset of measurement requirement. \n</span>
+<span class="sd">			:return: gain: No help available</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:IQ:GAIN?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">IqGain</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="IqCls.set_gain"><a class="viewcode-back" href="../../../../Source_Iq.html#RsSmbv.Implementations.Source.Iq.IqCls.set_gain">[docs]</a>	<span class="k">def</span> <span class="nf">set_gain</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gain</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">IqGain</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:IQ:GAIN \n</span>
+<span class="sd">		Snippet: driver.source.iq.set_gain(gain = enums.IqGain.DB0) \n</span>
+<span class="sd">		Optimizes the modulation of the I/Q modulator for a subset of measurement requirement. \n</span>
+<span class="sd">			:param gain: DBM4| DBM2| DB0| DB2| DB4| DB8| DB6 Dynamic range of 16 dB divided into 2 dB steps. DB0|DB2|DB4|DB6|DB8 Activates the specified gain of 0 dB, +2 dB, +4 dB, +6 dB, +8 dB DBM2|DBM4 Activates the specified gain of -2 dB, -4 dB</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">gain</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">IqGain</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:IQ:GAIN </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="IqCls.get_source"><a class="viewcode-back" href="../../../../Source_Iq.html#RsSmbv.Implementations.Source.Iq.IqCls.get_source">[docs]</a>	<span class="k">def</span> <span class="nf">get_source</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">enums</span><span class="o">.</span><span class="n">IqMode</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:IQ:SOURce \n</span>
+<span class="sd">		Snippet: value: enums.IqMode = driver.source.iq.get_source() \n</span>
+<span class="sd">		Selects the input signal source for the I/Q modulator. \n</span>
+<span class="sd">			:return: source: BASeband| ANALog External signals disable the amplitude modulation, an enabled custom digital modulation, any configured digital standard or an applied digital baseband input signal.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:IQ:SOURce?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_scalar_enum</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">IqMode</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="IqCls.set_source"><a class="viewcode-back" href="../../../../Source_Iq.html#RsSmbv.Implementations.Source.Iq.IqCls.set_source">[docs]</a>	<span class="k">def</span> <span class="nf">set_source</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">IqMode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:IQ:SOURce \n</span>
+<span class="sd">		Snippet: driver.source.iq.set_source(source = enums.IqMode.ANALog) \n</span>
+<span class="sd">		Selects the input signal source for the I/Q modulator. \n</span>
+<span class="sd">			:param source: BASeband| ANALog External signals disable the amplitude modulation, an enabled custom digital modulation, any configured digital standard or an applied digital baseband input signal.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">enum_scalar_to_str</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">enums</span><span class="o">.</span><span class="n">IqMode</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:IQ:SOURce </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="IqCls.get_state"><a class="viewcode-back" href="../../../../Source_Iq.html#RsSmbv.Implementations.Source.Iq.IqCls.get_state">[docs]</a>	<span class="k">def</span> <span class="nf">get_state</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:IQ:STATe \n</span>
+<span class="sd">		Snippet: value: bool = driver.source.iq.get_state() \n</span>
+<span class="sd">		Enables/disables the I/Q modulation. Note: Interdependencies</span>
+<span class="sd">			INTRO_CMD_HELP: The following functions cannot be activated simultaneously. They deactivate each other. \n</span>
+<span class="sd">			- The internal baseband generator ([:SOURce&lt;hw&gt;]:BB:&lt;DigStd&gt;:STATe) and the external digital baseband input ([:SOURce&lt;hw&gt;]:BBIN:STATe)</span>
+<span class="sd">			- The external digital baseband input ([:SOURce&lt;hw&gt;]:BBIN:STATe) and digital output ([:SOURce&lt;hw&gt;]:IQ:OUTPut:DIGital:STATe) because they share the same physical connectors (Dig I/Q and the HS Dig I/Q) .</span>
+<span class="sd">			- The digital output ([:SOURce&lt;hw&gt;]:IQ:OUTPut:DIGital:STATe) and the output of analog I/Q signals:</span>
+<span class="sd">			Table Header:  \n</span>
+<span class="sd">			- If [:SOURce&lt;hw&gt;]:IQ:SOURce BASeband, [:SOURce&lt;hw&gt;]:IQ:STATe + OUTPut&lt;hw&gt;:STATe or</span>
+<span class="sd">			- [:SOURce&lt;hw&gt;]:IQ:OUTPut:ANALog:STATe \n</span>
+<span class="sd">			:return: state: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:IQ:STATe?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_bool</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="IqCls.set_state"><a class="viewcode-back" href="../../../../Source_Iq.html#RsSmbv.Implementations.Source.Iq.IqCls.set_state">[docs]</a>	<span class="k">def</span> <span class="nf">set_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:IQ:STATe \n</span>
+<span class="sd">		Snippet: driver.source.iq.set_state(state = False) \n</span>
+<span class="sd">		Enables/disables the I/Q modulation. Note: Interdependencies</span>
+<span class="sd">			INTRO_CMD_HELP: The following functions cannot be activated simultaneously. They deactivate each other. \n</span>
+<span class="sd">			- The internal baseband generator ([:SOURce&lt;hw&gt;]:BB:&lt;DigStd&gt;:STATe) and the external digital baseband input ([:SOURce&lt;hw&gt;]:BBIN:STATe)</span>
+<span class="sd">			- The external digital baseband input ([:SOURce&lt;hw&gt;]:BBIN:STATe) and digital output ([:SOURce&lt;hw&gt;]:IQ:OUTPut:DIGital:STATe) because they share the same physical connectors (Dig I/Q and the HS Dig I/Q) .</span>
+<span class="sd">			- The digital output ([:SOURce&lt;hw&gt;]:IQ:OUTPut:DIGital:STATe) and the output of analog I/Q signals:</span>
+<span class="sd">			Table Header:  \n</span>
+<span class="sd">			- If [:SOURce&lt;hw&gt;]:IQ:SOURce BASeband, [:SOURce&lt;hw&gt;]:IQ:STATe + OUTPut&lt;hw&gt;:STATe or</span>
+<span class="sd">			- [:SOURce&lt;hw&gt;]:IQ:OUTPut:ANALog:STATe \n</span>
+<span class="sd">			:param state: 1| ON| 0| OFF</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">bool_to_str</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:IQ:STATe </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="IqCls.get_wb_state"><a class="viewcode-back" href="../../../../Source_Iq.html#RsSmbv.Implementations.Source.Iq.IqCls.get_wb_state">[docs]</a>	<span class="k">def</span> <span class="nf">get_wb_state</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:IQ:WBSTate \n</span>
+<span class="sd">		Snippet: value: bool = driver.source.iq.get_wb_state() \n</span>
+<span class="sd">		Activates I/Q wideband mode. Activation automatically optimizes the settings for wideband modulation signals with a</span>
+<span class="sd">		bandwidth that is higher then 5 MHz. \n</span>
+<span class="sd">			:return: wb_state: 1| ON| 0| OFF *RST: 0 (R&amp;S SMBVB-K524) / 1 (R&amp;S SMBVB-K525)</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">query_str</span><span class="p">(</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:IQ:WBSTate?&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">str_to_bool</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="IqCls.set_wb_state"><a class="viewcode-back" href="../../../../Source_Iq.html#RsSmbv.Implementations.Source.Iq.IqCls.set_wb_state">[docs]</a>	<span class="k">def</span> <span class="nf">set_wb_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wb_state</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;SCPI: [SOURce&lt;HW&gt;]:IQ:WBSTate \n</span>
+<span class="sd">		Snippet: driver.source.iq.set_wb_state(wb_state = False) \n</span>
+<span class="sd">		Activates I/Q wideband mode. Activation automatically optimizes the settings for wideband modulation signals with a</span>
+<span class="sd">		bandwidth that is higher then 5 MHz. \n</span>
+<span class="sd">			:param wb_state: 1| ON| 0| OFF *RST: 0 (R&amp;S SMBVB-K524) / 1 (R&amp;S SMBVB-K525)</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">param</span> <span class="o">=</span> <span class="n">Conversions</span><span class="o">.</span><span class="n">bool_to_str</span><span class="p">(</span><span class="n">wb_state</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SOURce&lt;HwInstance&gt;:IQ:WBSTate </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+	<span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;IqCls&#39;</span><span class="p">:</span>
+		<span class="sd">&quot;&quot;&quot;Clones the group by creating new object from it and its whole existing subgroups</span>
+<span class="sd">		Also copies all the existing default Repeated Capabilities setting,</span>
+<span class="sd">		which you can change independently without affecting the original group&quot;&quot;&quot;</span>
+		<span class="n">new_group</span> <span class="o">=</span> <span class="n">IqCls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_cmd_group</span><span class="o">.</span><span class="n">synchronize_repcaps</span><span class="p">(</span><span class="n">new_group</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">new_group</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
