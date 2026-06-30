@@ -1,0 +1,629 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Utilities &mdash; RsSmbv 5.30.49.31 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=2ddbb4b2" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=4cc55545"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Logger" href="logger.html" />
+    <link rel="prev" title="Unit" href="Unit.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            RsSmbv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="readme.html">Revision History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="repcap.html">RepCaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RsSmbv.html">Instrument API</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logger.html">Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="events.html">Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RsSmbv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Utilities</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/utilities.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="utilities">
+<h1>Utilities<a class="headerlink" href="#utilities" title="Link to this heading"></a></h1>
+<dl class="py class" id="id1">
+<dt class="sig sig-object py">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">Utilities</span></span><a class="reference internal" href="_modules/RsSmbv/CustomFiles/utilities.html#Utilities"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Common utility class.
+Utility functions common for all types of drivers.</p>
+<p>Access snippet: <code class="docutils literal notranslate"><span class="pre">utils</span> <span class="pre">=</span> <span class="pre">RsSmbv.utilities</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">query_opc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="_modules/RsSmbv/CustomFiles/utilities.html#Utilities.query_opc"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>SCPI command: *OPC?
+Queries the instrument’s OPC bit and hence it waits until the instrument reports operation complete.
+If you define timeout &gt; 0, the VISA timeout is set to that value just for this method call.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">clear_status</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/CustomFiles/utilities.html#Utilities.clear_status"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Clears instrument’s status system, the session’s I/O buffers and the instrument’s error queue.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">query_all_errors</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/CustomFiles/utilities.html#Utilities.query_all_errors"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Queries and clears all the errors from the instrument’s error queue.
+The method returns list of strings as error messages. If no error is detected, the return value is None.
+The process is: querying ‘SYSTem:ERRor?’ in a loop until the error queue is empty.
+If you want to include the error codes, call the query_all_errors_with_codes()</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">query_all_errors_with_codes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/CustomFiles/utilities.html#Utilities.query_all_errors_with_codes"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Queries and clears all the errors from the instrument’s error queue.
+The method returns list of tuples (code: int, message: str). If no error is detected, the return value is None.
+The process is: querying ‘SYSTem:ERRor?’ in a loop until the error queue is empty.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/CustomFiles/utilities.html#Utilities.reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>SCPI command: *RST
+Sends *RST command + calls the clear_status().</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">default_instrument_setup</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/CustomFiles/utilities.html#Utilities.default_instrument_setup"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Custom steps performed at the init and at the reset().</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">self_test</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/RsSmbv/CustomFiles/utilities.html#Utilities.self_test"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>SCPI command: *TST?
+Performs instrument’s self-test.
+Returns tuple (code:int, message: str). Code 0 means the self-test passed.
+You can define the custom timeout in milliseconds. If you do not define it, the default selftest timeout is used (usually 60 secs).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">is_connection_active</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/RsSmbv/CustomFiles/utilities.html#Utilities.is_connection_active"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Returns true, if the VISA connection is active and the communication with the instrument still works.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">reconnect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">force_close</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/RsSmbv/CustomFiles/utilities.html#Utilities.reconnect"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>If the connection is not active, the method tries to reconnect to the device
+If the connection is active, and force_close is False, the method does nothing.
+If the connection is active, and force_close is True, the method closes, and opens the session again.
+Returns True, if the reconnection has been performed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">process_all_commands</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/CustomFiles/utilities.html#Utilities.process_all_commands"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>SCPI command: *WAI
+Stops further commands processing until all commands sent before *WAI have been executed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">write_str</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cmd</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/CustomFiles/utilities.html#Utilities.write_str"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Writes the command to the instrument.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cmd</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/CustomFiles/utilities.html#Utilities.write"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>This method is an alias to the write_str().
+Writes the command to the instrument as string.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">write_int</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cmd</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/CustomFiles/utilities.html#Utilities.write_int"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Writes the command to the instrument followed by the integer parameter:
+e.g.: cmd = ‘SELECT:INPUT’ param = ‘2’, result command = ‘SELECT:INPUT 2’</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">write_int_with_opc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cmd</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/CustomFiles/utilities.html#Utilities.write_int_with_opc"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Writes the command with OPC to the instrument followed by the integer parameter:
+e.g.: cmd = ‘SELECT:INPUT’ param = ‘2’, result command = ‘SELECT:INPUT 2’
+If you do not provide timeout, the method uses current opc_timeout.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">write_float</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cmd</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/CustomFiles/utilities.html#Utilities.write_float"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Writes the command to the instrument followed by the boolean parameter:
+e.g.: cmd = ‘CENTER:FREQ’ param = ‘10E6’, result command = ‘CENTER:FREQ 10E6’</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">write_float_with_opc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cmd</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/CustomFiles/utilities.html#Utilities.write_float_with_opc"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Writes the command with OPC to the instrument followed by the boolean parameter:
+e.g.: cmd = ‘CENTER:FREQ’ param = ‘10E6’, result command = ‘CENTER:FREQ 10E6’
+If you do not provide timeout, the method uses current opc_timeout.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">write_bool</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cmd</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/CustomFiles/utilities.html#Utilities.write_bool"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Writes the command to the instrument followed by the boolean parameter:
+e.g.: cmd = ‘OUTPUT’ param = ‘True’, result command = ‘OUTPUT ON’</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">write_bool_with_opc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cmd</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/CustomFiles/utilities.html#Utilities.write_bool_with_opc"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Writes the command with OPC to the instrument followed by the boolean parameter:
+e.g.: cmd = ‘OUTPUT’ param = ‘True’, result command = ‘OUTPUT ON’
+If you do not provide timeout, the method uses current opc_timeout.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">query_str</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/RsSmbv/CustomFiles/utilities.html#Utilities.query_str"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Sends the query to the instrument and returns the response as string.
+The response is trimmed of any trailing LF characters and has no length limit.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">query</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/RsSmbv/CustomFiles/utilities.html#Utilities.query"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>This method is an alias to the query_str().
+Sends the query to the instrument and returns the response as string.
+The response is trimmed of any trailing LF characters and has no length limit.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">query_bool</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/RsSmbv/CustomFiles/utilities.html#Utilities.query_bool"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Sends the query to the instrument and returns the response as boolean.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">query_int</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="_modules/RsSmbv/CustomFiles/utilities.html#Utilities.query_int"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Sends the query to the instrument and returns the response as integer.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">query_float</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/RsSmbv/CustomFiles/utilities.html#Utilities.query_float"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Sends the query to the instrument and returns the response as float.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">write_str_with_opc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cmd</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/CustomFiles/utilities.html#Utilities.write_str_with_opc"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Writes the opc-synced command to the instrument.
+If you do not provide timeout, the method uses current opc_timeout.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">write_with_opc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cmd</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/CustomFiles/utilities.html#Utilities.write_with_opc"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>This method is an alias to the write_str_with_opc().
+Writes the opc-synced command to the instrument.
+If you do not provide timeout, the method uses current opc_timeout.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">query_str_with_opc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/RsSmbv/CustomFiles/utilities.html#Utilities.query_str_with_opc"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Sends the opc-synced query to the instrument and returns the response as string.
+The response is trimmed of any trailing LF characters and has no length limit.
+If you do not provide timeout, the method uses current opc_timeout.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">query_with_opc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/RsSmbv/CustomFiles/utilities.html#Utilities.query_with_opc"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>This method is an alias to the query_str_with_opc().
+Sends the opc-synced query to the instrument and returns the response as string.
+The response is trimmed of any trailing LF characters and has no length limit.
+If you do not provide timeout, the method uses current opc_timeout.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">query_bool_with_opc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/RsSmbv/CustomFiles/utilities.html#Utilities.query_bool_with_opc"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Sends the opc-synced query to the instrument and returns the response as boolean.
+If you do not provide timeout, the method uses current opc_timeout.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">query_int_with_opc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="_modules/RsSmbv/CustomFiles/utilities.html#Utilities.query_int_with_opc"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Sends the opc-synced query to the instrument and returns the response as integer.
+If you do not provide timeout, the method uses current opc_timeout.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">query_float_with_opc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/RsSmbv/CustomFiles/utilities.html#Utilities.query_float_with_opc"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Sends the opc-synced query to the instrument and returns the response as float.
+If you do not provide timeout, the method uses current opc_timeout.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">write_bin_block</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cmd</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">payload</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/CustomFiles/utilities.html#Utilities.write_bin_block"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Writes all the payload as binary data block to the instrument.
+The binary data header is added at the beginning of the transmission automatically, do not include it in the payload!!!</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">query_bin_block</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="_modules/RsSmbv/CustomFiles/utilities.html#Utilities.query_bin_block"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Queries binary data block to bytes.
+Throws an exception if the returned data was not a binary data.
+Returns <a class="reference external" href="data:bytes">data:bytes</a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">query_bin_block_with_opc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="_modules/RsSmbv/CustomFiles/utilities.html#Utilities.query_bin_block_with_opc"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Sends a OPC-synced query and returns binary data block to bytes.
+If you do not provide timeout, the method uses current opc_timeout.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">query_str_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remove_blank_response</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/RsSmbv/CustomFiles/utilities.html#Utilities.query_str_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Sends the string query to the instrument and returns the response as List of strings, where the delimiter is comma (‘,’).
+Each element of the list is trimmed for leading and trailing quotes.
+Meaning of the ‘remove_blank_response’:</p>
+<ul class="simple">
+<li><p>False(default): whitespaces-only response is returned as a list with one empty element [‘’].</p></li>
+<li><p>True: whitespaces-only response is returned as an empty list [].</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">query_str_list_with_opc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remove_blank_response</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/RsSmbv/CustomFiles/utilities.html#Utilities.query_str_list_with_opc"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Sends a OPC-synced query and reads response from the instrument as csv-list.
+If you do not provide timeout, the method uses current opc_timeout.
+Meaning of the ‘remove_blank_response’:</p>
+<ul class="simple">
+<li><p>False(default): whitespaces-only response is returned as a list with one empty element [‘’].</p></li>
+<li><p>True: whitespaces-only response is returned as an empty list [].</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">query_bool_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/RsSmbv/CustomFiles/utilities.html#Utilities.query_bool_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Sends the string query to the instrument and returns the response as List of booleans,
+where the delimiter is comma (‘,’).
+Blank or empty response is returned as an empty list.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">query_bool_list_with_opc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/RsSmbv/CustomFiles/utilities.html#Utilities.query_bool_list_with_opc"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Sends a OPC-synced query and reads response from the instrument as csv-list of booleans.
+If you do not provide timeout, the method uses current opc_timeout.
+Blank or empty response is returned as an empty list.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">query_bin_or_ascii_float_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/RsSmbv/CustomFiles/utilities.html#Utilities.query_bin_or_ascii_float_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Queries a list of floating-point numbers that can be returned in ASCII format or in binary format.</p>
+<ul class="simple">
+<li><p>For ASCII format, the list numbers are decoded as comma-separated values.</p></li>
+<li><p>For Binary Format, the numbers are decoded based on the property BinFloatFormat, usually float 32-bit (FORM REAL,32).</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">query_bin_or_ascii_float_list_with_opc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/RsSmbv/CustomFiles/utilities.html#Utilities.query_bin_or_ascii_float_list_with_opc"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Sends a OPC-synced query and reads a list of floating-point numbers that can be returned in ASCII format or in binary format.</p>
+<ul class="simple">
+<li><p>For ASCII format, the list numbers are decoded as comma-separated values.</p></li>
+<li><p>For Binary Format, the numbers are decoded based on the property BinFloatFormat, usually float 32-bit (FORM REAL,32).</p></li>
+</ul>
+<p>If you do not provide timeout, the method uses current opc_timeout.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">query_bin_or_ascii_int_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/RsSmbv/CustomFiles/utilities.html#Utilities.query_bin_or_ascii_int_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Queries a list of floating-point numbers that can be returned in ASCII format or in binary format.</p>
+<ul class="simple">
+<li><p>For ASCII format, the list numbers are decoded as comma-separated values.</p></li>
+<li><p>For Binary Format, the numbers are decoded based on the property BinFloatFormat, usually float 32-bit (FORM REAL,32).</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">query_bin_or_ascii_int_list_with_opc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/RsSmbv/CustomFiles/utilities.html#Utilities.query_bin_or_ascii_int_list_with_opc"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Sends a OPC-synced query and reads a list of floating-point numbers that can be returned in ASCII format or in binary format.</p>
+<ul class="simple">
+<li><p>For ASCII format, the list numbers are decoded as comma-separated values.</p></li>
+<li><p>For Binary Format, the numbers are decoded based on the property BinFloatFormat, usually float 32-bit (FORM REAL,32).</p></li>
+</ul>
+<p>If you do not provide timeout, the method uses current opc_timeout.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">query_bin_block_to_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">append</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/CustomFiles/utilities.html#Utilities.query_bin_block_to_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Queries binary data block to the provided file.
+If append is False, any existing file content is discarded.
+If append is True, the new content is added to the end of the existing file, or if the file does not exit, it is created.
+Throws an exception if the returned data was not a binary data.
+Example for transferring a file from Instrument -&gt; PC:
+query = f”MMEM:DATA? ‘{INSTR_FILE_PATH}’”.
+Alternatively, use the dedicated methods for this purpose:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">send_file_from_pc_to_instrument()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">read_file_from_instrument_to_pc()</span></code></p></li>
+</ul>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">query_bin_block_to_file_with_opc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">append</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/CustomFiles/utilities.html#Utilities.query_bin_block_to_file_with_opc"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Sends a OPC-synced query and writes the returned data to the provided file.
+If append is False, any existing file content is discarded.
+If append is True, the new content is added to the end of the existing file, or if the file does not exit, it is created.
+Throws an exception if the returned data was not a binary data.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">write_bin_block_from_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cmd</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/CustomFiles/utilities.html#Utilities.write_bin_block_from_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Writes data from the file as binary data block to the instrument using the provided command.
+Example for transferring a file from PC -&gt; Instrument:
+cmd = f”MMEM:DATA ‘{INSTR_FILE_PATH}’,”.
+Alternatively, use the dedicated methods for this purpose:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">send_file_from_pc_to_instrument()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">read_file_from_instrument_to_pc()</span></code></p></li>
+</ul>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">send_file_from_pc_to_instrument</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source_pc_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_instr_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/CustomFiles/utilities.html#Utilities.send_file_from_pc_to_instrument"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>SCPI Command: MMEM:DATA</p>
+<p>Sends file from PC to the instrument</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">read_file_from_instrument_to_pc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source_instr_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_pc_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">append_to_pc_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/CustomFiles/utilities.html#Utilities.read_file_from_instrument_to_pc"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>SCPI Command: MMEM:DATA?</p>
+<p>Reads file from instrument to the PC.</p>
+<p>Set the <code class="docutils literal notranslate"><span class="pre">append_to_pc_file</span></code> to True if you want to append the read content to the end of the existing PC file</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_last_sent_cmd</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/RsSmbv/CustomFiles/utilities.html#Utilities.get_last_sent_cmd"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Returns the last commands sent to the instrument. Only works in simulation mode</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">go_to_local</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mixed_mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/CustomFiles/utilities.html#Utilities.go_to_local"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Puts the instrument into local state.
+By default, the method uses a mechanism to keep the instrument in a mixed mode: remote and local.
+That means, you can remote-control your instrument, and at the same time it still allows manual control.
+Set the mixed_mode to False, if you want your instrument to go to remote mode as soon as it receives the first remote command.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">go_to_remote</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/CustomFiles/utilities.html#Utilities.go_to_remote"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Puts the instrument into remote state.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_lock</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">RLock</span></span></span><a class="reference internal" href="_modules/RsSmbv/CustomFiles/utilities.html#Utilities.get_lock"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Returns the thread lock for the current session.</p>
+<p>By default:</p>
+<ul class="simple">
+<li><p>If you create standard new RsLcx instance with new VISA session, the session gets a new thread lock. You can assign it to other RsLcx sessions in order to share one physical instrument with a multi-thread access.</p></li>
+<li><p>If you create new RsLcx from an existing session, the thread lock is shared automatically making both instances multi-thread safe.</p></li>
+</ul>
+<p>You can always assign new thread lock by calling <code class="docutils literal notranslate"><span class="pre">driver.utilities.assign_lock()</span></code></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">assign_lock</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lock</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">RLock</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/CustomFiles/utilities.html#Utilities.assign_lock"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Assigns the provided thread lock.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">clear_lock</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/RsSmbv/CustomFiles/utilities.html#Utilities.clear_lock"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Clears the existing thread lock, making the current session thread-independent from others that might share the current thread lock.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">instr_err_suppressor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">visa_tout_ms</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suppress_only_codes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">InstrErrorSuppressor</span></span></span><a class="reference internal" href="_modules/RsSmbv/CustomFiles/utilities.html#Utilities.instr_err_suppressor"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Returns Context Manager that suppresses the instrument errors.
+Other exceptions types are still raised.
+On entering the context, this class clears all the instrument status errors.
+:param visa_tout_ms: VISA Timeout in milliseconds, that is set for this context. Afterward, it is changed back. Default value: do-not-change.
+:param suppress_only_codes: You can enter a code or list of codes for errors to be suppressed. Other errors will be reported. Example: If you enter -113 here, only the ‘Undefined Header’ error will be suppressed. Default value: suppress-all-errors.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">visa_tout_suppressor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">visa_tout_ms</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">VisaTimeoutSuppressor</span></span></span><a class="reference internal" href="_modules/RsSmbv/CustomFiles/utilities.html#Utilities.visa_tout_suppressor"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Returns Context Manager that suppresses the VISA timeout error.
+Careful!!!: Only the very first VISA Timeout exception is suppressed,
+and afterward the context ends. Therefore, use only one command per context manager,
+if you do not want to skip the following ones.
+:param visa_tout_ms: VISA Timeout in milliseconds, that is set for this context. Afterward, it is changed back. Default value: do-not-change.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">sync_from</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Utilities</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/CustomFiles/utilities.html#Utilities.sync_from"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Synchronizes these Utils with the source.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">has_instr_option</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/RsSmbv/CustomFiles/utilities.html#Utilities.has_instr_option"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Returns true, if the entered options (case-insensitive) matches at least one of the installed options (or-logic).
+You can enter either a string with one option, or more options ‘/’-separated, or more options as a list of strings.
+If K0 is present, all the K-options are reported as present. B-options are not affected by K0.</p>
+<ul class="simple">
+<li><p>Example 1: options=’k23’ returns true, if the instrument has the option ‘K23’.</p></li>
+<li><p>Example 2: options=’k23 / K23e’ returns true, if the instrument has either the option ‘K23’ or the option ‘K23E’.</p></li>
+<li><p>Example 3: options=[‘k11’,’K22’] returns true, if the instrument has either the option ‘K11’ or the option ‘K22’.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">has_instr_option_regex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">re_options</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/RsSmbv/CustomFiles/utilities.html#Utilities.has_instr_option_regex"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Returns true, if the entered regex string (case-insensitive) matches at least one of the installed options.
+The match must be complete, not just partial (search).
+You can enter either a string with one option, or more options ‘/’-separated, or more options as a list of strings.</p>
+<ul class="simple">
+<li><p>Example 1: re_options=’k10.’ returns true, if the instrument contains any option ‘K100’ … up to ‘K109’ .</p></li>
+<li><p>Example 2: re_options=’k10. / k20.*’ returns true, if the instrument contains any of the options ‘K10x’ or ‘K20xxx’.</p></li>
+<li><p>Example 3: re_options=[‘k10.’, ‘k20.*’] returns true, if the instrument contains any options ‘K10x’ or ‘K20xxx’.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">has_instr_option_k0</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/RsSmbv/CustomFiles/utilities.html#Utilities.has_instr_option_k0"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Returns true, if the instrument has K0 installed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">add_instr_option</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">option</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/CustomFiles/utilities.html#Utilities.add_instr_option"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Adds new option if not already existing.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">remove_instr_option</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">option</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/CustomFiles/utilities.html#Utilities.remove_instr_option"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Removes the option if exists.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">check_status</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/RsSmbv/CustomFiles/utilities.html#Utilities.check_status"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Throws InstrumentStatusException in case of an error in the instrument’s error queue.
+The status checking is performed always, independent of the property ‘instrument_status_checking’.
+Also, the property ScpiLogger.log_status_check_ok is ignored, and the Status check is always logged.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Unit.html" class="btn btn-neutral float-left" title="Unit" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="logger.html" class="btn btn-neutral float-right" title="Logger" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright © Rohde &amp; Schwarz 2026.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
