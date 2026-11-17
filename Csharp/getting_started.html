@@ -1,0 +1,590 @@
+ <!DOCTYPE html><html class="writer-html5" lang="en" data-content_root="./"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>Getting Started &mdash; RsSmbv 5.30.50.64 documentation</title><link rel="stylesheet" href="_static/docs.css?v=7f6d989f" /><script src="_static/boot.js?v=6d2e9592"></script></head><body class="wy-body-for-nav"><div class="wy-grid-for-nav"><nav data-toggle="wy-nav-shift" class="wy-nav-side"><div class="wy-side-scroll"><div class="wy-side-nav-search" ><a href="index.html" class="icon icon-home"> RsSmbv </a></div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu"><script src="_static/nav.js"></script></div></div></nav><section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" ><i data-toggle="wy-nav-top" class="fa fa-bars"></i><a href="index.html">RsSmbv</a></nav><div class="wy-nav-content"><div class="rst-content"><div role="navigation" aria-label="Page navigation"><ul class="wy-breadcrumbs"><li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li><li class="breadcrumb-item active">Getting Started</li><li class="wy-breadcrumbs-aside"></li></ul><hr/></div><div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article"><div itemprop="articleBody"><section id="getting-started"><h1>Getting Started<a class="headerlink" href="#getting-started" title="Link to this heading">#</a></h1><div class="line-block"><div class="line"><a class="reference external" href="https://www.nuget.org/packages/RsSmbv"><img alt="pckg_version" src="https://img.shields.io/nuget/v/RsSmbv" /></a></div><div class="line"><a class="reference external" href="https://spdx.org/licenses/MIT.html"><img alt="license" src="https://img.shields.io/pypi/l/RsSmbv.svg" /></a></div><div class="line"><a class="reference external" href="https://www.nuget.org/packages/RsSmbv"><img alt="downloads" src="https://img.shields.io/nuget/dt/RsSmbv" /></a></div></div><section id="introduction"><h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2><img alt="_images/icon.png" class="with-shadow align-left" src="_images/icon.png" /><p><code class="docutils literal notranslate"><span class="pre">RsSmbv</span></code> is a C# NuGet package for remote control of <code class="nowrap docutils literal notranslate"><span class="pre">Rohde</span>&#32;<span class="pre">&amp;</span>&#32;<span class="pre">Schwarz</span>&#32;<span class="pre">SMBV100B</span>&#32;<span class="pre">Vector</span>&#32;<span class="pre">Signal</span>&#32;<span class="pre">Generators</span></code>. It offers a fixed API derived from the instrument’s SCPI structure, so you call methods instead of typing command strings. That gives you auto-completion and helps you avoid the string-typing mistakes that everyone who works with SCPI knows well.</p><dl><dt>The basic idea:</dt><dd><div class="line-block"><div class="line">SCPI command: <code class="docutils literal notranslate"><span class="pre">SYSTem:REFerence:FREQuency:SOURce</span>&#32;<span class="pre">10e6</span></code></div><div class="line"><br /></div><div class="line">C# calls:</div><div class="line">writing: <code class="docutils literal notranslate"><span class="pre">driver.System.Reference.Frequency.Source</span>&#32;<span class="pre">=</span>&#32;<span class="pre">IntExtEnum.INTernal</span></code></div><div class="line">reading: <code class="docutils literal notranslate"><span class="pre">IntExtEnum</span>&#32;<span class="pre">value</span>&#32;<span class="pre">=</span>&#32;<span class="pre">driver.System.Reference.Frequency.Source</span></code></div></div></dd></dl><p>Couple of reasons why to choose this module over plain SCPI approach:</p><ul class="simple"><li><p>Type-safe API</p></li><li><p>You can still use the plain SCPI communication</p></li><li><p>You can select which VISA to use or even not use any VISA at all</p></li><li><p>Initialization of a new session is straightforward, no need to set any other properties</p></li><li><p>Many useful features are already implemented - reset, self-test, opc-synchronization, error checking, option checking</p></li><li><p>Binary data blocks transfer in both directions</p></li><li><p>Transfer of arrays of numbers in binary or ASCII format</p></li><li><p>File transfers in both directions</p></li><li><p>Events generation in case of error, sent data, received data, chunk data (in case of big data transfer)</p></li><li><p>Logging</p></li><li><p>Multithreading session locking - you can use multiple threads talking to one instrument at the same time</p></li></ul></section><section id="installation"><h2>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h2><p>RsSmbv is hosted on <a class="reference external" href="https://www.nuget.org/packages/RsSmbv">NuGet.org</a>. You can install it from the Visual Studio NuGet Package Manager, or from the Package Manager Console:</p><div class="highlight"><pre>PM&gt; Install-Package RsSmbv
+</pre></div><p class="rubric">Preconditions</p><ul class="simple"><li><p>Installed VISA. You can skip this if you plan to use only socket LAN connection. Download the Rohde &amp; Schwarz VISA for Windows, Linux, Mac OS from <a class="reference external" href="https://www.rohde-schwarz.com/appnote/1dc02/">here</a></p></li></ul></section><section id="finding-available-instruments"><h2>Finding Available Instruments<a class="headerlink" href="#finding-available-instruments" title="Link to this heading">#</a></h2><p>RsSmbv can search for available instruments:</p><div class="highlight"><pre><span class="c1">// Find instruments in your environment</span>
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+<span class="c1">// Install as NuGet package from www.nuget.org repository</span>
+using RohdeSchwarz.RsSmbv;
+
+namespace RsSmbv_FindInstrument
+{
+    partial class Program
+    {
+        static void Main()
+        {
+            <span class="c1">// Use the instrList items later as resource names in the RsSmbv constructor</span>
+            IEnumerable&lt;string&gt; instrList = RsSmbv.FindResources(&quot;?*&quot;);
+            instrList.ToList().ForEach(Console.WriteLine);
+        }
+    }
+}
+</pre></div><p>If you have more VISAs installed, the one actually used by default is defined by a secret widget called VISA Conflict Manager. You can force your program to use R&amp;S VISA:</p><div class="highlight"><pre><span class="c1">// Find any USB instruments in your environment with the VISA preference</span>
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+<span class="c1">// Install as NuGet package from www.nuget.org</span>
+using RohdeSchwarz.RsSmbv;
+
+namespace RsSmbv_FindInstrument
+{
+    partial class Program
+    {
+        static void Main()
+        {
+            <span class="c1">// &#39;vxi11&#39; and &#39;lxi&#39; boolean arguments have only effect for R&amp;S VISA</span>
+            <span class="c1">// As &#39;plugin&#39; you can use:</span>
+            <span class="c1">// - &#39;NativeVisa&#39; (default system VISA)</span>
+            <span class="c1">// - &#39;RsVisa&#39; (Rohde &amp; Schwarz VISA)</span>
+            <span class="c1">// - &#39;RsVisaPrio&#39; (Prefer Rohde &amp; Schwarz VISA, fall back to default VISA)</span>
+            string plugin = &quot;RsVisa&quot;;
+            var instrList = RsSmbv.FindResources(&quot;USB?*&quot;, false, false, plugin);
+            instrList.ToList().ForEach(Console.WriteLine);
+        }
+    }
+}
+</pre></div><div class="admonition tip"><p class="admonition-title">Tip</p><p>We believe our R&amp;S VISA is the best choice for our customers. Here are the reasons why:</p><ul class="simple"><li><p>Small footprint</p></li><li><p>Superior VXI-11 and HiSLIP performance</p></li><li><p>Integrated legacy sensors NRP-Zxx support</p></li><li><p>Additional VXI-11 and LXI devices search</p></li><li><p>Availability for Windows, Linux, Mac OS</p></li></ul></div></section><section id="initiating-instrument-session"><h2>Initiating instrument session<a class="headerlink" href="#initiating-instrument-session" title="Link to this heading">#</a></h2><p>RsSmbv offers four different types of starting your remote-control session. We begin with the most typical case, and progress with more special ones.</p><p class="rubric">Standard Session Initialization</p><p>A new instrument session starts when you instantiate the RsSmbv object. Below is a Hello World example. The resource names are examples for different physical interfaces.</p><div class="highlight"><pre><span class="c1">// Hello World example for a RsSmbv</span>
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using RohdeSchwarz.RsSmbv;
+
+namespace RsSmbv_HelloWorld
+{
+    partial class Program
+    {
+        static void Main()
+        {
+            <span class="c1">// Standard LAN connection (also called VXI-11)</span>
+            var resourceString1 = &quot;TCPIP::192.168.2.100::INSTR&quot;;
+            <span class="c1">// Hi-Speed LAN connection - see 1MA208</span>
+            var resourceString2 = &quot;TCPIP::192.168.2.100::hislip0&quot;;
+            <span class="c1">// GPIB Connection</span>
+            var resourceString3 = &quot;GPIB::20::INSTR&quot;;
+            <span class="c1">// USB-TMC (Test and Measurement Class)</span>
+            var resourceString4 = &quot;USB::0x0AAD::0x0119::022019943::INSTR&quot;;
+            <span class="c1">// R&amp;S Powersensor NRP-Z86 (needs NRP-Toolkit installed)</span>
+            var resourceString5 = &quot;RSNRP::0x0095::104015::INSTR&quot;;
+
+            <span class="c1">// Initializing the session</span>
+            RsSmbv instr = new RsSmbv(resourceString1);
+
+            <span class="c1">// Shortcut to the utility members</span>
+            var utils = instr.Utilities;
+            Console.WriteLine(&quot;RsSmbv Driver Version: &quot; + utils.Identification.DriverVersion);
+            Console.WriteLine(&quot;Visa Manufacturer: &quot; + utils.Identification.VisaManufacturer);
+            Console.WriteLine(&quot;Instrument Full Name: &quot; + utils.Identification.InstrumentFullName);
+            Console.WriteLine(&quot;Installed Options: &quot; + string.Join(&quot;,&quot;, utils.Identification.InstrumentOptions));
+            string idn = utils.QueryString(&quot;*IDN?&quot;);
+            Console.WriteLine(&quot;\nHello, I am: &quot; + idn);
+
+            Console.WriteLine(&quot;\nPress any key ...&quot;);
+            Console.ReadKey();
+
+            <span class="c1">// Close the session</span>
+            instr.Dispose();
+        }
+    }
+}
+</pre></div><div class="admonition note"><p class="admonition-title">Note</p><p>If you are wondering about the missing <code class="docutils literal notranslate"><span class="pre">ASRL1::INSTR</span></code>, yes, it works too.</p></div><p>RsSmbv applies the necessary session settings for each interface. After the session is open, the identification properties are available on <code class="docutils literal notranslate"><span class="pre">instr.Utilities.Identification</span></code>:</p><ul class="simple"><li><p><code class="docutils literal notranslate"><span class="pre">string</span>&#32;<span class="pre">IdnString</span></code></p></li><li><p><code class="docutils literal notranslate"><span class="pre">Version</span>&#32;<span class="pre">DriverVersion</span></code></p></li><li><p><code class="docutils literal notranslate"><span class="pre">string</span>&#32;<span class="pre">VisaManufacturer</span></code></p></li><li><p><code class="docutils literal notranslate"><span class="pre">string</span>&#32;<span class="pre">InstrumentFullName</span></code></p></li><li><p><code class="docutils literal notranslate"><span class="pre">string</span>&#32;<span class="pre">InstrumentSerialNumber</span></code></p></li><li><p><code class="docutils literal notranslate"><span class="pre">string</span>&#32;<span class="pre">InstrumentFirmwareVersion</span></code></p></li><li><p><code class="docutils literal notranslate"><span class="pre">IEnumerable&lt;string&gt;</span>&#32;<span class="pre">InstrumentOptions</span></code></p></li></ul><p>The constructor also contains optional boolean arguments <code class="docutils literal notranslate"><span class="pre">idQuery</span></code> and <code class="docutils literal notranslate"><span class="pre">resetDevice</span></code>:</p><div class="highlight"><pre>bool idQuery = true;
+bool resetDevice = true;
+RsSmbv instr = new RsSmbv(&quot;TCPIP::192.168.2.100::hislip0&quot;, idQuery, resetDevice);
+</pre></div><ul class="simple"><li><p>Setting <code class="docutils literal notranslate"><span class="pre">idQuery</span></code> to true (default is true) checks whether your instrument can be used with the RsSmbv module.</p></li><li><p>Setting <code class="docutils literal notranslate"><span class="pre">resetDevice</span></code> to true (default is false) performs an instrument reset. The constructor always calls <code class="docutils literal notranslate"><span class="pre">Utilities.DefaultInstrumentSetup()</span></code> after the session is open. <code class="docutils literal notranslate"><span class="pre">Utilities.Reset()</span></code> performs that same reset and setup.</p></li></ul><p class="rubric">Selecting Specific VISA</p><p>Just like in the static method <code class="docutils literal notranslate"><span class="pre">FindResources()</span></code>, RsSmbv allows you to prefer R&amp;S VISA:</p><div class="highlight"><pre><span class="c1">// Open your instrument with preferred Rohde &amp; Schwarz VISA</span>
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using RohdeSchwarz.RsSmbv;
+
+namespace RsSmbv_VisaSelect
+{
+    partial class Program
+    {
+        static void Main()
+        {
+            var resourceString = &quot;TCPIP::192.168.2.100::INSTR&quot;;
+            <span class="c1">// Force use of the Rs Visa. For default system VISA, use the &quot;SelectVisa=NativeVisa&quot;</span>
+            RsSmbv instr = new RsSmbv(resourceString, true, false, &quot;SelectVisa=RsVisa&quot;);
+
+            string idn = instr.Utilities.QueryString(&quot;*IDN?&quot;);
+            Console.WriteLine(&quot;\nHello, I am: &quot; + idn);
+            Console.WriteLine(&quot;\nI am using VISA from &quot; + instr.Utilities.Identification.VisaManufacturer);
+
+            Console.WriteLine(&quot;\nPress any key ...&quot;);
+            Console.ReadKey();
+
+            <span class="c1">// Close the session</span>
+            instr.Dispose();
+        }
+    }
+}
+</pre></div><p class="rubric">No VISA Session</p><p>We recommend using VISA whenever possible, preferably with HiSlip session because of its low latency. However, if you are a strict VISA denier, RsSmbv has something for you too - <strong>no Visa installation raw LAN socket</strong>:</p><div class="highlight"><pre><span class="c1">// Using RsSmbv without VISA for LAN Raw socket communication</span>
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using RohdeSchwarz.RsSmbv;
+
+namespace RsSmbv_NoVisa
+{
+    partial class Program
+    {
+        static void Main()
+        {
+            var resourceString = &quot;TCPIP::192.168.2.100::5025::SOCKET&quot;;  <span class="c1">// SOCKET-like resource name</span>
+            RsSmbv instr = new RsSmbv(resourceString, true, false, &quot;SelectVisa=SocketIo&quot;);
+            string idn = instr.Utilities.QueryString(&quot;*IDN?&quot;);
+            Console.WriteLine(&quot;\nHello, I am: &quot; + idn);
+
+            Console.WriteLine(&quot;\nNo VISA has been harmed or even used in this example.&quot;);
+            Console.WriteLine(&quot;Press any key ...&quot;);
+            Console.ReadKey();
+
+            <span class="c1">// Close the session</span>
+            instr.Dispose();
+        }
+    }
+}
+</pre></div><div class="admonition warning"><p class="admonition-title">Warning</p><p>Not using VISA can cause problems by debugging when you want to use the communication Trace Tool. The good news is, you can easily switch to use VISA and back just by changing the constructor arguments. The rest of your code stays unchanged.</p></div><p class="rubric">Simulating Session</p><p>If a colleague is currently occupying your instrument, leave him in peace, and open a simulating session:</p><div class="highlight"><pre>var instr = new RsSmbv(&quot;TCPIP::192.168.2.100::hislip0&quot;, true, false, &quot;Simulate=True&quot;);
+</pre></div><p>More <code class="docutils literal notranslate"><span class="pre">optionString</span></code> tokens are separated by comma:</p><div class="highlight"><pre>var optionString = &quot;SelectVisa=RsVisa, Simulate=True&quot;;
+var instr = new RsSmbv(&quot;TCPIP::192.168.2.100::hislip0&quot;, true, false, optionString);
+</pre></div><p class="rubric">Shared Session</p><p>In some scenarios, you want to have two independent objects talking to the same instrument. Rather than opening a second VISA connection, share the same one between two or more RsSmbv objects:</p><div class="highlight"><pre><span class="c1">// Sharing the same physical VISA session by two different RsSmbv objects</span>
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using RohdeSchwarz.RsSmbv;
+
+namespace RsSmbv_SharedSession
+{
+    partial class Program
+    {
+        static void Main()
+        {
+            var instr1 = new RsSmbv(&quot;TCPIP::192.168.2.100::INSTR&quot;);
+            var instr2 = new RsSmbv(instr1.Session);
+
+            Console.WriteLine(&quot;instr1: &quot; + instr1.Utilities.Identification.IdnString);
+            Console.WriteLine(&quot;instr2: &quot; + instr2.Utilities.Identification.IdnString);
+
+            <span class="c1">// Closing the instr2 session does not close the instr1 session.</span>
+            <span class="c1">// instr1 is the &#39;session master&#39;</span>
+            instr2.Dispose();
+            Console.WriteLine(&quot;instr2: I am closed now&quot;);
+
+            Console.WriteLine(&quot;instr1: I am still open and working.&quot;);
+            Console.WriteLine(&quot;Look, I can prove it: &quot; + instr1.Utilities.Identification.IdnString);
+
+            instr1.Dispose();
+            Console.WriteLine(&quot;instr1: Only now I am closed.&quot;);
+
+            Console.WriteLine(&quot;\nPress any key ...&quot;);
+            Console.ReadKey();
+        }
+    }
+}
+</pre></div><div class="admonition note"><p class="admonition-title">Note</p><p>The <code class="docutils literal notranslate"><span class="pre">instr1</span></code> is the object holding the ‘master’ session. If you call the instr1.Dispose(), the <code class="docutils literal notranslate"><span class="pre">instr2</span></code> loses its instrument session as well, and becomes pretty much useless.</p></div></section><section id="plain-scpi-communication"><h2>Plain SCPI Communication<a class="headerlink" href="#plain-scpi-communication" title="Link to this heading">#</a></h2><p>After you have opened the session, you can use the instrument-specific part described in the RsSmbv API Structure. If for any reason you want to use the plain SCPI, use the <code class="docutils literal notranslate"><span class="pre">Utilities</span></code> interface. The complete interface is described in <a class="reference internal" href="Utilities.html#utilities"><span class="std std-ref">Utilities</span></a>. Its two basic methods are:</p><ul class="simple"><li><p><code class="docutils literal notranslate"><span class="pre">WriteString()</span></code> - writing a command without an answer, for example <strong>*RST</strong></p></li><li><p><code class="docutils literal notranslate"><span class="pre">QueryString()</span></code> - querying your instrument, for example the <strong>*IDN?</strong> query</p></li></ul><p>You may ask a question. Actually, two questions:</p><ul class="simple"><li><p><strong>Q1</strong>: Why are they not called <code class="docutils literal notranslate"><span class="pre">Write()</span></code> and <code class="docutils literal notranslate"><span class="pre">Query()</span></code>?</p></li><li><p><strong>Q2</strong>: Where is the <code class="docutils literal notranslate"><span class="pre">Read()</span></code> ?</p></li></ul><p><strong>Answer 1</strong>: Actually, there are: <code class="docutils literal notranslate"><span class="pre">Write()</span></code> = <code class="docutils literal notranslate"><span class="pre">WriteString()</span></code> and <code class="docutils literal notranslate"><span class="pre">Query()</span></code> = <code class="docutils literal notranslate"><span class="pre">QueryString()</span></code>, they are aliases. To avoid mixing string and binary communication, we promote the ones with <code class="docutils literal notranslate"><span class="pre">String</span></code> names. All the method names for binary transfer contain <code class="docutils literal notranslate"><span class="pre">Bin</span></code> in their names.</p><p><strong>Answer 2</strong>: Short answer - you do not need it. Long answer - your instrument never sends unsolicited responses. If you send a set-command, you use <code class="docutils literal notranslate"><span class="pre">WriteString()</span></code>. For a query-command, you use <code class="docutils literal notranslate"><span class="pre">QueryString()</span></code>. So, you really do not need it…</p><p>Bottom line: if you are used to <code class="docutils literal notranslate"><span class="pre">Write()</span></code> and <code class="docutils literal notranslate"><span class="pre">Query()</span></code> methods, the <code class="docutils literal notranslate"><span class="pre">WriteString()</span></code> and <code class="docutils literal notranslate"><span class="pre">QueryString()</span></code> are their equivalents.</p><p>Enough with the theory, let us look at an example. Simple write and query:</p><div class="highlight"><pre><span class="c1">// Basic string WriteString / QueryString</span>
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using RohdeSchwarz.RsSmbv;
+
+namespace RsSmbv_BasicScpiIo
+{
+    partial class Program
+    {
+        static void Main()
+        {
+            RsSmbv instr = new RsSmbv(&quot;TCPIP::192.168.2.100::INSTR&quot;);
+            instr.Utilities.WriteString(&quot;*RST&quot;);
+            var response = instr.Utilities.QueryString(&quot;*IDN?&quot;);
+            Console.WriteLine(response);
+
+            Console.WriteLine(&quot;\nPress any key ...&quot;);
+            Console.ReadKey();
+
+            <span class="c1">// Close the session</span>
+            instr.Dispose();
+        }
+    }
+}
+</pre></div><p>This example is a so-called “<em>University-Professor-Example</em>” — good to show a principle, but never used in practice. The commands above are already part of the driver’s API. Here is another example, achieving the same goal:</p><div class="highlight"><pre><span class="c1">// Basic string WriteString / QueryString</span>
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using RohdeSchwarz.RsSmbv;
+
+namespace RsSmbv_BasicScpiIo
+{
+    partial class Program
+    {
+        static void Main()
+        {
+            RsSmbv instr = new RsSmbv(&quot;TCPIP::192.168.2.100::INSTR&quot;);
+            instr.Utilities.Reset();
+            Console.WriteLine(instr.Utilities.Identification.IdnString);
+
+            Console.WriteLine(&quot;\nPress any key ...&quot;);
+            Console.ReadKey();
+
+            <span class="c1">// Close the session</span>
+            instr.Dispose();
+        }
+    }
+}
+</pre></div><p>One additional feature we need to mention here: <strong>VISA Timeout</strong>. VISA Timeout limits how long each <code class="docutils literal notranslate"><span class="pre">QueryXxx()</span></code> waits for an answer from the instrument. You can set and read it with <code class="docutils literal notranslate"><span class="pre">Utilities.VisaTimeout</span></code>. The value is in milliseconds:</p><div class="highlight"><pre><span class="c1">// Timeout in milliseconds</span>
+instr.Utilities.VisaTimeout = 3000;
+</pre></div><p>After this time, RsSmbv raises a <code class="docutils literal notranslate"><span class="pre">VisaTimeoutException</span></code>. <strong>Instrument Status Checking</strong> is described in the next chapter.</p><div class="admonition tip"><p class="admonition-title">Tip</p><p><code class="docutils literal notranslate"><span class="pre">Write()</span></code> and <code class="docutils literal notranslate"><span class="pre">Query()</span></code> are already methods of <code class="docutils literal notranslate"><span class="pre">Utilities</span></code>, so you can call them directly:</p><div class="highlight"><pre>instr.Utilities.Write(&quot;*RST&quot;);
+var idn = instr.Utilities.Query(&quot;*IDN?&quot;);
+</pre></div></div><p>For completion, we mention other string-based <code class="docutils literal notranslate"><span class="pre">QueryXxx()</span></code> methods, all in one example. They are convenient extensions providing type-safe double/boolean/integer querying features:</p><div class="highlight"><pre><span class="c1">// Other query methods</span>
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using RohdeSchwarz.RsSmbv;
+
+namespace RsSmbv_TypedQueries
+{
+    partial class Program
+    {
+        static void Main()
+        {
+            RsSmbv instr = new RsSmbv(&quot;TCPIP::192.168.2.100::INSTR&quot;);
+            instr.Utilities.VisaTimeout = 5000;
+            instr.Utilities.InstrumentStatusChecking = true; <span class="c1">// Default is true</span>
+            <span class="c1">// Returning an integer</span>
+            int scount = instr.Utilities.QueryInteger(&quot;SWEEP:COUNT?&quot;);
+            <span class="c1">// Returning a boolean</span>
+            bool output = instr.Utilities.QueryBool(&quot;SOURCE:RF:OUTPUT:STATE?&quot;);
+            <span class="c1">// Returning a double</span>
+            double freq = instr.Utilities.QueryDouble(&quot;SOURCE:RF:FREQUENCY?&quot;);
+
+            <span class="c1">// Close the session</span>
+            instr.Dispose();
+        }
+    }
+}
+</pre></div><p>Lastly, a method providing basic synchronization: <code class="docutils literal notranslate"><span class="pre">QueryOpc()</span></code>. It sends query <strong>*OPC?</strong> to your instrument. The instrument waits with the answer until all the tasks it currently has in the execution queue are finished. This way your program waits too, and it is synchronized with actions in the instrument. Remember to have the VISA timeout set to an appropriate value to prevent the timeout exception. Here’s a snippet:</p><div class="highlight"><pre>var oldTout = instr.Utilities.VisaTimeout;
+instr.Utilities.VisaTimeout = 3000;
+instr.Utilities.WriteString(&quot;INIT&quot;);
+instr.Utilities.QueryOpc();
+instr.Utilities.VisaTimeout = oldTout;
+
+<span class="c1">// The results are ready now to fetch</span>
+var results = instr.Utilities.QueryString(&quot;FETCH:MEASUREMENT?&quot;);
+</pre></div><p>You can also specify the <code class="docutils literal notranslate"><span class="pre">VisaTimeout</span></code> just for one <code class="docutils literal notranslate"><span class="pre">QueryOpc()</span></code> call. <code class="docutils literal notranslate"><span class="pre">QueryOpc(int)</span></code> uses that timeout for the call and then restores the previous value. The following example is equivalent to the one above:</p><div class="highlight"><pre>instr.Utilities.WriteString(&quot;INIT&quot;);
+<span class="c1">// Set the VISA Timeout for this call only, then set it back to the original value</span>
+instr.Utilities.QueryOpc(3000);
+
+<span class="c1">// The results are ready now to fetch</span>
+var results = instr.Utilities.QueryString(&quot;FETCH:MEASUREMENT?&quot;);
+</pre></div><div class="admonition tip"><p class="admonition-title">Tip</p><p>Wait, there’s more: you can send the <strong>*OPC?</strong> after each <code class="docutils literal notranslate"><span class="pre">WriteString()</span></code> automatically:</p><div class="highlight"><pre><span class="c1">// Default value after init is false</span>
+instr.Utilities.OpcQueryAfterEachSetting = true;
+</pre></div></div></section><section id="error-checking"><h2>Error Checking<a class="headerlink" href="#error-checking" title="Link to this heading">#</a></h2><p>RsSmbv has a built-in mechanism that after each command/query checks the instrument’s status subsystem, and throws an exception if it detects an error. For those who are already screaming: <strong>Speed Performance Penalty!!!</strong>, don’t worry, you can disable it.</p><p>Instrument status checking is very useful since in case your command/query caused an error, you are immediately informed about it. Status checking has in most cases no practical effect on the speed performance of your program. However, if for example, you do many repetitions of short write/query sequences, it might make a difference to switch it off:</p><div class="highlight"><pre><span class="c1">// Default value after init is true</span>
+instr.Utilities.InstrumentStatusChecking = false;
+</pre></div><p>To clear the instrument status subsystem of all errors, call this method:</p><div class="highlight"><pre>instr.Utilities.ClearStatus();
+</pre></div><p>Instrument’s status system error queue is clear-on-read. It means, if you query its content, you clear it at the same time. To query and clear list of all the current errors, use the following:</p><div class="highlight"><pre>IEnumerable&lt;string&gt; errorsList = instr.Utilities.QueryAllErrors();
+</pre></div><p>See the next chapter on how to react on write/query errors.</p></section><section id="exception-handling"><h2>Exception Handling<a class="headerlink" href="#exception-handling" title="Link to this heading">#</a></h2><p>The base class for all the exceptions thrown by the RsSmbv is <code class="docutils literal notranslate"><span class="pre">RsSmbvException</span></code>. Inherited exception classes:</p><ul class="simple"><li><p><code class="docutils literal notranslate"><span class="pre">InstrumentStatusException</span></code> thrown if a command or a query generated an error in the instrument’s error queue</p></li><li><p><code class="docutils literal notranslate"><span class="pre">VisaException</span></code> thrown if the underlying VISA component throws an error</p></li><li><p><code class="docutils literal notranslate"><span class="pre">VisaTimeoutException</span></code> thrown if the VISA timeout is reached. It is derived from <code class="docutils literal notranslate"><span class="pre">OperationTimeoutException</span></code>, so catch it first</p></li><li><p><code class="docutils literal notranslate"><span class="pre">OperationTimeoutException</span></code> thrown if the OPC timeout is reached</p></li></ul><p>In this example we show usage of all of them:</p><div class="highlight"><pre><span class="c1">// How to deal with exceptions</span>
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using RohdeSchwarz.RsSmbv;
+
+namespace RsSmbv_Exceptions
+{
+    partial class Program
+    {
+        static void Main()
+        {
+            RsSmbv instr;
+            try <span class="c1">// Separate try-catch for initialization prevents accessing uninitialized object</span>
+            {
+                <span class="c1">// Adjust the VISA Resource string to fit your instrument</span>
+                instr = new RsSmbv(&quot;TCPIP::192.168.2.100::INSTR&quot;);
+            }
+            catch (RsSmbvException e)
+            {
+                Console.WriteLine(e.Message);
+                Console.WriteLine(&quot;Your instrument is probably OFF...&quot;);
+                <span class="c1">// Exit now, no point of continuing</span>
+                Console.WriteLine(&quot;Press any key to finish.&quot;);
+                Console.ReadKey();
+                return;
+            }
+
+            <span class="c1">// Dealing with commands that potentially generate errors OPTION 1:</span>
+            <span class="c1">// Switching the status checking OFF temporarily</span>
+            instr.Utilities.InstrumentStatusChecking = false;
+            instr.Utilities.WriteString(&quot;MY:MISSpelled:COMMand&quot;);
+            <span class="c1">// Clear the error queue</span>
+            instr.Utilities.ClearStatus();
+            <span class="c1">// Status checking ON again</span>
+            instr.Utilities.InstrumentStatusChecking = true;
+
+            <span class="c1">// Dealing with queries that potentially generate errors OPTION 2:</span>
+            try
+            {
+                instr.Utilities.VisaTimeout = 1000;
+                instr.Utilities.QueryString(&quot;MY:OTHEr:WRONg:QUERy?&quot;);
+            }
+            catch (InstrumentStatusException e)
+            {
+                <span class="c1">// Instrument status error</span>
+                Console.WriteLine(e.Message);
+                Console.WriteLine(&quot;Nothing to see here, moving on...&quot;);
+            }
+            catch (VisaException e)
+            {
+                <span class="c1">// General Visa error</span>
+                Console.WriteLine(e.Message);
+                Console.WriteLine(&quot;Somethin&#39;s seriously wrong...&quot;);
+            }
+            catch (VisaTimeoutException e)
+            {
+                <span class="c1">// Visa Timeout error</span>
+                Console.WriteLine(e.Message);
+                Console.WriteLine(&quot;That took a long time... longer than the VISA timeout&quot;);
+            }
+            catch (OperationTimeoutException e)
+            {
+                <span class="c1">// OPC Timeout error</span>
+                Console.WriteLine(e.Message);
+                Console.WriteLine(&quot;You called some method with OPC, and that took a long time...&quot;);
+            }
+            catch (RsSmbvException e)
+            {
+                <span class="c1">// General RsSmbv error.</span>
+                <span class="c1">// RsSmbvException is a base class for all the RsSmbv exceptions</span>
+                Console.WriteLine(e.Message);
+                Console.WriteLine(&quot;Some other RsSmbv error...&quot;);
+            }
+            finally
+            {
+                instr.Utilities.VisaTimeout = 5000;
+                <span class="c1">// Close the session in any case</span>
+                instr.Dispose();
+            }
+        }
+    }
+}
+</pre></div><div class="admonition tip"><p class="admonition-title">Tip</p><p>General rules for exception handling:</p><ul class="simple"><li><p>If you are sending commands that might generate errors in the instrument, for example deleting a file which does not exist, use the <strong>OPTION 1</strong> - temporarily disable status checking, send the command, clear the error queue and enable the status checking again.</p></li><li><p>If you are sending queries that might generate errors or timeouts, for example querying measurement that cannot be performed at the moment, use the <strong>OPTION 2</strong> - try/catch with optionally adjusting timeouts.</p></li></ul></div></section><section id="transferring-files"><h2>Transferring Files<a class="headerlink" href="#transferring-files" title="Link to this heading">#</a></h2><p>You just did a perfect measurement, saved the results as a screenshot to the instrument’s storage drive. Now you want to transfer it to your PC. With RsSmbv, no problem, just figure out where the screenshot was stored on the instrument. In our case, it is <code class="docutils literal notranslate"><span class="pre">var/user/instr_screenshot.png</span></code>:</p><div class="highlight"><pre>instr.Utilities.File.FromInstrumentToPc(
+        @&quot;var/user/instr_screenshot.png&quot;,
+        @&quot;c:\temp\pc_screenshot.png&quot;);
+</pre></div><p class="rubric">PC -&gt; Instrument</p><p>Another common scenario: Your cool test program contains a setup file you want to transfer to your instrument: Here is the RsSmbv one-liner split into three lines:</p><div class="highlight"><pre>instr.Utilities.File.FromPcToInstrument(
+        @&quot;c:\MyCoolTestProgram\instr_setup.sav&quot;,
+        @&quot;var/appdata/instr_setup.sav&quot;);
+</pre></div></section><section id="transferring-big-data-with-progress"><h2>Transferring Big Data with Progress<a class="headerlink" href="#transferring-big-data-with-progress" title="Link to this heading">#</a></h2><p>We can agree that it can be annoying using an application that shows no progress for long-lasting operations. The same is true for remote-control programs. Luckily, the RsSmbv has this covered. And, this feature is quite universal - not just for big files transfer, but for any data in both directions.</p><p>RsSmbv allows you to register a handler, which it invokes after each transfer of one data chunk. You can set the chunk size, and you can slow the transfer down if you want to process the data as it arrives (direction instrument -&gt; PC). The next example queries <strong>*IDN?</strong> with a chunk size of 2 bytes and a delay of 100 ms between each chunk read:</p><div class="highlight"><pre><span class="c1">// Event handlers by reading - querying string data</span>
+
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+using RohdeSchwarz.RsSmbv;
+
+namespace RsSmbv_ProgressEvent
+{
+    partial class Program
+    {
+        static void MyTransferHandler(object sender, InstrSegmentEventArgs args)
+        {
+            Console.Write(&quot;\nSegment: &quot; + args.SegmentIx);
+            Console.Write(&quot;, transferred bytes: &quot; + args.TransferredSize);
+            Console.Write(&quot;, total size: &quot; + args.TotalSize);
+
+            <span class="c1">// Get the current segment data</span>
+            args.DataStream.Position = args.SegmentDataOffset;
+            string text = new StreamReader(args.DataStream).ReadToEnd();
+            Console.Write(&quot;, data: &#39;&quot; + text + &quot;&#39;&quot;);
+            args.DataStream.Position = args.DataStream.Length;
+
+            if (args.Finished)
+            {
+                Console.WriteLine(&quot;\n\nEnd of Transfer&quot;);
+            }
+            else
+            {
+                <span class="c1">// Pause here for 100ms after each segment read</span>
+                Thread.Sleep(100);
+            }
+        }
+
+        static void Main()
+        {
+            RsSmbv instr = new RsSmbv(&quot;TCPIP::192.168.2.100::INSTR&quot;);
+            instr.Utilities.Events.ReadSegmentHandler = MyTransferHandler;
+            <span class="c1">// Set data chunk size to 2 bytes</span>
+            instr.Utilities.IoSegmentSize = 2;
+            var response = instr.Utilities.QueryString(&quot;*IDN?&quot;);
+            instr.Utilities.Events.ReadSegmentHandler = null;
+
+            <span class="c1">// Close the session</span>
+            instr.Dispose();
+        }
+    }
+}
+</pre></div><p>If you start it, <code class="docutils literal notranslate"><span class="pre">args.TotalSize</span></code> is <code class="docutils literal notranslate"><span class="pre">-1</span></code>. The driver does not know the size of the complete response up front, and an unknown size is reported as <code class="docutils literal notranslate"><span class="pre">-1</span></code>. For a transfer of known size, such as a file, <code class="docutils literal notranslate"><span class="pre">TotalSize</span></code> is the number of bytes. Calculate the progress only when <code class="docutils literal notranslate"><span class="pre">TotalSize</span></code> is greater than zero:</p><p><em>progress [pct] = 100 * args.TransferredSize / args.TotalSize</em></p><p>The following example transfers a file from instrument to the PC and back. In the callback, we skip showing the data, since it’s a quite big binary stream. Depending on the file size, adjust the <code class="docutils literal notranslate"><span class="pre">IoSegmentSize</span></code> and the <code class="docutils literal notranslate"><span class="pre">Thread.Sleep()</span></code> delay in the callback:</p><div class="highlight"><pre><span class="c1">// Event handlers by reading - writing and reading big files</span>
+
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+using RohdeSchwarz.RsSmbv;
+
+namespace RsSmbv_FileProgress
+{
+    partial class Program
+    {
+        static void MyRwHandler(object sender, InstrSegmentEventArgs args)
+        {
+            Console.Write(&quot;\nSegment: &quot; + args.SegmentIx);
+            Console.Write(&quot;, transferred bytes: &quot; + args.TransferredSize);
+            Console.Write(&quot;, total size: &quot; + args.TotalSize);
+
+            if (args.Finished)
+            {
+                Console.WriteLine(&quot;\n\nEnd of Transfer&quot;);
+            }
+            else
+            {
+                <span class="c1">// Pause here for 1ms after each segment read</span>
+                Thread.Sleep(1);
+            }
+        }
+
+        static void Main()
+        {
+            RsSmbv instr = new RsSmbv(&quot;TCPIP::192.168.2.100::INSTR&quot;);
+            <span class="c1">// Set data chunk size to 100 000 bytes</span>
+            instr.Utilities.IoSegmentSize = 100000;
+            string pcFile = @&quot;c:\temp\bigFile.bin&quot;;
+            string pcFileBack = @&quot;c:\temp\bigFileBack.bin&quot;;
+            string instrFile = @&quot;/var/user/bigFile.bin&quot;;
+
+            Console.WriteLine(&quot;\n\nTransferring file from PC to the Instrument&quot;);
+
+            instr.Utilities.Events.WriteSegmentHandler = MyRwHandler;
+            instr.Utilities.File.FromPcToInstrument(pcFile, instrFile);
+            instr.Utilities.Events.WriteSegmentHandler = null;
+
+            Console.WriteLine(&quot;\n\nTransferring the file back from Instrument to the PC&quot;);
+
+            instr.Utilities.Events.ReadSegmentHandler = MyRwHandler;
+            instr.Utilities.File.FromInstrumentToPc(instrFile, pcFileBack);
+            instr.Utilities.Events.ReadSegmentHandler = null;
+
+            <span class="c1">// Close the session</span>
+            instr.Dispose();
+        }
+    }
+}
+</pre></div></section><section id="multithreading"><h2>Multithreading<a class="headerlink" href="#multithreading" title="Link to this heading">#</a></h2><p>You are at the party, many people talking over each other. Not every person can deal with such crosstalk, neither can measurement instruments. For this reason, RsSmbv has a feature of scheduling the access to your instrument by using so-called <strong>Locks</strong>. Locks make sure that there can be just one client at a time ‘talking’ to your instrument. Talking in this context means completing one communication step - one command write or write/read or write/read/error check.</p><p>To describe how it works, and where it matters, we take two typical multithread scenarios:</p><p class="rubric">One instrument session, accessed from multiple threads</p><p>You are all set — the lock is part of the instrument session. The following example sends 10 queries from parallel tasks. The session lock lets only one of them talk to the instrument at a time:</p><div class="highlight"><pre><span class="c1">// Multiple threads are accessing one RsSmbv object</span>
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using RohdeSchwarz.RsSmbv;
+
+namespace RsSmbv_Multithreading
+{
+    partial class Program
+    {
+        static void Main()
+        {
+            RsSmbv instr = new RsSmbv(&quot;TCPIP::192.168.2.100::INSTR&quot;);
+
+            Parallel.For(1, 11,
+                x =&gt;
+                {
+                    Console.WriteLine(&quot;Query {0} started...&quot;, x);
+                    var response = instr.Utilities.QueryString(&quot;*IDN?&quot;);
+                    Console.WriteLine(&quot;...Query {0} finished.&quot;, x);
+                });
+
+            Console.WriteLine(&quot;\nPress any key ...&quot;);
+            Console.ReadKey();
+
+            <span class="c1">// Close the session</span>
+            instr.Dispose();
+        }
+    }
+}
+</pre></div><p class="rubric">More instrument sessions, accessed from multiple threads</p><p>We have two objects, <code class="docutils literal notranslate"><span class="pre">instr1</span></code> and <code class="docutils literal notranslate"><span class="pre">instr2</span></code> talking to the same instrument from multiple threads. The <code class="docutils literal notranslate"><span class="pre">instr1</span></code> and <code class="docutils literal notranslate"><span class="pre">instr2</span></code> objects have two independent locks. We bring them in sync with this call:</p><div class="highlight"><pre>instr2.Utilities.AssignLock(instr1.Utilities.GetLock());
+</pre></div><p>Check out the following example:</p><div class="highlight"><pre><span class="c1">// Two RsSmbv objects are used in multiple threads and are accessing the same instrument</span>
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using RohdeSchwarz.RsSmbv;
+
+namespace RsSmbv_Multithreading
+{
+    partial class Program
+    {
+        static void Main()
+        {
+            RsSmbv instr1 = new RsSmbv(&quot;TCPIP::192.168.2.100::INSTR&quot;);
+            RsSmbv instr2 = new RsSmbv(instr1.Session);
+            instr1.Utilities.VisaTimeout = 200;
+            <span class="c1">// Synchronize the locks of both sessions</span>
+            instr2.Utilities.AssignLock(instr1.Utilities.GetLock());
+
+            Parallel.For(1, 21,
+                x =&gt;
+                {
+                    if (x % 10 == 0)
+                    {
+                        <span class="c1">// Multiples of 10 query instr1</span>
+                        Console.WriteLine(&quot;Instr1 {0} started...&quot;, x);
+                        var response = instr1.Utilities.QueryString(&quot;*IDN?&quot;);
+                        Console.WriteLine(&quot;...Instr1 Query {0} finished.&quot;, x);
+                    }
+                    else
+                    {
+                        <span class="c1">// All other values query instr2</span>
+                        Console.WriteLine(&quot;Instr2 {0} started...&quot;, x);
+                        var response = instr2.Utilities.QueryString(&quot;*IDN?&quot;);
+                        Console.WriteLine(&quot;...Instr2 Query {0} finished.&quot;, x);
+                    }
+                });
+
+            Console.WriteLine(&quot;\nPress any key ...&quot;);
+            Console.ReadKey();
+
+            <span class="c1">// Close the sessions</span>
+            instr2.Dispose();
+            instr1.Dispose();
+        }
+    }
+}
+</pre></div><div class="admonition note"><p class="admonition-title">Note</p><p>If you want to simulate some party crosstalk, delete this line:</p><div class="highlight"><pre>instr2.Utilities.AssignLock(instr1.Utilities.GetLock());
+</pre></div><p>Although the <code class="docutils literal notranslate"><span class="pre">instr1</span></code> will still schedule its instrument access, the <code class="docutils literal notranslate"><span class="pre">instr2</span></code> will be doing the same at the same time, which will then lead to all that fun stuff happening.</p></div></section></section></div></div><footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer"><a href="Readme.html" class="btn btn-neutral float-left" title="Revision History" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a><a href="RsSmbv.html" class="btn btn-neutral float-right" title="RsSmbv C# API Structure" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a></div><hr/><div role="contentinfo"><p>&#169; Copyright © Rohde &amp; Schwarz 2026.</p></div></footer></div></div></section></div> </body></html>
